@@ -22383,7 +22383,7 @@ msgstr "Einschluss-Muster"
 msgid "Include Volume name in item"
 msgstr "Volume-Namen in Item verwenden"
 
-msgid
+msgid ""
 "Include WAFs in front of CloudFront resources in the monitoring"
 msgstr ""
 "WAFs vor Cloudfront-Resourcen in die Überwachung einschließen"
