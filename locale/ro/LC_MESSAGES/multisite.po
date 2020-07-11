@@ -73446,7 +73446,7 @@ msgstr ""
 msgid ""
 "You can specify multiple pairs of matching regexes and strings to replace the "
 "matched string with. You can use match groups in the regular expression and "
-"reference them with e.g. , , ... in the replacement string."
+"reference them with e.g. \\1, \\2, ... in the replacement string."
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filesystem.py:124
