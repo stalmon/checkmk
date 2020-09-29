@@ -75173,9 +75173,5 @@ msgid "yesterday"
 msgstr ""
 
 #: ../cmk/gui/wato/pages/download_agents.py:66
-msgid "z/OS"
-msgstr ""
-
-#: ../cmk/gui/wato/pages/download_agents.py:66
-msgid "joerg-herbel-custom-string"
+msgid "z/OSs"
 msgstr ""
