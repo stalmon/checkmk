@@ -268,11 +268,8 @@ def cluster_check_job(
         if not node_text:
             continue
 
-        states.append(node_result.state)
-        if best_outcome:
-            yield Result(state=state.OK, notice=node_result.details)
-        else:
-            yield node_result
+        states.append(node_state)
+        yield Result(state=state.OK if best_outcome else node_state, notice=node_text)
 
     if states:
         summary = []
