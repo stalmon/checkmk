@@ -44,38 +44,32 @@ def test_node_ignore_results():
 
 def test_node_returns_metric():
     node_results = _check_function_node((_OK_RESULT, Metric("panic", 42)))
-    result = aggregate_node_details("test_node", node_results)
-    assert result is not None
-    assert result.state is State.OK
-    assert result.summary == ""
-    assert result.details == "[test_node]: I am fine"
+    state, text = aggregate_node_details("test_node", node_results)
+    assert state is State.OK
+    assert text == "[test_node]: I am fine"
 
 
 def test_node_returns_details_only():
     node_results = _check_function_node((Result(state=State.OK, notice="This is detailed"),))
-    result = aggregate_node_details("test_node", node_results)
-    assert result is not None
-    assert result.state is State.OK
-    assert result.details == "[test_node]: This is detailed"
+    state, text = aggregate_node_details("test_node", node_results)
+    assert state is State.OK
+    assert text == "[test_node]: This is detailed"
 
 
 def test_node_returns_ok_and_warn():
     node_results = _check_function_node((_OK_RESULT, _WARN_RESULT))
-    result = aggregate_node_details("test_node", node_results)
-    assert result is not None
-    assert result.state is State.WARN
-    assert result.summary == ""
-    assert result.details == (
+    state, text = aggregate_node_details("test_node", node_results)
+    assert state is State.WARN
+    assert text == (
         "[test_node]: I am fine\n"  #
         "[test_node]: Watch out(!)")
 
 
 def test_node_mutliline():
     node_results = (Result(state=State.WARN, notice="These\nare\nfour\nlines"),)
-    result = aggregate_node_details("test_node", _check_function_node(node_results))
-    assert result is not None
-    assert result.state is State.WARN
-    assert result.details == ("[test_node]: These\n"
-                              "[test_node]: are\n"
-                              "[test_node]: four\n"
-                              "[test_node]: lines(!)")
+    state, text = aggregate_node_details("test_node", _check_function_node(node_results))
+    assert state is State.WARN
+    assert text == ("[test_node]: These\n"
+                    "[test_node]: are\n"
+                    "[test_node]: four\n"
+                    "[test_node]: lines(!)")

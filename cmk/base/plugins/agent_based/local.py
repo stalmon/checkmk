@@ -333,8 +333,8 @@ def _aggregate_best(
     for node, (_state, text) in aggregated_results.items():
         if node != best_node and text is not None:
             yield Result(
-                state=state.OK,
-                notice=details_result.details,
+                state=State.OK,
+                notice=text,
             )
 
 
