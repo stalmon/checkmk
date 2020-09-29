@@ -77622,6 +77622,10 @@ msgstr "ieri"
 msgid "z/OS"
 msgstr ""
 
+#: ../cmk/gui/wato/pages/download_agents.py:66
+msgid "joerg-herbel-custom-string"
+msgstr ""
+
 #~ msgid ""
 #~ "\n"
 #~ "The following placeholdes will be substituted by value from the actual "
