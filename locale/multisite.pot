@@ -16,6 +16,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../cmk/gui/cee/plugins/views/sla.py:240
+msgid "test string at the beginning"
+msgstr ""
+
+#: ../cmk/gui/cee/plugins/views/sla.py:240
 #, python-format
 msgid " %s, outage duration %s"
 msgstr ""
