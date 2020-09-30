@@ -16,6 +16,7 @@ setup:
 	sudo apt-get install gettext
 
 update-pot:
+	git pull
 	xgettext -w 80 --sort-output --force-po -L python --from-code=utf-8 --omit-header -o scanned.pot \
 	../web/app/index.wsgi \
 	../livestatus/api/python/livestatus.py \
