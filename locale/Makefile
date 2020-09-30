@@ -2,68 +2,47 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
-LANGUAGES := de ro
-SHELL 	  := /bin/bash -e -o pipefail
-PIPENV    := ../scripts/run-pipenv
-
-.PHONY: $(LANGUAGES)
+SHELL := /bin/bash -e -o pipefail
+CHECKMK_DIR = check_mk
+WEBLATE_DIR = weblate
 
 help:
-	@echo "setup          - Ubuntu/Debian für das Lokalisieren vorbereiten"
-	@echo
-	@echo "de             - Dies aufrufen, wenn man lokalisieren möchte"
-	@echo "test-[de|ro]   - Gibt aus wer noch was lokalisieren muss"
-	@echo "update-[de|ro] - Aktualisiert die PO-Datei mit neuen Texten"
+	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
+	@echo "update-pot - Updates and commits multisite.pot"
+	@echo "update-pos - Pull changes in po-files from Weblate and apply them to Checkmk repository"
+	# @echo "update-mos - Update mo-files from po-files and commit changes"
 
 setup:
-	sudo apt-get install gettext poedit python3-polib
+	sudo apt-get install gettext
 
-all:
-	for lang in $(LANGUAGES) ; do \
-           msgfmt -v -o $$lang/LC_MESSAGES/multisite.mo $$lang/LC_MESSAGES/multisite.po ; \
+update-pot:
+	xgettext -w 80 --sort-output --force-po -L python --from-code=utf-8 --omit-header -o scanned.pot \
+	../web/app/index.wsgi \
+	../livestatus/api/python/livestatus.py \
+        $$(find -L ../cmk -type f -name "*.py") 2>&1 | \
+	sed "/format string with unnamed arguments cannot be properly localized/,/and a mapping instead of a tuple for the arguments./d"; \
+	cat header scanned.pot > new.pot; \
+	mv new.pot multisite.pot; \
+	rm scanned.pot; \
+	git commit multisite.pot -m "Updated multisite.pot";
+
+update-pos:
+	cd ../../$(WEBLATE_DIR); \
+	git fetch; \
+	n_new=$$(git rev-list ..origin --count); # number of new commits in remote \
+	git pull; \
+	git format-patch -$$n_new; \
+	find . -name "*.patch" | while read patch_file; do \
+	    mv $$patch_file ../$(CHECKMK_DIR)/locale/; \
+	done
+	find . -name "*.patch" | while read patch_file; do \
+            git am $$patch_file; \
+            git commit --amend --no-edit; # add Change-Id \
         done
 
-# Update po file from checked out source and then call poedit. Remove warnings
-# about not-reorderable message strings.
-update-%:
-	@L=$@ ; \
-	cd $${L#*-}/LC_MESSAGES ; \
-	unset LANG ; \
-	xgettext -w 80 --sort-output --force-po \
-	         -L python --from-code=utf-8 --omit-header \
-		 -o scanned.po \
-		 ../../../web/app/index.wsgi \
-		 ../../../livestatus/api/python/livestatus.py \
-		 $$(find -L ../../../cmk -type f -name "*.py") 2>&1 < /dev/null | \
-		 sed '/format string with unnamed arguments cannot be properly localized/,/and a mapping instead of a tuple for the arguments./d' ; \
-	cat ../../header scanned.po > new.po ; \
-	msgmerge -w 80 -q -U -v multisite.po new.po 2>&1 < /dev/null | grep -v "reference, merged" || true ; \
-	rm -f new.po scanned.po
-
-cleanup-%:
-	@L=$@ ; L=$${L#*-}; \
-	sed -i '/^#[:.]/d' $$L/LC_MESSAGES/multisite.po ; \
-	sed -i '/"POT-Creation-Date:/d' $$L/LC_MESSAGES/multisite.po ; \
-	sed -i '/"PO-Revision-Date:/d' $$L/LC_MESSAGES/multisite.po ; \
-	sed -i '/"Last-Translator:/d' $$L/LC_MESSAGES/multisite.po ; \
-
-de:
-	$(MAKE) update-$@
-	$(PIPENV) run ./add-authors $@
-	POEDITOR=$$(which poedit 2>/dev/null || which virtaal 2>/dev/null) ; \
-	if [ -z "$$POEDITOR" ]; then \
-	    echo "ERROR: Unable to find PO file editor (poedit or virtual)" ; \
-	    exit 1 ; \
-	fi ; \
-	$$POEDITOR $@/LC_MESSAGES/multisite.po
-	$(MAKE) update-$@ # Sorgt für standardisierten Zeilenumbruch!
-	$(MAKE) cleanup-$@
-
-ro:
-	$(MAKE) update-$@
-	poedit $@/LC_MESSAGES/multisite.po
-	sed -i '/^#:/d' $@/LC_MESSAGES/multisite.po
-
-
-test-%:
-	@L=$@ ; L=$${L#*-} ; $(PIPENV) run ./blame $$L
+# update-mos:
+#	find . -name "multisite.po" | while read po_file; do \
+#  	    mo_file=$$(echo $$po_file | sed 's/multisite.po/multisite.mo/g'); \
+#	    msgfmt -v -o $$mo_file $$po_file; \
+#	done
+#	git commit ./ -m "Updated .mo-files";
