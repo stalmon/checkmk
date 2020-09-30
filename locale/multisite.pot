@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../cmk/gui/cee/plugins/views/sla.py:240
-msgid "test string at the beginning"
+#: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
+msgid "herbel-test-string-1"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/views/sla.py:240
@@ -19231,6 +19231,10 @@ msgstr ""
 msgid "Docker node"
 msgstr ""
 
+#: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
+msgid "herbel-test-string-2"
+msgstr ""
+
 #: ../cmk/gui/cee/plugins/wato/agent_bakery.py:5043
 #: ../cmk/gui/cee/plugins/wato/agent_bakery.py:5150
 msgid "Docker node and containers"
@@ -29304,6 +29308,10 @@ msgid ""
 "conjunctions of single levels now. A conjunction consists of a monitoring "
 "state and any number of upper or lower levels. If all of the configured "
 "levels within a conjunction are reached then the related state is reported."
+msgstr ""
+
+#: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
+msgid "herbel-test-string-3"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/cmc.py:272
@@ -39412,6 +39420,10 @@ msgstr ""
 
 #: ../cmk/gui/plugins/visuals/filters.py:1890
 msgid "Number of Services of the Host"
+msgstr ""
+
+#: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
+msgid "herbel-test-string-4"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
@@ -71249,11 +71261,19 @@ msgid ""
 "running on the same host."
 msgstr ""
 
+#: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
+msgid "herbel-test-string-5"
+msgstr ""
+
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1158
 msgid ""
 "You can specify multiple pairs of matching regexes and strings to replace the "
 "matched string with. You can use match groups in the regular expression and "
-"reference them with e.g. \1, \2, ... in the replacement string."
+"reference them with e.g. , , ... in the replacement string."
+msgstr ""
+
+#: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
+msgid "herbel-test-string-6"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filesystem.py:124
@@ -75177,5 +75197,9 @@ msgid "yesterday"
 msgstr ""
 
 #: ../cmk/gui/wato/pages/download_agents.py:66
-msgid "z/OSs"
+msgid "z/OS"
+msgstr ""
+
+#: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
+msgid "herbel-test-string-7"
 msgstr ""
