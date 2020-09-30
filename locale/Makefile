@@ -6,7 +6,6 @@ SHELL := /bin/bash -e -o pipefail
 CHECKMK_DIR = check_mk
 WEBLATE_DIR = weblate_git
 WEBLATE_USER = "Weblate Admin"
-PATCH_FN = "weblate.patch"
 
 help:
 	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
@@ -33,18 +32,30 @@ update-pot:
 	git push
 
 update-pos:
-	git pull # Checkmk repo
 	cd ../../$(WEBLATE_DIR); \
-	git fetch; \
-	git rev-list --author=$(WEBLATE_USER) --reverse ..origin | while read commit_id; do # All commits by Weblate in chronological order \
-	     git format-patch -1 --stdout $$commit_id > $(PATCH_FN); \
-	     cd ../$(CHECKMK_DIR); \
-	     git am ../$(WEBLATE_DIR)/$(PATCH_FN); \
+	git pull --rebase; # Weblate repo \
+	counter=0; \
+	git rev-list --author=$(WEBLATE_USER) HEAD | while read commit_id; do # all commits by Weblate, newest first \
+	     commit_msg=$$(git log --format=%B -n 1 $$commit_id); \
+	     if [[ $$commit_msg == *"Change-Id"* ]]; then # if the commit message contains a Change-Id, were are done (we have processed this commit before) \
+      	          break; \
+  	     fi; \
+	     counter_str=$$( printf '%04d' $$counter ); \
+	     patch_fn="../$(CHECKMK_DIR)/$${counter_str}.patch"; \
+  	     git format-patch -1 --stdout $$commit_id > $$patch_fn; \
+	     counter=$$((counter + 1)); \
+	done
+	git pull # Checkmk repo
+	patch_files=(../[0-9]*.patch); \
+	for (( i=$${#patch_files[@]}-1; i>=0; i-- )); do # apply commits from oldest to newest \
+	     patch_file="$${patch_files[$$i]}"; \
+	     if ! [[ -f $$patch_file ]]; then # first check if file exists (only relevant in case there are no patches) \
+      	          break; \
+  	     fi; \
+	     git am $$patch_file; \
 	     git commit --amend --no-edit; # add Change-Id \
-	     cd ../$(WEBLATE_DIR); \
-	done; \
-	rm $(PATCH_FN); \
-	git pull; # Weblate repo
+	     rm $$patch_file; \
+	done
 	git push # Checkmk repo
 
 # update-mos:
