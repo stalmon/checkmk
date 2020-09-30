@@ -4,7 +4,7 @@
 
 SHELL := /bin/bash -e -o pipefail
 CHECKMK_DIR = check_mk
-WEBLATE_DIR = weblate
+WEBLATE_DIR = weblate_git
 
 help:
 	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
@@ -38,6 +38,7 @@ update-pos:
 	find . -name "*.patch" | while read patch_file; do \
             git am $$patch_file; \
             git commit --amend --no-edit; # add Change-Id \
+            rm $$patch_file; \
         done
 
 # update-mos:
