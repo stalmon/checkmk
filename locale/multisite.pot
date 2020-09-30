@@ -75197,7 +75197,7 @@ msgid "yesterday"
 msgstr ""
 
 #: ../cmk/gui/wato/pages/download_agents.py:66
-msgid "z/OS"
+msgid "z/OSs"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/domino_transactions.py:22
