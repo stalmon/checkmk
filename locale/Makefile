@@ -24,7 +24,9 @@ update-pot:
 	cat header scanned.pot > new.pot; \
 	mv new.pot multisite.pot; \
 	rm scanned.pot; \
-	git commit multisite.pot -m "Updated multisite.pot";
+	if git diff-index --quiet HEAD --; then \
+	    git commit multisite.pot -m "Updated multisite.pot"; \
+	fi
 
 update-pos:
 	cd ../../$(WEBLATE_DIR); \
