@@ -5,6 +5,8 @@
 SHELL := /bin/bash -e -o pipefail
 CHECKMK_DIR = check_mk
 WEBLATE_DIR = weblate_git
+WEBLATE_USER = "Weblate Admin"
+PATCH_FN = "weblate.patch"
 
 help:
 	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
@@ -28,21 +30,22 @@ update-pot:
 	if git diff-index --quiet HEAD --; then \
 	    git commit multisite.pot -m "Updated multisite.pot"; \
 	fi
+	git push
 
 update-pos:
+	git pull # Checkmk repo
 	cd ../../$(WEBLATE_DIR); \
 	git fetch; \
-	n_new=$$(git rev-list ..origin --count); # number of new commits in remote \
-	git pull; \
-	git format-patch -$$n_new; \
-	find . -name "*.patch" | while read patch_file; do \
-	    mv $$patch_file ../$(CHECKMK_DIR)/locale/; \
-	done
-	find . -name "*.patch" | while read patch_file; do \
-            git am $$patch_file; \
-            git commit --amend --no-edit; # add Change-Id \
-            rm $$patch_file; \
-        done
+	git rev-list --author=$(WEBLATE_USER) --reverse ..origin | while read commit_id; do # All commits by Weblate in chronological order \
+	     git format-patch -1 --stdout $$commit_id > $(PATCH_FN); \
+	     cd ../$(CHECKMK_DIR); \
+	     git am ../$(WEBLATE_DIR)/$(PATCH_FN); \
+	     git commit --amend --no-edit; # add Change-Id \
+	     cd ../$(WEBLATE_DIR); \
+	done; \
+	rm $(PATCH_FN); \
+	git pull; # Weblate repo
+	git push # Checkmk repo
 
 # update-mos:
 #	find . -name "multisite.po" | while read po_file; do \
