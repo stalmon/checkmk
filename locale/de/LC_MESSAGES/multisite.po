@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-09-30 19:32+0000\n"
+"PO-Revision-Date: 2020-09-30 19:34+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/de/>\n"
@@ -738,7 +738,7 @@ msgstr "%s fehlt (möglicherweise) - darf nicht leer sein, wenn gesetzt."
 #: ../cmk/gui/cee/agent_bakery.py:1048
 #, python-format
 msgid "%s not in the selected WATO folders."
-msgstr "%s ist nicht in den ausgewählten WATO-Ordnern."
+msgstr "%s ist nicht in den ausgewählten WATO-Ordnern2."
 
 #: ../cmk/gui/cee/agent_bakery.py:1033
 #, python-format
@@ -29869,7 +29869,7 @@ msgstr "Host-Adresse"
 #: ../cmk/gui/plugins/sidebar/quicksearch.py:918
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:425
 msgid "Hostalias"
-msgstr "Host-Alias"
+msgstr "Host-Aliassfdasdfsdaf"
 
 #: ../cmk/gui/plugins/sidebar/quicksearch.py:797
 #: ../cmk/gui/plugins/views/sorters.py:278
