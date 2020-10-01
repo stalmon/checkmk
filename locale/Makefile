@@ -5,7 +5,6 @@
 SHELL := /bin/bash -e -o pipefail
 CHECKMK_DIR = check_mk
 WEBLATE_DIR = weblate_git
-WEBLATE_USER = "Weblate Admin"
 
 help:
 	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
@@ -35,7 +34,7 @@ update-pos:
 	cd ../../$(WEBLATE_DIR); \
 	git pull --rebase; # Weblate repo \
 	counter=0; \
-	git rev-list --author=$(WEBLATE_USER) HEAD | while read commit_id; do # all commits by Weblate, newest first \
+	git rev-list HEAD | while read commit_id; do # iterate through commits, newest first \
 	     commit_msg=$$(git log --format=%B -n 1 $$commit_id); \
 	     if [[ $$commit_msg == *"Change-Id"* ]]; then # if the commit message contains a Change-Id, were are done (we have processed this commit before) \
       	          break; \
