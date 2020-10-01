@@ -5,6 +5,7 @@
 SHELL := /bin/bash -e -o pipefail
 CHECKMK_DIR = check_mk
 WEBLATE_DIR = weblate_git
+MULTISITE_POT = multisite.pot
 
 help:
 	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
@@ -23,10 +24,10 @@ update-pot:
         $$(find -L ../cmk -type f -name "*.py") 2>&1 | \
 	sed "/format string with unnamed arguments cannot be properly localized/,/and a mapping instead of a tuple for the arguments./d"
 	cat header scanned.pot > new.pot
-	mv new.pot multisite.pot
+	mv new.pot $(MULTISITE_POT)
 	rm scanned.pot
-	if (git diff multisite.pot | cat); then \
-	    git commit multisite.pot -m "Updated multisite.pot"; \
+	if (git diff $(MULTISITE_POT) | cat); then \
+	    git commit $(MULTISITE_POT) -m "Updated $(MULTISITE_POT)"; \
 	fi
 	git push
 
