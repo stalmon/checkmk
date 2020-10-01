@@ -21,11 +21,11 @@ update-pot:
 	../web/app/index.wsgi \
 	../livestatus/api/python/livestatus.py \
         $$(find -L ../cmk -type f -name "*.py") 2>&1 | \
-	sed "/format string with unnamed arguments cannot be properly localized/,/and a mapping instead of a tuple for the arguments./d"; \
-	cat header scanned.pot > new.pot; \
-	mv new.pot multisite.pot; \
-	rm scanned.pot; \
-	if git diff-index --quiet HEAD --; then \
+	sed "/format string with unnamed arguments cannot be properly localized/,/and a mapping instead of a tuple for the arguments./d"
+	cat header scanned.pot > new.pot
+	mv new.pot multisite.pot
+	rm scanned.pot
+	if git diff; then \
 	    git commit multisite.pot -m "Updated multisite.pot"; \
 	fi
 	git push
