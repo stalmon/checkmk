@@ -25,7 +25,7 @@ update-pot:
 	cat header scanned.pot > new.pot
 	mv new.pot multisite.pot
 	rm scanned.pot
-	if git diff; then \
+	if git diff multisite.pot; then \
 	    git commit multisite.pot -m "Updated multisite.pot"; \
 	fi
 	git push
