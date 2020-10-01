@@ -173,7 +173,7 @@ msgstr ""
 msgid " to:"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:1068
+#: ../cmk/gui/watolib/rulespecs.py:1073
 #, python-format
 msgid ""
 "!!! Error: Received class in RulespecRegistry:register_manual_check_rulespec "
@@ -5993,7 +5993,7 @@ msgstr ""
 msgid "Applications"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:219
+#: ../cmk/gui/watolib/rulespecs.py:224
 #: ../cmk/gui/plugins/wato/utils/__init__.py:831
 msgid "Applications, Processes & Services"
 msgstr ""
@@ -10415,7 +10415,7 @@ msgstr ""
 msgid "Checks' man pages"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:935
+#: ../cmk/gui/watolib/rulespecs.py:940
 msgid "Checktype"
 msgstr ""
 
@@ -11806,7 +11806,7 @@ msgstr ""
 msgid "Configured feature mismatch"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:1196
+#: ../cmk/gui/watolib/rulespecs.py:1201
 msgid "Configured timeperiod parameters"
 msgstr ""
 
@@ -16046,7 +16046,7 @@ msgstr ""
 msgid "Default parameters for detected services"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:1185
+#: ../cmk/gui/watolib/rulespecs.py:1190
 msgid "Default parameters when no timeperiod matches"
 msgstr ""
 
@@ -17546,7 +17546,7 @@ msgstr ""
 msgid "Disable this test"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:1138
+#: ../cmk/gui/watolib/rulespecs.py:1143
 msgid "Disable timespecific parameters"
 msgstr ""
 
@@ -20528,7 +20528,7 @@ msgstr ""
 msgid "Enable this package"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:1144
+#: ../cmk/gui/watolib/rulespecs.py:1149
 msgid "Enable timespecific parameters"
 msgstr ""
 
@@ -25016,7 +25016,7 @@ msgstr ""
 msgid "Hardware temperature, single sensor"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:264
+#: ../cmk/gui/watolib/rulespecs.py:269
 #: ../cmk/gui/plugins/wato/utils/__init__.py:861
 msgid "Hardware, BIOS"
 msgstr ""
@@ -29982,7 +29982,7 @@ msgstr ""
 msgid "Invalid IPv4 address: %s"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:340
+#: ../cmk/gui/watolib/rulespecs.py:345
 #, python-format
 msgid "Invalid None argument at for %s idx %d"
 msgstr ""
@@ -30099,7 +30099,7 @@ msgstr ""
 msgid "Invalid end time given"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:343
+#: ../cmk/gui/watolib/rulespecs.py:348
 #, python-format
 msgid "Invalid expected callable for %s at idx %d: %r"
 msgstr ""
@@ -34365,7 +34365,7 @@ msgstr ""
 msgid "Manual page for this check type"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:181
+#: ../cmk/gui/watolib/rulespecs.py:186
 #: ../cmk/gui/plugins/wato/builtin_modules.py:399
 #: ../cmk/gui/wato/pages/folders.py:439
 msgid "Manual services"
@@ -34669,7 +34669,7 @@ msgstr ""
 msgid "Match only Event Console alerts"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:1190
+#: ../cmk/gui/watolib/rulespecs.py:1195
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1337
 #: ../cmk/gui/wato/mkeventd.py:784
 msgid "Match only during timeperiod"
@@ -34752,7 +34752,7 @@ msgstr ""
 msgid "Match the output of the check plugin"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:1191
+#: ../cmk/gui/watolib/rulespecs.py:1196
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1339
 msgid ""
 "Match this rule only during times where the selected timeperiod from the "
@@ -37421,11 +37421,11 @@ msgstr ""
 msgid "Negate: find hosts <b>not</b> having this package"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:626
+#: ../cmk/gui/watolib/rulespecs.py:631
 msgid "Negative match (Exclude matching hosts from the set)"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:672
+#: ../cmk/gui/watolib/rulespecs.py:677
 msgid "Negative match (Exclude matching services from the set)"
 msgstr ""
 
@@ -37619,7 +37619,7 @@ msgstr ""
 msgid "Network topology of site %s"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:204
+#: ../cmk/gui/watolib/rulespecs.py:209
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:882
 #: ../cmk/gui/plugins/wato/utils/__init__.py:756
 msgid "Networking"
@@ -40582,7 +40582,7 @@ msgstr ""
 msgid "Operating System"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:249
+#: ../cmk/gui/watolib/rulespecs.py:254
 #: ../cmk/gui/plugins/wato/utils/__init__.py:786
 msgid "Operating System Resources"
 msgstr ""
@@ -41710,7 +41710,7 @@ msgid "Parameter rule set"
 msgstr ""
 
 #: ../cmk/gui/sidebar.py:845 ../cmk/gui/crash_reporting.py:537
-#: ../cmk/gui/crash_reporting.py:539 ../cmk/gui/watolib/rulespecs.py:928
+#: ../cmk/gui/crash_reporting.py:539 ../cmk/gui/watolib/rulespecs.py:933
 #: ../cmk/gui/watolib/sites.py:390 ../cmk/gui/plugins/wato/bi.py:1855
 #: ../cmk/gui/plugins/wato/bi.py:2320 ../cmk/gui/wato/pages/rulesets.py:732
 #: ../cmk/gui/wato/pages/object_parameters.py:175
@@ -42978,7 +42978,7 @@ msgstr ""
 msgid "Please choose a valid PNG image."
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:936
+#: ../cmk/gui/watolib/rulespecs.py:941
 msgid "Please choose the check plugin"
 msgstr ""
 
@@ -43643,11 +43643,11 @@ msgstr ""
 msgid "Position"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:625
+#: ../cmk/gui/watolib/rulespecs.py:630
 msgid "Positive match (Add matching hosts to the set)"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:671
+#: ../cmk/gui/watolib/rulespecs.py:676
 msgid "Positive match (Add matching services to the set)"
 msgstr ""
 
@@ -47174,7 +47174,7 @@ msgstr ""
 msgid "Rules to configure the behaviour of monitored hosts."
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:186
+#: ../cmk/gui/watolib/rulespecs.py:191
 msgid ""
 "Rules to set up [cms_wato_services#manual_checks|manual services]. Services "
 "set up in this way do not depend on the service discovery. This is useful if "
@@ -48819,8 +48819,8 @@ msgstr ""
 msgid "Server performance"
 msgstr ""
 
-#: ../cmk/gui/notifications.py:150 ../cmk/gui/watolib/rulespecs.py:461
-#: ../cmk/gui/watolib/rulespecs.py:997
+#: ../cmk/gui/notifications.py:150 ../cmk/gui/watolib/rulespecs.py:466
+#: ../cmk/gui/watolib/rulespecs.py:1002
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:203
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:255
 #: ../cmk/gui/plugins/views/mobile.py:252
@@ -53447,7 +53447,7 @@ msgstr ""
 msgid "Storage space used"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:279
+#: ../cmk/gui/watolib/rulespecs.py:284
 #: ../cmk/gui/plugins/wato/utils/__init__.py:771
 msgid "Storage, Filesystems and Files"
 msgstr ""
@@ -54678,7 +54678,7 @@ msgstr ""
 msgid "Temperature trends for devices with builtin levels"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:234
+#: ../cmk/gui/watolib/rulespecs.py:239
 #: ../cmk/gui/plugins/wato/utils/__init__.py:816
 msgid "Temperature, Humidity, Electrical Parameters, etc."
 msgstr ""
@@ -59102,7 +59102,7 @@ msgid ""
 "submit crash reports to the development team."
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:923
+#: ../cmk/gui/watolib/rulespecs.py:928
 msgid "This check has no parameters."
 msgstr ""
 
@@ -63171,7 +63171,7 @@ msgstr ""
 msgid "Treshold"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:1049
+#: ../cmk/gui/watolib/rulespecs.py:1054
 #, python-format
 msgid "Tried to register incompatible rulespec: %r"
 msgstr ""
@@ -66906,7 +66906,7 @@ msgstr ""
 msgid "VirtualBox Guests"
 msgstr ""
 
-#: ../cmk/gui/watolib/rulespecs.py:294
+#: ../cmk/gui/watolib/rulespecs.py:299
 #: ../cmk/gui/plugins/wato/utils/__init__.py:846
 msgid "Virtualization"
 msgstr ""
