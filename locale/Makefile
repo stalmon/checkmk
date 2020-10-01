@@ -34,7 +34,7 @@ update-pos:
 	cd ../../$(WEBLATE_DIR); \
 	git pull --rebase; # Weblate repo \
 	counter=0; \
-	git rev-list HEAD | while read commit_id; do # iterate through commits, newest first \
+	git rev-list --extended-regexp --author="Weblate|weblate" HEAD | while read commit_id; do # iterate through commits from Weblate, newest first \
 	     commit_msg=$$(git log --format=%B -n 1 $$commit_id); \
 	     if [[ $$commit_msg == *"Change-Id"* ]]; then # if the commit message contains a Change-Id, were are done (we have processed this commit before) \
       	          break; \
