@@ -84945,6 +84945,10 @@ msgstr "gestern"
 msgid "z/OS"
 msgstr "z/OS"
 
+#: ../cmk/gui/wato/pages/download_agents.py:125
+msgid "Test of GitHub Webhook"
+msgstr ""
+
 #~ msgid " State"
 #~ msgstr "Status"
 
