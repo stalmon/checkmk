@@ -26,10 +26,10 @@ update-pot:
 	cat header scanned.pot > new.pot
 	mv new.pot $(MULTISITE_POT)
 	rm scanned.pot
-	if (git diff $(MULTISITE_POT) | cat); then \
+	if [[ $$(git diff $(MULTISITE_POT) | wc -l) -gt 0 ]]; then \
 	    git commit $(MULTISITE_POT) -m "Updated $(MULTISITE_POT)"; \
+	    git push; \
 	fi
-	git push
 
 update-pos:
 	cd ../../$(WEBLATE_DIR); \
