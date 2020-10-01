@@ -74617,7 +74617,3 @@ msgstr ""
 #: ../cmk/gui/wato/pages/download_agents.py:125
 msgid "z/OS"
 msgstr ""
-
-#: ../cmk/gui/wato/pages/download_agents.py:125
-msgid "Test of GitHub Webhook"
-msgstr ""
