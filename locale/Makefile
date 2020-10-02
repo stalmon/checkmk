@@ -9,7 +9,7 @@ MULTISITE_POT = multisite.pot
 
 help:
 	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
-	@echo "update-pot - Updates and commits multisite.pot"
+	@echo "update-pot - Update multisite.pot"
 	@echo "update-pos - Pull changes in po-files from Weblate and apply them to Checkmk repository"
 	# @echo "update-mos - Update mo-files from po-files and commit changes"
 
