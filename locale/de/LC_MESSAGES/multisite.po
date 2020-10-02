@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-02 13:54+0000\n"
+"PO-Revision-Date: 2020-10-02 14:01+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/de/>\n"
@@ -36247,7 +36247,7 @@ msgstr "Schwellwerte für den maximalen Verbrauch einzelner Anfragen"
 
 #: ../cmk/gui/plugins/wato/check_parameters/ps.py:123
 msgid "Levels on CPU utilization of a single process"
-msgstr "Schwellwerte für die CPU Auslastung eines einzelnen Prozesses"
+msgstr "asfdsf"
 
 #: ../cmk/gui/plugins/wato/check_parameters/cpu_utilization.py:133
 msgid "Levels on IO wait (UNIX only)"
