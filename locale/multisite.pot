@@ -20,6 +20,9 @@ msgstr ""
 msgid " %s, outage duration %s"
 msgstr ""
 
+msgid "a"
+msgstr "'
+
 #: ../cmk/gui/wato/pages/host_rename.py:789
 #, python-format
 msgid " (%d times)"
