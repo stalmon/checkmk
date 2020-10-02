@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite traducere 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-02 13:54+0000\n"
+"PO-Revision-Date: 2020-10-02 13:55+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: Romanian <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/ro/>\n"
@@ -24052,7 +24052,7 @@ msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/fs_mount_options.py:38
 msgid "Filesystem mount options (Linux/UNIX)"
-msgstr ""
+msgstr "asdfasdf"
 
 #: ../cmk/gui/plugins/metrics/fs.py:54
 msgid "Filesystem size"
