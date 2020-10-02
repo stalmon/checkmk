@@ -11380,23 +11380,6 @@ msgid ""
 "engine) will be logged in this log level."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:49
-msgid "Compare against discovered state"
-msgstr ""
-
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:50
-msgid "Compare the current state of the VM against the discovered state"
-msgstr ""
-
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:51
-msgid ""
-"Compare the current state of the VM against the state at the point in time "
-"when the VM was discovered. If the two states do not match, the service will "
-"go to CRIT. Note that this only works if the check is not executed as a "
-"manual check. If you choose this option for manual checks, the service will "
-"go always to UNKN."
-msgstr ""
-
 #: ../cmk/gui/plugins/wato/check_parameters/mysql_connections.py:35
 msgid ""
 "Compares the maximum number of connections that have been in use "
@@ -16106,13 +16089,6 @@ msgstr ""
 msgid "Deferred files in Spool"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:40
-msgid ""
-"Define a direct translation of the possible states of the VM to monitoring "
-"states, i.e. to the result of the check. This overwrites the default mapping "
-"used by the check."
-msgstr ""
-
 #: ../cmk/gui/wato/pages/notifications.py:181 ../cmk/gui/wato/mkeventd.py:737
 msgid "Define a range of syslog priorities this rule matches"
 msgstr ""
@@ -17354,10 +17330,6 @@ msgstr ""
 
 #: ../cmk/gui/wato/pages/sites.py:423
 msgid "Direct login to Web GUI allowed"
-msgstr ""
-
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:39
-msgid "Direct mapping of VM state to monitoring state"
 msgstr ""
 
 #: ../cmk/gui/cee/ntop/pages.py:1042
@@ -35792,10 +35764,6 @@ msgstr ""
 msgid "Microsoft Azure"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:66
-msgid "Microsoft Hyper-V Server VM state"
-msgstr ""
-
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mssql.py:45
 msgid "Microsoft SQL Server (Windows)"
 msgstr ""
@@ -36538,11 +36506,6 @@ msgstr ""
 msgid "Monitoring state if MTree state is '%s'"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:44
-#, python-format
-msgid "Monitoring state if VM state is %s"
-msgstr ""
-
 #: ../cmk/gui/plugins/wato/check_parameters/systemd_services.py:88
 msgid "Monitoring state if a monitored service is not found at all."
 msgstr ""
@@ -37214,10 +37177,6 @@ msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/skype_proxy.py:24
 msgid "Name of the Proxy"
-msgstr ""
-
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:28
-msgid "Name of the VM"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/esx_vsphere_objects.py:23
@@ -51972,10 +51931,6 @@ msgstr ""
 msgid "Specify the name of the ASM Disk Group "
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:29
-msgid "Specify the name of the VM, for example z4065012."
-msgstr ""
-
 #: ../cmk/gui/plugins/wato/check_parameters/mtr.py:25
 msgid "Specify the name of the destination host, i.e. <tt>checkmk.com</tt>"
 msgstr ""
@@ -63066,10 +63021,6 @@ msgstr ""
 #: ../cmk/gui/plugins/wato/utils/__init__.py:459
 #, python-format
 msgid "Translated %s"
-msgstr ""
-
-#: ../cmk/gui/plugins/wato/check_parameters/hyperv_vms.py:36
-msgid "Translation of VM state to monitoring state"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4904
