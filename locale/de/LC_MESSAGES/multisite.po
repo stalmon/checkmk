@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-02 12:36+0000\n"
+"PO-Revision-Date: 2020-10-02 12:41+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/de/>\n"
@@ -73627,7 +73627,7 @@ msgstr "Obere Schwellen für die aktiven Verbindungen"
 
 #: ../cmk/gui/plugins/wato/check_parameters/mssql_tablespaces.py:52
 msgid "Upper levels for data"
-msgstr "Obere Schwellen für Datenmenge"
+msgstr "Obere Schwellen für Datenmengen"
 
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_cluster_stats.py:316
 #, fuzzy
