@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-02 11:21+0000\n"
+"PO-Revision-Date: 2020-10-02 12:36+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/de/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/views/sla.py:248
 #, python-format
 msgid " %s, outage duration %s"
-msgstr " %s, Dauer des Ausfalls %s"
+msgstr " %s, Dauer des Ausfalls %s ad"
 
 #: ../cmk/gui/wato/pages/host_rename.py:789
 #, python-format
@@ -52854,7 +52854,7 @@ msgstr "Lauffähig (Warten auf Ressource)"
 #: ../cmk/gui/plugins/wato/check_parameters/services.py:48
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:516
 msgid "Running"
-msgstr "Läuft"
+msgstr "Läuft bei uns"
 
 #: ../cmk/gui/plugins/wato/check_parameters/websphere_mq_manager.py:34
 msgid "Running as standby"
