@@ -5,7 +5,7 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 
 import os
-from typing import Callable, cast, List, Optional, Set, Tuple, Union
+from typing import Callable, List, Optional, Set, Tuple, Union
 
 from six import ensure_binary
 
@@ -26,8 +26,6 @@ from .type_defs import (
     OIDBytes,
     OIDCached,
     OIDSpec,
-    OIDWithColumns,
-    SNMPColumn,
     SNMPDecodedValues,
     SNMPHostConfig,
     SNMPRawValue,
@@ -64,8 +62,6 @@ SPECIAL_COLUMNS = [
 # TODO: OID_END_OCTET_STRING is not used at all. Drop it.
 def _get_snmp_table(section_name: Optional[SectionName], tree: SNMPTree, use_snmpwalk_cache: bool,
                     *, backend: ABCSNMPBackend) -> SNMPTable:
-    # TODO (mo) clean this up further!
-    oid, targetcolumns = cast(OIDWithColumns, (str(tree.base), tree.oids))
 
     index_column = -1
     index_format = None
@@ -74,8 +70,8 @@ def _get_snmp_table(section_name: Optional[SectionName], tree: SNMPTree, use_snm
     max_len = 0
     max_len_col = -1
 
-    for column in targetcolumns:
-        fetchoid = _compute_fetch_oid(oid, None, column)
+    for column in tree.oids:
+        fetchoid: OID = "%s.%s" % (tree.base, column)
         value_encoding = _value_encoding(column)
         # column may be integer or string like "1.5.4.2.3"
         # if column is 0, we do not fetch any data from snmp, but use
@@ -84,24 +80,27 @@ def _get_snmp_table(section_name: Optional[SectionName], tree: SNMPTree, use_snm
         # in later. If the column is OID_STRING or OID_BIN we do something
         # similar: we fill in the complete OID of the entry, either as
         # string or as binary UTF-8 encoded number string
-        if column in SPECIAL_COLUMNS and index_column >= 0 and index_column != len(columns):
-            raise MKGeneralException(
-                "Invalid SNMP OID specification in implementation of check. "
-                "You can only use one of OID_END, OID_STRING, OID_BIN, OID_END_BIN and OID_END_OCTET_STRING."
-            )
-
-        rowinfo = _get_snmpwalk(section_name,
-                                oid,
-                                fetchoid,
-                                column,
-                                use_snmpwalk_cache,
-                                backend=backend)
-
         if column in SPECIAL_COLUMNS:
+            if index_column >= 0 and index_column != len(columns):
+                raise MKGeneralException(
+                    "Invalid SNMP OID specification in implementation of check. "
+                    "You can only use one of OID_END, OID_STRING, OID_BIN, OID_END_BIN "
+                    "and OID_END_OCTET_STRING.")
+            rowinfo = []
             index_column = len(columns)
             index_format = column
-        elif len(rowinfo) > max_len:
-            max_len_col = len(columns)
+        else:
+            rowinfo = _get_snmpwalk(
+                section_name,
+                tree.base,
+                fetchoid,
+                use_snmpwalk_cache,
+                save_to_cache=isinstance(column, OIDCached),
+                backend=backend,
+            )
+            if len(rowinfo) > max_len:
+                max_len_col = len(columns)
+
         max_len = max(max_len, len(rowinfo))
         columns.append((fetchoid, rowinfo, value_encoding))
 
@@ -116,12 +115,15 @@ def _get_snmp_table(section_name: Optional[SectionName], tree: SNMPTree, use_snm
     return _make_table(columns, backend.config)
 
 
-def _value_encoding(column: SNMPColumn) -> SNMPValueEncoding:
+def _value_encoding(column: Union[OIDSpec, int]) -> SNMPValueEncoding:
     return "binary" if isinstance(column, OIDBytes) else "string"
 
 
-def _make_index_rows(max_column: SNMPRowInfo, index_format: Optional[SNMPColumn],
-                     fetchoid: OID) -> SNMPRowInfo:
+def _make_index_rows(
+    max_column: SNMPRowInfo,
+    index_format: Optional[Union[OIDSpec, int]],
+    fetchoid: OID,
+) -> SNMPRowInfo:
     index_rows = []
     for o, _unused_value in max_column:
         if index_format == OID_END:
@@ -182,24 +184,32 @@ def _key_oid_pairs(pair1: Tuple[OID, SNMPRawValue]) -> List[int]:
     return _oid_to_intlist(pair1[0].lstrip('.'))
 
 
-def _get_snmpwalk(section_name: Optional[SectionName], oid: OID, fetchoid: OID, column: SNMPColumn,
-                  use_snmpwalk_cache: bool, *, backend: ABCSNMPBackend) -> SNMPRowInfo:
-    if column in SPECIAL_COLUMNS:
-        return []
-
-    save_to_cache = isinstance(column, OIDCached)
+def _get_snmpwalk(
+    section_name: Optional[SectionName],
+    base: OIDSpec,
+    fetchoid: OID,
+    use_snmpwalk_cache: bool,
+    *,
+    save_to_cache: bool,
+    backend: ABCSNMPBackend,
+) -> SNMPRowInfo:
     get_from_cache = save_to_cache and use_snmpwalk_cache
     cached = _get_cached_snmpwalk(backend.hostname, fetchoid) if get_from_cache else None
     if cached is not None:
         return cached
-    rowinfo = _perform_snmpwalk(section_name, oid, fetchoid, backend=backend)
+    rowinfo = _perform_snmpwalk(section_name, base, fetchoid, backend=backend)
     if save_to_cache:
         _save_snmpwalk_cache(backend.hostname, fetchoid, rowinfo)
     return rowinfo
 
 
-def _perform_snmpwalk(section_name: Optional[SectionName], base_oid: OID, fetchoid: OID, *,
-                      backend: ABCSNMPBackend) -> SNMPRowInfo:
+def _perform_snmpwalk(
+    section_name: Optional[SectionName],
+    base_oid: OIDSpec,
+    fetchoid: OID,
+    *,
+    backend: ABCSNMPBackend,
+) -> SNMPRowInfo:
     added_oids: Set[OID] = set([])
     rowinfo: SNMPRowInfo = []
 
@@ -209,7 +219,7 @@ def _perform_snmpwalk(section_name: Optional[SectionName], base_oid: OID, fetcho
             # revert back to legacy "possilbly-empty-string"-Type
             # TODO: pass Optional[SectionName] along!
             check_plugin_name=str(section_name) if section_name else "",
-            table_base_oid=base_oid,
+            table_base_oid=str(base_oid),
             context_name=context_name,
         )
 
@@ -230,18 +240,6 @@ def _perform_snmpwalk(section_name: Optional[SectionName], base_oid: OID, fetcho
                 added_oids.add(row_oid)
 
     return rowinfo
-
-
-def _compute_fetch_oid(oid: Union[OID, OIDSpec], suboid: Optional[OID], column: SNMPColumn) -> OID:
-    if suboid:
-        fetchoid = "%s.%s" % (oid, suboid)
-    else:
-        fetchoid = str(oid)
-
-    if str(column) != "":
-        fetchoid += "." + str(column)
-
-    return fetchoid
 
 
 def _sanitize_snmp_encoding(columns: ResultColumnsSanitized,
