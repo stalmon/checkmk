@@ -250,7 +250,7 @@ class ModeBIEditPack(ABCBIMode):
         return ["bi_rules", "bi_admin"]
 
     def title(self):
-        if self.bi_pack:
+        if self._bi_pack:
             return super().title() + " - " + _("Edit BI Pack %s") % self.bi_pack.title
         return super().title() + " - " + _("Add BI Pack")
 
@@ -258,7 +258,7 @@ class ModeBIEditPack(ABCBIMode):
         if html.check_transaction():
             vs_config = self._vs_pack().from_html_vars("bi_pack")
             self._vs_pack().validate_value(vs_config, 'bi_pack')
-            if self.bi_pack:
+            if self._bi_pack:
                 self.bi_pack.title = vs_config["title"]
                 self.bi_pack.contact_groups = vs_config["contact_groups"]
                 self.bi_pack.public = vs_config["public"]
@@ -278,12 +278,12 @@ class ModeBIEditPack(ABCBIMode):
         return make_simple_form_page_menu(breadcrumb,
                                           form_name="bi_pack",
                                           button_name="_save",
-                                          save_title=_("Save") if self.bi_pack else _("Create"))
+                                          save_title=_("Save") if self._bi_pack else _("Create"))
 
     def page(self):
         html.begin_form("bi_pack", method="POST")
 
-        if self.bi_pack is None:
+        if self._bi_pack is None:
             vs_config = self._vs_pack().from_html_vars("bi_pack")
         else:
             vs_config = {
@@ -295,14 +295,14 @@ class ModeBIEditPack(ABCBIMode):
         self._vs_pack().render_input("bi_pack", vs_config)
         forms.end()
         html.hidden_fields()
-        if self.bi_pack:
+        if self._bi_pack:
             html.set_focus("bi_pack_p_title")
         else:
             html.set_focus("bi_pack_p_id")
         html.end_form()
 
     def _vs_pack(self):
-        if self.bi_pack:
+        if self._bi_pack:
             id_element = FixedValue(title=_("Pack ID"), value=self.bi_pack.id)
         else:
             id_element = ID(
@@ -428,7 +428,7 @@ class ModeBIPacks(ABCBIMode):
         )
 
     def action(self):
-        if html.request.has_var("_delete"):
+        if not html.request.has_var("_delete"):
             return
 
         config.user.need_permission("wato.bi_admin")
@@ -809,8 +809,8 @@ class ModeBIRules(ABCBIMode):
 
                     table.cell("", css="narrow")
                     if bi_rule.computation_options.disabled:
-                        html.icon(_("This rule is currently disabled and will not be applied"),
-                                  "disabled")
+                        html.icon("disabled",
+                                  _("This rule is currently disabled and will not be applied"))
                     else:
                         html.empty_icon_button()
 
@@ -1868,19 +1868,19 @@ class BIModeAggregations(ABCBIMode):
                 table.text_cell(_("Options"), css="buttons")
 
                 if bi_aggregation.computation_options.disabled:
-                    html.icon(_("This aggregation is currently disabled."), "disabled")
+                    html.icon("disabled", _("This aggregation is currently disabled."))
                 else:
-                    html.icon(_("This aggregation is currently enabled."), "enabled")
+                    html.icon("enabled", _("This aggregation is currently enabled."))
 
                 if bi_aggregation.computation_options.use_hard_states:
-                    html.icon(_("Base state computation on hard states"), "hard_states")
+                    html.icon("hard_states", _("Base state computation on hard states"))
                 else:
-                    html.icon(_("Base state computation on soft and hard states"), "all_states")
+                    html.icon("all_states", _("Base state computation on soft and hard states"))
 
                 if bi_aggregation.computation_options.escalate_downtimes_as_warn:
-                    html.icon(_("Escalate downtimes based on aggregated WARN state"), "warning")
+                    html.icon("warning", _("Escalate downtimes based on aggregated WARN state"))
                 else:
-                    html.icon(_("Escalate downtimes based on aggregated CRIT state"), "critical")
+                    html.icon("critical", _("Escalate downtimes based on aggregated CRIT state"))
 
                 table.text_cell(_("Groups"), ", ".join(bi_aggregation.groups.names))
                 table.text_cell(_("Paths"),

@@ -124,6 +124,16 @@ class RediscoveryMode(Enum):
     refresh = 3
 
 
+DiscoveryParameters = NamedTuple("DiscoveryParameters", [
+    ("on_error", str),
+    ("load_labels", bool),
+    ("save_labels", bool),
+])
+
+HostLabelDiscoveryResult = NamedTuple("HostLabelDiscoveryResult", [
+    ("labels", DiscoveredHostLabels),
+])
+
 #   .--Helpers-------------------------------------------------------------.
 #   |                  _   _      _                                        |
 #   |                 | | | | ___| |_ __   ___ _ __ ___                    |
@@ -312,6 +322,12 @@ def do_discovery(arg_hostnames: Set[HostName], check_plugin_names: Optional[Set[
     use_caches = not arg_hostnames or checkers.FileCacheFactory.maybe
     on_error = "raise" if cmk.utils.debug.enabled() else "warn"
 
+    discovery_parameters = DiscoveryParameters(
+        on_error=on_error,
+        load_labels=arg_only_new,
+        save_labels=True,
+    )
+
     host_names = _preprocess_hostnames(arg_hostnames, config_cache)
 
     # Now loop through all hosts
@@ -334,7 +350,7 @@ def do_discovery(arg_hostnames: Set[HostName], check_plugin_names: Optional[Set[
                 mode=checkers.Mode.DISCOVERY,
             )
             for source in sources:
-                _configure_sources(source, on_error=on_error)
+                _configure_sources(source, discovery_parameters=discovery_parameters)
 
             multi_host_sections = MultiHostSections()
             checkers.update_host_sections(
@@ -357,7 +373,7 @@ def do_discovery(arg_hostnames: Set[HostName], check_plugin_names: Optional[Set[
                 multi_host_sections,
                 check_plugin_names,
                 arg_only_new,
-                on_error,
+                discovery_parameters,
             )
 
         except Exception as e:
@@ -399,14 +415,14 @@ def _do_discovery_for(
     multi_host_sections: MultiHostSections,
     check_plugin_names: Optional[Set[CheckPluginName]],
     only_new: bool,
-    on_error: str,
+    discovery_parameters: DiscoveryParameters,
 ) -> None:
 
-    discovered_services, discovered_host_labels = _discover_host_labels_and_services(
+    discovered_services, host_label_discovery_result = _discover_host_labels_and_services(
         hostname,
         ipaddress,
         multi_host_sections,
-        on_error=on_error,
+        discovery_parameters,
         check_plugin_whitelist=check_plugin_names,
     )
 
@@ -442,12 +458,11 @@ def _do_discovery_for(
 
     autochecks.save_autochecks_file(hostname, new_services)
 
-    new_host_labels, host_labels_per_plugin = _perform_host_label_discovery(
+    _new_host_labels, host_labels_per_plugin = _perform_host_label_discovery(
         hostname,
-        discovered_host_labels,
-        only_new,
+        host_label_discovery_result.labels,
+        discovery_parameters,
     )
-    DiscoveredHostLabelsStore(hostname).save(new_host_labels.to_dict())
 
     messages = []
 
@@ -485,12 +500,17 @@ def discover_on_host(
 
     hostname = host_config.hostname
     counts = _empty_counts()  # TODO: see if this can be replaced by counts = Counter()
+    discovery_parameters = DiscoveryParameters(
+        on_error=on_error,
+        load_labels=(mode != "remove"),
+        save_labels=(mode != "remove"),
+    )
 
     if hostname not in config_cache.all_active_hosts():
         return counts, ""
 
     err = None
-    discovered_host_labels = DiscoveredHostLabels()
+    host_label_discovery_result = HostLabelDiscoveryResult(labels=DiscoveredHostLabels())
 
     try:
         # in "refresh" mode we first need to remove all previously discovered
@@ -510,7 +530,7 @@ def discover_on_host(
             mode=checkers.Mode.DISCOVERY,
         )
         for source in sources:
-            _configure_sources(source, on_error=on_error)
+            _configure_sources(source, discovery_parameters=discovery_parameters)
 
         multi_host_sections = MultiHostSections()
         checkers.update_host_sections(
@@ -528,11 +548,11 @@ def discover_on_host(
         )
 
         # Compute current state of new and existing checks
-        services, discovered_host_labels = _get_host_services(
+        services, host_label_discovery_result = _get_host_services(
             host_config,
             ipaddress,
             multi_host_sections,
-            on_error=on_error,
+            discovery_parameters,
         )
 
         # Create new list of checks
@@ -551,10 +571,9 @@ def discover_on_host(
     if mode != "remove":
         new_host_labels, host_labels_per_plugin = _perform_host_label_discovery(
             hostname,
-            discovered_host_labels,
-            only_new=True,
+            host_label_discovery_result.labels,
+            discovery_parameters,
         )
-        DiscoveredHostLabelsStore(hostname).save(new_host_labels.to_dict())
         counts["self_new_host_labels"] = sum(host_labels_per_plugin.values())
         counts["self_total_host_labels"] = len(new_host_labels)
 
@@ -671,7 +690,11 @@ def check_discovery(
 
     config_cache = config.get_config_cache()
     host_config = config_cache.get_host_config(hostname)
-    on_error = "raise"
+    discovery_parameters = DiscoveryParameters(
+        on_error="raise",
+        load_labels=True,
+        save_labels=False,
+    )
 
     params = host_config.discovery_check_parameters
     if params is None:
@@ -690,7 +713,7 @@ def check_discovery(
     for source in sources:
         _configure_sources(
             source,
-            on_error=on_error,
+            discovery_parameters=discovery_parameters,
             disable_snmp_caches=params['inventory_check_do_scan'],
         )
 
@@ -711,11 +734,11 @@ def check_discovery(
         fetcher_messages=fetcher_messages,
     )
 
-    services, discovered_host_labels = _get_host_services(
+    services, host_label_discovery_result = _get_host_services(
         host_config,
         ipaddress,
         multi_host_sections,
-        on_error,
+        discovery_parameters,
     )
 
     status, infotexts, long_infotexts, perfdata, need_rediscovery = _check_service_lists(
@@ -726,8 +749,8 @@ def check_discovery(
 
     _new_host_labels, host_labels_per_plugin = _perform_host_label_discovery(
         hostname,
-        discovered_host_labels,
-        only_new=True,
+        host_label_discovery_result.labels,
+        discovery_parameters,
     )
 
     if host_labels_per_plugin:
@@ -1072,24 +1095,27 @@ def _may_rediscover(params: config.DiscoveryCheckParameters, now_ts: float,
 def _perform_host_label_discovery(
     hostname: HostName,
     discovered_host_labels: DiscoveredHostLabels,
-    only_new: bool,
-) -> Tuple[DiscoveredHostLabels, Counter[CheckPluginName]]:
+    discovery_parameters: DiscoveryParameters,
+) -> Tuple[DiscoveredHostLabels, Counter[str]]:
 
     section.section_step("Perform host label discovery")
 
     # Take over old items if -I is selected
-    if only_new:
+    if discovery_parameters.load_labels:
         return_host_labels = DiscoveredHostLabels.from_dict(
             DiscoveredHostLabelsStore(hostname).load())
     else:
         return_host_labels = DiscoveredHostLabels()
 
-    new_host_labels_per_plugin: Counter[CheckPluginName] = Counter()
+    new_host_labels_per_plugin: Counter[str] = Counter()
     for discovered_label in discovered_host_labels.values():
         if discovered_label.name in return_host_labels:
             continue
         return_host_labels.add_label(discovered_label)
         new_host_labels_per_plugin[discovered_label.plugin_name] += 1
+
+    if discovery_parameters.save_labels:
+        DiscoveredHostLabelsStore(hostname).save(return_host_labels.to_dict())
 
     return return_host_labels, new_host_labels_per_plugin
 
@@ -1098,29 +1124,29 @@ def _discover_host_labels(
     hostname: HostName,
     ipaddress: Optional[HostAddress],
     multi_host_sections: MultiHostSections,
-    on_error: str,
-) -> DiscoveredHostLabels:
+    discovery_parameters: DiscoveryParameters,
+) -> HostLabelDiscoveryResult:
 
     section.section_step("Executing host label discovery")
 
     discovered_host_labels = _discover_host_labels_for_source_type(
         HostKey(hostname, ipaddress, SourceType.HOST),
         multi_host_sections,
-        on_error=on_error,
+        discovery_parameters,
     )
     discovered_host_labels += _discover_host_labels_for_source_type(
         HostKey(hostname, ipaddress, SourceType.MANAGEMENT),
         multi_host_sections,
-        on_error=on_error,
+        discovery_parameters,
     )
 
-    return discovered_host_labels
+    return HostLabelDiscoveryResult(labels=discovered_host_labels)
 
 
 def _discover_host_labels_for_source_type(
     host_key: checkers.host_sections.HostKey,
     multi_host_sections: MultiHostSections,
-    on_error: str,
+    discovery_parameters: DiscoveryParameters,
 ) -> DiscoveredHostLabels:
     discovered_host_labels = DiscoveredHostLabels()
 
@@ -1171,9 +1197,9 @@ def _discover_host_labels_for_source_type(
             except (KeyboardInterrupt, MKTimeout):
                 raise
             except Exception as exc:
-                if cmk.utils.debug.enabled() or on_error == "raise":
+                if cmk.utils.debug.enabled() or discovery_parameters.on_error == "raise":
                     raise
-                if on_error == "warn":
+                if discovery_parameters.on_error == "warn":
                     console.error("Host label discovery of '%s' failed: %s\n" %
                                   (section_plugin.name, exc))
 
@@ -1285,29 +1311,29 @@ def _discover_host_labels_and_services(
     hostname: HostName,
     ipaddress: Optional[HostAddress],
     multi_host_sections: MultiHostSections,
-    on_error: str,
+    discovery_parameters: DiscoveryParameters,
     check_plugin_whitelist: Optional[Set[CheckPluginName]],
-) -> Tuple[List[Service], DiscoveredHostLabels]:
+) -> Tuple[List[Service], HostLabelDiscoveryResult]:
 
     # Discovers host labels and services per real host or node
 
     check_api_utils.set_hostname(hostname)
 
-    discovered_host_labels = _discover_host_labels(
+    host_label_discovery_result = _discover_host_labels(
         hostname,
         ipaddress,
         multi_host_sections,
-        on_error,
+        discovery_parameters,
     )
 
     discovered_services = _discover_services(
         hostname,
         ipaddress,
         multi_host_sections,
-        on_error,
+        discovery_parameters,
         check_plugin_whitelist,
     )
-    return discovered_services, discovered_host_labels
+    return discovered_services, host_label_discovery_result
 
 
 # Create a table of autodiscovered services of a host. Do not save
@@ -1332,7 +1358,7 @@ def _discover_services(
     hostname: HostName,
     ipaddress: Optional[HostAddress],
     multi_host_sections: MultiHostSections,
-    on_error: str,
+    discovery_parameters: DiscoveryParameters,
     check_plugin_whitelist: Optional[Set[CheckPluginName]],
 ) -> List[Service]:
     # find out which plugins we need to discover
@@ -1345,15 +1371,16 @@ def _discover_services(
         for check_plugin_name in plugin_candidates:
             try:
                 service_table.update({
-                    service.id(): service for service in _execute_discovery(
-                        multi_host_sections, hostname, ipaddress, check_plugin_name, on_error)
+                    service.id(): service
+                    for service in _execute_discovery(multi_host_sections, hostname, ipaddress,
+                                                      discovery_parameters, check_plugin_name)
                 })
             except (KeyboardInterrupt, MKTimeout):
                 raise
             except Exception as e:
-                if on_error == "raise":
+                if discovery_parameters.on_error == "raise":
                     raise
-                if on_error == "warn":
+                if discovery_parameters.on_error == "warn":
                     console.error("Discovery of '%s' failed: %s\n" % (check_plugin_name, e))
 
         return list(service_table.values())
@@ -1365,11 +1392,11 @@ def _discover_services(
 def _configure_sources(
     source: checkers.ABCSource,
     *,
-    on_error: str,
+    discovery_parameters: DiscoveryParameters,
     disable_snmp_caches: bool = False,
 ):
     if isinstance(source, checkers.snmp.SNMPSource):
-        source.on_snmp_scan_error = on_error
+        source.on_snmp_scan_error = discovery_parameters.on_error
         source.use_snmpwalk_cache = False
         source.ignore_check_interval = True
         checkers.FileCacheFactory.snmp_disabled = disable_snmp_caches
@@ -1379,8 +1406,8 @@ def _execute_discovery(
     multi_host_sections: MultiHostSections,
     hostname: HostName,
     ipaddress: Optional[HostAddress],
+    discovery_parameters: DiscoveryParameters,
     check_plugin_name: CheckPluginName,
-    on_error: str,
 ) -> Iterator[Service]:
     # Skip this check type if is ignored for that host
     if config.service_ignored(hostname, check_plugin_name, None):
@@ -1401,9 +1428,9 @@ def _execute_discovery(
     try:
         kwargs = multi_host_sections.get_section_kwargs(host_key, check_plugin.sections)
     except Exception as exc:
-        if cmk.utils.debug.enabled() or on_error == "raise":
+        if cmk.utils.debug.enabled() or discovery_parameters.on_error == "raise":
             raise
-        if on_error == "warn":
+        if discovery_parameters.on_error == "warn":
             console.warning("  Exception while parsing agent section: %s\n" % exc)
         return
     if not kwargs:
@@ -1417,10 +1444,10 @@ def _execute_discovery(
         plugins_services = check_plugin.discovery_function(**kwargs)
         yield from _enriched_discovered_services(hostname, check_plugin.name, plugins_services)
     except Exception as e:
-        if on_error == "warn":
+        if discovery_parameters.on_error == "warn":
             console.warning("  Exception in discovery function of check plugin '%s': %s" %
                             (check_plugin.name, e))
-        elif on_error == "raise":
+        elif discovery_parameters.on_error == "raise":
             raise
 
 
@@ -1466,18 +1493,21 @@ def _get_host_services(
     host_config: config.HostConfig,
     ipaddress: Optional[HostAddress],
     multi_host_sections: MultiHostSections,
-    on_error: str,
-) -> Tuple[ServicesByTransition, DiscoveredHostLabels]:
+    discovery_parameters: DiscoveryParameters,
+) -> Tuple[ServicesByTransition, HostLabelDiscoveryResult]:
 
     if host_config.is_cluster:
-        services, discovered_host_labels = _get_cluster_services(host_config, ipaddress,
-                                                                 multi_host_sections, on_error)
+        services, host_label_discovery_result = _get_cluster_services(host_config, ipaddress,
+                                                                      multi_host_sections,
+                                                                      discovery_parameters)
     else:
-        services, discovered_host_labels = _get_node_services(host_config, ipaddress,
-                                                              multi_host_sections, on_error)
+        services, host_label_discovery_result = _get_node_services(host_config, ipaddress,
+                                                                   multi_host_sections,
+                                                                   discovery_parameters)
 
     # Now add manual and active service and handle ignored services
-    return _merge_manual_services(host_config, services, on_error), discovered_host_labels
+    return _merge_manual_services(host_config, services,
+                                  discovery_parameters), host_label_discovery_result
 
 
 # Do the actual work for a non-cluster host or node
@@ -1485,11 +1515,13 @@ def _get_node_services(
     host_config: config.HostConfig,
     ipaddress: Optional[HostAddress],
     multi_host_sections: MultiHostSections,
-    on_error: str,
-) -> Tuple[ServicesTable, DiscoveredHostLabels]:
+    discovery_parameters: DiscoveryParameters,
+) -> Tuple[ServicesTable, HostLabelDiscoveryResult]:
+
     hostname = host_config.hostname
-    services, discovered_host_labels = _get_discovered_services(hostname, ipaddress,
-                                                                multi_host_sections, on_error)
+    services, host_label_discovery_result = _get_discovered_services(hostname, ipaddress,
+                                                                     multi_host_sections,
+                                                                     discovery_parameters)
 
     config_cache = config.get_config_cache()
     # Identify clustered services
@@ -1500,7 +1532,7 @@ def _get_node_services(
                 check_source = "ignored"
             services[service.id()] = ("clustered_" + check_source, service)
 
-    return services, discovered_host_labels
+    return services, host_label_discovery_result
 
 
 # Part of _get_node_services that deals with discovered services
@@ -1508,15 +1540,15 @@ def _get_discovered_services(
     hostname: HostName,
     ipaddress: Optional[HostAddress],
     multi_host_sections: MultiHostSections,
-    on_error: str,
-) -> Tuple[ServicesTable, DiscoveredHostLabels]:
+    discovery_parameters: DiscoveryParameters,
+) -> Tuple[ServicesTable, HostLabelDiscoveryResult]:
 
     # Handle discovered services -> "new"
-    discovered_services, discovered_host_labels = _discover_host_labels_and_services(
+    discovered_services, host_label_discovery_result = _discover_host_labels_and_services(
         hostname,
         ipaddress,
         multi_host_sections,
-        on_error,
+        discovery_parameters,
         check_plugin_whitelist=None,
     )
 
@@ -1530,14 +1562,14 @@ def _get_discovered_services(
         check_source = "vanished" if existing_service.id() not in services else "old"
         services[existing_service.id()] = check_source, existing_service
 
-    return services, discovered_host_labels
+    return services, host_label_discovery_result
 
 
 # TODO: Rename or extract disabled services handling
 def _merge_manual_services(
     host_config: config.HostConfig,
     services: ServicesTable,
-    on_error: str,
+    discovery_parameters: DiscoveryParameters,
 ) -> ServicesByTransition:
     """Add/replace manual and active checks and handle ignoration"""
     hostname = host_config.hostname
@@ -1601,10 +1633,10 @@ def _get_cluster_services(
     host_config: config.HostConfig,
     ipaddress: Optional[str],
     multi_host_sections: MultiHostSections,
-    on_error: str,
-) -> Tuple[ServicesTable, DiscoveredHostLabels]:
+    discovery_parameters: DiscoveryParameters,
+) -> Tuple[ServicesTable, HostLabelDiscoveryResult]:
     if not host_config.nodes:
-        return {}, DiscoveredHostLabels()
+        return {}, HostLabelDiscoveryResult(labels=DiscoveredHostLabels())
 
     cluster_items: ServicesTable = {}
     cluster_host_labels = DiscoveredHostLabels()
@@ -1614,13 +1646,13 @@ def _get_cluster_services(
     # From the states and parameters of these we construct the final state per service.
     for node in host_config.nodes:
         node_config = config_cache.get_host_config(node)
-        services, discovered_host_labels = _get_discovered_services(
+        services, host_label_discovery_result = _get_discovered_services(
             node,
             ip_lookup.lookup_ip_address(node_config),
             multi_host_sections,
-            on_error,
+            discovery_parameters,
         )
-        cluster_host_labels.update(discovered_host_labels)
+        cluster_host_labels.update(host_label_discovery_result.labels)
         for check_source, discovered_service in services.values():
             if host_config.hostname != config_cache.host_of_clustered_service(
                     node, discovered_service.description):
@@ -1648,7 +1680,7 @@ def _get_cluster_services(
 
             # In all other cases either both must be "new" or "vanished" -> let it be
 
-    return cluster_items, cluster_host_labels
+    return cluster_items, HostLabelDiscoveryResult(labels=cluster_host_labels)
 
 
 def get_check_preview(
@@ -1662,6 +1694,11 @@ def get_check_preview(
     host_config = config_cache.get_host_config(host_name)
 
     ip_address = None if host_config.is_cluster else ip_lookup.lookup_ip_address(host_config)
+    discovery_parameters = DiscoveryParameters(
+        on_error=on_error,
+        load_labels=False,
+        save_labels=False,
+    )
 
     sources = checkers.make_sources(
         host_config,
@@ -1669,7 +1706,7 @@ def get_check_preview(
         mode=checkers.Mode.DISCOVERY,
     )
     for source in sources:
-        _configure_sources(source, on_error=on_error)
+        _configure_sources(source, discovery_parameters=discovery_parameters)
 
     multi_host_sections = MultiHostSections()
     checkers.update_host_sections(
@@ -1686,11 +1723,11 @@ def get_check_preview(
         host_config=host_config,
     )
 
-    grouped_services, discovered_host_labels = _get_host_services(
+    grouped_services, host_label_discovery_result = _get_host_services(
         host_config,
         ip_address,
         multi_host_sections,
-        on_error,
+        discovery_parameters,
     )
 
     table: CheckPreviewTable = []
@@ -1736,7 +1773,7 @@ def get_check_preview(
                 service.service_labels.to_dict(),
             ))
 
-    return table, discovered_host_labels
+    return table, host_label_discovery_result.labels
 
 
 def _preview_check_source(
