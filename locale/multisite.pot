@@ -3428,7 +3428,7 @@ msgstr ""
 msgid "Add alert handler rule"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1316
+#: ../cmk/gui/wato/pages/services.py:1315
 msgid "Add all detected but not yet monitored services to the monitoring."
 msgstr ""
 
@@ -3436,7 +3436,7 @@ msgstr ""
 msgid "Add all metrics of this graph to"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1260
+#: ../cmk/gui/wato/pages/services.py:1257
 msgid "Add all missing, remove all vanished"
 msgstr ""
 
@@ -3523,7 +3523,7 @@ msgstr ""
 msgid "Add destination address"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1324
+#: ../cmk/gui/wato/pages/services.py:1323
 msgid "Add disabled services to monitoring"
 msgstr ""
 
@@ -15894,11 +15894,11 @@ msgstr ""
 msgid "Decibel-milliwatts"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1326
+#: ../cmk/gui/wato/pages/services.py:1325
 msgid "Declare disabled services as undecided"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1320
+#: ../cmk/gui/wato/pages/services.py:1319
 msgid "Declare monitored services as undecided"
 msgstr ""
 
@@ -17450,7 +17450,7 @@ msgstr ""
 msgid "Disable locking"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1322
+#: ../cmk/gui/wato/pages/services.py:1321
 msgid "Disable monitored services"
 msgstr ""
 
@@ -17502,11 +17502,11 @@ msgstr ""
 msgid "Disable timespecific parameters"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1318
+#: ../cmk/gui/wato/pages/services.py:1317
 msgid "Disable undecided services"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1330
+#: ../cmk/gui/wato/pages/services.py:1329
 msgid "Disable vanished services"
 msgstr ""
 
@@ -18075,7 +18075,7 @@ msgstr ""
 msgid "Do Cancelling-Actions when..."
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1270
+#: ../cmk/gui/wato/pages/services.py:1268
 #: ../cmk/gui/watolib/bulk_discovery.py:92
 msgid "Do a full service scan"
 msgstr ""
@@ -36356,7 +36356,7 @@ msgstr ""
 msgid "Monitor the performance of the Event Console"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1315
+#: ../cmk/gui/wato/pages/services.py:1314
 msgid "Monitor undecided services"
 msgstr ""
 
@@ -45803,7 +45803,7 @@ msgstr ""
 msgid "Remove all"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1280
+#: ../cmk/gui/wato/pages/services.py:1279
 msgid "Remove all and find new"
 msgstr ""
 
@@ -45875,7 +45875,7 @@ msgstr ""
 msgid "Remove this snapin"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1328
+#: ../cmk/gui/wato/pages/services.py:1327
 #: ../cmk/gui/watolib/bulk_discovery.py:82
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:3614
 msgid "Remove vanished services"
@@ -50236,7 +50236,7 @@ msgstr ""
 msgid "Show check parameters"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1209
+#: ../cmk/gui/wato/pages/services.py:1208
 msgid "Show checkboxes"
 msgstr ""
 
@@ -50273,7 +50273,7 @@ msgstr ""
 msgid "Show details about livestatus encryption"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1228
+#: ../cmk/gui/wato/pages/services.py:1227
 msgid "Show discovered labels"
 msgstr ""
 
@@ -50416,7 +50416,7 @@ msgstr ""
 msgid "Show pin"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1244
+#: ../cmk/gui/wato/pages/services.py:1242
 msgid "Show plugin names"
 msgstr ""
 
@@ -53316,7 +53316,7 @@ msgstr ""
 msgid "Stop creating new events, create overflow event"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1290
+#: ../cmk/gui/wato/pages/services.py:1289
 msgid "Stop job"
 msgstr ""
 
@@ -64220,7 +64220,7 @@ msgstr ""
 msgid "Update delay for PNP meta information"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/services.py:1353
+#: ../cmk/gui/wato/pages/services.py:1352
 msgid "Update host labels"
 msgstr ""
 
