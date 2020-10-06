@@ -3944,7 +3944,7 @@ msgstr "Aggregation"
 msgid "Add alert handler rule"
 msgstr "Ereignisbehandlung"
 
-#: ../cmk/gui/wato/pages/services.py:1316
+#: ../cmk/gui/wato/pages/services.py:1315
 #, fuzzy
 #| msgid "Differences to currently monitored services on a host."
 msgid "Add all detected but not yet monitored services to the monitoring."
@@ -3954,7 +3954,7 @@ msgstr "Unterschiede zu den aktuell überwachten Services eines Hosts."
 msgid "Add all metrics of this graph to"
 msgstr "Alle Metriken dieses Graphen hinzufügen zu"
 
-#: ../cmk/gui/wato/pages/services.py:1260
+#: ../cmk/gui/wato/pages/services.py:1257
 #, fuzzy
 #| msgid "Fix all missing/vanished"
 msgid "Add all missing, remove all vanished"
@@ -4057,7 +4057,7 @@ msgstr "Dashlet hinzufügen"
 msgid "Add destination address"
 msgstr "Zieladresse hinzufügen"
 
-#: ../cmk/gui/wato/pages/services.py:1324
+#: ../cmk/gui/wato/pages/services.py:1323
 #, fuzzy
 #| msgid "Global services to monitor"
 msgid "Add disabled services to monitoring"
@@ -17810,13 +17810,13 @@ msgstr "Dezibel-Millivolt"
 msgid "Decibel-milliwatts"
 msgstr "Dezibel Milliwatt"
 
-#: ../cmk/gui/wato/pages/services.py:1326
+#: ../cmk/gui/wato/pages/services.py:1325
 #, fuzzy
 #| msgid "Disabled services"
 msgid "Declare disabled services as undecided"
 msgstr "Deaktivierte Services"
 
-#: ../cmk/gui/wato/pages/services.py:1320
+#: ../cmk/gui/wato/pages/services.py:1319
 #, fuzzy
 #| msgid "Description for service incidents"
 msgid "Declare monitored services as undecided"
@@ -19526,7 +19526,7 @@ msgstr "Deaktivieren im Status-GUI"
 msgid "Disable locking"
 msgstr "Schalte Sperren aus"
 
-#: ../cmk/gui/wato/pages/services.py:1322
+#: ../cmk/gui/wato/pages/services.py:1321
 #, fuzzy
 #| msgid "Disabled services"
 msgid "Disable monitored services"
@@ -19582,13 +19582,13 @@ msgstr "Diesen Test deaktiveren"
 msgid "Disable timespecific parameters"
 msgstr "%s zeitspezifische Parameter"
 
-#: ../cmk/gui/wato/pages/services.py:1318
+#: ../cmk/gui/wato/pages/services.py:1317
 #, fuzzy
 #| msgid "Disabled services"
 msgid "Disable undecided services"
 msgstr "Deaktivierte Services"
 
-#: ../cmk/gui/wato/pages/services.py:1330
+#: ../cmk/gui/wato/pages/services.py:1329
 #, fuzzy
 #| msgid "Disabled services"
 msgid "Disable vanished services"
@@ -20238,7 +20238,7 @@ msgstr "Verteiltes Monitoring mit Hilfe mehrerer Check_MK-Instanzen"
 msgid "Do Cancelling-Actions when..."
 msgstr "Aufhebungsaktionen ausführen, wenn..."
 
-#: ../cmk/gui/wato/pages/services.py:1270
+#: ../cmk/gui/wato/pages/services.py:1268
 #: ../cmk/gui/watolib/bulk_discovery.py:92
 #, fuzzy
 #| msgid "all services"
@@ -40934,7 +40934,7 @@ msgstr ""
 msgid "Monitor the performance of the Event Console"
 msgstr "Leistung der Event Console monitoren"
 
-#: ../cmk/gui/wato/pages/services.py:1315
+#: ../cmk/gui/wato/pages/services.py:1314
 #, fuzzy
 #| msgid "Monitored services"
 msgid "Monitor undecided services"
@@ -51392,7 +51392,7 @@ msgstr ""
 msgid "Remove all"
 msgstr "Entferne alles"
 
-#: ../cmk/gui/wato/pages/services.py:1280
+#: ../cmk/gui/wato/pages/services.py:1279
 #, fuzzy
 #| msgid "Remove all downtimes"
 msgid "Remove all and find new"
@@ -51473,7 +51473,7 @@ msgstr "Regelpaket aus dem WATO-Modul Erweiterungspakete entfernen"
 msgid "Remove this snapin"
 msgstr "Snapin entfernen"
 
-#: ../cmk/gui/wato/pages/services.py:1328
+#: ../cmk/gui/wato/pages/services.py:1327
 #: ../cmk/gui/watolib/bulk_discovery.py:82
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:3614
 msgid "Remove vanished services"
@@ -56206,7 +56206,7 @@ msgstr "Sammelalarme"
 msgid "Show check parameters"
 msgstr "Check-Parameter anzeigen"
 
-#: ../cmk/gui/wato/pages/services.py:1209
+#: ../cmk/gui/wato/pages/services.py:1208
 msgid "Show checkboxes"
 msgstr "Checkboxen anzeigen"
 
@@ -56245,7 +56245,7 @@ msgstr "Zeige die Beschreibung, falls diese gesetzt ist, ansonten den Alias"
 msgid "Show details about livestatus encryption"
 msgstr "Details zur Livestatus-Verschlüsselung anzeigen"
 
-#: ../cmk/gui/wato/pages/services.py:1228
+#: ../cmk/gui/wato/pages/services.py:1227
 msgid "Show discovered labels"
 msgstr "Erkannte Label anzeigen"
 
@@ -56412,7 +56412,7 @@ msgstr "Zeige Fehler"
 msgid "Show pin"
 msgstr "Zeige Pin"
 
-#: ../cmk/gui/wato/pages/services.py:1244
+#: ../cmk/gui/wato/pages/services.py:1242
 msgid "Show plugin names"
 msgstr "Namen von Plugins anzeigen"
 
@@ -59686,7 +59686,7 @@ msgstr "Erzeugung von Ereignissen anhalten"
 msgid "Stop creating new events, create overflow event"
 msgstr "Erstellen neuer Ereignisse verhindern, ein Überlauf-Ereigniss erzeugen"
 
-#: ../cmk/gui/wato/pages/services.py:1290
+#: ../cmk/gui/wato/pages/services.py:1289
 msgid "Stop job"
 msgstr "Job stoppen"
 
@@ -73139,7 +73139,7 @@ msgstr "Updatestatus"
 msgid "Update delay for PNP meta information"
 msgstr "Verzögerte Aktualisierung von PNP-Metadaten"
 
-#: ../cmk/gui/wato/pages/services.py:1353
+#: ../cmk/gui/wato/pages/services.py:1352
 msgid "Update host labels"
 msgstr "Host-Labels aktualisieren"
 
