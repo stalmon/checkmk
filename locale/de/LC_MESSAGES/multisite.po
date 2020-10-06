@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-05 05:44+0000\n"
+"PO-Revision-Date: 2020-10-06 07:43+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/de/>\n"
@@ -11702,53 +11702,40 @@ msgid "Checkmk automation"
 msgstr "Check_MK-Version"
 
 #: ../cmk/gui/watolib/automations.py:490
-#, fuzzy, python-format
-#| msgid "Use \"Check_MK Automation\" user"
+#, python-format
 msgid "Checkmk automation %s %s"
-msgstr "Benutzer \"Check_MK Automation\" verwenden"
+msgstr "Checkmk automation %s %s"
 
 #: ../cmk/gui/cee/plugins/wato/cmc.py:560
-#, fuzzy
-#| msgid "Check_MK check helpers"
 msgid "Checkmk check helpers"
-msgstr "Check_MK-Check-Helper"
+msgstr "Checkmk check helpers"
 
 #: ../cmk/gui/plugins/metrics/checkmk.py:120
-#, fuzzy
-#| msgid "Check_MK check latency"
 msgid "Checkmk check latency"
-msgstr "Checklatenz von Check_MK-Services"
+msgstr "Check_MKmk check latency"
 
 #: ../cmk/gui/plugins/views/wato.py:29
-#, fuzzy
-#| msgid "Check_MK config filename"
 msgid "Checkmk config filename"
-msgstr "Check_MK Konfigurationsdateiname"
+msgstr "Checkmk Konfigurationsdateiname"
 
 #: ../cmk/gui/webapi.py:124
-#, fuzzy, python-format
-#| msgid "Check_MK exception: %s"
+#, python-format
 msgid "Checkmk exception: %s"
-msgstr "Check_MK Fehler: %s"
+msgstr "Checkmk Fehler: %s"
 
 #: ../cmk/gui/cee/plugins/sidebar/cmc.py:76
 #: ../cmk/gui/plugins/metrics/checkmk.py:96
 #: ../cmk/gui/plugins/wato/ac_tests.py:600
-#, fuzzy
-#| msgid "Check helper usage"
 msgid "Checkmk helper usage"
-msgstr "Belegung Check-Hilfsprozesse"
+msgstr "Checkmk helper usage"
 
 #: ../cmk/gui/plugins/views/inventory.py:1104
-#, fuzzy
 msgid "Checkmk site"
-msgstr "Check_MK-Version"
+msgstr "Checkmk Site"
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_site_object_counts.py:26
-#, fuzzy
-#| msgid "Check_MK site objects"
 msgid "Checkmk site objects"
-msgstr "Objekte von Check_MK-Instanzen"
+msgstr "Objekte von Check_MK-Instanzensadf"
 
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:220
 #, fuzzy
@@ -11769,9 +11756,8 @@ msgid "Checkmk specific"
 msgstr "Check_MK-spezifisch"
 
 #: ../cmk/gui/plugins/views/inventory.py:1110
-#, fuzzy
 msgid "Checkmk version"
-msgstr "Check_MK-Version"
+msgstr "Hobelbank"
 
 #: ../cmk/gui/plugins/views/inventory.py:1111
 #, fuzzy
