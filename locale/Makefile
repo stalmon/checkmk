@@ -35,15 +35,17 @@ update-pos:
 	cd ../../$(WEBLATE_DIR); \
 	git pull --rebase; # Weblate repo \
 	counter=0; \
-	git rev-list --extended-regexp --author="Weblate|weblate" HEAD | while read commit_id; do # iterate through commits from Weblate, newest first \
+	git rev-list HEAD | while read commit_id; do \
 	     commit_msg=$$(git log --format=%B -n 1 $$commit_id); \
-	     if [[ $$commit_msg == *"Change-Id"* ]]; then # if the commit message contains a Change-Id, were are done (we have processed this commit before) \
-      	          break; \
-  	     fi; \
-	     counter_str=$$( printf '%04d' $$counter ); \
-	     patch_fn="../$(CHECKMK_DIR)/$${counter_str}.patch"; \
-  	     git format-patch -1 --stdout $$commit_id > $$patch_fn; \
-	     counter=$$((counter + 1)); \
+	     if [[ $$commit_msg == *"https://translate.checkmk.com/"* ]]; then # only look at commits from Weblate \
+		 if [[ $$commit_msg == *"Change-Id"* ]]; then # if the commit message contains a Change-Id, were are done (we have processed this commit before) \
+		      break; \
+		 fi; \
+		 counter_str=$$( printf '%04d' $$counter ); \
+		 patch_fn="../$(CHECKMK_DIR)/$${counter_str}.patch"; \
+		 git format-patch -1 --stdout $$commit_id > $$patch_fn; \
+		 counter=$$((counter + 1)); \
+	     fi; \
 	done
 	git pull # Checkmk repo
 	patch_files=(../[0-9]*.patch); \
