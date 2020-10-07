@@ -1001,7 +1001,7 @@ msgstr "(nu trimite notificări câtre Event Console)"
 #: ../cmk/gui/plugins/visuals/inventory.py:219
 #: ../cmk/gui/plugins/visuals/inventory.py:247
 #: ../cmk/gui/plugins/visuals/filters.py:365
-#: ../cmk/gui/plugins/visuals/filters.py:1057
+#: ../cmk/gui/plugins/visuals/filters.py:1046
 msgid "(ignore)"
 msgstr "(ignoră)"
 
@@ -2054,11 +2054,11 @@ msgstr ""
 msgid "A large clock showing the current time of the web server"
 msgstr "Un ceas mare care arată timpul curent al serverului web"
 
-#: ../cmk/gui/plugins/views/inventory.py:1275
+#: ../cmk/gui/plugins/views/inventory.py:1281
 msgid "A list of all hosts with some CPU related inventory data"
 msgstr "O lista cu toate elementele cu unele date de invetar legate de CPU"
 
-#: ../cmk/gui/plugins/views/inventory.py:1323
+#: ../cmk/gui/plugins/views/inventory.py:1329
 #, fuzzy
 msgid ""
 "A list of all hosts with statistics about total, used and free networking "
@@ -2280,12 +2280,12 @@ msgstr "Un utilizator cu id-ul \"%s\" nu există."
 msgid "A value in seconds"
 msgstr " secunde "
 
-#: ../cmk/gui/plugins/views/inventory.py:1001
+#: ../cmk/gui/plugins/views/inventory.py:1007
 #, python-format
 msgid "A view for searching in the inventory data for %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1030
+#: ../cmk/gui/plugins/views/inventory.py:1036
 #, python-format
 msgid "A view for the %s of one host"
 msgstr ""
@@ -4697,7 +4697,7 @@ msgstr ""
 msgid "Aerohive HiveManager NG"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2507
+#: ../cmk/gui/plugins/visuals/filters.py:2496
 msgid "Affected by service"
 msgstr "Afectat de serviciu"
 
@@ -4707,7 +4707,7 @@ msgid ""
 "affected by the change"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2467
+#: ../cmk/gui/plugins/visuals/filters.py:2456
 msgid "Affected hosts contain"
 msgstr ""
 
@@ -5178,7 +5178,7 @@ msgstr "Agregare noua"
 msgid "Aggregation group"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2336
+#: ../cmk/gui/plugins/visuals/filters.py:2325
 msgid "Aggregation group tree"
 msgstr ""
 
@@ -5267,7 +5267,7 @@ msgid "Alert Handler Started"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/alert_handling.py:434
-#: ../cmk/gui/plugins/visuals/filters.py:1529
+#: ../cmk/gui/plugins/visuals/filters.py:1518
 msgid "Alert Handlers"
 msgstr ""
 
@@ -5388,7 +5388,7 @@ msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/cmc.py:550
 #: ../cmk/gui/plugins/views/builtin.py:2843
-#: ../cmk/gui/plugins/visuals/filters.py:1523
+#: ../cmk/gui/plugins/visuals/filters.py:1512
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2619
 msgid "Alerts"
 msgstr ""
@@ -8009,11 +8009,11 @@ msgstr ""
 msgid "Background shading for rows"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1098
+#: ../cmk/gui/plugins/views/inventory.py:1104
 msgid "Backplane"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1099
+#: ../cmk/gui/plugins/views/inventory.py:1105
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:188
 msgid "Backplanes"
 msgstr ""
@@ -9379,7 +9379,7 @@ msgstr ""
 msgid "CPU Credit Balance"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1274
+#: ../cmk/gui/plugins/views/inventory.py:1280
 msgid "CPU Inv. (all Hosts)"
 msgstr ""
 
@@ -9399,7 +9399,7 @@ msgstr ""
 msgid "CPU Model"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1273
+#: ../cmk/gui/plugins/views/inventory.py:1279
 msgid "CPU Related Inventory of all Hosts"
 msgstr ""
 
@@ -9630,11 +9630,11 @@ msgstr ""
 #: ../cmk/gui/plugins/views/painters.py:4627
 #: ../cmk/gui/plugins/views/availability.py:501
 #: ../cmk/gui/plugins/views/availability.py:593
-#: ../cmk/gui/plugins/visuals/filters.py:767
-#: ../cmk/gui/plugins/visuals/filters.py:905
-#: ../cmk/gui/plugins/visuals/filters.py:1030
-#: ../cmk/gui/plugins/visuals/filters.py:2570
-#: ../cmk/gui/plugins/visuals/filters.py:2835
+#: ../cmk/gui/plugins/visuals/filters.py:756
+#: ../cmk/gui/plugins/visuals/filters.py:894
+#: ../cmk/gui/plugins/visuals/filters.py:1019
+#: ../cmk/gui/plugins/visuals/filters.py:2559
+#: ../cmk/gui/plugins/visuals/filters.py:2824
 #: ../cmk/gui/plugins/wato/active_checks.py:1652
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1164
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1167
@@ -9998,17 +9998,17 @@ msgstr ""
 msgid "Cannot load %s: %s"
 msgstr " și %s '%s'"
 
-#: ../cmk/gui/plugins/views/inventory.py:1380
-#: ../cmk/gui/plugins/views/inventory.py:1866
+#: ../cmk/gui/plugins/views/inventory.py:1386
+#: ../cmk/gui/plugins/views/inventory.py:1872
 #, python-format
 msgid ""
 "Cannot load HW/SW inventory history entries %s. Please remove the corrupted "
 "files."
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:796
-#: ../cmk/gui/plugins/views/inventory.py:874
-#: ../cmk/gui/plugins/views/inventory.py:1878
+#: ../cmk/gui/plugins/views/inventory.py:802
+#: ../cmk/gui/plugins/views/inventory.py:880
+#: ../cmk/gui/plugins/views/inventory.py:1884
 #, python-format
 msgid "Cannot load HW/SW inventory tree %s. Please remove the corrupted file."
 msgstr ""
@@ -10326,7 +10326,7 @@ msgid "Change the default user interface theme of your Checkmk installation"
 msgstr ""
 
 #: ../cmk/gui/wato/mkeventd.py:2437
-#: ../cmk/gui/wato/pages/global_settings.py:449
+#: ../cmk/gui/wato/pages/global_settings.py:451
 #, python-format
 msgid "Changed Configuration variable %s to %s."
 msgstr ""
@@ -10342,7 +10342,7 @@ msgstr "Numarul maxim de conexiuni"
 msgid "Changed alert handler rule %d"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:258
+#: ../cmk/gui/wato/pages/global_settings.py:260
 #, python-format
 msgid "Changed global configuration variable %s to %s."
 msgstr ""
@@ -10424,7 +10424,7 @@ msgstr ""
 msgid "Changes"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1194
+#: ../cmk/gui/plugins/views/inventory.py:1200
 msgid "Channel"
 msgstr ""
 
@@ -10451,8 +10451,8 @@ msgstr "Nici o schimbare"
 msgid "Characters"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1092
-#: ../cmk/gui/plugins/views/inventory.py:1093
+#: ../cmk/gui/plugins/views/inventory.py:1098
+#: ../cmk/gui/plugins/views/inventory.py:1099
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:33
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:166
 #: ../cmk/gui/plugins/wato/check_parameters/ucs_bladecenter_chassis_voltage.py:75
@@ -11008,7 +11008,7 @@ msgstr ""
 msgid "Checkmk helper usage"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1104
+#: ../cmk/gui/plugins/views/inventory.py:1110
 msgid "Checkmk site"
 msgstr ""
 
@@ -11020,7 +11020,7 @@ msgstr ""
 msgid "Checkmk site performance and settings"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1105
+#: ../cmk/gui/plugins/views/inventory.py:1111
 msgid "Checkmk sites"
 msgstr ""
 
@@ -11028,11 +11028,11 @@ msgstr ""
 msgid "Checkmk specific"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1110
+#: ../cmk/gui/plugins/views/inventory.py:1116
 msgid "Checkmk version"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1111
+#: ../cmk/gui/plugins/views/inventory.py:1117
 msgid "Checkmk versions"
 msgstr ""
 
@@ -11998,7 +11998,7 @@ msgstr "(Nu trimite site-ului de la distanță)"
 
 #: ../cmk/gui/mobile.py:330 ../cmk/gui/mobile.py:348 ../cmk/gui/views.py:760
 #: ../cmk/gui/plugins/visuals/infos.py:223
-#: ../cmk/gui/plugins/visuals/filters.py:1527
+#: ../cmk/gui/plugins/visuals/filters.py:1516
 msgid "Commands"
 msgstr ""
 
@@ -12389,7 +12389,7 @@ msgid ""
 "matching rule is used. You have to specify at least one rule to create hosts."
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:299
+#: ../cmk/gui/wato/pages/global_settings.py:301
 #, fuzzy
 msgid "Configuration variable:"
 msgstr "Notificari"
@@ -13154,7 +13154,7 @@ msgstr ""
 msgid "Contact Selection"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2966
+#: ../cmk/gui/plugins/visuals/filters.py:2955
 msgid "Contact group (effective)"
 msgstr ""
 
@@ -14305,7 +14305,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/cmc.py:580
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/win_logwatch.py:99
 #: ../cmk/gui/plugins/views/commands.py:427
-#: ../cmk/gui/plugins/visuals/filters.py:1672
+#: ../cmk/gui/plugins/visuals/filters.py:1661
 #: ../cmk/gui/plugins/dashboard/stats.py:321
 #: ../cmk/gui/plugins/wato/check_parameters/ucs_bladecenter_faultinst.py:24
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2636
@@ -15508,7 +15508,7 @@ msgstr ""
 msgid "Current replication mode"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:302
+#: ../cmk/gui/wato/pages/global_settings.py:304
 msgid "Current setting"
 msgstr ""
 
@@ -15517,7 +15517,7 @@ msgstr ""
 msgid "Current size"
 msgstr "Parola"
 
-#: ../cmk/gui/wato/pages/global_settings.py:313
+#: ../cmk/gui/wato/pages/global_settings.py:315
 #, fuzzy
 msgid "Current state"
 msgstr "Parola"
@@ -16332,8 +16332,8 @@ msgstr ""
 #: ../cmk/gui/availability.py:478 ../cmk/gui/cme/plugins/views/managed.py:362
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1164
 #: ../cmk/gui/plugins/views/availability.py:593
-#: ../cmk/gui/plugins/visuals/filters.py:779
-#: ../cmk/gui/plugins/visuals/filters.py:976
+#: ../cmk/gui/plugins/visuals/filters.py:768
+#: ../cmk/gui/plugins/visuals/filters.py:965
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1137
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1139
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1140
@@ -16739,7 +16739,7 @@ msgid "Date range"
 msgstr "% / gamă"
 
 #: ../cmk/gui/wato/pages/notifications.py:674
-#: ../cmk/gui/plugins/views/inventory.py:1434
+#: ../cmk/gui/plugins/views/inventory.py:1440
 msgid "Date/Time"
 msgstr ""
 
@@ -16871,7 +16871,7 @@ msgstr ""
 msgid "Deduplication shared capacity"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:459
+#: ../cmk/gui/plugins/views/inventory.py:465
 msgid "Default"
 msgstr ""
 
@@ -18071,7 +18071,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:1199
 #: ../cmk/gui/cee/sla.py:1760 ../cmk/gui/wato/pages/activate_changes.py:457
 #: ../cmk/gui/wato/pages/services.py:1175
-#: ../cmk/gui/wato/pages/global_settings.py:394
+#: ../cmk/gui/wato/pages/global_settings.py:396
 #: ../cmk/gui/wato/pages/ldap.py:339 ../cmk/gui/wato/pages/folders.py:168
 #: ../cmk/gui/crash_reporting.py:467 ../cmk/gui/crash_reporting.py:526
 #: ../cmk/gui/crash_reporting.py:564 ../cmk/gui/plugins/views/builtin.py:1843
@@ -18698,7 +18698,7 @@ msgstr "Ascude regulile de utilizator"
 msgid "Discovery settings"
 msgstr "%d setări de Filtrare"
 
-#: ../cmk/gui/plugins/visuals/filters.py:2263
+#: ../cmk/gui/plugins/visuals/filters.py:2252
 #, fuzzy
 msgid "Discovery state"
 msgstr "Statusul Serverului"
@@ -19940,14 +19940,14 @@ msgid ""
 msgstr ""
 
 #: ../cmk/gui/wato/mkeventd.py:2424
-#: ../cmk/gui/wato/pages/global_settings.py:436
+#: ../cmk/gui/wato/pages/global_settings.py:438
 #, python-format
 msgid ""
 "Do you really want to reset the configuration variable <b>%s</b> back to the "
 "default value of <b><tt>%s</tt></b>?"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:238
+#: ../cmk/gui/wato/pages/global_settings.py:240
 msgid ""
 "Do you really want to reset this configuration variable back to its default "
 "value?"
@@ -19980,14 +19980,14 @@ msgstr ""
 msgid "Docker Disk Usage Count"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1073
-#: ../cmk/gui/plugins/views/inventory.py:1074
+#: ../cmk/gui/plugins/views/inventory.py:1079
+#: ../cmk/gui/plugins/views/inventory.py:1080
 #: ../cmk/gui/plugins/views/builtin.py:4442
 msgid "Docker containers"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1067
-#: ../cmk/gui/plugins/views/inventory.py:1068
+#: ../cmk/gui/plugins/views/inventory.py:1073
+#: ../cmk/gui/plugins/views/inventory.py:1074
 msgid "Docker images"
 msgstr ""
 
@@ -20160,7 +20160,7 @@ msgstr ""
 
 #: ../cmk/gui/cee/plugins/reporting/availability.py:398
 #: ../cmk/gui/plugins/views/commands.py:423
-#: ../cmk/gui/plugins/visuals/filters.py:1668
+#: ../cmk/gui/plugins/visuals/filters.py:1657
 #: ../cmk/gui/plugins/dashboard/stats.py:236
 msgid "Down"
 msgstr ""
@@ -20860,7 +20860,7 @@ msgstr "Adaugă filtre"
 msgid "Edit foreign %s"
 msgstr "Sterge Elementul"
 
-#: ../cmk/gui/wato/pages/global_settings.py:483
+#: ../cmk/gui/wato/pages/global_settings.py:485
 msgid "Edit global setting"
 msgstr ""
 
@@ -21361,7 +21361,7 @@ msgstr ""
 msgid "Emergency: Repeat push notification in intervalls till expire time."
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:724
+#: ../cmk/gui/plugins/visuals/filters.py:713
 msgid "Empty Hostgroup Visibilitiy"
 msgstr ""
 
@@ -23251,7 +23251,7 @@ msgstr ""
 msgid "Facility"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:310
+#: ../cmk/gui/wato/pages/global_settings.py:312
 #, fuzzy
 #| msgid "Factory Reset"
 msgid "Factory setting"
@@ -23664,7 +23664,7 @@ msgstr ""
 msgid "Falling"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1128
+#: ../cmk/gui/plugins/views/inventory.py:1134
 msgid "Fan"
 msgstr ""
 
@@ -23683,7 +23683,7 @@ msgstr ""
 msgid "Fan speed of hardware devices (in percent)"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1129
+#: ../cmk/gui/plugins/views/inventory.py:1135
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:254
 msgid "Fans"
 msgstr ""
@@ -24104,13 +24104,13 @@ msgstr ""
 msgid "Filter files by size"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2513
+#: ../cmk/gui/plugins/visuals/filters.py:2502
 msgid ""
 "Filter for all aggregations that are affected by one specific service on a "
 "specific host (no regular expression)"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2473
+#: ../cmk/gui/plugins/visuals/filters.py:2462
 msgid ""
 "Filter for all aggregations that base on status information of that host. "
 "Exact match (no regular expression)"
@@ -24142,7 +24142,7 @@ msgid "Filter rules"
 msgstr "Ascude regulile de utilizator"
 
 #: ../cmk/gui/wato/mkeventd.py:2396
-#: ../cmk/gui/wato/pages/global_settings.py:401
+#: ../cmk/gui/wato/pages/global_settings.py:403
 #, fuzzy
 #| msgid "%d Filter settings"
 msgid "Filter settings"
@@ -25164,7 +25164,7 @@ msgstr ""
 
 #: ../cmk/gui/valuespec.py:3931 ../cmk/gui/valuespec.py:3942
 #: ../cmk/gui/cee/plugins/metrics/forecasts.py:415
-#: ../cmk/gui/plugins/visuals/filters.py:1347
+#: ../cmk/gui/plugins/visuals/filters.py:1336
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:92
 #: ../cmk/gui/plugins/userdb/user_attributes.py:75
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:502
@@ -25292,7 +25292,7 @@ msgstr ""
 msgid "Gateway"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:476
+#: ../cmk/gui/plugins/views/inventory.py:482
 msgid "Gateway route"
 msgstr ""
 
@@ -25498,7 +25498,7 @@ msgstr "Adaugă instanță pentru monitorizare"
 msgid "Global setting"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:354
+#: ../cmk/gui/wato/pages/global_settings.py:356
 #: ../cmk/gui/wato/pages/sites.py:1382
 #: ../cmk/gui/plugins/wato/builtin_modules.py:113
 msgid "Global settings"
@@ -25508,7 +25508,7 @@ msgstr ""
 msgid "Global settings for Checkmk, Multisite and the monitoring core."
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:353
+#: ../cmk/gui/wato/pages/global_settings.py:355
 #, python-format
 msgid "Global settings matching '%s'"
 msgstr ""
@@ -25937,7 +25937,7 @@ msgstr ""
 msgid "H.Down"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1057
+#: ../cmk/gui/plugins/visuals/filters.py:1046
 msgid "HARD"
 msgstr ""
 
@@ -26100,11 +26100,11 @@ msgid ""
 "(such as passwords for plugins)."
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1116
+#: ../cmk/gui/plugins/views/inventory.py:1122
 msgid "HW container"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1117
+#: ../cmk/gui/plugins/views/inventory.py:1123
 #, fuzzy
 #| msgid "%d conditions"
 msgid "HW containers"
@@ -26262,7 +26262,7 @@ msgstr ""
 msgid "Hardware"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:262
+#: ../cmk/gui/plugins/views/inventory.py:263
 msgid "Hardware & Software Tree"
 msgstr ""
 
@@ -27035,7 +27035,7 @@ msgid ""
 msgstr ""
 
 #: ../cmk/gui/pagetypes.py:1099 ../cmk/gui/visuals.py:589
-#: ../cmk/gui/plugins/visuals/filters.py:2257
+#: ../cmk/gui/plugins/visuals/filters.py:2246
 msgid "Hidden"
 msgstr ""
 
@@ -27283,8 +27283,8 @@ msgstr ""
 #: ../cmk/gui/plugins/views/icons/builtin.py:902
 #: ../cmk/gui/plugins/views/availability.py:1006
 #: ../cmk/gui/plugins/visuals/infos.py:27
-#: ../cmk/gui/plugins/visuals/filters.py:1696
-#: ../cmk/gui/plugins/visuals/filters.py:2518
+#: ../cmk/gui/plugins/visuals/filters.py:1685
+#: ../cmk/gui/plugins/visuals/filters.py:2507
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:202
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:254
 #: ../cmk/gui/plugins/wato/check_parameters/ddn_s2a_wait.py:26
@@ -27343,7 +27343,7 @@ msgstr ""
 msgid "Host Alert"
 msgstr "Numele Elementului"
 
-#: ../cmk/gui/plugins/visuals/filters.py:1933
+#: ../cmk/gui/plugins/visuals/filters.py:1922
 msgid "Host Auxiliary Tags"
 msgstr ""
 
@@ -28117,7 +28117,7 @@ msgstr ""
 msgid "Hostgroups"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:745
+#: ../cmk/gui/plugins/visuals/filters.py:734
 msgid "Hostgroups having certain problems"
 msgstr ""
 
@@ -28283,7 +28283,7 @@ msgstr ""
 msgid "Hosts grouped by host groups"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1015
+#: ../cmk/gui/plugins/visuals/filters.py:1004
 msgid "Hosts having certain service problems"
 msgstr ""
 
@@ -28571,12 +28571,12 @@ msgstr ""
 msgid "IBM MQ (Linux)"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1195
+#: ../cmk/gui/plugins/views/inventory.py:1201
 #: ../cmk/gui/plugins/wato/check_parameters/ibm_mq_channels.py:51
 msgid "IBM MQ Channels"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1193
+#: ../cmk/gui/plugins/views/inventory.py:1199
 #: ../cmk/gui/plugins/wato/check_parameters/ibm_mq_managers.py:67
 msgid "IBM MQ Managers"
 msgstr ""
@@ -28585,7 +28585,7 @@ msgstr ""
 msgid "IBM MQ Plugin"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1197
+#: ../cmk/gui/plugins/views/inventory.py:1203
 #: ../cmk/gui/plugins/wato/check_parameters/ibm_mq_queues.py:150
 msgid "IBM MQ Queues"
 msgstr ""
@@ -28932,7 +28932,7 @@ msgid ""
 "queue to get messages from the queue."
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:466
+#: ../cmk/gui/plugins/views/inventory.py:472
 #: ../cmk/gui/plugins/visuals/filters.py:334
 #: ../cmk/gui/plugins/wato/active_checks.py:2346
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4184
@@ -28973,7 +28973,7 @@ msgstr "Adresă"
 msgid "IPv4/IPv6 dual-stack"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:468
+#: ../cmk/gui/plugins/views/inventory.py:474
 #: ../cmk/gui/plugins/visuals/filters.py:335
 #: ../cmk/gui/plugins/wato/active_checks.py:2347
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4185
@@ -30902,7 +30902,7 @@ msgid "Information to query"
 msgstr "Informații Adiționale"
 
 #: ../cmk/gui/valuespec.py:5936 ../cmk/gui/cee/plugins/wato/cmc.py:584
-#: ../cmk/gui/plugins/visuals/filters.py:1522
+#: ../cmk/gui/plugins/visuals/filters.py:1511
 msgid "Informational"
 msgstr ""
 
@@ -31693,7 +31693,7 @@ msgstr " Parametrul este: %r"
 msgid "Invalid pass phrase"
 msgstr " Parametrul este: %r"
 
-#: ../cmk/gui/plugins/views/inventory.py:1899
+#: ../cmk/gui/plugins/views/inventory.py:1905
 #, python-format
 msgid "Invalid path in inventory tree: '%s' >> %s"
 msgstr ""
@@ -31885,21 +31885,21 @@ msgstr "Activare schimbări"
 msgid "Inventorized check"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1772 ../cmk/gui/plugins/views/inventory.py:159
-#: ../cmk/gui/plugins/views/inventory.py:189
-#: ../cmk/gui/plugins/views/inventory.py:779
-#: ../cmk/gui/plugins/views/inventory.py:834
-#: ../cmk/gui/plugins/views/inventory.py:929
-#: ../cmk/gui/plugins/views/inventory.py:1228
+#: ../cmk/gui/pagetypes.py:1772 ../cmk/gui/plugins/views/inventory.py:160
+#: ../cmk/gui/plugins/views/inventory.py:190
+#: ../cmk/gui/plugins/views/inventory.py:785
+#: ../cmk/gui/plugins/views/inventory.py:840
+#: ../cmk/gui/plugins/views/inventory.py:935
+#: ../cmk/gui/plugins/views/inventory.py:1234
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:31
 msgid "Inventory"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1431
+#: ../cmk/gui/plugins/views/inventory.py:1437
 msgid "Inventory Date/Time"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1545
+#: ../cmk/gui/plugins/views/inventory.py:1551
 #: ../cmk/gui/plugins/visuals/inventory.py:612
 msgid "Inventory History"
 msgstr ""
@@ -31908,16 +31908,16 @@ msgstr ""
 msgid "Inventory Historys"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:159
+#: ../cmk/gui/plugins/views/inventory.py:160
 msgid "Inventory Tree"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1455
+#: ../cmk/gui/plugins/views/inventory.py:1461
 #, fuzzy
 msgid "Inventory changes"
 msgstr "Activare schimbări"
 
-#: ../cmk/gui/plugins/views/inventory.py:1544
+#: ../cmk/gui/plugins/views/inventory.py:1550
 msgid "Inventory history of host"
 msgstr ""
 
@@ -31925,11 +31925,11 @@ msgstr ""
 msgid "Inventory of Linux kernel configuration (sysctl)"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1227
+#: ../cmk/gui/plugins/views/inventory.py:1233
 msgid "Inventory of host"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1405
+#: ../cmk/gui/plugins/views/inventory.py:1411
 msgid "Inventory: History"
 msgstr ""
 
@@ -32472,13 +32472,13 @@ msgstr "Activare Configurare"
 msgid "Kernel Version"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1203
+#: ../cmk/gui/plugins/views/inventory.py:1209
 #, fuzzy
 #| msgid "use local configuration"
 msgid "Kernel configuration (sysctl)"
 msgstr "foloseste configuratia locala"
 
-#: ../cmk/gui/plugins/views/inventory.py:1204
+#: ../cmk/gui/plugins/views/inventory.py:1210
 #, fuzzy
 #| msgid "use local configuration"
 msgid "Kernel configurations (sysctl)"
@@ -34610,7 +34610,7 @@ msgstr ""
 msgid "Local port number"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:475
+#: ../cmk/gui/plugins/views/inventory.py:481
 msgid "Local route"
 msgstr ""
 
@@ -34891,7 +34891,7 @@ msgstr ""
 msgid "Log: state type (DEPRECATED: Use \"state information\")"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1534
+#: ../cmk/gui/plugins/visuals/filters.py:1523
 msgid "Logentry class"
 msgstr ""
 
@@ -35413,8 +35413,8 @@ msgstr ""
 msgid "MAC address"
 msgstr "Adresă"
 
-#: ../cmk/gui/plugins/views/inventory.py:128
-#: ../cmk/gui/plugins/views/inventory.py:132
+#: ../cmk/gui/plugins/views/inventory.py:129
+#: ../cmk/gui/plugins/views/inventory.py:133
 #: ../cmk/gui/plugins/wato/check_parameters/memory.py:60
 #: ../cmk/gui/plugins/wato/check_parameters/memory.py:61
 #: ../cmk/gui/plugins/wato/check_parameters/memory.py:84
@@ -35492,7 +35492,7 @@ msgstr ""
 msgid "MGRs epoch levels and average"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:136
+#: ../cmk/gui/plugins/views/inventory.py:137
 msgid "MHz"
 msgstr ""
 
@@ -36041,7 +36041,7 @@ msgstr ""
 msgid "Management board config"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1192
+#: ../cmk/gui/plugins/views/inventory.py:1198
 msgid "Manager"
 msgstr ""
 
@@ -37542,7 +37542,7 @@ msgstr "Mesajul Text"
 msgid "Message averaging"
 msgstr "Mesajul Text"
 
-#: ../cmk/gui/plugins/visuals/filters.py:2775
+#: ../cmk/gui/plugins/visuals/filters.py:2764
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2827
 msgid "Message count"
 msgstr ""
@@ -38178,7 +38178,7 @@ msgstr ""
 msgid "Modify: Check VM Status (off: keep default)"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1140
+#: ../cmk/gui/plugins/views/inventory.py:1146
 #: ../cmk/gui/plugins/wato/check_parameters/memory_percentage_used_multiitem.py:48
 msgid "Module"
 msgstr ""
@@ -38198,7 +38198,7 @@ msgstr ""
 msgid "Module name or empty"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1141
+#: ../cmk/gui/plugins/views/inventory.py:1147
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:298
 #, fuzzy
 #| msgid "Rules"
@@ -39548,7 +39548,7 @@ msgstr "Adresă"
 msgid "Network filesystem - overall status and usage (e.g. NFS)"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1060
+#: ../cmk/gui/plugins/views/inventory.py:1066
 #, fuzzy
 msgid "Network interface"
 msgstr "Adresă"
@@ -39562,7 +39562,7 @@ msgstr "Starea porturilor pentru inventariere"
 msgid "Network interface groups"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1061
+#: ../cmk/gui/plugins/views/inventory.py:1067
 #, fuzzy
 msgid "Network interfaces"
 msgstr "Adresă"
@@ -39599,8 +39599,8 @@ msgstr ""
 msgid "Networking"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1198
-#: ../cmk/gui/plugins/views/inventory.py:1199
+#: ../cmk/gui/plugins/views/inventory.py:1204
+#: ../cmk/gui/plugins/views/inventory.py:1205
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:964
 #, fuzzy
 msgid "Networking Tunnels"
@@ -39647,7 +39647,7 @@ msgstr ""
 msgid "Never use piggyback data"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2259
+#: ../cmk/gui/plugins/visuals/filters.py:2248
 #: ../cmk/gui/plugins/wato/notifications.py:726
 #: ../cmk/gui/plugins/wato/notifications.py:766
 #: ../cmk/gui/plugins/wato/notifications.py:807
@@ -39840,7 +39840,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/license_usage.py:216 ../cmk/gui/htmllib.py:1902
 #: ../cmk/gui/htmllib.py:2361 ../cmk/gui/htmllib.py:2379
 #: ../cmk/gui/wato/pages/sites.py:1250 ../cmk/gui/crash_reporting.py:520
-#: ../cmk/gui/plugins/views/inventory.py:503
+#: ../cmk/gui/plugins/views/inventory.py:509
 #: ../cmk/gui/plugins/views/availability.py:1048
 #: ../cmk/gui/plugins/wato/check_parameters/sshd_config.py:66
 #: ../cmk/gui/plugins/wato/check_parameters/sshd_config.py:78
@@ -40254,7 +40254,7 @@ msgstr "(element fără element)"
 msgid "No such host(s): %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1888
+#: ../cmk/gui/plugins/views/inventory.py:1894
 msgid "No such inventory tree."
 msgstr ""
 
@@ -40902,7 +40902,7 @@ msgstr ""
 msgid "Notification period for services"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1732
+#: ../cmk/gui/plugins/visuals/filters.py:1721
 #, fuzzy
 msgid "Notification phase"
 msgstr "Notificari"
@@ -40979,7 +40979,7 @@ msgstr ""
 #: ../cmk/gui/plugins/views/builtin.py:4102
 #: ../cmk/gui/plugins/views/builtin.py:4163
 #: ../cmk/gui/plugins/views/builtin.py:4284
-#: ../cmk/gui/plugins/visuals/filters.py:1525
+#: ../cmk/gui/plugins/visuals/filters.py:1514
 #: ../cmk/gui/plugins/wato/builtin_modules.py:749
 #: ../cmk/gui/plugins/wato/globals_notification.py:40
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:3075
@@ -41910,10 +41910,10 @@ msgstr ""
 #: ../cmk/gui/plugins/views/commands.py:425
 #: ../cmk/gui/plugins/views/availability.py:497
 #: ../cmk/gui/plugins/views/availability.py:588
-#: ../cmk/gui/plugins/visuals/filters.py:904
-#: ../cmk/gui/plugins/visuals/filters.py:1670
-#: ../cmk/gui/plugins/visuals/filters.py:2568
-#: ../cmk/gui/plugins/visuals/filters.py:2833
+#: ../cmk/gui/plugins/visuals/filters.py:893
+#: ../cmk/gui/plugins/visuals/filters.py:1659
+#: ../cmk/gui/plugins/visuals/filters.py:2557
+#: ../cmk/gui/plugins/visuals/filters.py:2822
 #: ../cmk/gui/plugins/dashboard/stats.py:290
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:673
 #: ../cmk/gui/plugins/wato/active_checks.py:372
@@ -42731,7 +42731,7 @@ msgstr ""
 msgid "Open this site's local web user interface"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1713
+#: ../cmk/gui/plugins/views/inventory.py:1719
 msgid "Open this table for filtering / sorting"
 msgstr ""
 
@@ -42968,8 +42968,8 @@ msgstr ""
 msgid "Oracle Long Active Sessions"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1183
-#: ../cmk/gui/plugins/views/inventory.py:1184
+#: ../cmk/gui/plugins/views/inventory.py:1189
+#: ../cmk/gui/plugins/views/inventory.py:1190
 msgid "Oracle PGA performance"
 msgstr ""
 
@@ -42993,8 +42993,8 @@ msgstr ""
 msgid "Oracle Recovery Status"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1177
-#: ../cmk/gui/plugins/views/inventory.py:1178
+#: ../cmk/gui/plugins/views/inventory.py:1183
+#: ../cmk/gui/plugins/views/inventory.py:1184
 msgid "Oracle SGA performance"
 msgstr ""
 
@@ -43014,20 +43014,20 @@ msgstr ""
 msgid "Oracle Undo Retention"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1165
+#: ../cmk/gui/plugins/views/inventory.py:1171
 msgid "Oracle dataguard statistic"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1166
+#: ../cmk/gui/plugins/views/inventory.py:1172
 msgid "Oracle dataguard statistics"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1153
+#: ../cmk/gui/plugins/views/inventory.py:1159
 #, fuzzy
 msgid "Oracle instance"
 msgstr "Adaugă instanță NGINX"
 
-#: ../cmk/gui/plugins/views/inventory.py:1154
+#: ../cmk/gui/plugins/views/inventory.py:1160
 #, fuzzy
 msgid "Oracle instances"
 msgstr "Adaugă instanță NGINX"
@@ -43037,28 +43037,28 @@ msgstr "Adaugă instanță NGINX"
 msgid "Oracle performance discovery"
 msgstr "Starea porturilor pentru inventariere"
 
-#: ../cmk/gui/plugins/views/inventory.py:1159
+#: ../cmk/gui/plugins/views/inventory.py:1165
 msgid "Oracle recovery area"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1160
+#: ../cmk/gui/plugins/views/inventory.py:1166
 msgid "Oracle recovery areas"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1189
+#: ../cmk/gui/plugins/views/inventory.py:1195
 msgid "Oracle system parameter"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1190
+#: ../cmk/gui/plugins/views/inventory.py:1196
 msgid "Oracle system parameters"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1171
+#: ../cmk/gui/plugins/views/inventory.py:1177
 #, fuzzy
 msgid "Oracle tablespace"
 msgstr "Nume tablespace"
 
-#: ../cmk/gui/plugins/views/inventory.py:1172
+#: ../cmk/gui/plugins/views/inventory.py:1178
 #, fuzzy
 msgid "Oracle tablespaces"
 msgstr "Nume tablespace"
@@ -43130,13 +43130,13 @@ msgstr ""
 msgid "Other components"
 msgstr "cu comentariu"
 
-#: ../cmk/gui/plugins/views/inventory.py:1081
+#: ../cmk/gui/plugins/views/inventory.py:1087
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:122
 #, fuzzy
 msgid "Other entities"
 msgstr "Setari"
 
-#: ../cmk/gui/plugins/views/inventory.py:1080
+#: ../cmk/gui/plugins/views/inventory.py:1086
 #, fuzzy
 msgid "Other entity"
 msgstr "Setari"
@@ -43559,12 +43559,12 @@ msgstr ""
 #: ../cmk/gui/cme/plugins/views/managed.py:402
 #: ../cmk/gui/plugins/views/painters.py:410
 #: ../cmk/gui/plugins/views/painters.py:2801
-#: ../cmk/gui/plugins/visuals/filters.py:768
-#: ../cmk/gui/plugins/visuals/filters.py:781
-#: ../cmk/gui/plugins/visuals/filters.py:906
-#: ../cmk/gui/plugins/visuals/filters.py:978
-#: ../cmk/gui/plugins/visuals/filters.py:1031
-#: ../cmk/gui/plugins/visuals/filters.py:2572 ../cmk/utils/defines.py:35
+#: ../cmk/gui/plugins/visuals/filters.py:757
+#: ../cmk/gui/plugins/visuals/filters.py:770
+#: ../cmk/gui/plugins/visuals/filters.py:895
+#: ../cmk/gui/plugins/visuals/filters.py:967
+#: ../cmk/gui/plugins/visuals/filters.py:1020
+#: ../cmk/gui/plugins/visuals/filters.py:2561 ../cmk/utils/defines.py:35
 msgid "PEND"
 msgstr ""
 
@@ -44082,7 +44082,7 @@ msgid "Pascal"
 msgstr ""
 
 #: ../cmk/gui/plugins/views/commands.py:263
-#: ../cmk/gui/plugins/visuals/filters.py:1526
+#: ../cmk/gui/plugins/visuals/filters.py:1515
 msgid "Passive checks"
 msgstr ""
 
@@ -46062,11 +46062,11 @@ msgstr "Nume AP"
 msgid "Power Usage"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1123
+#: ../cmk/gui/plugins/views/inventory.py:1129
 msgid "Power supplies"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1122
+#: ../cmk/gui/plugins/views/inventory.py:1128
 msgid "Power supply"
 msgstr ""
 
@@ -46611,7 +46611,7 @@ msgid "Profile requests"
 msgstr ""
 
 #: ../cmk/gui/plugins/views/painters.py:4200
-#: ../cmk/gui/plugins/visuals/filters.py:1524
+#: ../cmk/gui/plugins/visuals/filters.py:1513
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:844
 msgid "Program"
 msgstr ""
@@ -47004,7 +47004,7 @@ msgstr ""
 msgid "Query or SQL statement"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1196
+#: ../cmk/gui/plugins/views/inventory.py:1202
 msgid "Queue"
 msgstr ""
 
@@ -48096,7 +48096,7 @@ msgstr "sesiuni"
 #: ../cmk/gui/wato/pages/download_agents.py:47
 #: ../cmk/gui/wato/pages/pattern_editor.py:95
 #: ../cmk/gui/wato/pages/diagnostics.py:96
-#: ../cmk/gui/wato/pages/global_settings.py:366
+#: ../cmk/gui/wato/pages/global_settings.py:368
 #: ../cmk/gui/wato/pages/analyze_configuration.py:87
 #: ../cmk/gui/wato/pages/audit_log.py:84
 #: ../cmk/gui/wato/pages/custom_attributes.py:446
@@ -48402,7 +48402,7 @@ msgstr ""
 msgid "Remove vanished services"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1482
+#: ../cmk/gui/plugins/views/inventory.py:1488
 msgid "Removed"
 msgstr ""
 
@@ -48421,7 +48421,7 @@ msgstr ""
 msgid "Removed disabled extension package %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1479
+#: ../cmk/gui/plugins/views/inventory.py:1485
 msgid "Removed entries"
 msgstr ""
 
@@ -48822,7 +48822,7 @@ msgstr ""
 msgid "Report of Host Performance Graphs"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:162
+#: ../cmk/gui/plugins/views/inventory.py:163
 #, fuzzy
 msgid "Report options"
 msgstr "Optiuni tabel"
@@ -49046,7 +49046,7 @@ msgstr ""
 msgid "Resetted all rule hit counters to zero"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:253
+#: ../cmk/gui/wato/pages/global_settings.py:255
 #, python-format
 msgid "Resetted configuration variable %s to its default."
 msgstr ""
@@ -49057,8 +49057,8 @@ msgid "Resetted the rules of rule pack %s to the ones provided via MKP"
 msgstr ""
 
 #: ../cmk/gui/wato/mkeventd.py:2423
-#: ../cmk/gui/wato/pages/global_settings.py:237
-#: ../cmk/gui/wato/pages/global_settings.py:435
+#: ../cmk/gui/wato/pages/global_settings.py:239
+#: ../cmk/gui/wato/pages/global_settings.py:437
 msgid "Resetting configuration variable"
 msgstr ""
 
@@ -50314,7 +50314,7 @@ msgstr ""
 msgid "SNMPv3 credentials (SNMPv2 community was discarded)"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1057
+#: ../cmk/gui/plugins/visuals/filters.py:1046
 msgid "SOFT"
 msgstr ""
 
@@ -50713,7 +50713,7 @@ msgstr ""
 msgid "Search"
 msgstr "Cautare"
 
-#: ../cmk/gui/plugins/views/inventory.py:1000
+#: ../cmk/gui/plugins/views/inventory.py:1006
 #, fuzzy, python-format
 msgid "Search %s"
 msgstr "Cautare"
@@ -51357,7 +51357,7 @@ msgstr ""
 msgid "Sends Timed-Out"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1134
+#: ../cmk/gui/plugins/views/inventory.py:1140
 #: ../cmk/gui/plugins/wato/check_parameters/switch_contact.py:36
 msgid "Sensor"
 msgstr ""
@@ -51395,7 +51395,7 @@ msgstr ""
 msgid "Sensor threshold"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1135
+#: ../cmk/gui/plugins/views/inventory.py:1141
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:276
 msgid "Sensors"
 msgstr ""
@@ -51497,8 +51497,8 @@ msgstr ""
 #: ../cmk/gui/plugins/views/availability.py:1018
 #: ../cmk/gui/plugins/views/availability.py:1159
 #: ../cmk/gui/plugins/visuals/infos.py:54
-#: ../cmk/gui/plugins/visuals/filters.py:1696
-#: ../cmk/gui/plugins/visuals/filters.py:2520
+#: ../cmk/gui/plugins/visuals/filters.py:1685
+#: ../cmk/gui/plugins/visuals/filters.py:2509
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:203
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:255
 msgid "Service"
@@ -52773,7 +52773,7 @@ msgstr ""
 #: ../cmk/gui/wato/pages/users.py:553
 #: ../cmk/gui/wato/pages/download_agents.py:50
 #: ../cmk/gui/wato/pages/diagnostics.py:99
-#: ../cmk/gui/wato/pages/global_settings.py:369
+#: ../cmk/gui/wato/pages/global_settings.py:371
 #: ../cmk/gui/wato/pages/audit_log.py:87
 #: ../cmk/gui/wato/pages/custom_attributes.py:449
 #: ../cmk/gui/wato/pages/ldap.py:101 ../cmk/gui/wato/pages/folders.py:150
@@ -53010,7 +53010,7 @@ msgstr "Scaneaza toate elementele"
 msgid "Show all hosts when opening the network topology view"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1741
+#: ../cmk/gui/plugins/visuals/filters.py:1730
 #, fuzzy
 msgid "Show all phases of notifications"
 msgstr "trimite notificare"
@@ -53147,16 +53147,16 @@ msgstr ""
 msgid "Show information of single"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:250
+#: ../cmk/gui/plugins/views/inventory.py:251
 msgid "Show internal tree paths"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1743
+#: ../cmk/gui/plugins/visuals/filters.py:1732
 #, fuzzy
 msgid "Show just end-user-notifications"
 msgstr "trimite notificare"
 
-#: ../cmk/gui/plugins/visuals/filters.py:1742
+#: ../cmk/gui/plugins/visuals/filters.py:1731
 #, fuzzy
 msgid "Show just preliminary notifications"
 msgstr "(Nu primi notificări)"
@@ -53200,7 +53200,7 @@ msgstr "O descriere sau comentariu despre acest element"
 msgid "Show number of groups"
 msgstr "Arata regulile de utilizator"
 
-#: ../cmk/gui/wato/pages/global_settings.py:407
+#: ../cmk/gui/wato/pages/global_settings.py:409
 msgid "Show only modified settings"
 msgstr ""
 
@@ -53826,7 +53826,7 @@ msgstr "Nume nou"
 msgid "Site restore"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:323
+#: ../cmk/gui/wato/pages/global_settings.py:325
 msgid "Site setting and global setting are identical."
 msgstr ""
 
@@ -53861,7 +53861,7 @@ msgstr "Nume nou"
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_site_object_counts.py:62
 #: ../cmk/gui/wato/pages/activate_changes.py:100
-#: ../cmk/gui/wato/pages/global_settings.py:385
+#: ../cmk/gui/wato/pages/global_settings.py:387
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:449
 msgid "Sites"
 msgstr ""
@@ -54123,11 +54123,11 @@ msgstr ""
 msgid "Software"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1054
+#: ../cmk/gui/plugins/views/inventory.py:1060
 msgid "Software package"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1055
+#: ../cmk/gui/plugins/views/inventory.py:1061
 msgid "Software packages"
 msgstr ""
 
@@ -54970,7 +54970,7 @@ msgstr ""
 msgid "Sqlnet Send timeout"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1146
+#: ../cmk/gui/plugins/views/inventory.py:1152
 msgid "Stack"
 msgstr ""
 
@@ -54983,7 +54983,7 @@ msgstr ""
 msgid "Stacked Area"
 msgstr "Acces la Agenți"
 
-#: ../cmk/gui/plugins/views/inventory.py:1147
+#: ../cmk/gui/plugins/views/inventory.py:1153
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:326
 msgid "Stacks"
 msgstr ""
@@ -55938,7 +55938,7 @@ msgstr ""
 msgid "Statement"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1528
+#: ../cmk/gui/plugins/visuals/filters.py:1517
 #: ../cmk/gui/plugins/wato/check_parameters/solaris_services.py:45
 #: ../cmk/gui/plugins/wato/check_parameters/systemd_services.py:39
 msgid "States"
@@ -56772,11 +56772,11 @@ msgstr ""
 msgid "Switch number"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1320
+#: ../cmk/gui/plugins/views/inventory.py:1326
 msgid "Switch port statistics"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1321
+#: ../cmk/gui/plugins/views/inventory.py:1327
 msgid "Switch ports (all Hosts)"
 msgstr ""
 
@@ -58751,7 +58751,7 @@ msgstr ""
 msgid "The comment which is automatically sent with an adhoc downtime"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1229
+#: ../cmk/gui/plugins/views/inventory.py:1235
 msgid "The complete hardware- and software inventory of a host"
 msgstr ""
 
@@ -59413,7 +59413,7 @@ msgid ""
 "time) is longer ago than the configure age."
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1546
+#: ../cmk/gui/plugins/views/inventory.py:1552
 msgid "The history for changes in hardware- and software inventory of a host"
 msgstr ""
 
@@ -64596,11 +64596,11 @@ msgid ""
 "via SNMP on a per-host-basis."
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:319
+#: ../cmk/gui/wato/pages/global_settings.py:321
 msgid "This variable is at factory settings."
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:316
+#: ../cmk/gui/wato/pages/global_settings.py:318
 #, python-format
 msgid "This variable is configured in <a href=\"%s\">global settings</a>."
 msgstr ""
@@ -65467,7 +65467,7 @@ msgstr ""
 #: ../cmk/gui/valuespec.py:3932 ../cmk/gui/valuespec.py:3946
 #: ../cmk/gui/cee/plugins/metrics/forecasts.py:416
 #: ../cmk/gui/cee/plugins/metrics/forecasts.py:437
-#: ../cmk/gui/plugins/visuals/filters.py:1349
+#: ../cmk/gui/plugins/visuals/filters.py:1338
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:93
 #: ../cmk/gui/plugins/userdb/user_attributes.py:76
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:503
@@ -66480,7 +66480,7 @@ msgstr ""
 msgid "Type of Database"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1678
+#: ../cmk/gui/plugins/visuals/filters.py:1667
 msgid "Type of alerts of hosts and services"
 msgstr ""
 
@@ -66603,8 +66603,8 @@ msgstr ""
 #: ../cmk/gui/cme/plugins/views/managed.py:282
 #: ../cmk/gui/plugins/views/painters.py:2800
 #: ../cmk/gui/plugins/views/painters.py:4647
-#: ../cmk/gui/plugins/visuals/filters.py:905
-#: ../cmk/gui/plugins/visuals/filters.py:2571 ../cmk/utils/defines.py:39
+#: ../cmk/gui/plugins/visuals/filters.py:894
+#: ../cmk/gui/plugins/visuals/filters.py:2560 ../cmk/utils/defines.py:39
 msgid "UNKN"
 msgstr ""
 
@@ -66615,9 +66615,9 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1151 ../cmk/gui/wato/mkeventd.py:219
 #: ../cmk/gui/wato/mkeventd.py:1876 ../cmk/gui/wato/pages/users.py:372
 #: ../cmk/gui/plugins/views/availability.py:594
-#: ../cmk/gui/plugins/visuals/filters.py:769
-#: ../cmk/gui/plugins/visuals/filters.py:1032
-#: ../cmk/gui/plugins/visuals/filters.py:2836
+#: ../cmk/gui/plugins/visuals/filters.py:758
+#: ../cmk/gui/plugins/visuals/filters.py:1021
+#: ../cmk/gui/plugins/visuals/filters.py:2825
 #: ../cmk/gui/plugins/wato/active_checks.py:1653
 #: ../cmk/gui/plugins/wato/check_parameters/veritas_vcs.py:34
 #: ../cmk/gui/plugins/wato/check_parameters/hostsystem_sensors.py:34
@@ -66655,8 +66655,8 @@ msgstr ""
 
 #: ../cmk/gui/availability.py:131 ../cmk/gui/availability.py:479
 #: ../cmk/gui/plugins/views/availability.py:594
-#: ../cmk/gui/plugins/visuals/filters.py:780
-#: ../cmk/gui/plugins/visuals/filters.py:977 ../cmk/utils/defines.py:57
+#: ../cmk/gui/plugins/visuals/filters.py:769
+#: ../cmk/gui/plugins/visuals/filters.py:966 ../cmk/utils/defines.py:57
 msgid "UNREACH"
 msgstr ""
 
@@ -66673,7 +66673,7 @@ msgstr ""
 #: ../cmk/gui/availability.py:477 ../cmk/gui/cme/plugins/views/managed.py:342
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1160
 #: ../cmk/gui/plugins/views/availability.py:588
-#: ../cmk/gui/plugins/visuals/filters.py:975
+#: ../cmk/gui/plugins/visuals/filters.py:964
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1137
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1138
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1139
@@ -67174,11 +67174,11 @@ msgstr ""
 msgid "Unhandled exception: %s"
 msgstr "Adaugă Excepție"
 
-#: ../cmk/gui/plugins/visuals/filters.py:785
+#: ../cmk/gui/plugins/visuals/filters.py:774
 msgid "Unhandled host problems"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:774
+#: ../cmk/gui/plugins/visuals/filters.py:763
 msgid "Unhandled service problems"
 msgstr ""
 
@@ -67231,7 +67231,7 @@ msgstr ""
 #: ../cmk/gui/crash_reporting.py:406 ../cmk/gui/crash_reporting.py:409
 #: ../cmk/gui/crash_reporting.py:521 ../cmk/gui/crash_reporting.py:568
 #: ../cmk/gui/crash_reporting.py:575 ../cmk/gui/plugins/views/commands.py:428
-#: ../cmk/gui/plugins/visuals/filters.py:1673
+#: ../cmk/gui/plugins/visuals/filters.py:1662
 #: ../cmk/gui/plugins/dashboard/stats.py:314
 #: ../cmk/gui/plugins/wato/check_parameters/ucs_bladecenter_faultinst.py:25
 #: ../cmk/gui/plugins/wato/check_parameters/esx_vsphere_objects.py:64
@@ -67264,13 +67264,13 @@ msgstr ""
 msgid "Unknown date"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1087
+#: ../cmk/gui/plugins/views/inventory.py:1093
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:144
 #, fuzzy
 msgid "Unknown entities"
 msgstr "% întrări libere"
 
-#: ../cmk/gui/plugins/views/inventory.py:1086
+#: ../cmk/gui/plugins/views/inventory.py:1092
 #, fuzzy
 #| msgid "unknown (old agent)"
 msgid "Unknown entity"
@@ -67373,7 +67373,7 @@ msgid "Unpackaged files"
 msgstr "Reguli neaplicate"
 
 #: ../cmk/gui/cee/plugins/reporting/availability.py:399
-#: ../cmk/gui/cee/ntop/pages.py:393 ../cmk/gui/plugins/visuals/filters.py:1669
+#: ../cmk/gui/cee/ntop/pages.py:393 ../cmk/gui/plugins/visuals/filters.py:1658
 #: ../cmk/gui/plugins/dashboard/stats.py:243
 msgid "Unreachable"
 msgstr ""
@@ -67448,7 +67448,7 @@ msgstr "spatiu utilizat"
 #: ../cmk/gui/cee/plugins/reporting/availability.py:397
 #: ../cmk/gui/plugins/views/painters.py:3367
 #: ../cmk/gui/plugins/views/commands.py:422
-#: ../cmk/gui/plugins/visuals/filters.py:1667
+#: ../cmk/gui/plugins/visuals/filters.py:1656
 #: ../cmk/gui/plugins/dashboard/stats.py:229
 msgid "Up"
 msgstr ""
@@ -68758,7 +68758,7 @@ msgstr ""
 msgid "Use settings and page layout from"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:166
+#: ../cmk/gui/plugins/views/inventory.py:167
 msgid "Use short title in reports header"
 msgstr ""
 
@@ -69185,7 +69185,7 @@ msgstr "Spațiu liber exact"
 msgid "Used host tags"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:1764
+#: ../cmk/gui/plugins/visuals/filters.py:1753
 msgid "Used in BI aggregate"
 msgstr ""
 
@@ -69837,7 +69837,7 @@ msgstr ""
 msgid "Values to fetch from this device"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2258
+#: ../cmk/gui/plugins/visuals/filters.py:2247
 msgid "Vanished"
 msgstr ""
 
@@ -70294,7 +70294,7 @@ msgstr ""
 msgid "VoIP"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:140
+#: ../cmk/gui/plugins/views/inventory.py:141
 msgid "Volt"
 msgstr ""
 
@@ -70385,11 +70385,11 @@ msgstr ""
 #: ../cmk/gui/plugins/views/painters.py:4607
 #: ../cmk/gui/plugins/views/availability.py:499
 #: ../cmk/gui/plugins/views/availability.py:591
-#: ../cmk/gui/plugins/visuals/filters.py:766
-#: ../cmk/gui/plugins/visuals/filters.py:904
-#: ../cmk/gui/plugins/visuals/filters.py:1029
-#: ../cmk/gui/plugins/visuals/filters.py:2569
-#: ../cmk/gui/plugins/visuals/filters.py:2834
+#: ../cmk/gui/plugins/visuals/filters.py:755
+#: ../cmk/gui/plugins/visuals/filters.py:893
+#: ../cmk/gui/plugins/visuals/filters.py:1018
+#: ../cmk/gui/plugins/visuals/filters.py:2558
+#: ../cmk/gui/plugins/visuals/filters.py:2823
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:673
 #: ../cmk/gui/plugins/wato/active_checks.py:1651
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1162
@@ -70684,7 +70684,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/cmc.py:582
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/win_logwatch.py:98
 #: ../cmk/gui/plugins/views/commands.py:426
-#: ../cmk/gui/plugins/visuals/filters.py:1671
+#: ../cmk/gui/plugins/visuals/filters.py:1660
 #: ../cmk/gui/plugins/dashboard/stats.py:307
 #: ../cmk/gui/plugins/wato/check_parameters/ucs_bladecenter_faultinst.py:23
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2635
@@ -73499,7 +73499,7 @@ msgstr ""
 #: ../cmk/gui/notifications.py:167
 #: ../cmk/gui/cee/plugins/wato/license_usage.py:216
 #: ../cmk/gui/wato/pages/sites.py:1250 ../cmk/gui/wato/pages/sites.py:1259
-#: ../cmk/gui/crash_reporting.py:519 ../cmk/gui/plugins/views/inventory.py:503
+#: ../cmk/gui/crash_reporting.py:519 ../cmk/gui/plugins/views/inventory.py:509
 #: ../cmk/gui/plugins/views/availability.py:1048
 #: ../cmk/gui/plugins/wato/check_parameters/sshd_config.py:65
 #: ../cmk/gui/plugins/wato/check_parameters/sshd_config.py:77
@@ -73855,7 +73855,7 @@ msgid ""
 "conditions in different rulesets."
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:729
+#: ../cmk/gui/plugins/visuals/filters.py:718
 msgid "You can enable this checkbox to show empty hostgroups"
 msgstr ""
 
@@ -75000,7 +75000,7 @@ msgstr ""
 msgid "Your schedule task has been saved."
 msgstr ""
 
-#: ../cmk/gui/wato/pages/global_settings.py:325
+#: ../cmk/gui/wato/pages/global_settings.py:327
 msgid "Your setting and factory settings are identical."
 msgstr ""
 
@@ -75356,12 +75356,12 @@ msgstr ""
 msgid "change the state"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1522
+#: ../cmk/gui/plugins/views/inventory.py:1528
 #, fuzzy
 msgid "changed"
 msgstr "%d schimbări"
 
-#: ../cmk/gui/plugins/views/inventory.py:1519
+#: ../cmk/gui/plugins/views/inventory.py:1525
 msgid "changed entries"
 msgstr ""
 
@@ -75660,7 +75660,7 @@ msgstr ""
 #: ../cmk/gui/valuespec.py:305 ../cmk/gui/valuespec.py:334
 #: ../cmk/gui/cee/plugins/wato/cmc.py:326 ../cmk/gui/wato/mkeventd.py:3653
 #: ../cmk/gui/wato/pages/audit_log.py:376
-#: ../cmk/gui/plugins/views/inventory.py:538
+#: ../cmk/gui/plugins/views/inventory.py:544
 #: ../cmk/gui/plugins/visuals/utils.py:351
 #: ../cmk/gui/plugins/wato/active_checks.py:390
 #: ../cmk/gui/plugins/wato/active_checks.py:391
@@ -76082,7 +76082,7 @@ msgstr ""
 msgid "fourth week"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:442
+#: ../cmk/gui/plugins/views/inventory.py:448
 #: ../cmk/gui/plugins/visuals/inventory.py:247
 #, fuzzy
 msgid "free"
@@ -76405,7 +76405,7 @@ msgstr ""
 msgid "is "
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:448
+#: ../cmk/gui/plugins/views/inventory.py:454
 #, fuzzy
 #| msgid "New cluster"
 msgid "is clustered"
@@ -76421,7 +76421,7 @@ msgstr ""
 msgid "is not "
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:448
+#: ../cmk/gui/plugins/views/inventory.py:454
 msgid "is not clustered"
 msgstr ""
 
@@ -76753,17 +76753,17 @@ msgid "n/a"
 msgstr ""
 
 #: ../cmk/gui/plugins/visuals/filters.py:88
-#: ../cmk/gui/plugins/visuals/filters.py:438
-#: ../cmk/gui/plugins/visuals/filters.py:510
-#: ../cmk/gui/plugins/visuals/filters.py:1944
+#: ../cmk/gui/plugins/visuals/filters.py:427
+#: ../cmk/gui/plugins/visuals/filters.py:499
+#: ../cmk/gui/plugins/visuals/filters.py:1933
 msgid "negate"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1502
+#: ../cmk/gui/plugins/views/inventory.py:1508
 msgid "new"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/inventory.py:1499
+#: ../cmk/gui/plugins/views/inventory.py:1505
 #, fuzzy
 msgid "new entries"
 msgstr "% întrări libere"
@@ -76792,7 +76792,7 @@ msgstr ""
 msgid "no access via TCP"
 msgstr ""
 
-#: ../cmk/gui/plugins/visuals/filters.py:2573
+#: ../cmk/gui/plugins/visuals/filters.py:2562
 msgid "no assumed state set"
 msgstr ""
 
@@ -77574,7 +77574,7 @@ msgstr "secunde"
 msgid "seconds"
 msgstr "secunde"
 
-#: ../cmk/gui/valuespec.py:308 ../cmk/gui/plugins/views/inventory.py:143
+#: ../cmk/gui/valuespec.py:308 ../cmk/gui/plugins/views/inventory.py:144
 msgid "secs"
 msgstr ""
 
@@ -77833,7 +77833,7 @@ msgstr "catre port:"
 msgid "to:"
 msgstr " către:"
 
-#: ../cmk/gui/valuespec.py:3379 ../cmk/gui/plugins/views/inventory.py:535
+#: ../cmk/gui/valuespec.py:3379 ../cmk/gui/plugins/views/inventory.py:541
 msgid "today"
 msgstr "astazi"
 
@@ -77857,7 +77857,7 @@ msgstr "acum doua zile"
 msgid "two levels"
 msgstr "doua nivele"
 
-#: ../cmk/gui/plugins/views/inventory.py:435
+#: ../cmk/gui/plugins/views/inventory.py:441
 #: ../cmk/gui/plugins/wato/check_parameters/azure.py:286
 #: ../cmk/gui/plugins/wato/check_parameters/keepalived.py:28
 #: ../cmk/gui/plugins/wato/check_parameters/brocade_fcport.py:217
@@ -77915,7 +77915,7 @@ msgstr "foloseste alias"
 msgid "use port name"
 msgstr "foloseste numele portului"
 
-#: ../cmk/gui/plugins/views/inventory.py:442
+#: ../cmk/gui/plugins/views/inventory.py:448
 #: ../cmk/gui/plugins/visuals/inventory.py:247
 #: ../cmk/gui/plugins/wato/check_parameters/mssql_transactionlogs.py:56
 #: ../cmk/gui/plugins/wato/check_parameters/mssql_datafiles.py:75
@@ -78189,7 +78189,7 @@ msgstr "ani"
 msgid "yes"
 msgstr "da"
 
-#: ../cmk/gui/valuespec.py:3415 ../cmk/gui/plugins/views/inventory.py:537
+#: ../cmk/gui/valuespec.py:3415 ../cmk/gui/plugins/views/inventory.py:543
 msgid "yesterday"
 msgstr "ieri"
 
