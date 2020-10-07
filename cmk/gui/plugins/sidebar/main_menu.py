@@ -13,7 +13,7 @@ from typing import NamedTuple, List
 import cmk.gui.config as config
 from cmk.gui.i18n import _
 from cmk.gui.globals import html
-from cmk.gui.plugins.sidebar.quicksearch import QuicksearchSnapin
+from cmk.gui.plugins.sidebar.search import QuicksearchSnapin
 from cmk.gui.utils.popups import MethodInline
 from cmk.gui.type_defs import (
     MegaMenu,
@@ -36,9 +36,6 @@ MainMenuItem = NamedTuple("MainMenuItem", [
 def get_show_more_setting(more_id: str) -> bool:
     if config.user.get_attribute("ui_basic_advanced_mode") == "enforce_advanced":
         return True
-
-    if config.user.get_attribute("ui_basic_advanced_mode") == "enforce_basic":
-        return False
 
     return html.foldable_container_is_open(
         treename="more_buttons",
