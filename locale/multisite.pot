@@ -7612,10 +7612,6 @@ msgstr ""
 msgid "Based on role"
 msgstr ""
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:219
-msgid "Basic / advanced mode"
-msgstr ""
-
 #: ../cmk/gui/views.py:1308
 msgid "Basic Layout"
 msgstr ""
@@ -16053,12 +16049,12 @@ msgstr ""
 msgid "Default time range"
 msgstr ""
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:228
-msgid "Default to advanced mode"
+#: ../cmk/gui/plugins/userdb/user_attributes.py:227
+msgid "Default to show less"
 msgstr ""
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:227
-msgid "Default to basic mode"
+#: ../cmk/gui/plugins/userdb/user_attributes.py:228
+msgid "Default to show more"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2069
@@ -20725,20 +20721,16 @@ msgstr ""
 msgid "Enforce IPv6"
 msgstr ""
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:230
-msgid "Enforce advanced mode"
-msgstr ""
-
-#: ../cmk/gui/plugins/userdb/user_attributes.py:229
-msgid "Enforce basic mode"
-msgstr ""
-
 #: ../cmk/gui/wato/pages/users.py:807
 msgid "Enforce change"
 msgstr ""
 
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1711
 msgid "Enforce lower case User-IDs."
+msgstr ""
+
+#: ../cmk/gui/plugins/userdb/user_attributes.py:229
+msgid "Enforce show more"
 msgstr ""
 
 #: ../cmk/gui/cee/ntop/pages.py:292 ../cmk/gui/cee/ntop/pages.py:295
@@ -23960,7 +23952,7 @@ msgstr ""
 msgid "GC runs rate"
 msgstr ""
 
-#: ../cmk/gui/htmllib.py:2804
+#: ../cmk/gui/htmllib.py:2803
 msgid "GET/POST variables of this page"
 msgstr ""
 
@@ -26636,17 +26628,17 @@ msgstr ""
 msgid "Host: %s is <b>not</b> <b>%s</b>"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:928
+#: ../cmk/gui/plugins/sidebar/search.py:928
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:426
 msgid "Hostaddress"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:929
+#: ../cmk/gui/plugins/sidebar/search.py:929
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:425
 msgid "Hostalias"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:808
+#: ../cmk/gui/plugins/sidebar/search.py:808
 #: ../cmk/gui/plugins/views/sorters.py:278
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:428
 msgid "Hostgroup"
@@ -26679,7 +26671,7 @@ msgstr ""
 #: ../cmk/gui/wato/pages/hosts.py:335 ../cmk/gui/wato/pages/hosts.py:486
 #: ../cmk/gui/wato/pages/host_diagnose.py:286
 #: ../cmk/gui/wato/pages/bulk_import.py:439 ../cmk/gui/wato/pages/folders.py:889
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:926
+#: ../cmk/gui/plugins/sidebar/search.py:926
 #: ../cmk/gui/plugins/views/mkeventd.py:428
 #: ../cmk/gui/plugins/views/painters.py:2338
 #: ../cmk/gui/plugins/views/availability.py:1148
@@ -26930,7 +26922,7 @@ msgstr ""
 msgid "Hostsystem sensor alerts"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:1032
+#: ../cmk/gui/plugins/sidebar/search.py:1032
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:427
 msgid "Hosttag"
 msgstr ""
@@ -29024,12 +29016,13 @@ msgstr ""
 msgid "In relation to standard deviation"
 msgstr ""
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:221
+#: ../cmk/gui/plugins/userdb/user_attributes.py:220
 msgid ""
 "In some places like e.g. the main menu Checkmk divides features, filters, "
-"input fields etc. in two categories - basic and advanced. With thisoption you "
-"can set a default mode for unvisited menus. Alternatively, you can enforce "
-"one mode so that the round button with the three dots is not shown at all."
+"input fields etc. in two categories, showing more or less entries. With this "
+"option you can set a default mode for unvisited menus. Alternatively, you can "
+"enforce to show more, so that the round button with the three dots is not "
+"shown at all."
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/temperature.py:71
@@ -29734,7 +29727,7 @@ msgstr ""
 msgid "Integration Key"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:84
+#: ../cmk/gui/plugins/sidebar/search.py:84
 msgid ""
 "Interactive search field for direct access to hosts, services, host- and "
 "servicegroups.<br>You can use the following filters:<br> <i>h:</i> Host, <i>s:"
@@ -36526,8 +36519,8 @@ msgstr ""
 msgid "More information can be found in ~/var/log/web.log"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:655
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:659
+#: ../cmk/gui/plugins/sidebar/search.py:655
+#: ../cmk/gui/plugins/sidebar/search.py:659
 #, python-format
 msgid "More than %d results"
 msgstr ""
@@ -36593,7 +36586,7 @@ msgstr ""
 msgid "Move this %s to another folder"
 msgstr ""
 
-#: ../cmk/gui/htmllib.py:2792
+#: ../cmk/gui/htmllib.py:2791
 msgid "Move this entry"
 msgstr ""
 
@@ -41350,7 +41343,7 @@ msgstr ""
 msgid "POP3 Server"
 msgstr ""
 
-#: ../cmk/gui/htmllib.py:2815
+#: ../cmk/gui/htmllib.py:2814
 msgid "POST / GET Variables"
 msgstr ""
 
@@ -44636,7 +44629,7 @@ msgstr ""
 msgid "Quick setup"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:79
+#: ../cmk/gui/plugins/sidebar/search.py:79
 msgid "Quicksearch"
 msgstr ""
 
@@ -48056,7 +48049,7 @@ msgstr ""
 #: ../cmk/gui/table.py:431 ../cmk/gui/wato/pages/rulesets.py:546
 #: ../cmk/gui/wato/pages/rulesets.py:1101 ../cmk/gui/wato/pages/search.py:49
 #: ../cmk/gui/wato/pages/folders.py:208 ../cmk/gui/page_menu.py:693
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:99
+#: ../cmk/gui/plugins/sidebar/search.py:99
 #: ../cmk/gui/plugins/views/mobile.py:112 ../cmk/gui/plugins/views/mobile.py:362
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:114
 msgid "Search"
@@ -48834,7 +48827,7 @@ msgstr ""
 msgid "Service Costs per Day"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:884
+#: ../cmk/gui/plugins/sidebar/search.py:884
 #: ../cmk/gui/plugins/visuals/infos.py:62
 #: ../cmk/gui/plugins/wato/active_checks.py:239
 #: ../cmk/gui/plugins/wato/active_checks.py:287
@@ -49354,7 +49347,7 @@ msgstr ""
 msgid "ServiceNow URL"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:809
+#: ../cmk/gui/plugins/sidebar/search.py:809
 #: ../cmk/gui/plugins/views/sorters.py:277
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:429
 msgid "Servicegroup"
@@ -50196,11 +50189,11 @@ msgstr ""
 msgid "Show alias if set, else description"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/main_menu.py:164
+#: ../cmk/gui/plugins/sidebar/main_menu.py:161
 msgid "Show all"
 msgstr ""
 
-#: ../cmk/gui/plugins/sidebar/main_menu.py:149
+#: ../cmk/gui/plugins/sidebar/main_menu.py:146
 #, python-format
 msgid "Show all %s topics"
 msgstr ""
@@ -50363,6 +50356,10 @@ msgstr ""
 
 #: ../cmk/gui/plugins/views/painters.py:4965
 msgid "Show metric"
+msgstr ""
+
+#: ../cmk/gui/plugins/userdb/user_attributes.py:219
+msgid "Show more / Show less"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/views/icons/ntop.py:39
@@ -74034,11 +74031,11 @@ msgstr ""
 msgid "show errors"
 msgstr ""
 
-#: ../cmk/gui/htmllib.py:2710
+#: ../cmk/gui/htmllib.py:2709
 msgid "show less"
 msgstr ""
 
-#: ../cmk/gui/htmllib.py:2706
+#: ../cmk/gui/htmllib.py:2705
 msgid "show more"
 msgstr ""
 
