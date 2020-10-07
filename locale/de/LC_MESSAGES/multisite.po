@@ -8620,10 +8620,6 @@ msgstr "Basiert auf"
 msgid "Based on role"
 msgstr "Basiert auf Rolle"
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:219
-msgid "Basic / advanced mode"
-msgstr ""
-
 #: ../cmk/gui/views.py:1308
 msgid "Basic Layout"
 msgstr "Grundlayout"
@@ -17980,16 +17976,16 @@ msgstr "Standardschablone für alle Berichte"
 msgid "Default time range"
 msgstr "Standardzeitbereich"
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:228
-#, fuzzy
-#| msgid "Default Increment"
-msgid "Default to advanced mode"
-msgstr "Standardinkrement"
-
 #: ../cmk/gui/plugins/userdb/user_attributes.py:227
 #, fuzzy
 #| msgid "Default Topic"
-msgid "Default to basic mode"
+msgid "Default to show less"
+msgstr "Standardthema"
+
+#: ../cmk/gui/plugins/userdb/user_attributes.py:228
+#, fuzzy
+#| msgid "Default Topic"
+msgid "Default to show more"
 msgstr "Standardthema"
 
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2069
@@ -23148,18 +23144,6 @@ msgstr "IPv4 / IPv6 erzwingen"
 msgid "Enforce IPv6"
 msgstr "IPv6 erzwingen"
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:230
-#, fuzzy
-#| msgid "Enforce change"
-msgid "Enforce advanced mode"
-msgstr "Änderungen erzwingen"
-
-#: ../cmk/gui/plugins/userdb/user_attributes.py:229
-#, fuzzy
-#| msgid "Enforce change"
-msgid "Enforce basic mode"
-msgstr "Änderungen erzwingen"
-
 #: ../cmk/gui/wato/pages/users.py:807
 msgid "Enforce change"
 msgstr "Änderungen erzwingen"
@@ -23167,6 +23151,12 @@ msgstr "Änderungen erzwingen"
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1711
 msgid "Enforce lower case User-IDs."
 msgstr "Erzwinge kleinbuchstabige Benutzer IDs."
+
+#: ../cmk/gui/plugins/userdb/user_attributes.py:229
+#, fuzzy
+#| msgid "Enforce change"
+msgid "Enforce show more"
+msgstr "Änderungen erzwingen"
 
 #: ../cmk/gui/cee/ntop/pages.py:292 ../cmk/gui/cee/ntop/pages.py:295
 #, fuzzy
@@ -26747,7 +26737,7 @@ msgstr ""
 msgid "GC runs rate"
 msgstr "CRC Fehlerrate"
 
-#: ../cmk/gui/htmllib.py:2804
+#: ../cmk/gui/htmllib.py:2803
 msgid "GET/POST variables of this page"
 msgstr "GET/POST-Variablen auf dieser Seite"
 
@@ -29804,17 +29794,17 @@ msgstr "Host: %s ist <b>%s</b>"
 msgid "Host: %s is <b>not</b> <b>%s</b>"
 msgstr "Host: %s ist <b>nicht</b> <b>%s</b>"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:928
+#: ../cmk/gui/plugins/sidebar/search.py:928
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:426
 msgid "Hostaddress"
 msgstr "Host-Adresse"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:929
+#: ../cmk/gui/plugins/sidebar/search.py:929
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:425
 msgid "Hostalias"
 msgstr "Host-Aliassfdasdfsdaf"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:808
+#: ../cmk/gui/plugins/sidebar/search.py:808
 #: ../cmk/gui/plugins/views/sorters.py:278
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:428
 msgid "Hostgroup"
@@ -29850,7 +29840,7 @@ msgstr "Hostgruppen (zusammengeführt)"
 #: ../cmk/gui/wato/pages/host_diagnose.py:286
 #: ../cmk/gui/wato/pages/bulk_import.py:439
 #: ../cmk/gui/wato/pages/folders.py:889
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:926
+#: ../cmk/gui/plugins/sidebar/search.py:926
 #: ../cmk/gui/plugins/views/mkeventd.py:428
 #: ../cmk/gui/plugins/views/painters.py:2338
 #: ../cmk/gui/plugins/views/availability.py:1148
@@ -30127,7 +30117,7 @@ msgstr "Hosts: %d insgesamt ( %d erfolgreich, %d übersprungen, %d gescheitert)"
 msgid "Hostsystem sensor alerts"
 msgstr "Alarme von Hostsystem-Sensoren"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:1032
+#: ../cmk/gui/plugins/sidebar/search.py:1032
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:427
 msgid "Hosttag"
 msgstr "Hostmerkmal"
@@ -32934,13 +32924,13 @@ msgstr "Im Verhältnis zum normalen Checkintervall"
 msgid "In relation to standard deviation"
 msgstr "im Verhältnis zur Standardabweichung"
 
-#: ../cmk/gui/plugins/userdb/user_attributes.py:221
+#: ../cmk/gui/plugins/userdb/user_attributes.py:220
 msgid ""
 "In some places like e.g. the main menu Checkmk divides features, filters, "
-"input fields etc. in two categories - basic and advanced. With thisoption "
-"you can set a default mode for unvisited menus. Alternatively, you can "
-"enforce one mode so that the round button with the three dots is not shown "
-"at all."
+"input fields etc. in two categories, showing more or less entries. With this "
+"option you can set a default mode for unvisited menus. Alternatively, you "
+"can enforce to show more, so that the round button with the three dots is "
+"not shown at all."
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/temperature.py:71
@@ -33718,7 +33708,7 @@ msgstr ""
 msgid "Integration Key"
 msgstr "Integrationsschlüssel"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:84
+#: ../cmk/gui/plugins/sidebar/search.py:84
 msgid ""
 "Interactive search field for direct access to hosts, services, host- and "
 "servicegroups.<br>You can use the following filters:<br> <i>h:</i> Host, "
@@ -41120,8 +41110,8 @@ msgstr "Weitere Informationen befinden sich in %s"
 msgid "More information can be found in ~/var/log/web.log"
 msgstr "Weitere Informationen finden sich in ~/var/log/web.log"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:655
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:659
+#: ../cmk/gui/plugins/sidebar/search.py:655
+#: ../cmk/gui/plugins/sidebar/search.py:659
 #, python-format
 msgid "More than %d results"
 msgstr "Mehr als %d Ergebnisse"
@@ -41205,7 +41195,7 @@ msgstr "Bewegt worden"
 msgid "Move this %s to another folder"
 msgstr "Diese(n) %s in einen anderen Ordner verschieben"
 
-#: ../cmk/gui/htmllib.py:2792
+#: ../cmk/gui/htmllib.py:2791
 msgid "Move this entry"
 msgstr "Diesen Eintrag verschieben"
 
@@ -46454,7 +46444,7 @@ msgstr "POP3"
 msgid "POP3 Server"
 msgstr "POP3-Server"
 
-#: ../cmk/gui/htmllib.py:2815
+#: ../cmk/gui/htmllib.py:2814
 msgid "POST / GET Variables"
 msgstr "POST- / GET-Variablen"
 
@@ -50128,7 +50118,7 @@ msgstr "Schnellsuche"
 msgid "Quick setup"
 msgstr "Schnellsuche"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:79
+#: ../cmk/gui/plugins/sidebar/search.py:79
 msgid "Quicksearch"
 msgstr "Schnellsuche"
 
@@ -53794,7 +53784,7 @@ msgstr ""
 #: ../cmk/gui/table.py:431 ../cmk/gui/wato/pages/rulesets.py:546
 #: ../cmk/gui/wato/pages/rulesets.py:1101 ../cmk/gui/wato/pages/search.py:49
 #: ../cmk/gui/wato/pages/folders.py:208 ../cmk/gui/page_menu.py:693
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:99
+#: ../cmk/gui/plugins/sidebar/search.py:99
 #: ../cmk/gui/plugins/views/mobile.py:112
 #: ../cmk/gui/plugins/views/mobile.py:362
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:114
@@ -54631,7 +54621,7 @@ msgstr "Servicekommentare"
 msgid "Service Costs per Day"
 msgstr "Servicekosten pro Tag"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:884
+#: ../cmk/gui/plugins/sidebar/search.py:884
 #: ../cmk/gui/plugins/visuals/infos.py:62
 #: ../cmk/gui/plugins/wato/active_checks.py:239
 #: ../cmk/gui/plugins/wato/active_checks.py:287
@@ -55175,7 +55165,7 @@ msgstr "Service-Level"
 msgid "ServiceNow URL"
 msgstr "Servicenow URL"
 
-#: ../cmk/gui/plugins/sidebar/quicksearch.py:809
+#: ../cmk/gui/plugins/sidebar/search.py:809
 #: ../cmk/gui/plugins/views/sorters.py:277
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:429
 msgid "Servicegroup"
@@ -56154,13 +56144,13 @@ msgstr "Alias und Beschreibung anzeigen"
 msgid "Show alias if set, else description"
 msgstr "Zeige den Alias, falls dieser gesetzt ist, ansonsten die Beschreibung"
 
-#: ../cmk/gui/plugins/sidebar/main_menu.py:164
+#: ../cmk/gui/plugins/sidebar/main_menu.py:161
 #, fuzzy
 #| msgid "show all"
 msgid "Show all"
 msgstr "Alle anzeigen"
 
-#: ../cmk/gui/plugins/sidebar/main_menu.py:149
+#: ../cmk/gui/plugins/sidebar/main_menu.py:146
 #, fuzzy, python-format
 #| msgid "Show all hosts"
 msgid "Show all %s topics"
@@ -56347,6 +56337,12 @@ msgstr "Zeige Rand um den Graphen"
 #: ../cmk/gui/plugins/views/painters.py:4965
 msgid "Show metric"
 msgstr "Metrik anzeigen"
+
+#: ../cmk/gui/plugins/userdb/user_attributes.py:219
+#, fuzzy
+#| msgid "Show time axis"
+msgid "Show more / Show less"
+msgstr "Zeige die Zeitachse"
 
 #: ../cmk/gui/cee/plugins/views/icons/ntop.py:39
 #, fuzzy
@@ -84411,13 +84407,13 @@ msgstr "Alle anzeigen"
 msgid "show errors"
 msgstr "Zeige Fehler"
 
-#: ../cmk/gui/htmllib.py:2710
+#: ../cmk/gui/htmllib.py:2709
 #, fuzzy
 #| msgid "show all"
 msgid "show less"
 msgstr "Alle anzeigen"
 
-#: ../cmk/gui/htmllib.py:2706
+#: ../cmk/gui/htmllib.py:2705
 #, fuzzy
 #| msgid "show errors"
 msgid "show more"
@@ -84952,6 +84948,16 @@ msgid "z/OS"
 msgstr "z/OS"
 
 #, fuzzy
+#~| msgid "Default Increment"
+#~ msgid "Default to advanced mode"
+#~ msgstr "Standardinkrement"
+
+#, fuzzy
+#~| msgid "Enforce change"
+#~ msgid "Enforce advanced mode"
+#~ msgstr "Änderungen erzwingen"
+
+#, fuzzy
 #~| msgid "Display name"
 #~ msgid "Display"
 #~ msgstr "Anzeigename"
@@ -85246,11 +85252,6 @@ msgstr "z/OS"
 #~| msgid "Show Title"
 #~ msgid "Show less items"
 #~ msgstr "Zeige Titel"
-
-#, fuzzy
-#~| msgid "Show time axis"
-#~ msgid "Show more items"
-#~ msgstr "Zeige die Zeitachse"
 
 #, fuzzy
 #~| msgid "Please select at least one metric"
