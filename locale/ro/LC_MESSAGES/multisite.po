@@ -4123,7 +4123,7 @@ msgstr "Adaungă un nou element"
 msgid "Add pattern"
 msgstr "Adaugă model/tipar"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:81
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:148
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:192
 #: ../cmk/gui/plugins/wato/check_parameters/unsorted.py:158
 msgid "Add pattern group"
@@ -4515,6 +4515,7 @@ msgid "Additional options"
 msgstr "Opțiuni adiționale"
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:129
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:249
 #: ../cmk/gui/plugins/wato/check_parameters/file_attributes_utils.py:69
 #, fuzzy
 #| msgid "Additional header lines"
@@ -15230,10 +15231,10 @@ msgstr ""
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:74
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:90
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:119
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:152
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:168
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:184
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:200
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:78
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:94
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:187
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:203
 #: ../cmk/gui/plugins/wato/check_parameters/entersekt_emrerrors.py:28
 #: ../cmk/gui/plugins/wato/check_parameters/liebert_cooling_position.py:37
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_volumes.py:85
@@ -15285,10 +15286,10 @@ msgstr ""
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_messages.py:37
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_messages.py:64
 #: ../cmk/gui/plugins/wato/check_parameters/airflow.py:29
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:144
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:160
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:176
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:192
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:70
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:86
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:179
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:195
 #: ../cmk/gui/plugins/wato/check_parameters/rabbitmq_nodes_uptime.py:26
 #: ../cmk/gui/plugins/wato/check_parameters/varnish_worker_thread_ratio.py:28
 #: ../cmk/gui/plugins/wato/check_parameters/jenkins_nodes.py:91
@@ -15370,8 +15371,8 @@ msgstr ""
 #: ../cmk/gui/plugins/wato/check_parameters/veeam_backup.py:29
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:42
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:58
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:120
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:136
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:46
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:62
 #: ../cmk/gui/plugins/wato/check_parameters/backup_timemachine.py:27
 #: ../cmk/gui/plugins/wato/check_parameters/jenkins_jobs.py:39
 #: ../cmk/gui/plugins/wato/check_parameters/jenkins_jobs.py:47
@@ -15396,8 +15397,8 @@ msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:34
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:50
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:112
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:128
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:38
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:54
 #: ../cmk/gui/plugins/wato/check_parameters/file_attributes_utils.py:23
 msgid "Critical if younger than"
 msgstr ""
@@ -18830,10 +18831,6 @@ msgstr ""
 msgid "Diskstates"
 msgstr ""
 
-#: ../cmk/gui/page_menu.py:273
-msgid "Display"
-msgstr ""
-
 #: ../cmk/gui/plugins/wato/datasource_programs.py:700
 msgid "Display ESX Host power state on"
 msgstr ""
@@ -20353,7 +20350,6 @@ msgstr ""
 msgid "Downtime-History"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/builtin.py:435
 #: ../cmk/gui/plugins/views/builtin.py:522
 #: ../cmk/gui/plugins/views/builtin.py:586
 #: ../cmk/gui/plugins/visuals/infos.py:181
@@ -22592,7 +22588,7 @@ msgstr "%d schimbări"
 msgid "Exclude"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:49
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:116
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:177
 #: ../cmk/gui/plugins/wato/check_parameters/unsorted.py:151
 msgid "Exclude Pattern"
@@ -23840,12 +23836,12 @@ msgid "File"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:97
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:96
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:163
 msgid "File Group Name"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:55
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:100
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:122
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:167
 msgid "File Grouping Patterns"
 msgstr ""
 
@@ -23872,12 +23868,12 @@ msgstr ""
 msgid "File accessed"
 msgstr "cu context"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:216
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:219
 #, fuzzy
 msgid "File count at"
 msgstr "cu context"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:217
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:220
 #, fuzzy
 msgid "File count below"
 msgstr "cu context"
@@ -23948,11 +23944,11 @@ msgstr ""
 msgid "File size"
 msgstr "Dimensiunea Maxima"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:218
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:221
 msgid "File size at"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:219
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:222
 msgid "File size below"
 msgstr ""
 
@@ -23984,6 +23980,7 @@ msgid "Filename for attached PDF"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:126
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:246
 #: ../cmk/gui/plugins/wato/check_parameters/file_attributes_utils.py:61
 msgid "Filename/- expression"
 msgstr ""
@@ -27326,8 +27323,9 @@ msgstr "(fără Nivel de serviciu)"
 
 #: ../cmk/gui/plugins/views/builtin.py:4061
 #, fuzzy
-msgid "Host & service notifications"
-msgstr "trimite notificare"
+#| msgid "(no Service level)"
+msgid "Host & service history"
+msgstr "(fără Nivel de serviciu)"
 
 #: ../cmk/gui/plugins/dashboard/builtin.py:214
 msgid "Host & service problems"
@@ -30469,7 +30467,7 @@ msgid ""
 "\">define your own actions</a>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:235
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:238
 msgid ""
 "In order to check dependent file group statistics you can configure "
 "conjunctions of single levels now. A conjunction consists of a monitoring "
@@ -30631,7 +30629,7 @@ msgstr ""
 msgid "Inbound messages"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:48
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:115
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:176
 #: ../cmk/gui/plugins/wato/check_parameters/unsorted.py:147
 msgid "Include Pattern"
@@ -32796,11 +32794,11 @@ msgstr ""
 msgid "Largest file"
 msgstr "(selectează directorul)"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:220
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:223
 msgid "Largest file size at"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:221
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:224
 msgid "Largest file size below"
 msgstr ""
 
@@ -33132,7 +33130,7 @@ msgstr ""
 msgid "Level (0...9)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:233
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:236
 #, fuzzy
 #| msgid "New connection"
 msgid "Level conjunctions"
@@ -36660,12 +36658,12 @@ msgid "Maximal age of a file"
 msgstr "Vechimea maxima pentru cel mai nou fisier"
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:55
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:133
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:59
 msgid "Maximal age of newest file"
 msgstr "Vechimea maxima pentru cel mai nou fisier"
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:39
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:117
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:43
 msgid "Maximal age of oldest file"
 msgstr "Vechimea maxima pentru cel mai vechi fisier"
 
@@ -36676,7 +36674,7 @@ msgid "Maximal cooling capacity"
 msgstr "Capacitatea maxima"
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:116
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:197
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:200
 msgid "Maximal file count"
 msgstr "Numarul maxim de fisiere"
 
@@ -36704,7 +36702,7 @@ msgstr "Numarul maxim de mesaje"
 msgid "Maximal rate of thread count"
 msgstr "Numarul maxim de fisiere"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:181
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:184
 msgid "Maximal size"
 msgstr "Dimensiunea Maxima"
 
@@ -36715,12 +36713,12 @@ msgid "Maximal size of a file"
 msgstr "Dimensiunea maxima pentru cel mai mare fisier"
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:87
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:165
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:91
 msgid "Maximal size of largest file"
 msgstr "Dimensiunea maxima pentru cel mai mare fisier"
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:71
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:149
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:75
 msgid "Maximal size of smallest file"
 msgstr "Dimensiunea maxima pentru cel mai mic fisier"
 
@@ -37706,12 +37704,12 @@ msgid "Minimal age of a file"
 msgstr "Vechimea maxima pentru cel mai nou fisier"
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:47
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:125
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:51
 msgid "Minimal age of newest file"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:31
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:109
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:35
 msgid "Minimal age of oldest file"
 msgstr ""
 
@@ -37720,7 +37718,7 @@ msgid "Minimal cooling capacity"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:108
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:189
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:192
 msgid "Minimal file count"
 msgstr ""
 
@@ -37732,7 +37730,7 @@ msgstr ""
 msgid "Minimal logging"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:173
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:176
 msgid "Minimal size"
 msgstr ""
 
@@ -37743,12 +37741,12 @@ msgid "Minimal size of a file"
 msgstr "Dimensiunea maxima pentru cel mai mare fisier"
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:79
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:157
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:83
 msgid "Minimal size of largest file"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:63
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:141
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:67
 msgid "Minimal size of smallest file"
 msgstr ""
 
@@ -38450,7 +38448,7 @@ msgstr " pe siteul de monitorizare: "
 msgid "Monitoring settings"
 msgstr " pe siteul de monitorizare: "
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:211
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:214
 #, fuzzy
 msgid "Monitoring state"
 msgstr " pe siteul de monitorizare: "
@@ -39077,7 +39075,7 @@ msgstr "Numele elementului pentru eveniment"
 msgid "Name of filesystem with quotas enabled"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:41
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:108
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:171
 #: ../cmk/gui/plugins/wato/check_parameters/unsorted.py:141
 msgid "Name of group"
@@ -39795,11 +39793,11 @@ msgstr ""
 msgid "Newest file"
 msgstr "(selectează directorul)"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:226
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:229
 msgid "Newest file age at"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:227
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:230
 msgid "Newest file age below"
 msgstr ""
 
@@ -42260,11 +42258,11 @@ msgstr ""
 msgid "Oldest file"
 msgstr "(selectează directorul)"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:224
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:227
 msgid "Oldest file age at"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:225
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:228
 msgid "Oldest file age below"
 msgstr ""
 
@@ -42482,7 +42480,7 @@ msgid ""
 "Only care about hosts with names that match one of these regular expressions."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:205
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:208
 #: ../cmk/gui/plugins/wato/check_parameters/fileinfo.py:37
 msgid "Only check during the following times of the day"
 msgstr ""
@@ -43367,7 +43365,7 @@ msgstr ""
 msgid "Outputs"
 msgstr "Numele Elementului"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:206
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:209
 #: ../cmk/gui/plugins/wato/check_parameters/fileinfo.py:38
 msgid "Outside these ranges the check will always be OK"
 msgstr ""
@@ -50612,6 +50610,12 @@ msgstr "Întreruperi adhoc"
 msgid "Scheduled downtime depth"
 msgstr ""
 
+#: ../cmk/gui/plugins/views/builtin.py:435
+#, fuzzy
+#| msgid "Adhoc downtime"
+msgid "Scheduled downtimes"
+msgstr "Întreruperi adhoc"
+
 #: ../cmk/gui/cee/reporting.py:1790
 msgid "Scheduled report title"
 msgstr ""
@@ -53933,7 +53937,7 @@ msgstr ""
 msgid "Size per process"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:256
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:269
 msgid "Size, age and count of file groups"
 msgstr ""
 
@@ -54034,11 +54038,11 @@ msgstr ""
 msgid "Smallest file"
 msgstr "(selectează directorul)"
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:222
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:225
 msgid "Smallest file size at"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:223
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:226
 msgid "Smallest file size below"
 msgstr ""
 
@@ -58633,7 +58637,7 @@ msgstr ""
 msgid "The character <tt>%s</tt> is not allowed here."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:56
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:123
 msgid ""
 "The check <tt>fileinfo</tt> monitors the age and size of a single file. Each "
 "file information that is sent by the agent will create one service. By "
@@ -62340,7 +62344,7 @@ msgstr ""
 msgid "This defaults to the host for which the active check is configured."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:36
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:103
 msgid "This defines one file grouping pattern."
 msgstr ""
 
@@ -62738,7 +62742,7 @@ msgstr ""
 msgid "This name is already used. Please choose another one."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:98
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:165
 #, python-format
 msgid ""
 "This name must match the name of the group defined in the <a href=\"wato.py?"
@@ -65497,8 +65501,10 @@ msgid "Toggle elements"
 msgstr "Adaugă element"
 
 #: ../cmk/gui/page_menu.py:313
-msgid "Toggle inline help on this page"
-msgstr ""
+#, fuzzy
+#| msgid "Add element"
+msgid "Toggle inline help"
+msgstr "Adaugă element"
 
 #: ../cmk/gui/cee/plugins/wato/dcd.py:415
 #, fuzzy
@@ -70103,7 +70109,8 @@ msgstr "(fără elemente)"
 msgid "VictorOPS REST Endpoint"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1062 ../cmk/gui/plugins/metrics/html_render.py:804
+#: ../cmk/gui/pagetypes.py:1062 ../cmk/gui/page_menu.py:273
+#: ../cmk/gui/plugins/metrics/html_render.py:804
 #: ../cmk/gui/plugins/dashboard/view.py:70
 #: ../cmk/gui/plugins/dashboard/view.py:85
 #: ../cmk/gui/plugins/wato/bi_config.py:604
@@ -71590,10 +71597,10 @@ msgstr ""
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:73
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:89
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:118
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:151
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:167
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:183
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:199
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:77
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:93
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:186
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:202
 #: ../cmk/gui/plugins/wato/check_parameters/entersekt_emrerrors.py:27
 #: ../cmk/gui/plugins/wato/check_parameters/liebert_cooling_position.py:36
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_volumes.py:81
@@ -71645,10 +71652,10 @@ msgstr ""
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_messages.py:36
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_messages.py:63
 #: ../cmk/gui/plugins/wato/check_parameters/airflow.py:25
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:143
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:159
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:175
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:191
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:69
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:85
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:178
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:194
 #: ../cmk/gui/plugins/wato/check_parameters/rabbitmq_nodes_uptime.py:25
 #: ../cmk/gui/plugins/wato/check_parameters/varnish_worker_thread_ratio.py:27
 #: ../cmk/gui/plugins/wato/check_parameters/jenkins_nodes.py:86
@@ -71730,8 +71737,8 @@ msgstr ""
 #: ../cmk/gui/plugins/wato/check_parameters/veeam_backup.py:27
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:41
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:57
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:119
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:135
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:45
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:61
 #: ../cmk/gui/plugins/wato/check_parameters/backup_timemachine.py:26
 #: ../cmk/gui/plugins/wato/check_parameters/jenkins_jobs.py:38
 #: ../cmk/gui/plugins/wato/check_parameters/jenkins_jobs.py:46
@@ -71756,8 +71763,8 @@ msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:33
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:49
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:111
-#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:127
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:37
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:53
 #: ../cmk/gui/plugins/wato/check_parameters/file_attributes_utils.py:22
 msgid "Warning if younger than"
 msgstr ""
@@ -74047,6 +74054,7 @@ msgid "You can simulate an event here and check out, which rules are matching."
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:130
+#: ../cmk/gui/plugins/wato/check_parameters/fileinfo-groups.py:250
 #: ../cmk/gui/plugins/wato/check_parameters/file_attributes_utils.py:70
 msgid ""
 "You can specify a filename or a regular expresion, and additional rules that "
@@ -78188,6 +78196,10 @@ msgstr "ieri"
 #: ../cmk/gui/wato/pages/download_agents.py:125
 msgid "z/OS"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Host & service notifications"
+#~ msgstr "trimite notificare"
 
 #~ msgid ", running nowhere"
 #~ msgstr ", rulează nicăieri"
