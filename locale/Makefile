@@ -6,6 +6,7 @@ SHELL := /bin/bash -e -o pipefail
 CHECKMK_DIR = check_mk
 WEBLATE_DIR = weblate_git
 MULTISITE_POT = multisite.pot
+WEBLATE_COMMIT_ID = ===== Committed by Weblate =====# string in commit messages used to identify commits by Weblate
 
 help:
 	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
@@ -37,7 +38,7 @@ update-pos:
 	counter=0; \
 	git rev-list HEAD | while read commit_id; do \
 	     commit_msg=$$(git log --format=%B -n 1 $$commit_id); \
-	     if [[ $$commit_msg == *"https://translate.checkmk.com/"* ]]; then # only look at commits from Weblate \
+	     if [[ $$commit_msg == *"$(WEBLATE_COMMIT_ID)"* ]]; then # only look at commits from Weblate \
 		 if [[ $$commit_msg == *"Change-Id"* ]]; then # if the commit message contains a Change-Id, were are done (we have processed this commit before) \
 		      break; \
 		 fi; \
