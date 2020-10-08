@@ -3720,7 +3720,7 @@ msgstr ""
 msgid "Add a new host to the monitoring (agent must be installed)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2219
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2221
 #, fuzzy
 #| msgid "Additional Information"
 msgid "Add additional folder"
@@ -3960,7 +3960,7 @@ msgstr "Adaugă Condiție"
 msgid "Add key"
 msgstr "Adaugă nume"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2134
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2136
 #, fuzzy
 msgid "Add label condition"
 msgstr "Adaugă Condiție"
@@ -4301,7 +4301,7 @@ msgstr "Adaugp o noua configurație de utilizator"
 msgid "Add subfolder"
 msgstr "Adaugă filtre"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1886
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1888
 #, fuzzy
 msgid "Add tag"
 msgstr "Adaugă Condiție"
@@ -4310,7 +4310,7 @@ msgstr "Adaugă Condiție"
 msgid "Add tag choice"
 msgstr "Adaugă o alegere de etichetă"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1797
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1799
 #, fuzzy
 msgid "Add tag condition"
 msgstr "Adaugă Condiție"
@@ -9838,7 +9838,7 @@ msgid "Call legs"
 msgstr ""
 
 #: ../cmk/gui/wato/pages/notifications.py:1312
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1763
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1765
 msgid "Call with the following parameters:"
 msgstr ""
 
@@ -22710,7 +22710,7 @@ msgstr ""
 msgid "Exclude the following SIDs (if found)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2254
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2256
 msgid "Exclude the following hosts"
 msgstr ""
 
@@ -23410,7 +23410,7 @@ msgid ""
 "Output: %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1733
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1735
 #, python-format
 msgid "Failed to apply the cronjob config: %s"
 msgstr ""
@@ -24497,9 +24497,9 @@ msgstr "Proprietatile Folderului"
 #: ../cmk/gui/wato/pages/folders.py:961
 #: ../cmk/gui/wato/pages/predefined_conditions.py:137
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:250
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2214
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2307
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2314
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2216
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2309
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2316
 msgid "Folder"
 msgstr ""
 
@@ -36375,17 +36375,17 @@ msgstr " Se potriveste grupurilor: %s"
 msgid "Match Groups"
 msgstr " Se potriveste grupurilor: %s"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2236
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2238
 msgid "Match Host Groups"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2231
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2233
 #, fuzzy
 #| msgid "Host Name"
 msgid "Match Host Labels"
 msgstr "Numele Elementului"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2227
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2229
 msgid "Match Host Tags"
 msgstr ""
 
@@ -36448,13 +36448,13 @@ msgstr ""
 msgid "Match event rule"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2265
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2267
 #, fuzzy
 #| msgid "New folder"
 msgid "Match folder"
 msgstr "Folder nou"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2220
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2222
 #, fuzzy
 msgid "Match folders"
 msgstr " Se potriveste grupurilor: %s"
@@ -36486,7 +36486,7 @@ msgstr ""
 msgid "Match only during timeperiod"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2243
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2245
 msgid "Match only the following hosts"
 msgstr ""
 
@@ -36523,7 +36523,7 @@ msgid "Match service level"
 msgstr ""
 
 #: ../cmk/gui/wato/mkeventd.py:706
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2202
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2204
 #, fuzzy
 msgid "Match site"
 msgstr " Se potriveste grupurilor: %s"
@@ -44041,7 +44041,7 @@ msgid ""
 "parameters by <tt>$HOST$</tt> and <tt>$INST$</tt> (enclosed in dollar signs)."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1768
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1770
 #, python-format
 msgid "Parameters for %s"
 msgstr ""
@@ -45700,7 +45700,7 @@ msgstr ""
 msgid "Please specify at least one entry"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2248
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2250
 msgid ""
 "Please specify at least one host. Disable the option if you want to allow "
 "all hosts."
@@ -48414,7 +48414,7 @@ msgstr "Adaugă filtre"
 msgid "Remove from Favorites"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2135
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2137
 #, fuzzy
 #| msgid "use local configuration"
 msgid "Remove label condition"
@@ -48429,12 +48429,12 @@ msgstr ""
 msgid "Remove service"
 msgstr "Adaugă filtre"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1887
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1889
 #, fuzzy
 msgid "Remove tag"
 msgstr "Adaugă filtre"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1798
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1800
 #, fuzzy
 #| msgid "(no conditions)"
 msgid "Remove tag condition"
@@ -59550,7 +59550,7 @@ msgstr ""
 msgid "The host is missing."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2237
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2239
 msgid "The host must be in one of the selected host groups"
 msgstr ""
 
@@ -59827,12 +59827,12 @@ msgstr ""
 msgid "The limit for the transport lag in <tt>v$dataguard_stats</tt>"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2008
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2010
 #, python-format
 msgid "The list of host tags must be a list, but is %r"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2014
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2016
 #, python-format
 msgid "The list of host tags must only contain strings but also contains %r"
 msgstr ""
@@ -61187,7 +61187,7 @@ msgid ""
 "(all)\" get the number of failed notification within the configured horizon."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1916
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1918
 #, python-format
 msgid ""
 "The tag '%s' is selected multiple times. A tag may be selected only once."
@@ -62364,12 +62364,12 @@ msgstr ""
 msgid "This command will be executed on the target host."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2203
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2205
 msgid "This condition makes the rule match only hosts of the selected sites."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2215
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2266
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2217
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2268
 msgid ""
 "This condition makes the rule match only hosts that are managed via WATO and "
 "that are contained in this folder - either directly or in one of its "
@@ -68993,7 +68993,7 @@ msgid "Use the status of the service..."
 msgstr ""
 
 #: ../cmk/gui/wato/pages/rulesets.py:1795
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2232
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2234
 msgid "Use this condition to select hosts based on the configured host labels."
 msgstr ""
 
@@ -74632,7 +74632,7 @@ msgstr ""
 msgid "You have no permission for changes in this rule using %s."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2023
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2025
 msgid "You have not configured any <a href=\"wato.py?mode=tags\">tags</a>."
 msgstr ""
 
@@ -76262,13 +76262,13 @@ msgstr ""
 msgid "handles"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2127
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2129
 #, fuzzy
 #| msgid "threads"
 msgid "has"
 msgstr "fire"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2128
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2130
 msgid "has not"
 msgstr ""
 
@@ -76380,7 +76380,7 @@ msgstr "Conexiune Noua"
 
 #: ../cmk/gui/plugins/wato/check_parameters/if.py:641
 #: ../cmk/gui/plugins/wato/check_parameters/if.py:663
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2103
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2105
 #: ../cmk/gui/plugins/wato/datasource_programs.py:691
 msgid "ignore"
 msgstr ""
@@ -76507,9 +76507,9 @@ msgid "invalid:"
 msgstr ""
 
 #: ../cmk/gui/wato/pages/rulesets.py:2019
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1900
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1957
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2104
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1902
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1959
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2106
 #: ../cmk/gui/plugins/wato/datasource_programs.py:1965
 msgid "is"
 msgstr ""
@@ -76526,8 +76526,8 @@ msgid "is clustered"
 msgstr "Cluster nou"
 
 #: ../cmk/gui/wato/pages/rulesets.py:2045
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1901
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1958
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1903
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1960
 msgid "is not"
 msgstr ""
 
@@ -76547,7 +76547,7 @@ msgstr ""
 msgid "is not one of regex"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2105
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2107
 msgid "isnot"
 msgstr ""
 
@@ -76961,7 +76961,7 @@ msgstr ""
 msgid "none"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1903
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1905
 #, fuzzy
 #| msgid "(none)"
 msgid "none of"
@@ -77070,7 +77070,7 @@ msgstr ""
 msgid "once per group"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:1902
+#: ../cmk/gui/plugins/wato/utils/__init__.py:1904
 msgid "one of"
 msgstr ""
 
@@ -77755,8 +77755,8 @@ msgstr ""
 msgid "sessions"
 msgstr "sesiuni"
 
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2048
-#: ../cmk/gui/plugins/wato/utils/__init__.py:2066
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2050
+#: ../cmk/gui/plugins/wato/utils/__init__.py:2068
 msgid "set"
 msgstr "seteaza"
 
