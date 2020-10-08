@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-07 14:38+0000\n"
+"PO-Revision-Date: 2020-10-08 07:16+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/de/>\n"
@@ -337,10 +337,9 @@ msgstr "% RAM"
 
 #: ../cmk/gui/plugins/wato/check_parameters/db_connections.py:46
 #: ../cmk/gui/plugins/wato/check_parameters/db_connections.py:48
-#, fuzzy, python-format
-#| msgid "% of maximum connections"
+#, python-format
 msgid "% of maximum active connections"
-msgstr "% der maximalen Verbindungen"
+msgstr "% der maximal aktiven Verbindungen"
 
 #: ../cmk/gui/plugins/wato/check_parameters/db_connections.py:102
 #: ../cmk/gui/plugins/wato/check_parameters/db_connections.py:103
@@ -352,10 +351,9 @@ msgstr "% der maximalen Verbindungen"
 
 #: ../cmk/gui/plugins/wato/check_parameters/db_connections.py:63
 #: ../cmk/gui/plugins/wato/check_parameters/db_connections.py:65
-#, fuzzy, python-format
-#| msgid "% of maximum connections"
+#, python-format
 msgid "% of maximum idle connections"
-msgstr "% der maximalen Verbindungen"
+msgstr "% der maximal inaktiven Verbindungen"
 
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_qos.py:48
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_qos.py:51
@@ -2889,11 +2887,11 @@ msgstr "AWS/RDS Grenzwerte"
 
 #: ../cmk/gui/plugins/wato/check_parameters/aws.py:991
 msgid "AWS/RDS Replica lag"
-msgstr "AWS/RDS Replica lag"
+msgstr "war schonmal besser uebersetzt..."
 
 #: ../cmk/gui/plugins/wato/check_parameters/aws.py:260
 msgid "AWS/S3 Bucket Objects"
-msgstr "AWS/S3 Bucket-Objekte"
+msgstr "AWS/S3 Bottich-Objekte"
 
 #: ../cmk/gui/plugins/wato/check_parameters/aws.py:388
 msgid "AWS/S3 Bucket Requests"
@@ -24709,8 +24707,8 @@ msgid ""
 "Failed to deploy configuration: \"%s\". Please note that the site "
 "configuration has been synchronized partially."
 msgstr ""
-"Fehler beim synchronisieren der Konfiguration: \"%s\". Bitte beachten Sie, "
-"dass die Konfiguration nur teilweise synchronisiert wurde."
+"Fehler beim ausrollen der Konfiguration: \"%s\". Bitte beachten Sie, dass "
+"die Konfiguration nur teilweise synchronisiert wurde."
 
 #: ../cmk/gui/wato/pages/object_parameters.py:265
 #, fuzzy, python-format
@@ -84937,7 +84935,7 @@ msgstr "Jahre"
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_ip_sla.py:104
 #: ../cmk/gui/plugins/wato/check_parameters/sshd_config.py:41
 msgid "yes"
-msgstr "ja"
+msgstr "klaro"
 
 #: ../cmk/gui/valuespec.py:3415 ../cmk/gui/plugins/views/inventory.py:543
 msgid "yesterday"
