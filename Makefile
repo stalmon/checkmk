@@ -75,7 +75,7 @@ LOCK_PATH := .venv.lock
 
 .PHONY: all analyze build check check-binaries check-permissions check-version \
         clean compile-neb-cmc cppcheck dist documentation format format-c \
-        format-python format-shell GTAGS headers help install \
+        format-python format-shell format-js GTAGS headers help install \
         iwyu mrproper mrclean optimize-images packages setup setversion tidy version \
         am--refresh skel openapi openapi-doc
 
@@ -293,7 +293,7 @@ headers:
 	doc/helpers/headrify
 
 
-$(OPENAPI_SPEC): $(shell find cmk/gui/plugins/openapi -name "*.py") $(shell find cmk/gui/cee/plugins/openapi -name "*.py")
+$(OPENAPI_SPEC): $(shell find cmk/gui/plugins/openapi $(wildcard cmk/gui/cee/plugins/openapi) -name "*.py")
 	@export PYTHONPATH=${REPO_PATH} ; \
 	export TMPFILE=$$(mktemp);  \
 	$(PIPENV) run python -m cmk.gui.openapi > $$TMPFILE && \
@@ -538,7 +538,7 @@ ifeq ($(ENTERPRISE),yes)
 	$(MAKE) -C enterprise/core/src cppcheck-xml
 endif
 
-format: format-python format-c format-shell
+format: format-python format-c format-shell format-js
 
 # TODO: We should probably handle this rule via AM_EXTRA_RECURSIVE_TARGETS in
 # src/configure.ac, but this needs at least automake-1.13, which in turn is only
@@ -559,6 +559,8 @@ format-python:
 format-shell:
 	$(MAKE)	-C tests format-shell
 
+format-js:
+	scripts/run-prettier --ignore-path ./.prettierignore --write "web/htdocs/js/**/*.js"
 
 # Note: You need the doxygen and graphviz packages.
 documentation: config.h
