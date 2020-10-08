@@ -109,6 +109,10 @@ class ABCRulesetMode(WatoMode):
 
     Besides the simple listing, it is also responsible for displaying rule search results.
     """
+    @classmethod
+    def permissions(cls):
+        return ["rulesets"]
+
     def __init__(self) -> None:
         super(ABCRulesetMode, self).__init__()
         self._page_type = self._get_page_type(self._search_options)
@@ -122,25 +126,12 @@ class ABCRulesetMode(WatoMode):
         raise NotImplementedError()
 
     def _from_vars(self):
-
         #  Explicitly hide deprecated rulesets by default
         if not html.request.has_var("search_p_ruleset_deprecated"):
             html.request.set_var("search_p_ruleset_deprecated", DropdownChoice.option_id(False))
             html.request.set_var("search_p_ruleset_deprecated_USE", "on")
 
-        # Transform group argument to the "rule search arguments"
-        # Keeping this for compatibility reasons for the moment
-        # This is either given via "group" parameter or via search (see blow)
-        if html.request.has_var("group"):
-            group_name = html.request.get_ascii_input_mandatory("group")
-            html.request.set_var("search_p_ruleset_group", DropdownChoice.option_id(group_name))
-            html.request.set_var("search_p_ruleset_group_USE", "on")
-            html.request.del_var("group")
-
-        self._group_name: Optional[str] = None
-        if html.request.has_var("search_p_ruleset_group"):
-            self._group_name = _vs_ruleset_group(
-                self.name()).from_html_vars("search_p_ruleset_group")
+        self._group_name = self._group_name_from_vars()
 
         # Transform the search argument to the "rule search" arguments
         if html.request.has_var("search"):
@@ -157,6 +148,26 @@ class ABCRulesetMode(WatoMode):
             html.request.set_var("search_p_rule_folder_USE", "on")
 
         self._search_options: SearchOptions = ModeRuleSearchForm().search_options
+
+    def _group_name_from_vars(self) -> Optional[str]:
+        # Static check rulesets are treated like a separate world from the other rulesets. They can
+        # not be searched, so we have to handle them in a sepcial way here.
+        if html.request.get_ascii_input("group") == "static":
+            return "static"
+
+        # Transform group argument to the "rule search arguments"
+        # Keeping this for compatibility reasons for the moment
+        # This is either given via "group" parameter or via search (see blow)
+        if html.request.has_var("group"):
+            group_name = html.request.get_ascii_input_mandatory("group")
+            html.request.set_var("search_p_ruleset_group", DropdownChoice.option_id(group_name))
+            html.request.set_var("search_p_ruleset_group_USE", "on")
+            html.request.del_var("group")
+
+        if html.request.has_var("search_p_ruleset_group"):
+            return _vs_ruleset_group().from_html_vars("search_p_ruleset_group")
+
+        return None
 
     @abc.abstractmethod
     def _get_page_type(self, search_options: SearchOptions) -> PageType:
@@ -249,10 +260,6 @@ class ModeRuleSearch(ABCRulesetMode):
     @classmethod
     def name(cls):
         return "rule_search"
-
-    @classmethod
-    def permissions(cls):
-        return ["rulesets"]
 
     def _get_page_type(self, search_options: Dict[str, str]) -> PageType:
         if _is_deprecated_rulesets_page(search_options):
@@ -384,10 +391,6 @@ class ModeRulesetGroup(ABCRulesetMode):
     def name(cls):
         return "rulesets"
 
-    @classmethod
-    def permissions(cls):
-        return ["rulesets"]
-
     def _from_vars(self):
         super()._from_vars()
         if not self._group_name:
@@ -408,14 +411,23 @@ class ModeRulesetGroup(ABCRulesetMode):
             url=None,
         )
 
+    def _breadcrumb_url(self) -> str:
+        return html.makeuri_contextless([("mode", self.name()), ("group", self._group_name)],
+                                        filename="wato.py")
+
     def _get_page_type(self, search_options: Dict[str, str]) -> PageType:
         return PageType.RulesetGroup
 
     def _rulesets(self):
+        if self._group_name == "static":
+            return watolib.StaticChecksRulesets()
         return watolib.NonStaticChecksRulesets()
 
     def _set_title_and_help(self):
-        rulegroup = watolib.get_rulegroup(self._group_name)
+        if self._group_name == "static":
+            rulegroup = watolib.get_rulegroup("static")
+        else:
+            rulegroup = watolib.get_rulegroup(self._group_name)
         self._title, self._help = rulegroup.title, rulegroup.help
 
     def page_menu(self, breadcrumb: Breadcrumb) -> PageMenu:
@@ -483,27 +495,6 @@ class ModeRulesetGroup(ABCRulesetMode):
                     )
                 ],
             ))
-
-
-@mode_registry.register
-class ModeStaticChecksRulesets(ABCRulesetMode):
-    @classmethod
-    def name(cls):
-        return "static_checks"
-
-    @classmethod
-    def permissions(cls):
-        return ["rulesets"]
-
-    def _get_page_type(self, search_options: Dict[str, str]) -> PageType:
-        return PageType.RulesetGroup
-
-    def _rulesets(self):
-        return watolib.StaticChecksRulesets()
-
-    def _set_title_and_help(self):
-        rulegroup = watolib.get_rulegroup("static")
-        self._title, self._help = rulegroup.title, rulegroup.help
 
 
 def _page_menu_entry_predefined_conditions() -> PageMenuEntry:
@@ -583,6 +574,17 @@ class ModeEditRuleset(WatoMode):
     @classmethod
     def permissions(cls):
         return []
+
+    @classmethod
+    def parent_mode(cls) -> Optional[Type[WatoMode]]:
+        return ModeRulesetGroup
+
+    def breadcrumb(self) -> Breadcrumb:
+        # To be able to calculate the breadcrumb with the ModeRulesetGroup as parent, we need to
+        # ensure that the group identity is available.
+        with html.stashed_vars():
+            html.request.set_var("group", self._rulespec.main_group_name)
+            return super().breadcrumb()
 
     def __init__(self):
         super(ModeEditRuleset, self).__init__()
@@ -1175,7 +1177,7 @@ class ModeRuleSearchForm(WatoMode):
                      size=60,
                      mode=RegExpUnicode.infix,
                  )),
-                ("ruleset_group", _vs_ruleset_group(self.back_mode)),
+                ("ruleset_group", _vs_ruleset_group()),
                 ("ruleset_name", RegExpUnicode(
                     title=_("Name"),
                     size=60,
@@ -1283,14 +1285,14 @@ class ModeRuleSearchForm(WatoMode):
         )
 
 
-def _vs_ruleset_group(mode_name: str) -> DropdownChoice:
+def _vs_ruleset_group() -> DropdownChoice:
     return DropdownChoice(
         title=_("Group"),
-        choices=lambda: rulespec_group_registry.get_group_choices(mode_name),
+        choices=rulespec_group_registry.get_group_choices,
     )
 
 
-class EditRuleMode(WatoMode):
+class ABCEditRuleMode(WatoMode):
     @classmethod
     def parent_mode(cls) -> Optional[Type[WatoMode]]:
         return ModeEditRuleset
@@ -2109,7 +2111,7 @@ class RuleConditionRenderer:
 
 
 @mode_registry.register
-class ModeEditRule(EditRuleMode):
+class ModeEditRule(ABCEditRuleMode):
     @classmethod
     def name(cls):
         return "edit_rule"
@@ -2125,7 +2127,7 @@ class ModeEditRule(EditRuleMode):
 
 
 @mode_registry.register
-class ModeCloneRule(EditRuleMode):
+class ModeCloneRule(ABCEditRuleMode):
     @classmethod
     def name(cls):
         return "clone_rule"
@@ -2156,7 +2158,7 @@ class ModeCloneRule(EditRuleMode):
 
 
 @mode_registry.register
-class ModeNewRule(EditRuleMode):
+class ModeNewRule(ABCEditRuleMode):
     @classmethod
     def name(cls):
         return "new_rule"

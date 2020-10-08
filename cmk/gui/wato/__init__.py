@@ -218,7 +218,6 @@ from cmk.gui.wato.pages.roles import (
     ModeRoleMatrix,
 )
 from cmk.gui.wato.pages.rulesets import (
-    ModeStaticChecksRulesets,
     ModeEditRuleset,
     ModeEditRule,
     ModeCloneRule,
@@ -713,8 +712,8 @@ permission_registry.register(
     Permission(
         section=cmk.gui.plugins.wato.utils.PermissionSectionWATO,
         name="update_dns_cache",
-        title=_l("Update DNS Cache"),
-        description=_l("Updating the DNS cache is neccessary in order to reflect IP address "
+        title=_l("Update site DNS Cache"),
+        description=_l("Updating the sites DNS cache is neccessary in order to reflect IP address "
                        "changes in hosts that are configured without an explicit address."),
         defaults=["admin", "user"],
     ))
