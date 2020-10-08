@@ -1207,8 +1207,8 @@ msgstr "/m"
 #: ../cmk/gui/plugins/wato/check_parameters/postgres_stat_database.py:73
 #: ../cmk/gui/plugins/wato/check_parameters/postgres_stat_database.py:82
 #: ../cmk/gui/plugins/wato/check_parameters/postgres_stat_database.py:83
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:174
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:179
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:187
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:192
 msgid "/s"
 msgstr "/s"
 
@@ -1669,12 +1669,19 @@ msgid "<li>Cannot move hosts from folder %s: %s</li>"
 msgstr "<li>Ich kann keine Hosts aus dem Ordner %s verschieben: %s</li>"
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:200
+#, fuzzy
+#| msgid ""
+#| "<p>By default each Check_MK site has it's own temporary filesystem (a "
+#| "ramdisk) mounted to <tt>[SITE]/tmp</tt>. In case the mount is not "
+#| "possible Check_MK starts without this temporary filesystem.</p><p>Even if "
+#| "this is possible, it is not recommended to use Check_MK this way because "
+#| "it may reduce the overall performance of Check_MK.</p>"
 msgid ""
-"<p>By default each Check_MK site has it's own temporary filesystem (a "
+"<p>By default each Checkmk site has it's own temporary filesystem (a "
 "ramdisk) mounted to <tt>[SITE]/tmp</tt>. In case the mount is not possible "
-"Check_MK starts without this temporary filesystem.</p><p>Even if this is "
-"possible, it is not recommended to use Check_MK this way because it may "
-"reduce the overall performance of Check_MK.</p>"
+"Checkmk starts without this temporary filesystem.</p><p>Even if this is "
+"possible, it is not recommended to use Checkmk this way because it may "
+"reduce the overall performance of Checkmk.</p>"
 msgstr ""
 "<p>Standardmäßig hat jede Check_MK ein eigenes temporäres Dateisystem (eine "
 "Ramdisk) unterhalb von <tt>[SITE]/tmp</tt> eingebunden. Falls das Einbinden "
@@ -1683,8 +1690,15 @@ msgstr ""
 "betreiben, da es die Performance von Check_MK beeinträchtigen kann.</p>"
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:309
+#, fuzzy
+#| msgid ""
+#| "<p>Having a large number of users configured in Check_MK may decrease the "
+#| "performance of the Web GUI.</p><p>It may be possible that you are using "
+#| "the LDAP sync to create the users. Please review the filter configuration "
+#| "of the LDAP sync. Maybe you can decrease the sync scope to get a smaller "
+#| "number of users.</p>"
 msgid ""
-"<p>Having a large number of users configured in Check_MK may decrease the "
+"<p>Having a large number of users configured in Checkmk may decrease the "
 "performance of the Web GUI.</p><p>It may be possible that you are using the "
 "LDAP sync to create the users. Please review the filter configuration of the "
 "LDAP sync. Maybe you can decrease the sync scope to get a smaller number of "
@@ -1735,7 +1749,7 @@ msgstr ""
 "prüfen</i> aktiviert werden sollte. Andernfalls wird eine Warnung angezeigt, "
 "wenn die Dateien sich vorhanden sind.</p>"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:740
+#: ../cmk/gui/plugins/wato/ac_tests.py:863
 msgid ""
 "<p>In distributed WATO setups it is possible to synchronize the extensions "
 "(MKPs and files in <tt>~/local/</tt>) to the slave sites. These files are "
@@ -1751,9 +1765,20 @@ msgstr ""
 "Erweiterungen entfernen, sofern Sie diese nicht benötigen."
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:278
+#, fuzzy
+#| msgid ""
+#| "<p>In distributed setups Livestatus is used to transport the status "
+#| "information gathered in one site to the central site. Since Check_MK 1.6 "
+#| "it is natively possible and highly recommended to encrypt this Livestatus "
+#| "traffic.</p> <p>This can be enabled using the global setting <a href="
+#| "\"wato.py?mode=edit_configvar&varname=site_livestatus_tcp\">Access to "
+#| "Livestatus via TCP</a>. Before enabling this you should ensure that all "
+#| "your Livestatus clients are able to handle the SSL encrypted Livestatus "
+#| "communication. Have a look at <a href=\"werk.py?werk=7017\">werk #7017</"
+#| "a> for further information.</p>"
 msgid ""
 "<p>In distributed setups Livestatus is used to transport the status "
-"information gathered in one site to the central site. Since Check_MK 1.6 it "
+"information gathered in one site to the central site. Since Checkmk 1.6 it "
 "is natively possible and highly recommended to encrypt this Livestatus "
 "traffic.</p> <p>This can be enabled using the global setting <a href=\"wato."
 "py?mode=edit_configvar&varname=site_livestatus_tcp\">Access to Livestatus "
@@ -1800,25 +1825,42 @@ msgstr ""
 msgid "<p>Sent notification to: %s</p>"
 msgstr "<p>Alarm senden an: %s</p>"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:604
-#, python-format
+#: ../cmk/gui/plugins/wato/ac_tests.py:726
+#, fuzzy, python-format
+#| msgid ""
+#| "<p>The Check_MK Microcore uses Check_MK helper processes to execute the "
+#| "Check_MK and Check_MK Discovery services of the hosts monitored with "
+#| "Check_MK. There should always be enough helper processes to handle the "
+#| "configured checks.</p><p>In case the helper pool is 100% used, checks "
+#| "will not be executed in time, the check latency will grow and the states "
+#| "are not up to date.</p><p>Possible actions:<ul><li>Check whether or not "
+#| "you can decrease check timeouts</li><li>Check which checks / plugins are "
+#| "<a href=\"view.py?view_name=service_check_durations\">consuming most "
+#| "helper process time</a></li><li>Increase the <a href=\"wato.py?"
+#| "mode=edit_configvar&varname=cmc_cmk_helpers\">number of Check_MK helpers</"
+#| "a></li></ul></p><p>But you need to be careful that you don't configure "
+#| "too many Check_MK check helpers, because they consume a lot of memory. "
+#| "Your system needs to be able to handle the memory demand for all of them "
+#| "at once. An additional problem is that the Check_MK helpers are "
+#| "initialized in parallel during startup of the Microcore, which may cause "
+#| "load peaks when having a lot of Check_MK helper processes configured.</p>"
 msgid ""
-"<p>The Check_MK Microcore uses Check_MK helper processes to execute the "
-"Check_MK and Check_MK Discovery services of the hosts monitored with "
-"Check_MK. There should always be enough helper processes to handle the "
-"configured checks.</p><p>In case the helper pool is 100% used, checks will "
-"not be executed in time, the check latency will grow and the states are not "
-"up to date.</p><p>Possible actions:<ul><li>Check whether or not you can "
+"<p>The Checkmk Microcore uses Checkmk checker processes to execute the "
+"Checkmk and Checkmk Discovery services of the hosts monitored with Checkmk. "
+"There should always be enough helper processes to handle the configured "
+"checks.</p><p>In case the checker helper pool is 100% used, checks will not "
+"be executed in time, the check latency will grow and the states are not up "
+"to date.</p><p>Possible actions:<ul><li>Check whether or not you can "
 "decrease check timeouts</li><li>Check which checks / plugins are <a href="
 "\"view.py?view_name=service_check_durations\">consuming most helper process "
 "time</a></li><li>Increase the <a href=\"wato.py?"
-"mode=edit_configvar&varname=cmc_cmk_helpers\">number of Check_MK helpers</"
-"a></li></ul></p><p>But you need to be careful that you don't configure too "
-"many Check_MK check helpers, because they consume a lot of memory. Your "
-"system needs to be able to handle the memory demand for all of them at once. "
-"An additional problem is that the Check_MK helpers are initialized in "
-"parallel during startup of the Microcore, which may cause load peaks when "
-"having a lot of Check_MK helper processes configured.</p>"
+"mode=edit_configvar&varname=cmc_cmk_helpers\">number of Checkmk helpers</a></"
+"li></ul></p><p>But you need to be careful that you don't configure too many "
+"Checkmk checker helpers, because they consume a lot of memory. Your system "
+"has to be able to handle the memory demand for all of them at once. An "
+"additional problem is that the Checkmk helpers are initialized in parallel "
+"during startup of the Microcore, which may cause load peaks when having a "
+"lot of Checkmk helper processes configured.</p>"
 msgstr ""
 "<p>Der Check_MK Microcore nutzt Check_MK-Hilfsprozesse um die Check_MK- und "
 "Check_MK-Discovery-Checks der überwachten Systeme auszuführen. Es sollten "
@@ -1839,10 +1881,133 @@ msgstr ""
 "initialisiert werden, was zu Lastspitzen bzw. einer längeren "
 "Initialisierungsphase führen kann.</p>"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:690
-#, python-format
+#: ../cmk/gui/plugins/wato/ac_tests.py:665
+#, fuzzy, python-format
+#| msgid ""
+#| "<p>The Check_MK Microcore uses Check_MK helper processes to execute the "
+#| "Check_MK and Check_MK Discovery services of the hosts monitored with "
+#| "Check_MK. There should always be enough helper processes to handle the "
+#| "configured checks.</p><p>In case the helper pool is 100% used, checks "
+#| "will not be executed in time, the check latency will grow and the states "
+#| "are not up to date.</p><p>Possible actions:<ul><li>Check whether or not "
+#| "you can decrease check timeouts</li><li>Check which checks / plugins are "
+#| "<a href=\"view.py?view_name=service_check_durations\">consuming most "
+#| "helper process time</a></li><li>Increase the <a href=\"wato.py?"
+#| "mode=edit_configvar&varname=cmc_cmk_helpers\">number of Check_MK helpers</"
+#| "a></li></ul></p><p>But you need to be careful that you don't configure "
+#| "too many Check_MK check helpers, because they consume a lot of memory. "
+#| "Your system needs to be able to handle the memory demand for all of them "
+#| "at once. An additional problem is that the Check_MK helpers are "
+#| "initialized in parallel during startup of the Microcore, which may cause "
+#| "load peaks when having a lot of Check_MK helper processes configured.</p>"
 msgid ""
-"<p>The Check_MK Microcore uses generic check helper processes to execute the "
+"<p>The Checkmk Microcore uses Checkmk fetcher processes to obtain data about "
+"the Checkmk and Checkmk Discovery services of the hosts monitored with "
+"Checkmk. There should always be enough fetcher processes to handle the "
+"configured checks just in time.</p><p>In case the fetcher helper pool is "
+"100% used, checks will not be executed in time, the check latency will grow "
+"and the states are not up to date.</p><p>Possible actions:<ul><li>Check "
+"whether or not you can decrease check timeouts</li><li>Check which checks / "
+"plugins are <a href=\"view.py?view_name=service_check_durations\">consuming "
+"most helper process time</a></li><li>Increase the <a href=\"wato.py?"
+"mode=edit_configvar&varname=cmc_cmk_helpers\">number of Checkmk helpers</a></"
+"li></ul></p><p>But you need to be careful that you don't configure too many "
+"Checkmk fetcher helpers, because they consume resources. An additional "
+"problem is that the Checkmk fetchers are initialized in parallel during "
+"startup of the Microcore, which may cause load peaks when having a lot of "
+"Checkmk helper processes configured.</p>"
+msgstr ""
+"<p>Der Check_MK Microcore nutzt Check_MK-Hilfsprozesse um die Check_MK- und "
+"Check_MK-Discovery-Checks der überwachten Systeme auszuführen. Es sollten "
+"immer genügend Hilfsprozesse vorhanden sein um die konfigurierten Checks zu "
+"bearbeiten.</p><p>Wenn die Hilfsprozesse zu 100% ausgelastet sind, werden "
+"die konfigurierten Checks nicht rechtzeitig ausgeführt. Infolge dessen "
+"steigt die Latenz der Checks und die Check-Ergebnisse sind nicht aktuelle.</"
+"p><p>Mögliche Aktionen:<ul><li>Prüfen Sie, ob Sie die Check-Timeouts "
+"verringen können</li><li>Prüfen Sie, welche Checks/Plugins <a href=\"view.py?"
+"view_name=service_check_durations\">viel Zeit der Hilfsprozesse verbrauchen</"
+"a></li><li>Erhöhen Sie die <a href=\"wato.py?"
+"mode=edit_configvar&varname=cmc_cmk_helpers\">Anzahl der Check_MK-"
+"Hilfsprozesse</a></li></ul></p><p>Achten Sie bei der Konfiguration der "
+"Anzahl der Check_MK-Hilfsprozesse darauf nicht zu viele Prozesse zu "
+"konfigurieren, da diese relativ viel Arbeitsspeicher benötigen. Ihr System "
+"muss in der Lage sein den Speicherbedarf zu decken. Ein weiteres Problem "
+"ist, dass die Hilfsprozesse beim Start des Microcores gleichzeitig "
+"initialisiert werden, was zu Lastspitzen bzw. einer längeren "
+"Initialisierungsphase führen kann.</p>"
+
+#: ../cmk/gui/plugins/wato/ac_tests.py:604
+#, fuzzy, python-format
+#| msgid ""
+#| "<p>The Check_MK Microcore uses Check_MK helper processes to execute the "
+#| "Check_MK and Check_MK Discovery services of the hosts monitored with "
+#| "Check_MK. There should always be enough helper processes to handle the "
+#| "configured checks.</p><p>In case the helper pool is 100% used, checks "
+#| "will not be executed in time, the check latency will grow and the states "
+#| "are not up to date.</p><p>Possible actions:<ul><li>Check whether or not "
+#| "you can decrease check timeouts</li><li>Check which checks / plugins are "
+#| "<a href=\"view.py?view_name=service_check_durations\">consuming most "
+#| "helper process time</a></li><li>Increase the <a href=\"wato.py?"
+#| "mode=edit_configvar&varname=cmc_cmk_helpers\">number of Check_MK helpers</"
+#| "a></li></ul></p><p>But you need to be careful that you don't configure "
+#| "too many Check_MK check helpers, because they consume a lot of memory. "
+#| "Your system needs to be able to handle the memory demand for all of them "
+#| "at once. An additional problem is that the Check_MK helpers are "
+#| "initialized in parallel during startup of the Microcore, which may cause "
+#| "load peaks when having a lot of Check_MK helper processes configured.</p>"
+msgid ""
+"<p>The Checkmk Microcore uses Checkmk helper processes to execute the "
+"Checkmk and Checkmk Discovery services of the hosts monitored with Checkmk. "
+"There should always be enough helper processes to handle the configured "
+"checks.</p><p>In case the helper pool is 100% used, checks will not be "
+"executed in time, the check latency will grow and the states are not up to "
+"date.</p><p>Possible actions:<ul><li>Check whether or not you can decrease "
+"check timeouts</li><li>Check which checks / plugins are <a href=\"view.py?"
+"view_name=service_check_durations\">consuming most helper process time</a></"
+"li><li>Increase the <a href=\"wato.py?"
+"mode=edit_configvar&varname=cmc_cmk_helpers\">number of Checkmk helpers</a></"
+"li></ul></p><p>But you need to be careful that you don't configure too many "
+"Checkmk check helpers, because they consume a lot of memory. Your system "
+"needs to be able to handle the memory demand for all of them at once. An "
+"additional problem is that the Checkmk helpers are initialized in parallel "
+"during startup of the Microcore, which may cause load peaks when having a "
+"lot of Checkmk helper processes configured.</p>"
+msgstr ""
+"<p>Der Check_MK Microcore nutzt Check_MK-Hilfsprozesse um die Check_MK- und "
+"Check_MK-Discovery-Checks der überwachten Systeme auszuführen. Es sollten "
+"immer genügend Hilfsprozesse vorhanden sein um die konfigurierten Checks zu "
+"bearbeiten.</p><p>Wenn die Hilfsprozesse zu 100% ausgelastet sind, werden "
+"die konfigurierten Checks nicht rechtzeitig ausgeführt. Infolge dessen "
+"steigt die Latenz der Checks und die Check-Ergebnisse sind nicht aktuelle.</"
+"p><p>Mögliche Aktionen:<ul><li>Prüfen Sie, ob Sie die Check-Timeouts "
+"verringen können</li><li>Prüfen Sie, welche Checks/Plugins <a href=\"view.py?"
+"view_name=service_check_durations\">viel Zeit der Hilfsprozesse verbrauchen</"
+"a></li><li>Erhöhen Sie die <a href=\"wato.py?"
+"mode=edit_configvar&varname=cmc_cmk_helpers\">Anzahl der Check_MK-"
+"Hilfsprozesse</a></li></ul></p><p>Achten Sie bei der Konfiguration der "
+"Anzahl der Check_MK-Hilfsprozesse darauf nicht zu viele Prozesse zu "
+"konfigurieren, da diese relativ viel Arbeitsspeicher benötigen. Ihr System "
+"muss in der Lage sein den Speicherbedarf zu decken. Ein weiteres Problem "
+"ist, dass die Hilfsprozesse beim Start des Microcores gleichzeitig "
+"initialisiert werden, was zu Lastspitzen bzw. einer längeren "
+"Initialisierungsphase führen kann.</p>"
+
+#: ../cmk/gui/plugins/wato/ac_tests.py:813
+#, fuzzy, python-format
+#| msgid ""
+#| "<p>The Check_MK Microcore uses generic check helper processes to execute "
+#| "the active check based services (e.g. check_http, check_...). There "
+#| "should always be enough helper processes to handle the configured checks."
+#| "</p><p>In case the helper pool is 100% used, checks will not be executed "
+#| "in time, the check latency will grow and the states are not up to date.</"
+#| "p><p>Possible actions:<ul><li>Check whether or not you can decrease check "
+#| "timeouts</li><li>Check which checks / plugins are <a href=\"view.py?"
+#| "view_name=service_check_durations\">consuming most helper process time</"
+#| "a></li><li>Increase the <a href=\"wato.py?"
+#| "mode=edit_configvar&varname=cmc_check_helpers\">number of check helpers</"
+#| "a></li></ul></p>"
+msgid ""
+"<p>The Checkmk Microcore uses generic check helper processes to execute the "
 "active check based services (e.g. check_http, check_...). There should "
 "always be enough helper processes to handle the configured checks.</p><p>In "
 "case the helper pool is 100% used, checks will not be executed in time, the "
@@ -2044,15 +2209,26 @@ msgid ""
 msgstr "<p>Sie wurden abgemeldet. Für Neunameldung Seite neu laden.</p>"
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:397
+#, fuzzy
+#| msgid ""
+#| "<p>You should have a backup configured for being able to restore your "
+#| "monitoring environment in case of a data loss.<br>In case you a using a "
+#| "virtual machine as Check_MK server and perform snapshot based backups, "
+#| "you should be safe.</p><p>In case you are using a 3rd party backup "
+#| "solution the backed up data may not be reliably backed up or not up-to-"
+#| "date in the moment of the backup.</p><p>It is recommended to use the "
+#| "Check_MK backup to create a backup of the runnning site to be sure that "
+#| "the data is consistent. If you need to, you can then use the 3rd party "
+#| "tool to archive the Check_MK backups.</p>"
 msgid ""
 "<p>You should have a backup configured for being able to restore your "
 "monitoring environment in case of a data loss.<br>In case you a using a "
-"virtual machine as Check_MK server and perform snapshot based backups, you "
+"virtual machine as Checkmk server and perform snapshot based backups, you "
 "should be safe.</p><p>In case you are using a 3rd party backup solution the "
 "backed up data may not be reliably backed up or not up-to-date in the moment "
-"of the backup.</p><p>It is recommended to use the Check_MK backup to create "
-"a backup of the runnning site to be sure that the data is consistent. If you "
-"need to, you can then use the 3rd party tool to archive the Check_MK backups."
+"of the backup.</p><p>It is recommended to use the Checkmk backup to create a "
+"backup of the runnning site to be sure that the data is consistent. If you "
+"need to, you can then use the 3rd party tool to archive the Checkmk backups."
 "</p>"
 msgstr ""
 "<p>Sie sollten immer eine Datensicherung konfiguriert hatben, um Ihre "
@@ -5503,7 +5679,7 @@ msgstr "Alarmstatistik: Anzahl von WARN"
 msgid "Alert handler Stopped"
 msgstr "Alerthandler gestoppt"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:675
+#: ../cmk/gui/plugins/wato/ac_tests.py:798
 msgid "Alert handler are configured to handle all check execution."
 msgstr ""
 "Die Alert Handler sind so konfiguriert, dass sie alle Check-Ausführungen "
@@ -5538,7 +5714,7 @@ msgstr "Alerthandler-Regel"
 msgid "Alert handler with parameters"
 msgstr "Alert-Handler mit Parametern"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:661
+#: ../cmk/gui/plugins/wato/ac_tests.py:784
 msgid "Alert handler: Don't handle all check executions"
 msgstr "Alert-Handler: Check-Ausführungen nicht behandeln"
 
@@ -5555,7 +5731,7 @@ msgstr "Alerthandler"
 msgid "Alert handlers to deploy"
 msgstr "Alerthandler, die installiert werden sollen"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:677
+#: ../cmk/gui/plugins/wato/ac_tests.py:800
 msgid "Alert handlers will handle state changes."
 msgstr "Alert Handler behandeln Zustandsänderungen."
 
@@ -6075,7 +6251,7 @@ msgstr ""
 "Alle Einhost-Aggregationen, die nicht OK sind (unter Berücksichtigung von "
 "Status-Annahmen)"
 
-#: ../cmk/gui/sidebar.py:972 ../cmk/gui/wato/pages/activate_changes.py:343
+#: ../cmk/gui/sidebar.py:969 ../cmk/gui/wato/pages/activate_changes.py:343
 #: ../cmk/gui/wato/pages/users.py:1062 ../cmk/gui/plugins/sidebar/utils.py:315
 msgid "All sites"
 msgstr "Alle Instanzen"
@@ -7788,7 +7964,7 @@ msgstr "Verfügbare Optionen"
 msgid "Available physical processors in shared pool"
 msgstr "Verfügbare physische Prozessoren im gemeinsamen Pool"
 
-#: ../cmk/gui/sidebar.py:878
+#: ../cmk/gui/sidebar.py:875
 msgid "Available snapins"
 msgstr "Verfügbare Elemente"
 
@@ -7818,7 +7994,7 @@ msgstr "Verfügbar bis"
 msgid "Average"
 msgstr "Durchschnitt"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:74
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:75
 #, fuzzy
 #| msgid "Average check latency"
 msgid "Average Checkmk latency"
@@ -7840,8 +8016,9 @@ msgstr "Durchschnittliche Latenz"
 msgid "Average Outgoing Queue Delay"
 msgstr "Durchschnittliche Verzögerung in Ausgangswarteschlange"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:73
-#: ../cmk/gui/plugins/metrics/checkmk.py:327
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:74
+#: ../cmk/gui/plugins/metrics/checkmk.py:333
+#: ../cmk/gui/plugins/metrics/checkmk.py:341
 msgid "Average check latency"
 msgstr "Durchschnittliche Check-Latenz"
 
@@ -7886,6 +8063,12 @@ msgid ""
 msgstr ""
 "Durchschnittliche End-to-End-Latenzzeit erfolgreicher Anfragen an einen "
 "Speicherdienst"
+
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:76
+#, fuzzy
+#| msgid "Average check latency"
+msgid "Average fetcher latency"
+msgstr "Durchschnittliche Check-Latenz"
 
 #: ../cmk/gui/plugins/metrics/elasticsearch.py:186
 #: ../cmk/gui/plugins/wato/check_parameters/mongodb_flushing.py:24
@@ -7976,7 +8159,7 @@ msgstr "Durchschnittliche Request-Antwortzeit"
 msgid "Average request size"
 msgstr "Durchschnittliche Request-Größe"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:298
+#: ../cmk/gui/plugins/metrics/checkmk.py:304
 msgid "Average requests per connection"
 msgstr "Durchschnittliche Requests pro Verbindung"
 
@@ -8946,7 +9129,7 @@ msgstr "Serviceerkennung von Brocade-Ports"
 msgid "Broken"
 msgstr "Gebrochen"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:781
+#: ../cmk/gui/plugins/wato/ac_tests.py:904
 msgid "Broken GUI extensions"
 msgstr "Defekte GUI-Erweiterungen"
 
@@ -9859,7 +10042,7 @@ msgstr ""
 msgid "Bytes rejected"
 msgstr "Bits pro Sekunde"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:383
+#: ../cmk/gui/plugins/metrics/checkmk.py:397
 msgid "Bytes sent"
 msgstr "Gesendete Bytes"
 
@@ -11307,8 +11490,8 @@ msgstr ""
 "für den Test erstellt und danach gelöscht. Sie wird natürlich nicht "
 "gelöscht, wenn die Datei nicht von diesem aktiven Check erstellt wurde. "
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:75
-#: ../cmk/gui/plugins/wato/ac_tests.py:686
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:77
+#: ../cmk/gui/plugins/wato/ac_tests.py:809
 msgid "Check helper usage"
 msgstr "Belegung Check-Hilfsprozesse"
 
@@ -11321,7 +11504,7 @@ msgstr "Hosts mit PING überwachen (ICMP Echo Request)"
 msgid "Check int."
 msgstr "Checkint."
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:126
+#: ../cmk/gui/plugins/metrics/checkmk.py:132
 msgid "Check latency"
 msgstr "Checklatenz"
 
@@ -11567,7 +11750,7 @@ msgstr "Geprüft"
 msgid "Checker helper"
 msgstr "Belegung Check-Hilfsprozesse"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:78
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:80
 #: ../cmk/gui/plugins/metrics/checkmk.py:108
 #, fuzzy
 #| msgid "Check helper usage"
@@ -11705,6 +11888,12 @@ msgstr "Checkmk check helpers"
 msgid "Checkmk check latency"
 msgstr "Check_MKmk check latency"
 
+#: ../cmk/gui/plugins/wato/ac_tests.py:722
+#, fuzzy
+#| msgid "Checkmk helper usage"
+msgid "Checkmk checker usage"
+msgstr "Checkmk helper usage"
+
 #: ../cmk/gui/plugins/views/wato.py:29
 msgid "Checkmk config filename"
 msgstr "Checkmk Konfigurationsdateiname"
@@ -11713,6 +11902,18 @@ msgstr "Checkmk Konfigurationsdateiname"
 #, python-format
 msgid "Checkmk exception: %s"
 msgstr "Checkmk Fehler: %s"
+
+#: ../cmk/gui/plugins/metrics/checkmk.py:126
+#, fuzzy
+#| msgid "Checkmk check latency"
+msgid "Checkmk fetcher latency"
+msgstr "Check_MKmk check latency"
+
+#: ../cmk/gui/plugins/wato/ac_tests.py:661
+#, fuzzy
+#| msgid "Checkmk helper usage"
+msgid "Checkmk fetcher usage"
+msgstr "Checkmk helper usage"
 
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4407
 #, fuzzy
@@ -11738,7 +11939,7 @@ msgstr ""
 "which have problems with this SNMP implementation. You can use this rule to "
 "disable Inline SNMP for these hosts."
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:76
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:78
 #: ../cmk/gui/plugins/metrics/checkmk.py:96
 #: ../cmk/gui/plugins/wato/ac_tests.py:600
 msgid "Checkmk helper usage"
@@ -11752,7 +11953,7 @@ msgstr "Checkmk Site"
 msgid "Checkmk site objects"
 msgstr "Objekte von Check_MK-Instanzensadf"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:220
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:233
 #, fuzzy
 #| msgid "Performance data settings"
 msgid "Checkmk site performance and settings"
@@ -11806,13 +12007,13 @@ msgstr ""
 msgid "Checkmk with times performance data"
 msgstr "Check_MK mit Zeitleistungsdaten"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:215
+#: ../cmk/gui/plugins/metrics/checkmk.py:221
 #, fuzzy
 #| msgid "Check_MK: BI"
 msgid "Checkmk: BI"
 msgstr "Check_MK: BI"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:227
+#: ../cmk/gui/plugins/metrics/checkmk.py:233
 #, fuzzy
 #| msgid "Check_MK: Dashboards"
 msgid "Checkmk: Dashboards"
@@ -11824,25 +12025,25 @@ msgstr "Check_MK: Übersichten"
 msgid "Checkmk: Notification"
 msgstr "Check_MK: Alarm"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:233
+#: ../cmk/gui/plugins/metrics/checkmk.py:239
 #, fuzzy
 #| msgid "Check_MK: Other"
 msgid "Checkmk: Other"
 msgstr "Check_MK: Sonstige"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:221
+#: ../cmk/gui/plugins/metrics/checkmk.py:227
 #, fuzzy
 #| msgid "Check_MK: Snapins"
 msgid "Checkmk: Snapins"
 msgstr "Check_MK: Seitenleistenelemente"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:203
+#: ../cmk/gui/plugins/metrics/checkmk.py:209
 #, fuzzy
 #| msgid "Check_MK: Views"
 msgid "Checkmk: Views"
 msgstr "Check_MK: Ansichten"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:209
+#: ../cmk/gui/plugins/metrics/checkmk.py:215
 #, fuzzy
 #| msgid "Check_MK: WATO"
 msgid "Checkmk: WATO"
@@ -12461,7 +12662,7 @@ msgstr "Graph-Tuning klonen"
 msgid "Clone report schedule entry %s"
 msgstr "Berichtsplan %s klonen"
 
-#: ../cmk/gui/sidebar.py:818
+#: ../cmk/gui/sidebar.py:815
 msgid "Clone snapin"
 msgstr "Element Klonen"
 
@@ -13269,7 +13470,7 @@ msgid "Configuration variable:"
 msgstr "Konfigurationsvariable:"
 
 #: ../cmk/gui/cee/reporting.py:1059 ../cmk/gui/cee/reporting.py:1499
-#: ../cmk/gui/cee/reporting.py:2461 ../cmk/gui/sidebar.py:914
+#: ../cmk/gui/cee/reporting.py:2461 ../cmk/gui/sidebar.py:911
 #: ../cmk/gui/pagetypes.py:1319
 #: ../cmk/gui/wato/pages/analyze_configuration.py:90
 #, fuzzy
@@ -15029,7 +15230,7 @@ msgstr ""
 "Separate Sammelalarme erzeugen für unterschiedliche Werte der folgenden "
 "Benutzermakros"
 
-#: ../cmk/gui/sidebar.py:819
+#: ../cmk/gui/sidebar.py:816
 msgid "Create snapin"
 msgstr "Element erzeugen"
 
@@ -16038,9 +16239,10 @@ msgstr "CRIT bei einer Benutzung von"
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:138
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:151
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:164
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:178
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:192
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:177
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:191
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:205
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:218
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_snapshots.py:30
 #: ../cmk/gui/plugins/wato/check_parameters/ibm_svc_host.py:58
 #: ../cmk/gui/plugins/wato/check_parameters/ibm_svc_host.py:72
@@ -16429,7 +16631,7 @@ msgstr "Aktueller Check-Versuch"
 msgid "Current date"
 msgstr "Heute"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:182
+#: ../cmk/gui/plugins/metrics/checkmk.py:188
 msgid "Current events"
 msgstr "Aktuelle Ereignisse"
 
@@ -16801,11 +17003,11 @@ msgstr "Angepasste Serviceanmerkungen"
 msgid "Custom settings"
 msgstr "Individuelle Einstellungen"
 
-#: ../cmk/gui/sidebar.py:815
+#: ../cmk/gui/sidebar.py:812
 msgid "Custom snapin"
 msgstr "Benutzerdefiniertes Element"
 
-#: ../cmk/gui/sidebar.py:816
+#: ../cmk/gui/sidebar.py:813
 msgid "Custom snapins"
 msgstr "Benutzerdefinierte Snapins"
 
@@ -19619,7 +19821,7 @@ msgstr "Deaktivierte Agent Sektionen"
 msgid "Disabled agent updates"
 msgstr "Agentenupdates deaktiviert"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:194
+#: ../cmk/gui/plugins/metrics/checkmk.py:200
 msgid "Disabled alerts"
 msgstr "Deaktivierte Warnmeldungen"
 
@@ -22226,7 +22428,7 @@ msgstr "Bearbeite Verbindung %s"
 msgid "Edit site specific global settings of %s"
 msgstr "Bearbeiten von instanzspezifischen globalen Einstellungen von %s"
 
-#: ../cmk/gui/sidebar.py:820
+#: ../cmk/gui/sidebar.py:817
 msgid "Edit snapin"
 msgstr "Element editieren"
 
@@ -23833,7 +24035,7 @@ msgstr ""
 msgid "Exception"
 msgstr "Ausnahme"
 
-#: ../cmk/gui/sidebar.py:693
+#: ../cmk/gui/sidebar.py:690
 #, python-format
 msgid "Exception during snapin refresh (snapin '%s')"
 msgstr "Fehler beim Aktualisieren des Seitenleistenelements ('%s')"
@@ -25086,7 +25288,7 @@ msgstr "Anfrage mit Länge 0"
 msgid "Fetcher helper"
 msgstr "Anfrage head"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:77
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:79
 #: ../cmk/gui/plugins/metrics/checkmk.py:102
 #, fuzzy
 #| msgid "Generic helper usage"
@@ -25725,14 +25927,19 @@ msgstr "Flexible Dauer"
 msgid "Flexible Custom Notifications"
 msgstr "Flexible benutzerdefinierte Alarme"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:844
+#: ../cmk/gui/plugins/wato/ac_tests.py:967
 msgid "Flexible and plain email notifications"
 msgstr "Flexible und einfache Text-E-Mail Alarmierung"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:848
+#: ../cmk/gui/plugins/wato/ac_tests.py:971
+#, fuzzy
+#| msgid ""
+#| "Flexible and plain email notifications are considered deprecated in "
+#| "version 1.5.0 and  will be removed in Check_MK version 1.6.0. Please "
+#| "consider to switch to rulebased notifications."
 msgid ""
 "Flexible and plain email notifications are considered deprecated in version "
-"1.5.0 and  will be removed in Check_MK version 1.6.0. Please consider to "
+"1.5.0 and  will be removed in Checkmk version 1.6.0. Please consider to "
 "switch to rulebased notifications."
 msgstr ""
 "Die flexible Alarmierung sowie die einfache Alarmierung über Emails werden "
@@ -27665,7 +27872,7 @@ msgstr ""
 msgid "Handle nested group memberships (Active Directory only at the moment)"
 msgstr "Verschachtelte Gruppen unterstützen (nur Active Directory)"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:343
+#: ../cmk/gui/plugins/metrics/checkmk.py:357
 msgid "Handled Requests"
 msgstr "Bearbeitete Anfragen"
 
@@ -28844,7 +29051,7 @@ msgstr "Hierarchisches Layout"
 msgid "High"
 msgstr "Hoch"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:188
+#: ../cmk/gui/plugins/metrics/checkmk.py:194
 msgid "High alerts"
 msgstr "Hohe Warnmeldungen"
 
@@ -29276,7 +29483,7 @@ msgstr "Host-Informationen"
 msgid "Host alias"
 msgstr "Hostalias"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:403
+#: ../cmk/gui/plugins/metrics/checkmk.py:417
 msgid "Host and Service Checks"
 msgstr "Host- und Servicechecks"
 
@@ -29345,7 +29552,7 @@ msgstr "Host-Checktyp"
 msgid "Host checks"
 msgstr "Hostchecks"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:71
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:72
 msgid "Host checks and smart pings"
 msgstr "Hostchecks und SMART-Pings"
 
@@ -29790,17 +29997,17 @@ msgstr "Host: %s ist <b>%s</b>"
 msgid "Host: %s is <b>not</b> <b>%s</b>"
 msgstr "Host: %s ist <b>nicht</b> <b>%s</b>"
 
-#: ../cmk/gui/plugins/sidebar/search.py:928
+#: ../cmk/gui/plugins/sidebar/search.py:948
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:426
 msgid "Hostaddress"
 msgstr "Host-Adresse"
 
-#: ../cmk/gui/plugins/sidebar/search.py:929
+#: ../cmk/gui/plugins/sidebar/search.py:949
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:425
 msgid "Hostalias"
 msgstr "Host-Aliassfdasdfsdaf"
 
-#: ../cmk/gui/plugins/sidebar/search.py:808
+#: ../cmk/gui/plugins/sidebar/search.py:828
 #: ../cmk/gui/plugins/views/sorters.py:278
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:428
 msgid "Hostgroup"
@@ -29836,7 +30043,7 @@ msgstr "Hostgruppen (zusammengeführt)"
 #: ../cmk/gui/wato/pages/host_diagnose.py:286
 #: ../cmk/gui/wato/pages/bulk_import.py:439
 #: ../cmk/gui/wato/pages/folders.py:889
-#: ../cmk/gui/plugins/sidebar/search.py:926
+#: ../cmk/gui/plugins/sidebar/search.py:946
 #: ../cmk/gui/plugins/views/mkeventd.py:428
 #: ../cmk/gui/plugins/views/painters.py:2338
 #: ../cmk/gui/plugins/views/availability.py:1148
@@ -29906,7 +30113,7 @@ msgstr "Zu übersetzende Hostnamen"
 #: ../cmk/gui/cee/plugins/wato/cmc.py:817
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:657
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:663
-#: ../cmk/gui/cee/ntop/pages.py:989 ../cmk/gui/sidebar.py:631
+#: ../cmk/gui/cee/ntop/pages.py:989 ../cmk/gui/sidebar.py:628
 #: ../cmk/gui/views.py:1259 ../cmk/gui/wato/pages/hosts.py:277
 #: ../cmk/gui/wato/pages/host_diagnose.py:122
 #: ../cmk/gui/wato/pages/object_parameters.py:82
@@ -29925,8 +30132,8 @@ msgstr "Zu übersetzende Hostnamen"
 #: ../cmk/gui/plugins/views/mobile.py:440 ../cmk/gui/plugins/views/bi.py:424
 #: ../cmk/gui/plugins/views/bi.py:444 ../cmk/gui/plugins/visuals/infos.py:31
 #: ../cmk/gui/plugins/wato/builtin_modules.py:41
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:189
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:193
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:202
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:206
 msgid "Hosts"
 msgstr "Hosts"
 
@@ -30113,7 +30320,7 @@ msgstr "Hosts: %d insgesamt ( %d erfolgreich, %d übersprungen, %d gescheitert)"
 msgid "Hostsystem sensor alerts"
 msgstr "Alarme von Hostsystem-Sensoren"
 
-#: ../cmk/gui/plugins/sidebar/search.py:1032
+#: ../cmk/gui/plugins/sidebar/search.py:1052
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:427
 msgid "Hosttag"
 msgstr "Hostmerkmal"
@@ -32380,7 +32587,7 @@ msgstr "Ignoriere den Wait-Typen"
 msgid "Ignored autostart services"
 msgstr "Ignorierte Dienste trotz Autostart"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:257
+#: ../cmk/gui/plugins/metrics/checkmk.py:263
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:602
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:609
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:612
@@ -32745,7 +32952,7 @@ msgstr ""
 "Socket nicht genug internen Speicher, um die benötigte ICMP-Bandbreite zu "
 "erzeugen. Deswegen benutzen wir mehrere Sockets gleichzeitig."
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:665
+#: ../cmk/gui/plugins/wato/ac_tests.py:788
 msgid ""
 "In general it will result in a significantly increased load when alert "
 "handlers are configured to handle all check executions. It is highly "
@@ -33022,7 +33229,7 @@ msgstr "inaktive Hosts"
 msgid "Inactive sessions"
 msgstr "Inaktive Sessions"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:443
+#: ../cmk/gui/plugins/metrics/checkmk.py:457
 msgid "Inbound and Outbound Messages"
 msgstr "Eingehende und ausgehende Nachrichten"
 
@@ -33704,7 +33911,7 @@ msgstr ""
 msgid "Integration Key"
 msgstr "Integrationsschlüssel"
 
-#: ../cmk/gui/plugins/sidebar/search.py:84
+#: ../cmk/gui/plugins/sidebar/search.py:640
 msgid ""
 "Interactive search field for direct access to hosts, services, host- and "
 "servicegroups.<br>You can use the following filters:<br> <i>h:</i> Host, "
@@ -34082,7 +34289,7 @@ msgstr "Ungültiger Hostname"
 msgid "Invalid host or network address. IPv4: %s, IPv6: %s"
 msgstr ""
 
-#: ../cmk/gui/sidebar.py:969
+#: ../cmk/gui/sidebar.py:966
 msgid "Invalid ident"
 msgstr "Ungültiger Schlüssel"
 
@@ -34194,7 +34401,7 @@ msgstr ""
 msgid "Invalid rule <tt>%s</tt>"
 msgstr "Ungültige Regel <tt>%s</tt>"
 
-#: ../cmk/gui/sidebar.py:975 ../cmk/gui/wato/pages/sites.py:1070
+#: ../cmk/gui/sidebar.py:972 ../cmk/gui/wato/pages/sites.py:1070
 msgid "Invalid site"
 msgstr "Ungültige Instanz"
 
@@ -34202,7 +34409,7 @@ msgstr "Ungültige Instanz"
 msgid "Invalid site given"
 msgstr "Ungültige Instanz übergeben"
 
-#: ../cmk/gui/sidebar.py:938
+#: ../cmk/gui/sidebar.py:935
 #, fuzzy, python-format
 #| msgid "Invalid ident: %s"
 msgid "Invalid snapin %s"
@@ -35686,27 +35893,27 @@ msgstr "Verbindung von Ebenen"
 msgid "Levels"
 msgstr "Schwellwerte"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:104
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:117
 #, fuzzy
 msgid "Levels Helper usage Check"
 msgstr "Schwellwerte für Speichernutzung"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:117
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:130
 #, fuzzy
 msgid "Levels Helper usage Checkmk"
 msgstr "Schwellwerte für benutzten Speicher"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:143
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:156
 #, fuzzy
 msgid "Levels Helper usage checker"
 msgstr "Schwellwerte für Speichernutzung"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:130
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:143
 #, fuzzy
 msgid "Levels Helper usage fetcher"
 msgstr "Schwellwerte für Speichernutzung"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:184
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:197
 #, fuzzy
 msgid "Levels Hosts"
 msgstr "Schwellen für %s %s"
@@ -35720,17 +35927,22 @@ msgstr "Durchschnittliche Warteschlangenlatenz"
 msgid "Levels Latency Checkmk"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:169
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:104
+#, fuzzy
+msgid "Levels Latency Fetcher"
+msgstr "Durchschnittliche Warteschlangenlatenz"
+
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:182
 #, fuzzy
 msgid "Levels Livestatus Overflows"
 msgstr "Livestatus-Überläufe"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:156
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:169
 #, fuzzy
 msgid "Levels Livestatus Usage"
 msgstr "Livestatusbenutzung"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:197
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:210
 #, fuzzy
 msgid "Levels Services"
 msgstr "Webservices"
@@ -36927,7 +37139,7 @@ msgstr "Livestatus-Proxy-Daeamon"
 msgid "Livestatus"
 msgstr "Livestatus"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:419
+#: ../cmk/gui/plugins/metrics/checkmk.py:433
 msgid "Livestatus Connects and Requests"
 msgstr "Livestatus-Verbindungen und -Anfragen"
 
@@ -36943,7 +37155,7 @@ msgstr "Livestatus-Proxy Standardverbindungseinstellungen"
 msgid "Livestatus Proxy logging"
 msgstr "Livestatus-Proxy Logging"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:296
+#: ../cmk/gui/plugins/metrics/checkmk.py:302
 msgid "Livestatus Requests per Connection"
 msgstr "Livestatus-Anfragen pro Verbindung"
 
@@ -36976,7 +37188,7 @@ msgstr "Der Livestatus-Netzwerkverkehr ist verschlüsselt"
 msgid "Livestatus network traffic is unencrypted"
 msgstr "Der Livestatus-Netzwerkverkehr ist unverschlüsselt."
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:138
+#: ../cmk/gui/plugins/metrics/checkmk.py:144
 msgid "Livestatus overflows"
 msgstr "Livestatus-Überläufe"
 
@@ -36992,13 +37204,13 @@ msgstr "Livestatus-Proxy"
 msgid "Livestatus requests"
 msgstr "Livestatus-Anfragen"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:79
-#: ../cmk/gui/plugins/metrics/checkmk.py:132
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:81
+#: ../cmk/gui/plugins/metrics/checkmk.py:138
 #: ../cmk/gui/plugins/wato/ac_tests.py:143
 msgid "Livestatus usage"
 msgstr "Livestatusbenutzung"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:72
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:73
 msgid "Livestatus-connections"
 msgstr "Livestatus-Verbindungen"
 
@@ -37056,7 +37268,7 @@ msgid "Load of Citrix Server"
 msgstr "Citrix Serverlast"
 
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:287
-#: ../cmk/gui/plugins/wato/ac_tests.py:798
+#: ../cmk/gui/plugins/wato/ac_tests.py:921
 #, python-format
 msgid "Loading \"%s\" failed: %s"
 msgstr "Laden von \"%s\" fehlgeschlagen: %s"
@@ -37372,7 +37584,7 @@ msgstr ""
 msgid "Log level for the processing of all incoming events"
 msgstr "Log-Level für die Verarbeitung von eingehenden Ereignissen"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:162
+#: ../cmk/gui/plugins/metrics/checkmk.py:168
 msgid "Log messages"
 msgstr "Logmeldungen"
 
@@ -38426,7 +38638,7 @@ msgstr "Mail in ausgehender / deferred Mailschlange"
 msgid "Mails received rate"
 msgstr "Rate der empfangenen Mails"
 
-#: ../cmk/gui/sidebar.py:607
+#: ../cmk/gui/sidebar.py:604
 msgid "Main"
 msgstr "Hauptmenü"
 
@@ -38671,7 +38883,7 @@ msgstr "Verwalten"
 msgid "Mandatory context"
 msgstr "ohne Kontext"
 
-#: ../cmk/gui/sidebar.py:639 ../cmk/gui/plugins/views/painters.py:1356
+#: ../cmk/gui/sidebar.py:636 ../cmk/gui/plugins/views/painters.py:1356
 #: ../cmk/gui/plugins/wato/check_parameters/services.py:57
 msgid "Manual"
 msgstr "Manuell"
@@ -40126,7 +40338,7 @@ msgstr "Nachricht für Hostvorfälle"
 msgid "Message for service alerts"
 msgstr "Nachricht für Servicevorfälle"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:427
+#: ../cmk/gui/plugins/metrics/checkmk.py:441
 msgid "Message processing"
 msgstr "Meldungsverarbeitung"
 
@@ -41106,8 +41318,8 @@ msgstr "Weitere Informationen befinden sich in %s"
 msgid "More information can be found in ~/var/log/web.log"
 msgstr "Weitere Informationen finden sich in ~/var/log/web.log"
 
-#: ../cmk/gui/plugins/sidebar/search.py:655
-#: ../cmk/gui/plugins/sidebar/search.py:659
+#: ../cmk/gui/plugins/sidebar/search.py:590
+#: ../cmk/gui/plugins/sidebar/search.py:594
 #, python-format
 msgid "More than %d results"
 msgstr "Mehr als %d Ergebnisse"
@@ -41528,15 +41740,15 @@ msgstr "NagVis Karten"
 msgid "NagVis map"
 msgstr "NagVis-Karte"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:245
+#: ../cmk/gui/plugins/metrics/checkmk.py:251
 msgid "NagVis: AJAX"
 msgstr "NagVis: AJAX"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:251
+#: ../cmk/gui/plugins/metrics/checkmk.py:257
 msgid "NagVis: Other"
 msgstr "NagVis: Sonstiges"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:239
+#: ../cmk/gui/plugins/metrics/checkmk.py:245
 msgid "NagVis: Snapin"
 msgstr "NagVis: Snapin"
 
@@ -41853,7 +42065,7 @@ msgstr "Name des Makros"
 msgid "Name of the memory pool"
 msgstr "Name des Pools"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:217
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:230
 msgid "Name of the monitoring site"
 msgstr "Name der Monitoring-Instanz"
 
@@ -42366,7 +42578,7 @@ msgstr "Neuer Name"
 msgid "New rule: %s"
 msgstr "Neue Regel: %s"
 
-#: ../cmk/gui/sidebar.py:821
+#: ../cmk/gui/sidebar.py:818
 msgid "New snapin"
 msgstr "Neues Element"
 
@@ -42525,7 +42737,7 @@ msgstr "Keine Authentifizierung, keine Privacy"
 msgid "No baked agent for this host available"
 msgstr "Für diesen Host ist kein gebackener Agent vefügbar"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:795
+#: ../cmk/gui/plugins/wato/ac_tests.py:918
 msgid "No broken extensions were found."
 msgstr "Es wurden keine defekten Erweiterungen gefunden."
 
@@ -42542,7 +42754,7 @@ msgstr ""
 msgid "No commands are possible in this view"
 msgstr "Befehle in dieser Ansicht nicht möglich"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:835
+#: ../cmk/gui/plugins/wato/ac_tests.py:958
 msgid "No configured rules are affected"
 msgstr "Es sind keine konfigurierten Regeln betroffen"
 
@@ -42590,7 +42802,7 @@ msgstr ""
 msgid "No data from any site"
 msgstr "Keine Daten verfügbar"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:55
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:56
 msgid "No data."
 msgstr "Keine Daten."
 
@@ -42787,7 +42999,7 @@ msgstr "Keine Zeilen für Aktionen ausgewählt."
 msgid "No rules found."
 msgstr "Keine Regeln gefunden."
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:913
+#: ../cmk/gui/plugins/wato/ac_tests.py:1036
 msgid ""
 "No ruleset <b>State in case of restricted address missmatch</b> is configured"
 msgstr ""
@@ -43855,7 +44067,7 @@ msgstr "Anzahl von Lotus Domino Benutzern"
 msgid "Number of Mails in Queue"
 msgstr "Anzahl von Mail in der Schlange"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:411
+#: ../cmk/gui/plugins/metrics/checkmk.py:425
 msgid "Number of Monitored Hosts and Services"
 msgstr "Anzahl überwachter Hosts und Services"
 
@@ -45879,7 +46091,7 @@ msgstr ""
 "Ursprünglicher Hostname wenn der Hostname umgeschrieben wurde. Ansonsten leer"
 
 #: ../cmk/gui/valuespec.py:3291 ../cmk/gui/cme/plugins/views/managed.py:490
-#: ../cmk/gui/pagetypes.py:1779 ../cmk/gui/plugins/metrics/checkmk.py:275
+#: ../cmk/gui/pagetypes.py:1779 ../cmk/gui/plugins/metrics/checkmk.py:281
 #: ../cmk/gui/plugins/views/mobile.py:618
 #: ../cmk/gui/plugins/views/mobile.py:659
 #: ../cmk/gui/plugins/views/mobile.py:699
@@ -46754,7 +46966,7 @@ msgstr "Parameter-Regelsatz"
 
 #: ../cmk/gui/cee/plugins/reporting/utils.py:210
 #: ../cmk/gui/cee/plugins/wato/alert_handling.py:238
-#: ../cmk/gui/cee/reporting.py:977 ../cmk/gui/sidebar.py:845
+#: ../cmk/gui/cee/reporting.py:977 ../cmk/gui/sidebar.py:842
 #: ../cmk/gui/wato/pages/rulesets.py:736
 #: ../cmk/gui/wato/pages/object_parameters.py:175
 #: ../cmk/gui/wato/pages/object_parameters.py:201
@@ -47153,7 +47365,7 @@ msgstr "Offene Änderungen"
 msgid "Pending memory"
 msgstr "Pending-Speicher"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:168
+#: ../cmk/gui/plugins/metrics/checkmk.py:174
 msgid "Pending normal updates"
 msgstr "Ausstehende normale Updates"
 
@@ -47162,7 +47374,7 @@ msgstr "Ausstehende normale Updates"
 msgid "Pending requests"
 msgstr "Reading request"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:174
+#: ../cmk/gui/plugins/metrics/checkmk.py:180
 msgid "Pending security updates"
 msgstr "Anstehende Sicherheitsupdates"
 
@@ -47187,7 +47399,7 @@ msgstr "Ausstehende Äufträge"
 msgid "Pending tasks delta"
 msgstr "Ausstehende Äufträge"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:335
+#: ../cmk/gui/plugins/metrics/checkmk.py:349
 msgid "Pending updates"
 msgstr "Anstehende Updates"
 
@@ -49420,7 +49632,7 @@ msgstr ""
 "Fehler beim erzeugen des Dashlets %d vom Typ %s: %s. Prüfen Sie <tt>var/log/"
 "web.log</tt> um weitere Informationen zu erhalten."
 
-#: ../cmk/gui/sidebar.py:623 ../cmk/gui/pagetypes.py:1736
+#: ../cmk/gui/sidebar.py:620 ../cmk/gui/pagetypes.py:1736
 #: ../cmk/gui/plugins/sidebar/tactical_overview.py:160
 msgid "Problems"
 msgstr "Probleme"
@@ -50065,7 +50277,7 @@ msgstr "Name der Warteschlange"
 msgid "Queued"
 msgstr "Länge der Warteschlange"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:81
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:83
 #, fuzzy
 msgid "Queued alerts"
 msgstr "Länge der Warteschlange"
@@ -50076,7 +50288,7 @@ msgstr "Länge der Warteschlange"
 msgid "Queued for update"
 msgstr "Eingereihte Arbeitsanfragen"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:80
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:82
 #, fuzzy
 msgid "Queued notifications"
 msgstr "Regelbasierte Alarmierung"
@@ -50114,7 +50326,7 @@ msgstr "Schnellsuche"
 msgid "Quick setup"
 msgstr "Schnellsuche"
 
-#: ../cmk/gui/plugins/sidebar/search.py:79
+#: ../cmk/gui/plugins/sidebar/search.py:635
 msgid "Quicksearch"
 msgstr "Schnellsuche"
 
@@ -51123,7 +51335,7 @@ msgstr "Zurückgewiesene Sitzungen"
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:756
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:1016
 #: ../cmk/gui/cee/reporting.py:1056 ../cmk/gui/cee/reporting.py:1496
-#: ../cmk/gui/cee/reporting.py:2458 ../cmk/gui/sidebar.py:911
+#: ../cmk/gui/cee/reporting.py:2458 ../cmk/gui/sidebar.py:908
 #: ../cmk/gui/pagetypes.py:1316 ../cmk/gui/wato/mkeventd.py:1621
 #: ../cmk/gui/wato/mkeventd.py:1987 ../cmk/gui/wato/mkeventd.py:2118
 #: ../cmk/gui/wato/mkeventd.py:2254 ../cmk/gui/wato/mkeventd.py:2376
@@ -52275,7 +52487,7 @@ msgid "Restrict to n<sup>th</sup> to m<sup>th</sup> notification (escalation)"
 msgstr ""
 "Beschränke Alarme (Eskalationen) auf n<sup>th</sup> bis m<sup>th</sup>."
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:889
+#: ../cmk/gui/plugins/wato/ac_tests.py:1012
 #, fuzzy
 #| msgid "The source IP address does not match."
 msgid "Restricted address missmatch"
@@ -52578,7 +52790,7 @@ msgstr "Regel"
 msgid "Rule %d in %s"
 msgstr "Regel %d in %s"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:832
+#: ../cmk/gui/plugins/wato/ac_tests.py:955
 #, python-format
 msgid "Rule %d in Folder %s is affected"
 msgstr "Regel %d im Ordner %s ist betroffen"
@@ -52634,7 +52846,7 @@ msgstr "Regel-Kontaktgruppen"
 msgid "Rule does not match: %s"
 msgstr "Regel trifft nich zu: %s"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:435
+#: ../cmk/gui/plugins/metrics/checkmk.py:449
 msgid "Rule efficiency"
 msgstr "Regeleffizienz"
 
@@ -52708,7 +52920,7 @@ msgstr "Regel-ID"
 msgid "Rule:"
 msgstr "Regel:"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:859
+#: ../cmk/gui/plugins/wato/ac_tests.py:982
 msgid "Rulebased notifications are activated"
 msgstr "Die regelbasierte Alarmierung ist aktiv"
 
@@ -53769,7 +53981,7 @@ msgstr "Skript wurde ausgeführt"
 msgid "Script pattern"
 msgstr "Skriptmuster"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:269
+#: ../cmk/gui/plugins/metrics/checkmk.py:275
 msgid "Scripts"
 msgstr "Skripten"
 
@@ -53780,7 +53992,7 @@ msgstr ""
 #: ../cmk/gui/table.py:431 ../cmk/gui/wato/pages/rulesets.py:546
 #: ../cmk/gui/wato/pages/rulesets.py:1101 ../cmk/gui/wato/pages/search.py:49
 #: ../cmk/gui/wato/pages/folders.py:208 ../cmk/gui/page_menu.py:693
-#: ../cmk/gui/plugins/sidebar/search.py:99
+#: ../cmk/gui/plugins/sidebar/search.py:652
 #: ../cmk/gui/plugins/views/mobile.py:112
 #: ../cmk/gui/plugins/views/mobile.py:362
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:114
@@ -54617,7 +54829,7 @@ msgstr "Servicekommentare"
 msgid "Service Costs per Day"
 msgstr "Servicekosten pro Tag"
 
-#: ../cmk/gui/plugins/sidebar/search.py:884
+#: ../cmk/gui/plugins/sidebar/search.py:904
 #: ../cmk/gui/plugins/visuals/infos.py:62
 #: ../cmk/gui/plugins/wato/active_checks.py:239
 #: ../cmk/gui/plugins/wato/active_checks.py:287
@@ -54805,7 +55017,7 @@ msgstr "Servicecheck Timeout (Microcore)"
 msgid "Service check type"
 msgstr "Servicecheck Typ"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:70
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:71
 #: ../cmk/gui/plugins/sidebar/master_control.py:70
 msgid "Service checks"
 msgstr "Servicechecks"
@@ -55161,7 +55373,7 @@ msgstr "Service-Level"
 msgid "ServiceNow URL"
 msgstr "Servicenow URL"
 
-#: ../cmk/gui/plugins/sidebar/search.py:809
+#: ../cmk/gui/plugins/sidebar/search.py:829
 #: ../cmk/gui/plugins/views/sorters.py:277
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:429
 msgid "Servicegroup"
@@ -55203,8 +55415,8 @@ msgstr "Servicelevel"
 #: ../cmk/gui/plugins/views/builtin.py:647
 #: ../cmk/gui/plugins/views/builtin.py:1081
 #: ../cmk/gui/plugins/visuals/infos.py:58
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:202
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:206
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:215
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:219
 #: ../cmk/gui/plugins/wato/bi_config.py:398
 #: ../cmk/gui/plugins/wato/datasource_programs.py:273
 #: ../cmk/gui/plugins/wato/datasource_programs.py:414
@@ -55358,7 +55570,7 @@ msgstr "Schwellwerte setzen"
 msgid "Set Levels for the Check Latency Time"
 msgstr "Obere Schwellen für Bucketgröße"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:105
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:118
 #, fuzzy
 msgid "Set Levels for the Check helper Usage"
 msgstr "Schwellwerte für die Tablespacebelegung"
@@ -55368,39 +55580,44 @@ msgstr "Schwellwerte für die Tablespacebelegung"
 msgid "Set Levels for the Checkmk Latency Time"
 msgstr "Obere Schwellen für Bucketgröße"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:170
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:183
 #, fuzzy
 msgid "Set Levels for the Checkmk Livestatus Overflows"
 msgstr ""
 "Der Loglevel für die Behandlung von Livestatus-Anfragen im Check_MK Micro "
 "Core"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:157
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:170
 #, fuzzy
 msgid "Set Levels for the Checkmk Livestatus Usage"
 msgstr "Obere Schwellen für die Lizenznutzung"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:118
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:131
 #, fuzzy
 msgid "Set Levels for the Checkmk helper Usage"
 msgstr "Obere Schwellen für die Lizenznutzung"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:144
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:105
+#, fuzzy
+msgid "Set Levels for the Fetcher Latency Time"
+msgstr "Obere Schwellen für Bucketgröße"
+
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:157
 #, fuzzy
 msgid "Set Levels for the checker helper Usage"
 msgstr "Schwellwerte für die Tablespacebelegung"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:131
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:144
 #, fuzzy
 msgid "Set Levels for the fetcher helper Usage"
 msgstr "Schwellwerte für die Tablespacebelegung"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:185
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:198
 #, fuzzy
 msgid "Set Levels for the number of Hosts"
 msgstr "Schwellwerte für die Anzahl Druckerjobs"
 
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:198
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:211
 #, fuzzy
 msgid "Set Levels for the number of Services"
 msgstr "Schwellwerte für die Anzahl Druckerjobs"
@@ -56140,13 +56357,13 @@ msgstr "Alias und Beschreibung anzeigen"
 msgid "Show alias if set, else description"
 msgstr "Zeige den Alias, falls dieser gesetzt ist, ansonsten die Beschreibung"
 
-#: ../cmk/gui/plugins/sidebar/main_menu.py:161
+#: ../cmk/gui/plugins/sidebar/main_menu.py:164
 #, fuzzy
 #| msgid "show all"
 msgid "Show all"
 msgstr "Alle anzeigen"
 
-#: ../cmk/gui/plugins/sidebar/main_menu.py:146
+#: ../cmk/gui/plugins/sidebar/main_menu.py:149
 #, fuzzy, python-format
 #| msgid "Show all hosts"
 msgid "Show all %s topics"
@@ -56816,7 +57033,7 @@ msgstr "Simulationsmodus"
 msgid "Simultanous activation of changes"
 msgstr "Simultane Aktivierung von Änderungen"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:785
+#: ../cmk/gui/plugins/wato/ac_tests.py:908
 msgid ""
 "Since 1.6.0i1 broken GUI extensions don't block the whole GUI initialization "
 "anymore. Instead of this, the errors are logged in <tt>var/log/web.log</tt>. "
@@ -56984,7 +57201,7 @@ msgstr "Gültigkeit des Instanz-Zertifikats"
 msgid "Site connection"
 msgstr "Instanzverbindung"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:873
+#: ../cmk/gui/plugins/wato/ac_tests.py:996
 #, fuzzy
 #| msgid "Site connection"
 msgid "Site connectivity"
@@ -57128,7 +57345,7 @@ msgstr "Größe der Active-Mailqueue"
 msgid "Size of deferred mail queue"
 msgstr "Größe der Deferred-Mailqueue"
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:737
+#: ../cmk/gui/plugins/wato/ac_tests.py:860
 msgid "Size of extensions"
 msgstr "Größe von Erweiterungen"
 
@@ -57309,7 +57526,7 @@ msgstr "Rauchmelder"
 msgid "Snapin"
 msgstr "Element"
 
-#: ../cmk/gui/sidebar.py:941
+#: ../cmk/gui/sidebar.py:938
 #, fuzzy, python-format
 #| msgid "Site %s is dead"
 msgid "Snapin %s is already enabled"
@@ -57319,7 +57536,7 @@ msgstr "Die Instanz %s ist nicht erreichbar"
 msgid "Snapin Dashlet"
 msgstr "Snapin Dashlet"
 
-#: ../cmk/gui/sidebar.py:833
+#: ../cmk/gui/sidebar.py:830
 msgid "Snapin type"
 msgstr "Element"
 
@@ -59883,7 +60100,7 @@ msgstr "Stil"
 msgid "Style of connection lines"
 msgstr "Stil der Verbindungsverzweigungen"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:263
+#: ../cmk/gui/plugins/metrics/checkmk.py:269
 msgid "Styles"
 msgstr "Stile"
 
@@ -60415,7 +60632,7 @@ msgstr "Syslog-Priority"
 msgid "Syslog-like message logging"
 msgstr "Meldungen in wie Syslog in Dateien schreiben"
 
-#: ../cmk/gui/sidebar.py:615 ../cmk/gui/plugins/metrics/cpu.py:168
+#: ../cmk/gui/sidebar.py:612 ../cmk/gui/plugins/metrics/cpu.py:168
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:102
 msgid "System"
 msgstr "System"
@@ -61453,18 +61670,6 @@ msgstr ""
 "Die Check_MK Managed Services Edition kann nur mit anderen Instanzen "
 "verbunden werden, die ebenfalls die CME verwenden."
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:810
-msgid ""
-"The Check_MK agent is queried via the datasource program for ESX systems. "
-"This is option will be deleted in a future release. Please configure the "
-"host to contact the Check_MK agent and the configured datasource programs "
-"instead."
-msgstr ""
-"Der Check_MK-Agent wird durch das Datenquellenprogramm für ESX-Systeme "
-"aufgerufen. Diese Option wird in Zukunft nicht mehr unterstützt. Es wird "
-"empfohlen den Aufruf des Check_MK-Agenten direkt über die Datenquellen des "
-"Hosts zu konfigurieren."
-
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/real_time_checks.py:44
 msgid ""
 "The Check_MK agent supports a feature called Real-Time Checks where it sends "
@@ -61513,12 +61718,30 @@ msgid ""
 "restriction ruleset. See ruleset \"Allowed agent access via IP address\"."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:807
+#: ../cmk/gui/plugins/wato/ac_tests.py:930
 #, fuzzy
 #| msgid "The Check_MK agent is queried via the ESX datasource program"
 msgid "The Checkmk agent is queried via the ESX datasource program"
 msgstr ""
 "Den Check_MK-Agenten wird über das ESX Datenquellenprogramm kontaktiert"
+
+#: ../cmk/gui/plugins/wato/ac_tests.py:933
+#, fuzzy
+#| msgid ""
+#| "The Check_MK agent is queried via the datasource program for ESX systems. "
+#| "This is option will be deleted in a future release. Please configure the "
+#| "host to contact the Check_MK agent and the configured datasource programs "
+#| "instead."
+msgid ""
+"The Checkmk agent is queried via the datasource program for ESX systems. "
+"This is option will be deleted in a future release. Please configure the "
+"host to contact the Checkmk agent and the configured datasource programs "
+"instead."
+msgstr ""
+"Der Check_MK-Agent wird durch das Datenquellenprogramm für ESX-Systeme "
+"aufgerufen. Diese Option wird in Zukunft nicht mehr unterstützt. Es wird "
+"empfohlen den Aufruf des Check_MK-Agenten direkt über die Datenquellen des "
+"Hosts zu konfigurieren."
 
 #: ../cmk/gui/wato/pages/bulk_discovery.py:144
 msgid ""
@@ -61801,11 +62024,17 @@ msgstr ""
 "Namenskonflikt müssen wie üblich nur ihren normalen Benutzernamen angeben."
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:109
+#, fuzzy
+#| msgid ""
+#| "The Livestatus Proxy Daemon is available with the Check_MK Enterprise "
+#| "Edition and improves the management of the inter site connections using "
+#| "livestatus. Using the Livestatus Proxy Daemon improves the responsiveness "
+#| "and performance of your GUI and will decrease resource usage."
 msgid ""
-"The Livestatus Proxy Daemon is available with the Check_MK Enterprise "
-"Edition and improves the management of the inter site connections using "
-"livestatus. Using the Livestatus Proxy Daemon improves the responsiveness "
-"and performance of your GUI and will decrease resource usage."
+"The Livestatus Proxy Daemon is available with the Checkmk Enterprise Edition "
+"and improves the management of the inter site connections using livestatus. "
+"Using the Livestatus Proxy Daemon improves the responsiveness and "
+"performance of your GUI and will decrease resource usage."
 msgstr ""
 "Der Livestatus-Proxy-Daemon ist in der Check_MK Enterprise Edition enthalten "
 "und verbessert die Behandlung der Verbindungen zwischen mehreren Instanzen. "
@@ -62079,7 +62308,7 @@ msgstr ""
 "Aktion dieses Ereignisses wird verzögert in der Hoffnung dass das Ereignis "
 "abbricht."
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:727
+#: ../cmk/gui/plugins/wato/ac_tests.py:850
 #, python-format
 msgid "The active check services have an average check latency of %.3fs."
 msgstr "Die aktiven Checks haben eine durchschnittliche Latenz von %.3fs."
@@ -62517,6 +62746,19 @@ msgstr ""
 "Die Option für das Setzen von Host-Wartungszeiten funktioniert nicht beim "
 "Entfernen von Wartungszeiten."
 
+#: ../cmk/gui/plugins/wato/ac_tests.py:774
+#, fuzzy
+#| msgid ""
+#| "The helper usage is below 50%, you may decrease the number of Check_MK "
+#| "helpers to reduce the memory consumption."
+msgid ""
+"The checker usage is below 50%, you may decrease the number of checkers to "
+"reduce the memory consumption."
+msgstr ""
+"Die Hilfsprozess-Auslastung ist unter 50%. Sie könnten die Anzahl der "
+"Check_MK-Check-Hilfsprozesse reduzieren um die Belegung des Arbeitsspeichers "
+"zu reduzieren."
+
 #: ../cmk/gui/plugins/wato/check_parameters/f5_bigip_vserver.py:129
 msgid "The children pool member(s) are down if VServer is not available"
 msgstr ""
@@ -62792,18 +63034,45 @@ msgstr ""
 "versetzen, wurden quittiert. "
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:643
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "The current Check_MK helper usage is %.2f%%. The Check_MK services have "
+#| "an average check latency of %.3fs."
 msgid ""
-"The current Check_MK helper usage is %.2f%%. The Check_MK services have an "
+"The current Checkmk helper usage is %.2f%%. The Checkmk services have an "
 "average check latency of %.3fs."
 msgstr ""
 "Die aktuelle Auslastung der Check_MK-Check-Hilfsprozesse ist %.2f%%. Die "
 "Check_MK-Services haben eine durchschnittliche Latenz von %.3fs."
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:720
+#: ../cmk/gui/plugins/wato/ac_tests.py:843
 #, python-format
 msgid "The current check helper usage is %.2f%%"
 msgstr "Die aktuelle Auslastung der Check-Hilfsprozesse ist %.2f%%"
+
+#: ../cmk/gui/plugins/wato/ac_tests.py:765
+#, fuzzy, python-format
+#| msgid ""
+#| "The current Check_MK helper usage is %.2f%%. The Check_MK services have "
+#| "an average check latency of %.3fs."
+msgid ""
+"The current checker usage is %.2f%%, The checks have an average check "
+"latency of %.3fs."
+msgstr ""
+"Die aktuelle Auslastung der Check_MK-Check-Hilfsprozesse ist %.2f%%. Die "
+"Check_MK-Services haben eine durchschnittliche Latenz von %.3fs."
+
+#: ../cmk/gui/plugins/wato/ac_tests.py:703
+#, fuzzy, python-format
+#| msgid ""
+#| "The current Check_MK helper usage is %.2f%%. The Check_MK services have "
+#| "an average check latency of %.3fs."
+msgid ""
+"The current fetcher usage is %.2f%%. The checks have an average check "
+"latency of %.3fs."
+msgstr ""
+"Die aktuelle Auslastung der Check_MK-Check-Hilfsprozesse ist %.2f%%. Die "
+"Check_MK-Services haben eine durchschnittliche Latenz von %.3fs."
 
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:1683
 msgid ""
@@ -63096,6 +63365,19 @@ msgstr ""
 "Der Ausdruck \"%s\" nutzt eine andere Konsolidierungsfunktion als der Graph "
 "(%s). Dies ist nicht erlaubt."
 
+#: ../cmk/gui/plugins/wato/ac_tests.py:712
+#, fuzzy
+#| msgid ""
+#| "The helper usage is below 50%, you may decrease the number of Check_MK "
+#| "helpers to reduce the memory consumption."
+msgid ""
+"The fetcher usage is below 50%, you may decrease the number of fetchers to "
+"reduce the memory consumption."
+msgstr ""
+"Die Hilfsprozess-Auslastung ist unter 50%. Sie könnten die Anzahl der "
+"Check_MK-Check-Hilfsprozesse reduzieren um die Belegung des Arbeitsspeichers "
+"zu reduzieren."
+
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_filestats.py:119
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_logwatch.py:270
 #, python-format
@@ -63358,8 +63640,12 @@ msgstr ""
 "verschoben werden. Der Standard ist, dass sie nicht aufgeräumt werden."
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:651
+#, fuzzy
+#| msgid ""
+#| "The helper usage is below 50%, you may decrease the number of Check_MK "
+#| "helpers to reduce the memory consumption."
 msgid ""
-"The helper usage is below 50%, you may decrease the number of Check_MK "
+"The helper usage is below 50%, you may decrease the number of Checkmk "
 "helpers to reduce the memory consumption."
 msgstr ""
 "Die Hilfsprozess-Auslastung ist unter 50%. Sie könnten die Anzahl der "
@@ -66807,14 +67093,14 @@ msgstr ""
 "innerhalb der letzten 60 Minuten. Sie können Schwellwerte für hoch und tief "
 "setzen."
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:876
+#: ../cmk/gui/plugins/wato/ac_tests.py:999
 msgid "This check returns CRIT if the connection to the remote site failed."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:893
+#: ../cmk/gui/plugins/wato/ac_tests.py:1016
 msgid ""
 "This check returns CRIT if the parameter <b>State in case of restricted "
-"address missmatch</b> in the ruleset <b>Status of the Check_MK services</b> "
+"address missmatch</b> in the ruleset <b>Status of the Checkmk services</b> "
 "is configured and differs from default state <b>WARN</b>. With the above "
 "setting you can overwrite the default service state. This will help you to "
 "reduce above warnings during the update process of your Checkmk sites and "
@@ -70677,7 +70963,7 @@ msgstr "Zeit in GC"
 msgid "Time spent collecting garbage in percent"
 msgstr "Speicherbelegung in Prozent"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:363
+#: ../cmk/gui/plugins/metrics/checkmk.py:377
 msgid "Time spent for various page types"
 msgstr "Zeitstatistik für verschiedene Seiten"
 
@@ -70685,17 +70971,17 @@ msgstr "Zeitstatistik für verschiedene Seiten"
 msgid "Time spent in GC"
 msgstr "Zeit in GC"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:144
+#: ../cmk/gui/plugins/metrics/checkmk.py:150
 #, fuzzy
 #| msgid "Time spent waiting for Check_MK agent"
 msgid "Time spent waiting for Checkmk agent"
 msgstr "Wartezeit auf Antwort von Check_MK-Agent"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:150
+#: ../cmk/gui/plugins/metrics/checkmk.py:156
 msgid "Time spent waiting for SNMP responses"
 msgstr "Wartezeit auf Antwort von SNMP-Agent"
 
-#: ../cmk/gui/plugins/metrics/checkmk.py:156
+#: ../cmk/gui/plugins/metrics/checkmk.py:162
 msgid "Time spent waiting for special agent"
 msgstr "Wartezeit auf Antwort von Spezialgent"
 
@@ -72591,7 +72877,7 @@ msgstr ""
 "Kann SLA Daten nicht anzeigen. Das Datenlimit von %d Einträgen wurde "
 "überschritten"
 
-#: ../cmk/gui/cee/plugins/sidebar/cmc.py:58
+#: ../cmk/gui/cee/plugins/sidebar/cmc.py:59
 msgid ""
 "Unable to fetch CMC stats via livestatus. Maybe you are not using CMC as "
 "your core in all of your sites. In this case this snapin is useless."
@@ -77330,8 +77616,9 @@ msgstr "Warnung bei Verwendung von"
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:147
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:160
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:173
-#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:188
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:186
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:201
+#: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:214
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_snapshots.py:29
 #: ../cmk/gui/plugins/wato/check_parameters/ibm_svc_host.py:55
 #: ../cmk/gui/plugins/wato/check_parameters/ibm_svc_host.py:69
@@ -78853,12 +79140,19 @@ msgstr ""
 "werden Sie diese Funktion nie benötigen."
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:341
+#, fuzzy
+#| msgid ""
+#| "When using the regular HTTP protocol all data transfered between the "
+#| "Check_MK and the clients using the GUI is sent over the network in plain "
+#| "text (unencrypted). This includes the passwords users enter to "
+#| "authenticate with Check_MK and other sensitive information. It is highly "
+#| "recommended to enable SSL for securing the transported data."
 msgid ""
-"When using the regular HTTP protocol all data transfered between the "
-"Check_MK and the clients using the GUI is sent over the network in plain "
-"text (unencrypted). This includes the passwords users enter to authenticate "
-"with Check_MK and other sensitive information. It is highly recommended to "
-"enable SSL for securing the transported data."
+"When using the regular HTTP protocol all data transfered between the Checkmk "
+"and the clients using the GUI is sent over the network in plain text "
+"(unencrypted). This includes the passwords users enter to authenticate with "
+"Checkmk and other sensitive information. It is highly recommended to enable "
+"SSL for securing the transported data."
 msgstr ""
 "Wenn Sie das reguläre HTTP-Protokoll nutzen, werden die Daten zwischen dem "
 "Client und der Oberfläche im Klartext übertragen (unverschlüsselt). Dies "
@@ -78867,12 +79161,19 @@ msgstr ""
 "zu nutzen."
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:243
+#, fuzzy
+#| msgid ""
+#| "When using the regular LDAP protocol all data transfered between the "
+#| "Check_MK and LDAP servers is sent over the network in plain text "
+#| "(unencrypted). This also includes the passwords users enter to "
+#| "authenticate with the LDAP Server. It is highly recommended to enable SSL "
+#| "for securing the transported data."
 msgid ""
-"When using the regular LDAP protocol all data transfered between the "
-"Check_MK and LDAP servers is sent over the network in plain text "
-"(unencrypted). This also includes the passwords users enter to authenticate "
-"with the LDAP Server. It is highly recommended to enable SSL for securing "
-"the transported data."
+"When using the regular LDAP protocol all data transfered between the Checkmk "
+"and LDAP servers is sent over the network in plain text (unencrypted). This "
+"also includes the passwords users enter to authenticate with the LDAP "
+"Server. It is highly recommended to enable SSL for securing the transported "
+"data."
 msgstr ""
 "Wenn Sie das reguläre LDAP-Protokoll nutzen, werden die Daten zwischen dem "
 "Client und der Oberfläche im Klartext übertragen (unverschlüsselt). Dies "
@@ -79959,7 +80260,7 @@ msgstr "Sie dürfen %s nicht bestätigen"
 msgid "You are not allowed to activate changes of other users."
 msgstr "Sie können Änderungen anderer Benutzer nicht anwenden."
 
-#: ../cmk/gui/sidebar.py:876 ../cmk/gui/sidebar.py:933
+#: ../cmk/gui/sidebar.py:873 ../cmk/gui/sidebar.py:930
 msgid "You are not allowed to change the sidebar."
 msgstr "Sie dürfen die Seitenleiste nicht verändern."
 
@@ -81097,10 +81398,13 @@ msgid "You have %d users configured"
 msgstr "Sie haben %d Nutzer konfiguriert"
 
 #: ../cmk/gui/plugins/wato/ac_tests.py:327
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "You have %d users configured. Please review the number of users you have "
+#| "configured in Check_MK."
 msgid ""
 "You have %d users configured. Please review the number of users you have "
-"configured in Check_MK."
+"configured in Checkmk."
 msgstr ""
 "Sie haben %d Nutzer konfiguriert. Bitte prüfen Sie die Anzahl der Nutzer von "
 "Check_MK."
@@ -81680,7 +81984,7 @@ msgstr ""
 msgid "Your end date is before your start date."
 msgstr "Ihr Enddatum ist vor dem Startdatum."
 
-#: ../cmk/gui/plugins/wato/ac_tests.py:767
+#: ../cmk/gui/plugins/wato/ac_tests.py:890
 #, python-format
 msgid "Your extensions have a size of %s."
 msgstr "Ihre Erweitrungen haben eine Größe von %s."
