@@ -3414,7 +3414,7 @@ msgstr "Zugriff auf Ereignisstatus über TCP"
 msgid "Access to the Event Console"
 msgstr "Zugriff auf Event Console"
 
-#: ../cmk/gui/plugins/sidebar/wato.py:145
+#: ../cmk/gui/plugins/sidebar/wato.py:146
 #, fuzzy
 #| msgid "Access to WATO modules with only icons (saves space)"
 msgid "Access to the setup menu with only icons (saves space)"
@@ -11123,8 +11123,8 @@ msgstr "Graphzeitbereich ändern auf: %s"
 msgid "Change infotext in check output"
 msgstr "Infotext in der Ausgabe des Checks ändern"
 
-#: ../cmk/gui/wato/user_profile.py:51 ../cmk/gui/wato/user_profile.py:234
-#: ../cmk/gui/wato/user_profile.py:513
+#: ../cmk/gui/wato/user_profile.py:51 ../cmk/gui/wato/user_profile.py:235
+#: ../cmk/gui/wato/user_profile.py:514
 #, fuzzy
 #| msgid "Change Password"
 msgid "Change password"
@@ -16611,7 +16611,7 @@ msgstr "Strom"
 msgid "Current O2 percentage"
 msgstr "Aktueller O2-Prozentsatz"
 
-#: ../cmk/gui/wato/user_profile.py:326
+#: ../cmk/gui/wato/user_profile.py:327
 msgid "Current Password"
 msgstr "Aktuelles Passwort"
 
@@ -19566,7 +19566,7 @@ msgstr ""
 "Direkter Zugriff zu global definierten Berichten, Auswahl des "
 "Standardberichtzeitraums, Verknüpfung zum Berichteditor."
 
-#: ../cmk/gui/plugins/sidebar/wato.py:118
+#: ../cmk/gui/plugins/sidebar/wato.py:119
 msgid "Direct access to the setup menu"
 msgstr ""
 
@@ -22142,7 +22142,7 @@ msgstr ""
 #: ../cmk/gui/dashboard.py:780 ../cmk/gui/cee/plugins/sidebar/reporting.py:75
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:1195
 #: ../cmk/gui/pagetypes.py:1074 ../cmk/gui/visuals.py:558
-#: ../cmk/gui/plugins/sidebar/views.py:46
+#: ../cmk/gui/plugins/sidebar/views.py:47
 #: ../cmk/gui/plugins/sidebar/bookmarks.py:266
 #: ../cmk/gui/plugins/sidebar/nagvis_maps.py:120
 #: ../cmk/gui/plugins/sidebar/dashboards.py:43
@@ -22356,8 +22356,8 @@ msgstr "Benachrichtigungsregel %d des Benutzers %s bearbeiten"
 msgid "Edit parameter rule set for this check type"
 msgstr "Parameter-Regelsatz für diesen Checktyp editieren"
 
-#: ../cmk/gui/wato/user_profile.py:60 ../cmk/gui/wato/user_profile.py:345
-#: ../cmk/gui/wato/user_profile.py:520
+#: ../cmk/gui/wato/user_profile.py:60 ../cmk/gui/wato/user_profile.py:346
+#: ../cmk/gui/wato/user_profile.py:521
 #, fuzzy
 #| msgid "Edit User Profile"
 msgid "Edit profile"
@@ -24563,7 +24563,7 @@ msgstr "Ressourcen explizit auflisten"
 
 #: ../cmk/gui/cee/plugins/metrics/graphs.py:876 ../cmk/gui/views.py:727
 #: ../cmk/gui/wato/pages/audit_log.py:74 ../cmk/gui/wato/pages/audit_log.py:77
-#: ../cmk/gui/visuals.py:1918 ../cmk/gui/plugins/sidebar/views.py:45
+#: ../cmk/gui/visuals.py:1918 ../cmk/gui/plugins/sidebar/views.py:46
 #: ../cmk/gui/plugins/sidebar/dashboards.py:42
 #: ../cmk/gui/plugins/views/availability.py:390
 msgid "Export"
@@ -26043,7 +26043,7 @@ msgstr "Ordnereigenschaften"
 msgid "Folder: %s"
 msgstr "Ordner: %s"
 
-#: ../cmk/gui/wato/pages/folders.py:128 ../cmk/gui/plugins/sidebar/wato.py:357
+#: ../cmk/gui/wato/pages/folders.py:128 ../cmk/gui/plugins/sidebar/wato.py:358
 msgid "Folders"
 msgstr "Ordner"
 
@@ -28247,7 +28247,7 @@ msgstr ""
 "gelten sollten. <b>Hinweis</b>: Das ist nur sinnvoll, wenn es sich um einen "
 "Konfigurations-Slave handelt."
 
-#: ../cmk/gui/wato/user_profile.py:429
+#: ../cmk/gui/wato/user_profile.py:430
 msgid ""
 "Here you can configure how you want to be notified about host and service "
 "problems and other monitoring events."
@@ -30122,7 +30122,7 @@ msgstr "Zu übersetzende Hostnamen"
 #: ../cmk/gui/wato/pages/folders.py:68 ../cmk/gui/wato/pages/folders.py:110
 #: ../cmk/gui/wato/pages/folders.py:771 ../cmk/gui/wato/pages/folders.py:812
 #: ../cmk/gui/plugins/metrics/network.py:1723
-#: ../cmk/gui/plugins/sidebar/wato.py:289
+#: ../cmk/gui/plugins/sidebar/wato.py:290
 #: ../cmk/gui/plugins/sidebar/tactical_overview.py:75
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:439
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:465
@@ -32981,7 +32981,7 @@ msgstr ""
 "<tt>cmk-update-agent -v</tt> auf. Auf Linux müssen Sie dafür <tt>root</tt> "
 "sein. Auf Windows finden Sie das Skript im Unterverzeichnis <tt>plugins</tt>."
 
-#: ../cmk/gui/wato/user_profile.py:118
+#: ../cmk/gui/wato/user_profile.py:119
 msgid ""
 "In order to activate your changes available on all remote sites, your user "
 "profile needs to be replicated to the remote sites. This is done on this "
@@ -33911,7 +33911,7 @@ msgstr ""
 msgid "Integration Key"
 msgstr "Integrationsschlüssel"
 
-#: ../cmk/gui/plugins/sidebar/search.py:640
+#: ../cmk/gui/plugins/sidebar/search.py:641
 msgid ""
 "Interactive search field for direct access to hosts, services, host- and "
 "servicegroups.<br>You can use the following filters:<br> <i>h:</i> Host, "
@@ -36905,7 +36905,7 @@ msgstr "Links"
 msgid "Links to all dashboards"
 msgstr "Links zu allen Übersichten"
 
-#: ../cmk/gui/plugins/sidebar/views.py:37
+#: ../cmk/gui/plugins/sidebar/views.py:38
 msgid "Links to global views and dashboards"
 msgstr "Links zu globalen Ansichten und Übersichten"
 
@@ -41318,8 +41318,8 @@ msgstr "Weitere Informationen befinden sich in %s"
 msgid "More information can be found in ~/var/log/web.log"
 msgstr "Weitere Informationen finden sich in ~/var/log/web.log"
 
-#: ../cmk/gui/plugins/sidebar/search.py:590
-#: ../cmk/gui/plugins/sidebar/search.py:594
+#: ../cmk/gui/plugins/sidebar/search.py:591
+#: ../cmk/gui/plugins/sidebar/search.py:595
 #, python-format
 msgid "More than %d results"
 msgstr "Mehr als %d Ergebnisse"
@@ -41789,7 +41789,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:348
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:369
 #: ../cmk/gui/cee/ntop/pages.py:282 ../cmk/gui/cee/ntop/pages.py:434
-#: ../cmk/gui/wato/user_profile.py:418 ../cmk/gui/wato/pages/timeperiods.py:307
+#: ../cmk/gui/wato/user_profile.py:419 ../cmk/gui/wato/pages/timeperiods.py:307
 #: ../cmk/gui/wato/pages/rulesets.py:1182 ../cmk/gui/wato/pages/groups.py:171
 #: ../cmk/gui/wato/pages/groups.py:256 ../cmk/gui/wato/pages/icons.py:165
 #: ../cmk/gui/wato/pages/roles.py:212
@@ -42515,11 +42515,11 @@ msgstr "Neue Vorhersage"
 msgid "New Graph"
 msgstr "Neuer Graph"
 
-#: ../cmk/gui/wato/user_profile.py:329
+#: ../cmk/gui/wato/user_profile.py:330
 msgid "New Password"
 msgstr "Neues Passwort"
 
-#: ../cmk/gui/wato/user_profile.py:332
+#: ../cmk/gui/wato/user_profile.py:333
 msgid "New Password Confirmation"
 msgstr "Neues Passwort bestätigen"
 
@@ -43561,7 +43561,7 @@ msgstr "Nicht in Instanz ausgeführt!"
 msgid "Not locked"
 msgstr "Nicht gesperrt"
 
-#: ../cmk/gui/wato/user_profile.py:129 ../cmk/gui/wato/user_profile.py:188
+#: ../cmk/gui/wato/user_profile.py:130 ../cmk/gui/wato/user_profile.py:189
 msgid "Not logged in."
 msgstr "Nicht angemeldet."
 
@@ -43818,7 +43818,7 @@ msgstr "Alarmierungsregel"
 msgid "Notification rule of user '%s'"
 msgstr "Benachrichtigungsregel des Benutzers'%s'"
 
-#: ../cmk/gui/wato/user_profile.py:83 ../cmk/gui/wato/user_profile.py:528
+#: ../cmk/gui/wato/user_profile.py:83 ../cmk/gui/wato/user_profile.py:529
 #: ../cmk/gui/wato/pages/notifications.py:343
 #: ../cmk/gui/wato/pages/notifications.py:450
 #: ../cmk/gui/wato/pages/notifications.py:877
@@ -43848,7 +43848,7 @@ msgstr "Alarmierungssystem"
 msgid "Notification time period"
 msgstr "Zeitperiode für Alarme"
 
-#: ../cmk/gui/wato/user_profile.py:427
+#: ../cmk/gui/wato/user_profile.py:428
 #: ../cmk/gui/wato/pages/notifications.py:1152
 #: ../cmk/gui/wato/pages/users.py:438 ../cmk/gui/wato/pages/users.py:564
 #: ../cmk/gui/wato/pages/users.py:942
@@ -49805,7 +49805,7 @@ msgstr "Maximalkapazität"
 msgid "Product"
 msgstr "Produkt"
 
-#: ../cmk/gui/wato/user_profile.py:163
+#: ../cmk/gui/wato/user_profile.py:164
 #, python-format
 msgid "Profile changed (sync failed: %s)"
 msgstr "Profile geändert (Sync gescheitert: %s)"
@@ -50320,13 +50320,13 @@ msgstr "Zu überwachende Instanzen"
 msgid "Quick search"
 msgstr "Schnellsuche"
 
-#: ../cmk/gui/plugins/sidebar/wato.py:141
+#: ../cmk/gui/plugins/sidebar/wato.py:142
 #, fuzzy
 #| msgid "Quicksearch"
 msgid "Quick setup"
 msgstr "Schnellsuche"
 
-#: ../cmk/gui/plugins/sidebar/search.py:635
+#: ../cmk/gui/plugins/sidebar/search.py:636
 msgid "Quicksearch"
 msgstr "Schnellsuche"
 
@@ -51334,7 +51334,7 @@ msgstr "Zurückgewiesene Sitzungen"
 #: ../cmk/gui/wato/mkeventd.py:1987 ../cmk/gui/wato/mkeventd.py:2118
 #: ../cmk/gui/wato/mkeventd.py:2254 ../cmk/gui/wato/mkeventd.py:2376
 #: ../cmk/gui/wato/mkeventd.py:2559 ../cmk/gui/wato/mkeventd.py:2737
-#: ../cmk/gui/wato/user_profile.py:500
+#: ../cmk/gui/wato/user_profile.py:501
 #: ../cmk/gui/wato/pages/notifications.py:899
 #: ../cmk/gui/wato/pages/activate_changes.py:85
 #: ../cmk/gui/wato/pages/check_catalog.py:443
@@ -51990,7 +51990,7 @@ msgstr "Erweiterungen replizieren"
 msgid "Replicate extensions (MKPs and files in <tt>~/local/</tt>)"
 msgstr "Erweiterungen replizieren (MKPs und Dateien in <tt>~/local/</tt>)"
 
-#: ../cmk/gui/wato/user_profile.py:215
+#: ../cmk/gui/wato/user_profile.py:216
 #, fuzzy
 #| msgid "Replicate new User Profile"
 msgid "Replicate new user profile"
@@ -52004,15 +52004,15 @@ msgstr "Replikations Partner"
 msgid "Replication Slot Disk Usage"
 msgstr "Verwendung des Replikations-Slots für die Festplatte"
 
-#: ../cmk/gui/wato/user_profile.py:123
+#: ../cmk/gui/wato/user_profile.py:124
 msgid "Replication States"
 msgstr "Zustand der Replikation"
 
-#: ../cmk/gui/wato/user_profile.py:480
+#: ../cmk/gui/wato/user_profile.py:481
 msgid "Replication completed successfully."
 msgstr "Replikation erfolgreich abgeschlossen."
 
-#: ../cmk/gui/wato/user_profile.py:147
+#: ../cmk/gui/wato/user_profile.py:148
 msgid "Replication in progress"
 msgstr "Replikation läuft gerade"
 
@@ -53986,7 +53986,8 @@ msgstr ""
 #: ../cmk/gui/table.py:431 ../cmk/gui/wato/pages/rulesets.py:537
 #: ../cmk/gui/wato/pages/rulesets.py:1103 ../cmk/gui/wato/pages/search.py:49
 #: ../cmk/gui/wato/pages/folders.py:208 ../cmk/gui/page_menu.py:693
-#: ../cmk/gui/plugins/sidebar/search.py:652
+#: ../cmk/gui/plugins/sidebar/search.py:653
+#: ../cmk/gui/plugins/sidebar/search.py:1150
 #: ../cmk/gui/plugins/views/mobile.py:112
 #: ../cmk/gui/plugins/views/mobile.py:362
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:114
@@ -56134,7 +56135,7 @@ msgstr ""
 #: ../cmk/gui/wato/pages/audit_log.py:87
 #: ../cmk/gui/wato/pages/custom_attributes.py:449
 #: ../cmk/gui/wato/pages/ldap.py:101 ../cmk/gui/wato/pages/folders.py:150
-#: ../cmk/gui/notify.py:165 ../cmk/gui/plugins/sidebar/wato.py:114
+#: ../cmk/gui/notify.py:165 ../cmk/gui/plugins/sidebar/wato.py:115
 #: ../cmk/gui/plugins/wato/background_job.py:123
 msgid "Setup"
 msgstr ""
@@ -56351,13 +56352,13 @@ msgstr "Alias und Beschreibung anzeigen"
 msgid "Show alias if set, else description"
 msgstr "Zeige den Alias, falls dieser gesetzt ist, ansonsten die Beschreibung"
 
-#: ../cmk/gui/plugins/sidebar/main_menu.py:165
+#: ../cmk/gui/plugins/sidebar/main_menu.py:161
 #, fuzzy
 #| msgid "show all"
 msgid "Show all"
 msgstr "Alle anzeigen"
 
-#: ../cmk/gui/plugins/sidebar/main_menu.py:150
+#: ../cmk/gui/plugins/sidebar/main_menu.py:146
 #, fuzzy, python-format
 #| msgid "Show all hosts"
 msgid "Show all %s topics"
@@ -57884,7 +57885,7 @@ msgstr ""
 msgid "Sorry, you lack the permission. Operation: %s, table: %s"
 msgstr "Sie haben leider keine Berechtigung. Operation: %s, Tabelle: %s"
 
-#: ../cmk/gui/wato/user_profile.py:310 ../cmk/gui/wato/user_profile.py:409
+#: ../cmk/gui/wato/user_profile.py:311 ../cmk/gui/wato/user_profile.py:410
 msgid "Sorry, your user account does not exist."
 msgstr "Ihr Benutzerkonto ist nicht vorhanden."
 
@@ -60228,7 +60229,7 @@ msgstr "Gespeicherten Bericht erfolgreich gespeichert"
 msgid "Successfully updated IP addresses of %d hosts."
 msgstr "Die IP-Adressen von %d Hosts wurden erfolgreich aktualisiert."
 
-#: ../cmk/gui/wato/user_profile.py:400
+#: ../cmk/gui/wato/user_profile.py:401
 msgid "Successfully updated user profile."
 msgstr "Benutzerprofil erfolgreich aktualisiert."
 
@@ -62608,7 +62609,7 @@ msgstr ""
 "Batterie-Kapazität in Prozent ab und unterhalb derer eine Warnung ausgelöst "
 "werden soll"
 
-#: ../cmk/gui/wato/user_profile.py:263
+#: ../cmk/gui/wato/user_profile.py:264
 msgid "The both new passwords do not match."
 msgstr "Die beiden neuen Passworte stimmen nicht überein."
 
@@ -64554,7 +64555,7 @@ msgstr ""
 "Standardwert ist 60 Sekunden. Beachten Sie, dass dies kein Gesamttimeout "
 "ist, sondern auf jede einzelne interne Abfrage angewendet wird."
 
-#: ../cmk/gui/wato/user_profile.py:257
+#: ../cmk/gui/wato/user_profile.py:258
 msgid "The new password must differ from your current one."
 msgstr "Das neue Passwort muss sich vom aktuellen unterscheiden."
 
@@ -65172,12 +65173,12 @@ msgstr "Das angeforderte Regelpaket existiert nicht."
 msgid "The requested schedule does not exist."
 msgstr "Dieser Berichtsplan existiert nicht."
 
-#: ../cmk/gui/wato/user_profile.py:464 ../cmk/gui/wato/pages/sites.py:133
+#: ../cmk/gui/wato/user_profile.py:465 ../cmk/gui/wato/pages/sites.py:133
 #: ../cmk/gui/wato/pages/sites.py:162
 msgid "The requested site does not exist"
 msgstr "Die angeforderte Instanz existiert nicht"
 
-#: ../cmk/gui/wato/user_profile.py:486
+#: ../cmk/gui/wato/user_profile.py:487
 #: ../cmk/gui/wato/pages/notifications.py:787
 msgid "The requested user does not exist"
 msgstr "Der angefragte Benutzer existiert nicht"
@@ -65536,7 +65537,7 @@ msgstr ""
 "Die Instanz ist aktuell durch einen anderen Aktivierungsvorgang gesperrt. "
 "Bitte versuchen Sie es später erneut."
 
-#: ../cmk/gui/wato/user_profile.py:469
+#: ../cmk/gui/wato/user_profile.py:470
 msgid "The site is marked as dead. Not trying to replicate."
 msgstr ""
 "Die Instanz ist aktuell als tot markiert. Ich versuche daher keine "
@@ -70192,7 +70193,7 @@ msgstr ""
 msgid "This snapin is only available on the managers central site."
 msgstr "Dieses Snapin ist nur in der Manager-Instanz verfügbar."
 
-#: ../cmk/gui/plugins/sidebar/wato.py:273
+#: ../cmk/gui/plugins/sidebar/wato.py:274
 msgid ""
 "This snapin shows the folders defined in WATO. It can be used to open views "
 "filtered by the WATO folder. It works standalone, without interaction with "
@@ -70202,7 +70203,7 @@ msgstr ""
 "gefilterte Ansichten von WATO Ordnern öffnen. Es arbeitet selbständig auch "
 "ohne ein anderes Element in der Seitenleiste."
 
-#: ../cmk/gui/plugins/sidebar/wato.py:361
+#: ../cmk/gui/plugins/sidebar/wato.py:362
 msgid ""
 "This snapin shows the folders defined in WATO. It can be used to open views "
 "filtered by the WATO folder. This snapin interacts with the \"Views\" "
@@ -71463,7 +71464,7 @@ msgstr "Verhalten beim Seitenanfang"
 msgid "Topic"
 msgstr "Thema"
 
-#: ../cmk/gui/plugins/sidebar/wato.py:305
+#: ../cmk/gui/plugins/sidebar/wato.py:306
 msgid "Topic:"
 msgstr "Thema:"
 
@@ -72193,7 +72194,7 @@ msgstr "Baum"
 msgid "Tree levels"
 msgstr "Baumebenen"
 
-#: ../cmk/gui/plugins/sidebar/wato.py:269
+#: ../cmk/gui/plugins/sidebar/wato.py:270
 msgid "Tree of folders"
 msgstr "Ordnerbaum"
 
@@ -75353,7 +75354,7 @@ msgstr "Speicherbelegung"
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_sap_hana.py:64
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_oracle.py:97
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/cmk_update_agent.py:79
-#: ../cmk/gui/wato/user_profile.py:93 ../cmk/gui/wato/user_profile.py:503
+#: ../cmk/gui/wato/user_profile.py:93 ../cmk/gui/wato/user_profile.py:504
 #: ../cmk/gui/wato/pages/activate_changes.py:334
 #: ../cmk/gui/wato/pages/timeperiods.py:188
 #: ../cmk/gui/wato/pages/audit_log.py:229
@@ -75449,7 +75450,7 @@ msgstr "Nutzer Benachrichtigungen"
 msgid "User password"
 msgstr "Username und Passwort"
 
-#: ../cmk/gui/wato/user_profile.py:194
+#: ../cmk/gui/wato/user_profile.py:195
 msgid "User profiles can not be edited (WATO is disabled)."
 msgstr ""
 "Benuterprofile können mit WATO nicht geändert werden (WATO ist abgeschaltet)."
@@ -76300,12 +76301,12 @@ msgstr "Name der Ansicht"
 msgid "View the rule based parameters of this host"
 msgstr "Regelbasierte Einstellungen dieses Hosts ansehen"
 
-#: ../cmk/gui/plugins/sidebar/wato.py:315
+#: ../cmk/gui/plugins/sidebar/wato.py:316
 msgid "View:"
 msgstr "Ansicht:"
 
 #: ../cmk/gui/views.py:305 ../cmk/gui/pagetypes.py:1332
-#: ../cmk/gui/pagetypes.py:1830 ../cmk/gui/plugins/sidebar/views.py:33
+#: ../cmk/gui/pagetypes.py:1830 ../cmk/gui/plugins/sidebar/views.py:34
 msgid "Views"
 msgstr "Ansichten"
 
@@ -76677,7 +76678,7 @@ msgstr "WATO-Ordnerstruktur"
 msgid "WATO is disabled on this site."
 msgstr "WATO für diese Instanz ist deaktiviert."
 
-#: ../cmk/gui/plugins/sidebar/wato.py:280
+#: ../cmk/gui/plugins/sidebar/wato.py:281
 msgid "WATO is disabled."
 msgstr "WATO ist deaktiviert."
 
@@ -76786,7 +76787,7 @@ msgstr "Warte auf initialisierung des neuen Masters"
 msgid "Waiting for other switches to come online"
 msgstr "Warte auf andere Switche online zu gehen"
 
-#: ../cmk/gui/wato/user_profile.py:133
+#: ../cmk/gui/wato/user_profile.py:134
 msgid "Waiting for replication to start"
 msgstr "Warte auf den Beginn der Replikation"
 
@@ -80297,7 +80298,7 @@ msgstr "Sie dürfen Übersichten nicht bearbeiten."
 msgid "You are not allowed to edit this %s."
 msgstr "Sie dürfen diese %s nicht bearbeiten."
 
-#: ../cmk/gui/wato/user_profile.py:191
+#: ../cmk/gui/wato/user_profile.py:192
 msgid "You are not allowed to edit your user profile."
 msgstr "Sie dürfen Ihre Benutzer-Profil nicht bearbeiten."
 
@@ -80361,7 +80362,7 @@ msgstr "Sie sind nicht berechtigt, diese globale Einstellung zu editieren."
 msgid "You are not permitted to perform this action."
 msgstr "Sie sind für diese Aktion nicht berechtigt."
 
-#: ../cmk/gui/wato/user_profile.py:298
+#: ../cmk/gui/wato/user_profile.py:299
 msgid "You are required to change your password before proceeding."
 msgstr "Bevor Sie weitermachen können, müssen Sie Ihr Passwort ändern."
 
@@ -80748,7 +80749,7 @@ msgstr ""
 "anderen Konfiguration benutzt, wie z.B. für <i>das Login für ausgewählte "
 "Datenbanken</i> oder <i>Sektionen, die ausgeschlossen werden sollen</i>. "
 
-#: ../cmk/gui/wato/user_profile.py:318
+#: ../cmk/gui/wato/user_profile.py:319
 msgid ""
 "You can not change your password, because it is managed by another system."
 msgstr ""
@@ -81766,7 +81767,7 @@ msgstr ""
 "Sie müssen Mitglied in mindestens einer Kontaktgruppe sein, um eine "
 "vordefinierte Bedingung anlegen zu können."
 
-#: ../cmk/gui/wato/user_profile.py:254
+#: ../cmk/gui/wato/user_profile.py:255
 msgid "You need to change your password."
 msgstr "Sie müssen Ihr Kenntwort ändern."
 
@@ -81872,7 +81873,7 @@ msgstr "Geben Sie bitte mindestens %d Zeichen an."
 msgid "You need to provide timeperiod exceptions in YYYY-MM-DD format"
 msgstr "Sie müssen Zeitperiodenausnahmen im Format JJJJJ-MM-TT angeben"
 
-#: ../cmk/gui/wato/user_profile.py:251
+#: ../cmk/gui/wato/user_profile.py:252
 msgid "You need to provide your current password."
 msgstr "Geben Sie bitte Ihr aktuelles Passwort an."
 
@@ -82025,15 +82026,15 @@ msgstr "Ihre Eingabe entspricht nicht dem vorgeschriebenen Format."
 msgid "Your modifications affect some objects"
 msgstr "Ihre Veränderungen betreffen mehrere Objekte"
 
-#: ../cmk/gui/wato/user_profile.py:260
+#: ../cmk/gui/wato/user_profile.py:261
 msgid "Your old password is wrong."
 msgstr "Ihr altes Passwort ist falsch."
 
-#: ../cmk/gui/wato/user_profile.py:301
+#: ../cmk/gui/wato/user_profile.py:302
 msgid "Your password has been changed."
 msgstr "Ihr Passwort wurde geändert."
 
-#: ../cmk/gui/wato/user_profile.py:296
+#: ../cmk/gui/wato/user_profile.py:297
 msgid "Your password is too old, you need to choose a new password."
 msgstr "Ihr Passwort ist zu alt. Bitte wählen Sie ein neues Passwort."
 
