@@ -230,6 +230,10 @@ class ValueSpec:
         it has been returned by from_html_vars() or because it has been checked
         with validate_datatype())."""
 
+    def transform_value(self, value: Any) -> Any:
+        """Transform the given value with the valuespecs transform logic and give it back"""
+        return value
+
 
 class FixedValue(ValueSpec):
     """A fixed non-editable value, e.g. to be used in 'Alternative'"""
@@ -2925,6 +2929,20 @@ class CascadingDropdown(ValueSpec):
                 return
         raise MKUserError(varprefix + "_sel", _("Value %r is not allowed here.") % (value,))
 
+    def transform_value(self, value: CascadingDropdownChoiceValue) -> CascadingDropdownChoiceValue:
+        value_ident: CascadingDropdownChoiceIdent = value[0] if isinstance(value, tuple) else value
+        try:
+            ident, _title, vs = next(elem for elem in self.choices() if elem[0] == value_ident)
+        except StopIteration:
+            raise ValueError(_("%s is not an allowed value") % value)
+
+        if vs is None and ident == value:
+            return value
+
+        assert isinstance(value, tuple) and vs is not None
+
+        return (value[0], vs.transform_value(value[1]))
+
 
 ListChoiceChoiceValue = Union[str, int]
 ListChoiceChoicePairs = Sequence[_Tuple[ListChoiceChoiceValue, str]]
@@ -4221,6 +4239,9 @@ class Optional(ValueSpec):
         if value != self._none_value:
             self._valuespec.validate_value(value, varprefix + "_value")
 
+    def transform_value(self, value):
+        return self._valuespec.transform_value(value)
+
 
 class Alternative(ValueSpec):
     """Handle case when there are several possible allowed formats
@@ -4488,6 +4509,9 @@ class Tuple(ValueSpec):
         for no, (element, val) in enumerate(zip(self._elements, value)):
             vp = varprefix + "_" + str(no)
             element.validate_datatype(val, vp)
+
+    def transform_value(self, value):
+        return tuple(vs.transform_value(value[index]) for index, vs in enumerate(self._elements))
 
 
 DictionaryEntry = _Tuple[str, ValueSpec]
@@ -4833,6 +4857,13 @@ class Dictionary(ValueSpec):
             elif not self._optional_keys or param in self._required_keys:
                 raise MKUserError(varprefix, _("The entry %s is missing") % vs.title())
 
+    def transform_value(self, value):
+        return {
+            param: vs.transform_value(value[param])
+            for param, vs in self._get_elements()
+            if param in value
+        }
+
 
 # TODO: Cleanup this and all call sites. Replace it with some kind of DropdownChoice
 # based valuespec
@@ -4983,6 +5014,9 @@ class Foldable(ValueSpec):
     def _validate_value(self, value: Any, varprefix: str) -> None:
         self._valuespec.validate_value(value, varprefix)
 
+    def transform_value(self, value):
+        return self._valuespec.transform_value(value)
+
 
 class Transform(ValueSpec):
     """Transforms the value from one representation to another while being
@@ -5056,6 +5090,9 @@ class Transform(ValueSpec):
 
     def _validate_value(self, value: Any, varprefix: str) -> None:
         self._valuespec.validate_value(self.forth(value), varprefix)
+
+    def transform_value(self, value: Any) -> Any:
+        return self.back(self._valuespec.transform_value(self.forth(value)))
 
 
 # TODO: Change to factory, cleanup kwargs
@@ -5481,36 +5518,39 @@ class IconSelector(ValueSpec):
     # During upload of user specific icons, the meta data is added to the images.
     def available_icons(self, only_local: bool = False) -> Dict[str, str]:
         icons = {}
-        icons.update(self._available_builtin_icons(only_local))
+        icons.update(self._available_builtin_assets("icon", only_local))
         icons.update(self._available_user_icons(only_local))
         return icons
 
-    def _available_builtin_icons(self, only_local: bool = False) -> Dict[str, str]:
+    def available_emblems(self, only_local: bool = False) -> Dict[str, str]:
+        return self._available_builtin_assets("emblem", only_local)
+
+    def _available_builtin_assets(self, prefix: str, only_local: bool = False) -> Dict[str, str]:
         if not self._show_builtin_icons:
             return {}
 
-        icons = {}
+        assets = {}
         for theme in html.icon_themes():
             dirs = [Path(cmk.utils.paths.local_web_dir) / "htdocs/themes" / theme / "images"]
             if not only_local:
                 dirs.append(Path(cmk.utils.paths.web_dir) / "htdocs/themes" / theme / "images")
 
-            for file_stem, category in self._get_icons_from_directories(
+            for file_stem, category in self._get_assets_from_directories(
                     dirs, default_category="builtin").items():
-                if file_stem.startswith("icon_"):
-                    icons[file_stem[5:]] = category
-        return icons
+                if file_stem.startswith(prefix + "_"):
+                    assets[file_stem[5:]] = category
+        return assets
 
     def _available_user_icons(self, only_local=False) -> Dict[str, str]:
         dirs = [Path(cmk.utils.paths.local_web_dir) / "htdocs/images/icons"]
         if not only_local:
             dirs.append(Path(cmk.utils.paths.web_dir) / "htdocs/images/icons")
 
-        return self._get_icons_from_directories(dirs, default_category="misc")
+        return self._get_assets_from_directories(dirs, default_category="misc")
 
-    def _get_icons_from_directories(self, dirs: List[Path],
-                                    default_category: str) -> Dict[str, str]:
-        icons: Dict[str, str] = {}
+    def _get_assets_from_directories(self, dirs: List[Path],
+                                     default_category: str) -> Dict[str, str]:
+        assets: Dict[str, str] = {}
         for directory in dirs:
             try:
                 files = [f for f in directory.iterdir() if f.is_file()]
@@ -5531,12 +5571,12 @@ class IconSelector(ValueSpec):
                 else:
                     continue
 
-                icons[file_.stem] = category
+                assets[file_.stem] = category
 
         for exclude in self._exclude:
-            icons.pop(exclude, None)
+            assets.pop(exclude, None)
 
-        return icons
+        return assets
 
     def _extract_category_from_png(self, file_path: Path, default: str) -> str:
         # extract the category from the meta data
@@ -5546,7 +5586,7 @@ class IconSelector(ValueSpec):
             return default
         return category
 
-    def available_icons_by_category(self, icons):
+    def _available_icons_by_category(self, icons):
         by_cat: Dict[str, List[str]] = {}
         for icon_name, category_name in icons.items():
             by_cat.setdefault(category_name, [])
@@ -5606,7 +5646,7 @@ class IconSelector(ValueSpec):
         html.open_div(class_="icons", id_="%s_icons" % varprefix)
 
         icons = self.available_icons()
-        available_icons = self.available_icons_by_category(icons)
+        available_icons = self._available_icons_by_category(icons)
         active_category = icons.get(value, available_icons[0][0])
 
         # Render tab navigation

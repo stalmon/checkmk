@@ -205,8 +205,10 @@ div#top_heading {
         min-width: 220px;
         padding: $spacing;
         overflow-y: auto;
+        line-height: 16px;
         text-align: left;
         background-color: $page-menu-bg-color;
+        opacity: 1;
         scrollbar-width: none; /* Firefox */
 
         img {
@@ -222,9 +224,8 @@ div#top_heading {
 
           div.topic_title {
             display: inline-block;
-            padding-bottom: 2px;
+            padding-bottom: 1px;
             padding-left: 32px;
-            margin-bottom: 1px;
             font-size: 10px;
             font-weight: normal;
             color: rgba($font-color, .5);
@@ -235,16 +236,14 @@ div#top_heading {
 
           div.entry {
             padding-left: $spacing;
-            margin-bottom: 1px;
 
             a {
               display: flex;
               align-items: center;
-              color: $font-color;
               text-decoration: none;
             }
 
-            &.enabled a:hover { opacity: .7; }
+            &.enabled a:hover { color: $success; }
 
             &.disabled a {
               text-decoration: none;
@@ -288,7 +287,12 @@ div#top_heading {
     }
 
     &#page_menu_bar.hide_suggestions {
-      td.shortcuts a.suggested { display: inline-block; }
+      td.shortcuts a.suggested {
+        display: inline-block;
+        line-height: 26px;
+
+
+    }
       tr#suggestions { display: none; }
       a#menu_shortcut_toggle_suggestions { transform: rotate(180deg); }
     }
