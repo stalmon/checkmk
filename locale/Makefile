@@ -36,7 +36,7 @@ update-pos:
 	cd ../../$(WEBLATE_DIR); \
 	git pull --rebase; # Weblate repo \
 	counter=0; \
-	(git rev-list HEAD || true) | while read commit_id; do \
+	(git rev-list HEAD || true) | while read commit_id; do # || true is needed to avoid error 141 when breaking in the very first iteration \
 	     commit_msg=$$(git log --format=%B -n 1 $$commit_id); \
 	     if [[ $$commit_msg == *"$(WEBLATE_COMMIT_ID)"* ]]; then # only look at commits from Weblate \
 		 if [[ $$commit_msg == *"Change-Id"* ]]; then # if the commit message contains a Change-Id, were are done (we have processed this commit before) \
