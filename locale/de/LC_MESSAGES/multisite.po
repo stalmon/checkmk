@@ -638,7 +638,7 @@ msgstr "GET-Anfragen"
 msgid "%s alerts"
 msgstr "Alarme"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:114
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:112
 #, fuzzy, python-format
 #| msgid "Is summary host"
 msgid "%s by host"
@@ -1155,37 +1155,6 @@ msgstr "-.-- ms"
 #, fuzzy, python-format
 msgid "... (%d more)"
 msgstr " (%d mal)"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:323
-#: ../cmk/gui/plugins/dashboard/single_metric.py:336
-#: ../cmk/gui/plugins/dashboard/single_metric.py:349
-#: ../cmk/gui/plugins/dashboard/single_metric.py:362
-msgid "... above the metric value with font size:"
-msgstr ""
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:373
-#, fuzzy
-#| msgid "Background color"
-msgid "... as background color"
-msgstr "Hintergrundfarbe"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:374
-msgid "... as font color"
-msgstr ""
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:325
-#: ../cmk/gui/plugins/dashboard/single_metric.py:338
-#: ../cmk/gui/plugins/dashboard/single_metric.py:351
-#: ../cmk/gui/plugins/dashboard/single_metric.py:364
-msgid "... below the metric value with font size:"
-msgstr ""
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:328
-#: ../cmk/gui/plugins/dashboard/single_metric.py:341
-#: ../cmk/gui/plugins/dashboard/single_metric.py:354
-#: ../cmk/gui/plugins/dashboard/single_metric.py:367
-msgid "... in a tooltip when hovering the metric value"
-msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/utils.py:82
 msgid ".Net/CLR Memory"
@@ -7988,7 +7957,7 @@ msgstr "Verfügbar bis"
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1496
 #: ../cmk/gui/plugins/metrics/html_render.py:325
 #: ../cmk/gui/plugins/metrics/timeseries.py:194
-#: ../cmk/gui/plugins/dashboard/single_metric.py:48
+#: ../cmk/gui/plugins/dashboard/single_metric.py:43
 #: ../cmk/gui/plugins/wato/check_parameters/mysql_innodb_io.py:49
 #: ../cmk/gui/plugins/wato/check_parameters/disk_io.py:47
 msgid "Average"
@@ -8180,19 +8149,19 @@ msgstr "Durchschnittliche Antwortzeit in Milisekunden"
 msgid "Average roundtrip time in ms"
 msgstr "Durchschnittliche Antwortzeit in Milisekunden"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:236
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:234
 #, fuzzy
 #| msgid "Average interval"
 msgid "Average scatterplot"
 msgstr "Durchschnittsintervall"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:49
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:47
 #, fuzzy, python-format
 #| msgid "Time range to create report for"
 msgid "Average scatterplot for %s"
 msgstr "Bericht erzeugen für folgenden Zeitbereich:"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:64
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:62
 #, fuzzy
 #| msgid "Average response time"
 msgid "Average scatterplot title"
@@ -8733,8 +8702,8 @@ msgstr ""
 msgid "Bar graphics representing the state history"
 msgstr "Balkendiagramm, dass die Status-Historie darstellt"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:230
-#: ../cmk/gui/plugins/dashboard/single_metric.py:238
+#: ../cmk/gui/plugins/dashboard/single_metric.py:200
+#: ../cmk/gui/plugins/dashboard/single_metric.py:208
 msgid "Barplot"
 msgstr ""
 
@@ -14214,7 +14183,7 @@ msgstr "Zeiten berücksichtigen wo der Host unten ist"
 
 #: ../cmk/gui/cee/plugins/metrics/historic.py:151
 #: ../cmk/gui/cee/plugins/metrics/forecasts.py:600
-#: ../cmk/gui/plugins/dashboard/single_metric.py:54
+#: ../cmk/gui/plugins/dashboard/single_metric.py:49
 msgid "Consolidation function for the [cms_graphing#rrds|RRD] data column"
 msgstr ""
 
@@ -20292,7 +20261,7 @@ msgstr "Werte anzeigen in"
 msgid "Display warn/crit levels in check output..."
 msgstr "Schwellwerte für WARN/CRIT im Check anzeigen..."
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:173
+#: ../cmk/gui/plugins/dashboard/single_metric.py:168
 #, fuzzy
 #| msgid "Display name"
 msgid "Displays Gauge"
@@ -20319,7 +20288,7 @@ msgstr ""
 msgid "Displays a performance graph of a host or service."
 msgstr "Zeigt den Performancegraph eines Hosts oder Services"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:240
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:238
 #, fuzzy
 #| msgid "Displays a performance graph of a host or service."
 msgid ""
@@ -20330,7 +20299,7 @@ msgstr "Zeigt den Performancegraph eines Hosts oder Services"
 msgid "Displays a sidebar snapin."
 msgstr "Zeigt ein Seitenleistenelement an"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:410
+#: ../cmk/gui/plugins/dashboard/single_metric.py:250
 #, fuzzy
 #| msgid "Displays a performance graph of a host or service."
 msgid "Displays a single metric of a specific host and service."
@@ -20461,12 +20430,6 @@ msgstr "Platzhalter-VMs nicht überwachen"
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:3644
 msgid "Do not activate changes"
 msgstr "Änderungen nicht aktivieren"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:315
-#, fuzzy
-#| msgid "Do not add a link to this page in sidebar"
-msgid "Do not add a link to the metric value"
-msgstr "Keinen Link in der Seitenleiste hinzufügen"
 
 #: ../cmk/gui/pagetypes.py:393
 msgid "Do not add a link to this page in sidebar"
@@ -20956,42 +20919,6 @@ msgstr "Keinen Kontextknopf für diese(n) %s zeigen"
 #: ../cmk/gui/availability.py:342
 msgid "Do not show a summary line"
 msgstr "Keine Zusammenfassung anzeigen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:342
-#, fuzzy
-#| msgid "Do not display the host name"
-msgid "Do not show the host name"
-msgstr "Keinen Hostnamen anzeigen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:368
-#, fuzzy
-#| msgid "Do not send metrics"
-msgid "Do not show the metric name"
-msgstr "Metriken nicht senden"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:382
-#, fuzzy
-#| msgid "Do not send metrics"
-msgid "Do not show the metric's unit"
-msgstr "Metriken nicht senden"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:355
-#, fuzzy
-#| msgid "Do now show reserved space"
-msgid "Do not show the service name"
-msgstr "Reservierten Platz nicht anzeigen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:375
-#, fuzzy
-#| msgid "Do now show reserved space"
-msgid "Do not show the service state color"
-msgstr "Reservierten Platz nicht anzeigen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:329
-#, fuzzy
-#| msgid "Do not display the host name"
-msgid "Do not show the site name"
-msgstr "Keinen Hostnamen anzeigen"
 
 #: ../cmk/gui/plugins/wato/inventory.py:85
 msgid "Do not status data inventory"
@@ -21908,10 +21835,6 @@ msgstr "Dynamische Schwellen (untere Grenze)"
 #: ../cmk/gui/plugins/wato/utils/__init__.py:919
 msgid "Dynamic levels - upper bound"
 msgstr "Dynamische Schwellen (obere Grenze)"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:306
-msgid "Dynamically adapt the metric font size to the dashlet size"
-msgstr ""
 
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2421
 msgid "DynamoDB"
@@ -25355,7 +25278,7 @@ msgstr "Feste Größe"
 msgid "Fieldnames to query"
 msgstr "Abzurufende Felder"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:43
+#: ../cmk/gui/plugins/dashboard/single_metric.py:38
 #, fuzzy
 #| msgid "Page title"
 msgid "Figure title"
@@ -27003,7 +26926,7 @@ msgstr "Sammeln von Containerinformationen"
 msgid "Gathered node information"
 msgstr "Gesammelte Node Informationen"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:169
+#: ../cmk/gui/plugins/dashboard/single_metric.py:164
 msgid "Gauge"
 msgstr ""
 
@@ -29035,7 +28958,7 @@ msgstr "Die Check_MK-Version auf der Loginbox verbergen"
 msgid "Hide this %s from the sidebar"
 msgstr "%s in der Seitenleiste nicht anzeigen"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:68
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:66
 #: ../cmk/gui/plugins/dashboard/bar_chart_dashlet.py:54
 #, fuzzy
 #| msgid "Page title"
@@ -34154,7 +34077,7 @@ msgstr "Ungültiges Automatisierungspasswort."
 msgid "Invalid back URL provided."
 msgstr "Ungültige URL"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:45
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:43
 #: ../cmk/gui/plugins/dashboard/bar_chart_dashlet.py:72
 #, fuzzy, python-format
 #| msgid "Invalid start time given"
@@ -36873,12 +36796,6 @@ msgstr "Link-Resets eingehend"
 msgid "Link resets out"
 msgstr "Link-Resets ausgehend"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:311
-#, fuzzy
-#| msgid "BI service details"
-msgid "Link to service detail page"
-msgstr "BI Servicedetails"
-
 #: ../cmk/gui/plugins/views/builtin.py:1942
 msgid "Link view showing all hosts of one site"
 msgstr "Ansicht, die alle Hosts einer Instanz zeigt"
@@ -39532,7 +39449,7 @@ msgstr "Mazimale Größe der kleinsten Datei"
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1495
 #: ../cmk/gui/plugins/metrics/html_render.py:324
 #: ../cmk/gui/plugins/metrics/timeseries.py:192
-#: ../cmk/gui/plugins/dashboard/single_metric.py:50
+#: ../cmk/gui/plugins/dashboard/single_metric.py:45
 #: ../cmk/gui/plugins/wato/active_checks.py:1183
 msgid "Maximum"
 msgstr "Maximum"
@@ -40027,7 +39944,7 @@ msgstr "Diverse McAfee Webgateway-Statistiken"
 msgid "McAfee web gateway statistics"
 msgstr "McAfee Webgateway-Statistiken"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:120
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:118
 #, fuzzy, python-format
 #| msgid "Search in %s"
 msgid "Mean %s"
@@ -40050,7 +39967,7 @@ msgstr "Fehler der Medienverbindungsprüfung"
 msgid "Media and data integrity errors"
 msgstr "Medien- und Datenintegritätsfehler"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:126
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:124
 #, fuzzy, python-format
 #| msgid "Rule %d in %s"
 msgid "Median %s"
@@ -40444,11 +40361,6 @@ msgid ""
 "Editions"
 msgstr ""
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:300
-#, fuzzy
-msgid "Metric value font size"
-msgstr "Durchschnittliche Request-Größe"
-
 #: ../cmk/gui/cee/plugins/metrics/customgraphs.py:214
 #: ../cmk/gui/plugins/views/painters.py:541
 msgid "Metrics"
@@ -40556,7 +40468,7 @@ msgstr "Minimale Größe der kleinsten Datei"
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1494
 #: ../cmk/gui/plugins/metrics/html_render.py:323
 #: ../cmk/gui/plugins/metrics/timeseries.py:193
-#: ../cmk/gui/plugins/dashboard/single_metric.py:49
+#: ../cmk/gui/plugins/dashboard/single_metric.py:44
 #: ../cmk/gui/plugins/wato/active_checks.py:1182
 msgid "Minimum"
 msgstr "Minimum"
@@ -45569,7 +45481,7 @@ msgstr ""
 "Nur Hosts umbenennen, deren Namen mit dem hier eingegebenen regulären "
 "Ausdruck <i>beginnen</i>."
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:62
+#: ../cmk/gui/plugins/dashboard/single_metric.py:57
 #, fuzzy
 msgid "Only show current value"
 msgstr "Nur Objekte mit Ausfällen zeigen"
@@ -45664,10 +45576,6 @@ msgstr "Agentenausgabe"
 #: ../cmk/gui/sidebar.py:549
 msgid "Open release notes"
 msgstr "Versionshinweise öffnen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:314
-msgid "Open service detail page when clicking on the metric value"
-msgstr ""
 
 #: ../cmk/gui/plugins/metrics/network.py:388
 msgid "Open slots"
@@ -49898,9 +49806,9 @@ msgstr "Normale Änderung"
 #: ../cmk/gui/wato/pages/custom_attributes.py:494
 #: ../cmk/gui/wato/pages/sites.py:684
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:50
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:77
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:75
 #: ../cmk/gui/plugins/dashboard/graph.py:71
-#: ../cmk/gui/plugins/dashboard/single_metric.py:35
+#: ../cmk/gui/plugins/dashboard/single_metric.py:30
 msgid "Properties"
 msgstr "Eigenschaften"
 
@@ -51868,11 +51776,6 @@ msgstr "Horizontale Linien zwischen den Zeilen zeichnen"
 #: ../cmk/gui/plugins/dashboard/custom_url.py:53
 msgid "Render in iframe"
 msgstr "In iframe anzeigen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:296
-#, fuzzy
-msgid "Render options"
-msgstr "Berichteigenschaften"
 
 #: ../cmk/gui/dashboard.py:1374
 msgid "Render the titlebar above the dashlet"
@@ -55623,7 +55526,7 @@ msgstr "Schwellwerte für die Anzahl Druckerjobs"
 msgid "Set a custom title"
 msgstr "Wähle benutzerdefiniertes Aussehen"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:69
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:67
 #, fuzzy
 #| msgid "Set custom theme"
 msgid "Set a custom title:"
@@ -55945,12 +55848,6 @@ msgstr "Die maximale und minimale Länge der Schlangengröße einstellen"
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:442
 msgid "Set the maximum number of concurrent pings sent to target IP addresses."
 msgstr "Maximale Anzahl gleichzeitiger Pings an die Ziel-IP-Adressen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:303
-#, fuzzy
-#| msgid "Set the absolute size"
-msgid "Set the metric value font size to:"
-msgstr "Absolute Größe setzen"
 
 #: ../cmk/gui/cee/plugins/reporting/utils.py:432
 msgid "Set the width"
@@ -56422,7 +56319,7 @@ msgstr "Den aktuellen / letzten Zustand des Backup-Jobs einsehen"
 msgid "Show data only on search"
 msgstr "Daten nur bei Suche zeigen"
 
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:67
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:65
 #: ../cmk/gui/plugins/dashboard/bar_chart_dashlet.py:53
 #, fuzzy
 #| msgid "Show graph title"
@@ -56467,7 +56364,7 @@ msgstr "Titel anzeigen"
 msgid "Show graph title on graph area"
 msgstr "Zeige Graphen-Titel eingebettet im Graphen"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:65
+#: ../cmk/gui/plugins/dashboard/single_metric.py:60
 #, fuzzy
 #| msgid "Show user rules"
 msgid "Show historic values"
@@ -56698,55 +56595,18 @@ msgstr "Zeige die vertikale Achse"
 msgid "Show the header of the dashboard with the configured title."
 msgstr "Den konfigurierten Titel der Übersicht auf der Seite anzeigen"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:333
-#, fuzzy
-#| msgid "Use other hostname"
-msgid "Show the host name"
-msgstr "Anderen Hostnamen benutzen"
-
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:1254
 msgid "Show the list of hosts in this category"
 msgstr "Liste der Hosts in dieser Kategorie anzeigen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:359
-#, fuzzy
-#| msgid "Show metric"
-msgid "Show the metric name"
-msgstr "Metrik anzeigen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:379
-#: ../cmk/gui/plugins/dashboard/single_metric.py:381
-#, fuzzy
-#| msgid "Show metric"
-msgid "Show the metric's unit"
-msgstr "Metrik anzeigen"
 
 #: ../cmk/gui/plugins/metrics/valuespecs.py:142
 msgid "Show the pin"
 msgstr "Zeige den Pin"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:346
-#, fuzzy
-#| msgid "The service name"
-msgid "Show the service name"
-msgstr "Der Servicename"
-
 #: ../cmk/gui/plugins/sidebar/virtual_host_tree.py:122
 #: ../cmk/gui/plugins/sidebar/virtual_host_tree.py:145
 msgid "Show the service problems contained in this branch"
 msgstr "Service-Probleme in diesem Zweig anzeigen"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:371
-#, fuzzy
-#| msgid "Last service state change"
-msgid "Show the service state color"
-msgstr "Letzter Service-Status geändert"
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:320
-#, fuzzy
-#| msgid "Show the pin"
-msgid "Show the site name"
-msgstr "Zeige den Pin"
 
 #: ../cmk/gui/wato/pages/custom_attributes.py:384
 msgid "Show this attribute in host tables of the setup menu"
@@ -57098,7 +56958,7 @@ msgstr "Einzelhost-Aggregationen"
 msgid "Single host problems"
 msgstr "Einzelhost-Probleme"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:406
+#: ../cmk/gui/plugins/dashboard/single_metric.py:242
 #, fuzzy
 #| msgid "Change metric"
 msgid "Single metric"
@@ -62887,13 +62747,6 @@ msgstr ""
 "Der Gruppenfilter für die LDAP-Benutzer konnte nicht gefunden werden. Bitte "
 "prüfen Sie Ihre <a href=\"%s\">Konfiguration</a>."
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:556
-#, python-format
-msgid ""
-"The configured metric \"%s\" could not be found. For the selected service "
-"\"%s\" you can choose from the following metrics: %s"
-msgstr ""
-
 #: ../cmk/gui/plugins/wato/utils/__init__.py:582
 msgid ""
 "The configured password has either be removed or you are not permitted to "
@@ -66132,12 +65985,6 @@ msgstr "Bisher wurden noch keine Elemente für diese Auswahl definiert."
 #: ../cmk/gui/valuespec.py:3129
 msgid "There are no elements for selection."
 msgstr "Für diese Auswahlt gibt es keine Elemente."
-
-#: ../cmk/gui/plugins/dashboard/single_metric.py:542
-#, fuzzy
-#| msgid "There are no rulesets or rules matching your search."
-msgid "There are no metrics meeting your context filters."
-msgstr "Für diese Regeln oder Regelsätze, die den Suchkriterien entsprechen."
 
 #: ../cmk/gui/wato/pages/rulesets.py:251
 msgid "There are no rules defined in this folder."
@@ -70873,7 +70720,7 @@ msgid "Time periods"
 msgstr "Zeitperioden"
 
 #: ../cmk/gui/valuespec.py:3894 ../cmk/gui/cee/plugins/metrics/historic.py:155
-#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:60
+#: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:58
 #: ../cmk/gui/plugins/dashboard/bar_chart_dashlet.py:39
 msgid "Time range"
 msgstr "Zeitbereich"
@@ -70888,7 +70735,7 @@ msgstr "Zeitspanne für Temperatur-Trendberechnung"
 msgid "Time range from report context"
 msgstr "Bericht erzeugen für folgenden Zeitbereich:"
 
-#: ../cmk/gui/plugins/dashboard/single_metric.py:67
+#: ../cmk/gui/plugins/dashboard/single_metric.py:62
 #, fuzzy
 #| msgid "Time to connect"
 msgid "Time range to consider"
@@ -71160,7 +71007,7 @@ msgstr "Timer"
 
 #: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:103
 #: ../cmk/gui/plugins/dashboard/graph.py:83
-#: ../cmk/gui/plugins/dashboard/single_metric.py:59
+#: ../cmk/gui/plugins/dashboard/single_metric.py:54
 #: ../cmk/gui/plugins/wato/active_checks.py:2468
 msgid "Timerange"
 msgstr "Zeitbereich"
@@ -85259,6 +85106,100 @@ msgstr "gestern"
 #: ../cmk/gui/wato/pages/download_agents.py:125
 msgid "z/OS"
 msgstr "z/OS"
+
+#, fuzzy
+#~| msgid "Background color"
+#~ msgid "... as background color"
+#~ msgstr "Hintergrundfarbe"
+
+#, fuzzy
+#~| msgid "Do not add a link to this page in sidebar"
+#~ msgid "Do not add a link to the metric value"
+#~ msgstr "Keinen Link in der Seitenleiste hinzufügen"
+
+#, fuzzy
+#~| msgid "Do not display the host name"
+#~ msgid "Do not show the host name"
+#~ msgstr "Keinen Hostnamen anzeigen"
+
+#, fuzzy
+#~| msgid "Do not send metrics"
+#~ msgid "Do not show the metric name"
+#~ msgstr "Metriken nicht senden"
+
+#, fuzzy
+#~| msgid "Do not send metrics"
+#~ msgid "Do not show the metric's unit"
+#~ msgstr "Metriken nicht senden"
+
+#, fuzzy
+#~| msgid "Do now show reserved space"
+#~ msgid "Do not show the service name"
+#~ msgstr "Reservierten Platz nicht anzeigen"
+
+#, fuzzy
+#~| msgid "Do now show reserved space"
+#~ msgid "Do not show the service state color"
+#~ msgstr "Reservierten Platz nicht anzeigen"
+
+#, fuzzy
+#~| msgid "Do not display the host name"
+#~ msgid "Do not show the site name"
+#~ msgstr "Keinen Hostnamen anzeigen"
+
+#, fuzzy
+#~| msgid "BI service details"
+#~ msgid "Link to service detail page"
+#~ msgstr "BI Servicedetails"
+
+#, fuzzy
+#~ msgid "Metric value font size"
+#~ msgstr "Durchschnittliche Request-Größe"
+
+#, fuzzy
+#~ msgid "Render options"
+#~ msgstr "Berichteigenschaften"
+
+#, fuzzy
+#~| msgid "Set the absolute size"
+#~ msgid "Set the metric value font size to:"
+#~ msgstr "Absolute Größe setzen"
+
+#, fuzzy
+#~| msgid "Use other hostname"
+#~ msgid "Show the host name"
+#~ msgstr "Anderen Hostnamen benutzen"
+
+#, fuzzy
+#~| msgid "Show metric"
+#~ msgid "Show the metric name"
+#~ msgstr "Metrik anzeigen"
+
+#, fuzzy
+#~| msgid "Show metric"
+#~ msgid "Show the metric's unit"
+#~ msgstr "Metrik anzeigen"
+
+#, fuzzy
+#~| msgid "The service name"
+#~ msgid "Show the service name"
+#~ msgstr "Der Servicename"
+
+#, fuzzy
+#~| msgid "Last service state change"
+#~ msgid "Show the service state color"
+#~ msgstr "Letzter Service-Status geändert"
+
+#, fuzzy
+#~| msgid "Show the pin"
+#~ msgid "Show the site name"
+#~ msgstr "Zeige den Pin"
+
+#, fuzzy
+#~| msgid "There are no rulesets or rules matching your search."
+#~ msgid "There are no metrics meeting your context filters."
+#~ msgstr ""
+#~ "Für diese Regeln oder Regelsätze, die den Suchkriterien entsprechen."
 
 #, fuzzy
 #~| msgid "Gathered node information"
