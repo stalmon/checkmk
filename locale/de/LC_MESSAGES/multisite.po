@@ -20036,7 +20036,7 @@ msgstr "Latenzzeit beim Lesen von Datenträgern"
 msgid "Disk space cleanup is disabled"
 msgstr "Speicherplatzbereinigung ist deaktiviert"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2239
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2238
 msgid "Disk space on OpenVMS"
 msgstr "Platzenplatz auf OpenVMS"
 
@@ -27024,7 +27024,7 @@ msgstr "Erstelle Report..."
 msgid "Generic Options"
 msgstr "Generische Einstellungen"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2238
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2237
 msgid "Generic UPS Device: Temperature sensor"
 msgstr "Generische USV: Temperatursensor"
 
@@ -40149,7 +40149,7 @@ msgstr "Speicherauslastung"
 
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2156
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2207
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2234
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2233
 #, fuzzy, python-format
 msgid "Memory usage for %s hosts"
 msgstr "Zunahme der Speicherauslastung"
@@ -50079,7 +50079,7 @@ msgstr "Python-Version"
 msgid "QOS class"
 msgstr "QOS class"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2230
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2229
 msgid "Qmail: Mail Queue"
 msgstr "Qmail: Mail Queue"
 
@@ -50559,11 +50559,11 @@ msgstr "Zufällige zusätzliche Verzögerung"
 msgid "Randomize password"
 msgstr "Zufallsgesteuertes Passwort"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2231
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2230
 msgid "Raritan EMX Rack: Temperature"
 msgstr "Raritan EMX Rack: Temperatur"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2232
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2231
 msgid "Raritan PDU: Input Phases"
 msgstr "Raritan PDU: Eingabephasen"
 
@@ -52264,7 +52264,7 @@ msgstr "Ressourcengruppe"
 msgid "Resource Name"
 msgstr "Ressourcenname"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2240
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2239
 msgid "Resource consumption of windows processes"
 msgstr "Ressourcenverbrauch von Windows-Prozessen"
 
@@ -57618,7 +57618,7 @@ msgid "Sophos Disk utilization"
 msgstr "Festplattenauslastung"
 
 #: ../cmk/gui/plugins/wato/check_parameters/sophos_memory.py:40
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2235
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2234
 #, fuzzy
 msgid "Sophos Memory utilization"
 msgstr "Speicherauslastung"
@@ -58714,10 +58714,6 @@ msgstr "Status des Speicherungsintervalls"
 msgid "State and Count of Processes"
 msgstr "Status und Anzahl von Prozessen"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2229
-msgid "State and Count of Processes (with additional performance data)"
-msgstr "Zustand und Anzahl von Prozessen (mit zusätzlichen Metriken)"
-
 #: ../cmk/gui/plugins/wato/check_parameters/ps.py:459
 #: ../cmk/gui/plugins/wato/check_parameters/ps.py:493
 msgid "State and count of processes"
@@ -59533,7 +59529,7 @@ msgid "States who should lead to warning"
 msgstr "Zustände, die als Warnung behandelt werden"
 
 #: ../cmk/gui/plugins/wato/check_parameters/statgrab_mem.py:47
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2236
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2235
 msgid "Statgrab Memory Usage"
 msgstr "Statgrab-Speicherbelegung"
 
@@ -60755,7 +60751,7 @@ msgstr "Diese Instanz ist deaktiviert"
 msgid "TNS Alias"
 msgstr "Instanz Alias"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2237
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2236
 msgid "TP Link: Used memory via SNMP"
 msgstr ""
 
@@ -75177,7 +75173,7 @@ msgstr "Benutzte Größe"
 msgid "Used size of log files"
 msgstr "Verwendete Größe der Logdateien"
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2241
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2240
 msgid "Used space in ZFS pools and filesystems"
 msgstr "Belegter Platz in ZFS-Pools und -Dateisystemen"
 
@@ -79409,7 +79405,7 @@ msgid "Windows Service writes information to the Event Log"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/services.py:150
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2233
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2232
 msgid "Windows Services"
 msgstr "Windows Services"
 
@@ -85106,6 +85102,9 @@ msgstr "gestern"
 #: ../cmk/gui/wato/pages/download_agents.py:125
 msgid "z/OS"
 msgstr "z/OS"
+
+#~ msgid "State and Count of Processes (with additional performance data)"
+#~ msgstr "Zustand und Anzahl von Prozessen (mit zusätzlichen Metriken)"
 
 #, fuzzy
 #~| msgid "Background color"
