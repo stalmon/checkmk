@@ -17777,7 +17777,7 @@ msgstr ""
 msgid "Disk space cleanup is disabled"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2239
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2238
 msgid "Disk space on OpenVMS"
 msgstr ""
 
@@ -24098,7 +24098,7 @@ msgstr ""
 msgid "Generic Options"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2238
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2237
 msgid "Generic UPS Device: Temperature sensor"
 msgstr ""
 
@@ -35506,7 +35506,7 @@ msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2156
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2207
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2234
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2233
 #, python-format
 msgid "Memory usage for %s hosts"
 msgstr ""
@@ -44487,7 +44487,7 @@ msgstr ""
 msgid "QOS class"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2230
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2229
 msgid "Qmail: Mail Queue"
 msgstr ""
 
@@ -44919,11 +44919,11 @@ msgstr ""
 msgid "Randomize password"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2231
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2230
 msgid "Raritan EMX Rack: Temperature"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2232
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2231
 msgid "Raritan PDU: Input Phases"
 msgstr ""
 
@@ -46501,7 +46501,7 @@ msgstr ""
 msgid "Resource Name"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2240
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2239
 msgid "Resource consumption of windows processes"
 msgstr ""
 
@@ -51365,7 +51365,7 @@ msgid "Sophos Disk utilization"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/sophos_memory.py:40
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2235
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2234
 msgid "Sophos Memory utilization"
 msgstr ""
 
@@ -52328,10 +52328,6 @@ msgstr ""
 msgid "State and Count of Processes"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2229
-msgid "State and Count of Processes (with additional performance data)"
-msgstr ""
-
 #: ../cmk/gui/plugins/wato/check_parameters/ps.py:459
 #: ../cmk/gui/plugins/wato/check_parameters/ps.py:493
 msgid "State and count of processes"
@@ -53062,7 +53058,7 @@ msgid "States who should lead to warning"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/statgrab_mem.py:47
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2236
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2235
 msgid "Statgrab Memory Usage"
 msgstr ""
 
@@ -54214,7 +54210,7 @@ msgstr ""
 msgid "TNS Alias"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2237
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2236
 msgid "TP Link: Used memory via SNMP"
 msgstr ""
 
@@ -65869,7 +65865,7 @@ msgstr ""
 msgid "Used size of log files"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2241
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2240
 msgid "Used space in ZFS pools and filesystems"
 msgstr ""
 
@@ -69491,7 +69487,7 @@ msgid "Windows Service writes information to the Event Log"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/services.py:150
-#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2233
+#: ../cmk/gui/plugins/wato/check_mk_configuration.py:2232
 msgid "Windows Services"
 msgstr ""
 
