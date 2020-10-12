@@ -99,6 +99,10 @@ class ABCMegaMenuSearch(ABC):
     def name(self) -> str:
         return self._name
 
+    @property
+    def onopen(self) -> str:
+        return 'cmk.popup_menu.focus_search_field("mk_side_search_field_%s");' % self.name
+
     @abstractmethod
     def show_search_field(self) -> None:
         ...
@@ -109,7 +113,7 @@ TopicMenuItem = NamedTuple("TopicMenuItem", [
     ("title", str),
     ("url", str),
     ("sort_index", int),
-    ("is_advanced", bool),
+    ("is_show_more", bool),
     ("icon_name", Optional[str]),
     ("emblem", Optional[str]),
 ])

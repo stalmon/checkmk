@@ -8,7 +8,7 @@
 Cares about the main navigation of our GUI. This is a) the small sidebar and b) the mega menu
 """
 
-from typing import NamedTuple, List
+from typing import NamedTuple, List, Optional
 
 import cmk.gui.config as config
 from cmk.gui.i18n import _
@@ -23,24 +23,25 @@ from cmk.gui.type_defs import (
 
 from cmk.gui.main_menu import (
     mega_menu_registry,
-    any_advanced_items,
+    any_show_more_items,
 )
 
 MainMenuItem = NamedTuple("MainMenuItem", [
     ("name", str),
     ("title", str),
     ("icon_name", str),
+    ("onopen", Optional[str]),
 ])
 
 
 def get_show_more_setting(more_id: str) -> bool:
-    if config.user.get_attribute("ui_basic_advanced_mode") == "enforce_advanced":
+    if config.user.get_attribute("show_mode") == "enforce_show_more":
         return True
 
     return html.foldable_container_is_open(
         treename="more_buttons",
         id_=more_id,
-        isopen=config.user.get_attribute("ui_basic_advanced_mode") == "default_advanced")
+        isopen=config.user.get_attribute("show_mode") == "default_show_more")
 
 
 class MainMenuRenderer:
@@ -62,6 +63,7 @@ class MainMenuRenderer:
                 cssclass=menu_item.name,
                 popup_group="main_menu_popup",
                 hover_switch_delay=150,  # ms
+                onopen=menu_item.onopen,
             )
             html.close_li()
 
@@ -69,11 +71,13 @@ class MainMenuRenderer:
         # TODO: Add permissions? For example WATO is not allowed for all users
         items: List[MainMenuItem] = []
         for menu in sorted(mega_menu_registry.values(), key=lambda g: g.sort_index):
-            items.append(MainMenuItem(
-                name=menu.name,
-                title=menu.title,
-                icon_name=menu.icon_name,
-            ))
+            items.append(
+                MainMenuItem(
+                    name=menu.name,
+                    title=menu.title,
+                    icon_name=menu.icon_name,
+                    onopen=menu.search.onopen if menu.search else None,
+                ))
         return items
 
     # TODO(tb): can we use the MegaMenuRenderer here and move this code to mega_menu.py?
@@ -110,7 +114,7 @@ class MegaMenuRenderer:
             menu.search.show_search_field()
         html.close_div()
         topics = menu.topics()
-        if any_advanced_items(topics):
+        if any_show_more_items(topics):
             html.open_div()
             html.more_button(id_=more_id,
                              dom_levels_up=3,
@@ -128,11 +132,11 @@ class MegaMenuRenderer:
         html.javascript("cmk.popup_menu.initialize_mega_menus();")
 
     def _show_topic(self, topic: TopicMenuTopic, menu_id: str) -> None:
-        advanced = all(i.is_advanced for i in topic.items)
+        show_more = all(i.is_show_more for i in topic.items)
         topic_id = "_".join(
             [menu_id, "topic", "".join(c.lower() for c in topic.title if not c.isspace())])
 
-        html.open_div(id_=topic_id, class_=["topic"] + (["advanced"] if advanced else []))
+        html.open_div(id_=topic_id, class_=["topic"] + (["show_more_mode"] if show_more else []))
 
         self._show_topic_title(menu_id, topic_id, topic)
         self._show_items(topic_id, topic)
@@ -164,7 +168,7 @@ class MegaMenuRenderer:
         html.close_ul()
 
     def _show_item(self, item: TopicMenuItem) -> None:
-        html.open_li(class_="advanced" if item.is_advanced else None)
+        html.open_li(class_="show_more_mode" if item.is_show_more else None)
         html.open_a(
             href=item.url,
             target="main",

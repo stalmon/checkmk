@@ -2377,29 +2377,30 @@ class DropdownChoice(ValueSpec):
 
     # TODO: Cleanup redefined builtin sorted
     def __init__(  # pylint: disable=redefined-builtin
-        self,
-        # DropdownChoice
-        choices: DropdownChoices,
-        sorted: bool = False,
-        label: _Optional[str] = None,
-        help_separator: _Optional[str] = None,
-        prefix_values: bool = False,
-        empty_text: _Optional[str] = None,
-        invalid_choice: _Optional[str] = "complain",
-        invalid_choice_title: _Optional[str] = None,
-        invalid_choice_error: _Optional[str] = None,
-        no_preselect: bool = False,
-        no_preselect_value: Any = None,
-        no_preselect_title: str = "",
-        no_preselect_error: _Optional[str] = None,
-        on_change: _Optional[str] = None,
-        read_only: bool = False,
-        encode_value: bool = True,
-        # ValueSpec
-        title: _Optional[str] = None,
-        help: _Optional[ValueSpecHelp] = None,
-        default_value: Any = DEF_VALUE,
-        validate: _Optional[ValueSpecValidateFunc] = None,
+            self,
+            # DropdownChoice
+            choices: DropdownChoices,
+            sorted: bool = False,
+            label: _Optional[str] = None,
+            help_separator: _Optional[str] = None,
+            prefix_values: bool = False,
+            empty_text: _Optional[str] = None,
+            invalid_choice: _Optional[str] = "complain",
+            invalid_choice_title: _Optional[str] = None,
+            invalid_choice_error: _Optional[str] = None,
+            no_preselect: bool = False,
+            no_preselect_value: Any = None,
+            no_preselect_title: str = "",
+            no_preselect_error: _Optional[str] = None,
+            on_change: _Optional[str] = None,
+            read_only: bool = False,
+            encode_value: bool = True,
+            # ValueSpec
+            title: _Optional[str] = None,
+            help: _Optional[ValueSpecHelp] = None,
+            default_value: Any = DEF_VALUE,
+            validate: _Optional[ValueSpecValidateFunc] = None,
+            deprecated_choices: Sequence[DropdownChoiceValue] = (),
     ):
         super().__init__(title=title, help=help, default_value=default_value, validate=validate)
         self._choices = choices
@@ -2423,6 +2424,7 @@ class DropdownChoice(ValueSpec):
         self._on_change = on_change
         self._read_only = read_only
         self._encode_value = encode_value
+        self._deprecated_choices = deprecated_choices
 
     def choices(self) -> List[DropdownChoiceEntry]:
         if callable(self._choices):
@@ -2476,9 +2478,9 @@ class DropdownChoice(ValueSpec):
                       read_only=self._read_only)
 
     def validate_datatype(self, value: Any, varprefix: str) -> None:
-        for choice in self.choices():
-            if isinstance(value, type(choice[0])):
-                return
+        if any(isinstance(value, type(choice[0]))
+               for choice in self.choices()) or value in self._deprecated_choices:
+            return
         raise MKUserError(
             varprefix,
             _("The value %r has type %s, but does not match any of the available choice types.") %
@@ -5518,12 +5520,12 @@ class IconSelector(ValueSpec):
     # During upload of user specific icons, the meta data is added to the images.
     def available_icons(self, only_local: bool = False) -> Dict[str, str]:
         icons = {}
-        icons.update(self._available_builtin_assets("icon", only_local))
+        icons.update(self._available_builtin_assets("icon_", only_local))
         icons.update(self._available_user_icons(only_local))
         return icons
 
     def available_emblems(self, only_local: bool = False) -> Dict[str, str]:
-        return self._available_builtin_assets("emblem", only_local)
+        return self._available_builtin_assets("emblem_", only_local)
 
     def _available_builtin_assets(self, prefix: str, only_local: bool = False) -> Dict[str, str]:
         if not self._show_builtin_icons:
@@ -5537,8 +5539,8 @@ class IconSelector(ValueSpec):
 
             for file_stem, category in self._get_assets_from_directories(
                     dirs, default_category="builtin").items():
-                if file_stem.startswith(prefix + "_"):
-                    assets[file_stem[5:]] = category
+                if file_stem.startswith(prefix):
+                    assets[file_stem[len(prefix):]] = category
         return assets
 
     def _available_user_icons(self, only_local=False) -> Dict[str, str]:
@@ -5602,7 +5604,7 @@ class IconSelector(ValueSpec):
                 icon_categories.append((category_name, category_alias, by_cat[category_name]))
         return icon_categories
 
-    def render_icon(self, icon_name, onclick='', title='', id_=''):
+    def _render_icon(self, icon_name, onclick='', title='', id_=''):
         if not icon_name:
             icon_name = self._empty_img
 
@@ -5624,7 +5626,7 @@ class IconSelector(ValueSpec):
         html.hidden_field(varprefix + "_value", value or '', varprefix + "_value", add_var=True)
 
         if value:
-            content = self.render_icon(value, '', _('Choose another Icon'), id_=varprefix + '_img')
+            content = self._render_icon(value, '', _('Choose another Icon'), id_=varprefix + '_img')
         else:
             content = _('Select an Icon')
 
@@ -5677,7 +5679,7 @@ class IconSelector(ValueSpec):
                     title=icon,
                 )
 
-                html.write_html(self.render_icon(icon, id_=varprefix + '_i_' + icon, title=icon))
+                html.write_html(self._render_icon(icon, id_=varprefix + '_i_' + icon, title=icon))
 
                 html.span(icon)
 
@@ -5709,7 +5711,7 @@ class IconSelector(ValueSpec):
 
     def value_to_text(self, value):
         # TODO: This is a workaround for a bug. This function needs to return str objects right now.
-        return "%s" % self.render_icon(value)
+        return "%s" % self._render_icon(value)
 
     def validate_datatype(self, value, varprefix):
         if value is not None and not isinstance(value, str):

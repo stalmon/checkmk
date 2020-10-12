@@ -2693,7 +2693,7 @@ class html(ABCHTMLGenerator):
                     dom_levels_up: int,
                     additional_js: str = "",
                     with_text: bool = False) -> None:
-        if config.user.get_attribute("ui_basic_advanced_mode") == "enforce_advanced":
+        if config.user.get_attribute("show_mode") == "enforce_show_more":
             return
 
         self.open_a(href="javascript:void(0)",
@@ -2719,12 +2719,13 @@ class html(ABCHTMLGenerator):
                       style: Optional[str] = None,
                       cssclass: CSSSpec = None,
                       onclose: Optional[str] = None,
+                      onopen: Optional[str] = None,
                       resizable: bool = False,
                       popup_group: Optional[str] = None,
                       hover_switch_delay: Optional[int] = None) -> None:
         self.write_html(
             self.render_popup_trigger(content, ident, method, data, style, cssclass, onclose,
-                                      resizable, popup_group, hover_switch_delay))
+                                      onopen, resizable, popup_group, hover_switch_delay))
 
     def render_popup_trigger(self,
                              content: HTML,
@@ -2734,15 +2735,17 @@ class html(ABCHTMLGenerator):
                              style: Optional[str] = None,
                              cssclass: CSSSpec = None,
                              onclose: Optional[str] = None,
+                             onopen: Optional[str] = None,
                              resizable: bool = False,
                              popup_group: Optional[str] = None,
                              hover_switch_delay: Optional[int] = None) -> HTML:
 
-        onclick = 'cmk.popup_menu.toggle_popup(event, this, %s, %s, %s, %s, %s);' % \
+        onclick = 'cmk.popup_menu.toggle_popup(event, this, %s, %s, %s, %s, %s,  %s);' % \
                     (json.dumps(ident),
                      json.dumps(method.asdict()),
                      json.dumps(data if data else None),
                      json.dumps(onclose.replace("'", "\\'") if onclose else None),
+                     json.dumps(onopen.replace("'", "\\'") if onopen else None),
                      json.dumps(resizable))
 
         if popup_group:
