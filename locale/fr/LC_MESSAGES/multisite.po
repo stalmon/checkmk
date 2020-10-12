@@ -6,23 +6,26 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-10-12 06:22+0000\n"
+"Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
+"Language-Team: French <https://translate.checkmk.com/projects/checkmk2/"
+"test_weblate2/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.2.2\n"
 
 #: ../cmk/gui/cee/plugins/views/sla.py:248
 #, python-format
 msgid " %s, outage duration %s"
-msgstr ""
+msgstr " oui oui"
 
 #: ../cmk/gui/wato/pages/host_rename.py:788
 #, python-format
 msgid " (%d times)"
-msgstr ""
+msgstr "suggestion"
 
 #: ../cmk/gui/visuals.py:802
 msgid " (Copy)"
@@ -74533,4 +74536,4 @@ msgstr ""
 
 #: ../cmk/gui/wato/pages/download_agents.py:125
 msgid "z/OS"
-msgstr ""
+msgstr "z/OS"
