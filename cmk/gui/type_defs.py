@@ -5,7 +5,8 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 
 from abc import ABC, abstractmethod
-from typing import Dict, Union, List, Tuple, Any, Optional, Callable, NamedTuple
+from dataclasses import dataclass
+from typing import Any, Callable, Dict, Iterable, List, Mapping, NamedTuple, Optional, Tuple, Union
 from cmk.utils.type_defs import UserId
 from cmk.gui.htmllib import HTML
 
@@ -108,28 +109,40 @@ class ABCMegaMenuSearch(ABC):
         ...
 
 
-TopicMenuItem = NamedTuple("TopicMenuItem", [
-    ("name", str),
-    ("title", str),
-    ("url", str),
-    ("sort_index", int),
-    ("is_show_more", bool),
-    ("icon_name", Optional[str]),
-    ("emblem", Optional[str]),
-])
+class TopicMenuItem(NamedTuple):
+    name: str
+    title: str
+    url: str
+    sort_index: int
+    is_show_more: bool = False
+    icon_name: Optional[str] = None
+    emblem: Optional[str] = None
 
-TopicMenuTopic = NamedTuple("TopicMenuTopic", [
-    ("name", "str"),
-    ("title", "str"),
-    ("items", List[TopicMenuItem]),
-    ("icon_name", Optional[str]),
-])
 
-MegaMenu = NamedTuple("MegaMenu", [
-    ("name", str),
-    ("title", str),
-    ("icon_name", str),
-    ("sort_index", int),
-    ("topics", Callable[[], List[TopicMenuTopic]]),
-    ("search", Optional[ABCMegaMenuSearch]),
-])
+class TopicMenuTopic(NamedTuple):
+    name: "str"
+    title: "str"
+    items: List[TopicMenuItem]
+    icon_name: Optional[str] = None
+
+
+class MegaMenu(NamedTuple):
+    name: str
+    title: str
+    icon_name: str
+    sort_index: int
+    topics: Callable[[], List[TopicMenuTopic]]
+    search: Optional[ABCMegaMenuSearch] = None
+
+
+SearchQuery = str
+
+
+@dataclass
+class SearchResult:
+    """Representation of a single result"""
+    title: str
+    url: str
+
+
+SearchResultsByTopic = Mapping[str, Iterable[SearchResult]]
