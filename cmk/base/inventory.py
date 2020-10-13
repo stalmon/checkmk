@@ -120,10 +120,6 @@ def do_inv_check(
     else:
         ipaddress = ip_lookup.lookup_ip_address(host_config)
 
-    status = 0
-    infotexts: List[str] = []
-    long_infotexts: List[str] = []
-
     multi_host_sections, results = _get_multi_host_sections_for_inv(config_cache, host_config,
                                                                     ipaddress)
 
@@ -132,6 +128,10 @@ def do_inv_check(
         ipaddress,
         multi_host_sections=multi_host_sections,
     )
+
+    status = 0
+    infotexts: List[str] = []
+    long_infotexts: List[str] = []
 
     #TODO add cluster if and only if all sources do not fail?
     if _all_sources_fail(host_config, ipaddress):
@@ -258,18 +258,17 @@ def do_inventory_actions_during_checking_for(
     sources: Sequence[ABCSource],
     multi_host_sections: MultiHostSections,
 ) -> None:
-    hostname = host_config.hostname
 
     if not host_config.do_status_data_inventory:
-        _cleanup_status_data(hostname)
+        _cleanup_status_data(host_config.hostname)
         return  # nothing to do here
 
     _inventory_tree, status_data_tree = _do_inv_for(
-        config.HostConfig.make_host_config(hostname),
+        host_config,
         ipaddress,
         multi_host_sections=multi_host_sections,
     )[:2]
-    _save_status_data_tree(hostname, status_data_tree)
+    _save_status_data_tree(host_config.hostname, status_data_tree)
 
 
 def _cleanup_status_data(hostname: HostName) -> None:
@@ -287,7 +286,6 @@ def _do_inv_for(
     *,
     multi_host_sections: MultiHostSections,
 ) -> Tuple[StructuredDataTree, StructuredDataTree]:
-    hostname = host_config.hostname
 
     initialize_inventory_tree()
     inventory_tree = g_inv_tree
@@ -302,7 +300,6 @@ def _do_inv_for(
         _do_inv_for_realhost(
             host_config,
             multi_host_sections,
-            hostname,
             ipaddress,
             inventory_tree,
             status_data_tree,
@@ -327,7 +324,6 @@ def _do_inv_for_cluster(host_config: config.HostConfig, inventory_tree: Structur
 def _do_inv_for_realhost(
     host_config: config.HostConfig,
     multi_host_sections: MultiHostSections,
-    hostname: HostName,
     ipaddress: Optional[HostAddress],
     inventory_tree: StructuredDataTree,
     status_data_tree: StructuredDataTree,
@@ -337,7 +333,7 @@ def _do_inv_for_realhost(
     for inventory_plugin in agent_based_register.iter_all_inventory_plugins():
 
         kwargs = multi_host_sections.get_section_kwargs(
-            HostKey(hostname, ipaddress, SourceType.HOST),
+            HostKey(host_config.hostname, ipaddress, SourceType.HOST),
             inventory_plugin.sections,
         )
         if not kwargs:
