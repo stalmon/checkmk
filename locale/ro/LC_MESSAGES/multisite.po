@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite traducere 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-02 14:01+0000\n"
+"PO-Revision-Date: 2020-10-14 06:51+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: Romanian <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/ro/>\n"
@@ -7063,7 +7063,7 @@ msgstr ""
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2904
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:179
 msgid "Authentication"
-msgstr ""
+msgstr "asadfg"
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mssql.py:61
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mssql.py:71
