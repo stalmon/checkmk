@@ -28063,8 +28063,8 @@ msgstr "Gast-Tools fehlen oder sind nicht installiert"
 msgid "Height"
 msgstr "Höhe"
 
-#: ../cmk/gui/wato/pages/rulesets.py:1192 ../cmk/gui/wato/pages/tags.py:431
-#: ../cmk/gui/page_menu.py:307
+#: ../cmk/gui/main_menu.py:73 ../cmk/gui/wato/pages/rulesets.py:1192
+#: ../cmk/gui/wato/pages/tags.py:431 ../cmk/gui/page_menu.py:307
 msgid "Help"
 msgstr "Hilfe-Text"
 
@@ -38814,7 +38814,8 @@ msgstr "Verwalten"
 msgid "Mandatory context"
 msgstr "ohne Kontext"
 
-#: ../cmk/gui/sidebar.py:639 ../cmk/gui/plugins/views/painters.py:1356
+#: ../cmk/gui/main_menu.py:78 ../cmk/gui/sidebar.py:639
+#: ../cmk/gui/plugins/views/painters.py:1356
 #: ../cmk/gui/plugins/wato/check_parameters/services.py:57
 msgid "Manual"
 msgstr "Manuell"
@@ -82018,6 +82019,10 @@ msgstr "Ihre Einstellungen und die Werkseinstellungen sind gleich."
 #: ../cmk/gui/watolib/users.py:150
 msgid "Your user has no roles. Please assign at least one role."
 msgstr "Benutzer gehört zu keiner Rolle. Bitte mindestens eine Rolle zuweisen."
+
+#: ../cmk/gui/main_menu.py:86
+msgid "Youtube"
+msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4575
 #, fuzzy
