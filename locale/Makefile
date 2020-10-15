@@ -2,6 +2,13 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
+# Relies on the following environment variables:
+# CHECKMK_DIR -- name of the clone of the Checkmk git repository, e.g. check_mk
+# WEBLATE_DIR -- name of the clone of the Weblate git repository, e.g. weblate_git
+# WEBLATE_COMMIT_MSG -- string used to identify commits from Weblate, e.g. "[Weblate] Updated translation files"
+# WEBLATE_API_URL -- URL of Weblate API used to send commit command, e.g. "https://translate.checkmk.com/api/components/checkmk/some_component/repository/"
+# WEBLATE_API_TOKEN -- Token for authenticating with the Weblate API
+
 SHELL := /bin/bash -e -o pipefail
 MULTISITE_POT = multisite.pot
 
