@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite traducere 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-14 06:51+0000\n"
+"PO-Revision-Date: 2020-10-15 13:54+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: Romanian <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/ro/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/views/sla.py:248
 #, python-format
 msgid " %s, outage duration %s"
-msgstr " %s testenabc %s"
+msgstr " %s testenabc %sx"
 
 #: ../cmk/gui/wato/pages/host_rename.py:789
 #, python-format
