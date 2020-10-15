@@ -3,16 +3,12 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 
 SHELL := /bin/bash -e -o pipefail
-CHECKMK_DIR = check_mk
-WEBLATE_DIR = weblate_git
 MULTISITE_POT = multisite.pot
-WEBLATE_COMMIT_ID = ===== Committed by Weblate =====# string in commit messages used to identify commits by Weblate
 
 help:
 	@echo "setup      - Ubuntu/Debian für das Lokalisieren vorbereiten"
 	@echo "update-pot - Update multisite.pot"
-	@echo "update-pos - Pull changes in po-files from Weblate and apply them to Checkmk repository"
-	# @echo "update-mos - Update mo-files from po-files and commit changes"
+	@echo "update-pos - Commit changes in po-files in Weblate, pull and apply them to Checkmk repository"
 
 setup:
 	sudo apt-get install gettext
@@ -33,18 +29,19 @@ update-pot:
 	fi
 
 update-pos:
-	cd ../../$(WEBLATE_DIR); \
+	curl -d operation=commit -H "Authorization: Token $$WEBLATE_API_TOKEN" $$WEBLATE_API_URL
+	cd ../../$$WEBLATE_DIR; \
 	git pull --rebase; # Weblate repo \
 	counter=0; \
 	(git rev-list HEAD || true) | while read commit_id; do # || true is needed to avoid error 141 when breaking in the very first iteration \
 	     commit_msg=$$(git log --format=%B -n 1 $$commit_id); \
-	     if [[ $$commit_msg == *"$(WEBLATE_COMMIT_ID)"* ]]; then # only look at commits from Weblate \
+	     if [[ $$commit_msg == *"$$WEBLATE_COMMIT_MSG"* ]]; then # only look at commits from Weblate \
 		 if [[ $$commit_msg == *"Change-Id"* ]]; then # if the commit message contains a Change-Id, were are done (we have processed this commit before) \
 		      break; \
 		 fi; \
 		 counter_str=$$( printf '%04d' $$counter ); \
-		 patch_fn="../$(CHECKMK_DIR)/$${counter_str}.patch"; \
-		 git format-patch -1 --stdout $$commit_id > $$patch_fn; \
+		 patch_fn="../$$CHECKMK_DIR/$${counter_str}.patch"; \
+		 git format-patch -1 -k --stdout $$commit_id > $$patch_fn; \
 		 counter=$$((counter + 1)); \
 	     fi; \
 	done
@@ -55,15 +52,8 @@ update-pos:
 	     if ! [[ -f $$patch_file ]]; then # first check if file exists (only relevant in case there are no patches) \
       	          break; \
   	     fi; \
-	     git am $$patch_file; \
+	     git am -k $$patch_file; \
 	     git commit --amend --no-edit; # add Change-Id \
 	     rm $$patch_file; \
 	done
 	git push # Checkmk repo
-
-# update-mos:
-#	find . -name "multisite.po" | while read po_file; do \
-#  	    mo_file=$$(echo $$po_file | sed 's/multisite.po/multisite.mo/g'); \
-#	    msgfmt -v -o $$mo_file $$po_file; \
-#	done
-#	git commit ./ -m "Updated .mo-files";
