@@ -1175,8 +1175,10 @@ class MenuSearchResultsRenderer:
         return html_text
 
     def _render_topic(self, topic):
-        # TODO: Add the corresponding icon
         html.open_h2()
+        html.div(class_="spacer", content="")
+        # TODO: Add the corresponding icon
+        html.icon("topic_overview")
         html.span(topic)
         html.close_h2()
 
@@ -1190,14 +1192,16 @@ class MenuSearchResultsRenderer:
 class MonitoringSearch(ABCMegaMenuSearch):
     """Search field in the monitoring menu"""
     def show_search_field(self) -> None:
-        html.open_div(id_="mk_side_search_monitoring",
-                      class_="content_center",
-                      onclick="cmk.quicksearch.close_popup();")
+        html.open_div(
+            id_="mk_side_search_monitoring",
+            class_="content_center",
+        )
         html.input(id_=f"mk_side_search_field_{self.name}",
                    type_="text",
                    name="search",
                    autocomplete="off",
                    placeholder=_("Search in Monitoring"),
+                   onkeydown="cmk.search.on_key_down('monitoring')",
                    oninput="cmk.search.on_input_search('monitoring')")
         # TODO: Check if this icon button can be removed
         html.icon_button("#",
@@ -1216,16 +1220,18 @@ class PageSearchMonitoring(AjaxPage):
 
 
 class SetupSearch(ABCMegaMenuSearch):
-    """Search field in the monitoring menu"""
+    """Search field in the setup menu"""
     def show_search_field(self) -> None:
-        html.open_div(id_="mk_side_search_setup",
-                      class_="content_center",
-                      onclick="cmk.quicksearch.close_popup();")
+        html.open_div(
+            id_="mk_side_search_setup",
+            class_="content_center",
+        )
         html.input(id_=f"mk_side_search_field_{self.name}",
                    type_="text",
                    name="search",
                    autocomplete="off",
                    placeholder=_("Search in Setup"),
+                   onkeydown="cmk.search.on_key_down('setup')",
                    oninput="cmk.search.on_input_search('setup');")
         # TODO: Check if this icon button can be removed
         html.icon_button("#",

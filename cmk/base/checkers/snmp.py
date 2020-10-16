@@ -4,9 +4,11 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
+import logging
 import time
+from functools import cached_property
 from pathlib import Path
-from typing import Collection, Optional, Sequence, Tuple
+from typing import Final, Mapping, Optional, Set
 
 from cmk.utils.type_defs import HostAddress, HostName, SectionName, ServiceCheckResult, SourceType
 
@@ -25,14 +27,7 @@ import cmk.base.api.agent_based.register as agent_based_register
 import cmk.base.check_table as check_table
 import cmk.base.config as config
 
-from ._abstract import (
-    ABCSource,
-    ABCHostSections,
-    ABCParser,
-    ABCSummarizer,
-    FileCacheFactory,
-    Mode,
-)
+from ._abstract import ABCHostSections, ABCParser, ABCSource, ABCSummarizer, FileCacheFactory, Mode
 
 
 class SNMPHostSections(ABCHostSections[SNMPRawData, SNMPSections, SNMPPersistedSections,
@@ -152,6 +147,7 @@ class SNMPSource(ABCSource[SNMPRawData, SNMPHostSections]):
             },
             snmp_section_detects=self._make_snmp_section_detects(),
             configured_snmp_sections=self._make_configured_snmp_sections(),
+            structured_data_snmp_sections=self._make_structured_data_snmp_sections(),
             on_error=self.on_snmp_scan_error,
             missing_sys_description=config.get_config_cache().in_binary_hostlist(
                 self.snmp_config.hostname,
@@ -162,56 +158,48 @@ class SNMPSource(ABCSource[SNMPRawData, SNMPHostSections]):
         )
 
     def _make_parser(self) -> "SNMPParser":
-        return SNMPParser(self.hostname, self.persisted_sections_file_path, self._logger)
+        return SNMPParser(
+            self.hostname,
+            self.persisted_sections_file_path,
+            self.use_outdated_persisted_sections,
+            self._logger,
+        )
 
     def _make_summarizer(self) -> "SNMPSummarizer":
         return SNMPSummarizer(self.exit_spec)
 
-    def _make_snmp_section_detects(self) -> Sequence[Tuple[SectionName, SNMPDetectSpec]]:
+    def _make_snmp_section_detects(self) -> Mapping[SectionName, SNMPDetectSpec]:
         """Create list of all SNMP scan specifications"""
         disabled_sections = self.host_config.disabled_snmp_sections()
-        return [(
-            snmp_section_plugin.name,
-            snmp_section_plugin.detect_spec,
-        )
-                for snmp_section_plugin in agent_based_register.iter_all_snmp_sections()
-                if snmp_section_plugin.name not in disabled_sections]
+        return {
+            snmp_section_plugin.name: snmp_section_plugin.detect_spec
+            for snmp_section_plugin in agent_based_register.iter_all_snmp_sections()
+            if snmp_section_plugin.name not in disabled_sections
+        }
 
-    def _make_configured_snmp_sections(self) -> Collection[SectionName]:
-        section_names = set(
+    def _make_configured_snmp_sections(self) -> Set[SectionName]:
+        return self._enabled_snmp_sections.intersection(
             agent_based_register.get_relevant_raw_sections(
                 check_plugin_names=check_table.get_needed_check_names(
                     self.hostname,
                     filter_mode="include_clustered",
                     skip_ignored=True,
                 ),
+                consider_inventory_plugins=False,
+            ))
+
+    def _make_structured_data_snmp_sections(self) -> Set[SectionName]:
+        return self._enabled_snmp_sections.intersection(
+            agent_based_register.get_relevant_raw_sections(
+                check_plugin_names=(),
                 consider_inventory_plugins=self.host_config.do_status_data_inventory,
             ))
 
-        snmp_section_names = section_names.intersection(
-            s.name for s in agent_based_register.iter_all_snmp_sections()
-        ) - self.host_config.disabled_snmp_sections()
-
-        return SNMPSource._sort_section_names(snmp_section_names)
-
-    @staticmethod
-    def _sort_section_names(section_names: Collection[SectionName]) -> Collection[SectionName]:
-        # In former Checkmk versions (<=1.4.0) CPU check plugins were
-        # checked before other check plugins like interface checks.
-        # In Checkmk versions >= 1.5.0 the order is random and
-        # interface check plugins are executed before CPU check plugins.
-        # This leads to high CPU utilization sent by device. Thus we have
-        # to re-order the check plugin names.
-        # There are some nested check plugin names which have to be considered, too.
-        #   for f in $(grep "service_description.*CPU [^lL]" -m1 * | cut -d":" -f1); do
-        #   if grep -q "snmp_info" $f; then echo $f; fi done
-        cpu_sections_without_cpu_in_name = {
-            SectionName("brocade_sys"),
-            SectionName("bvip_util"),
-        }
-        return sorted(section_names,
-                      key=lambda x:
-                      (not ('cpu' in str(x) or x in cpu_sections_without_cpu_in_name), x))
+    # TODO: filter out disabled sections in fetcher. They need to known them anyway.
+    @cached_property
+    def _enabled_snmp_sections(self) -> Set[SectionName]:
+        return {s.name for s in agent_based_register.iter_all_snmp_sections()
+               } - self.host_config.disabled_snmp_sections()
 
     @staticmethod
     def _make_description(
@@ -252,7 +240,21 @@ class SNMPSource(ABCSource[SNMPRawData, SNMPHostSections]):
 
 class SNMPParser(ABCParser[SNMPRawData, SNMPHostSections]):
     """A parser for SNMP data."""
-    def _parse(
+    def __init__(
+        self,
+        hostname: HostName,
+        persisted_sections_file_path: Path,
+        use_outdated_persisted_sections: bool,
+        logger: logging.Logger,
+    ) -> None:
+        super().__init__()
+        self.hostname: Final[HostName] = hostname
+        self.host_config = config.HostConfig.make_host_config(self.hostname)
+        self.persisted_sections_file_path: Final[Path] = persisted_sections_file_path
+        self.use_outdated_persisted_sections: Final[bool] = use_outdated_persisted_sections
+        self._logger = logger
+
+    def parse(
         self,
         raw_data: SNMPRawData,
     ) -> SNMPHostSections:
@@ -260,7 +262,13 @@ class SNMPParser(ABCParser[SNMPRawData, SNMPHostSections]):
             raw_data,
             self.host_config,
         )
-        return SNMPHostSections(raw_data, persisted_sections=persisted_sections)
+        host_sections = SNMPHostSections(raw_data, persisted_sections=persisted_sections)
+        host_sections.add_persisted_sections(
+            self.persisted_sections_file_path,
+            self.use_outdated_persisted_sections,
+            logger=self._logger,
+        )
+        return host_sections
 
     @staticmethod
     def _extract_persisted_sections(
@@ -288,5 +296,5 @@ class SNMPParser(ABCParser[SNMPRawData, SNMPHostSections]):
 
 
 class SNMPSummarizer(ABCSummarizer[SNMPHostSections]):
-    def _summarize(self, host_sections: SNMPHostSections) -> ServiceCheckResult:
+    def summarize_success(self, host_sections: SNMPHostSections) -> ServiceCheckResult:
         return 0, "Success", []

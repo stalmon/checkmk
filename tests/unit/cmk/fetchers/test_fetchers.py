@@ -254,11 +254,12 @@ class ABCTestSNMPFetcher(ABC):
                     SNMPTree(base=".3.3.3", oids=["2.2"]),
                 ],
             },
-            snmp_section_detects=[
-                (SectionName("pim"), SNMPDetectSpec([[("1.2.3.4", "pim device", True)]])),
-                (SectionName("pam"), SNMPDetectSpec([[("1.2.3.4", "pam device", True)]])),
-            ],
+            snmp_section_detects={
+                SectionName("pim"): SNMPDetectSpec([[("1.2.3.4", "pim device", True)]]),
+                SectionName("pam"): SNMPDetectSpec([[("1.2.3.4", "pam device", True)]]),
+            },
             configured_snmp_sections=set(),
+            structured_data_snmp_sections=set(),
             on_error="raise",
             missing_sys_description=False,
             use_snmpwalk_cache=False,
