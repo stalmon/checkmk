@@ -50,6 +50,7 @@ from cmk.utils.type_defs import (
     ServiceState,
     SourceType,
 )
+import cmk.utils.cpu_tracking as cpu_tracking
 
 from cmk.fetchers.controller import FetcherMessage
 
@@ -58,7 +59,6 @@ import cmk.base.check_api_utils as check_api_utils
 import cmk.base.check_table as check_table
 import cmk.base.config as config
 import cmk.base.core
-import cmk.base.cpu_tracking as cpu_tracking
 import cmk.base.crash_reporting
 import cmk.base.checkers as checkers
 import cmk.base.decorator
@@ -119,6 +119,7 @@ def do_check(
     only_check_plugin_names: Optional[Set[CheckPluginName]] = None,
     fetcher_messages: Optional[Sequence[FetcherMessage]] = None
 ) -> Tuple[int, List[ServiceDetails], List[ServiceAdditionalDetails], List[str]]:
+    cpu_tracking.reset()
     cpu_tracking.start("busy")
     console.verbose("Checkmk version %s\n", cmk_version.__version__)
 
@@ -261,9 +262,8 @@ def do_check(
         # may be None.  This needs to be understood in detail and cleaned up. As the InlineSNMP
         # stats feature is a very rarely used debugging feature, the analyzation and fix is
         # postponed now.
-        if config.record_inline_snmp_stats \
-           and ipaddress is not None \
-           and host_config.snmp_config(ipaddress).snmp_backend == "inline":
+        if config.record_inline_snmp_stats and ipaddress is not None and host_config.snmp_config(
+                ipaddress).snmp_backend == "inline":
             inline.snmp_stats_save()
 
 
@@ -649,8 +649,8 @@ def legacy_determine_check_params(entries: LegacyCheckParameters) -> LegacyCheck
 
     # Check if first entry is not dict based or if its dict based
     # check if the tp_default_value is not a dict
-    if not isinstance(entries[0], dict) or \
-       not isinstance(entries[0].get("tp_default_value", {}), dict):
+    if not isinstance(entries[0], dict) or not isinstance(entries[0].get("tp_default_value", {}),
+                                                          dict):
         # This rule is tuple based, means no dict-key merging
         if not isinstance(entries[0], dict):
             return entries[0]  # A tuple rule, simply return first match
