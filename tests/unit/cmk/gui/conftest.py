@@ -14,6 +14,7 @@ import urllib.parse
 from http.cookiejar import CookieJar
 from pathlib import Path
 from typing import Any, NamedTuple, Literal
+from functools import lru_cache
 
 import pytest  # type: ignore[import]
 import webtest  # type: ignore[import]
@@ -32,7 +33,6 @@ import cmk.gui.htmllib as htmllib
 import cmk.gui.login as login
 from cmk.gui.globals import AppContext, RequestContext
 from cmk.gui.http import Request
-from cmk.gui.plugins.userdb import htpasswd
 from cmk.gui.utils import get_random_string
 from cmk.gui.watolib.users import delete_users, edit_users
 from cmk.gui.watolib import changes
@@ -51,6 +51,7 @@ HTTPMethod = Literal[
     "get", "put", "post", "delete",
     "GET", "PUT", "POST", "DELETE",
 ]  # yapf: disable
+
 
 @pytest.fixture(scope='function')
 def register_builtin_html():
@@ -90,12 +91,20 @@ def load_plugins(register_builtin_html, monkeypatch, tmp_path):
 
 
 def _mk_user_obj(username, password, automation=False):
+    # This dramatically improves the performance of the unit tests using this in fixtures
+    precomputed_hashes = {
+        "Ischbinwischtisch": '$5$rounds=535000$mn3ra3ny1cbHVGsW$5kiJmJcgQ6Iwd1R.i4.kGAQcMF.7zbCt0BOdRG8Mn.9',
+    }
+
+    if password not in precomputed_hashes:
+        raise ValueError("Add your hash to precomputed_hashes")
+
     user = {
         username: {
             'attributes': {
                 'alias': username,
                 'email': 'admin@example.com',
-                'password': htpasswd.hash_password(password),
+                'password': precomputed_hashes[password],
                 'notification_method': 'email',
                 'roles': ['admin'],
                 'serial': 0
@@ -345,10 +354,14 @@ class WebTestAppForCMK(webtest.TestApp):
         raise NotImplementedError("Format %s not implemented" % output_format)
 
 
+@lru_cache
+def _session_wsgi_callable(debug):
+    return make_app(debug=debug)
+
+
 def _make_webtest(debug):
-    wsgi_callable = make_app(debug=debug)
     cookies = CookieJar()
-    return WebTestAppForCMK(wsgi_callable, cookiejar=cookies)
+    return WebTestAppForCMK(_session_wsgi_callable(debug), cookiejar=cookies)
 
 
 @pytest.fixture(scope='function')
