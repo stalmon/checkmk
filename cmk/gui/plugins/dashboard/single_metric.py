@@ -7,11 +7,9 @@
 from typing import List, Tuple, Optional
 
 from cmk.gui.i18n import _
-from cmk.gui.globals import html
 from cmk.gui.valuespec import (
     Dictionary,
     Timerange,
-    TextUnicode,
     CascadingDropdown,
     DropdownChoice,
 )
@@ -30,41 +28,43 @@ class SingleMetricDataGenerator(ABCDataGenerator):
     def vs_parameters(cls):
         return Dictionary(title=_("Properties"),
                           render="form",
-                          optional_keys=["title"],
+                          optional_keys=False,
                           elements=cls._vs_elements())
 
     @classmethod
     def _vs_elements(cls):
         return [
-            ("title", TextUnicode(default_value="", title=_("Figure title"))),
-            ("metric", MetricName()),  # MetricChoice would be nicer, but is CEE
-            ("rrd_consolidation",
-             DropdownChoice(
+            ("metric", MetricName()),  # MetricChoice would be nicer, but we use the context filters
+            ("time_range",
+             CascadingDropdown(
+                 title=_("Timerange"),
+                 orientation="horizontal",
                  choices=[
-                     ("average", _("Average")),
-                     ("min", _("Minimum")),
-                     ("max", _("Maximum")),
+                     ("current", _("Only show current value")),
+                     ("range", _("Show historic values"),
+                      Dictionary(
+                          optional_keys=False,
+                          elements=[
+                              ('window',
+                               Timerange(title=_("Time range to consider"),
+                                         default_value="d0",
+                                         allow_empty=True)),
+                              ("rrd_consolidation",
+                               DropdownChoice(
+                                   choices=[
+                                       ("average", _("Average")),
+                                       ("min", _("Minimum")),
+                                       ("max", _("Maximum")),
+                                   ],
+                                   default_value="max",
+                                   title="RRD consolidation",
+                                   help=
+                                   _("Consolidation function for the [cms_graphing#rrds|RRD] data column"
+                                    ),
+                               )),
+                          ])),
                  ],
-                 default_value="average",
-                 title="RRD consolidation",
-                 help=_("Consolidation function for the [cms_graphing#rrds|RRD] data column"),
-             )),
-            (
-                "time_range",
-                CascadingDropdown(
-                    title=_("Timerange"),
-                    orientation="horizontal",
-                    choices=[
-                        ("current", _("Only show current value")),
-                        (
-                            "range",
-                            _("Show historic values"),
-                            # TODO: add RRD consolidation, here and in _get_data below
-                            Timerange(title=_("Time range to consider"),
-                                      default_value="d0",
-                                      allow_empty=True)),
-                    ],
-                    default_value="current"))
+                 default_value="current"))
         ]
 
     @classmethod
@@ -76,25 +76,25 @@ class SingleMetricDataGenerator(ABCDataGenerator):
         ]
         metric_columns = []
         if properties["time_range"] != "current":
-            from_time, until_time = map(int,
-                                        Timerange().compute_range(properties["time_range"][1])[0])
+            params = properties["time_range"][1]
+
+            from_time, until_time = map(int, Timerange().compute_range(params['window'])[0])
             data_range = "%s:%s:%s" % (from_time, until_time, 60)
             _metrics: List[Tuple[str, Optional[str], float]] = [
                 (name, None, scale)
                 for name, scale in reverse_translate_metric_name(properties["metric"])
             ]
-            metric_columns = list(rrd_columns(_metrics, properties["rrd_consolidation"],
-                                              data_range))
+            metric_columns = list(rrd_columns(_metrics, params["rrd_consolidation"], data_range))
 
         return cmc_cols + metric_columns
 
     @classmethod
-    def generate_response_data(cls, properties, context):
+    def generate_response_data(cls, properties, context, settings):
         data, metrics = create_data_for_single_metric(cls, properties, context)
-        return cls._create_single_metric_config(data, metrics, properties, context)
+        return cls._create_single_metric_config(data, metrics, properties, context, settings)
 
     @classmethod
-    def _create_single_metric_config(cls, data, metrics, properties, context):
+    def _create_single_metric_config(cls, data, metrics, properties, context, settings):
         plot_definitions = []
 
         def svc_map(row):
@@ -139,7 +139,8 @@ class SingleMetricDataGenerator(ABCDataGenerator):
             "data": data,
         }
 
-        response["title"] = properties.get("title")
+        response["title"] = settings.get("title") if settings.get("show_title", False) else None
+
         return response
 
 
@@ -256,23 +257,16 @@ class SingleMetricDashlet(ABCFigureDashlet):
     def description(cls):
         return _("Displays a single metric of a specific host and service.")
 
-    def _adjust_font_size_js(self):
-        return """
-            let oTdMetricValue = document.getElementById("dashlet_%s").getElementsByClassName("metric_value dynamic_font_size");
-            if (oTdMetricValue.length)
-                cmk.dashboard.adjust_single_metric_font_size(oTdMetricValue[0]);
-        """ % self._dashlet_id
-
-    def update(self):
-        self.show()
-        html.javascript(self._adjust_font_size_js())
-
-    def on_resize(self):
-        return self._adjust_font_size_js()
-
     @classmethod
     def single_infos(cls):
         return ["service"]
+
+    def on_resize(self):
+        return ("if (typeof %(instance)s != 'undefined') {"
+                "%(instance)s.update_gui();"
+                "}") % {
+                    "instance": self.instance_name
+                }
 
     def show(self):
         self.js_dashlet("single_metric_data.py")

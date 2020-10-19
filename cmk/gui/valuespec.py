@@ -263,6 +263,12 @@ class FixedValue(ValueSpec):
             return value
         return ensure_str(value)
 
+    def value_to_json(self, value):
+        return value
+
+    def value_from_json(self, json_value):
+        return json_value
+
     def from_html_vars(self, varprefix: str) -> Any:
         return self._value
 
@@ -2352,6 +2358,12 @@ class Checkbox(ValueSpec):
 
     def value_to_text(self, value: bool) -> str:
         return self._true_label if value else self._false_label
+
+    def value_to_json(self, value):
+        return value
+
+    def value_from_json(self, json_value):
+        return json_value
 
     def from_html_vars(self, varprefix: str) -> bool:
         return bool(html.request.var(varprefix))
@@ -4865,10 +4877,18 @@ class Dictionary(ValueSpec):
                 raise MKUserError(varprefix, _("The entry %s is missing") % vs.title())
 
     def transform_value(self, value):
+        assert isinstance(value, dict)
         return {
-            param: vs.transform_value(value[param])
-            for param, vs in self._get_elements()
-            if param in value
+            **{
+                param: vs.transform_value(value[param])  #
+                for param, vs in self._get_elements()  #
+                if param in value
+            },
+            **{
+                param: value[param]  #
+                for param in self._ignored_keys  #
+                if param in value
+            }
         }
 
 
