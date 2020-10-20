@@ -18,7 +18,7 @@ import cmk.gui.plugins.userdb.utils as userdb_utils
 import cmk.gui.utils as utils
 from cmk.gui.exceptions import MKUserError
 from cmk.gui.i18n import _
-from cmk.gui.globals import html
+from cmk.gui.globals import request
 
 from cmk.gui.valuespec import (
     Dictionary,
@@ -93,6 +93,8 @@ from cmk.gui.plugins.wato.utils import (
 )
 from cmk.gui.watolib.bulk_discovery import vs_bulk_discovery
 from cmk.gui.watolib.groups import load_contact_group_information
+
+from cmk.gui.utils.urls import makeuri_contextless
 
 #   .--Global Settings-----------------------------------------------------.
 #   |  ____ _       _           _   ____       _   _   _                   |
@@ -2503,18 +2505,17 @@ class ConfigVariableUseInlineSNMP(ConfigVariable):
         return Checkbox(
             title=_("Use Inline SNMP (deprecated)"),
             label=_("Enable inline SNMP (directly use net-snmp libraries) (deprecated)"),
-            help=
-            _("By default Check_MK uses command line calls of Net-SNMP tools like snmpget or "
-              "snmpwalk to gather SNMP information. For each request a new command line "
-              "program is being executed. It is now possible to use the inline SNMP implementation "
-              "which calls the net-snmp libraries directly via its python bindings. This "
-              "should increase the performance of SNMP checks in a significant way. The inline "
-              "SNMP mode is a feature which improves the performance for large installations and "
-              "only available via our subscription."
-              "<b>Note:</b> This option is deprecated and has been replaced by"
-              "<a href='%s'>Choose SNMP Backend</a>. Changes to this option will have no effect"
-              "to the behaviour of Checkmk") %
-            "wato.py?mode=edit_ruleset&varname=snmp_backend_default",
+            help=_(
+                "By default Check_MK uses command line calls of Net-SNMP tools like snmpget or "
+                "snmpwalk to gather SNMP information. For each request a new command line "
+                "program is being executed. It is now possible to use the inline SNMP implementation "
+                "which calls the net-snmp libraries directly via its python bindings. This "
+                "should increase the performance of SNMP checks in a significant way. The inline "
+                "SNMP mode is a feature which improves the performance for large installations and "
+                "only available via our subscription."
+                "<b>Note:</b> This option is deprecated and has been replaced by "
+                "Choose SNMP Backend. Changes to this option will have no effect "
+                "to the behaviour of Checkmk"),
         )
 
 
@@ -5157,9 +5158,11 @@ def _transform_piggybacked_exception(p):
 
 
 def _valuespec_piggybacked_host_files():
-    global_max_cache_age_uri = html.makeuri_contextless(
+    global_max_cache_age_uri = makeuri_contextless(
+        request,
         [('mode', 'edit_configvar'), ('varname', 'piggyback_max_cachefile_age')],
-        filename="wato.py")
+        filename="wato.py",
+    )
 
     global_max_cache_age_title = _("Use maximum age from <a href=\"%s\">global settings</a>" %
                                    global_max_cache_age_uri)

@@ -3,18 +3,11 @@
 # Copyright (C) 2019 tribe29 GmbH - License: GNU General Public License v2
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
+from typing import Dict
 
-# type: ignore[var-annotated,list-item,import,assignment,misc,operator]  # TODO: see which are needed in this file
-# parsed = {
-#     "ESTABLISHED" : 6,
-#     "BOUND"       : 17,
-#     "SYN_SENT"    : 1,
-#     "LISTEN"      : 10,
-# }
+TCPConnections = Dict[str, int]
 
-tcp_conn_stats_default_levels = {}
-
-map_counter_keys = {
+MAP_COUNTER_KEYS = {
     1: "ESTABLISHED",  # connection up and passing data
     2: "SYN_SENT",  # session has been requested by us; waiting for reply from remote endpoint
     3: "SYN_RECV",  # session has been requested by a remote endpoint for a socket on which we were listening
@@ -29,40 +22,7 @@ map_counter_keys = {
 }
 
 
-def empty_stats():
+def empty_stats() -> TCPConnections:
     # we require all states from map_counter_keys due to the omit_zero_metrics option
     # concerning the perfdata
-    return {value: 0 for value in map_counter_keys.values()}
-
-
-def inventory_tcp_connections(parsed):
-    if any(value != 0 for value in parsed.values()):
-        return [(None, 'tcp_conn_stats_default_levels')]
-
-
-def check_tcp_connections(item, params, parsed):
-    if not parsed:
-        yield 0, "Currently no TCP connections"
-        return
-
-    perfdata = []
-    for tcp_state, tcp_count in sorted(parsed.items()):
-        warn, crit = params.get(tcp_state, (None, None))
-
-        # We must append all states (regardless of their value --> even if 0) to the perfdata list
-        # due to metrics which has the option omit_zero_metrics
-        perfdata.append((tcp_state, tcp_count, warn, crit))
-
-        if tcp_count <= 0:
-            continue
-
-        infotext = "%s: %s" % (tcp_state, tcp_count)
-        state = 0
-        if crit is not None and tcp_count >= crit:
-            state = 2
-        elif warn is not None and tcp_count >= warn:
-            state = 1
-        if state:
-            infotext += " (warn/crit at %d/%d)" % (warn, crit)
-        yield state, infotext
-    yield 0, '', perfdata
+    return {value: 0 for value in MAP_COUNTER_KEYS.values()}
