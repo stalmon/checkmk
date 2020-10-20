@@ -72,7 +72,7 @@ class Snapshot:
 
 
 times: DefaultDict[str, Snapshot] = defaultdict(Snapshot.null)
-last_time_snapshot: Snapshot = Snapshot.null()
+prev_snapshot: Snapshot = Snapshot.null()
 phase_stack: List[str] = []
 
 # TODO (sk) make private low level API: reset, start, end
@@ -80,43 +80,43 @@ phase_stack: List[str] = []
 
 def reset():
     global times
-    global last_time_snapshot
+    global prev_snapshot
     global phase_stack
     times.clear()
-    last_time_snapshot = Snapshot.null()
+    prev_snapshot = Snapshot.null()
     phase_stack.clear()
 
 
 def start(initial_phase: str) -> None:
-    global times, last_time_snapshot
+    global times, prev_snapshot
     console.vverbose("[cpu_tracking] Start with phase '%s'\n" % initial_phase)
     times.clear()
-    last_time_snapshot = Snapshot.take()
+    prev_snapshot = Snapshot.take()
 
     phase_stack[:] = [initial_phase]
 
 
 def end() -> None:
     console.vverbose("[cpu_tracking] End\n")
-    _add_times_to_phase()
+    _add_times_to_phase(Snapshot.take())
     phase_stack.clear()
 
 
 def push_phase(phase_name: str) -> None:
-    if _is_not_tracking():
+    if not is_tracking():
         return
 
     console.vverbose("[cpu_tracking] Push phase '%s' (Stack: %r)\n" % (phase_name, phase_stack))
-    _add_times_to_phase()
+    _add_times_to_phase(Snapshot.take())
     phase_stack.append(phase_name)
 
 
 def pop_phase() -> None:
-    if _is_not_tracking():
+    if not is_tracking():
         return
 
     console.vverbose("[cpu_tracking] Pop phase '%s' (Stack: %r)\n" % (phase_stack[-1], phase_stack))
-    _add_times_to_phase()
+    _add_times_to_phase(Snapshot.take())
     phase_stack.pop()
 
 
@@ -124,16 +124,15 @@ def get_times() -> Dict[str, Snapshot]:
     return times
 
 
-def _is_not_tracking() -> bool:
-    return not bool(phase_stack)
+def is_tracking() -> bool:
+    return bool(phase_stack)
 
 
-def _add_times_to_phase() -> None:
-    global last_time_snapshot
-    new_time_snapshot = Snapshot.take()
+def _add_times_to_phase(snapshot: Snapshot) -> None:
+    global prev_snapshot
     for phase_name in phase_stack[-1], "TOTAL":
-        times[phase_name] += new_time_snapshot - last_time_snapshot
-    last_time_snapshot = new_time_snapshot
+        times[phase_name] += snapshot - prev_snapshot
+    prev_snapshot = snapshot
 
 
 def track(method: Callable) -> Callable:
