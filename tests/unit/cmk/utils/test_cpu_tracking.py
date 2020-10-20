@@ -19,6 +19,14 @@ def reset_cpu_tracking(monkeypatch):
     cpu_tracking.reset()
 
 
+@pytest.fixture
+def set_time(monkeypatch):
+    def setter(value):
+        monkeypatch.setattr("time.time", lambda value=value: value)
+
+    return setter
+
+
 class TestCpuTracking:
     @pytest.fixture
     def null(self):
@@ -63,23 +71,19 @@ def test_cpu_tracking_initial_state():
     assert not cpu_tracking.is_tracking()
 
 
-def test_pop_without_tracking():
+def test_phase_without_tracking():
     assert not cpu_tracking.is_tracking()
-    cpu_tracking.pop_phase()
+    with cpu_tracking.phase("bla"):
+        assert not cpu_tracking.is_tracking()
     assert not cpu_tracking.is_tracking()
+    assert not cpu_tracking.get_times()
 
 
-def test_push_without_tracking():
-    cpu_tracking.push_phase("bla")
-    assert not cpu_tracking.is_tracking()
-
-
-def test_cpu_tracking_simple(monkeypatch):
-    monkeypatch.setattr("time.time", lambda: 0.0)
-    cpu_tracking.start("busy")
-    assert cpu_tracking.get_times() == {}
-    monkeypatch.setattr("time.time", lambda: 1.0)
-    cpu_tracking.end()
+def test_cpu_tracking_simple(set_time):
+    set_time(0.0)
+    with cpu_tracking.execute("busy"):
+        assert cpu_tracking.get_times() == {}
+        set_time(1.0)
 
     times = cpu_tracking.get_times()
 
@@ -88,20 +92,16 @@ def test_cpu_tracking_simple(monkeypatch):
     assert times["busy"].run_time == 1.0
 
 
-def test_cpu_tracking_multiple_phases(monkeypatch):
-    monkeypatch.setattr("time.time", lambda: 0.0)
-    cpu_tracking.start("busy")
-    monkeypatch.setattr("time.time", lambda: 2.0)
+def test_cpu_tracking_multiple_phases(set_time):
+    set_time(0.0)
+    with cpu_tracking.execute("busy"):
+        set_time(2.0)
 
-    cpu_tracking.push_phase("agent")
-    monkeypatch.setattr("time.time", lambda: 5.0)
-    cpu_tracking.pop_phase()
+        with cpu_tracking.phase("agent"):
+            set_time(5.0)
 
-    cpu_tracking.push_phase("snmp")
-    monkeypatch.setattr("time.time", lambda: 7.0)
-    cpu_tracking.pop_phase()
-
-    cpu_tracking.end()
+        with cpu_tracking.phase("snmp"):
+            set_time(7.0)
 
     times = cpu_tracking.get_times()
     assert len(times) == 4
@@ -112,56 +112,16 @@ def test_cpu_tracking_multiple_phases(monkeypatch):
     assert times["agent"].run_time == 3.0
 
 
-def test_cpu_tracking_decorator(monkeypatch):
-    class K:
-        cpu_tracking_id = "hello"
-
-        @cpu_tracking.track
-        def tracked(self):
-            pass
-
-    monkeypatch.setattr("time.time", lambda: 0.0)
-    cpu_tracking.start("hello")
-    monkeypatch.setattr("time.time", lambda: 42.0)
-    obj = K()
-    obj.tracked()
-    cpu_tracking.end()
-
-    times = cpu_tracking.get_times()
-    assert times["hello"].run_time == 42.0
-
-
-def test_cpu_tracking_context_managers(monkeypatch):
-    monkeypatch.setattr("time.time", lambda: 0.0)
+def test_cpu_tracking_add_times(set_time):
+    set_time(0.0)
     with cpu_tracking.execute("busy"):
-        monkeypatch.setattr("time.time", lambda: 1.0)
-        with cpu_tracking.phase("aa"):
-            monkeypatch.setattr("time.time", lambda: 4.0)
-        with cpu_tracking.phase("bb"):
-            monkeypatch.setattr("time.time", lambda: 9.0)
-        monkeypatch.setattr("time.time", lambda: 16.0)
+        set_time(2.0)
 
-    times = cpu_tracking.get_times()
-    assert times["busy"].run_time == 8.0
-    assert times["TOTAL"].run_time == 16.0
-    assert times["aa"].run_time == 3.0
-    assert times["bb"].run_time == 5.0
+        with cpu_tracking.phase("agent"):
+            set_time(5.0)
 
-
-def test_cpu_tracking_add_times(monkeypatch):
-    monkeypatch.setattr("time.time", lambda: 0.0)
-    cpu_tracking.start("busy")
-    monkeypatch.setattr("time.time", lambda: 2.0)
-
-    cpu_tracking.push_phase("agent")
-    monkeypatch.setattr("time.time", lambda: 5.0)
-    cpu_tracking.pop_phase()
-
-    cpu_tracking.push_phase("agent")
-    monkeypatch.setattr("time.time", lambda: 9.0)
-    cpu_tracking.pop_phase()
-
-    cpu_tracking.end()
+        with cpu_tracking.phase("agent"):
+            set_time(9.0)
 
     times = cpu_tracking.get_times()
     assert len(times) == 3
@@ -171,33 +131,52 @@ def test_cpu_tracking_add_times(monkeypatch):
     assert times["agent"].run_time == 7.0, times["agent"]
 
 
-def test_cpu_tracking_update(monkeypatch):
-    monkeypatch.setattr("time.time", lambda: 0.0)
-    cpu_tracking.start("busy")
-    cpu_tracking.update(
-        {
-            "busy": cpu_tracking.Snapshot(
-                cpu_tracking.times_result([1.0, 2.0, 3.0, 4.0, 5.0]),
-                5.0,
-            ),
-            "agent": cpu_tracking.Snapshot(
-                cpu_tracking.times_result([1.0, 2.0, 3.0, 4.0, 5.0]),
-                5.0,
-            ),
-            "test": cpu_tracking.Snapshot(
-                cpu_tracking.times_result([1.0, 2.0, 3.0, 4.0, 5.0]),
-                5.0,
-            ),
-            "TOTAL": cpu_tracking.Snapshot(
-                cpu_tracking.times_result([3.0, 6.0, 9.0, 12.0, 15.0]),
-                15.0,
-            ),
-        },)
-    cpu_tracking.push_phase("agent")
-    monkeypatch.setattr("time.time", lambda: 9.0)
-    cpu_tracking.pop_phase()
+def test_cpu_tracking_nested_times(set_time):
+    set_time(0.0)
 
-    cpu_tracking.end()
+    with cpu_tracking.execute("one"):
+        set_time(2.0)
+
+        with cpu_tracking.phase("two"):
+            set_time(4.0)
+
+            with cpu_tracking.phase("three"):
+                set_time(6.0)
+
+    times = cpu_tracking.get_times()
+    assert len(times) == 4, times.keys()
+
+    assert times["one"].run_time == 2.0
+    assert times["two"].run_time == 2.0
+    assert times["three"].run_time == 2.0
+    assert times["TOTAL"].run_time == 6.0
+
+
+def test_cpu_tracking_update(set_time):
+    set_time(0.0)
+    with cpu_tracking.execute("busy"):
+        cpu_tracking.update(
+            {
+                "busy": cpu_tracking.Snapshot(
+                    cpu_tracking.times_result([1.0, 2.0, 3.0, 4.0, 5.0]),
+                    5.0,
+                ),
+                "agent": cpu_tracking.Snapshot(
+                    cpu_tracking.times_result([1.0, 2.0, 3.0, 4.0, 5.0]),
+                    5.0,
+                ),
+                "test": cpu_tracking.Snapshot(
+                    cpu_tracking.times_result([1.0, 2.0, 3.0, 4.0, 5.0]),
+                    5.0,
+                ),
+                "TOTAL": cpu_tracking.Snapshot(
+                    cpu_tracking.times_result([3.0, 6.0, 9.0, 12.0, 15.0]),
+                    15.0,
+                ),
+            },)
+        with cpu_tracking.phase("agent"):
+            set_time(9.0)
+
     times = cpu_tracking.get_times()
     assert len(times) == 4
 

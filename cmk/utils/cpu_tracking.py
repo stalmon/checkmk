@@ -5,13 +5,12 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 
 import contextlib
-import functools
 import os
 import posix
 import time
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Any, Callable, DefaultDict, Dict, Iterable, Iterator, List, Tuple
+from typing import Any, DefaultDict, Dict, Iterable, Iterator, List
 
 from cmk.utils.log import console
 
@@ -75,8 +74,6 @@ times: DefaultDict[str, Snapshot] = defaultdict(Snapshot.null)
 prev_snapshot: Snapshot = Snapshot.null()
 phase_stack: List[str] = []
 
-# TODO (sk) make private low level API: reset, start, end
-
 
 def reset():
     global times
@@ -87,7 +84,7 @@ def reset():
     phase_stack.clear()
 
 
-def start(initial_phase: str) -> None:
+def _start(initial_phase: str) -> None:
     global times, prev_snapshot
     console.vverbose("[cpu_tracking] Start with phase '%s'\n" % initial_phase)
     times.clear()
@@ -96,27 +93,27 @@ def start(initial_phase: str) -> None:
     phase_stack[:] = [initial_phase]
 
 
-def end() -> None:
+def _end(phase_name: str) -> None:
     console.vverbose("[cpu_tracking] End\n")
-    _add_times_to_phase(Snapshot.take())
+    _add_times_to_phase(phase_name, Snapshot.take())
     phase_stack.clear()
 
 
-def push_phase(phase_name: str) -> None:
+def _push_phase(phase_name: str) -> None:
     if not is_tracking():
         return
 
     console.vverbose("[cpu_tracking] Push phase '%s' (Stack: %r)\n" % (phase_name, phase_stack))
-    _add_times_to_phase(Snapshot.take())
+    _add_times_to_phase(phase_stack[-1], Snapshot.take())
     phase_stack.append(phase_name)
 
 
-def pop_phase() -> None:
+def _pop_phase(phase_name: str) -> None:
     if not is_tracking():
         return
 
     console.vverbose("[cpu_tracking] Pop phase '%s' (Stack: %r)\n" % (phase_stack[-1], phase_stack))
-    _add_times_to_phase(Snapshot.take())
+    _add_times_to_phase(phase_name, Snapshot.take())
     phase_stack.pop()
 
 
@@ -128,24 +125,11 @@ def is_tracking() -> bool:
     return bool(phase_stack)
 
 
-def _add_times_to_phase(snapshot: Snapshot) -> None:
+def _add_times_to_phase(phase_name: str, snapshot: Snapshot) -> None:
     global prev_snapshot
-    for phase_name in phase_stack[-1], "TOTAL":
-        times[phase_name] += snapshot - prev_snapshot
+    for pn in phase_name, "TOTAL":
+        times[pn] += snapshot - prev_snapshot
     prev_snapshot = snapshot
-
-
-def track(method: Callable) -> Callable:
-    """Decorator to track CPU in methods."""
-    @functools.wraps(method)
-    def wrapper(self: Any, *args: Tuple[Any], **kwargs: Dict[str, Any]) -> None:
-        push_phase(self.cpu_tracking_id)
-        try:
-            return method(self, *args, **kwargs)
-        finally:
-            pop_phase()
-
-    return wrapper
 
 
 def update(cpu_times: Dict[str, Snapshot]):
@@ -155,18 +139,18 @@ def update(cpu_times: Dict[str, Snapshot]):
 
 @contextlib.contextmanager
 def phase(phase_name: str) -> Iterator[None]:
-    push_phase(phase_name)
+    _push_phase(phase_name)
     try:
         yield
     finally:
-        pop_phase()
+        _pop_phase(phase_name)
 
 
 @contextlib.contextmanager
 def execute(name: str) -> Iterator[None]:
     reset()
-    start(name)
+    _start(name)
     try:
         yield
     finally:
-        end()
+        _end(name)

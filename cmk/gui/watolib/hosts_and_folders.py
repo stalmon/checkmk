@@ -1464,6 +1464,7 @@ class CREFolder(WithPermissions, WithAttributes, WithUniqueIdentifier, BaseFolde
                 ("folder", self.path()),
                 ("backfolder", backfolder.path()),
             ],
+            filename="wato.py",
         )
 
     def locked(self) -> Union[bool, str]:
@@ -2336,6 +2337,7 @@ class CREHost(WithPermissions, WithAttributes):
                 ("folder", self.folder().path()),
                 ("host", self.name()),
             ],
+            filename="wato.py",
         )
 
     def params_url(self):
@@ -2346,6 +2348,7 @@ class CREHost(WithPermissions, WithAttributes):
                 ("folder", self.folder().path()),
                 ("host", self.name()),
             ],
+            filename="wato.py",
         )
 
     def services_url(self):
@@ -2356,6 +2359,7 @@ class CREHost(WithPermissions, WithAttributes):
                 ("folder", self.folder().path()),
                 ("host", self.name()),
             ],
+            filename="wato.py",
         )
 
     def clone_url(self):
@@ -2366,6 +2370,7 @@ class CREHost(WithPermissions, WithAttributes):
                 ("folder", self.folder().path()),
                 ("clone", self.name()),
             ],
+            filename="wato.py",
         )
 
     # .--------------------------------------------------------------------.
@@ -2881,6 +2886,9 @@ class MatchItemGeneratorHosts(ABCMatchItemGenerator):
             match_texts=[host_name],
         ) for host_name, host_attributes in self._host_collector().items())
 
+    def is_affected_by_change(self, change_action_name: str) -> bool:
+        return 'host' in change_action_name
+
 
 class MatchItemGeneratorFolders(ABCMatchItemGenerator):
     def __init__(
@@ -2898,6 +2906,9 @@ class MatchItemGeneratorFolders(ABCMatchItemGenerator):
             url=folder.url(),
             match_texts=[folder.title()],
         ) for folder in self._folder_collector().values())
+
+    def is_affected_by_change(self, change_action_name: str) -> bool:
+        return 'folder' in change_action_name
 
 
 match_item_generator_registry.register(MatchItemGeneratorHosts(
