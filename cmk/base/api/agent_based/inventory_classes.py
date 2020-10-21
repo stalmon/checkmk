@@ -44,21 +44,21 @@ def _parse_valid_path(path: List[str]) -> List[str]:
     return path
 
 
-def _raise_invalid_attr_dict(kwarg_name: str) -> NoReturn:
+def _raise_invalid_attr_dict(kwarg_name: str, dict_: AttrDict) -> NoReturn:
     value_types = ', '.join(t.__name__ for t in _ATTR_DICT_VAL_TYPES)
     raise TypeError(f"{kwarg_name} must be a dict with keys of type {_ATTR_DICT_KEY_TYPE.__name__}"
-                    f" and values of type {value_types}")
+                    f" and values of type {value_types}. Got {dict_!r}")
 
 
 def _parse_valid_dict(kwarg_name: str, dict_: Optional[AttrDict]) -> AttrDict:
     if dict_ is None:
         return {}
     if not isinstance(dict_, dict):
-        _raise_invalid_attr_dict(kwarg_name)
+        _raise_invalid_attr_dict(kwarg_name, dict_)
     if not all(
             isinstance(k, _ATTR_DICT_KEY_TYPE) and isinstance(v, _ATTR_DICT_VAL_TYPES)
             for k, v in dict_.items()):
-        _raise_invalid_attr_dict(kwarg_name)
+        _raise_invalid_attr_dict(kwarg_name, dict_)
     return dict_
 
 

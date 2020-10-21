@@ -38,7 +38,7 @@ from cmk.gui.type_defs import (
     ViewName,
 )
 from cmk.gui.pages import page_registry, AjaxPage
-from cmk.gui.watolib.search import IndexSearcher, get_index_store
+from cmk.gui.watolib.search import IndexNotFoundException, IndexSearcher, get_index_store
 from cmk.gui.utils.urls import makeuri
 
 #   .--Quicksearch---------------------------------------------------------.
@@ -473,6 +473,9 @@ class LivestatusQuicksearchConductor(ABCQuicksearchConductor):
 
 class QuicksearchManager:
     """Producing the results for the given search query"""
+    def __init__(self, raise_too_many_rows_error: bool = True):
+        self.raise_too_many_rows_error = raise_too_many_rows_error
+
     def generate_results(self, query: SearchQuery) -> SearchResultsByTopic:
         search_objects = self._determine_search_objects(query)
         self._conduct_search(search_objects)
@@ -596,12 +599,14 @@ class QuicksearchManager:
 
             if total_rows > config.quicksearch_dropdown_limit:
                 search_object.remove_rows_from_end(total_rows - config.quicksearch_dropdown_limit)
-                raise TooManyRowsError(
-                    _("More than %d results") % config.quicksearch_dropdown_limit)
+                if self.raise_too_many_rows_error:
+                    raise TooManyRowsError(
+                        _("More than %d results") % config.quicksearch_dropdown_limit)
 
             if search_object.row_limit_exceeded():
-                raise TooManyRowsError(
-                    _("More than %d results") % config.quicksearch_dropdown_limit)
+                if self.raise_too_many_rows_error:
+                    raise TooManyRowsError(
+                        _("More than %d results") % config.quicksearch_dropdown_limit)
 
             if (search_object.num_rows() > 0 and
                     search_object.filter_behaviour is not FilterBehaviour.CONTINUE):
@@ -1150,7 +1155,8 @@ class MenuSearchResultsRenderer:
 
         # TODO: In the future, we should separate the rendering and the generation of the results
         if search_type == "monitoring":
-            self._generate_results = QuicksearchManager().generate_results
+            self._generate_results = QuicksearchManager(
+                raise_too_many_rows_error=False).generate_results
         elif search_type == "setup":
             self._generate_results = IndexSearcher(get_index_store()).search
         else:
@@ -1167,8 +1173,8 @@ class MenuSearchResultsRenderer:
                     self._render_result(result)
                 # TODO: Remove this as soon as the index search does limit its search results
                 if len(list(search_results)) >= self._max_num_displayed_results:
-                    html.write_text(
-                        _(f"Showing only first {self._max_num_displayed_results} results."))
+                    html.div(
+                        content=_(f"Showing only first {self._max_num_displayed_results} results."))
                 html.close_ul()
                 html.close_div()
             html.div(None, class_=["topic", "sentinel"])
@@ -1248,4 +1254,13 @@ class SetupSearch(ABCMegaMenuSearch):
 class PageSearchSetup(AjaxPage):
     def page(self):
         query = html.request.get_unicode_input_mandatory("q")
-        return MenuSearchResultsRenderer("setup").render(query)
+        try:
+            return MenuSearchResultsRenderer("setup").render(query)
+        except IndexNotFoundException:
+            with html.plugged():
+                html.open_div(class_="topic")
+                html.open_ul()
+                html.write_text(_("Currently indexing, please try again shortly."))
+                html.close_ul()
+                html.close_div()
+                return html.drain()

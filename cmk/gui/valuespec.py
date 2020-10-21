@@ -3100,6 +3100,12 @@ class ListChoice(ValueSpec):
             if html.get_checkbox("%s_%d" % (varprefix, nr))
         ]
 
+    def value_to_json(self, value):
+        return value
+
+    def value_from_json(self, json_value):
+        return json_value
+
     def validate_datatype(self, value, varprefix):
         if not isinstance(value, list):
             raise MKUserError(varprefix,
@@ -4549,7 +4555,8 @@ class Tuple(ValueSpec):
             vp = varprefix + "_" + str(no)
             element.validate_datatype(val, vp)
 
-    def transform_value(self, value):
+    def transform_value(self, value: _Tuple[Any, ...]) -> _Tuple[Any, ...]:
+        assert isinstance(value, tuple), "Tuple.transform_value() got a non-tuple: %r" % (value,)
         return tuple(vs.transform_value(value[index]) for index, vs in enumerate(self._elements))
 
 
@@ -4896,8 +4903,8 @@ class Dictionary(ValueSpec):
             elif not self._optional_keys or param in self._required_keys:
                 raise MKUserError(varprefix, _("The entry %s is missing") % vs.title())
 
-    def transform_value(self, value):
-        assert isinstance(value, dict)
+    def transform_value(self, value: Dict[str, Any]) -> Dict[str, Any]:
+        assert isinstance(value, dict), "Dictionary.transform_value() got a non-dict: %r" % (value,)
         return {
             **{
                 param: vs.transform_value(value[param])  #

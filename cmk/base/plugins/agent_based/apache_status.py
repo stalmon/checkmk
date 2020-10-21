@@ -4,10 +4,27 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
+from typing import Dict, Final
+from .agent_based_api.v1.type_defs import AgentStringTable, CheckResult, DiscoveryResult, Parameters
+
 import time
 import collections
 
-_FIELD_CASTER_MAP = {
+from cmk.base.plugins.agent_based.agent_based_api.v1 import (
+    check_levels,
+    get_rate,
+    get_value_store,
+    Metric,
+    register,
+    render,
+    Result,
+    Service,
+    State,
+)
+
+Section = Dict[str, Dict[str, float]]
+
+_FIELD_CASTER_MAP: Final = {
     'Uptime': int,
     'IdleWorkers': int,
     'BusyWorkers': int,
@@ -28,7 +45,7 @@ _FIELD_CASTER_MAP = {
     'IdleServers': int,
 }
 
-_CHECK_LEVEL_ENTRIES = (
+_CHECK_LEVEL_ENTRIES: Final = (
     ('Uptime', 'Uptime'),
     ('IdleWorkers', 'Idle workers'),
     ('BusyWorkers', 'Busy workers'),
@@ -48,23 +65,23 @@ _CHECK_LEVEL_ENTRIES = (
     ('IdleServers', 'Idle servers'),
 )
 
-_SCOREBOARD_LABEL_MAP = collections.OrderedDict((
-    ('Waiting', '_'),
-    ('StartingUp', 'S'),
-    ('ReadingRequest', 'R'),
-    ('SendingReply', 'W'),
-    ('Keepalive', 'K'),
-    ('DNS', 'D'),
-    ('Closing', 'C'),
-    ('Logging', 'L'),
-    ('Finishing', 'G'),
-    ('IdleCleanup', 'O'),
-))
+_SCOREBOARD_LABEL_MAP: Final = {  # order is relevant!
+    'Waiting': '_',
+    'StartingUp': 'S',
+    'ReadingRequest': 'R',
+    'SendingReply': 'W',
+    'Keepalive': 'K',
+    'DNS': 'D',
+    'Closing': 'C',
+    'Logging': 'L',
+    'Finishing': 'G',
+    'IdleCleanup': 'O',
+}
 
 
-def apache_status_parse_legacy(info):
+def apache_status_parse_legacy(info: AgentStringTable) -> Section:
     # This parse function is required for compatibility with agents older than the 1.6 release.
-    data = {}
+    data: Section = {}
     for line in info:
         if len(line) != 4 and not (len(line) == 5 and line[2] == 'Total'):
             continue  # Skip unexpected lines
@@ -101,14 +118,14 @@ def apache_status_parse_legacy(info):
     return data
 
 
-def apache_status_parse(info):
-    if len(frozenset(len(_) for _ in info)) != 1:
+def apache_status_parse(string_table: AgentStringTable) -> Section:
+    if len(frozenset(len(_) for _ in string_table)) != 1:
         # The separator was changed in 1.6 so that the elements of `info`
         # have a constant length.
-        return apache_status_parse_legacy(info)
+        return apache_status_parse_legacy(string_table)
 
-    data = collections.defaultdict(dict)
-    for address, port, instance, apache_info in info:
+    data: Section = collections.defaultdict(dict)
+    for address, port, instance, apache_info in string_table:
         try:
             label, status = apache_info.split(":", 1)
         except ValueError:
@@ -147,68 +164,76 @@ def apache_status_parse(info):
     return data
 
 
-def inventory_apache_status(info):
-    return [(item, {}) for item in apache_status_parse(info)]
+register.agent_section(
+    name="apache_status",
+    parse_function=apache_status_parse,
+)
 
 
-def check_apache_status(item, params, info):
-    if params is None:
-        params = {}
+def discover_apache_status(section: Section) -> DiscoveryResult:
+    for item in section:
+        yield Service(item=item)
 
+
+def check_apache_status(item: str, params: Parameters, section: Section) -> CheckResult:
     if item.endswith(":None"):
         # fix item name discovered before werk 2763
         item = item[:-5]
 
-    data = apache_status_parse(info).get(item)
+    data = section.get(item)
     if data is None:
         return
 
     this_time = int(time.time())
+    value_store = get_value_store()
 
     if "Total Accesses" in data:
-        data["ReqPerSec"] = get_rate("apache_status_%s_accesses" % item, this_time,
+        data["ReqPerSec"] = get_rate(value_store, "apache_status_%s_accesses" % item, this_time,
                                      data.pop("Total Accesses"))
     if "Total kBytes" in data:
-        data["BytesPerSec"] = get_rate("apache_status_%s_bytes" % item, this_time,
+        data["BytesPerSec"] = get_rate(value_store, "apache_status_%s_bytes" % item, this_time,
                                        data.pop("Total kBytes") * 1024)
 
     for key, label in ((k, l) for k, l in _CHECK_LEVEL_ENTRIES if k in data):
         value = data[key]
-        levels_to_lower = (None, None) if key == 'OpenSlots' else ()
+        levels_are_lower = (key == 'OpenSlots')
+        notice_only = key not in {'Uptime', 'IdleWorkers', 'BusyWorkers', 'TotalSlots'}
 
         renderer = None
         if key == 'Uptime':
-            renderer = get_age_human_readable
+            renderer = render.timespan
         elif not isinstance(value, float):
             renderer = lambda i: "%d" % int(i)
 
-        yield check_levels(
+        yield from check_levels(
             value,
-            key.replace(' ', '_'),
-            levels_to_lower + params.get(key, (None, None)),
-            human_readable_func=renderer,
-            infoname=label,
+            metric_name=key.replace(' ', '_'),
+            levels_lower=params.get(key) if levels_are_lower else None,
+            levels_upper=None if levels_are_lower else params.get(key),
+            render_func=renderer,
+            label=label,
+            notice_only=notice_only,
         )
 
     yield from _scoreboard_results(data)
 
 
-def _scoreboard_results(data):
+def _scoreboard_results(data: Dict[str, float]) -> CheckResult:
     # Don't process the scoreboard data directly. Print states instead
     states = []
-    perfdata = []
     for key in _SCOREBOARD_LABEL_MAP:
         value = data.get(f'State_{key}', 0)
         if value > 0:
             states.append(f'{key}: {value}')
-        perfdata.append((f'State_{key}', value))
-    yield 0, '\nScoreboard states:\n  %s' % '\n  '.join(states), perfdata
+        yield Metric(f'State_{key}', value)
+    yield Result(state=State.OK, notice='Scoreboard states:\n  %s' % '\n  '.join(states))
 
 
-check_info['apache_status'] = {
-    "check_function": check_apache_status,
-    "inventory_function": inventory_apache_status,
-    "service_description": "Apache %s Status",
-    "has_perfdata": True,
-    "group": "apache_status"
-}
+register.check_plugin(
+    name="apache_status",
+    service_name="Apache %s Status",
+    discovery_function=discover_apache_status,
+    check_function=check_apache_status,
+    check_default_parameters={},
+    check_ruleset_name="apache_status",
+)

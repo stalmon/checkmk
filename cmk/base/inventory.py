@@ -24,6 +24,7 @@ from cmk.utils.structured_data import StructuredDataTree
 from cmk.utils.type_defs import (
     HostAddress,
     HostName,
+    InventoryPluginName,
     MetricTuple,
     ServiceAdditionalDetails,
     ServiceDetails,
@@ -173,7 +174,6 @@ def do_inv_check(
 
 
 def _do_active_inventory_for(host_config: config.HostConfig,) -> ActiveInventoryResult:
-
     if host_config.is_cluster:
         return ActiveInventoryResult(
             trees=_do_inv_for_cluster(host_config),
@@ -184,7 +184,7 @@ def _do_active_inventory_for(host_config: config.HostConfig,) -> ActiveInventory
     ipaddress = ip_lookup.lookup_ip_address(host_config)
     config_cache = config.get_config_cache()
 
-    multi_host_sections, source_results = _get_multi_host_sections_for_inv(
+    multi_host_sections, source_results = _fetch_multi_host_sections_for_inv(
         config_cache, host_config, ipaddress)
 
     return ActiveInventoryResult(
@@ -198,7 +198,7 @@ def _do_active_inventory_for(host_config: config.HostConfig,) -> ActiveInventory
     )
 
 
-def _get_multi_host_sections_for_inv(
+def _fetch_multi_host_sections_for_inv(
     config_cache: config.ConfigCache,
     host_config: config.HostConfig,
     ipaddress: Optional[HostAddress],
@@ -211,6 +211,8 @@ def _get_multi_host_sections_for_inv(
         ipaddress,
         mode=checkers.Mode.INVENTORY,
     )
+    for source in sources:
+        _configure_source_for_inv(source)
 
     multi_host_sections = MultiHostSections()
     results = checkers.update_host_sections(
@@ -228,6 +230,13 @@ def _get_multi_host_sections_for_inv(
     )
 
     return multi_host_sections, results
+
+
+def _configure_source_for_inv(source: checkers.ABCSource):
+    if isinstance(source, checkers.snmp.SNMPSource):
+        source.use_snmpwalk_cache = False
+        source.ignore_check_interval = True
+        checkers.FileCacheFactory.snmp_disabled = True
 
 
 def _safe_to_write_tree(results: Sequence[SourceResult]) -> bool:
@@ -322,6 +331,7 @@ def _do_inv_for_realhost(
             inventory_plugin.inventory_function(**kwargs),
             inventory_tree,
             status_data_tree,
+            inventory_plugin.name,
         )
 
     console.verbose("\n")
@@ -343,6 +353,7 @@ def _aggregate_inventory_results(
     inventory_generator: InventoryResult,
     inventory_tree: StructuredDataTree,
     status_data_tree: StructuredDataTree,
+    plugin_name: InventoryPluginName,
 ) -> None:
 
     try:
@@ -350,7 +361,7 @@ def _aggregate_inventory_results(
     except Exception as exc:
         if cmk.utils.debug.enabled():
             raise
-        console.warning("Error in plugin: %s" % exc)
+        console.warning(f"Error in inventory plugin {plugin_name}: {exc}")
         return
 
     for item in inventory_items:
