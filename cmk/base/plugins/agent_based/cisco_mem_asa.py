@@ -25,7 +25,7 @@ True
 False
 """
 
-from typing import Sequence, Dict
+from typing import Dict, List, Sequence
 from contextlib import suppress
 
 from .utils.size_trend import size_trend
@@ -47,7 +47,7 @@ from .agent_based_api.v1 import (
     GetRateError,
 )
 from .agent_based_api.v1.type_defs import (
-    SNMPStringTable,
+    StringTable,
     Parameters,
     CheckResult,
     DiscoveryResult,
@@ -63,7 +63,7 @@ CISCO_MEM_CHECK_DEFAULT_PARAMETERS = {
 }
 
 
-def parse_cisco_mem_asa(string_table: SNMPStringTable) -> Section:
+def parse_cisco_mem_asa(string_table: List[StringTable]) -> Section:
     """
     >>> for item, values in parse_cisco_mem_asa([
     ...         [['System memory', '319075344', '754665920', '731194056']],
@@ -78,7 +78,7 @@ def parse_cisco_mem_asa(string_table: SNMPStringTable) -> Section:
     }
 
 
-def parse_cisco_mem_asa64(string_table: SNMPStringTable) -> Section:
+def parse_cisco_mem_asa64(string_table: List[StringTable]) -> Section:
     """
     >>> for item, values in parse_cisco_mem_asa64([[
     ...         ['System memory', '1251166290', '3043801006'],
@@ -97,7 +97,7 @@ register.snmp_section(
     detect=all_of(startswith(OID_SysDesc, "cisco adaptive security"),
                   matches(OID_SysDesc, VERSION_PRE_V9_PATTERN)),
     parse_function=parse_cisco_mem_asa,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.9.9.48.1.1.1",
             oids=["2.1", "5.1", "6.1", "7.1"],
@@ -118,7 +118,7 @@ register.snmp_section(
     detect=all_of(startswith(OID_SysDesc, "cisco adaptive security"),
                   not_matches(OID_SysDesc, VERSION_PRE_V9_PATTERN)),
     parse_function=parse_cisco_mem_asa64,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.9.9.221.1.1.1.1",
             oids=[

@@ -9,7 +9,7 @@ from .agent_based_api.v1.type_defs import (
     CheckResult,
     DiscoveryResult,
     Parameters,
-    SNMPStringTable,
+    StringTable,
 )
 
 from .utils import ps, domino
@@ -34,7 +34,7 @@ ProcessLines = List[Tuple[Optional[str], ps.ps_info, List[str]]]
 # Bring the SNMP data in the format expected by the common ps functions.
 # e.g.:
 # [None, (u'root', u'185292', u'5804', u'00:00:02/03:33:13', u'1'), u'/sbin/init', u'splash']
-def parse_domino_tasks(string_table: SNMPStringTable) -> ps.Section:
+def parse_domino_tasks(string_table: List[StringTable]) -> ps.Section:
     process_lines = [(ps.ps_info(), line) for line in string_table[0]]  # type: ignore[call-arg]
     # add cpu_cores count to be compatible with ps section
     return 1, process_lines
@@ -43,7 +43,7 @@ def parse_domino_tasks(string_table: SNMPStringTable) -> ps.Section:
 register.snmp_section(
     name='domino_tasks',
     parse_function=parse_domino_tasks,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.334.72.1.1.6.1.2.1",
             oids=["4"],  # InTaskName

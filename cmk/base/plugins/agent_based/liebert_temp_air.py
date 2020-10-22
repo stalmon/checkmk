@@ -4,7 +4,7 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
-from typing import Any, Dict, Tuple, Optional
+from typing import Any, Dict, List, Tuple, Optional
 from .utils.liebert import (
     DETECT_LIEBERT,
     parse_liebert,
@@ -22,7 +22,7 @@ from .agent_based_api.v1 import (
     State as state,
 )
 from .agent_based_api.v1.type_defs import (
-    SNMPStringTable,
+    StringTable,
     CheckResult,
     DiscoveryResult,
 )
@@ -41,7 +41,7 @@ def _get_item_data(item: str, section_liebert_temp_air: ParsedSection) -> Tuple:
     return (None, None)
 
 
-def parse_liebert_temp_air(string_table: SNMPStringTable) -> ParsedSection:
+def parse_liebert_temp_air(string_table: List[StringTable]) -> ParsedSection:
     return parse_liebert(string_table, str)
 
 
@@ -93,7 +93,7 @@ register.snmp_section(
     name="liebert_temp_air",
     detect=DETECT_LIEBERT,
     parse_function=parse_liebert_temp_air,
-    trees=[
+    fetch=[
         SNMPTree(
             base='.1.3.6.1.4.1.476.1.42.3.9.20.1',
             oids=[

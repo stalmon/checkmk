@@ -5,6 +5,7 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 """F5-BIGIP-Cluster Config Sync - SNMP sections and Checks
 """
+from typing import List
 from collections import namedtuple
 
 from .agent_based_api.v1 import (
@@ -17,7 +18,7 @@ from .agent_based_api.v1 import (
 )
 from .agent_based_api.v1.type_defs import (
     Parameters,
-    SNMPStringTable,
+    StringTable,
     CheckResult,
     DiscoveryResult,
 )
@@ -60,7 +61,7 @@ def discover_f5_bigip_config_sync(section: State) -> DiscoveryResult:
         yield Service()
 
 
-def parse_f5_bigip_config_sync_pre_v11(string_table: SNMPStringTable) -> State:
+def parse_f5_bigip_config_sync_pre_v11(string_table: List[StringTable]) -> State:
     """Read a node status encoded as stringified int
     >>> parse_f5_bigip_config_sync_pre_v11([[["0 - Synchronized"]]])
     State(state='0', description='Synchronized')
@@ -97,7 +98,7 @@ register.snmp_section(
     name="f5_bigip_cluster",
     detect=all_of(F5_BIGIP, VERSION_PRE_V11),
     parse_function=parse_f5_bigip_config_sync_pre_v11,
-    trees=[
+    fetch=[
         SNMPTree(base=".1.3.6.1.4.1.3375.2.1.1.1.1", oids=["6"]),  # sysAttrConfigsyncState
     ],
 )
@@ -118,7 +119,7 @@ register.check_plugin(
 # F5 nodes need to be ntp synced otherwise status reports might be wrong.
 
 
-def parse_f5_bigip_config_sync_v11_plus(string_table: SNMPStringTable) -> State:
+def parse_f5_bigip_config_sync_v11_plus(string_table: List[StringTable]) -> State:
     """Read a node status encoded as stringified int
     >>> parse_f5_bigip_config_sync_v11_plus([[['3', 'In Sync']]])
     State(state='3', description='In Sync')
@@ -146,7 +147,7 @@ register.snmp_section(
     name="f5_bigip_cluster_v11",
     detect=all_of(F5_BIGIP, VERSION_V11_PLUS),
     parse_function=parse_f5_bigip_config_sync_v11_plus,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.3375.2.1.14.1",
             oids=[

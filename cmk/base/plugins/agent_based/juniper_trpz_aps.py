@@ -3,7 +3,7 @@
 # Copyright (C) 2019 tribe29 GmbH - License: GNU General Public License v2
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
-from typing import Mapping, Tuple
+from typing import List, Mapping, Tuple
 
 from .agent_based_api.v1 import (
     SNMPTree,
@@ -15,12 +15,12 @@ from .agent_based_api.v1 import (
     any_of,
     startswith,
 )
-from .agent_based_api.v1.type_defs import SNMPStringTable, DiscoveryResult, CheckResult
+from .agent_based_api.v1.type_defs import StringTable, DiscoveryResult, CheckResult
 
 Section = Tuple[int, int]
 
 
-def parse_juniper_trpz_aps(string_table: SNMPStringTable) -> Section:
+def parse_juniper_trpz_aps(string_table: List[StringTable]) -> Section:
     """
     >>> parse_juniper_trpz_aps([[['1', '0']]])
     (1, 0)
@@ -83,7 +83,7 @@ register.snmp_section(
     detect=any_of(startswith(".1.3.6.1.2.1.1.2.0", ".1.3.6.1.4.1.14525.3.1"),
                   startswith(".1.3.6.1.2.1.1.2.0", ".1.3.6.1.4.1.14525.3.3")),
     parse_function=parse_juniper_trpz_aps,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.14525.4",
             oids=[

@@ -19,12 +19,11 @@ from cmk.snmplib.type_defs import OIDBytes, OIDSpec, SNMPDetectSpec, SNMPTree  #
 from cmk.base.api.agent_based.type_defs import (
     AgentParseFunction,
     AgentSectionPlugin,
-    AgentStringTable,
     HostLabelFunction,
     SNMPParseFunction,
     SNMPSectionPlugin,
-    SNMPStringByteTable,
-    SNMPStringTable,
+    StringByteTable,
+    StringTable,
 )
 from cmk.base.api.agent_based.register.utils import validate_function_arguments
 
@@ -183,7 +182,7 @@ def create_agent_section_plugin(
         if parse_function is not None:
             _validate_parse_function(
                 parse_function,
-                expected_annotation=(AgentStringTable, "AgentStringTable"),
+                expected_annotation=(StringTable, "StringTable"),
             )
 
         if host_label_function is not None:
@@ -213,7 +212,7 @@ def create_snmp_section_plugin(
     *,
     name: str,
     detect_spec: SNMPDetectSpec,
-    trees: List[SNMPTree],
+    fetch: List[SNMPTree],
     parsed_section_name: Optional[str] = None,
     parse_function: Optional[SNMPParseFunction] = None,
     host_label_function: Optional[HostLabelFunction] = None,
@@ -230,15 +229,15 @@ def create_snmp_section_plugin(
 
     if validate_creation_kwargs:
         _validate_detect_spec(detect_spec)
-        _validate_snmp_trees(trees)
+        _validate_snmp_trees(fetch)
 
         if parse_function is not None:
-            needs_bytes = any(isinstance(oid, OIDBytes) for tree in trees for oid in tree.oids)
+            needs_bytes = any(isinstance(oid, OIDBytes) for tree in fetch for oid in tree.oids)
             _validate_parse_function(
                 parse_function,
                 expected_annotation=(  #
-                    (SNMPStringByteTable, "SNMPStringByteTable") if needs_bytes else
-                    (SNMPStringTable, "SNMPStringTable")),
+                    (List[StringByteTable], "List[StringByteTable]") if needs_bytes else
+                    (List[StringTable], "List[StringTable]")),
             )
 
         if host_label_function is not None:
@@ -253,11 +252,11 @@ def create_snmp_section_plugin(
     return SNMPSectionPlugin(
         section_name,
         ParsedSectionName(parsed_section_name if parsed_section_name else str(section_name)),
-        _create_snmp_parse_function(parse_function, trees),
+        _create_snmp_parse_function(parse_function, fetch),
         _create_host_label_function(host_label_function),
         _create_supersedes(section_name, supersedes),
         detect_spec,
-        trees,
+        fetch,
         module,
     )
 

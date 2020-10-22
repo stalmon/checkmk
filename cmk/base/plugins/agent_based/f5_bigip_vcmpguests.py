@@ -6,7 +6,7 @@
 """F5-BIGIP-Cluster-Status SNMP Sections and Checks
 """
 
-from typing import Mapping, Optional
+from typing import List, Mapping, Optional
 
 from .agent_based_api.v1 import (
     SNMPTree,
@@ -17,7 +17,7 @@ from .agent_based_api.v1 import (
     all_of,
 )
 from .agent_based_api.v1.type_defs import (
-    SNMPStringTable,
+    StringTable,
     CheckResult,
     DiscoveryResult,
 )
@@ -29,7 +29,7 @@ from .utils.f5_bigip import (
 Section = Mapping[str, str]
 
 
-def parse_f5_bigip_vcmpguests(string_table: SNMPStringTable) -> Optional[Section]:
+def parse_f5_bigip_vcmpguests(string_table: List[StringTable]) -> Optional[Section]:
     """Read a node status encoded as stringified int
     >>> parse_f5_bigip_vcmpguests([[['guest1', 'Active'], ['guest2', 'Inactive']]])
     {'guest1': 'active', 'guest2': 'inactive'}
@@ -55,7 +55,7 @@ register.snmp_section(
     name="f5_bigip_vcmpguests",
     detect=all_of(F5_BIGIP, VERSION_V11_2_PLUS),
     parse_function=parse_f5_bigip_vcmpguests,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.3375.2.1.13.4.2.1",
             oids=[

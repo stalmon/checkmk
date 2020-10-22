@@ -3,11 +3,12 @@
 # Copyright (C) 2019 tribe29 GmbH - License: GNU General Public License v2
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
+from typing import List
 from .agent_based_api.v1 import (
     SNMPTree,
     register,
 )
-from .agent_based_api.v1.type_defs import SNMPStringTable
+from .agent_based_api.v1.type_defs import StringTable
 from .utils.printer import (
     DETECT_RICOH,
     discovery_printer_pages,
@@ -22,7 +23,7 @@ METRIC_NAMES = {
 }
 
 
-def parse_printer_pages_ricoh(string_table: SNMPStringTable) -> Section:
+def parse_printer_pages_ricoh(string_table: List[StringTable]) -> Section:
     """
     >>> parse_printer_pages_ricoh([[
     ...   ['Counter: Machine Total', '118722'],
@@ -46,7 +47,7 @@ register.snmp_section(
     detect=DETECT_RICOH,
     supersedes=["printer_pages"],
     parse_function=parse_printer_pages_ricoh,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.367.3.2.1.2.19.5.1",
             oids=[

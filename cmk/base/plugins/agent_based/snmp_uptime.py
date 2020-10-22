@@ -4,9 +4,9 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
-from typing import Optional
+from typing import List, Optional
 
-from .agent_based_api.v1.type_defs import SNMPStringTable
+from .agent_based_api.v1.type_defs import StringTable
 from .agent_based_api.v1 import (
     exists,
     register,
@@ -15,7 +15,7 @@ from .agent_based_api.v1 import (
 from .utils import uptime
 
 
-def parse_snmp_uptime(string_table: SNMPStringTable) -> Optional[uptime.Section]:
+def parse_snmp_uptime(string_table: List[StringTable]) -> Optional[uptime.Section]:
     """
         >>> parse_snmp_uptime([[['2297331594', '']]])
         Section(uptime_sec=22973315, message=None)
@@ -51,7 +51,7 @@ register.snmp_section(
     name="snmp_uptime",
     parsed_section_name="uptime",
     parse_function=parse_snmp_uptime,
-    trees=[
+    fetch=[
         SNMPTree(
             base='.1.3.6.1.2.1',
             oids=[

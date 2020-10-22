@@ -31,7 +31,7 @@ from .agent_based_api.v1 import (
     render,
 )
 from .agent_based_api.v1.type_defs import (
-    SNMPStringTable,
+    StringTable,
     DiscoveryResult,
     CheckResult,
     ValueStore,
@@ -67,7 +67,7 @@ AP_STATES = {
 }
 
 
-def parse_juniper_trpz_aps_sessions(string_table: SNMPStringTable) -> Section:
+def parse_juniper_trpz_aps_sessions(string_table: List[StringTable]) -> Section:
     """
     >>> aps, radios = parse_juniper_trpz_aps_sessions(
     ...     [[['12.109.103.48.50.49.50.48.51.48.50.54.50', '7', 'ap1'],
@@ -254,7 +254,7 @@ register.snmp_section(
     detect=any_of(startswith(".1.3.6.1.2.1.1.2.0", ".1.3.6.1.4.1.14525.3.1"),
                   startswith(".1.3.6.1.2.1.1.2.0", ".1.3.6.1.4.1.14525.3.3")),
     parse_function=parse_juniper_trpz_aps_sessions,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.14525.4.5.1.1.2.1",
             oids=[

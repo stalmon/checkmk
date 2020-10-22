@@ -131,7 +131,7 @@ def do_check(
     long_infotexts: List[ServiceAdditionalDetails] = []
     perfdata: List[str] = []
     try:
-        with cpu_tracking.execute("busy"):
+        with cpu_tracking.execute(), cpu_tracking.phase("busy"):
             license_usage.try_history_update()
 
             # In case of keepalive we always have an ipaddress (can be 0.0.0.0 or :: when
@@ -231,7 +231,7 @@ def do_check(
                 infotexts.append(missing_data_infotext)
 
         phase_times = cpu_tracking.get_times()
-        total_times = phase_times["TOTAL"]
+        total_times = phase_times["busy"]
 
         infotexts.append("execution time %.1f sec" % total_times.run_time)
         if config.check_mk_perfdata_with_times:

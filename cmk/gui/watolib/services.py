@@ -13,10 +13,12 @@ import re
 from hashlib import sha256
 from typing import Tuple, List, NamedTuple
 
+import cmk.utils.rulesets.ruleset_matcher as ruleset_matcher
+from cmk.utils.type_defs import SetAutochecksTable
+
 import cmk.gui.config as config
 import cmk.gui.watolib as watolib
 import cmk.gui.gui_background_job as gui_background_job
-import cmk.utils.rulesets.ruleset_matcher as ruleset_matcher
 
 from cmk.gui.i18n import _
 from cmk.gui.background_job import BackgroundProcessInterface, JobStatusStates
@@ -128,8 +130,8 @@ class Discovery:
         self.do_discovery(discovery_result)
 
     def do_discovery(self, discovery_result):
-        autochecks_to_save, remove_disabled_rule, add_disabled_rule, saved_services = {}, set(
-        ), set(), set()
+        autochecks_to_save: SetAutochecksTable = {}
+        remove_disabled_rule, add_disabled_rule, saved_services = set(), set(), set()
         apply_changes = False
         for table_source, check_type, _checkgroup, item, _paramstring, params, \
             descr, _state, _output, _perfdata, service_labels in discovery_result.check_table:
@@ -154,14 +156,14 @@ class Discovery:
 
             if table_source == DiscoveryState.UNDECIDED:
                 if table_target == DiscoveryState.MONITORED:
-                    autochecks_to_save[(check_type, item)] = (params, service_labels)
+                    autochecks_to_save[(check_type, item)] = (descr, params, service_labels)
                     saved_services.add(descr)
                 elif table_target == DiscoveryState.IGNORED:
                     add_disabled_rule.add(descr)
 
             elif table_source == DiscoveryState.VANISHED:
                 if table_target != DiscoveryState.REMOVED:
-                    autochecks_to_save[(check_type, item)] = (params, service_labels)
+                    autochecks_to_save[(check_type, item)] = (descr, params, service_labels)
                     saved_services.add(descr)
                 if table_target == DiscoveryState.IGNORED:
                     add_disabled_rule.add(descr)
@@ -171,7 +173,7 @@ class Discovery:
                         DiscoveryState.MONITORED,
                         DiscoveryState.IGNORED,
                 ]:
-                    autochecks_to_save[(check_type, item)] = (params, service_labels)
+                    autochecks_to_save[(check_type, item)] = (descr, params, service_labels)
 
                 if table_target == DiscoveryState.IGNORED:
                     add_disabled_rule.add(descr)
@@ -189,7 +191,7 @@ class Discovery:
                         DiscoveryState.MONITORED,
                         DiscoveryState.IGNORED,
                 ]:
-                    autochecks_to_save[(check_type, item)] = (params, service_labels)
+                    autochecks_to_save[(check_type, item)] = (descr, params, service_labels)
                     saved_services.add(descr)
                 if table_target == DiscoveryState.IGNORED:
                     add_disabled_rule.add(descr)
@@ -198,7 +200,7 @@ class Discovery:
                     DiscoveryState.CLUSTERED_NEW,
                     DiscoveryState.CLUSTERED_OLD,
             ]:
-                autochecks_to_save[(check_type, item)] = (params, service_labels)
+                autochecks_to_save[(check_type, item)] = (descr, params, service_labels)
                 saved_services.add(descr)
 
             elif table_source in [
@@ -210,7 +212,7 @@ class Discovery:
                 # for adding, removing, etc. of this service on the cluster. Therefore we
                 # do not allow any operation for this clustered service on the related node.
                 # We just display the clustered service state (OLD, NEW, VANISHED).
-                autochecks_to_save[(check_type, item)] = (params, service_labels)
+                autochecks_to_save[(check_type, item)] = (descr, params, service_labels)
                 saved_services.add(descr)
 
         if apply_changes:
@@ -222,9 +224,9 @@ class Discovery:
                 need_sync = True
             self._save_services(autochecks_to_save, need_sync)
 
-    def _save_services(self, checks, need_sync):
-        message = _("Saved check configuration of host '%s' with %d services") % \
-                    (self._host.name(), len(checks))
+    def _save_services(self, checks: SetAutochecksTable, need_sync: bool) -> None:
+        message = _("Saved check configuration of host '%s' with %d services") % (self._host.name(),
+                                                                                  len(checks))
         watolib.add_service_change(self._host, "set-autochecks", message, need_sync=need_sync)
         check_mk_automation(self._host.site_id(), "set-autochecks", [self._host.name()], checks)
 

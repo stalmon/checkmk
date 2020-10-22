@@ -6,6 +6,7 @@
 
 from typing import (
     Iterable,
+    List,
     Sequence,
     Union,
 )
@@ -72,14 +73,14 @@ def _line_to_interface(line: Iterable[Union[str, Sequence[int]]]) -> interfaces.
     )
 
 
-def parse_mcdata_fcport(string_table: type_defs.SNMPStringByteTable) -> interfaces.Section:
+def parse_mcdata_fcport(string_table: List[type_defs.StringByteTable]) -> interfaces.Section:
     return [_line_to_interface(line) for line in string_table[0]]
 
 
 register.snmp_section(
     name="mcdata_fcport",
     parse_function=parse_mcdata_fcport,
-    trees=[
+    fetch=[
         SNMPTree(
             base=".1.3.6.1.4.1.289.2.1.1.2.3.1.1",
             oids=[
