@@ -1202,8 +1202,8 @@ msgstr ""
 msgid "2 weeks back"
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:107
-#: ../cmk/gui/plugins/dashboard/graph.py:87
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:104
+#: ../cmk/gui/plugins/dashboard/graph.py:149
 msgid "25 Hours"
 msgstr ""
 
@@ -1258,8 +1258,8 @@ msgstr ""
 msgid "3PAR Remote Copy"
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:106
-#: ../cmk/gui/plugins/dashboard/graph.py:86
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:103
+#: ../cmk/gui/plugins/dashboard/graph.py:148
 msgid "4 Hours"
 msgstr ""
 
@@ -3358,7 +3358,7 @@ msgstr ""
 msgid "Add CA or self-signed certificate"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1973
+#: ../cmk/gui/plugins/wato/active_checks.py:1974
 msgid "Add Condition"
 msgstr ""
 
@@ -3374,7 +3374,7 @@ msgstr ""
 msgid "Add Counter Object"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1303
+#: ../cmk/gui/dashboard.py:1308
 msgid "Add Dashlet"
 msgstr ""
 
@@ -3521,7 +3521,7 @@ msgstr ""
 msgid "Add customer"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:769
+#: ../cmk/gui/dashboard.py:774
 msgid "Add dashlets"
 msgstr ""
 
@@ -3898,7 +3898,7 @@ msgstr ""
 msgid "Add these groups as <b>contacts</b> to all hosts <b>in this folder</b>"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:291
+#: ../cmk/gui/plugins/metrics/html_render.py:301
 msgid "Add this graph to..."
 msgstr ""
 
@@ -4051,7 +4051,7 @@ msgstr ""
 msgid "Additional context"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1076
+#: ../cmk/gui/plugins/wato/active_checks.py:1077
 msgid "Additional header lines"
 msgstr ""
 
@@ -4082,7 +4082,7 @@ msgid "Additive: Effects of seasonality are added to the trend."
 msgstr ""
 
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:890
-#: ../cmk/gui/plugins/wato/active_checks.py:2165
+#: ../cmk/gui/plugins/wato/active_checks.py:2166
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:266
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:329
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:651
@@ -4098,7 +4098,7 @@ msgid ""
 "used."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:854
+#: ../cmk/gui/plugins/wato/active_checks.py:855
 msgid "Address Check mode"
 msgstr ""
 
@@ -4220,7 +4220,7 @@ msgstr ""
 msgid "Adva Optical Transport Laser Power"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1245
+#: ../cmk/gui/plugins/wato/active_checks.py:1246
 msgid "Advanced: Disable SSL/TLS hostname extension support (SNI)"
 msgstr ""
 
@@ -4338,7 +4338,7 @@ msgstr ""
 msgid "After this number of days old logfile of event history will be deleted."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:133
+#: ../cmk/gui/plugins/wato/active_checks.py:134
 msgid ""
 "After this time (in seconds) the check is aborted, regardless of how many "
 "packets have been received yet."
@@ -4351,7 +4351,7 @@ msgstr ""
 #: ../cmk/gui/plugins/metrics/storage.py:32
 #: ../cmk/gui/plugins/views/painters.py:774
 #: ../cmk/gui/plugins/views/painters.py:1858
-#: ../cmk/gui/plugins/wato/active_checks.py:1221
+#: ../cmk/gui/plugins/wato/active_checks.py:1222
 msgid "Age"
 msgstr ""
 
@@ -4662,7 +4662,7 @@ msgid "Aggregation ID"
 msgstr ""
 
 #: ../cmk/gui/plugins/visuals/infos.py:249
-#: ../cmk/gui/plugins/wato/active_checks.py:1708
+#: ../cmk/gui/plugins/wato/active_checks.py:1709
 msgid "Aggregation Name"
 msgstr ""
 
@@ -5520,15 +5520,15 @@ msgid ""
 "existing rules have this disabled by default."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1333
+#: ../cmk/gui/plugins/wato/active_checks.py:1334
 msgid "Alternative Hostname"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:505
+#: ../cmk/gui/plugins/wato/active_checks.py:506
 msgid "Alternative Service description"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:293
+#: ../cmk/gui/plugins/wato/active_checks.py:294
 msgid "Alternative address to ping"
 msgstr ""
 
@@ -6193,7 +6193,7 @@ msgstr ""
 msgid "As server"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:764
+#: ../cmk/gui/plugins/wato/active_checks.py:765
 msgid ""
 "As soon as you configure expected strings in the response the check will "
 "output the response - as long as you do not hide it with this option"
@@ -6350,7 +6350,7 @@ msgstr ""
 msgid "At least"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1111
+#: ../cmk/gui/plugins/wato/active_checks.py:1112
 msgid ""
 "At least one of these strings is expected in the first (status) line of the "
 "server response (default: <tt>HTTP/1.</tt>). If specified skips all other "
@@ -6431,7 +6431,7 @@ msgstr ""
 msgid "Attribute Sync Plugins"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1289
+#: ../cmk/gui/plugins/wato/active_checks.py:1290
 msgid "Attribute to search"
 msgstr ""
 
@@ -6479,9 +6479,9 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/syncsmtp.py:41
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_oracle.py:154
 #: ../cmk/gui/wato/pages/users.py:386 ../cmk/gui/wato/pages/users.py:788
-#: ../cmk/gui/plugins/wato/active_checks.py:172
-#: ../cmk/gui/plugins/wato/active_checks.py:213
-#: ../cmk/gui/plugins/wato/active_checks.py:1298
+#: ../cmk/gui/plugins/wato/active_checks.py:173
+#: ../cmk/gui/plugins/wato/active_checks.py:214
+#: ../cmk/gui/plugins/wato/active_checks.py:1299
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2994
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:181
 msgid "Authentication"
@@ -6505,7 +6505,7 @@ msgstr ""
 msgid "Authentication Failures"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1746
+#: ../cmk/gui/plugins/wato/active_checks.py:1747
 msgid "Authentication Mode"
 msgstr ""
 
@@ -6548,8 +6548,8 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1082
-#: ../cmk/gui/plugins/wato/active_checks.py:1570
+#: ../cmk/gui/plugins/wato/active_checks.py:1083
+#: ../cmk/gui/plugins/wato/active_checks.py:1571
 msgid "Authorization"
 msgstr ""
 
@@ -6663,7 +6663,7 @@ msgstr ""
 msgid "Automatic page reload"
 msgstr ""
 
-#: ../cmk/gui/watolib/services.py:528
+#: ../cmk/gui/watolib/services.py:530
 msgid "Automatic refresh"
 msgstr ""
 
@@ -6707,11 +6707,11 @@ msgid ""
 "changes"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2369
+#: ../cmk/gui/plugins/wato/active_checks.py:2370
 msgid "Automatically stores the host key with no manual input requirement"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1778
+#: ../cmk/gui/plugins/wato/active_checks.py:1779
 msgid "Automatically track downtimes of aggregation"
 msgstr ""
 
@@ -6727,7 +6727,7 @@ msgstr ""
 msgid "Automation"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1730
+#: ../cmk/gui/plugins/wato/active_checks.py:1731
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2174
 msgid "Automation Secret"
 msgstr ""
@@ -6740,7 +6740,7 @@ msgstr ""
 msgid "Automation User for connection to central site"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1722
+#: ../cmk/gui/plugins/wato/active_checks.py:1723
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2173
 msgid "Automation Username"
 msgstr ""
@@ -6879,7 +6879,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/metrics/graphs.py:1002
 #: ../cmk/gui/cee/plugins/reporting/pnp_graphs.py:575
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1521
-#: ../cmk/gui/plugins/metrics/html_render.py:337
+#: ../cmk/gui/plugins/metrics/html_render.py:347
 #: ../cmk/gui/plugins/metrics/timeseries.py:194
 #: ../cmk/gui/plugins/dashboard/single_metric.py:56
 #: ../cmk/gui/plugins/wato/check_parameters/mysql_innodb_io.py:49
@@ -7559,7 +7559,7 @@ msgstr ""
 msgid "Barracuda: Mail Queue"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1280
+#: ../cmk/gui/plugins/wato/active_checks.py:1281
 msgid "Base DN"
 msgstr ""
 
@@ -7567,7 +7567,7 @@ msgstr ""
 msgid "Base OID"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1699
+#: ../cmk/gui/plugins/wato/active_checks.py:1700
 msgid "Base URL (OMD Site)"
 msgstr ""
 
@@ -7722,7 +7722,7 @@ msgid "Bind Credentials"
 msgstr ""
 
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1484
-#: ../cmk/gui/plugins/wato/active_checks.py:1301
+#: ../cmk/gui/plugins/wato/active_checks.py:1302
 msgid "Bind DN"
 msgstr ""
 
@@ -8005,7 +8005,7 @@ msgstr ""
 msgid "Build duration"
 msgstr ""
 
-#: ../cmk/gui/watolib/search.py:153
+#: ../cmk/gui/watolib/search.py:158
 msgid "Building of search index started"
 msgstr ""
 
@@ -8445,19 +8445,19 @@ msgid ""
 "different configurations)."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:160
+#: ../cmk/gui/plugins/wato/active_checks.py:161
 msgid "By default the standard IMAP Port 143 is used."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:166
+#: ../cmk/gui/plugins/wato/active_checks.py:167
 msgid "By default the standard IMAP/SSL Port 993 is used."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:201
+#: ../cmk/gui/plugins/wato/active_checks.py:202
 msgid "By default the standard POP3 Port 110 is used."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:207
+#: ../cmk/gui/plugins/wato/active_checks.py:208
 msgid "By default the standard POP3/SSL Port 995 is used."
 msgstr ""
 
@@ -8474,7 +8474,7 @@ msgid ""
 "with all configured connections or a specific list of connections."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2292
+#: ../cmk/gui/plugins/wato/active_checks.py:2293
 msgid ""
 "By default, all mailboxes are checked with these parameters. If you specify "
 "mailboxes here, only those are monitored."
@@ -8521,7 +8521,7 @@ msgid ""
 "injection attacks. "
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1818
+#: ../cmk/gui/plugins/wato/active_checks.py:1819
 msgid ""
 "By default, if you do not specify any host addresses here, the host address "
 "of the host this service is assigned to will be used. But by specifying one "
@@ -8587,8 +8587,8 @@ msgid ""
 msgstr ""
 
 #: ../cmk/gui/plugins/metrics/unit.py:96
-#: ../cmk/gui/plugins/wato/active_checks.py:1182
 #: ../cmk/gui/plugins/wato/active_checks.py:1183
+#: ../cmk/gui/plugins/wato/active_checks.py:1184
 #: ../cmk/gui/plugins/wato/check_parameters/if.py:719
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_qos.py:34
 #: ../cmk/gui/plugins/wato/datasource_programs.py:1519
@@ -8993,7 +8993,7 @@ msgstr ""
 #: ../cmk/gui/plugins/visuals/filters.py:1052
 #: ../cmk/gui/plugins/visuals/filters.py:2646
 #: ../cmk/gui/plugins/visuals/filters.py:2911
-#: ../cmk/gui/plugins/wato/active_checks.py:1652
+#: ../cmk/gui/plugins/wato/active_checks.py:1653
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1165
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1168
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1170
@@ -9004,11 +9004,11 @@ msgstr ""
 msgid "CRIT"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1969
+#: ../cmk/gui/plugins/wato/active_checks.py:1970
 msgid "CRIT - if this router is being used"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1967
+#: ../cmk/gui/plugins/wato/active_checks.py:1968
 msgid "CRIT - if this router is not being used"
 msgstr ""
 
@@ -9039,9 +9039,9 @@ msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1172
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_logwatch.py:207
-#: ../cmk/gui/plugins/wato/active_checks.py:370
-#: ../cmk/gui/plugins/wato/active_checks.py:739
-#: ../cmk/gui/plugins/wato/active_checks.py:771
+#: ../cmk/gui/plugins/wato/active_checks.py:371
+#: ../cmk/gui/plugins/wato/active_checks.py:740
+#: ../cmk/gui/plugins/wato/active_checks.py:772
 #: ../cmk/gui/plugins/wato/check_parameters/hostsystem_sensors.py:34
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:57
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:97
@@ -9214,8 +9214,8 @@ msgstr ""
 msgid "Canceled"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:581
-#: ../cmk/gui/plugins/metrics/html_render.py:583
+#: ../cmk/gui/plugins/metrics/html_render.py:591
+#: ../cmk/gui/plugins/metrics/html_render.py:593
 msgid "Cannot calculate graph recipes"
 msgstr ""
 
@@ -9251,8 +9251,8 @@ msgid ""
 "source code was \"%s...\""
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:686
-#: ../cmk/gui/plugins/metrics/html_render.py:689
+#: ../cmk/gui/plugins/metrics/html_render.py:696
+#: ../cmk/gui/plugins/metrics/html_render.py:699
 msgid "Cannot create graph"
 msgstr ""
 
@@ -9313,8 +9313,8 @@ msgstr ""
 msgid "Cannot fetch URL '%s'"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:579
-#: ../cmk/gui/plugins/metrics/html_render.py:685
+#: ../cmk/gui/plugins/metrics/html_render.py:589
+#: ../cmk/gui/plugins/metrics/html_render.py:695
 msgid "Cannot fetch data via Livestatus"
 msgstr ""
 
@@ -9425,7 +9425,7 @@ msgid ""
 "context.\n"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:887
+#: ../cmk/gui/plugins/metrics/html_render.py:897
 msgid "Cannot render graphs: cannot fetch data via Livestatus"
 msgstr ""
 
@@ -9492,7 +9492,7 @@ msgstr ""
 msgid "Casa module: CPU temperature"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1132
+#: ../cmk/gui/plugins/wato/active_checks.py:1133
 msgid "Case insensitive"
 msgstr ""
 
@@ -9552,7 +9552,7 @@ msgstr ""
 msgid "Certificate Chain (Root / Intermediate Certificate)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1213
+#: ../cmk/gui/plugins/wato/active_checks.py:1214
 msgid "Certificate Checking"
 msgstr ""
 
@@ -9638,7 +9638,7 @@ msgstr ""
 msgid "Change downtime start"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:719
+#: ../cmk/gui/plugins/metrics/html_render.py:729
 #, python-format
 msgid "Change graph timerange to: %s"
 msgstr ""
@@ -9798,35 +9798,35 @@ msgstr ""
 msgid "Check / Uncheck all"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:862
+#: ../cmk/gui/plugins/wato/active_checks.py:863
 msgid "Check City against Regex"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:493
+#: ../cmk/gui/plugins/wato/active_checks.py:494
 msgid "Check DNS service"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2090
+#: ../cmk/gui/plugins/wato/active_checks.py:2091
 msgid "Check Email"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1998
+#: ../cmk/gui/plugins/wato/active_checks.py:1999
 msgid "Check Email Delivery"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:399
+#: ../cmk/gui/plugins/wato/active_checks.py:400
 msgid "Check FTP Service"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1801
+#: ../cmk/gui/plugins/wato/active_checks.py:1802
 msgid "Check HTML Form Submit"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:994
+#: ../cmk/gui/plugins/wato/active_checks.py:995
 msgid "Check HTTP service"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:995
+#: ../cmk/gui/plugins/wato/active_checks.py:996
 msgid ""
 "Check HTTP/HTTPS service using the plugin <tt>check_http</tt> from the "
 "standard Monitoring Plugins. This plugin tests the HTTP service on the "
@@ -9839,7 +9839,7 @@ msgstr ""
 msgid "Check HTTP: Use HTTPS instead of HTTP for SSL/TLS connections"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2266
+#: ../cmk/gui/plugins/wato/active_checks.py:2267
 msgid "Check IMAP Mailboxes"
 msgstr ""
 
@@ -9847,7 +9847,7 @@ msgstr ""
 msgid "Check Item"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1268
+#: ../cmk/gui/plugins/wato/active_checks.py:1269
 msgid "Check LDAP service access"
 msgstr ""
 
@@ -9859,31 +9859,31 @@ msgstr ""
 msgid "Check Parameter"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:414
+#: ../cmk/gui/plugins/wato/active_checks.py:415
 msgid "Check SFTP Service"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1527
+#: ../cmk/gui/plugins/wato/active_checks.py:1528
 msgid "Check SMB share access"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1385
+#: ../cmk/gui/plugins/wato/active_checks.py:1386
 msgid "Check SMTP service access"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:568
+#: ../cmk/gui/plugins/wato/active_checks.py:569
 msgid "Check SQL Database"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:236
+#: ../cmk/gui/plugins/wato/active_checks.py:237
 msgid "Check SSH service"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1211
+#: ../cmk/gui/plugins/wato/active_checks.py:1212
 msgid "Check SSL Certificate Age"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1691
+#: ../cmk/gui/plugins/wato/active_checks.py:1692
 msgid "Check State of BI Aggregation"
 msgstr ""
 
@@ -9891,7 +9891,7 @@ msgstr ""
 msgid "Check State of Broker on Primary: "
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:702
+#: ../cmk/gui/plugins/wato/active_checks.py:703
 msgid "Check TCP port connection"
 msgstr ""
 
@@ -9936,7 +9936,7 @@ msgstr ""
 msgid "Check containers memory usage"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1941
+#: ../cmk/gui/plugins/wato/active_checks.py:1942
 msgid "Check current routing (uses <tt>traceroute</tt>)"
 msgstr ""
 
@@ -9944,11 +9944,11 @@ msgstr ""
 msgid "Check event state in Event Console"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:851
+#: ../cmk/gui/plugins/wato/active_checks.py:852
 msgid "Check for Version"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:852
+#: ../cmk/gui/plugins/wato/active_checks.py:853
 msgid "Check for an Address"
 msgstr ""
 
@@ -9960,11 +9960,11 @@ msgstr ""
 msgid "Check for correct version of Checkmk agent"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1626
+#: ../cmk/gui/plugins/wato/active_checks.py:1627
 msgid "Check freshness"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:416
+#: ../cmk/gui/plugins/wato/active_checks.py:417
 msgid ""
 "Check functionality of a SFTP server. You can use the default values for "
 "putting or getting a file. This file will then be created for the test and "
@@ -9977,7 +9977,7 @@ msgstr ""
 msgid "Check helper usage"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:278
+#: ../cmk/gui/plugins/wato/active_checks.py:279
 msgid "Check hosts with PING (ICMP Echo Request)"
 msgstr ""
 
@@ -10007,11 +10007,11 @@ msgstr ""
 msgid "Check not executed within %d seconds"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1899
+#: ../cmk/gui/plugins/wato/active_checks.py:1900
 msgid "Check notification number per contact"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2291
+#: ../cmk/gui/plugins/wato/active_checks.py:2292
 msgid "Check only the listed mailboxes"
 msgstr ""
 
@@ -10052,7 +10052,7 @@ msgstr ""
 msgid "Check plugins matching"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1661
+#: ../cmk/gui/plugins/wato/active_checks.py:1662
 msgid "Check result did not arrive in time"
 msgstr ""
 
@@ -10072,15 +10072,15 @@ msgstr ""
 msgid "Check result if the host or VM state is reported as <i>unknown</i>"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1817
+#: ../cmk/gui/plugins/wato/active_checks.py:1818
 msgid "Check specific host(s)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:91
+#: ../cmk/gui/plugins/wato/active_checks.py:92
 msgid "Check state of BI aggregations"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1803
+#: ../cmk/gui/plugins/wato/active_checks.py:1804
 msgid ""
 "Check submission of HTML forms via HTTP/HTTPS using the plugin "
 "<tt>check_form_submit</tt> provided with Check_MK. This plugin provides more "
@@ -10089,12 +10089,12 @@ msgid ""
 "changes vars and submits them to check the response afterwards."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1019
-#: ../cmk/gui/plugins/wato/active_checks.py:1813
+#: ../cmk/gui/plugins/wato/active_checks.py:1020
+#: ../cmk/gui/plugins/wato/active_checks.py:1814
 msgid "Check the URL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1901
+#: ../cmk/gui/plugins/wato/active_checks.py:1902
 msgid ""
 "Check the number of sent notifications per contact using the plugin "
 "<tt>check_notify_count</tt> provided with Check_MK. This plugin counts the "
@@ -10105,7 +10105,7 @@ msgid ""
 "log file of your monitoring core."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:494
+#: ../cmk/gui/plugins/wato/active_checks.py:495
 msgid ""
 "Check the resolution of a hostname into an IP address by a DNS server. This "
 "check uses <tt>check_dns</tt> from the standard Nagios plugins."
@@ -10130,11 +10130,11 @@ msgstr ""
 msgid "Check types"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:835
+#: ../cmk/gui/plugins/wato/active_checks.py:836
 msgid "Check uniserv service"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2310
+#: ../cmk/gui/plugins/wato/active_checks.py:2311
 msgid "Check via SSH service"
 msgstr ""
 
@@ -10437,7 +10437,7 @@ msgstr ""
 msgid "Checks to send data for"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2311
+#: ../cmk/gui/plugins/wato/active_checks.py:2312
 msgid "Checks via SSH. "
 msgstr ""
 
@@ -10622,7 +10622,7 @@ msgid ""
 "as well as items for services created on the node for each container."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:848
+#: ../cmk/gui/plugins/wato/active_checks.py:849
 msgid ""
 "Choose, whether you just want to query the version number, or if you want to "
 "check the response to an address query."
@@ -10747,7 +10747,7 @@ msgstr ""
 msgid "Citrix licenses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:859
+#: ../cmk/gui/plugins/wato/active_checks.py:860
 msgid "City name"
 msgstr ""
 
@@ -10787,7 +10787,7 @@ msgstr ""
 msgid "Cleanup abandoned host files older than"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2231
+#: ../cmk/gui/plugins/wato/active_checks.py:2232
 msgid "Cleanup messages"
 msgstr ""
 
@@ -10815,12 +10815,12 @@ msgstr ""
 msgid "Cleared audit log."
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:407
+#: ../cmk/gui/plugins/metrics/html_render.py:417
 #, python-format
 msgid "Click here to change the graphs consolidation function to \"%s\"."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1194
+#: ../cmk/gui/plugins/wato/active_checks.py:1195
 msgid "Clickable URLs"
 msgstr ""
 
@@ -10967,7 +10967,7 @@ msgstr ""
 msgid "Close Timewarp"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:786
+#: ../cmk/gui/plugins/wato/active_checks.py:787
 msgid ""
 "Close connection once more than this number of bytes are received. Per "
 "default the number of read bytes is not limited. This setting is only used if "
@@ -11252,7 +11252,7 @@ msgstr ""
 
 #: ../cmk/gui/plugins/views/painters.py:4321
 #: ../cmk/gui/plugins/visuals/infos.py:219
-#: ../cmk/gui/plugins/wato/active_checks.py:2314
+#: ../cmk/gui/plugins/wato/active_checks.py:2315
 msgid "Command"
 msgstr ""
 
@@ -11282,7 +11282,7 @@ msgstr ""
 msgid "Command line:"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2315
+#: ../cmk/gui/plugins/wato/active_checks.py:2316
 msgid "Command to execute on remote host."
 msgstr ""
 
@@ -12087,10 +12087,10 @@ msgstr ""
 
 #: ../cmk/gui/wato/mkeventd.py:3206
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1520
-#: ../cmk/gui/plugins/wato/active_checks.py:249
-#: ../cmk/gui/plugins/wato/active_checks.py:2056
-#: ../cmk/gui/plugins/wato/active_checks.py:2105
-#: ../cmk/gui/plugins/wato/active_checks.py:2277
+#: ../cmk/gui/plugins/wato/active_checks.py:250
+#: ../cmk/gui/plugins/wato/active_checks.py:2057
+#: ../cmk/gui/plugins/wato/active_checks.py:2106
+#: ../cmk/gui/plugins/wato/active_checks.py:2278
 #: ../cmk/gui/plugins/wato/datasource_programs.py:245
 #: ../cmk/gui/plugins/wato/datasource_programs.py:298
 #: ../cmk/gui/plugins/wato/datasource_programs.py:750
@@ -12150,8 +12150,8 @@ msgstr ""
 msgid "Connect to the local Event Console"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:96
-#: ../cmk/gui/plugins/wato/active_checks.py:1693
+#: ../cmk/gui/plugins/wato/active_checks.py:97
+#: ../cmk/gui/plugins/wato/active_checks.py:1694
 msgid ""
 "Connect to the local or a remote monitoring host, which uses Check_MK BI to "
 "aggregate several states to a single BI aggregation, which you want to show "
@@ -12505,7 +12505,7 @@ msgstr ""
 msgid "Content of report %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1154
+#: ../cmk/gui/plugins/wato/active_checks.py:1155
 msgid "Content-Type"
 msgstr ""
 
@@ -12555,7 +12555,7 @@ msgstr ""
 msgid "Context switches"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1281 ../cmk/gui/cee/reporting.py:1295
+#: ../cmk/gui/dashboard.py:1286 ../cmk/gui/cee/reporting.py:1295
 #: ../cmk/gui/cee/reporting.py:1532 ../cmk/gui/views.py:1183
 #: ../cmk/gui/visuals.py:644
 msgid "Continue"
@@ -12659,7 +12659,7 @@ msgstr ""
 msgid "Copy Rules From Master"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:871 ../cmk/gui/dashboard.py:1195
+#: ../cmk/gui/dashboard.py:876 ../cmk/gui/dashboard.py:1200
 msgid "Copy existing view"
 msgstr ""
 
@@ -12826,7 +12826,7 @@ msgstr ""
 msgid "Could not load cached user profile."
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/watolib/dcd.py:59
+#: ../cmk/gui/cee/plugins/watolib/dcd.py:53
 #, python-format
 msgid "Could not reload DCD: %s. See web.log for further information."
 msgstr ""
@@ -13460,7 +13460,7 @@ msgstr ""
 msgid "Credentials for Connect (ODBC interface)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1083
+#: ../cmk/gui/plugins/wato/active_checks.py:1084
 msgid "Credentials for HTTP Basic Authentication"
 msgstr ""
 
@@ -13560,11 +13560,11 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/sla/sla_computation.py:56
 #: ../cmk/gui/cee/plugins/metrics/historic.py:204
 #: ../cmk/gui/cee/plugins/metrics/historic.py:217
-#: ../cmk/gui/plugins/wato/active_checks.py:118
-#: ../cmk/gui/plugins/wato/active_checks.py:672
-#: ../cmk/gui/plugins/wato/active_checks.py:2065
-#: ../cmk/gui/plugins/wato/active_checks.py:2285
-#: ../cmk/gui/plugins/wato/active_checks.py:2289
+#: ../cmk/gui/plugins/wato/active_checks.py:119
+#: ../cmk/gui/plugins/wato/active_checks.py:673
+#: ../cmk/gui/plugins/wato/active_checks.py:2066
+#: ../cmk/gui/plugins/wato/active_checks.py:2286
+#: ../cmk/gui/plugins/wato/active_checks.py:2290
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_cluster_traffic.py:27
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_cluster_traffic.py:33
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_cluster_traffic.py:39
@@ -14247,7 +14247,7 @@ msgstr ""
 msgid "Critical at a utilization of"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2484
+#: ../cmk/gui/plugins/wato/active_checks.py:2485
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_disks.py:33
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_disks.py:43
 #: ../cmk/gui/plugins/wato/check_parameters/oracle_logswitches.py:47
@@ -14275,10 +14275,10 @@ msgstr ""
 msgid "Critical at or above"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:391
-#: ../cmk/gui/plugins/wato/active_checks.py:807
-#: ../cmk/gui/plugins/wato/active_checks.py:1228
-#: ../cmk/gui/plugins/wato/active_checks.py:1468
+#: ../cmk/gui/plugins/wato/active_checks.py:392
+#: ../cmk/gui/plugins/wato/active_checks.py:808
+#: ../cmk/gui/plugins/wato/active_checks.py:1229
+#: ../cmk/gui/plugins/wato/active_checks.py:1469
 #: ../cmk/gui/plugins/wato/check_parameters/aws.py:81
 #: ../cmk/gui/plugins/wato/check_parameters/aws.py:98
 #: ../cmk/gui/plugins/wato/check_parameters/docsis_channels_upstream.py:30
@@ -14301,7 +14301,7 @@ msgstr ""
 msgid "Critical at usage of"
 msgstr ""
 
-#: ../cmk/gui/availability.py:255 ../cmk/gui/plugins/wato/active_checks.py:676
+#: ../cmk/gui/availability.py:255 ../cmk/gui/plugins/wato/active_checks.py:677
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_dom.py:42
 #: ../cmk/gui/plugins/wato/check_parameters/k8s_nodes.py:36
 #: ../cmk/gui/plugins/wato/check_parameters/humidity.py:57
@@ -14412,15 +14412,15 @@ msgstr ""
 msgid "Critical if %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:108
-#: ../cmk/gui/plugins/wato/active_checks.py:359
-#: ../cmk/gui/plugins/wato/active_checks.py:545
-#: ../cmk/gui/plugins/wato/active_checks.py:728
-#: ../cmk/gui/plugins/wato/active_checks.py:1054
-#: ../cmk/gui/plugins/wato/active_checks.py:1356
-#: ../cmk/gui/plugins/wato/active_checks.py:1500
-#: ../cmk/gui/plugins/wato/active_checks.py:1566
-#: ../cmk/gui/plugins/wato/active_checks.py:1924
+#: ../cmk/gui/plugins/wato/active_checks.py:109
+#: ../cmk/gui/plugins/wato/active_checks.py:360
+#: ../cmk/gui/plugins/wato/active_checks.py:546
+#: ../cmk/gui/plugins/wato/active_checks.py:729
+#: ../cmk/gui/plugins/wato/active_checks.py:1055
+#: ../cmk/gui/plugins/wato/active_checks.py:1357
+#: ../cmk/gui/plugins/wato/active_checks.py:1501
+#: ../cmk/gui/plugins/wato/active_checks.py:1567
+#: ../cmk/gui/plugins/wato/active_checks.py:1925
 #: ../cmk/gui/plugins/wato/check_parameters/entersekt_soaperrors.py:28
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:74
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:90
@@ -14506,7 +14506,7 @@ msgstr ""
 msgid "Critical if below"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1882
+#: ../cmk/gui/plugins/wato/active_checks.py:1883
 msgid "Critical if equal or below"
 msgstr ""
 
@@ -14833,8 +14833,8 @@ msgid "Custom GUI design of %s"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/metrics/customgraphs.py:193
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:39
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:97
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:40
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:94
 #: ../cmk/gui/cee/plugins/reporting/pnp_graphs.py:960
 #: ../cmk/gui/cee/plugins/reporting/pnp_graphs.py:977
 msgid "Custom Graph"
@@ -15029,7 +15029,7 @@ msgstr ""
 msgid "Custom variable: %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1605
+#: ../cmk/gui/plugins/wato/active_checks.py:1606
 msgid "Customcheck"
 msgstr ""
 
@@ -15229,7 +15229,7 @@ msgstr ""
 msgid "DB username"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:593
+#: ../cmk/gui/plugins/wato/active_checks.py:594
 msgid "DB2"
 msgstr ""
 
@@ -15374,12 +15374,12 @@ msgstr ""
 msgid "DNS"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:719
+#: ../cmk/gui/plugins/wato/active_checks.py:720
 msgid "DNS Hostname"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1403
-#: ../cmk/gui/plugins/wato/active_checks.py:2330
+#: ../cmk/gui/plugins/wato/active_checks.py:1404
+#: ../cmk/gui/plugins/wato/active_checks.py:2331
 msgid "DNS Hostname or IP address"
 msgstr ""
 
@@ -15391,7 +15391,7 @@ msgstr ""
 msgid "DNS Resolution"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:512
+#: ../cmk/gui/plugins/wato/active_checks.py:513
 msgid "DNS Server"
 msgstr ""
 
@@ -15403,8 +15403,8 @@ msgstr ""
 msgid "DNS failed queries"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:685
-#: ../cmk/gui/plugins/wato/active_checks.py:2402
+#: ../cmk/gui/plugins/wato/active_checks.py:686
+#: ../cmk/gui/plugins/wato/active_checks.py:2403
 msgid "DNS hostname or IP address"
 msgstr ""
 
@@ -15524,20 +15524,20 @@ msgstr ""
 msgid "Dangerous"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:759
+#: ../cmk/gui/dashboard.py:764
 msgid "Dashboard"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1127
+#: ../cmk/gui/dashboard.py:1132
 msgid "Dashboard Properties"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:237 ../cmk/gui/pagetypes.py:1342
+#: ../cmk/gui/dashboard.py:238 ../cmk/gui/pagetypes.py:1342
 #: ../cmk/gui/pagetypes.py:1846 ../cmk/gui/plugins/sidebar/dashboards.py:30
 msgid "Dashboards"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:815
+#: ../cmk/gui/plugins/metrics/html_render.py:825
 msgid "Dashlet"
 msgstr ""
 
@@ -15545,7 +15545,7 @@ msgstr ""
 msgid "Dashlet Type"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:772
+#: ../cmk/gui/dashboard.py:777
 msgid "Dashlets"
 msgstr ""
 
@@ -15619,13 +15619,13 @@ msgstr ""
 msgid "Data to move within"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1874
+#: ../cmk/gui/plugins/wato/active_checks.py:1875
 msgid ""
 "Data to send via HTTP POST method. Please make sure, that the data is URL-"
 "encoded (for example \"key1=val1&key2=val2\")."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1149
+#: ../cmk/gui/plugins/wato/active_checks.py:1150
 msgid ""
 "Data to send via HTTP POST method. Please make sure, that the data is URL-"
 "encoded."
@@ -15670,7 +15670,7 @@ msgstr ""
 msgid "Database Files are restored"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:604
+#: ../cmk/gui/plugins/wato/active_checks.py:605
 #: ../cmk/gui/plugins/wato/check_parameters/msx_database.py:24
 #: ../cmk/gui/plugins/wato/check_parameters/azure.py:211
 #: ../cmk/gui/plugins/wato/check_parameters/mssql_transactionlogs.py:68
@@ -15687,11 +15687,11 @@ msgstr ""
 msgid "Database Online"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:616
+#: ../cmk/gui/plugins/wato/active_checks.py:617
 msgid "Database Password"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:599
+#: ../cmk/gui/plugins/wato/active_checks.py:600
 msgid "Database Port"
 msgstr ""
 
@@ -15713,7 +15713,7 @@ msgstr ""
 msgid "Database Suspect"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:610
+#: ../cmk/gui/plugins/wato/active_checks.py:611
 msgid "Database User"
 msgstr ""
 
@@ -16030,11 +16030,11 @@ msgstr ""
 msgid "Default credentials"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2338
+#: ../cmk/gui/plugins/wato/active_checks.py:2339
 msgid "Default is 22."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1319
+#: ../cmk/gui/plugins/wato/active_checks.py:1320
 msgid "Default is 389 for normal connections and 636 for SSL connections."
 msgstr ""
 
@@ -16274,15 +16274,15 @@ msgstr ""
 msgid "Delete aggregations"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2072
+#: ../cmk/gui/plugins/wato/active_checks.py:2073
 msgid ""
 "Delete all messages identified as being related to this check. This is "
 "disabled by default, which will make your mailbox grow when you not clean it "
 "up on your own."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2071
-#: ../cmk/gui/plugins/wato/active_checks.py:2241
+#: ../cmk/gui/plugins/wato/active_checks.py:2072
+#: ../cmk/gui/plugins/wato/active_checks.py:2242
 msgid "Delete all processed message belonging to this check"
 msgstr ""
 
@@ -16326,7 +16326,7 @@ msgstr ""
 msgid "Delete logo"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2239
+#: ../cmk/gui/plugins/wato/active_checks.py:2240
 msgid "Delete messages"
 msgstr ""
 
@@ -16334,7 +16334,7 @@ msgstr ""
 msgid "Delete oldest event, create new event"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2070
+#: ../cmk/gui/plugins/wato/active_checks.py:2071
 msgid "Delete processed messages"
 msgstr ""
 
@@ -17116,7 +17116,7 @@ msgstr ""
 msgid "Destination address"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2053
+#: ../cmk/gui/plugins/wato/active_checks.py:2054
 msgid "Destination email address"
 msgstr ""
 
@@ -17379,7 +17379,7 @@ msgstr ""
 msgid "Directly forward to Event Console"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2125
+#: ../cmk/gui/plugins/wato/active_checks.py:2126
 msgid "Directly forward to event console"
 msgstr ""
 
@@ -17897,7 +17897,7 @@ msgstr ""
 msgid "Display average"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1133
+#: ../cmk/gui/dashboard.py:1138
 msgid "Display dashboard title"
 msgstr ""
 
@@ -18017,11 +18017,11 @@ msgstr ""
 msgid "Displays a bar chart for host and service notifications."
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:43
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:44
 msgid "Displays a custom graph designed with the graph designer."
 msgstr ""
 
-#: ../cmk/gui/plugins/dashboard/graph.py:42
+#: ../cmk/gui/plugins/dashboard/graph.py:49
 msgid "Displays a performance graph of a host or service."
 msgstr ""
 
@@ -18099,7 +18099,7 @@ msgid ""
 "mode=ldap_config&varname=ldap_groupspec\">LDAP Group Settings</a>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1302
+#: ../cmk/gui/plugins/wato/active_checks.py:1303
 msgid "Distinguished name for binding"
 msgstr ""
 
@@ -19102,7 +19102,7 @@ msgstr ""
 msgid "Don't use quotes"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1174
+#: ../cmk/gui/plugins/wato/active_checks.py:1175
 msgid "Don't wait for document body"
 msgstr ""
 
@@ -19634,7 +19634,7 @@ msgid ""
 "role it's based on."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:762 ../cmk/gui/cee/plugins/sidebar/reporting.py:75
+#: ../cmk/gui/dashboard.py:767 ../cmk/gui/cee/plugins/sidebar/reporting.py:75
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:1215
 #: ../cmk/gui/pagetypes.py:1077 ../cmk/gui/visuals.py:564
 #: ../cmk/gui/plugins/sidebar/views.py:48
@@ -19667,11 +19667,11 @@ msgstr ""
 msgid "Edit Custom Graph"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1058
+#: ../cmk/gui/dashboard.py:1063
 msgid "Edit Dashboards"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1338
+#: ../cmk/gui/dashboard.py:1343
 msgid "Edit Dashlet"
 msgstr ""
 
@@ -19768,7 +19768,7 @@ msgstr ""
 msgid "Edit customer %s"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:796
+#: ../cmk/gui/dashboard.py:801
 msgid "Edit dashboard"
 msgstr ""
 
@@ -20313,7 +20313,7 @@ msgstr ""
 msgid "Enable Livestatus access via network (TCP)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1481
+#: ../cmk/gui/plugins/wato/active_checks.py:1482
 msgid "Enable SMTP AUTH (LOGIN)"
 msgstr ""
 
@@ -20333,7 +20333,7 @@ msgstr ""
 msgid "Enable automatic agent updates"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2365
+#: ../cmk/gui/plugins/wato/active_checks.py:2366
 msgid "Enable automatic host key acceptance"
 msgstr ""
 
@@ -20618,15 +20618,15 @@ msgstr ""
 msgid "Enclosures"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:162
+#: ../cmk/gui/plugins/wato/active_checks.py:163
 msgid "Encrypt IMAP communication using SSL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:203
+#: ../cmk/gui/plugins/wato/active_checks.py:204
 msgid "Encrypt POP3 communication using SSL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2029
+#: ../cmk/gui/plugins/wato/active_checks.py:2030
 msgid "Encrypt SMTP communication using TLS"
 msgstr ""
 
@@ -20730,7 +20730,7 @@ msgid "Enforce (drop unencrypted data)"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mtr.py:67
-#: ../cmk/gui/plugins/wato/active_checks.py:885
+#: ../cmk/gui/plugins/wato/active_checks.py:886
 msgid "Enforce IPv4"
 msgstr ""
 
@@ -20739,7 +20739,7 @@ msgid "Enforce IPv4 / IPv6"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mtr.py:68
-#: ../cmk/gui/plugins/wato/active_checks.py:886
+#: ../cmk/gui/plugins/wato/active_checks.py:887
 msgid "Enforce IPv6"
 msgstr ""
 
@@ -20809,13 +20809,13 @@ msgid ""
 "service descriptions of the services 'IPMI Sensor ...'."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1535
+#: ../cmk/gui/plugins/wato/active_checks.py:1536
 msgid ""
 "Enter the plain name of the share only, e. g. <tt>iso</tt>, <b>not</b> the "
 "full UNC like <tt>\\\\servername\\iso</tt>"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:843
+#: ../cmk/gui/plugins/wato/active_checks.py:844
 msgid ""
 "Enter the uniserve service name here (has nothing to do with service "
 "description)."
@@ -21302,15 +21302,15 @@ msgstr ""
 msgid "Events of service"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2216
+#: ../cmk/gui/plugins/wato/active_checks.py:2217
 msgid "Events: Hostname"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2197
+#: ../cmk/gui/plugins/wato/active_checks.py:2198
 msgid "Events: Syslog application"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2190
+#: ../cmk/gui/plugins/wato/active_checks.py:2191
 msgid "Events: Syslog facility"
 msgstr ""
 
@@ -21630,19 +21630,19 @@ msgstr ""
 msgid "Expand"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:748
+#: ../cmk/gui/plugins/wato/active_checks.py:749
 msgid "Expand <tt>\\n</tt>, <tt>\\r</tt> and <tt>\\t</tt> in the sent string"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:760
+#: ../cmk/gui/plugins/wato/active_checks.py:761
 msgid "Expect <b>all</b> of those strings in the response"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:539
+#: ../cmk/gui/plugins/wato/active_checks.py:540
 msgid "Expect Authoritative"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:538
+#: ../cmk/gui/plugins/wato/active_checks.py:539
 msgid "Expect Authoritative DNS Server"
 msgstr ""
 
@@ -21666,11 +21666,11 @@ msgstr ""
 msgid "Expected DC"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:526
+#: ../cmk/gui/plugins/wato/active_checks.py:527
 msgid "Expected DNS answers"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1424
+#: ../cmk/gui/plugins/wato/active_checks.py:1425
 msgid "Expected String"
 msgstr ""
 
@@ -21752,16 +21752,16 @@ msgstr ""
 msgid "Expected percentage of active paths"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:356
-#: ../cmk/gui/plugins/wato/active_checks.py:542
-#: ../cmk/gui/plugins/wato/active_checks.py:725
-#: ../cmk/gui/plugins/wato/active_checks.py:1049
-#: ../cmk/gui/plugins/wato/active_checks.py:1353
-#: ../cmk/gui/plugins/wato/active_checks.py:1496
+#: ../cmk/gui/plugins/wato/active_checks.py:357
+#: ../cmk/gui/plugins/wato/active_checks.py:543
+#: ../cmk/gui/plugins/wato/active_checks.py:726
+#: ../cmk/gui/plugins/wato/active_checks.py:1050
+#: ../cmk/gui/plugins/wato/active_checks.py:1354
+#: ../cmk/gui/plugins/wato/active_checks.py:1497
 msgid "Expected response time"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1439
+#: ../cmk/gui/plugins/wato/active_checks.py:1440
 msgid "Expected responses to the given SMTP commands."
 msgstr ""
 
@@ -21772,7 +21772,7 @@ msgstr ""
 msgid "Expected state"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1640
+#: ../cmk/gui/plugins/wato/active_checks.py:1641
 msgid "Expected update interval"
 msgstr ""
 
@@ -21941,7 +21941,7 @@ msgstr ""
 msgid "Extend the Checkmk GUI with your custom icons"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1203
+#: ../cmk/gui/plugins/wato/active_checks.py:1204
 msgid "Extended perfdata"
 msgstr ""
 
@@ -22045,19 +22045,19 @@ msgstr ""
 msgid "FPGA utilization"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1453
+#: ../cmk/gui/plugins/wato/active_checks.py:1454
 msgid "FQDN"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1454
+#: ../cmk/gui/plugins/wato/active_checks.py:1455
 msgid "FQDN used for HELO"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1443
+#: ../cmk/gui/plugins/wato/active_checks.py:1444
 msgid "FROM-Address"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1445
+#: ../cmk/gui/plugins/wato/active_checks.py:1446
 msgid "FROM-address to include in MAIL command, required by Exchange 2000"
 msgstr ""
 
@@ -22175,7 +22175,7 @@ msgstr ""
 msgid "Failed to bake the agents: %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:885
+#: ../cmk/gui/plugins/metrics/html_render.py:895
 msgid "Failed to calculate a graph recipe."
 msgstr ""
 
@@ -22623,7 +22623,7 @@ msgstr ""
 msgid "Field data size"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2455
+#: ../cmk/gui/plugins/wato/active_checks.py:2456
 msgid "Fieldnames to query"
 msgstr ""
 
@@ -22686,7 +22686,7 @@ msgstr ""
 msgid "File descriptor open attempts rate"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:638
+#: ../cmk/gui/plugins/wato/active_checks.py:639
 msgid "File including Query"
 msgstr ""
 
@@ -22834,8 +22834,8 @@ msgid "Filesystems usage"
 msgstr ""
 
 #: ../cmk/gui/mobile.py:329 ../cmk/gui/node_visualization.py:200
-#: ../cmk/gui/node_visualization.py:203 ../cmk/gui/dashboard.py:835
-#: ../cmk/gui/dashboard.py:838 ../cmk/gui/werks.py:161 ../cmk/gui/views.py:857
+#: ../cmk/gui/node_visualization.py:203 ../cmk/gui/dashboard.py:840
+#: ../cmk/gui/dashboard.py:843 ../cmk/gui/werks.py:161 ../cmk/gui/views.py:857
 #: ../cmk/gui/wato/pages/rulesets.py:494 ../cmk/gui/wato/pages/audit_log.py:149
 #: ../cmk/gui/plugins/wato/bi_config.py:628
 msgid "Filter"
@@ -22861,7 +22861,7 @@ msgstr ""
 msgid "Filter aggregations"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:631
+#: ../cmk/gui/dashboard.py:632
 msgid "Filter context missing"
 msgstr ""
 
@@ -22939,7 +22939,7 @@ msgstr ""
 msgid "Final notification result"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:816
+#: ../cmk/gui/plugins/wato/active_checks.py:817
 msgid "Final string to send"
 msgstr ""
 
@@ -23088,7 +23088,7 @@ msgstr ""
 msgid "Fixed size"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1119
+#: ../cmk/gui/plugins/wato/active_checks.py:1120
 msgid "Fixed string to expect in the content"
 msgstr ""
 
@@ -23252,15 +23252,15 @@ msgstr ""
 msgid "Folio"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1099
+#: ../cmk/gui/plugins/wato/active_checks.py:1100
 msgid "Follow the redirection"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1100
+#: ../cmk/gui/plugins/wato/active_checks.py:1101
 msgid "Follow, but stay to same IP address"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1102
+#: ../cmk/gui/plugins/wato/active_checks.py:1103
 msgid "Follow, but stay to same IP-address and port"
 msgstr ""
 
@@ -23519,13 +23519,13 @@ msgid ""
 "li><li>special characters such as an underscore or dash</li></ul>"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1765
-#: ../cmk/gui/plugins/wato/active_checks.py:1772
+#: ../cmk/gui/plugins/wato/active_checks.py:1766
+#: ../cmk/gui/plugins/wato/active_checks.py:1773
 msgid "Force to be OK"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1766
-#: ../cmk/gui/plugins/wato/active_checks.py:1773
+#: ../cmk/gui/plugins/wato/active_checks.py:1767
+#: ../cmk/gui/plugins/wato/active_checks.py:1774
 msgid "Force to be WARN, if aggregate is not OK"
 msgstr ""
 
@@ -23566,7 +23566,7 @@ msgstr ""
 msgid "Foreground color"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1749
+#: ../cmk/gui/plugins/wato/active_checks.py:1750
 msgid "Form (Cookie) based"
 msgstr ""
 
@@ -23574,7 +23574,7 @@ msgstr ""
 msgid "Format"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1195
+#: ../cmk/gui/plugins/wato/active_checks.py:1196
 msgid "Format check output as hyperlink"
 msgstr ""
 
@@ -23623,7 +23623,7 @@ msgstr ""
 msgid "Forward Messages to Event Console"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2113
+#: ../cmk/gui/plugins/wato/active_checks.py:2114
 msgid "Forward mails as events to Event Console"
 msgstr ""
 
@@ -23635,7 +23635,7 @@ msgstr ""
 msgid "Forwarding"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2118
+#: ../cmk/gui/plugins/wato/active_checks.py:2119
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:225
 msgid "Forwarding Method"
 msgstr ""
@@ -23800,7 +23800,7 @@ msgstr ""
 msgid "Frequency (displayed in events/s)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1628
+#: ../cmk/gui/plugins/wato/active_checks.py:1629
 msgid ""
 "Freshness checking is only useful for passive checks when the staleness "
 "feature is not enough for you. It changes the state of a check to a "
@@ -23911,7 +23911,7 @@ msgstr ""
 msgid "From: "
 msgstr ""
 
-#: ../cmk/gui/cee/reporting.py:547 ../cmk/gui/plugins/wato/active_checks.py:2052
+#: ../cmk/gui/cee/reporting.py:547 ../cmk/gui/plugins/wato/active_checks.py:2053
 msgid "From: email address"
 msgstr ""
 
@@ -23951,7 +23951,7 @@ msgstr ""
 msgid "Full name or alias of the user"
 msgstr ""
 
-#: ../cmk/gui/watolib/services.py:524
+#: ../cmk/gui/watolib/services.py:526
 msgid "Full scan"
 msgstr ""
 
@@ -24166,7 +24166,7 @@ msgstr ""
 msgid "Generic string"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:461
+#: ../cmk/gui/plugins/wato/active_checks.py:462
 msgid "Get file from SFTP server"
 msgstr ""
 
@@ -24345,7 +24345,7 @@ msgstr ""
 msgid "Graph rendering options"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:185
+#: ../cmk/gui/dashboard.py:186
 #, python-format
 msgid ""
 "Graph specification '%s' is insuficient for Dashboard. Please save your graph "
@@ -24713,7 +24713,7 @@ msgstr ""
 msgid "HTTP 5xx Responses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1750
+#: ../cmk/gui/plugins/wato/active_checks.py:1751
 msgid "HTTP Basic"
 msgstr ""
 
@@ -24723,7 +24723,7 @@ msgid "HTTP Basic Authentication"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_jolokia.py:88
-#: ../cmk/gui/plugins/wato/active_checks.py:1751
+#: ../cmk/gui/plugins/wato/active_checks.py:1752
 #: ../cmk/gui/plugins/wato/datasource_programs.py:1790
 msgid "HTTP Digest"
 msgstr ""
@@ -24741,11 +24741,11 @@ msgstr ""
 msgid "HTTP Fixed Responses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1158
+#: ../cmk/gui/plugins/wato/active_checks.py:1159
 msgid "HTTP Method"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1147
+#: ../cmk/gui/plugins/wato/active_checks.py:1148
 msgid "HTTP POST data"
 msgstr ""
 
@@ -24788,7 +24788,7 @@ msgid "HTTP requests per second"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/builtin_modules.py:323
-#: ../cmk/gui/plugins/wato/active_checks.py:74
+#: ../cmk/gui/plugins/wato/active_checks.py:75
 msgid "HTTP, TCP, Email, ..."
 msgstr ""
 
@@ -25267,7 +25267,7 @@ msgid ""
 "This is a filter at display level not query level."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1736
+#: ../cmk/gui/plugins/wato/active_checks.py:1737
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2177
 msgid ""
 "Here you can configured the credentials to be used. Keep in mind that the "
@@ -25289,7 +25289,7 @@ msgid ""
 "the job."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2457
+#: ../cmk/gui/plugins/wato/active_checks.py:2458
 msgid ""
 "Here you can define fieldnames that should be used in the search. Regexp "
 "query is allowed as described <a href=\"https://www.elastic.co/guide/en/"
@@ -25334,7 +25334,7 @@ msgid ""
 "acknowledgement of the host or service problem."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2470
+#: ../cmk/gui/plugins/wato/active_checks.py:2471
 msgid ""
 "Here you can define the timerange to query, eg. the last x minutes from now. "
 "The query will then check for the count of log messages in the defined range. "
@@ -25348,14 +25348,14 @@ msgid ""
 "groups. Each host tag group you select will create one level in the tree."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2444
+#: ../cmk/gui/plugins/wato/active_checks.py:2445
 msgid ""
 "Here you can define what index should be queried for the defined search. You "
 "can query one or multiple indices. Without this option all indices are "
 "queried. If you want to speed up your search, use definded indices."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2433
+#: ../cmk/gui/plugins/wato/active_checks.py:2434
 msgid ""
 "Here you can define what search pattern should be used. You can use Kibana "
 "query language as described <a href=\"https://www.elastic.co/guide/en/kibana/"
@@ -25364,13 +25364,13 @@ msgid ""
 "be searched."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2394
+#: ../cmk/gui/plugins/wato/active_checks.py:2395
 msgid ""
 "Here you can define what service description (item) is used for the created "
 "service. The resulting item is always prefixed with 'Elasticsearch Query'."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2415
+#: ../cmk/gui/plugins/wato/active_checks.py:2416
 msgid "Here you can define which protocol to use, default is https."
 msgstr ""
 
@@ -25566,7 +25566,7 @@ msgstr ""
 msgid "Here you can specifiy the measurement unit of the network interface"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:715
+#: ../cmk/gui/plugins/wato/active_checks.py:716
 msgid ""
 "Here you can specify a service description. If this parameter is not set, the "
 "service is named <tt>TCP Port [PORT NUMBER]</tt>"
@@ -25641,7 +25641,7 @@ msgstr ""
 msgid "Here you can specify the allowed license states for windows."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2016
+#: ../cmk/gui/plugins/wato/active_checks.py:2017
 msgid ""
 "Here you can specify the subject text instead of default text 'Check_MK-Mail-"
 "Loop'."
@@ -25749,7 +25749,7 @@ msgstr ""
 msgid "Hide names of configuration variables"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:763
+#: ../cmk/gui/plugins/wato/active_checks.py:764
 msgid "Hide response from socket"
 msgstr ""
 
@@ -26553,8 +26553,8 @@ msgstr ""
 msgid "Host service level"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:909
-#: ../cmk/gui/plugins/wato/active_checks.py:935
+#: ../cmk/gui/plugins/wato/active_checks.py:910
+#: ../cmk/gui/plugins/wato/active_checks.py:936
 msgid "Host settings"
 msgstr ""
 
@@ -26728,7 +26728,7 @@ msgstr ""
 #: ../cmk/gui/plugins/views/painters.py:2340
 #: ../cmk/gui/plugins/views/availability.py:1165
 #: ../cmk/gui/plugins/visuals/infos.py:35
-#: ../cmk/gui/plugins/wato/active_checks.py:420
+#: ../cmk/gui/plugins/wato/active_checks.py:421
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:426
 msgid "Hostname"
 msgstr ""
@@ -26888,7 +26888,7 @@ msgstr ""
 msgid "Hosts in this folder"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:919
+#: ../cmk/gui/plugins/wato/active_checks.py:920
 msgid "Hosts name / IP address"
 msgstr ""
 
@@ -27022,7 +27022,7 @@ msgstr ""
 msgid "Housekeeping Interval"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1964
+#: ../cmk/gui/plugins/wato/active_checks.py:1965
 msgid "How"
 msgstr ""
 
@@ -27045,7 +27045,7 @@ msgid ""
 "latest/UserGuide/Using_Tags.html"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1093
+#: ../cmk/gui/plugins/wato/active_checks.py:1094
 msgid "How to handle redirect"
 msgstr ""
 
@@ -27250,7 +27250,7 @@ msgstr ""
 msgid "ICMP"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1979
+#: ../cmk/gui/plugins/wato/active_checks.py:1980
 msgid "ICMP Echo Request"
 msgstr ""
 
@@ -27346,15 +27346,15 @@ msgstr ""
 msgid "IGNORE"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:228
+#: ../cmk/gui/plugins/wato/active_checks.py:229
 msgid "IMAP"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:146
+#: ../cmk/gui/plugins/wato/active_checks.py:147
 msgid "IMAP Server"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2035
+#: ../cmk/gui/plugins/wato/active_checks.py:2036
 msgid "IMAP authentification uses TLS"
 msgstr ""
 
@@ -27381,7 +27381,7 @@ msgstr ""
 msgid "IP Address"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:882 ../cmk/utils/tags.py:639
+#: ../cmk/gui/plugins/wato/active_checks.py:883 ../cmk/utils/tags.py:639
 msgid "IP Address Family"
 msgstr ""
 
@@ -27444,7 +27444,7 @@ msgstr ""
 msgid "IP-Range"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2344
+#: ../cmk/gui/plugins/wato/active_checks.py:2345
 msgid "IP-Version"
 msgstr ""
 
@@ -27512,7 +27512,7 @@ msgstr ""
 
 #: ../cmk/gui/plugins/views/inventory.py:479
 #: ../cmk/gui/plugins/visuals/filters.py:344
-#: ../cmk/gui/plugins/wato/active_checks.py:2346
+#: ../cmk/gui/plugins/wato/active_checks.py:2347
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4219
 #: ../cmk/utils/tags.py:671
 msgid "IPv4"
@@ -27550,7 +27550,7 @@ msgstr ""
 
 #: ../cmk/gui/plugins/views/inventory.py:481
 #: ../cmk/gui/plugins/visuals/filters.py:345
-#: ../cmk/gui/plugins/wato/active_checks.py:2347
+#: ../cmk/gui/plugins/wato/active_checks.py:2348
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4220
 #: ../cmk/utils/tags.py:677
 msgid "IPv6"
@@ -27634,7 +27634,7 @@ msgstr ""
 msgid "Identity"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2360
+#: ../cmk/gui/plugins/wato/active_checks.py:2361
 msgid "Identity of an authorized key"
 msgstr ""
 
@@ -27839,7 +27839,7 @@ msgid ""
 "discouraged."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1550
+#: ../cmk/gui/plugins/wato/active_checks.py:1551
 msgid "If omitted then the IP address is being used."
 msgstr ""
 
@@ -27938,7 +27938,7 @@ msgid ""
 "or create a new event for each interval with absent messages."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1863
+#: ../cmk/gui/plugins/wato/active_checks.py:1864
 msgid ""
 "If there is only one form element on the requested page, you do not need to "
 "provide the name of that form here. But if you have several forms on that "
@@ -27946,7 +27946,7 @@ msgid ""
 "identify the correct form element."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1779
+#: ../cmk/gui/plugins/wato/active_checks.py:1780
 msgid ""
 "If this is active, the check will automatically go into downtime whenever the "
 "aggregation does. This downtime is also cleaned up automatically when the "
@@ -28112,7 +28112,7 @@ msgid ""
 "not match one of the expected states."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:648
+#: ../cmk/gui/plugins/wato/active_checks.py:649
 msgid ""
 "If you activate this option, a name of a stored procedure is used instead of "
 "an SQL statement. The procedure should return one output variable, which is "
@@ -28388,7 +28388,7 @@ msgid ""
 "checkmk_multisite_ldap_integration.html\">LDAP Documentation</a>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:294
+#: ../cmk/gui/plugins/wato/active_checks.py:295
 msgid ""
 "If you omit this setting then the configured IP address of that host will be "
 "pinged. In the host configuration you can provide additional addresses "
@@ -28437,7 +28437,7 @@ msgid ""
 "host will stay at its last status."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:721
+#: ../cmk/gui/plugins/wato/active_checks.py:722
 msgid ""
 "If you specify a hostname here, then a dynamic DNS lookup will be done "
 "instead of using the IP address of the host as configured in your host "
@@ -28506,7 +28506,7 @@ msgid ""
 "absolute URL including the <tt>.../check_mk/</tt>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1951
+#: ../cmk/gui/plugins/wato/active_checks.py:1952
 msgid ""
 "If you use this option, then <tt>traceroute</tt> is <b>not</b> being called "
 "with the option <tt>-n</tt>. That means that all IP addresses are tried to be "
@@ -28555,7 +28555,7 @@ msgid ""
 "and without a leading dot."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1612
+#: ../cmk/gui/plugins/wato/active_checks.py:1613
 msgid ""
 "If you want, you can specify a name that will be used in the <tt>define "
 "command</tt> section for these checks. This allows you to a assign a custom "
@@ -28757,7 +28757,7 @@ msgstr ""
 msgid "Import Hosts"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:637
+#: ../cmk/gui/plugins/wato/active_checks.py:638
 msgid "Import Query"
 msgstr ""
 
@@ -28950,7 +28950,7 @@ msgstr ""
 msgid "In downtime"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1246
+#: ../cmk/gui/plugins/wato/active_checks.py:1247
 msgid ""
 "In earlier versions of Check_MK users had to enable SNI explicitly. We now "
 "assume users allways want SNI support. If you don't, you can disable it with "
@@ -29360,7 +29360,7 @@ msgstr ""
 msgid "Indices"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2443
+#: ../cmk/gui/plugins/wato/active_checks.py:2444
 msgid "Indices to query"
 msgstr ""
 
@@ -29542,7 +29542,7 @@ msgstr ""
 msgid "Input Packets"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:660
+#: ../cmk/gui/plugins/wato/active_checks.py:661
 msgid "Input Parameters"
 msgstr ""
 
@@ -29563,7 +29563,7 @@ msgstr ""
 msgid "Input non-unicast packets"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:663
+#: ../cmk/gui/plugins/wato/active_checks.py:664
 msgid ""
 "Input parameters, if required by the database procedure. If several "
 "parameters are required, use commas to separate them."
@@ -29751,9 +29751,7 @@ msgid ""
 "target event console can be configured for each host in a separate rule."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/builtin_modules.py:359
-#: ../cmk/gui/plugins/wato/active_checks.py:59
-#: ../cmk/gui/plugins/wato/active_checks.py:1592
+#: ../cmk/gui/plugins/wato/active_checks.py:1593
 msgid "Integrate Nagios plugins"
 msgstr ""
 
@@ -29761,10 +29759,6 @@ msgstr ""
 msgid ""
 "Integrate [cms_active_checks#mrpe|custom nagios plugins] into the monitoring "
 "as active checks."
-msgstr ""
-
-#: ../cmk/gui/plugins/wato/active_checks.py:63
-msgid "Integrate custom nagios plugins (so called active checks)"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/datasource_programs.py:80
@@ -29831,7 +29825,7 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1611
+#: ../cmk/gui/plugins/wato/active_checks.py:1612
 msgid "Internal command name"
 msgstr ""
 
@@ -29926,7 +29920,7 @@ msgstr ""
 msgid "Interval of sidebar status updates"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1912
+#: ../cmk/gui/plugins/wato/active_checks.py:1913
 msgid "Interval to monitor"
 msgstr ""
 
@@ -30621,7 +30615,7 @@ msgstr ""
 msgid "Item name"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2393
+#: ../cmk/gui/plugins/wato/active_checks.py:2394
 msgid "Item suffix"
 msgstr ""
 
@@ -30906,7 +30900,7 @@ msgstr ""
 msgid "Kelvin"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1752
+#: ../cmk/gui/plugins/wato/active_checks.py:1753
 msgid "Kerberos"
 msgstr ""
 
@@ -30960,7 +30954,7 @@ msgstr ""
 msgid "Key to sign with"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2360
+#: ../cmk/gui/plugins/wato/active_checks.py:2361
 msgid "Keyfile"
 msgstr ""
 
@@ -31060,7 +31054,7 @@ msgid "LDAP Server"
 msgstr ""
 
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1528
-#: ../cmk/gui/plugins/wato/active_checks.py:1343
+#: ../cmk/gui/plugins/wato/active_checks.py:1344
 msgid "LDAP Version"
 msgstr ""
 
@@ -31083,7 +31077,7 @@ msgstr ""
 msgid "LDAP attribute to be used as indicator"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1290
+#: ../cmk/gui/plugins/wato/active_checks.py:1291
 msgid "LDAP attribute to search, The default is <tt>(objectclass=*)</tt>."
 msgstr ""
 
@@ -31094,7 +31088,7 @@ msgstr ""
 msgid "LDAP attribute to sync"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1281
+#: ../cmk/gui/plugins/wato/active_checks.py:1282
 msgid "LDAP base, e.g. ou=Development, o=tribe29 GmbH, c=de"
 msgstr ""
 
@@ -31254,7 +31248,7 @@ msgid "Laser id"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/reporting/pnp_graphs.py:576
-#: ../cmk/gui/plugins/metrics/html_render.py:345
+#: ../cmk/gui/plugins/metrics/html_render.py:355
 #: ../cmk/gui/plugins/views/mkeventd.py:366
 msgid "Last"
 msgstr ""
@@ -31336,7 +31330,7 @@ msgstr ""
 msgid "Last day of last month"
 msgstr ""
 
-#: ../cmk/gui/watolib/services.py:589
+#: ../cmk/gui/watolib/services.py:591
 msgid "Last exception"
 msgstr ""
 
@@ -31360,7 +31354,7 @@ msgstr ""
 msgid "Last progress info"
 msgstr ""
 
-#: ../cmk/gui/watolib/services.py:587
+#: ../cmk/gui/watolib/services.py:589
 msgid "Last progress update"
 msgstr ""
 
@@ -32005,7 +31999,7 @@ msgstr ""
 msgid "Levels for used configured reserve"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1563
+#: ../cmk/gui/plugins/wato/active_checks.py:1564
 msgid "Levels for used disk space"
 msgstr ""
 
@@ -32275,7 +32269,7 @@ msgstr ""
 msgid "Limit for upper bound dynamic levels"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2223
+#: ../cmk/gui/plugins/wato/active_checks.py:2224
 msgid "Limit length of mail body"
 msgstr ""
 
@@ -32462,7 +32456,7 @@ msgstr ""
 msgid "Link State: XXX"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1170 ../cmk/gui/plugins/dashboard/view.py:120
+#: ../cmk/gui/dashboard.py:1175 ../cmk/gui/plugins/dashboard/view.py:120
 msgid "Link existing view"
 msgstr ""
 
@@ -32571,7 +32565,7 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:527
+#: ../cmk/gui/plugins/wato/active_checks.py:528
 msgid ""
 "List all allowed expected answers here. If query for an IP address then the "
 "answer will be host names, that end with a dot. Multiple IP addresses within "
@@ -32905,11 +32899,11 @@ msgstr ""
 msgid "Local count requests"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:472
+#: ../cmk/gui/plugins/wato/active_checks.py:473
 msgid "Local destination"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:443
+#: ../cmk/gui/plugins/wato/active_checks.py:444
 msgid "Local file"
 msgstr ""
 
@@ -32921,7 +32915,7 @@ msgstr ""
 msgid "Local path"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:447
+#: ../cmk/gui/plugins/wato/active_checks.py:448
 msgid ""
 "Local path including filename. Base directory for this relative path will be "
 "the home directory of your site. The testfile will be created if it does not "
@@ -32929,7 +32923,7 @@ msgid ""
 "testfile )"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:475
+#: ../cmk/gui/plugins/wato/active_checks.py:476
 msgid "Local path where to put the downloaded file (e.g. 'tmp' )."
 msgstr ""
 
@@ -33327,7 +33321,7 @@ msgid "Login Defaults"
 msgstr ""
 
 #: ../cmk/gui/wato/pages/sites.py:639
-#: ../cmk/gui/plugins/wato/active_checks.py:1738
+#: ../cmk/gui/plugins/wato/active_checks.py:1739
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2179
 msgid "Login credentials"
 msgstr ""
@@ -33434,7 +33428,7 @@ msgstr ""
 msgid "Lookups/sec"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2062
+#: ../cmk/gui/plugins/wato/active_checks.py:2063
 msgid "Loop duration"
 msgstr ""
 
@@ -33645,7 +33639,7 @@ msgstr ""
 msgid "Lower levels for certificate age"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:674
+#: ../cmk/gui/plugins/wato/active_checks.py:675
 msgid "Lower levels for first output item"
 msgstr ""
 
@@ -33870,7 +33864,7 @@ msgid "MSGAGE: The age, in seconds, of the oldest message on the queue."
 msgstr ""
 
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:836
-#: ../cmk/gui/plugins/wato/active_checks.py:591
+#: ../cmk/gui/plugins/wato/active_checks.py:592
 msgid "MSSQL"
 msgstr ""
 
@@ -34043,7 +34037,7 @@ msgstr ""
 msgid "Magnetic volumes space"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:226
+#: ../cmk/gui/plugins/wato/active_checks.py:227
 msgid "Mail Receiving"
 msgstr ""
 
@@ -34185,15 +34179,15 @@ msgstr ""
 msgid "Make backups of your whole site and restore previous backups."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1098
+#: ../cmk/gui/plugins/wato/active_checks.py:1099
 msgid "Make check CRITICAL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1095
+#: ../cmk/gui/plugins/wato/active_checks.py:1096
 msgid "Make check OK"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1097
+#: ../cmk/gui/plugins/wato/active_checks.py:1098
 msgid "Make check WARNING"
 msgstr ""
 
@@ -34920,10 +34914,10 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/reporting/pnp_graphs.py:574
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1464
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1520
-#: ../cmk/gui/plugins/metrics/html_render.py:336
+#: ../cmk/gui/plugins/metrics/html_render.py:346
 #: ../cmk/gui/plugins/metrics/timeseries.py:192
 #: ../cmk/gui/plugins/dashboard/single_metric.py:58
-#: ../cmk/gui/plugins/wato/active_checks.py:1183
+#: ../cmk/gui/plugins/wato/active_checks.py:1184
 msgid "Maximum"
 msgstr ""
 
@@ -35000,7 +34994,7 @@ msgstr ""
 msgid "Maximum accepted age of the reported data in seconds"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1187
+#: ../cmk/gui/plugins/wato/active_checks.py:1188
 #: ../cmk/gui/plugins/wato/check_parameters/heartbeat_crm.py:81
 #: ../cmk/gui/plugins/wato/check_parameters/snapvault.py:42
 msgid "Maximum age"
@@ -35143,7 +35137,7 @@ msgid ""
 "further attempts are made."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:785
+#: ../cmk/gui/plugins/wato/active_checks.py:786
 msgid "Maximum number of bytes to receive"
 msgstr ""
 
@@ -35620,11 +35614,11 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2283
+#: ../cmk/gui/plugins/wato/active_checks.py:2284
 msgid "Message Age"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2287
+#: ../cmk/gui/plugins/wato/active_checks.py:2288
 msgid "Message Count"
 msgstr ""
 
@@ -35701,7 +35695,7 @@ msgstr ""
 msgid "Method"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1976
+#: ../cmk/gui/plugins/wato/active_checks.py:1977
 msgid "Method of probing"
 msgstr ""
 
@@ -35834,14 +35828,14 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/reporting/pnp_graphs.py:573
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1463
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1519
-#: ../cmk/gui/plugins/metrics/html_render.py:335
+#: ../cmk/gui/plugins/metrics/html_render.py:345
 #: ../cmk/gui/plugins/metrics/timeseries.py:193
 #: ../cmk/gui/plugins/dashboard/single_metric.py:57
-#: ../cmk/gui/plugins/wato/active_checks.py:1182
+#: ../cmk/gui/plugins/wato/active_checks.py:1183
 msgid "Minimum"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1462
+#: ../cmk/gui/plugins/wato/active_checks.py:1463
 msgid "Minimum Certificate Age"
 msgstr ""
 
@@ -35883,13 +35877,13 @@ msgstr ""
 msgid "Minimum number of connections or listeners"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:388
-#: ../cmk/gui/plugins/wato/active_checks.py:802
-#: ../cmk/gui/plugins/wato/active_checks.py:1463
+#: ../cmk/gui/plugins/wato/active_checks.py:389
+#: ../cmk/gui/plugins/wato/active_checks.py:803
+#: ../cmk/gui/plugins/wato/active_checks.py:1464
 msgid "Minimum number of days a certificate has to be valid"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1222
+#: ../cmk/gui/plugins/wato/active_checks.py:1223
 #: ../cmk/gui/plugins/wato/check_parameters/livestatus_status.py:61
 msgid "Minimum number of days a certificate has to be valid."
 msgstr ""
@@ -35999,11 +35993,11 @@ msgstr ""
 msgid "Missing mandatory topology keys: %r"
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:60
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:65
 msgid "Missing needed custom_graph parameter."
 msgstr ""
 
-#: ../cmk/gui/plugins/dashboard/graph.py:158
+#: ../cmk/gui/plugins/dashboard/graph.py:115
 msgid "Missing needed host parameter."
 msgstr ""
 
@@ -36085,8 +36079,8 @@ msgstr ""
 msgid "Mode found during inventory"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:847
-#: ../cmk/gui/plugins/wato/active_checks.py:1016
+#: ../cmk/gui/plugins/wato/active_checks.py:848
+#: ../cmk/gui/plugins/wato/active_checks.py:1017
 msgid "Mode of the Check"
 msgstr ""
 
@@ -36664,7 +36658,7 @@ msgstr ""
 msgid "Move to pack: "
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2244
+#: ../cmk/gui/plugins/wato/active_checks.py:2245
 msgid "Move to subfolder"
 msgstr ""
 
@@ -36752,7 +36746,7 @@ msgstr ""
 msgid "Multicast packets"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1135
+#: ../cmk/gui/plugins/wato/active_checks.py:1136
 msgid "Multiline string matching"
 msgstr ""
 
@@ -36760,7 +36754,7 @@ msgstr ""
 msgid "Multipathing"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1879
+#: ../cmk/gui/plugins/wato/active_checks.py:1880
 msgid "Multiple Hosts: Number of successful results"
 msgstr ""
 
@@ -36784,7 +36778,7 @@ msgstr ""
 msgid "Multiplicative: Seasonality grows with the trend."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2325
+#: ../cmk/gui/plugins/wato/active_checks.py:2326
 msgid "Must be unique for every host. Defaults to command that is executed."
 msgstr ""
 
@@ -36802,7 +36796,7 @@ msgstr ""
 msgid "My graphs"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:589
+#: ../cmk/gui/plugins/wato/active_checks.py:590
 msgid "MySQL"
 msgstr ""
 
@@ -37003,10 +36997,10 @@ msgstr ""
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:956
 #: ../cmk/gui/plugins/views/painters.py:3449
 #: ../cmk/gui/plugins/views/painters.py:3637
-#: ../cmk/gui/plugins/wato/active_checks.py:1274
-#: ../cmk/gui/plugins/wato/active_checks.py:1391
-#: ../cmk/gui/plugins/wato/active_checks.py:1809
-#: ../cmk/gui/plugins/wato/active_checks.py:2009
+#: ../cmk/gui/plugins/wato/active_checks.py:1275
+#: ../cmk/gui/plugins/wato/active_checks.py:1392
+#: ../cmk/gui/plugins/wato/active_checks.py:1810
+#: ../cmk/gui/plugins/wato/active_checks.py:2010
 msgid "Name"
 msgstr ""
 
@@ -37208,7 +37202,7 @@ msgstr ""
 msgid "Name of the enclosure, e.g. Enclosure 1"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1862
+#: ../cmk/gui/plugins/wato/active_checks.py:1863
 msgid "Name of the form to populate and submit"
 msgstr ""
 
@@ -37300,7 +37294,7 @@ msgstr ""
 msgid "Name or number of the port"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1949
+#: ../cmk/gui/plugins/wato/active_checks.py:1950
 msgid "Name resolution"
 msgstr ""
 
@@ -37421,7 +37415,7 @@ msgstr ""
 msgid "NetApp via WebAPI"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1549
+#: ../cmk/gui/plugins/wato/active_checks.py:1550
 msgid "NetBIOS name of the server"
 msgstr ""
 
@@ -38665,7 +38659,7 @@ msgid ""
 "with existing historical data if you are running PNP4Nagios in SINGLE mode."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1176
+#: ../cmk/gui/plugins/wato/active_checks.py:1177
 msgid "Note: this still does an HTTP GET or POST, not a HEAD."
 msgstr ""
 
@@ -38712,7 +38706,7 @@ msgstr ""
 msgid "Notif. postponed"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:818
+#: ../cmk/gui/plugins/metrics/html_render.py:828
 msgid "Notification"
 msgstr ""
 
@@ -38977,7 +38971,7 @@ msgstr ""
 msgid "Nullmailer: Mail Queue"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:123
+#: ../cmk/gui/plugins/wato/active_checks.py:124
 msgid ""
 "Number ICMP echo request packets to send to the target host on each check "
 "execution. All packets are sent directly on check execution. Afterwards the "
@@ -39419,7 +39413,7 @@ msgstr ""
 msgid "Number of ongoing shard info requests"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:122
+#: ../cmk/gui/plugins/wato/active_checks.py:123
 msgid "Number of packets"
 msgstr ""
 
@@ -39433,7 +39427,7 @@ msgstr ""
 msgid "Number of physical CPUs"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:317
+#: ../cmk/gui/plugins/wato/active_checks.py:318
 msgid "Number of positve responses required for OK state"
 msgstr ""
 
@@ -39732,10 +39726,10 @@ msgstr ""
 #: ../cmk/gui/plugins/visuals/filters.py:2909
 #: ../cmk/gui/plugins/dashboard/stats.py:292
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:673
-#: ../cmk/gui/plugins/wato/active_checks.py:372
-#: ../cmk/gui/plugins/wato/active_checks.py:741
-#: ../cmk/gui/plugins/wato/active_checks.py:773
-#: ../cmk/gui/plugins/wato/active_checks.py:1650
+#: ../cmk/gui/plugins/wato/active_checks.py:373
+#: ../cmk/gui/plugins/wato/active_checks.py:742
+#: ../cmk/gui/plugins/wato/active_checks.py:774
+#: ../cmk/gui/plugins/wato/active_checks.py:1651
 #: ../cmk/gui/plugins/wato/check_parameters/veritas_vcs.py:29
 #: ../cmk/gui/plugins/wato/check_parameters/hostsystem_sensors.py:33
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_ip_sla.py:133
@@ -40162,8 +40156,8 @@ msgid ""
 "metric history painter to fix this issue."
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:109
-#: ../cmk/gui/plugins/dashboard/graph.py:89
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:106
+#: ../cmk/gui/plugins/dashboard/graph.py:151
 msgid "One Month"
 msgstr ""
 
@@ -40171,13 +40165,13 @@ msgstr ""
 msgid "One RRD per host/service (saves disk IO, only with CMC)"
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:108
-#: ../cmk/gui/plugins/dashboard/graph.py:88
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:105
+#: ../cmk/gui/plugins/dashboard/graph.py:150
 msgid "One Week"
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:110
-#: ../cmk/gui/plugins/dashboard/graph.py:90
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:107
+#: ../cmk/gui/plugins/dashboard/graph.py:152
 msgid "One Year"
 msgstr ""
 
@@ -40383,7 +40377,7 @@ msgstr ""
 msgid "Only ping this device"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2180
+#: ../cmk/gui/plugins/wato/active_checks.py:2181
 msgid "Only process mails with matching subject"
 msgstr ""
 
@@ -40643,7 +40637,7 @@ msgid ""
 "(single)."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:520
+#: ../cmk/gui/plugins/wato/active_checks.py:521
 msgid "Optional DNS server you want to use for the lookup"
 msgstr ""
 
@@ -40660,13 +40654,13 @@ msgstr ""
 msgid "Optional login (if required)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:501
-#: ../cmk/gui/plugins/wato/active_checks.py:708
-#: ../cmk/gui/plugins/wato/active_checks.py:1285
-#: ../cmk/gui/plugins/wato/active_checks.py:1399
-#: ../cmk/gui/plugins/wato/active_checks.py:1742
-#: ../cmk/gui/plugins/wato/active_checks.py:1918
-#: ../cmk/gui/plugins/wato/active_checks.py:2319
+#: ../cmk/gui/plugins/wato/active_checks.py:502
+#: ../cmk/gui/plugins/wato/active_checks.py:709
+#: ../cmk/gui/plugins/wato/active_checks.py:1286
+#: ../cmk/gui/plugins/wato/active_checks.py:1400
+#: ../cmk/gui/plugins/wato/active_checks.py:1743
+#: ../cmk/gui/plugins/wato/active_checks.py:1919
+#: ../cmk/gui/plugins/wato/active_checks.py:2320
 msgid "Optional parameters"
 msgstr ""
 
@@ -40707,7 +40701,7 @@ msgstr ""
 msgid "Options for report emails"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:592
+#: ../cmk/gui/plugins/wato/active_checks.py:593
 msgid "Oracle"
 msgstr ""
 
@@ -40886,6 +40880,10 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
+#: ../cmk/gui/plugins/wato/builtin_modules.py:359
+msgid "Other Services"
+msgstr ""
+
 #: ../cmk/utils/werks.py:61
 msgid "Other components"
 msgstr ""
@@ -40923,6 +40921,10 @@ msgstr ""
 #: ../cmk/gui/wato/pages/download_agents.py:194
 #: ../cmk/gui/plugins/wato/builtin_modules.py:1244
 msgid "Other operating systems"
+msgstr ""
+
+#: ../cmk/gui/plugins/wato/active_checks.py:59
+msgid "Other services"
 msgstr ""
 
 #: ../cmk/gui/plugins/wato/check_parameters/if.py:630
@@ -41365,11 +41367,11 @@ msgstr ""
 msgid "PNP4Nagios templates"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:229
+#: ../cmk/gui/plugins/wato/active_checks.py:230
 msgid "POP3"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:187
+#: ../cmk/gui/plugins/wato/active_checks.py:188
 msgid "POP3 Server"
 msgstr ""
 
@@ -41456,7 +41458,7 @@ msgid "Packages"
 msgstr ""
 
 #: ../cmk/gui/plugins/metrics/network.py:1785
-#: ../cmk/gui/plugins/wato/active_checks.py:111
+#: ../cmk/gui/plugins/wato/active_checks.py:112
 msgid "Packet loss"
 msgstr ""
 
@@ -41572,7 +41574,7 @@ msgstr ""
 msgid "Page size"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1180
+#: ../cmk/gui/plugins/wato/active_checks.py:1181
 msgid "Page size to expect"
 msgstr ""
 
@@ -41818,15 +41820,15 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_scaleio.py:31
 #: ../cmk/gui/wato/pages/password_store.py:147
 #: ../cmk/gui/wato/pages/users.py:383 ../cmk/gui/login.py:485
-#: ../cmk/gui/plugins/wato/active_checks.py:175
-#: ../cmk/gui/plugins/wato/active_checks.py:216
-#: ../cmk/gui/plugins/wato/active_checks.py:422
-#: ../cmk/gui/plugins/wato/active_checks.py:901
-#: ../cmk/gui/plugins/wato/active_checks.py:1088
-#: ../cmk/gui/plugins/wato/active_checks.py:1307
-#: ../cmk/gui/plugins/wato/active_checks.py:1490
-#: ../cmk/gui/plugins/wato/active_checks.py:1573
-#: ../cmk/gui/plugins/wato/active_checks.py:2048
+#: ../cmk/gui/plugins/wato/active_checks.py:176
+#: ../cmk/gui/plugins/wato/active_checks.py:217
+#: ../cmk/gui/plugins/wato/active_checks.py:423
+#: ../cmk/gui/plugins/wato/active_checks.py:902
+#: ../cmk/gui/plugins/wato/active_checks.py:1089
+#: ../cmk/gui/plugins/wato/active_checks.py:1308
+#: ../cmk/gui/plugins/wato/active_checks.py:1491
+#: ../cmk/gui/plugins/wato/active_checks.py:1574
+#: ../cmk/gui/plugins/wato/active_checks.py:2049
 #: ../cmk/gui/plugins/wato/notifications.py:486
 #: ../cmk/gui/plugins/wato/support.py:96
 #: ../cmk/gui/plugins/wato/utils/__init__.py:354
@@ -41856,7 +41858,7 @@ msgstr ""
 msgid "Password does not exist or using not permitted"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1309
+#: ../cmk/gui/plugins/wato/active_checks.py:1310
 msgid "Password for binding, if your server requires an authentication"
 msgstr ""
 
@@ -41871,7 +41873,7 @@ msgstr ""
 msgid "Password for this user"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2409
+#: ../cmk/gui/plugins/wato/active_checks.py:2410
 #: ../cmk/gui/plugins/wato/notifications.py:615
 #: ../cmk/gui/plugins/wato/datasource_programs.py:280
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2610
@@ -42429,7 +42431,7 @@ msgstr ""
 msgid "Perform Real-Time Checks"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1017
+#: ../cmk/gui/plugins/wato/active_checks.py:1018
 msgid "Perform a check of the URL or the certificate expiration."
 msgstr ""
 
@@ -42468,7 +42470,7 @@ msgstr ""
 msgid "Performance Counters"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:679
+#: ../cmk/gui/plugins/wato/active_checks.py:680
 #: ../cmk/gui/plugins/wato/notifications.py:228
 msgid "Performance Data"
 msgstr ""
@@ -42481,7 +42483,7 @@ msgstr ""
 msgid "Performance Data for Queue Length"
 msgstr ""
 
-#: ../cmk/gui/plugins/dashboard/graph.py:38
+#: ../cmk/gui/plugins/dashboard/graph.py:45
 msgid "Performance Graph"
 msgstr ""
 
@@ -42500,7 +42502,7 @@ msgstr ""
 #: ../cmk/gui/plugins/sidebar/master_control.py:74
 #: ../cmk/gui/plugins/views/painters.py:1798
 #: ../cmk/gui/plugins/views/commands.py:409
-#: ../cmk/gui/plugins/wato/active_checks.py:1620
+#: ../cmk/gui/plugins/wato/active_checks.py:1621
 #: ../cmk/gui/plugins/wato/check_parameters/hw_fans.py:50
 msgid "Performance data"
 msgstr ""
@@ -42810,35 +42812,35 @@ msgstr ""
 msgid "Ping"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:310
+#: ../cmk/gui/plugins/wato/active_checks.py:311
 msgid "Ping IPv4 address identified by its index"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:312
+#: ../cmk/gui/plugins/wato/active_checks.py:313
 msgid "Ping IPv6 address identified by its index"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:308
+#: ../cmk/gui/plugins/wato/active_checks.py:309
 msgid "Ping additional IPv4 addresses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:309
+#: ../cmk/gui/plugins/wato/active_checks.py:310
 msgid "Ping additional IPv6 addresses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:306
+#: ../cmk/gui/plugins/wato/active_checks.py:307
 msgid "Ping all IPv4 addresses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:307
+#: ../cmk/gui/plugins/wato/active_checks.py:308
 msgid "Ping all IPv6 addresses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:305
+#: ../cmk/gui/plugins/wato/active_checks.py:306
 msgid "Ping the following explicit address / DNS name"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:303
+#: ../cmk/gui/plugins/wato/active_checks.py:304
 msgid "Ping the normal IP address"
 msgstr ""
 
@@ -43062,9 +43064,9 @@ msgstr ""
 msgid "Please make a selection"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1602
-#: ../cmk/gui/plugins/wato/active_checks.py:2098
-#: ../cmk/gui/plugins/wato/active_checks.py:2271
+#: ../cmk/gui/plugins/wato/active_checks.py:1603
+#: ../cmk/gui/plugins/wato/active_checks.py:2099
+#: ../cmk/gui/plugins/wato/active_checks.py:2272
 msgid ""
 "Please make sure that this is unique per host and does not collide with other "
 "services."
@@ -43123,7 +43125,7 @@ msgid ""
 "00:00 you need to select <i>last week</i>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:988
+#: ../cmk/gui/plugins/wato/active_checks.py:989
 msgid "Please provide a valid name"
 msgstr ""
 
@@ -43413,7 +43415,7 @@ msgstr ""
 msgid "Plugin output"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1658
+#: ../cmk/gui/plugins/wato/active_checks.py:1659
 msgid "Plugin output in case of absent updates"
 msgstr ""
 
@@ -43502,10 +43504,10 @@ msgstr ""
 
 #: ../cmk/gui/valuespec.py:1790 ../cmk/gui/cee/plugins/wato/syncsmtp.py:37
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/firewall.py:42
-#: ../cmk/gui/plugins/wato/active_checks.py:426
-#: ../cmk/gui/plugins/wato/active_checks.py:838
-#: ../cmk/gui/plugins/wato/active_checks.py:2169
-#: ../cmk/gui/plugins/wato/active_checks.py:2424
+#: ../cmk/gui/plugins/wato/active_checks.py:427
+#: ../cmk/gui/plugins/wato/active_checks.py:839
+#: ../cmk/gui/plugins/wato/active_checks.py:2170
+#: ../cmk/gui/plugins/wato/active_checks.py:2425
 #: ../cmk/gui/plugins/wato/check_parameters/hp_hh3c_ext_states.py:50
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:271
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:334
@@ -43535,7 +43537,7 @@ msgstr ""
 msgid "Port Usage"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1214
+#: ../cmk/gui/plugins/wato/active_checks.py:1215
 msgid "Port defaults to 443. In this mode the URL is not checked."
 msgstr ""
 
@@ -43591,7 +43593,7 @@ msgstr ""
 msgid "Port:"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:352
+#: ../cmk/gui/plugins/wato/active_checks.py:353
 msgid "Portnumber"
 msgstr ""
 
@@ -43641,7 +43643,7 @@ msgstr ""
 msgid "Postfix: Mail Queue"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:590
+#: ../cmk/gui/plugins/wato/active_checks.py:591
 msgid "PostgreSQL"
 msgstr ""
 
@@ -43918,7 +43920,7 @@ msgstr ""
 msgid "Primary / Secondary"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:884
+#: ../cmk/gui/plugins/wato/active_checks.py:885
 msgid "Primary Address Family"
 msgstr ""
 
@@ -44034,7 +44036,7 @@ msgstr ""
 msgid "Problem while executing hook function %s in hook %s: %s"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:708
+#: ../cmk/gui/dashboard.py:713
 #, python-format
 msgid ""
 "Problem while rendering dashlet %d of type %s: %s. Have a look at <tt>var/log/"
@@ -44279,9 +44281,9 @@ msgstr ""
 
 #: ../cmk/gui/key_mgmt.py:264 ../cmk/gui/key_mgmt.py:385
 #: ../cmk/gui/key_mgmt.py:480 ../cmk/gui/backup.py:1795
-#: ../cmk/gui/dashboard.py:811 ../cmk/gui/dashboard.py:1370
+#: ../cmk/gui/dashboard.py:816 ../cmk/gui/dashboard.py:1375
 #: ../cmk/gui/valuespec.py:4734
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:91 ../cmk/gui/forms.py:65
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:88 ../cmk/gui/forms.py:65
 #: ../cmk/gui/forms.py:68 ../cmk/gui/wato/pages/timeperiods.py:324
 #: ../cmk/gui/wato/pages/groups.py:167 ../cmk/gui/wato/pages/groups.py:255
 #: ../cmk/gui/wato/pages/users.py:322 ../cmk/gui/wato/pages/services.py:1134
@@ -44291,7 +44293,7 @@ msgstr ""
 #: ../cmk/gui/wato/pages/sites.py:689 ../cmk/gui/wato/pages/folders.py:359
 #: ../cmk/gui/plugins/dashboard/event_bar_chart_dashlet.py:51
 #: ../cmk/gui/plugins/dashboard/average_scatterplot_dashlet.py:75
-#: ../cmk/gui/plugins/dashboard/graph.py:71
+#: ../cmk/gui/plugins/dashboard/graph.py:133
 #: ../cmk/gui/plugins/dashboard/single_metric.py:30
 msgid "Properties"
 msgstr ""
@@ -44314,8 +44316,8 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_jolokia.py:32
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/nginx_status.py:46
 #: ../cmk/gui/cee/ntop/pages.py:537 ../cmk/gui/cee/ntop/pages.py:1112
-#: ../cmk/gui/plugins/wato/active_checks.py:2162
-#: ../cmk/gui/plugins/wato/active_checks.py:2414
+#: ../cmk/gui/plugins/wato/active_checks.py:2163
+#: ../cmk/gui/plugins/wato/active_checks.py:2415
 #: ../cmk/gui/plugins/wato/check_parameters/tcp_connections.py:39
 #: ../cmk/gui/plugins/wato/check_parameters/k8s_port.py:48
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:679
@@ -44333,7 +44335,7 @@ msgstr ""
 msgid "Protocol Overview"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:260
+#: ../cmk/gui/plugins/wato/active_checks.py:261
 msgid "Protocol of Server"
 msgstr ""
 
@@ -44403,11 +44405,11 @@ msgstr ""
 msgid "Proxy URL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:898
+#: ../cmk/gui/plugins/wato/active_checks.py:899
 msgid "Proxy basic authorization"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:895
+#: ../cmk/gui/plugins/wato/active_checks.py:896
 msgid "Proxy server address"
 msgstr ""
 
@@ -44479,7 +44481,7 @@ msgstr ""
 msgid "Pushover Echo (long)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:440
+#: ../cmk/gui/plugins/wato/active_checks.py:441
 msgid "Put file to SFTP server"
 msgstr ""
 
@@ -44559,7 +44561,7 @@ msgstr ""
 msgid "Quarantine Usage"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:497
+#: ../cmk/gui/plugins/wato/active_checks.py:498
 msgid "Queried Hostname or IP address"
 msgstr ""
 
@@ -44587,11 +44589,11 @@ msgstr ""
 msgid "Query Time Limit"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2388
+#: ../cmk/gui/plugins/wato/active_checks.py:2389
 msgid "Query elasticsearch logs"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:622
+#: ../cmk/gui/plugins/wato/active_checks.py:623
 msgid "Query or SQL statement"
 msgstr ""
 
@@ -45323,7 +45325,7 @@ msgstr ""
 msgid "Reclassify state matching regex pattern"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1204
+#: ../cmk/gui/plugins/wato/active_checks.py:1205
 msgid "Record additional performance data"
 msgstr ""
 
@@ -45429,7 +45431,7 @@ msgstr ""
 msgid "Refresh interval"
 msgstr ""
 
-#: ../cmk/gui/watolib/services.py:411
+#: ../cmk/gui/watolib/services.py:413
 #, python-format
 msgid "Refreshed check configuration of host '%s'"
 msgstr ""
@@ -45560,12 +45562,12 @@ msgstr ""
 msgid "Regular expression substitution"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1139
-#: ../cmk/gui/plugins/wato/active_checks.py:1857
+#: ../cmk/gui/plugins/wato/active_checks.py:1140
+#: ../cmk/gui/plugins/wato/active_checks.py:1858
 msgid "Regular expression to expect in content"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1129
+#: ../cmk/gui/plugins/wato/active_checks.py:1130
 msgid "Regular expression: "
 msgstr ""
 
@@ -45774,7 +45776,7 @@ msgstr ""
 msgid "Remote automation tried to sync pending changes but failed: %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:452
+#: ../cmk/gui/plugins/wato/active_checks.py:453
 msgid "Remote destination"
 msgstr ""
 
@@ -45782,7 +45784,7 @@ msgstr ""
 msgid "Remote execution on Linux via SSH"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:464
+#: ../cmk/gui/plugins/wato/active_checks.py:465
 msgid "Remote file"
 msgstr ""
 
@@ -45790,13 +45792,13 @@ msgstr ""
 msgid "Remote instances"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:468
+#: ../cmk/gui/plugins/wato/active_checks.py:469
 msgid ""
 "Remote path including filename (e.g. 'testfile'). If you also enabled 'Put "
 "file to SFTP server', you can use the same file for both tests."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:456
+#: ../cmk/gui/plugins/wato/active_checks.py:457
 msgid ""
 "Remote path where to put the file. If you leave this empty, the file will be "
 "placed in the home directory of the user. Example: 'myDirectory' "
@@ -46262,7 +46264,7 @@ msgid "Reply-To: email address"
 msgstr ""
 
 #: ../cmk/gui/cee/reporting.py:1438
-#: ../cmk/gui/plugins/metrics/html_render.py:817
+#: ../cmk/gui/plugins/metrics/html_render.py:827
 msgid "Report"
 msgstr ""
 
@@ -46424,7 +46426,7 @@ msgstr ""
 msgid "Require a comment"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1142
+#: ../cmk/gui/dashboard.py:1147
 msgid "Required context filters"
 msgstr ""
 
@@ -46907,7 +46909,7 @@ msgid "Round"
 msgstr ""
 
 #: ../cmk/gui/plugins/metrics/network.py:1772
-#: ../cmk/gui/plugins/wato/active_checks.py:105
+#: ../cmk/gui/plugins/wato/active_checks.py:106
 msgid "Round trip average"
 msgstr ""
 
@@ -46919,11 +46921,11 @@ msgstr ""
 msgid "Roundtrip"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1961
+#: ../cmk/gui/plugins/wato/active_checks.py:1962
 msgid "Router (FQDN, IP-Address)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1972
+#: ../cmk/gui/plugins/wato/active_checks.py:1973
 msgid "Router that must or must not be used"
 msgstr ""
 
@@ -47128,7 +47130,7 @@ msgid ""
 "plugins like for example the interface check plugin can be customized."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:78
+#: ../cmk/gui/plugins/wato/active_checks.py:79
 msgid ""
 "Rules to add [cms_active_checks|network services] like HTTP and TCP to the "
 "monitoring. The services are provided by so called active checks that allow "
@@ -47546,7 +47548,7 @@ msgstr ""
 msgid "SMART harddisk monitoring (Linux)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1534
+#: ../cmk/gui/plugins/wato/active_checks.py:1535
 msgid "SMB share to check"
 msgstr ""
 
@@ -47554,31 +47556,31 @@ msgstr ""
 msgid "SMT Threads"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1482
+#: ../cmk/gui/plugins/wato/active_checks.py:1483
 msgid "SMTP AUTH type to check (default none, only LOGIN supported)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2045
+#: ../cmk/gui/plugins/wato/active_checks.py:2046
 msgid "SMTP Authentication"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1433
+#: ../cmk/gui/plugins/wato/active_checks.py:1434
 msgid "SMTP Commands"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1438
+#: ../cmk/gui/plugins/wato/active_checks.py:1439
 msgid "SMTP Responses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2020
+#: ../cmk/gui/plugins/wato/active_checks.py:2021
 msgid "SMTP Server"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2039
+#: ../cmk/gui/plugins/wato/active_checks.py:2040
 msgid "SMTP TCP Port to connect to"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1434
+#: ../cmk/gui/plugins/wato/active_checks.py:1435
 msgid "SMTP commands to execute."
 msgstr ""
 
@@ -47738,7 +47740,7 @@ msgstr ""
 msgid "SQL Re-Compilations/sec"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:625
+#: ../cmk/gui/plugins/wato/active_checks.py:626
 msgid "SQL statement or procedure name"
 msgstr ""
 
@@ -47746,7 +47748,7 @@ msgstr ""
 msgid "SQL-Server to connect to"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2337
+#: ../cmk/gui/plugins/wato/active_checks.py:2338
 msgid "SSH Port"
 msgstr ""
 
@@ -47762,7 +47764,7 @@ msgstr ""
 msgid "SSH key pair for remote login"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2357
+#: ../cmk/gui/plugins/wato/active_checks.py:2358
 msgid "SSH user name on remote host"
 msgstr ""
 
@@ -47770,8 +47772,8 @@ msgstr ""
 msgid "SSL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:153
-#: ../cmk/gui/plugins/wato/active_checks.py:194
+#: ../cmk/gui/plugins/wato/active_checks.py:154
+#: ../cmk/gui/plugins/wato/active_checks.py:195
 msgid "SSL Encryption"
 msgstr ""
 
@@ -47779,8 +47781,8 @@ msgstr ""
 msgid "SSL certificate checking"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:387
-#: ../cmk/gui/plugins/wato/active_checks.py:801
+#: ../cmk/gui/plugins/wato/active_checks.py:388
+#: ../cmk/gui/plugins/wato/active_checks.py:802
 msgid "SSL certificate validation"
 msgstr ""
 
@@ -47813,7 +47815,7 @@ msgstr ""
 msgid "STARTTLS"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1477
+#: ../cmk/gui/plugins/wato/active_checks.py:1478
 msgid "STARTTLS enabled."
 msgstr ""
 
@@ -47878,7 +47880,7 @@ msgstr ""
 msgid "Saturday"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1444 ../cmk/gui/wato/pages/hosts.py:65
+#: ../cmk/gui/dashboard.py:1449 ../cmk/gui/wato/pages/hosts.py:65
 #: ../cmk/gui/wato/pages/ldap.py:246 ../cmk/gui/page_menu.py:419
 #: ../cmk/gui/plugins/wato/bi_config.py:290
 #: ../cmk/gui/plugins/wato/bi_config.py:956
@@ -47922,7 +47924,7 @@ msgstr ""
 msgid "Save this host and go to"
 msgstr ""
 
-#: ../cmk/gui/watolib/services.py:226
+#: ../cmk/gui/watolib/services.py:228
 #, python-format
 msgid "Saved check configuration of host '%s' with %d services"
 msgstr ""
@@ -48198,19 +48200,19 @@ msgstr ""
 msgid "Search in this folder"
 msgstr ""
 
-#: ../cmk/gui/watolib/search.py:208 ../cmk/gui/watolib/search.py:214
+#: ../cmk/gui/watolib/search.py:213 ../cmk/gui/watolib/search.py:219
 msgid "Search index"
 msgstr ""
 
-#: ../cmk/gui/watolib/search.py:181
+#: ../cmk/gui/watolib/search.py:186
 msgid "Search index file not found, re-building from scratch"
 msgstr ""
 
-#: ../cmk/gui/watolib/search.py:155
+#: ../cmk/gui/watolib/search.py:160
 msgid "Search index successfully built"
 msgstr ""
 
-#: ../cmk/gui/watolib/search.py:190
+#: ../cmk/gui/watolib/search.py:195
 msgid "Search index successfully updated"
 msgstr ""
 
@@ -48223,7 +48225,7 @@ msgstr ""
 msgid "Search only the entry at the base DN"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2431
+#: ../cmk/gui/plugins/wato/active_checks.py:2432
 msgid "Search pattern"
 msgstr ""
 
@@ -48357,16 +48359,16 @@ msgstr ""
 msgid "Seconds"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:250
-#: ../cmk/gui/plugins/wato/active_checks.py:363
-#: ../cmk/gui/plugins/wato/active_checks.py:549
-#: ../cmk/gui/plugins/wato/active_checks.py:732
-#: ../cmk/gui/plugins/wato/active_checks.py:1060
-#: ../cmk/gui/plugins/wato/active_checks.py:1360
-#: ../cmk/gui/plugins/wato/active_checks.py:1506
-#: ../cmk/gui/plugins/wato/active_checks.py:1757
-#: ../cmk/gui/plugins/wato/active_checks.py:1851
-#: ../cmk/gui/plugins/wato/active_checks.py:2352
+#: ../cmk/gui/plugins/wato/active_checks.py:251
+#: ../cmk/gui/plugins/wato/active_checks.py:364
+#: ../cmk/gui/plugins/wato/active_checks.py:550
+#: ../cmk/gui/plugins/wato/active_checks.py:733
+#: ../cmk/gui/plugins/wato/active_checks.py:1061
+#: ../cmk/gui/plugins/wato/active_checks.py:1361
+#: ../cmk/gui/plugins/wato/active_checks.py:1507
+#: ../cmk/gui/plugins/wato/active_checks.py:1758
+#: ../cmk/gui/plugins/wato/active_checks.py:1852
+#: ../cmk/gui/plugins/wato/active_checks.py:2353
 msgid "Seconds before connection times out"
 msgstr ""
 
@@ -48378,11 +48380,11 @@ msgstr ""
 msgid "Seconds since service"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:777
+#: ../cmk/gui/plugins/wato/active_checks.py:778
 msgid "Seconds to wait before polling"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:778
+#: ../cmk/gui/plugins/wato/active_checks.py:779
 msgid "Seconds to wait between sending string and polling for response"
 msgstr ""
 
@@ -48574,7 +48576,7 @@ msgstr ""
 msgid "Select the type of fixed page element"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1266
+#: ../cmk/gui/dashboard.py:1271
 msgid "Select view"
 msgstr ""
 
@@ -48617,8 +48619,8 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1144
-#: ../cmk/gui/plugins/wato/active_checks.py:1872
+#: ../cmk/gui/plugins/wato/active_checks.py:1145
+#: ../cmk/gui/plugins/wato/active_checks.py:1873
 msgid "Send HTTP POST data"
 msgstr ""
 
@@ -48626,19 +48628,19 @@ msgstr ""
 msgid "Send an E-Mail"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2121
+#: ../cmk/gui/plugins/wato/active_checks.py:2122
 msgid "Send events to local event console"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2127
+#: ../cmk/gui/plugins/wato/active_checks.py:2128
 msgid "Send events to local event console in same OMD site"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2132
+#: ../cmk/gui/plugins/wato/active_checks.py:2133
 msgid "Send events to local event console into unix socket"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2155
+#: ../cmk/gui/plugins/wato/active_checks.py:2156
 msgid "Send events to remote syslog host"
 msgstr ""
 
@@ -48888,12 +48890,12 @@ msgstr ""
 
 #: ../cmk/gui/plugins/sidebar/search.py:918
 #: ../cmk/gui/plugins/visuals/infos.py:62
-#: ../cmk/gui/plugins/wato/active_checks.py:239
-#: ../cmk/gui/plugins/wato/active_checks.py:287
-#: ../cmk/gui/plugins/wato/active_checks.py:425
-#: ../cmk/gui/plugins/wato/active_checks.py:580
-#: ../cmk/gui/plugins/wato/active_checks.py:1908
-#: ../cmk/gui/plugins/wato/active_checks.py:2323
+#: ../cmk/gui/plugins/wato/active_checks.py:240
+#: ../cmk/gui/plugins/wato/active_checks.py:288
+#: ../cmk/gui/plugins/wato/active_checks.py:426
+#: ../cmk/gui/plugins/wato/active_checks.py:581
+#: ../cmk/gui/plugins/wato/active_checks.py:1909
+#: ../cmk/gui/plugins/wato/active_checks.py:2324
 #: ../cmk/gui/plugins/wato/check_parameters/domino_tasks.py:75
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:432
 msgid "Service Description"
@@ -48966,7 +48968,7 @@ msgstr ""
 msgid "Service Metrics"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:841
+#: ../cmk/gui/plugins/wato/active_checks.py:842
 msgid "Service Name"
 msgstr ""
 
@@ -49114,10 +49116,10 @@ msgstr ""
 #: ../cmk/gui/plugins/views/painters.py:3193
 #: ../cmk/gui/plugins/views/sorters.py:267
 #: ../cmk/gui/plugins/views/availability.py:1177
-#: ../cmk/gui/plugins/wato/active_checks.py:712
-#: ../cmk/gui/plugins/wato/active_checks.py:1601
-#: ../cmk/gui/plugins/wato/active_checks.py:2097
-#: ../cmk/gui/plugins/wato/active_checks.py:2270
+#: ../cmk/gui/plugins/wato/active_checks.py:713
+#: ../cmk/gui/plugins/wato/active_checks.py:1602
+#: ../cmk/gui/plugins/wato/active_checks.py:2098
+#: ../cmk/gui/plugins/wato/active_checks.py:2271
 msgid "Service description"
 msgstr ""
 
@@ -49138,7 +49140,7 @@ msgid "Service descriptions"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/dcd.py:681 ../cmk/gui/wato/pages/services.py:289
-#: ../cmk/gui/watolib/services.py:505 ../cmk/gui/watolib/services.py:513
+#: ../cmk/gui/watolib/services.py:507 ../cmk/gui/watolib/services.py:515
 #: ../cmk/gui/plugins/views/datasources.py:437
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2616
 msgid "Service discovery"
@@ -49259,7 +49261,7 @@ msgstr ""
 
 #: ../cmk/gui/wato/pages/check_catalog.py:502
 #: ../cmk/gui/wato/pages/rulesets.py:2074
-#: ../cmk/gui/plugins/wato/active_checks.py:1004
+#: ../cmk/gui/plugins/wato/active_checks.py:1005
 #: ../cmk/gui/plugins/wato/check_parameters/solaris_services.py:49
 #: ../cmk/gui/plugins/wato/datasource_programs.py:627
 msgid "Service name"
@@ -49903,14 +49905,14 @@ msgstr ""
 msgid "Set the width"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1825
+#: ../cmk/gui/plugins/wato/active_checks.py:1826
 msgid ""
 "Set this in order to specify the name of the virtual host for the query "
 "(using HTTP/1.1). When you leave this empty, then the IP address of the host "
 "will be used instead."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:924
+#: ../cmk/gui/plugins/wato/active_checks.py:925
 msgid "Set this in order to specify the name of the virtual host for the query."
 msgstr ""
 
@@ -50517,7 +50519,7 @@ msgstr ""
 msgid "Show stale hosts and services"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1144
+#: ../cmk/gui/dashboard.py:1149
 msgid ""
 "Show the dialog that can be used to update the dashboard context on initial "
 "dashboard rendering and enforce the user to provide the context filters that "
@@ -50549,7 +50551,7 @@ msgstr ""
 msgid "Show the graph vertical axis"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1134
+#: ../cmk/gui/dashboard.py:1139
 msgid "Show the header of the dashboard with the configured title."
 msgstr ""
 
@@ -50590,7 +50592,7 @@ msgstr ""
 msgid "Show timeline of each object directly in table"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:434
+#: ../cmk/gui/plugins/wato/active_checks.py:435
 msgid ""
 "Show timestamp of a given file. You only need to specify the relative path of "
 "the remote file. Examples: 'myDirectory/testfile'  or 'testfile'"
@@ -51613,7 +51615,7 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-#: ../cmk/gui/plugins/dashboard/graph.py:94
+#: ../cmk/gui/plugins/dashboard/graph.py:156
 msgid "Source (n'th graph)"
 msgstr ""
 
@@ -51741,7 +51743,7 @@ msgid ""
 "the motion detector will always be in state OK"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:518
+#: ../cmk/gui/plugins/wato/active_checks.py:519
 msgid "Specify DNS Server"
 msgstr ""
 
@@ -51907,11 +51909,11 @@ msgid ""
 "mode=edit_ruleset&varname=agent_config:real_time_checks\">agent</a>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2206
+#: ../cmk/gui/plugins/wato/active_checks.py:2207
 msgid "Specify the application"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2246
+#: ../cmk/gui/plugins/wato/active_checks.py:2247
 msgid ""
 "Specify the destination path in the format <tt>Path/To/Folder</tt>, for "
 "example<tt>INBOX/Processed_Mails</tt>."
@@ -52112,15 +52114,15 @@ msgstr ""
 msgid "Spool to Event Console"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2138
+#: ../cmk/gui/plugins/wato/active_checks.py:2139
 msgid "Spool to event console"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2140
+#: ../cmk/gui/plugins/wato/active_checks.py:2141
 msgid "Spooling: Send events to local event console in same OMD site"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2146
+#: ../cmk/gui/plugins/wato/active_checks.py:2147
 msgid "Spooling: Send events to local event console into given spool directory"
 msgstr ""
 
@@ -52494,12 +52496,12 @@ msgstr ""
 msgid "State for <i>some remaining</i>"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:368
-#: ../cmk/gui/plugins/wato/active_checks.py:737
+#: ../cmk/gui/plugins/wato/active_checks.py:369
+#: ../cmk/gui/plugins/wato/active_checks.py:738
 msgid "State for connection refusal"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:769
+#: ../cmk/gui/plugins/wato/active_checks.py:770
 msgid "State for expected string mismatch"
 msgstr ""
 
@@ -52617,7 +52619,7 @@ msgstr ""
 msgid "State in case of a timeout"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1648
+#: ../cmk/gui/plugins/wato/active_checks.py:1649
 msgid "State in case of absent updates"
 msgstr ""
 
@@ -53071,12 +53073,12 @@ msgstr ""
 msgid "State when software packages info is missing"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1769
+#: ../cmk/gui/plugins/wato/active_checks.py:1770
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2253
 msgid "State, if BI aggregate is acknowledged"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1762
+#: ../cmk/gui/plugins/wato/active_checks.py:1763
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2251
 msgid "State, if BI aggregate is in scheduled downtime"
 msgstr ""
@@ -53464,7 +53466,7 @@ msgstr ""
 msgid "Store notifications for rule analysis"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:680
+#: ../cmk/gui/plugins/wato/active_checks.py:681
 msgid "Store output value into RRD database"
 msgstr ""
 
@@ -53500,11 +53502,11 @@ msgstr ""
 msgid "Streams pool size"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:857
+#: ../cmk/gui/plugins/wato/active_checks.py:858
 msgid "Street name"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:858
+#: ../cmk/gui/plugins/wato/active_checks.py:859
 msgid "Street number"
 msgstr ""
 
@@ -53524,35 +53526,35 @@ msgstr ""
 msgid "String (STR)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1069
+#: ../cmk/gui/plugins/wato/active_checks.py:1070
 msgid "String to be sent in http header as \"User Agent\""
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1425
+#: ../cmk/gui/plugins/wato/active_checks.py:1426
 msgid ""
 "String to expect in first line of server response. The default is <tt>220</"
 "tt>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1107
+#: ../cmk/gui/plugins/wato/active_checks.py:1108
 msgid "String to expect in response headers"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:374
-#: ../cmk/gui/plugins/wato/active_checks.py:743
+#: ../cmk/gui/plugins/wato/active_checks.py:375
+#: ../cmk/gui/plugins/wato/active_checks.py:744
 msgid "String to send"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:817
+#: ../cmk/gui/plugins/wato/active_checks.py:818
 msgid "String to send server to initiate a clean close of the connection"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:377
-#: ../cmk/gui/plugins/wato/active_checks.py:753
+#: ../cmk/gui/plugins/wato/active_checks.py:378
+#: ../cmk/gui/plugins/wato/active_checks.py:754
 msgid "Strings to expect in response"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1110
+#: ../cmk/gui/plugins/wato/active_checks.py:1111
 msgid "Strings to expect in server response"
 msgstr ""
 
@@ -53581,7 +53583,7 @@ msgstr ""
 
 #: ../cmk/gui/valuespec.py:6016 ../cmk/gui/cee/reporting.py:551
 #: ../cmk/gui/wato/mkeventd.py:3433
-#: ../cmk/gui/plugins/wato/active_checks.py:2014
+#: ../cmk/gui/plugins/wato/active_checks.py:2015
 msgid "Subject"
 msgstr ""
 
@@ -54150,7 +54152,7 @@ msgid "Systemd single services siscovery"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mtr.py:54
-#: ../cmk/gui/plugins/wato/active_checks.py:2160
+#: ../cmk/gui/plugins/wato/active_checks.py:2161
 #: ../cmk/gui/plugins/wato/check_parameters/tcp_connections.py:40
 #: ../cmk/gui/plugins/wato/check_parameters/k8s_port.py:50
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4623
@@ -54185,15 +54187,15 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/mknotifyd.py:161
 #: ../cmk/gui/cee/plugins/wato/mknotifyd.py:186
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1500
-#: ../cmk/gui/plugins/wato/active_checks.py:159
-#: ../cmk/gui/plugins/wato/active_checks.py:165
-#: ../cmk/gui/plugins/wato/active_checks.py:200
-#: ../cmk/gui/plugins/wato/active_checks.py:206
-#: ../cmk/gui/plugins/wato/active_checks.py:706
-#: ../cmk/gui/plugins/wato/active_checks.py:940
-#: ../cmk/gui/plugins/wato/active_checks.py:1317
-#: ../cmk/gui/plugins/wato/active_checks.py:1556
-#: ../cmk/gui/plugins/wato/active_checks.py:1840
+#: ../cmk/gui/plugins/wato/active_checks.py:160
+#: ../cmk/gui/plugins/wato/active_checks.py:166
+#: ../cmk/gui/plugins/wato/active_checks.py:201
+#: ../cmk/gui/plugins/wato/active_checks.py:207
+#: ../cmk/gui/plugins/wato/active_checks.py:707
+#: ../cmk/gui/plugins/wato/active_checks.py:941
+#: ../cmk/gui/plugins/wato/active_checks.py:1318
+#: ../cmk/gui/plugins/wato/active_checks.py:1557
+#: ../cmk/gui/plugins/wato/active_checks.py:1841
 msgid "TCP Port"
 msgstr ""
 
@@ -54219,11 +54221,11 @@ msgstr ""
 msgid "TCP Port number:"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1411
+#: ../cmk/gui/plugins/wato/active_checks.py:1412
 msgid "TCP Port to connect to"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1980
+#: ../cmk/gui/plugins/wato/active_checks.py:1981
 msgid "TCP SYN"
 msgstr ""
 
@@ -54266,13 +54268,13 @@ msgid "TCP port for connection to Checkmk agent"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_oracle.py:281
-#: ../cmk/gui/plugins/wato/active_checks.py:243
+#: ../cmk/gui/plugins/wato/active_checks.py:244
 #: ../cmk/gui/plugins/wato/datasource_programs.py:1741
 #: ../cmk/gui/plugins/wato/datasource_programs.py:1838
 msgid "TCP port number"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1557
+#: ../cmk/gui/plugins/wato/active_checks.py:1558
 msgid "TCP port number to connect to. Usually either 139 or 445."
 msgstr ""
 
@@ -55299,7 +55301,7 @@ msgstr ""
 msgid "The SLA id %s is unknown or not visible to this user"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:627
+#: ../cmk/gui/plugins/wato/active_checks.py:628
 msgid ""
 "The SQL-statement or procedure name which is executed on the DBMS. It must "
 "return a result table with one row and at least two columns. The first column "
@@ -55313,16 +55315,16 @@ msgstr ""
 msgid "The Section name will be used as the item name by Check_MK"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2040
+#: ../cmk/gui/plugins/wato/active_checks.py:2041
 msgid "The TCP Port the SMTP server is listening on. Defaulting to <tt>25</tt>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1412
+#: ../cmk/gui/plugins/wato/active_checks.py:1413
 msgid ""
 "The TCP Port the SMTP server is listening on. The default is <tt>25</tt>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1026
+#: ../cmk/gui/plugins/wato/active_checks.py:1027
 msgid ""
 "The URI of the request. This should start with '/' and not include the domain "
 "(e.g. '/index.html')."
@@ -55527,7 +55529,7 @@ msgid ""
 "the states of the child nodes."
 msgstr ""
 
-#: ../cmk/utils/bi/bi_compiler.py:150
+#: ../cmk/utils/bi/bi_compiler.py:151
 #, python-format
 msgid ""
 "The aggregation titles are not unique. \"%s\" is created by aggregation <b>"
@@ -55647,14 +55649,14 @@ msgstr ""
 msgid "The base OID for the trap content"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1701
+#: ../cmk/gui/plugins/wato/active_checks.py:1702
 msgid ""
 "The base URL to the monitoring instance. For example <tt>http://mycheckmk01/"
 "mysite</tt>. You can use macros like <tt>$HOSTADDRESS$</tt> and <tt>$HOSTNAME"
 "$</tt> within this URL to make them be replaced by the hosts values."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2091
+#: ../cmk/gui/plugins/wato/active_checks.py:2092
 msgid ""
 "The basic function of this check is to log in into an IMAP or POP3 mailbox to "
 "monitor whether or not the login is possible. A extended feature is, that the "
@@ -55778,7 +55780,7 @@ msgid ""
 "this group. Please choose another one."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:863
+#: ../cmk/gui/plugins/wato/active_checks.py:864
 msgid ""
 "The city name from the response will be checked against the regular "
 "expression specified here"
@@ -55857,7 +55859,7 @@ msgid ""
 "The configured User-ID attribute \"%s\" does not exist for the user \"%s\""
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:65
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:70
 msgid "The configured custom graph does not exist."
 msgstr ""
 
@@ -56027,21 +56029,21 @@ msgstr ""
 msgid "The customer ID %s does not exist."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1014
+#: ../cmk/gui/dashboard.py:1019
 msgid "The dashlet can not be found on the dashboard."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:954 ../cmk/gui/dashboard.py:1343
-#: ../cmk/gui/dashboard.py:1488 ../cmk/gui/dashboard.py:1520
-#: ../cmk/gui/dashboard.py:1557
+#: ../cmk/gui/dashboard.py:959 ../cmk/gui/dashboard.py:1348
+#: ../cmk/gui/dashboard.py:1493 ../cmk/gui/dashboard.py:1525
+#: ../cmk/gui/dashboard.py:1562
 msgid "The dashlet does not exist."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1424
+#: ../cmk/gui/dashboard.py:1429
 msgid "The dashlet has been added to the dashboard."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1422
+#: ../cmk/gui/dashboard.py:1427
 msgid "The dashlet has been saved."
 msgstr ""
 
@@ -56098,7 +56100,7 @@ msgid ""
 "problem is resulting from a host problem."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1344
+#: ../cmk/gui/plugins/wato/active_checks.py:1345
 msgid "The default is to use version 2"
 msgstr ""
 
@@ -56389,7 +56391,7 @@ msgstr ""
 msgid "The given base object \"%s\" does not exist in LDAP (%s))"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1210
+#: ../cmk/gui/dashboard.py:1215
 msgid "The given datasource is not supported"
 msgstr ""
 
@@ -56454,7 +56456,7 @@ msgstr ""
 msgid "The graph data range is wrong or missing"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:580
+#: ../cmk/gui/plugins/metrics/html_render.py:590
 msgid "The graph specification is"
 msgstr ""
 
@@ -56462,7 +56464,7 @@ msgstr ""
 msgid "The graph specification is missing"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2233
+#: ../cmk/gui/plugins/wato/active_checks.py:2234
 msgid ""
 "The handled messages (see <i>subject matching</i>) can be cleaned up by "
 "either deleting them or moving them to a subfolder. By default nothing is "
@@ -56504,7 +56506,7 @@ msgid ""
 "customer <i>%s</i>. This violates the CME folder hierarchy."
 msgstr ""
 
-#: ../cmk/gui/plugins/dashboard/graph.py:174
+#: ../cmk/gui/plugins/dashboard/graph.py:110
 msgid "The host could not be found on any active site."
 msgstr ""
 
@@ -56652,7 +56654,7 @@ msgstr ""
 msgid "The identifier of the thermal sensor."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1330 ../cmk/gui/visuals.py:834
+#: ../cmk/gui/dashboard.py:1335 ../cmk/gui/visuals.py:834
 #, python-format
 msgid "The info %s does not exist."
 msgstr ""
@@ -56898,7 +56900,7 @@ msgstr ""
 msgid "The logo has been uploaded."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2203
+#: ../cmk/gui/plugins/wato/active_checks.py:2204
 msgid "The mail subject is used as syslog appliaction"
 msgstr ""
 
@@ -57067,7 +57069,7 @@ msgstr ""
 msgid "The name of the OMD site to check the status for"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1710
+#: ../cmk/gui/plugins/wato/active_checks.py:1711
 msgid ""
 "The name of the aggregation to fetch. It will be added to the service "
 "description. You can use macros like <tt>$HOSTADDRESS$</tt> and <tt>$HOSTNAME"
@@ -57093,7 +57095,7 @@ msgid ""
 "later."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1725
+#: ../cmk/gui/plugins/wato/active_checks.py:1726
 msgid ""
 "The name of the automation account to use for fetching the BI aggregation via "
 "HTTP. Note: You may also set credentials of a standard user account, though "
@@ -57105,12 +57107,12 @@ msgstr ""
 msgid "The name of the cluster resource as shown in the service description."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:996 ../cmk/gui/dashboard.py:1291
-#: ../cmk/gui/dashboard.py:1476 ../cmk/gui/dashboard.py:1508
+#: ../cmk/gui/dashboard.py:1001 ../cmk/gui/dashboard.py:1296
+#: ../cmk/gui/dashboard.py:1481 ../cmk/gui/dashboard.py:1513
 msgid "The name of the dashboard is missing."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:605
+#: ../cmk/gui/plugins/wato/active_checks.py:606
 msgid "The name of the database on the DBMS"
 msgstr ""
 
@@ -57159,19 +57161,19 @@ msgstr ""
 msgid "The name of the view may only contain letters, digits and underscores."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:581
+#: ../cmk/gui/plugins/wato/active_checks.py:582
 msgid "The name of this active service to be displayed."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:499
+#: ../cmk/gui/plugins/wato/active_checks.py:500
 msgid "The name or IPv4 address you want to query"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1909
+#: ../cmk/gui/plugins/wato/active_checks.py:1910
 msgid "The name that will be used in the service description"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1810
+#: ../cmk/gui/plugins/wato/active_checks.py:1811
 msgid "The name will be used in the service description"
 msgstr ""
 
@@ -57468,7 +57470,7 @@ msgstr ""
 msgid "The password or API key of the user."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:617
+#: ../cmk/gui/plugins/wato/active_checks.py:618
 msgid "The password used to connect to the database"
 msgstr ""
 
@@ -57581,7 +57583,7 @@ msgstr ""
 msgid "The port that is used for the api call."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:600
+#: ../cmk/gui/plugins/wato/active_checks.py:601
 msgid "The port the DBMS listens to"
 msgstr ""
 
@@ -57674,14 +57676,14 @@ msgstr ""
 msgid "The requested connection does not exist."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:442 ../cmk/gui/dashboard.py:949
-#: ../cmk/gui/dashboard.py:1003 ../cmk/gui/dashboard.py:1298
-#: ../cmk/gui/dashboard.py:1483 ../cmk/gui/dashboard.py:1515
-#: ../cmk/gui/dashboard.py:1552
+#: ../cmk/gui/dashboard.py:443 ../cmk/gui/dashboard.py:954
+#: ../cmk/gui/dashboard.py:1008 ../cmk/gui/dashboard.py:1303
+#: ../cmk/gui/dashboard.py:1488 ../cmk/gui/dashboard.py:1520
+#: ../cmk/gui/dashboard.py:1557
 msgid "The requested dashboard does not exist."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1017 ../cmk/gui/dashboard.py:1308
+#: ../cmk/gui/dashboard.py:1022 ../cmk/gui/dashboard.py:1313
 #: ../cmk/gui/figures.py:50
 msgid "The requested dashlet type does not exist."
 msgstr ""
@@ -57918,25 +57920,25 @@ msgstr ""
 msgid "The sensor name"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1276
+#: ../cmk/gui/plugins/wato/active_checks.py:1277
 msgid ""
 "The service description will be <b>LDAP</b> plus this name. If the name "
 "starts with a caret (<tt>^</tt>), the service description will not be "
 "prefixed with <tt>LDAP</tt>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2010
+#: ../cmk/gui/plugins/wato/active_checks.py:2011
 msgid "The service description will be <b>Mail Loop</b> plus this name"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1393
+#: ../cmk/gui/plugins/wato/active_checks.py:1394
 msgid ""
 "The service description will be <b>SMTP</b> plus this name. If the name "
 "starts with a caret (<tt>^</tt>), the service description will not be "
 "prefixed with <tt>SMTP</tt>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:507
+#: ../cmk/gui/plugins/wato/active_checks.py:508
 msgid "The service description will be this name instead <i>DNS Servername</i>"
 msgstr ""
 
@@ -58405,7 +58407,7 @@ msgid ""
 "read permissions at least."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:611
+#: ../cmk/gui/plugins/wato/active_checks.py:612
 msgid "The username used to connect to the database"
 msgstr ""
 
@@ -58589,7 +58591,7 @@ msgid ""
 "already configured as SNMP v2c device."
 msgstr ""
 
-#: ../cmk/utils/bi/bi_packs.py:296
+#: ../cmk/utils/bi/bi_packs.py:288
 #, python-format
 msgid ""
 "There is a cycle in your rules. This rule calls itself - either directly or "
@@ -58977,7 +58979,7 @@ msgstr ""
 msgid "This account has no permission for automation."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1999
+#: ../cmk/gui/plugins/wato/active_checks.py:2000
 msgid ""
 "This active check sends out special E-Mails to a defined mail address using "
 "the SMTP protocol and then tries to receive these mails back by querying the "
@@ -58985,7 +58987,7 @@ msgid ""
 "whole mail delivery progress is working."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1942
+#: ../cmk/gui/plugins/wato/active_checks.py:1943
 msgid ""
 "This active check uses <tt>traceroute</tt> in order to determine the current "
 "routing from the monitoring host to the target host. You can specify any "
@@ -59121,7 +59123,7 @@ msgstr ""
 msgid "This change has been made by another user"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:569
+#: ../cmk/gui/plugins/wato/active_checks.py:570
 msgid ""
 "This check connects to the specified database, sends a custom SQL-statement "
 "or starts a procedure, and checks that the result has a defined format "
@@ -59178,7 +59180,7 @@ msgstr ""
 msgid "This check monitors backups configured for domains in plesk."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2267
+#: ../cmk/gui/plugins/wato/active_checks.py:2268
 msgid "This check monitors count and age of mails in mailboxes."
 msgstr ""
 
@@ -59238,19 +59240,19 @@ msgid ""
 "a security issue and should not be disabled or set to <b>OK</b> permanently."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:703
+#: ../cmk/gui/plugins/wato/active_checks.py:704
 msgid ""
 "This check tests the connection to a TCP port. It uses <tt>check_tcp</tt> "
 "from the standard Nagios plugins."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1269
+#: ../cmk/gui/plugins/wato/active_checks.py:1270
 msgid ""
 "This check uses <tt>check_ldap</tt> from the standard Nagios plugins in order "
 "to try the response of an LDAP server."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1386
+#: ../cmk/gui/plugins/wato/active_checks.py:1387
 msgid ""
 "This check uses <tt>check_smtp</tt> from the standard Nagios plugins in order "
 "to try the response of an SMTP server."
@@ -59339,7 +59341,7 @@ msgid ""
 "devices."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:686
+#: ../cmk/gui/plugins/wato/active_checks.py:687
 msgid "This defaults to the host for which the active check is configured."
 msgstr ""
 
@@ -59419,7 +59421,7 @@ msgstr ""
 msgid "This forecast graph"
 msgstr ""
 
-#: ../cmk/gui/plugins/metrics/html_render.py:394
+#: ../cmk/gui/plugins/metrics/html_render.py:404
 #, python-format
 msgid ""
 "This graph is based on data consolidated with the function \"%s\". The values "
@@ -59808,7 +59810,7 @@ msgid ""
 msgstr ""
 
 #: ../cmk/gui/wato/pages/host_diagnose.py:320
-#: ../cmk/gui/plugins/wato/active_checks.py:1598
+#: ../cmk/gui/plugins/wato/active_checks.py:1599
 #: ../cmk/gui/plugins/wato/datasource_programs.py:195
 msgid ""
 "This option can only be used with the permission \"Can add or modify "
@@ -59939,7 +59941,7 @@ msgid ""
 "number as item."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1206
+#: ../cmk/gui/plugins/wato/active_checks.py:1207
 msgid ""
 "This option makes the HTTP check produce more detailed performance data "
 "values like the connect time, header time, time till first byte received and "
@@ -61029,7 +61031,7 @@ msgstr ""
 msgid "This ruleset allows to set parameters for space and inodes usage"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:279
+#: ../cmk/gui/plugins/wato/active_checks.py:280
 msgid ""
 "This ruleset allows you to configure explicit PING monitoring of hosts. "
 "Usually a PING is being used as a host check, so this is not neccessary. "
@@ -61122,7 +61124,7 @@ msgid ""
 "using real SNMP."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1528
+#: ../cmk/gui/plugins/wato/active_checks.py:1529
 msgid ""
 "This ruleset helps you to configure the classical Nagios plugin "
 "<tt>check_disk_smb</tt> that checks the access to filesystem shares that are "
@@ -61182,7 +61184,7 @@ msgid ""
 "Check_MK documentation</a>."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:237
+#: ../cmk/gui/plugins/wato/active_checks.py:238
 msgid "This rulset allow you to configure a SSH check for a host"
 msgstr ""
 
@@ -61211,6 +61213,12 @@ msgstr ""
 
 #: ../cmk/gui/plugins/views/icons/builtin.py:740
 msgid "This service is stale"
+msgstr ""
+
+#: ../cmk/gui/plugins/wato/active_checks.py:63
+msgid ""
+"This services are provided by so called active checks. You can also integrate "
+"custom nagios plugins."
 msgstr ""
 
 #: ../cmk/gui/wato/pages/sites.py:309
@@ -61611,7 +61619,7 @@ msgstr ""
 msgid "This werk does not exist."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2366
+#: ../cmk/gui/plugins/wato/active_checks.py:2367
 msgid ""
 "This will automatically accept hitherto-unseen keysbut will refuse "
 "connections for changed or invalid hostkeys"
@@ -61771,7 +61779,7 @@ msgstr ""
 msgid "Threads"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1921
+#: ../cmk/gui/plugins/wato/active_checks.py:1922
 msgid "Thresholds for Notifications per Contact"
 msgstr ""
 
@@ -61780,7 +61788,7 @@ msgstr ""
 msgid "Thresholds for quality of time"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2477
+#: ../cmk/gui/plugins/wato/active_checks.py:2478
 msgid "Thresholds on message count"
 msgstr ""
 
@@ -62171,7 +62179,7 @@ msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/mknotifyd.py:232
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/win_script_timeout.py:43
-#: ../cmk/gui/plugins/wato/active_checks.py:427
+#: ../cmk/gui/plugins/wato/active_checks.py:428
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2986
 msgid "Timeout"
 msgstr ""
@@ -62248,10 +62256,10 @@ msgstr ""
 msgid "Timer"
 msgstr ""
 
-#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:103
-#: ../cmk/gui/plugins/dashboard/graph.py:83
+#: ../cmk/gui/cee/plugins/dashboard/custom_graph.py:100
+#: ../cmk/gui/plugins/dashboard/graph.py:145
 #: ../cmk/gui/plugins/dashboard/single_metric.py:41
-#: ../cmk/gui/plugins/wato/active_checks.py:2468
+#: ../cmk/gui/plugins/wato/active_checks.py:2469
 msgid "Timerange"
 msgstr ""
 
@@ -62282,7 +62290,7 @@ msgstr ""
 msgid "Timespecific parameters computed at %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:431
+#: ../cmk/gui/plugins/wato/active_checks.py:432
 msgid "Timestamp of a remote file"
 msgstr ""
 
@@ -62440,7 +62448,7 @@ msgstr ""
 msgid "Toggle checkboxes"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:803
+#: ../cmk/gui/dashboard.py:808
 msgid "Toggle edit mode"
 msgstr ""
 
@@ -63006,7 +63014,7 @@ msgstr ""
 msgid "Total throughput per second"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:132
+#: ../cmk/gui/plugins/wato/active_checks.py:133
 msgid "Total timeout of check"
 msgstr ""
 
@@ -63040,7 +63048,7 @@ msgstr ""
 msgid "Traceroute with MTR"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1777
+#: ../cmk/gui/plugins/wato/active_checks.py:1778
 msgid "Track downtimes"
 msgstr ""
 
@@ -63340,7 +63348,7 @@ msgstr ""
 msgid "Type of Check"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:587
+#: ../cmk/gui/plugins/wato/active_checks.py:588
 msgid "Type of Database"
 msgstr ""
 
@@ -63414,13 +63422,13 @@ msgid "UCWA - Active Sessions (%s)"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mtr.py:55
-#: ../cmk/gui/plugins/wato/active_checks.py:2159
+#: ../cmk/gui/plugins/wato/active_checks.py:2160
 #: ../cmk/gui/plugins/wato/check_parameters/tcp_connections.py:40
 #: ../cmk/gui/plugins/wato/check_parameters/k8s_port.py:51
 msgid "UDP"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1978
+#: ../cmk/gui/plugins/wato/active_checks.py:1979
 msgid "UDP (default behaviour of tcpdump)"
 msgstr ""
 
@@ -63478,7 +63486,7 @@ msgstr ""
 #: ../cmk/gui/plugins/visuals/filters.py:775
 #: ../cmk/gui/plugins/visuals/filters.py:1054
 #: ../cmk/gui/plugins/visuals/filters.py:2912
-#: ../cmk/gui/plugins/wato/active_checks.py:1653
+#: ../cmk/gui/plugins/wato/active_checks.py:1654
 #: ../cmk/gui/plugins/wato/check_parameters/veritas_vcs.py:34
 #: ../cmk/gui/plugins/wato/check_parameters/hostsystem_sensors.py:34
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1166
@@ -63554,8 +63562,8 @@ msgstr ""
 msgid "URI (page name)"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1025
-#: ../cmk/gui/plugins/wato/active_checks.py:1833
+#: ../cmk/gui/plugins/wato/active_checks.py:1026
+#: ../cmk/gui/plugins/wato/active_checks.py:1834
 msgid "URI to fetch (default is <tt>/</tt>)"
 msgstr ""
 
@@ -63566,7 +63574,7 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1021
+#: ../cmk/gui/plugins/wato/active_checks.py:1022
 msgid "URL Checking"
 msgstr ""
 
@@ -63867,7 +63875,7 @@ msgid ""
 "Problem was: %s."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:634
+#: ../cmk/gui/dashboard.py:635
 #, python-format
 msgid ""
 "Unable to render this dashlet, because we miss some required context "
@@ -64007,7 +64015,7 @@ msgstr ""
 msgid "Unevictable memory"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:934
+#: ../cmk/gui/plugins/wato/active_checks.py:935
 #, python-format
 msgid ""
 "Unfortunately, using a proxy and a virtual host is not supported (try '%s')."
@@ -64017,7 +64025,7 @@ msgstr ""
 msgid "Unhandled"
 msgstr ""
 
-#: ../cmk/gui/webapi.py:131 ../cmk/gui/plugins/metrics/html_render.py:658
+#: ../cmk/gui/webapi.py:131 ../cmk/gui/plugins/metrics/html_render.py:668
 #, python-format
 msgid "Unhandled exception: %s"
 msgstr ""
@@ -64388,11 +64396,11 @@ msgstr ""
 msgid "Updates are enabled for this host."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1641
+#: ../cmk/gui/plugins/wato/active_checks.py:1642
 msgid "Updates are expected at least every"
 msgstr ""
 
-#: ../cmk/gui/watolib/search.py:172
+#: ../cmk/gui/watolib/search.py:177
 msgid "Updating of search index started"
 msgstr ""
 
@@ -64831,7 +64839,7 @@ msgstr ""
 msgid "Upper levels for estimated time to complete"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:670
+#: ../cmk/gui/plugins/wato/active_checks.py:671
 msgid "Upper levels for first output item"
 msgstr ""
 
@@ -65140,7 +65148,7 @@ msgstr ""
 msgid "Use DNS resolution to lookup addresses"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1950
+#: ../cmk/gui/plugins/wato/active_checks.py:1951
 msgid "Use DNS to convert IP addresses into hostnames"
 msgstr ""
 
@@ -65174,11 +65182,11 @@ msgid ""
 "Use Jira Query Language (JQL) to get statistics out of your Jira instance."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1329
+#: ../cmk/gui/plugins/wato/active_checks.py:1330
 msgid "Use LDAPS (LDAP SSLv2 method). This sets the default port number to 636"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1327
+#: ../cmk/gui/plugins/wato/active_checks.py:1328
 msgid "Use LDAPS (SSL)"
 msgstr ""
 
@@ -65197,48 +65205,48 @@ msgid "Use PySNMP Backend"
 msgstr ""
 
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1509
-#: ../cmk/gui/plugins/wato/active_checks.py:1326
+#: ../cmk/gui/plugins/wato/active_checks.py:1327
 msgid "Use SSL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:382
-#: ../cmk/gui/plugins/wato/active_checks.py:796
+#: ../cmk/gui/plugins/wato/active_checks.py:383
+#: ../cmk/gui/plugins/wato/active_checks.py:797
 msgid "Use SSL for the connection."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1037
+#: ../cmk/gui/plugins/wato/active_checks.py:1038
 msgid "Use SSL with auto negotiation"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1041
+#: ../cmk/gui/plugins/wato/active_checks.py:1042
 msgid "Use SSL, enforce SSLv2"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1042
+#: ../cmk/gui/plugins/wato/active_checks.py:1043
 msgid "Use SSL, enforce SSLv3"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1040
+#: ../cmk/gui/plugins/wato/active_checks.py:1041
 msgid "Use SSL, enforce TLSv1"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1039
+#: ../cmk/gui/plugins/wato/active_checks.py:1040
 msgid "Use SSL, enforce TLSv1.1"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1038
+#: ../cmk/gui/plugins/wato/active_checks.py:1039
 msgid "Use SSL, enforce TLSv1.2"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1035
+#: ../cmk/gui/plugins/wato/active_checks.py:1036
 msgid "Use SSL/HTTPS for the connection"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1848
+#: ../cmk/gui/plugins/wato/active_checks.py:1849
 msgid "Use SSL/HTTPS for the connection."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1478
+#: ../cmk/gui/plugins/wato/active_checks.py:1479
 msgid "Use STARTTLS for the connection."
 msgstr ""
 
@@ -65246,11 +65254,11 @@ msgstr ""
 msgid "Use STS AssumeRole to assume a different IAM role"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2034
+#: ../cmk/gui/plugins/wato/active_checks.py:2035
 msgid "Use TLS for IMAP authentification"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2028
+#: ../cmk/gui/plugins/wato/active_checks.py:2029
 msgid "Use TLS over SMTP"
 msgstr ""
 
@@ -65258,7 +65266,7 @@ msgstr ""
 msgid "Use WMI"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1335
+#: ../cmk/gui/plugins/wato/active_checks.py:1336
 msgid ""
 "Use a alternative field as Hostname in case of SSL Certificate Problems (eg. "
 "the Hostalias )"
@@ -65456,16 +65464,16 @@ msgstr ""
 msgid "Use new service descriptions"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:156
-#: ../cmk/gui/plugins/wato/active_checks.py:197
+#: ../cmk/gui/plugins/wato/active_checks.py:157
+#: ../cmk/gui/plugins/wato/active_checks.py:198
 msgid "Use no encryption"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1771
+#: ../cmk/gui/plugins/wato/active_checks.py:1772
 msgid "Use normal state, ignore acknowledgement"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1764
+#: ../cmk/gui/plugins/wato/active_checks.py:1765
 msgid "Use normal state, ignore downtime"
 msgstr ""
 
@@ -65502,11 +65510,11 @@ msgid ""
 "Use predefined conditions to centralize the coniditions of your rulesets."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:647
+#: ../cmk/gui/plugins/wato/active_checks.py:648
 msgid "Use procedure call instead of SQL statement"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:893
+#: ../cmk/gui/plugins/wato/active_checks.py:894
 msgid "Use proxy"
 msgstr ""
 
@@ -65559,11 +65567,11 @@ msgstr ""
 msgid "Use the VMs hostname if set, otherwise fall back to ESX name"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:304
+#: ../cmk/gui/plugins/wato/active_checks.py:305
 msgid "Use the alias as DNS name / IP address"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1718
+#: ../cmk/gui/plugins/wato/active_checks.py:1719
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2170
 msgid "Use the credentials of the 'automation' user"
 msgstr ""
@@ -65589,7 +65597,7 @@ msgstr ""
 msgid "Use the following color"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1719
+#: ../cmk/gui/plugins/wato/active_checks.py:1720
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2171
 msgid "Use the following credentials"
 msgstr ""
@@ -65606,7 +65614,7 @@ msgstr ""
 msgid "Use the global configuration"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2202
+#: ../cmk/gui/plugins/wato/active_checks.py:2203
 msgid "Use the mail subject"
 msgstr ""
 
@@ -65674,11 +65682,11 @@ msgid ""
 "be processed.<br><br>"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:516
+#: ../cmk/gui/plugins/wato/active_checks.py:517
 msgid "Use this host as a DNS server for the lookup"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2218
+#: ../cmk/gui/plugins/wato/active_checks.py:2219
 msgid ""
 "Use this hostname for all created events instead of the name of the mailserver"
 msgstr ""
@@ -65714,7 +65722,7 @@ msgid ""
 "header of the sidebar."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2182
+#: ../cmk/gui/plugins/wato/active_checks.py:2183
 msgid ""
 "Use this option to not process all messages found in the inbox, but only the "
 "those whose subject matches the given regular expression."
@@ -65742,7 +65750,7 @@ msgid ""
 "Use this option to query a port which is different from standard port 8089."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2426
+#: ../cmk/gui/plugins/wato/active_checks.py:2427
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2626
 msgid ""
 "Use this option to query a port which is different from standard port 9200."
@@ -65852,15 +65860,15 @@ msgid ""
 "of the central WATO site from the view of the remote site."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2198
+#: ../cmk/gui/plugins/wato/active_checks.py:2199
 msgid "Use this syslog application for all created events"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2191
+#: ../cmk/gui/plugins/wato/active_checks.py:2192
 msgid "Use this syslog facility for all created events"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2208
+#: ../cmk/gui/plugins/wato/active_checks.py:2209
 msgid ""
 "Use this text as application. You can use macros like <tt>\\1</tt>, <tt>\\2</"
 "tt>, ... here when you configured <i>subject matching</i> in this rule with a "
@@ -66030,7 +66038,7 @@ msgid "User / Group Key"
 msgstr ""
 
 #: ../cmk/gui/crash_reporting.py:586
-#: ../cmk/gui/plugins/wato/active_checks.py:1067
+#: ../cmk/gui/plugins/wato/active_checks.py:1068
 msgid "User Agent"
 msgstr ""
 
@@ -66160,16 +66168,16 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_saprouter.py:35
 #: ../cmk/gui/cee/plugins/wato/dcd.py:213 ../cmk/gui/wato/pages/users.py:732
 #: ../cmk/gui/crash_reporting.py:585 ../cmk/gui/login.py:482
-#: ../cmk/gui/plugins/wato/active_checks.py:174
-#: ../cmk/gui/plugins/wato/active_checks.py:215
-#: ../cmk/gui/plugins/wato/active_checks.py:421
-#: ../cmk/gui/plugins/wato/active_checks.py:900
-#: ../cmk/gui/plugins/wato/active_checks.py:1085
-#: ../cmk/gui/plugins/wato/active_checks.py:1485
-#: ../cmk/gui/plugins/wato/active_checks.py:1572
-#: ../cmk/gui/plugins/wato/active_checks.py:2047
-#: ../cmk/gui/plugins/wato/active_checks.py:2357
-#: ../cmk/gui/plugins/wato/active_checks.py:2407
+#: ../cmk/gui/plugins/wato/active_checks.py:175
+#: ../cmk/gui/plugins/wato/active_checks.py:216
+#: ../cmk/gui/plugins/wato/active_checks.py:422
+#: ../cmk/gui/plugins/wato/active_checks.py:901
+#: ../cmk/gui/plugins/wato/active_checks.py:1086
+#: ../cmk/gui/plugins/wato/active_checks.py:1486
+#: ../cmk/gui/plugins/wato/active_checks.py:1573
+#: ../cmk/gui/plugins/wato/active_checks.py:2048
+#: ../cmk/gui/plugins/wato/active_checks.py:2358
+#: ../cmk/gui/plugins/wato/active_checks.py:2408
 #: ../cmk/gui/plugins/wato/notifications.py:608
 #: ../cmk/gui/plugins/wato/support.py:92
 #: ../cmk/gui/plugins/wato/utils/__init__.py:350
@@ -66323,7 +66331,7 @@ msgid ""
 "line) to the textarea."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:910
+#: ../cmk/gui/plugins/wato/active_checks.py:911
 msgid ""
 "Usually Check_MK will nail this check to the primary IP address of the host "
 "it is attached to. It will use the corresponding IP version (IPv4/IPv6) and "
@@ -66482,7 +66490,7 @@ msgstr ""
 msgid "Val. %d"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1731
+#: ../cmk/gui/plugins/wato/active_checks.py:1732
 msgid "Valid automation secret for the automation user"
 msgstr ""
 
@@ -66728,20 +66736,20 @@ msgstr ""
 msgid "Version 1 and 2"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1346
+#: ../cmk/gui/plugins/wato/active_checks.py:1347
 #: ../cmk/gui/plugins/wato/check_parameters/sshd_config.py:54
 msgid "Version 2"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1347
+#: ../cmk/gui/plugins/wato/active_checks.py:1348
 msgid "Version 3"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1348
+#: ../cmk/gui/plugins/wato/active_checks.py:1349
 msgid "Version 3 and TLS"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:255
+#: ../cmk/gui/plugins/wato/active_checks.py:256
 msgid "Version of Server"
 msgstr ""
 
@@ -66805,7 +66813,7 @@ msgid "VictorOPS REST Endpoint"
 msgstr ""
 
 #: ../cmk/gui/pagetypes.py:1065 ../cmk/gui/page_menu.py:274
-#: ../cmk/gui/plugins/metrics/html_render.py:816
+#: ../cmk/gui/plugins/metrics/html_render.py:826
 #: ../cmk/gui/plugins/dashboard/view.py:72
 #: ../cmk/gui/plugins/dashboard/view.py:87
 #: ../cmk/gui/plugins/wato/bi_config.py:625
@@ -66841,7 +66849,7 @@ msgstr ""
 msgid "View layout"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1233 ../cmk/gui/plugins/dashboard/view.py:132
+#: ../cmk/gui/dashboard.py:1238 ../cmk/gui/plugins/dashboard/view.py:132
 msgid "View name"
 msgstr ""
 
@@ -66908,8 +66916,8 @@ msgstr ""
 msgid "Virtual domain"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:923
-#: ../cmk/gui/plugins/wato/active_checks.py:1824
+#: ../cmk/gui/plugins/wato/active_checks.py:924
+#: ../cmk/gui/plugins/wato/active_checks.py:1825
 msgid "Virtual host"
 msgstr ""
 
@@ -67073,7 +67081,7 @@ msgstr ""
 #: ../cmk/gui/plugins/visuals/filters.py:2645
 #: ../cmk/gui/plugins/visuals/filters.py:2910
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:673
-#: ../cmk/gui/plugins/wato/active_checks.py:1651
+#: ../cmk/gui/plugins/wato/active_checks.py:1652
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1163
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1167
 #: ../cmk/gui/plugins/wato/utils/__init__.py:1168
@@ -67084,11 +67092,11 @@ msgstr ""
 msgid "WARN"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1968
+#: ../cmk/gui/plugins/wato/active_checks.py:1969
 msgid "WARN - if this router is being used"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1966
+#: ../cmk/gui/plugins/wato/active_checks.py:1967
 msgid "WARN - if this router is not being used"
 msgstr ""
 
@@ -67124,9 +67132,9 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1168
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_logwatch.py:208
 #: ../cmk/gui/cee/reporting.py:2996 ../cmk/gui/htmllib.py:1410
-#: ../cmk/gui/plugins/wato/active_checks.py:371
-#: ../cmk/gui/plugins/wato/active_checks.py:740
-#: ../cmk/gui/plugins/wato/active_checks.py:772
+#: ../cmk/gui/plugins/wato/active_checks.py:372
+#: ../cmk/gui/plugins/wato/active_checks.py:741
+#: ../cmk/gui/plugins/wato/active_checks.py:773
 #: ../cmk/gui/plugins/wato/check_parameters/hostsystem_sensors.py:34
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:58
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:98
@@ -67319,7 +67327,7 @@ msgstr ""
 msgid "Warn if node status value is not"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:261
+#: ../cmk/gui/plugins/wato/active_checks.py:262
 msgid "Warn if protocol doesn't match expected protocol version (ex: 2.0)"
 msgstr ""
 
@@ -67327,7 +67335,7 @@ msgstr ""
 msgid "Warn if resources appear or vanish"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:256
+#: ../cmk/gui/plugins/wato/active_checks.py:257
 msgid "Warn if string doesn't match expected server version (ex: OpenSSH_3.9p1)"
 msgstr ""
 
@@ -67339,7 +67347,7 @@ msgstr ""
 msgid "Warn on unexpected active interface"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1188
+#: ../cmk/gui/plugins/wato/active_checks.py:1189
 msgid "Warn, if the age of the page is older than this"
 msgstr ""
 
@@ -67416,11 +67424,11 @@ msgstr ""
 
 #: ../cmk/gui/cee/plugins/metrics/historic.py:203
 #: ../cmk/gui/cee/plugins/metrics/historic.py:216
-#: ../cmk/gui/plugins/wato/active_checks.py:117
-#: ../cmk/gui/plugins/wato/active_checks.py:671
-#: ../cmk/gui/plugins/wato/active_checks.py:2064
-#: ../cmk/gui/plugins/wato/active_checks.py:2284
-#: ../cmk/gui/plugins/wato/active_checks.py:2288
+#: ../cmk/gui/plugins/wato/active_checks.py:118
+#: ../cmk/gui/plugins/wato/active_checks.py:672
+#: ../cmk/gui/plugins/wato/active_checks.py:2065
+#: ../cmk/gui/plugins/wato/active_checks.py:2285
+#: ../cmk/gui/plugins/wato/active_checks.py:2289
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_cluster_traffic.py:26
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_cluster_traffic.py:32
 #: ../cmk/gui/plugins/wato/check_parameters/graylog_cluster_traffic.py:38
@@ -68104,7 +68112,7 @@ msgstr ""
 msgid "Warning at a utilization of"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2480
+#: ../cmk/gui/plugins/wato/active_checks.py:2481
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_disks.py:32
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_disks.py:42
 #: ../cmk/gui/plugins/wato/check_parameters/oracle_logswitches.py:44
@@ -68132,10 +68140,10 @@ msgstr ""
 msgid "Warning at or above"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:390
-#: ../cmk/gui/plugins/wato/active_checks.py:804
-#: ../cmk/gui/plugins/wato/active_checks.py:1225
-#: ../cmk/gui/plugins/wato/active_checks.py:1465
+#: ../cmk/gui/plugins/wato/active_checks.py:391
+#: ../cmk/gui/plugins/wato/active_checks.py:805
+#: ../cmk/gui/plugins/wato/active_checks.py:1226
+#: ../cmk/gui/plugins/wato/active_checks.py:1466
 #: ../cmk/gui/plugins/wato/check_parameters/aws.py:80
 #: ../cmk/gui/plugins/wato/check_parameters/aws.py:97
 #: ../cmk/gui/plugins/wato/check_parameters/docsis_channels_upstream.py:29
@@ -68153,7 +68161,7 @@ msgstr ""
 msgid "Warning at usage of"
 msgstr ""
 
-#: ../cmk/gui/availability.py:253 ../cmk/gui/plugins/wato/active_checks.py:675
+#: ../cmk/gui/availability.py:253 ../cmk/gui/plugins/wato/active_checks.py:676
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_dom.py:33
 #: ../cmk/gui/plugins/wato/check_parameters/k8s_nodes.py:35
 #: ../cmk/gui/plugins/wato/check_parameters/humidity.py:56
@@ -68256,15 +68264,15 @@ msgstr ""
 msgid "Warning if %s"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:107
-#: ../cmk/gui/plugins/wato/active_checks.py:358
-#: ../cmk/gui/plugins/wato/active_checks.py:544
-#: ../cmk/gui/plugins/wato/active_checks.py:727
-#: ../cmk/gui/plugins/wato/active_checks.py:1051
-#: ../cmk/gui/plugins/wato/active_checks.py:1355
-#: ../cmk/gui/plugins/wato/active_checks.py:1498
-#: ../cmk/gui/plugins/wato/active_checks.py:1565
-#: ../cmk/gui/plugins/wato/active_checks.py:1923
+#: ../cmk/gui/plugins/wato/active_checks.py:108
+#: ../cmk/gui/plugins/wato/active_checks.py:359
+#: ../cmk/gui/plugins/wato/active_checks.py:545
+#: ../cmk/gui/plugins/wato/active_checks.py:728
+#: ../cmk/gui/plugins/wato/active_checks.py:1052
+#: ../cmk/gui/plugins/wato/active_checks.py:1356
+#: ../cmk/gui/plugins/wato/active_checks.py:1499
+#: ../cmk/gui/plugins/wato/active_checks.py:1566
+#: ../cmk/gui/plugins/wato/active_checks.py:1924
 #: ../cmk/gui/plugins/wato/check_parameters/entersekt_soaperrors.py:27
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:73
 #: ../cmk/gui/plugins/wato/check_parameters/filestats.py:89
@@ -68350,7 +68358,7 @@ msgstr ""
 msgid "Warning if below"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1881
+#: ../cmk/gui/plugins/wato/active_checks.py:1882
 msgid "Warning if equal or below"
 msgstr ""
 
@@ -68936,7 +68944,7 @@ msgid ""
 "this site."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2225
+#: ../cmk/gui/plugins/wato/active_checks.py:2226
 msgid ""
 "When forwarding mails from the mailbox to the event console, the body of the "
 "mail is limited to the given number of characters."
@@ -68999,7 +69007,7 @@ msgid ""
 "used when you perform bulkwalks."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:318
+#: ../cmk/gui/plugins/wato/active_checks.py:319
 msgid ""
 "When pinging multiple addresses, failure to ping one of the provided "
 "addresses will lead to a Crit status of the service. This option allows to "
@@ -69154,7 +69162,7 @@ msgid ""
 "all of the logfiles listed here are reported by the monitored system."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:112
+#: ../cmk/gui/plugins/wato/active_checks.py:113
 msgid ""
 "When the percentage of lost packets is equal or greater then this level, then "
 "the according state is triggered. The default for critical is 100%. That "
@@ -69508,7 +69516,7 @@ msgstr ""
 msgid "Width of the rules"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1006
+#: ../cmk/gui/plugins/wato/active_checks.py:1007
 msgid ""
 "Will be used in the service description. If the name starts with a caret "
 "(<tt>^</tt>), the service description will not be prefixed with either "
@@ -69736,7 +69744,7 @@ msgid ""
 "contact groups from its host."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1197
+#: ../cmk/gui/plugins/wato/active_checks.py:1198
 msgid ""
 "With this option the check produces an output that is a valid hyperlink to "
 "the checked URL and this clickable."
@@ -69806,7 +69814,7 @@ msgid ""
 "no effect."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1593
+#: ../cmk/gui/plugins/wato/active_checks.py:1594
 msgid ""
 "With this ruleset you can configure \"classical Monitoring checks\" to be "
 "executed directly on your monitoring server. These checks will not use "
@@ -69898,11 +69906,11 @@ msgstr ""
 msgid "Workflows"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1542
+#: ../cmk/gui/plugins/wato/active_checks.py:1543
 msgid "Workgroup"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1543
+#: ../cmk/gui/plugins/wato/active_checks.py:1544
 msgid "Workgroup or domain used (defaults to <tt>WORKGROUP</tt>)"
 msgstr ""
 
@@ -70199,9 +70207,9 @@ msgstr ""
 msgid "You are not allowed to edit %s."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:474 ../cmk/gui/dashboard.py:1287
-#: ../cmk/gui/dashboard.py:1472 ../cmk/gui/dashboard.py:1504
-#: ../cmk/gui/dashboard.py:1544
+#: ../cmk/gui/dashboard.py:475 ../cmk/gui/dashboard.py:1292
+#: ../cmk/gui/dashboard.py:1477 ../cmk/gui/dashboard.py:1509
+#: ../cmk/gui/dashboard.py:1549
 msgid "You are not allowed to edit dashboards."
 msgstr ""
 
@@ -70610,7 +70618,7 @@ msgid ""
 "useful to document the reason why the changes you activate have been made."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2389
+#: ../cmk/gui/plugins/wato/active_checks.py:2390
 msgid "You can search indices for defined patterns in defined fieldnames."
 msgstr ""
 
@@ -70672,22 +70680,22 @@ msgid ""
 "first matching rule is applied."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2334
+#: ../cmk/gui/plugins/wato/active_checks.py:2335
 msgid ""
 "You can specify a hostname or IP address different from IP address of the "
 "host as configured in your host properties."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1406
+#: ../cmk/gui/plugins/wato/active_checks.py:1407
 msgid ""
 "You can specify a hostname or IP address different from the IP address of the "
 "host as configured in your host properties."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:149
-#: ../cmk/gui/plugins/wato/active_checks.py:190
-#: ../cmk/gui/plugins/wato/active_checks.py:2023
-#: ../cmk/gui/plugins/wato/active_checks.py:2403
+#: ../cmk/gui/plugins/wato/active_checks.py:150
+#: ../cmk/gui/plugins/wato/active_checks.py:191
+#: ../cmk/gui/plugins/wato/active_checks.py:2024
+#: ../cmk/gui/plugins/wato/active_checks.py:2404
 msgid ""
 "You can specify a hostname or IP address different from the IP address of the "
 "host this check will be assigned to."
@@ -72224,11 +72232,11 @@ msgstr ""
 msgid "daily"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:118
+#: ../cmk/gui/dashboard.py:119
 msgid "dashboard"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:122 ../cmk/gui/dashboard.py:264
+#: ../cmk/gui/dashboard.py:123 ../cmk/gui/dashboard.py:265
 msgid "dashboards"
 msgstr ""
 
@@ -72242,14 +72250,14 @@ msgstr ""
 #: ../cmk/gui/wato/pages/audit_log.py:376
 #: ../cmk/gui/plugins/views/inventory.py:551
 #: ../cmk/gui/plugins/visuals/utils.py:356
-#: ../cmk/gui/plugins/wato/active_checks.py:390
 #: ../cmk/gui/plugins/wato/active_checks.py:391
-#: ../cmk/gui/plugins/wato/active_checks.py:806
-#: ../cmk/gui/plugins/wato/active_checks.py:809
-#: ../cmk/gui/plugins/wato/active_checks.py:1227
-#: ../cmk/gui/plugins/wato/active_checks.py:1230
-#: ../cmk/gui/plugins/wato/active_checks.py:1467
-#: ../cmk/gui/plugins/wato/active_checks.py:1470
+#: ../cmk/gui/plugins/wato/active_checks.py:392
+#: ../cmk/gui/plugins/wato/active_checks.py:807
+#: ../cmk/gui/plugins/wato/active_checks.py:810
+#: ../cmk/gui/plugins/wato/active_checks.py:1228
+#: ../cmk/gui/plugins/wato/active_checks.py:1231
+#: ../cmk/gui/plugins/wato/active_checks.py:1468
+#: ../cmk/gui/plugins/wato/active_checks.py:1471
 #: ../cmk/gui/plugins/wato/check_parameters/ups_test.py:28
 #: ../cmk/gui/plugins/wato/check_parameters/ups_test.py:35
 #: ../cmk/gui/plugins/wato/check_parameters/sles_license.py:47
@@ -72399,7 +72407,7 @@ msgstr ""
 msgid "does not match regex"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1178
+#: ../cmk/gui/plugins/wato/active_checks.py:1179
 msgid "don't wait for body"
 msgstr ""
 
@@ -72542,11 +72550,11 @@ msgstr ""
 msgid "exists"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:750
+#: ../cmk/gui/plugins/wato/active_checks.py:751
 msgid "expand escapes"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:759
+#: ../cmk/gui/plugins/wato/active_checks.py:760
 msgid "expect all"
 msgstr ""
 
@@ -72729,7 +72737,7 @@ msgstr ""
 msgid "hide hosttags"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:767
+#: ../cmk/gui/plugins/wato/active_checks.py:768
 msgid "hide response"
 msgstr ""
 
@@ -73043,8 +73051,8 @@ msgstr ""
 msgid "log file %s on all hosts"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:2481
-#: ../cmk/gui/plugins/wato/active_checks.py:2485
+#: ../cmk/gui/plugins/wato/active_checks.py:2482
+#: ../cmk/gui/plugins/wato/active_checks.py:2486
 msgid "log messages"
 msgstr ""
 
@@ -73158,8 +73166,8 @@ msgstr ""
 
 #: ../cmk/gui/valuespec.py:350 ../cmk/gui/plugins/views/commands.py:109
 #: ../cmk/gui/plugins/views/commands.py:813
-#: ../cmk/gui/plugins/wato/active_checks.py:1642
-#: ../cmk/gui/plugins/wato/active_checks.py:1914
+#: ../cmk/gui/plugins/wato/active_checks.py:1643
+#: ../cmk/gui/plugins/wato/active_checks.py:1915
 #: ../cmk/gui/plugins/wato/check_parameters/memory.py:107
 #: ../cmk/gui/plugins/wato/check_parameters/temperature_trends.py:34
 #: ../cmk/gui/plugins/wato/check_parameters/temperature_trends.py:48
@@ -73412,7 +73420,7 @@ msgstr ""
 msgid "notification rule"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1913
+#: ../cmk/gui/plugins/wato/active_checks.py:1914
 msgid "notifications within last"
 msgstr ""
 
@@ -73779,11 +73787,11 @@ msgstr ""
 msgid "previous notifications of this type are cancelled"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:656
+#: ../cmk/gui/plugins/wato/active_checks.py:657
 msgid "procedure call is used"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1622
+#: ../cmk/gui/plugins/wato/active_checks.py:1623
 msgid "process performance data"
 msgstr ""
 
@@ -73917,7 +73925,7 @@ msgstr ""
 msgid "retry"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1134
+#: ../cmk/gui/plugins/wato/active_checks.py:1135
 msgid "return CRITICAL if found, OK if not"
 msgstr ""
 
@@ -73988,23 +73996,23 @@ msgstr ""
 #: ../cmk/gui/watolib/sites.py:464 ../cmk/gui/watolib/sites.py:474
 #: ../cmk/gui/watolib/sites.py:480 ../cmk/gui/watolib/sites.py:487
 #: ../cmk/gui/plugins/metrics/unit.py:74 ../cmk/gui/plugins/visuals/utils.py:359
-#: ../cmk/gui/plugins/wato/active_checks.py:364
-#: ../cmk/gui/plugins/wato/active_checks.py:544
+#: ../cmk/gui/plugins/wato/active_checks.py:365
 #: ../cmk/gui/plugins/wato/active_checks.py:545
-#: ../cmk/gui/plugins/wato/active_checks.py:550
-#: ../cmk/gui/plugins/wato/active_checks.py:733
-#: ../cmk/gui/plugins/wato/active_checks.py:779
-#: ../cmk/gui/plugins/wato/active_checks.py:1061
-#: ../cmk/gui/plugins/wato/active_checks.py:1361
-#: ../cmk/gui/plugins/wato/active_checks.py:1498
-#: ../cmk/gui/plugins/wato/active_checks.py:1501
-#: ../cmk/gui/plugins/wato/active_checks.py:1507
-#: ../cmk/gui/plugins/wato/active_checks.py:1758
-#: ../cmk/gui/plugins/wato/active_checks.py:1852
-#: ../cmk/gui/plugins/wato/active_checks.py:2059
-#: ../cmk/gui/plugins/wato/active_checks.py:2108
-#: ../cmk/gui/plugins/wato/active_checks.py:2280
-#: ../cmk/gui/plugins/wato/active_checks.py:2353
+#: ../cmk/gui/plugins/wato/active_checks.py:546
+#: ../cmk/gui/plugins/wato/active_checks.py:551
+#: ../cmk/gui/plugins/wato/active_checks.py:734
+#: ../cmk/gui/plugins/wato/active_checks.py:780
+#: ../cmk/gui/plugins/wato/active_checks.py:1062
+#: ../cmk/gui/plugins/wato/active_checks.py:1362
+#: ../cmk/gui/plugins/wato/active_checks.py:1499
+#: ../cmk/gui/plugins/wato/active_checks.py:1502
+#: ../cmk/gui/plugins/wato/active_checks.py:1508
+#: ../cmk/gui/plugins/wato/active_checks.py:1759
+#: ../cmk/gui/plugins/wato/active_checks.py:1853
+#: ../cmk/gui/plugins/wato/active_checks.py:2060
+#: ../cmk/gui/plugins/wato/active_checks.py:2109
+#: ../cmk/gui/plugins/wato/active_checks.py:2281
+#: ../cmk/gui/plugins/wato/active_checks.py:2354
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:4412
 msgid "sec"
 msgstr ""
@@ -74258,7 +74266,7 @@ msgid ""
 "stack is not active yet. This state is only reported on Solaris."
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:515
+#: ../cmk/gui/plugins/wato/active_checks.py:516
 msgid "this host"
 msgstr ""
 
@@ -74381,12 +74389,12 @@ msgstr ""
 msgid "upper limit"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:382
-#: ../cmk/gui/plugins/wato/active_checks.py:795
+#: ../cmk/gui/plugins/wato/active_checks.py:383
+#: ../cmk/gui/plugins/wato/active_checks.py:796
 msgid "use SSL"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/active_checks.py:1847
+#: ../cmk/gui/plugins/wato/active_checks.py:1848
 msgid "use SSL/HTTPS"
 msgstr ""
 
