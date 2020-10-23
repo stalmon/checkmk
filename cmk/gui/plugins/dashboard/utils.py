@@ -14,7 +14,7 @@ import urllib.parse
 
 import cmk.utils.plugin_registry
 from cmk.utils.type_defs import UserId
-from cmk.gui.type_defs import VisualContext
+from cmk.gui.type_defs import HTTPVariables, VisualContext
 
 import cmk.gui.sites as sites
 
@@ -29,6 +29,7 @@ from cmk.gui.valuespec import (
     ValueSpecValidateFunc,
     DictionaryEntry,
     Dictionary,
+    DropdownChoice,
     FixedValue,
     Checkbox,
     TextUnicode,
@@ -38,7 +39,6 @@ from cmk.gui.plugins.views.utils import (
     get_all_views,
     transform_painter_spec,
 )
-from cmk.gui.utils.url_encoder import HTTPVariables
 from cmk.gui.metrics import translate_perf_data
 from cmk.gui.plugins.metrics.rrd_fetch import merge_multicol
 from cmk.gui.plugins.metrics.valuespecs import vs_title_infos
@@ -401,10 +401,14 @@ def dashlet_vs_general_settings(dashlet: Dashlet, single_infos: List[str]):
                  default_value=True,
              )),
             ('show_title',
-             Checkbox(
-                 title=_('Show Title'),
-                 label=_('Render the titlebar above the dashlet'),
+             DropdownChoice(
+                 title=_("Show title header"),
                  help=_('Render the titlebar including title and link above the dashlet.'),
+                 choices=[
+                     (False, _("Don't show any header")),
+                     (True, _("Show header with highlighted background")),
+                     ("transparent", _("Show title without any background")),
+                 ],
                  default_value=True,
              )),
             ('title',

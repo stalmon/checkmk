@@ -3,7 +3,16 @@
 # Copyright (C) 2019 tribe29 GmbH - License: GNU General Public License v2
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
-"""Folders"""
+"""Folders
+
+Folders are used in Checkmk to organize the hosts in a tree structure.
+The root (or main) folder is always existing, other folders can be created manually.
+If you build the tree cleverly you can use it to pass on attributes in a meaningful manner.
+
+You can find an introduction to hosts including folders in the
+[Checkmk guide](https://checkmk.com/cms_wato_hosts.html).
+"""
+
 import http.client
 
 from cmk.gui import watolib
@@ -18,7 +27,6 @@ from cmk.gui.plugins.openapi.restful_objects import (
 from cmk.gui.plugins.openapi.restful_objects.parameters import IDENT_FIELD
 from cmk.gui.plugins.openapi.utils import ProblemException
 from cmk.gui.watolib import CREFolder
-from cmk.gui.wsgi.type_defs import DomainObject
 
 # TODO: Remove all hard-coded response creation in favour of a generic one
 # TODO: Implement formal description (GET endpoint) of move action
@@ -212,7 +220,7 @@ def _serve_folder(folder, profile=None):
     return response
 
 
-def _serialize_folder(folder: CREFolder) -> DomainObject:
+def _serialize_folder(folder: CREFolder):
     uri = constructors.object_href('folder_config', folder.id())
     return constructors.domain_object(
         domain_type='folder_config',
