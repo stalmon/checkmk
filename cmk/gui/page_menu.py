@@ -25,6 +25,7 @@ from cmk.gui.utils.html import HTML
 from cmk.gui.utils.popups import MethodInline
 from cmk.gui.type_defs import CSSSpec
 from cmk.gui.utils.urls import makeuri, makeuri_contextless
+from cmk.gui.config import user
 
 
 def enable_page_menu_entry(name: str):
@@ -180,6 +181,7 @@ class PageMenu:
     """Representing the whole menu of the page"""
     dropdowns: List[PageMenuDropdown] = field(default_factory=list)
     breadcrumb: Optional[Breadcrumb] = None
+    filter_bar: Optional[PageMenuEntry] = None
 
     def __post_init__(self):
         # Add the display options dropdown
@@ -210,6 +212,8 @@ class PageMenu:
         for entry in self._entries:
             if isinstance(entry.item, PageMenuPopup):
                 yield entry
+        if self.filter_bar:
+            yield self.filter_bar
 
     @property
     def shortcuts(self) -> Iterator[PageMenuEntry]:
@@ -449,6 +453,8 @@ class PageMenuRenderer:
 
         html.open_tr()
         self._show_dropdowns(menu)
+        if menu.filter_bar:
+            self._show_filter_bar(menu.filter_bar)
         self._show_shortcuts(menu)
         html.close_tr()
 
@@ -487,7 +493,9 @@ class PageMenuRenderer:
 
     def _show_dropdown_area(self, dropdown: PageMenuDropdown) -> None:
         id_ = "menu_%s" % dropdown.name
-        show_more = html.foldable_container_is_open("more_buttons", id_, isopen=False)
+        show_more_mode = user.get_attribute("show_mode") == "enforce_show_more"
+        show_more = html.foldable_container_is_open("more_buttons", id_,
+                                                    isopen=False) or show_more_mode
         html.open_div(class_=["menu", ("more" if show_more else "less")], id_=id_)
 
         if dropdown.any_show_more_entries:
@@ -523,6 +531,17 @@ class PageMenuRenderer:
         html.open_div(class_=classes, id_="menu_entry_%s" % entry.name)
         DropdownEntryRenderer().show(entry)
         html.close_div()
+
+    def _show_filter_bar(self, filter_bar: PageMenuEntry) -> None:
+        html.open_td(class_="filter_bar")
+        html.open_a(href="javascript:void(0)",
+                    onclick="cmk.page_menu.toggle_popup(%s)" %
+                    json.dumps("popup_%s" % filter_bar.name),
+                    id_=("menu_suggestion_%s" % filter_bar.name if filter_bar.name else None))
+        html.h2(filter_bar.title)
+        html.icon(filter_bar.icon_name)
+        html.close_a()
+        html.close_td()
 
     def _show_shortcuts(self, menu: PageMenu) -> None:
         html.open_td(class_="shortcuts")
