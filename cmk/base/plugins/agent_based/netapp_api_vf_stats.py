@@ -107,15 +107,12 @@ def check_netapp_api_vf_stats(
         used_perc = 0.
 
     yield from cpu_util.check_cpu_util(
-        value_store,
-        used_perc,
-        params,
-        now,
+        util=used_perc,
+        params=params,
+        value_store=value_store,
+        this_time=now,
     )
-    yield Result(
-        state=state.OK,
-        summary="Number of processors: %d" % num_processors,
-    )
+    yield Result(state=state.OK, notice="Number of processors: %d" % num_processors)
 
 
 register.check_plugin(

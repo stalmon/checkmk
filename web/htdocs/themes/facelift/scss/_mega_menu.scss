@@ -52,11 +52,16 @@
   }
 
   div.popup_trigger {
-    position: initial;
+    position: static;
     width: 100%;
     height: 100%;
     border-left: 4px solid $navigation-bg-color;
     box-sizing: border-box;
+
+    &.user,
+    &.help_links {
+      position: relative;
+    }
 
     &:not(.delayed):hover,
     &.active {
@@ -102,7 +107,7 @@
     }
 
     &.help_links > div.popup_menu {
-      @include small-menu(106px);
+      @include small-menu(149px);
     }
 
     &.user > div.popup_menu {
@@ -345,7 +350,7 @@
       display: block;
       padding: $spacing 4px $spacing 0;
       font-size: $font-size-small;
-      color: $font-color;
+      color: $font-color-sidebar;
       text-align: center;
       text-decoration: none;
       outline: none;
