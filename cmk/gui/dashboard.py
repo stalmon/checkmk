@@ -649,7 +649,7 @@ def _render_dashlet(board: DashboardConfig, dashlet: Dashlet, is_update: bool, m
 def _render_dashlet_title(dashlet: Dashlet) -> Union[str, HTML]:
     title = dashlet.display_title()
     title_elements = []
-    title_format = dashlet._dashlet_spec.get("title_format", [])
+    title_format = dashlet._dashlet_spec.get("title_format", ["plain"])
 
     if dashlet.show_title() and title and "plain" in title_format:
         title_elements.append((title, dashlet.title_url()))
@@ -954,6 +954,14 @@ def _dashboard_add_metrics_dashlet_entries(name: DashboardName, board: Dashboard
         icon_name='dashlet_barplot',
         item=make_simple_link(
             'edit_dashlet.py?name=%s&create=0&back=%s&type=barplot' %
+            (html.urlencode(name), html.urlencode(makeuri(request, [('edit', '1')])))),
+    )
+
+    yield PageMenuEntry(
+        title='Gauge',
+        icon_name='dashlet_gauge',
+        item=make_simple_link(
+            'edit_dashlet.py?name=%s&create=0&back=%s&type=gauge' %
             (html.urlencode(name), html.urlencode(makeuri(request, [('edit', '1')])))),
     )
 
@@ -1578,9 +1586,13 @@ def page_edit_dashlet() -> None:
             general_properties = vs_general.from_html_vars('general')
             vs_general.validate_value(general_properties, 'general')
             dashlet_spec.update(general_properties)
+
             # Remove unset optional attributes
-            if 'title' not in general_properties and 'title' in dashlet_spec:
-                del dashlet_spec['title']
+            optional_properties = set(e[0] for e in vs_general._get_elements()) - set(
+                vs_general._required_keys)
+            for option in optional_properties:
+                if option not in general_properties and option in dashlet_spec:
+                    del dashlet_spec[option]
 
             if vs_type:
                 type_properties = vs_type.from_html_vars('type')

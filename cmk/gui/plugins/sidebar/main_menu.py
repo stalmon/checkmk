@@ -14,7 +14,6 @@ import cmk.gui.config as config
 from cmk.gui.i18n import _
 from cmk.gui.globals import html
 from cmk.gui.htmllib import HTML
-from cmk.gui.plugins.sidebar.search import QuicksearchSnapin
 from cmk.gui.utils.popups import MethodInline
 from cmk.gui.type_defs import (
     Icon,
@@ -74,6 +73,7 @@ class MainMenuRenderer:
                 hover_switch_delay=150,  # ms
                 onopen=menu_item.onopen,
             )
+            html.div("", id_="popup_shadow", onclick="cmk.popup_menu.close_popup()")
             html.close_li()
 
     def _get_main_menu_items(self) -> List[MainMenuItem]:
@@ -89,22 +89,12 @@ class MainMenuRenderer:
                 ))
         return items
 
-    # TODO(tb): can we use the MegaMenuRenderer here and move this code to mega_menu.py?
-    def _get_search_menu_content(self) -> str:
-        with html.plugged():
-            html.open_div(class_=["popup_menu", "main_menu_popup", "global_search"])
-            QuicksearchSnapin().show()
-            html.close_div()
-            html.div("", id_="popup_shadow", onclick="cmk.popup_menu.close_popup()")
-            return html.drain()
-
     def _get_mega_menu_content(self, menu_item: MainMenuItem) -> str:
         with html.plugged():
             menu = mega_menu_registry[menu_item.name]
             html.open_div(class_=["popup_menu", "main_menu_popup"])
             MegaMenuRenderer().show(menu)
             html.close_div()
-            html.div("", id_="popup_shadow", onclick="cmk.popup_menu.close_popup()")
             return html.drain()
 
 
