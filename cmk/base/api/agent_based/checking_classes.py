@@ -110,6 +110,14 @@ class Service(
             return labels
         raise TypeError("'labels' must be list of ServiceLabels or None, got %r" % (labels,))
 
+    def __repr__(self) -> str:
+        args = ", ".join(f"{k}={v!r}" for k, v in (
+            ("item", self.item),
+            ("parameters", self.parameters),
+            ("labels", self.labels),
+        ) if v)
+        return f"{self.__class__.__name__}({args})"
+
 
 @enum.unique
 class State(enum.Enum):
@@ -250,7 +258,7 @@ class Metric(
             cls._sanitize_single_value(field, values[1]),
         )
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         levels = "" if self.levels == (None, None) else ", levels=%r" % (self.levels,)
         boundaries = "" if self.boundaries == (None,
                                                None) else ", boundaries=%r" % (self.boundaries,)
@@ -295,6 +303,10 @@ class Result(
             summary=summary,
             details=details,
         )
+
+    def __repr__(self) -> str:
+        details = f", details={self.details!r}" if self.summary != self.details else ""
+        return f"{self.__class__.__name__}(state={self.state!r}, summary={self.summary!r}{details})"
 
 
 def _create_result_fields(

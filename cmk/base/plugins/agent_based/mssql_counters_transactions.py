@@ -34,7 +34,7 @@ def discovery_mssql_counters_transactions(section: Section) -> DiscoveryResult:
     ...     ('MSSQL_VEEAMSQL2012', 'tempdb'): {'transactions/sec': 24410428, 'tracked_transactions/sec': 0, 'write_transactions/sec': 10381607},
     ... }):
     ...   print(result)
-    Service(item='MSSQL_VEEAMSQL2012 tempdb', parameters={}, labels=[])
+    Service(item='MSSQL_VEEAMSQL2012 tempdb')
     """
     yield from discovery_mssql_counters_generic(
         section, {'transactions/sec', 'write_transactions/sec', 'tracked_transactions/sec'})
@@ -94,11 +94,11 @@ def _check_base(
     Cannot calculate rates yet
     Cannot calculate rates yet
     Cannot calculate rates yet
-    Result(state=<State.OK: 0>, summary='Transactions: 1.0/s', details='Transactions: 1.0/s')
+    Result(state=<State.OK: 0>, summary='Transactions: 1.0/s')
     Metric('transactions_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='Write Transactions: 1.0/s', details='Write Transactions: 1.0/s')
+    Result(state=<State.OK: 0>, summary='Write Transactions: 1.0/s')
     Metric('write_transactions_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='Tracked Transactions: 1.0/s', details='Tracked Transactions: 1.0/s')
+    Result(state=<State.OK: 0>, summary='Tracked Transactions: 1.0/s')
     Metric('tracked_transactions_per_second', 1.0)
     """
     yield from _check_common(value_store, time_point, "", item, params, section)
@@ -129,11 +129,11 @@ def _cluster_check_base(
     Cannot calculate rates yet
     Cannot calculate rates yet
     Cannot calculate rates yet
-    Result(state=<State.OK: 0>, summary='[node1] Transactions: 1.0/s', details='[node1] Transactions: 1.0/s')
+    Result(state=<State.OK: 0>, summary='[node1] Transactions: 1.0/s')
     Metric('transactions_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='[node1] Write Transactions: 1.0/s', details='[node1] Write Transactions: 1.0/s')
+    Result(state=<State.OK: 0>, summary='[node1] Write Transactions: 1.0/s')
     Metric('write_transactions_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='[node1] Tracked Transactions: 1.0/s', details='[node1] Tracked Transactions: 1.0/s')
+    Result(state=<State.OK: 0>, summary='[node1] Tracked Transactions: 1.0/s')
     Metric('tracked_transactions_per_second', 1.0)
     """
     for node_name, node_section in section.items():

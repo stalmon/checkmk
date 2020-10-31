@@ -98,7 +98,7 @@ def discovery_omd_status(
     ...          'autostart': '0'},},
     ... }):
     ...     print(service)
-    Service(item='heute', parameters={}, labels=[])
+    Service(item='heute')
     """
     for site in (section_omd_status or {}).keys():
         # if we have omd_info we want to ensure that checks are only executed for sites
@@ -120,7 +120,7 @@ def _check_omd_status(
     ...       False,
     ...       ""):
     ...     print(result)
-    Result(state=<State.OK: 0>, summary='running', details='running')
+    Result(state=<State.OK: 0>, summary='running')
     """
     if "overall" not in site_services:
         yield Result(state=state.CRIT, summary="defective installation")
@@ -151,7 +151,7 @@ def check_omd_status(
     ...          "overall": 'running'}},
     ...       {}):
     ...     print(result)
-    Result(state=<State.OK: 0>, summary='running', details='running')
+    Result(state=<State.OK: 0>, summary='running')
     """
     if not section_omd_status or item not in section_omd_status:
         return
@@ -173,7 +173,7 @@ def cluster_check_omd_status(
     ...            "overall": 'running'}}},
     ...       {"monitoring": {}}):
     ...     print(result)
-    Result(state=<State.OK: 0>, summary='running', details='running')
+    Result(state=<State.OK: 0>, summary='running')
     """
     # TODO(frans)(question): shouldn't it be better to look for =="running" ?
     any_running = any(

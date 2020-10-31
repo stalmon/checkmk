@@ -5,11 +5,10 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 """Decorators to expose API endpoints.
 
-Decorating a function with `endpoint_schema` will result in a change of the SPEC object,
+Decorating a function with `Endpoint` will result in a change of the SPEC object,
 which then has to be dumped into the checkmk.yaml file.
 
 """
-import dataclasses
 import functools
 import hashlib
 from types import FunctionType
@@ -97,7 +96,6 @@ def coalesce_schemas(
     return rv
 
 
-@dataclasses.dataclass
 class Endpoint:
     """Mark the function as a REST-API endpoint.
 
@@ -148,12 +146,6 @@ class Endpoint:
         header_params:
             All parameters, which are expected via HTTP headers.
 
-        request_body_required:
-            If set to True (default), a `response_schema` will be required.
-
-        error_schema:
-            The Schema class with which to validate an HTTP error sent by the endpoint.
-
         etag:
             One of 'input', 'output', 'both'. When set to 'input' a valid ETag is required in
             the 'If-Match' request header. When set to 'output' a ETag is sent to the client
@@ -168,25 +160,45 @@ class Endpoint:
             Various keys which will be directly applied to the OpenAPI operation object.
 
     """
-    path: str
-    name: EndpointName
-    method: HTTPMethod = 'get'
-    content_type: str = 'application/json'
-    output_empty: bool = False
-    response_schema: Optional[Type[Schema]] = None
-    request_schema: Optional[Type[Schema]] = None
-    path_params: Optional[Sequence[RawParameter]] = None
-    query_params: Optional[Sequence[RawParameter]] = None
-    header_params: Optional[Sequence[RawParameter]] = None
-    request_body_required: bool = True
-    error_schema: Type[Schema] = ApiError
-    etag: Optional[ETagBehaviour] = None
-    will_do_redirects: bool = False
-    options: Dict[str, str] = dataclasses.field(default_factory=dict)
-    tag_group: Literal['Monitoring', 'Setup'] = 'Setup'
-    func: Optional[FunctionType] = None
-    operation_id: Optional[str] = None
-    wrapped: Optional[Any] = None
+    def __init__(
+        self,
+        path: str,
+        name: EndpointName,
+        method: HTTPMethod = 'get',
+        content_type: str = 'application/json',
+        output_empty: bool = False,
+        response_schema: Optional[Type[Schema]] = None,
+        request_schema: Optional[Type[Schema]] = None,
+        path_params: Optional[Sequence[RawParameter]] = None,
+        query_params: Optional[Sequence[RawParameter]] = None,
+        header_params: Optional[Sequence[RawParameter]] = None,
+        etag: Optional[ETagBehaviour] = None,
+        will_do_redirects: bool = False,
+        status_descriptions: Optional[Dict[int, str]] = None,
+        options: Optional[Dict[str, str]] = None,
+        tag_group: Literal['Monitoring', 'Setup'] = 'Setup',
+        func: Optional[FunctionType] = None,
+        operation_id: Optional[str] = None,
+        wrapped: Optional[Any] = None,
+    ):
+        self.path = path
+        self.name = name
+        self.method = method
+        self.content_type = content_type
+        self.output_empty = output_empty
+        self.response_schema = response_schema
+        self.request_schema = request_schema
+        self.path_params = path_params
+        self.query_params = query_params
+        self.header_params = header_params
+        self.etag = etag
+        self.will_do_redirects = will_do_redirects
+        self.status_descriptions = status_descriptions if status_descriptions is not None else {}
+        self.options: Dict[str, str] = options if options is not None else {}
+        self.tag_group = tag_group
+        self.func = func
+        self.operation_id = operation_id
+        self.wrapped = wrapped
 
     def __call__(self, func):
         """This is the real decorator.
@@ -274,6 +286,7 @@ class Endpoint:
 
         @functools.wraps(self.func)
         def _validating_wrapper(param):
+            # TODO: Better error messages, pointing to the location where variables are missing
             try:
                 if path_schema:
                     param.update(path_schema().load(param))
@@ -285,7 +298,7 @@ class Endpoint:
                     param.update(header_schema().load(request.headers))
 
                 if request_schema:
-                    body = request_schema().load(request.json)
+                    body = request_schema().load(request.json or {})
                     param['body'] = body
             except ValidationError as exc:
 
@@ -380,21 +393,29 @@ class Endpoint:
                         'schema': self.response_schema
                     },
                 },
-                'description': apispec.utils.dedent(self.response_schema.__doc__ or ''),
+                'description': self.status_descriptions.get(
+                    200,
+                    'The operation was done successfully.' if self.method != 'get' else '',
+                ),
                 'headers': headers,
             }
 
         if self.will_do_redirects:
             responses['302'] = {
-                'description':
-                    ('Either the resource has moved or has not yet completed. Please see this '
-                     'resource for further information.')
+                'description': self.status_descriptions.get(
+                    302,
+                    'Either the resource has moved or has not yet completed. Please see this '
+                    'resource for further information.',
+                )
             }
 
         # Actually, iff you don't want to give out anything, then we don't need a schema.
         if self.output_empty:
             responses['204'] = {
-                'description': 'Operation done successfully. No further output.',
+                'description': self.status_descriptions.get(
+                    204,
+                    'Operation done successfully. No further output.',
+                ),
                 'headers': headers,
             }
 
@@ -418,7 +439,7 @@ class Endpoint:
                     'description': 'Any unsuccessful or unexpected result.',
                     'content': {
                         'application/problem+json': {
-                            'schema': self.error_schema,
+                            'schema': ApiError,
                         }
                     }
                 }
@@ -444,7 +465,7 @@ class Endpoint:
 
         if self.request_schema is not None:
             operation_spec['requestBody'] = {
-                'required': self.request_body_required,
+                'required': True,
                 'content': {
                     'application/json': {
                         'schema': self.request_schema,
@@ -475,10 +496,6 @@ class Endpoint:
         apispec.utils.deepupdate(operation_spec, self.options)
 
         return {self.method: operation_spec}  # type: ignore[misc]
-
-
-# Compat
-endpoint_schema = Endpoint
 
 
 def _verify_parameters2(

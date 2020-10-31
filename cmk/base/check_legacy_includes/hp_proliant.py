@@ -8,7 +8,7 @@
 # pylint: disable=consider-using-in
 
 from .temperature import check_temperature
-from cmk.base.check_api import saveint
+
 hp_proliant_status_map = {
     1: 'unknown',
     2: 'ok',
@@ -211,145 +211,6 @@ def check_hp_proliant_fans(item, params, info):
 
 
 #.
-#   .--mem-----------------------------------------------------------------.
-#   |                                                                      |
-#   |                      _ __ ___   ___ _ __ ___                         |
-#   |                     | '_ ` _ \ / _ \ '_ ` _ \                        |
-#   |                     | | | | | |  __/ | | | | |                       |
-#   |                     |_| |_| |_|\___|_| |_| |_|                       |
-#   |                                                                      |
-#   '----------------------------------------------------------------------'
-
-hp_proliant_mem_type_map = {
-    1: 'other',
-    2: 'board',
-    3: 'cpqSingleWidthModule',
-    4: 'cpqDoubleWidthModule',
-    5: 'simm',
-    6: 'pcmcia',
-    7: 'compaq-specific',
-    8: 'DIMM',
-    9: 'smallOutlineDimm',
-    10: 'RIMM',
-    11: 'SRIMM',
-    12: 'FB-DIMM',
-    13: 'DIMM DDR',
-    14: 'DIMM DDR2',
-    15: 'DIMM DDR3',
-    16: 'DIMM FBD2',
-    17: 'FB-DIMM DDR2',
-    18: 'FB-DIMM DDR3',
-}
-
-hp_proliant_mem_status_map = {
-    1: "other",
-    2: "notPresent",
-    3: "present",
-    4: "good",
-    5: "add",
-    6: "upgrade",
-    7: "missing",
-    8: "doesNotMatch",
-    9: "notSupported",
-    10: "badConfig",
-    11: "degraded",
-    12: "spare",
-    13: "partial",
-}
-
-hp_proliant_mem_status2nagios_map = {
-    'n/a': 3,
-    'other': 3,
-    'notPresent': 3,
-    'present': 1,
-    'good': 0,
-    'add': 1,
-    'upgrade': 1,
-    'missing': 2,
-    'doesNotMatch': 2,
-    'notSupported': 2,
-    'badConfig': 2,
-    'degraded': 2,
-    'spare': 0,
-    'partial': 1,
-}
-
-hp_proliant_mem_condition_status2nagios_map = {
-    'other': 3,
-    'ok': 0,
-    'degraded': 2,
-    'failed': 2,
-    'degradedModuleIndexUnknown': 3
-}
-
-hp_proliant_mem_condition_map = {
-    0: 'n/a',
-    1: 'other',
-    2: 'ok',
-    3: 'degraded',
-    4: 'degradedModuleIndexUnknown',
-}
-
-
-def inventory_hp_proliant_mem(info):
-    if len(info) > 0:
-        return [ (line[1], None) for line in info if line[2].isdigit() and \
-                 int(line[2]) > 0 and int(line[4]) != 2 ]
-
-
-def check_hp_proliant_mem(item, params, info):
-    for line in info:
-        if line[1] == item:
-            # Note: mgmt_hp_proliant_mem provides exact 6 values;
-            # hp_proliant provides 10 values because related inventory plugin
-            # needs the last 4.
-            board_index, module_index, module_size, module_type, \
-            module_status, module_condition = line[:6]
-
-            module_size_mb = int(module_size) // 1024
-
-            type_ = 'n/a'
-            if int(module_type) in hp_proliant_mem_type_map:
-                type_ = hp_proliant_mem_type_map[int(module_type)]
-
-            snmp_status = 'n/a'
-            if int(module_status) in hp_proliant_mem_status_map:
-                snmp_status = hp_proliant_mem_status_map[int(module_status)]
-
-            detail_output = ', Status: %s ' % snmp_status
-            status = hp_proliant_mem_status2nagios_map[snmp_status]
-            if status == 0:
-                detail_output += ''
-            elif status == 1:
-                detail_output += '(!) '
-            elif status == 2:
-                detail_output += '(!!) '
-            else:
-                detail_output += '(?) '
-
-            condition = 'n/a'
-            if saveint(module_condition) in hp_proliant_mem_condition_map:
-                condition = hp_proliant_mem_condition_map[saveint(module_condition)]
-            condition_status = hp_proliant_mem_condition_status2nagios_map[condition]
-
-            detail_output += ', Condition: %s ' % condition
-            if condition_status == 0:
-                detail_output += ''
-            elif condition_status == 1:
-                detail_output += '(!) '
-            elif condition_status == 2:
-                detail_output += '(!!) '
-            else:
-                detail_output += '(?) '
-            if condition_status > status:
-                status = condition_status
-
-            return (status, 'Board: %s, Num: %s, Type: %s, Size: %s MB%s' %
-                    (board_index, module_index, type_, module_size_mb, detail_output))
-    return (3, "item not found in snmp data")
-
-
-#.
 #   .--temperature---------------------------------------------------------.
 #   |      _                                      _                        |
 #   |     | |_ ___ _ __ ___  _ __   ___ _ __ __ _| |_ _   _ _ __ ___       |
@@ -416,6 +277,7 @@ def proliant_general_scan_function(oid):
 
 
 def hp_proliant_scan_function(oid):
+    # migrated!
     return ("proliant" in oid(".1.3.6.1.4.1.232.2.2.4.2.0", "").lower() or
             "storeeasy" in oid(".1.3.6.1.4.1.232.2.2.4.2.0", "").lower())
 

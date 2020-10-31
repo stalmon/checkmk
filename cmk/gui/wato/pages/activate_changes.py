@@ -21,7 +21,7 @@ import cmk.gui.forms as forms
 import cmk.utils.render as render
 
 from cmk.gui.plugins.wato.utils import mode_registry, sort_sites
-from cmk.gui.plugins.wato.utils.base_modes import WatoMode
+from cmk.gui.plugins.wato.utils.base_modes import WatoMode, ActionResult
 from cmk.gui.watolib.changes import activation_sites
 import cmk.gui.watolib.snapshots
 import cmk.gui.watolib.changes
@@ -31,7 +31,7 @@ from cmk.gui.pages import page_registry, AjaxPage
 from cmk.gui.display_options import display_options
 from cmk.gui.globals import html, request as global_request
 from cmk.gui.i18n import _
-from cmk.gui.exceptions import MKUserError
+from cmk.gui.exceptions import MKUserError, FinalizeRequest
 from cmk.gui.valuespec import Checkbox, Dictionary, TextAreaUnicode
 from cmk.gui.valuespec import DictionaryEntry
 from cmk.gui.breadcrumb import Breadcrumb
@@ -163,18 +163,18 @@ class ModeActivateChanges(WatoMode, watolib.ActivateChanges):
 
         return True
 
-    def action(self):
+    def action(self) -> ActionResult:
         if html.request.var("_action") != "discard":
-            return
+            return None
 
         if not html.check_transaction():
-            return
+            return None
 
         if not self._may_discard_changes():
-            return
+            return None
 
         if not self.has_changes():
-            return
+            return None
 
         # Now remove all currently pending changes by simply restoring the last automatically
         # taken snapshot. Then activate the configuration. This should revert all pending changes.
@@ -207,8 +207,7 @@ class ModeActivateChanges(WatoMode, watolib.ActivateChanges):
         html.show_message(_("Successfully discarded all pending changes."))
         html.javascript("hide_changes_buttons();")
         html.footer()
-
-        return False
+        return FinalizeRequest(code=200)
 
     def _extract_snapshot(self, snapshot_file):
         self._extract_from_file(cmk.gui.watolib.snapshots.snapshot_dir + snapshot_file,

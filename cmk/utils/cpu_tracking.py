@@ -34,7 +34,7 @@ class Snapshot:
 
     @classmethod
     def take(cls) -> "Snapshot":
-        return cls(os.times(), time.time())
+        return cls(os.times(), time.monotonic())
 
     @classmethod
     def deserialize(cls, serialized: Dict[str, Any]) -> "Snapshot":
@@ -76,13 +76,13 @@ class CPUTracker:
         return "%s()" % type(self).__name__
 
     def __enter__(self):
-        console.vverbose("[cpu_tracking] Start\n")
         self._start = Snapshot.take()
+        console.vverbose("[cpu_tracking] Start [%x]\n", id(self))
         return self
 
     def __exit__(self, *exc_info):
-        console.vverbose("[cpu_tracking] Stop\n")
         self._end = Snapshot.take()
+        console.vverbose("[cpu_tracking] Stop [%x - %s]\n", id(self), self.duration)
 
     def serialize(self) -> Dict[str, Any]:
         return {
@@ -103,11 +103,3 @@ class CPUTracker:
     @property
     def duration(self) -> Snapshot:
         return self._end - self._start
-
-    @property
-    def process(self) -> posix.times_result:
-        return self.duration.process
-
-    @property
-    def run_time(self) -> float:
-        return self.duration.run_time

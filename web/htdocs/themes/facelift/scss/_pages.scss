@@ -103,7 +103,7 @@ body {
       padding: 8px 20px;
       margin: 0 0 5px;
       color: rgb(255, 255, 255);
-      background: $bg-color-default;
+      background: $bg-color;
       border-spacing: 0;
 
       td {
@@ -776,7 +776,7 @@ table.data.headerleft {
     &:nth-child(even) {
       padding: 5px 16px;
       vertical-align: top;
-      background: $bg-color-tertiary;
+      background: $bg-color-secondary;
       border-top: 1px solid $color-table-border;
       border-bottom: $table-headerleft-border-bottom;
       border-left: 1px solid $color-table-border;
@@ -825,7 +825,7 @@ div.snapin textarea,
   height: auto;
   padding: 3px 6px;
   color: $font-color;
-  background: $bg-color-default;
+  background-color: $bg-color;
   background-image: none;
   border: 1px solid $color-table-border;
   border-radius: $theme-border-radius;
@@ -838,7 +838,7 @@ div.snapin textarea,
 }
 
 span.select2 .select2-selection {
-  background-color: $bg-color-default;
+  background-color: $select2-bg-color;
   border-color: $select2-border-color;
 }
 
@@ -866,11 +866,7 @@ input[type="checkbox"] {
 }
 
 input,
-select,
-textarea,
-div.snapin select,
-div.snapin textarea,
-#mk_side_search_field {
+select {
   &.number {
     text-align: left;
   }
@@ -886,13 +882,11 @@ div.snapin textarea,
     letter-spacing: $letter-spacing-table;
     color: $input-button-color;
     background-color: $input-button-bg-color;
-    border-color: $input-button-bg-color;
     box-shadow: none;
 
     &:hover,
     &:active {
       background-color: $input-button-hover-bg-color;
-      border-color: $input-button-hover-bg-color;
     }
   }
 
@@ -905,13 +899,7 @@ div.snapin textarea,
 input.button {
   &:not([type="text"]),
   &:not([type="password"]) {
-    padding: 4px 8px;
-    border: 1px solid $input-button-bg-color;
-
-    &:hover,
-    &:active {
-      border: 1px solid $input-button-hover-bg-color;
-    }
+    padding: 5px 8px;
   }
 }
 
@@ -1155,7 +1143,7 @@ table.nform {
     }
 
     &.button {
-      margin: 1px 5px 0 0;
+      margin-right: 5px;
     }
   }
 
@@ -1345,7 +1333,7 @@ body.main .popup_menu {
   min-width: 300px;
   color: rgb(255, 255, 255);
   white-space: normal;
-  background-color: $bg-color-tertiary;
+  background-color: $bg-color-secondary;
   border: 1px solid $color-table-border;
   border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -1525,8 +1513,8 @@ div.log_output,
   font-family: monospace;
   font-weight: $font-weight-default;
   color: $lightgrey;
-  background: $navigation-bg-color;
-  border: 1px solid $color-table-border-dark;
+  background: $log-output-color;
+  border: 1px solid $color-table-border;
   border-radius: $theme-border-radius;
   box-shadow: none;
 }

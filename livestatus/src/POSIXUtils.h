@@ -11,10 +11,31 @@
 #include <fcntl.h>
 #include <semaphore.h>
 
+#include <array>
 #include <cerrno>
 #include <chrono>
+#include <optional>
 #include <string>
 #include <utility>
+class Logger;
+
+class SocketPair {
+public:
+    enum class Mode { blocking, local_non_blocking };
+    enum class Direction { bidirectional, remote_to_local };
+
+    static std::optional<SocketPair> make(Mode mode, Direction direction,
+                                          Logger *logger);
+    void close();
+
+    [[nodiscard]] int local() const { return fd_[0]; }
+    [[nodiscard]] int remote() const { return fd_[1]; }
+
+private:
+    std::array<int, 2> fd_;  // We do not own these FDs.
+
+    SocketPair(int local, int remote) : fd_{local, remote} {}
+};
 
 void setThreadName(std::string name);
 std::string getThreadName();
@@ -47,9 +68,9 @@ public:
 
     file_lock() : fd_(-1) {}
     explicit file_lock(const char *name);
-    file_lock(file_lock &&moved) : fd_(-1) { this->swap(moved); }
+    file_lock(file_lock &&moved) noexcept : fd_(-1) { this->swap(moved); }
 
-    file_lock &operator=(file_lock &&moved) {
+    file_lock &operator=(file_lock &&moved) noexcept {
         file_lock tmp(std::move(moved));
         this->swap(tmp);
         return *this;

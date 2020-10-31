@@ -9,7 +9,7 @@ import numbers
 import os
 import sys
 import shutil
-from typing import AnyStr, Callable, Dict, List, Optional, Tuple, Union, Iterator, Final
+from typing import AnyStr, Callable, Dict, List, Optional, Tuple, Union, Iterator, Final, Iterable
 from contextlib import contextmanager, suppress
 from pathlib import Path
 
@@ -50,6 +50,7 @@ ConfigurationWarnings = List[str]
 ObjectMacros = Dict[str, AnyStr]
 CoreCommandName = str
 CoreCommand = str
+CheckCommandArguments = Iterable[Union[int, float, str, Tuple[str, str, str]]]
 
 
 class HelperConfig:
@@ -449,25 +450,68 @@ def _verify_non_duplicate_hosts() -> None:
 
 def active_check_arguments(hostname: HostName, description: Optional[ServiceName],
                            args: config.SpecialAgentInfoFunctionResult) -> str:
+    if isinstance(args, str):
+        return args
+
+    cmd_args: CheckCommandArguments = []
     if isinstance(args, config.SpecialAgentConfiguration):
-        # TODO: Silly dispatching because of broken types/variance.
-        if isinstance(args.args, str):
-            cmd_args: Union[str, List[Union[int, float, str, Tuple[str, str, str]]]] = args.args
-        elif isinstance(args.args, list):
-            cmd_args = [arg for arg in args.args if isinstance(arg, str)]
-        else:
-            raise Exception("funny SpecialAgentConfiguration args %r" % (args.args,))
-    elif isinstance(args, str):
-        cmd_args = args
-    elif isinstance(args, list):
-        cmd_args = [arg for arg in args if isinstance(arg, (str, tuple))]
+        cmd_args = args.args
     else:
+        cmd_args = args
+
+    if not isinstance(cmd_args, list):
         raise MKGeneralException(
             "The check argument function needs to return either a list of arguments or a "
             "string of the concatenated arguments (Host: %s, Service: %s)." %
             (hostname, description))
 
-    return config.prepare_check_command(cmd_args, hostname, description)
+    return _prepare_check_command(cmd_args, hostname, description)
+
+
+def _prepare_check_command(command_spec: CheckCommandArguments, hostname: HostName,
+                           description: Optional[ServiceName]) -> str:
+    """Prepares a check command for execution by Checkmk
+
+    In case a list is given it quotes the single elements. It also prepares password store entries
+    for the command line. These entries will be completed by the executed program later to get the
+    password from the password store.
+    """
+    passwords: List[Tuple[str, str, str]] = []
+    formated: List[str] = []
+    for arg in command_spec:
+        if isinstance(arg, (int, float)):
+            formated.append("%s" % arg)
+
+        elif isinstance(arg, str):
+            formated.append(cmk.utils.quote_shell_string(arg))
+
+        elif isinstance(arg, tuple) and len(arg) == 3:
+            pw_ident, preformated_arg = arg[1:]
+            try:
+                password = config.stored_passwords[pw_ident]["password"]
+            except KeyError:
+                if hostname and description:
+                    descr = " used by service \"%s\" on host \"%s\"" % (description, hostname)
+                elif hostname:
+                    descr = " used by host host \"%s\"" % (hostname)
+                else:
+                    descr = ""
+
+                console.warning("The stored password \"%s\"%s does not exist (anymore)." %
+                                (pw_ident, descr))
+                password = "%%%"
+
+            pw_start_index = str(preformated_arg.index("%s"))
+            formated.append(cmk.utils.quote_shell_string(preformated_arg % ("*" * len(password))))
+            passwords.append((str(len(formated)), pw_start_index, pw_ident))
+
+        else:
+            raise MKGeneralException("Invalid argument for command line: %r" % (arg,))
+
+    if passwords:
+        formated = ["--pwstore=%s" % ",".join(["@".join(p) for p in passwords])] + formated
+
+    return " ".join(formated)
 
 
 #.

@@ -20,7 +20,7 @@ import http.client
 from cmk.gui.plugins.openapi import fields
 from cmk.gui.plugins.openapi.restful_objects import (
     constructors,
-    endpoint_schema,
+    Endpoint,
     response_schemas,
 )
 from cmk.gui.plugins.openapi.utils import ProblemException
@@ -54,12 +54,11 @@ class BIRuleEndpointSchema(BIRuleSchema):
     pack_id = ReqString(default="", example="pack1")
 
 
-@endpoint_schema(constructors.object_href("bi_rule", "{rule_id}"),
-                 'cmk/get_bi_rule',
-                 method='get',
-                 path_params=[BI_RULE_ID],
-                 request_body_required=False,
-                 response_schema=BIRuleEndpointSchema)
+@Endpoint(constructors.object_href("bi_rule", "{rule_id}"),
+          'cmk/get_bi_rule',
+          method='get',
+          path_params=[BI_RULE_ID],
+          response_schema=BIRuleEndpointSchema)
 def get_bi_rule(params):
     """Get BI Rule"""
     bi_packs = get_cached_bi_packs()
@@ -74,13 +73,12 @@ def get_bi_rule(params):
     return constructors.serve_json(data)
 
 
-@endpoint_schema(constructors.object_href("bi_rule", "{rule_id}"),
-                 'cmk/put_bi_rule',
-                 method='put',
-                 path_params=[BI_RULE_ID],
-                 request_body_required=True,
-                 request_schema=BIRuleEndpointSchema,
-                 response_schema=BIRuleEndpointSchema)
+@Endpoint(constructors.object_href("bi_rule", "{rule_id}"),
+          'cmk/put_bi_rule',
+          method='put',
+          path_params=[BI_RULE_ID],
+          request_schema=BIRuleEndpointSchema,
+          response_schema=BIRuleEndpointSchema)
 def put_bi_rule(params):
     """Save BI Rule"""
     bi_packs = get_cached_bi_packs()
@@ -117,12 +115,11 @@ class BIAggregationEndpointSchema(BIAggregationSchema):
     pack_id = ReqString(default="", example="pack1")
 
 
-@endpoint_schema(constructors.object_href("bi_aggregation", "{aggregation_id}"),
-                 'cmk/get_bi_aggregation',
-                 method='get',
-                 path_params=[BI_AGGR_ID],
-                 request_body_required=False,
-                 response_schema=BIAggregationEndpointSchema)
+@Endpoint(constructors.object_href("bi_aggregation", "{aggregation_id}"),
+          'cmk/get_bi_aggregation',
+          method='get',
+          path_params=[BI_AGGR_ID],
+          response_schema=BIAggregationEndpointSchema)
 def get_bi_aggregation(params):
     """Get BI Aggregation"""
     bi_packs = get_cached_bi_packs()
@@ -137,13 +134,12 @@ def get_bi_aggregation(params):
     return constructors.serve_json(data)
 
 
-@endpoint_schema(constructors.object_href("bi_aggregation", "{aggregation_id}"),
-                 'cmk/put_bi_aggregation',
-                 method='put',
-                 path_params=[BI_AGGR_ID],
-                 request_body_required=True,
-                 request_schema=BIAggregationEndpointSchema,
-                 response_schema=BIAggregationEndpointSchema)
+@Endpoint(constructors.object_href("bi_aggregation", "{aggregation_id}"),
+          'cmk/put_bi_aggregation',
+          method='put',
+          path_params=[BI_AGGR_ID],
+          request_schema=BIAggregationEndpointSchema,
+          response_schema=BIAggregationEndpointSchema)
 def put_bi_aggregation(params):
     """Save BI Aggregation"""
     bi_packs = get_cached_bi_packs()
@@ -173,11 +169,10 @@ def put_bi_aggregation(params):
 #   +----------------------------------------------------------------------+
 
 
-@endpoint_schema(constructors.collection_href("bi_pack"),
-                 'cmk/get_bi_packs',
-                 method='get',
-                 request_body_required=False,
-                 response_schema=response_schemas.DomainObjectCollection)
+@Endpoint(constructors.collection_href("bi_pack"),
+          'cmk/get_bi_packs',
+          method='get',
+          response_schema=response_schemas.DomainObjectCollection)
 def get_bi_packs(params):
     """Show all BI Packs"""
 
@@ -201,12 +196,11 @@ def get_bi_packs(params):
     return constructors.serve_json(collection_object)
 
 
-@endpoint_schema(constructors.object_href("bi_pack", "{pack_id}"),
-                 'cmk/get_bi_pack',
-                 method='get',
-                 path_params=[BI_PACK_ID],
-                 request_body_required=False,
-                 response_schema=response_schemas.DomainObject)
+@Endpoint(constructors.object_href("bi_pack", "{pack_id}"),
+          'cmk/get_bi_pack',
+          method='get',
+          path_params=[BI_PACK_ID],
+          response_schema=response_schemas.DomainObject)
 def get_bi_pack(params):
     """Get BI Pack"""
     bi_packs = get_cached_bi_packs()

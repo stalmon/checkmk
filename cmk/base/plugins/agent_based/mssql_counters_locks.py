@@ -34,7 +34,7 @@ def discovery_mssql_counters_locks(section: Section) -> DiscoveryResult:
     ...     ('MSSQL_VEEAMSQL2012:Locks', '_Total'): {'lock_requests/sec': 3900449701, 'lock_timeouts/sec': 86978, 'number_of_deadlocks/sec': 19, 'lock_waits/sec': 938, 'lock_wait_time_(ms)': 354413},
     ... }):
     ...   print(result)
-    Service(item='MSSQL_VEEAMSQL2012:Locks _Total', parameters={}, labels=[])
+    Service(item='MSSQL_VEEAMSQL2012:Locks _Total')
     """
     yield from discovery_mssql_counters_generic(
         section,
@@ -101,13 +101,13 @@ def _check_base(
     Cannot calculate rates yet
     Cannot calculate rates yet
     Cannot calculate rates yet
-    Result(state=<State.OK: 0>, summary='Requests: 1.0/s', details='Requests: 1.0/s')
+    Result(state=<State.OK: 0>, summary='Requests: 1.0/s')
     Metric('lock_requests_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='Timeouts: 1.0/s', details='Timeouts: 1.0/s')
+    Result(state=<State.OK: 0>, summary='Timeouts: 1.0/s')
     Metric('lock_timeouts_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='Deadlocks: 1.0/s', details='Deadlocks: 1.0/s')
+    Result(state=<State.OK: 0>, summary='Deadlocks: 1.0/s')
     Metric('number_of_deadlocks_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='Waits: 1.0/s', details='Waits: 1.0/s')
+    Result(state=<State.OK: 0>, summary='Waits: 1.0/s')
     Metric('lock_waits_per_second', 1.0)
     """
     yield from _check_common(value_store, time_point, "", item, params, section)
@@ -139,13 +139,13 @@ def _cluster_check_base(
     Cannot calculate rates yet
     Cannot calculate rates yet
     Cannot calculate rates yet
-    Result(state=<State.OK: 0>, summary='[node1] Requests: 1.0/s', details='[node1] Requests: 1.0/s')
+    Result(state=<State.OK: 0>, summary='[node1] Requests: 1.0/s')
     Metric('lock_requests_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='[node1] Timeouts: 1.0/s', details='[node1] Timeouts: 1.0/s')
+    Result(state=<State.OK: 0>, summary='[node1] Timeouts: 1.0/s')
     Metric('lock_timeouts_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='[node1] Deadlocks: 1.0/s', details='[node1] Deadlocks: 1.0/s')
+    Result(state=<State.OK: 0>, summary='[node1] Deadlocks: 1.0/s')
     Metric('number_of_deadlocks_per_second', 1.0)
-    Result(state=<State.OK: 0>, summary='[node1] Waits: 1.0/s', details='[node1] Waits: 1.0/s')
+    Result(state=<State.OK: 0>, summary='[node1] Waits: 1.0/s')
     Metric('lock_waits_per_second', 1.0)
     """
     for node_name, node_section in section.items():

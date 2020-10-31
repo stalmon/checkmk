@@ -35,9 +35,9 @@ def discovery_mssql_counters_sqlstats(section: Section) -> DiscoveryResult:
     ...     ('MSSQL_VEEAMSQL2012:SQL_Statistics', 'None'): { 'batch_requests/sec': 22476651, 'forced_parameterizations/sec': 0, 'auto-param_attempts/sec': 1133, 'failed_auto-params/sec': 1027, 'safe_auto-params/sec': 8, 'unsafe_auto-params/sec': 98, 'sql_compilations/sec': 2189403, 'sql_re-compilations/sec': 272134, 'sql_attention_rate': 199, 'guided_plan_executions/sec': 0, 'misguided_plan_executions/sec': 0},
     ... }):
     ...   print(result)
-    Service(item='MSSQL_VEEAMSQL2012:SQL_Statistics None batch_requests/sec', parameters={}, labels=[])
-    Service(item='MSSQL_VEEAMSQL2012:SQL_Statistics None sql_compilations/sec', parameters={}, labels=[])
-    Service(item='MSSQL_VEEAMSQL2012:SQL_Statistics None sql_re-compilations/sec', parameters={}, labels=[])
+    Service(item='MSSQL_VEEAMSQL2012:SQL_Statistics None batch_requests/sec')
+    Service(item='MSSQL_VEEAMSQL2012:SQL_Statistics None sql_compilations/sec')
+    Service(item='MSSQL_VEEAMSQL2012:SQL_Statistics None sql_re-compilations/sec')
     """
     want_counters = {"batch_requests/sec", "sql_compilations/sec", "sql_re-compilations/sec"}
     yield from (Service(item="%s %s %s" % (obj, instance, counter))
@@ -89,7 +89,7 @@ def _check_base(
     ...   }):
     ...     print(result)
     Cannot calculate rates yet
-    Result(state=<State.OK: 0>, summary='1.0/s', details='1.0/s')
+    Result(state=<State.OK: 0>, summary='1.0/s')
     Metric('sql_compilations_per_second', 1.0)
     """
     yield from _check_common(value_store, time_point, "", item, params, section)
@@ -118,7 +118,7 @@ def _cluster_check_base(
     ...   }}):
     ...     print(result)
     Cannot calculate rates yet
-    Result(state=<State.OK: 0>, summary='[node1] 1.0/s', details='[node1] 1.0/s')
+    Result(state=<State.OK: 0>, summary='[node1] 1.0/s')
     Metric('sql_compilations_per_second', 1.0)
     """
     for node_name, node_section in section.items():

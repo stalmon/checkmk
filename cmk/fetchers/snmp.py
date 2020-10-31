@@ -7,14 +7,24 @@
 import ast
 import logging
 from functools import partial
-from typing import Any, cast, Collection, Dict, Final, Iterable, List, Mapping, Optional, Set, Tuple
+from typing import (
+    Any,
+    Dict,
+    Final,
+    Iterable,
+    Iterator,
+    List,
+    Mapping,
+    NamedTuple,
+    Sequence,
+    Set,
+)
 
 from cmk.utils.type_defs import SectionName
 
 import cmk.snmplib.snmp_table as snmp_table
 from cmk.snmplib.snmp_scan import gather_available_raw_section_names
 from cmk.snmplib.type_defs import (
-    SNMPDetectAtom,
     SNMPDetectSpec,
     SNMPHostConfig,
     SNMPRawData,
@@ -26,7 +36,58 @@ from . import factory
 from ._base import ABCFetcher, ABCFileCache, verify_ipaddress
 from .type_defs import Mode
 
-__all__ = ["SNMPFetcher", "SNMPFileCache"]
+__all__ = ["SNMPFetcher", "SNMPFileCache", "SNMPPluginStore", "SNMPPluginStoreItem"]
+
+
+class SNMPPluginStoreItem(NamedTuple):
+    trees: Sequence[SNMPTree]
+    detect_spec: SNMPDetectSpec
+
+    @classmethod
+    def deserialize(cls, serialized: Dict[str, Any]) -> "SNMPPluginStoreItem":
+        try:
+            return cls(
+                [SNMPTree.from_json(tree) for tree in serialized["trees"]],
+                SNMPDetectSpec.from_json(serialized["detect_spec"]),
+            )
+        except (LookupError, TypeError, ValueError) as exc:
+            raise ValueError(serialized) from exc
+
+    def serialize(self) -> Dict[str, Any]:
+        return {
+            "trees": [tree.to_json() for tree in self.trees],
+            "detect_spec": self.detect_spec.to_json(),
+        }
+
+
+class SNMPPluginStore(Mapping[SectionName, SNMPPluginStoreItem]):
+    def __init__(self, store: Mapping[SectionName, SNMPPluginStoreItem]) -> None:
+        self._store: Final = store
+
+    def __repr__(self):
+        return "%s(%r)" % (type(self).__name__, self._store)
+
+    def __getitem__(self, key: SectionName) -> SNMPPluginStoreItem:
+        return self._store.__getitem__(key)
+
+    def __iter__(self) -> Iterator[SectionName]:
+        return self._store.__iter__()
+
+    def __len__(self) -> int:
+        return self._store.__len__()
+
+    @classmethod
+    def deserialize(cls, serialized: Dict[str, Any]) -> "SNMPPluginStore":
+        try:
+            return cls({
+                SectionName(k): SNMPPluginStoreItem.deserialize(v)
+                for k, v in serialized["plugin_store"].items()
+            })
+        except (LookupError, TypeError, ValueError) as exc:
+            raise ValueError(serialized) from exc
+
+    def serialize(self) -> Dict[str, Any]:
+        return {"plugin_store": {str(k): v.serialize() for k, v in self.items()}}
 
 
 class SNMPFileCache(ABCFileCache[SNMPRawData]):
@@ -49,28 +110,30 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
         self,
         file_cache: SNMPFileCache,
         *,
-        snmp_section_trees: Mapping[SectionName, List[SNMPTree]],
-        snmp_section_detects: Mapping[SectionName, SNMPDetectSpec],
+        snmp_plugin_store: SNMPPluginStore,
+        disabled_sections: Set[SectionName],
         configured_snmp_sections: Set[SectionName],
-        structured_data_snmp_sections: Set[SectionName],
+        inventory_snmp_sections: Set[SectionName],
         on_error: str,
         missing_sys_description: bool,
         use_snmpwalk_cache: bool,
+        do_status_data_inventory: bool,
         snmp_config: SNMPHostConfig,
     ) -> None:
         super().__init__(file_cache, logging.getLogger("cmk.fetchers.snmp"))
-        self.snmp_section_trees: Final = snmp_section_trees
-        self.snmp_section_detects: Final = snmp_section_detects
+        self.snmp_plugin_store: Final = snmp_plugin_store
+        self.disabled_sections: Final = disabled_sections
         self.configured_snmp_sections: Final = configured_snmp_sections
-        self.structured_data_snmp_sections: Final = structured_data_snmp_sections
+        self.inventory_snmp_sections: Final = inventory_snmp_sections
         self.on_error: Final = on_error
         self.missing_sys_description: Final = missing_sys_description
         self.use_snmpwalk_cache: Final = use_snmpwalk_cache
+        self.do_status_data_inventory: Final = do_status_data_inventory
         self.snmp_config: Final = snmp_config
         self._backend = factory.backend(self.snmp_config, self._logger)
 
     @classmethod
-    def from_json(cls, serialized: Dict[str, Any]) -> 'SNMPFetcher':
+    def _from_json(cls, serialized: Dict[str, Any]) -> 'SNMPFetcher':
         # The SNMPv3 configuration is represented by a tuple of different lengths (see
         # SNMPCredentials). Since we just deserialized from JSON, we have to convert the
         # list used by JSON back to a tuple.
@@ -81,42 +144,32 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
 
         return cls(
             file_cache=SNMPFileCache.from_json(serialized.pop("file_cache")),
-            snmp_section_trees={
-                SectionName(name): [SNMPTree.from_json(tree) for tree in trees
-                                   ] for name, trees in serialized["snmp_section_trees"].items()
-            },
-            snmp_section_detects={
-                SectionName(name): SNMPDetectSpec(
-                    # The cast is necessary as mypy does not infer types in a list comprehension.
-                    # See https://github.com/python/mypy/issues/5068
-                    [[cast(SNMPDetectAtom, tuple(inner)) for inner in outer] for outer in specs])
-                for name, specs in serialized["snmp_section_detects"].items()
-            },
+            snmp_plugin_store=SNMPPluginStore.deserialize(serialized["snmp_plugin_store"]),
+            disabled_sections={SectionName(name) for name in serialized["disabled_sections"]},
             configured_snmp_sections={
                 SectionName(name) for name in serialized["configured_snmp_sections"]
             },
-            structured_data_snmp_sections={
-                SectionName(name) for name in serialized["structured_data_snmp_sections"]
+            inventory_snmp_sections={
+                SectionName(name) for name in serialized["inventory_snmp_sections"]
             },
             on_error=serialized["on_error"],
             missing_sys_description=serialized["missing_sys_description"],
             use_snmpwalk_cache=serialized["use_snmpwalk_cache"],
+            do_status_data_inventory=serialized["do_status_data_inventory"],
             snmp_config=SNMPHostConfig(**serialized["snmp_config"]),
         )
 
     def to_json(self) -> Dict[str, Any]:
         return {
             "file_cache": self.file_cache.to_json(),
-            "snmp_section_trees": {
-                str(n): [tree.to_json() for tree in trees
-                        ] for n, trees in self.snmp_section_trees.items()
-            },
-            "snmp_section_detects": {str(n): d for n, d in self.snmp_section_detects.items()},
+            "snmp_plugin_store": self.snmp_plugin_store.serialize(),
+            "disabled_sections": [str(s) for s in self.disabled_sections],
             "configured_snmp_sections": [str(s) for s in self.configured_snmp_sections],
-            "structured_data_snmp_sections": [str(s) for s in self.structured_data_snmp_sections],
+            "inventory_snmp_sections": [str(s) for s in self.inventory_snmp_sections],
             "on_error": self.on_error,
             "missing_sys_description": self.missing_sys_description,
             "use_snmpwalk_cache": self.use_snmpwalk_cache,
+            "do_status_data_inventory": self.do_status_data_inventory,
             "snmp_config": self.snmp_config._asdict(),
         }
 
@@ -126,23 +179,18 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
     def close(self) -> None:
         pass
 
-    def _detect(
-        self,
-        *,
-        restrict_to: Optional[Collection[SectionName]] = None,
-    ) -> Set[SectionName]:
-        if restrict_to is None:
-            # TODO: disabled sections must be considered here, once
-            # snmp_section_detects is a global configuration.
-            sections: Collection[Tuple[SectionName,
-                                       SNMPDetectSpec]] = self.snmp_section_detects.items()
-        else:
-            sections = [(n, self.snmp_section_detects[n])
-                        for n in restrict_to
-                        if n in self.snmp_section_detects]
+    def _detect(self, mode: Mode) -> Set[SectionName]:
+        sections: Set[SectionName] = set()
 
+        if mode is not Mode.INVENTORY:
+            sections |= set(self.snmp_plugin_store)
+
+        if mode is Mode.INVENTORY or self.do_status_data_inventory:
+            sections |= set(self.inventory_snmp_sections)
+
+        sections -= self.disabled_sections
         return gather_available_raw_section_names(
-            sections=sections,
+            sections=[(name, self.snmp_plugin_store[name].detect_spec) for name in sections],
             on_error=self.on_error,
             missing_sys_description=self.missing_sys_description,
             backend=self._backend,
@@ -161,9 +209,9 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
         return mode not in (Mode.DISCOVERY, Mode.CHECKING)
 
     def _fetch_from_io(self, mode: Mode) -> SNMPRawData:
-        selected_sections = (self._detect() if mode in (Mode.DISCOVERY, Mode.CACHED_DISCOVERY) else
-                             (self.configured_snmp_sections |
-                              self._detect(restrict_to=self.structured_data_snmp_sections)))
+        selected_sections = self._detect(mode)
+        if mode not in {Mode.DISCOVERY, Mode.CACHED_DISCOVERY}:
+            selected_sections |= self.configured_snmp_sections
 
         fetched_data: SNMPRawData = {}
         for section_name in self._sort_section_names(selected_sections):
@@ -174,7 +222,7 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
 
             self._logger.debug("%s: Fetching data (%s)", section_name, walk_cache_msg)
 
-            oid_info = self.snmp_section_trees[section_name]
+            oid_info = self.snmp_plugin_store[section_name].trees
             # oid_info is a list: Each element of that list is interpreted as one real oid_info
             # and fetches a separate snmp table.
             get_snmp = partial(snmp_table.get_snmp_table_cached

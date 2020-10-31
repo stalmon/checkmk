@@ -22,9 +22,10 @@ from cmk.gui.valuespec import (
     Integer,
     AbsoluteDate,
 )
+from cmk.gui.exceptions import FinalizeRequest
 from cmk.gui.globals import html
 from cmk.gui.i18n import _
-from cmk.gui.plugins.wato import WatoMode, mode_registry, wato_confirm
+from cmk.gui.plugins.wato import WatoMode, ActionResult, mode_registry, wato_confirm
 from cmk.gui.breadcrumb import Breadcrumb
 from cmk.gui.page_menu import (
     PageMenu,
@@ -166,7 +167,7 @@ class ModeAuditLog(WatoMode):
     def _log_exists(self):
         return self.log_path.exists()
 
-    def action(self):
+    def action(self) -> ActionResult:
         if html.request.var("_action") == "clear":
             config.user.need_permission("wato.auditlog")
             config.user.need_permission("wato.clear_auditlog")
@@ -181,6 +182,8 @@ class ModeAuditLog(WatoMode):
         if html.request.var("_action") == "csv":
             config.user.need_permission("wato.auditlog")
             return self._export_audit_log()
+
+        return None
 
     def page(self):
         audit = self._parse_audit_log()
@@ -382,7 +385,7 @@ class ModeAuditLog(WatoMode):
             optional_keys=[],
         )
 
-    def _clear_audit_log_after_confirm(self):
+    def _clear_audit_log_after_confirm(self) -> ActionResult:
         c = wato_confirm(_("Confirm deletion of audit log"),
                          _("Do you really want to clear the audit log?"))
         if c:
@@ -431,7 +434,7 @@ class ModeAuditLog(WatoMode):
 
         return html.render_a(title, href=url)
 
-    def _export_audit_log(self):
+    def _export_audit_log(self) -> ActionResult:
         html.set_output_format("csv")
 
         if self._options["display"] == "daily":
@@ -462,7 +465,7 @@ class ModeAuditLog(WatoMode):
 
             html.write_text(','.join((render.date(int(t)), render.time_of_day(int(t)), linkinfo,
                                       user, action, '"' + text + '"')) + '\n')
-        return False
+        return FinalizeRequest(code=200)
 
     def _parse_audit_log(self) -> List[Tuple[int, str, str, str, str]]:
         if not self.log_path.exists():

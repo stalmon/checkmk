@@ -4,21 +4,19 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
-# type: ignore[var-annotated,list-item,import,assignment,misc,operator]  # TODO: see which are needed in this file
+# type: ignore[var-annotated]
 # pylint: disable=chained-comparison
 
 from typing import Dict, List, Tuple
 from cmk.base.config import factory_settings
-from cmk.base.check_api import get_number_with_precision
-
-from cmk.base.check_api import host_name
 from cmk.base.check_api import get_bytes_human_readable
-from cmk.base.check_api import savefloat
-from cmk.base.check_api import host_extra_conf
 from cmk.base.check_api import get_percent_human_readable
-from cmk.base.check_api import check_levels
+from cmk.base.check_api import host_extra_conf
+from cmk.base.check_api import host_name
 
 from cmk.base.plugins.agent_based.utils.df import (
+    _check_inodes,
+    get_filesystem_levels as _get_filesystem_levels,
     mountpoints_in_group,
     FILESYSTEM_DEFAULT_LEVELS as _FILESYSTEM_DEFAULT_LEVELS,
     ungrouped_mountpoints_and_groups,
@@ -89,160 +87,59 @@ def df_inventory(mplist):
 
 # Users might have set filesystem_default_levels to old format like (80, 90)
 
-
 # needed by df, df_netapp and vms_df and maybe others in future:
 # compute warning and critical levels. Takes into account the size of
 # the filesystem and the magic number. Since the size is only known at
 # check time this function's result cannot be precompiled.
-# ==================================================================================================
-# THIS FUNCTION DEFINED HERE IS IN THE PROCESS OF OR HAS ALREADY BEEN MIGRATED TO
-# THE NEW CHECK API. PLEASE DO NOT MODIFY THIS FUNCTION ANYMORE. INSTEAD, MODIFY THE MIGRATED CODE
-# RESIDING IN
-# cmk/base/plugins/agent_based/utils/df.py
-# IF YOU CANNOT FIND THE MIGRATED COUNTERPART OF A FUNCTION, PLEASE TALK TO TIMI BEFORE DOING
-# ANYTHING ELSE.
-# ==================================================================================================
-def get_filesystem_levels(mountpoint, size_gb, params):
-    mega = 1024 * 1024
-    giga = mega * 1024
-    # Start with factory settings
-    levels = _FILESYSTEM_DEFAULT_LEVELS.copy()
 
+
+def _get_update_from_user_config_default_levels(
+    user_default_levels,
+    convert_legacy_levels,
+):
+    # convert default levels to dictionary. This is in order support
+    # old style levels like (80, 90)
+    if isinstance(user_default_levels, dict):
+        fs_default_levels = user_default_levels.copy()
+        fs_levels = fs_default_levels.get("levels")
+        if fs_levels:
+            fs_default_levels["levels"] = convert_legacy_levels(fs_levels)
+        return fs_default_levels
+
+    return {
+        "levels": convert_legacy_levels(user_default_levels[:2]),
+        "magic": user_default_levels[2] if len(user_default_levels) >= 3 else None,
+    }
+
+
+def _get_update_from_params(params):
+    if isinstance(params, dict):
+        # If params is a dictionary, make that override the default values
+        return params
+
+    # simple format - explicitely override levels and magic
+    update_params = {"levels": (float(params[0]), float(params[1]))}
+    if len(params) >= 3:
+        update_params["magic"] = params[2]
+    return update_params
+
+
+def get_filesystem_levels(mountpoint, size_gb, params):
+    """Just a wrapper for the migrated version"""
     def convert_legacy_levels(value):
         if isinstance(params, tuple) or not params.get("flex_levels"):
             return tuple(map(float, value))
         return value
 
-    # convert default levels to dictionary. This is in order support
-    # old style levels like (80, 90)
-    if isinstance(filesystem_default_levels, dict):
-        fs_default_levels = filesystem_default_levels.copy()
-        fs_levels = fs_default_levels.get("levels")
-        if fs_levels:
-            fs_default_levels["levels"] = convert_legacy_levels(fs_levels)
-        levels.update(filesystem_default_levels)
-    else:
-        levels = _FILESYSTEM_DEFAULT_LEVELS.copy()
-        levels["levels"] = convert_legacy_levels(filesystem_default_levels[:2])
-        if len(filesystem_default_levels) == 2:
-            levels["magic"] = None
-        else:
-            levels["magic"] = filesystem_default_levels[2]
+    update_params = {
+        **_get_update_from_user_config_default_levels(
+            filesystem_default_levels,
+            convert_legacy_levels,
+        ),
+        **_get_update_from_params(params),
+    }
 
-    # If params is a dictionary, make that override the default values
-    if isinstance(params, dict):
-        levels.update(params)
-
-    else:  # simple format - explicitely override levels and magic
-        levels["levels"] = convert_legacy_levels(params[:2])
-        if len(params) >= 3:
-            levels["magic"] = params[2]
-
-    # Determine real warn, crit levels
-    if isinstance(levels["levels"], tuple):
-        warn, crit = levels["levels"]
-    else:
-        # A list of levels. Choose the correct one depending on the
-        # size of the current filesystem. We do not make the first
-        # rule match, but that with the largest size_gb. That way
-        # the order of the entries is not important.
-        found = False
-        found_size = 0
-        for to_size, this_levels in levels["levels"]:
-            if size_gb * giga > to_size and to_size >= found_size:
-                warn, crit = this_levels
-                found_size = to_size
-                found = True
-        if not found:
-            warn, crit = 100.0, 100.0  # entry not found in list
-
-    # Take into account magic scaling factor (third optional argument
-    # in check params). A factor of 1.0 changes nothing. Factor should
-    # be > 0 and <= 1. A smaller factor raises levels for big file systems
-    # bigger than 100 GB and lowers it for file systems smaller than 100 GB.
-    # Please run df_magic_factor.py to understand how it works.
-
-    magic = levels.get("magic")
-    # We need a way to disable the magic factor so check
-    # if magic not 1.0
-    if magic and magic != 1.0:
-        # convert warn/crit to percentage
-        if not isinstance(warn, float):
-            warn = savefloat(warn * mega / float(size_gb * giga)) * 100
-        if not isinstance(crit, float):
-            crit = savefloat(crit * mega / float(size_gb * giga)) * 100
-
-        normsize = levels["magic_normsize"]
-        hgb_size = size_gb / float(normsize)
-        felt_size = hgb_size**magic
-        scale = felt_size / hgb_size
-        warn_scaled = 100 - ((100 - warn) * scale)
-        crit_scaled = 100 - ((100 - crit) * scale)
-
-        # Make sure, levels do never get too low due to magic factor
-        lowest_warning_level, lowest_critical_level = levels["levels_low"]
-        if warn_scaled < lowest_warning_level:
-            warn_scaled = lowest_warning_level
-        if crit_scaled < lowest_critical_level:
-            crit_scaled = lowest_critical_level
-    else:
-        if not isinstance(warn, float):
-            warn_scaled = savefloat(warn * mega / float(size_gb * giga)) * 100
-        else:
-            warn_scaled = warn
-
-        if not isinstance(crit, float):
-            crit_scaled = savefloat(crit * mega / float(size_gb * giga)) * 100
-        else:
-            crit_scaled = crit
-
-    size_mb = size_gb * 1024
-    warn_mb = savefloat(size_mb * warn_scaled / 100)
-    crit_mb = savefloat(size_mb * crit_scaled / 100)
-    levels["levels_mb"] = (warn_mb, crit_mb)
-    if isinstance(warn, float):
-        if warn_scaled < 0 and crit_scaled < 0:
-            label = 'warn/crit at free space below'
-            warn_scaled *= -1
-            crit_scaled *= -1
-        else:
-            label = 'warn/crit at'
-        levels["levels_text"] = "(%s %s/%s)" % (label, get_percent_human_readable(warn_scaled),
-                                                get_percent_human_readable(crit_scaled))
-    else:
-        if warn * mega < 0 and crit * mega < 0:
-            label = 'warn/crit at free space below'
-            warn *= -1
-            crit *= -1
-        else:
-            label = 'warn/crit at'
-        warn_hr = get_bytes_human_readable(warn * mega)
-        crit_hr = get_bytes_human_readable(crit * mega)
-        levels["levels_text"] = "(%s %s/%s)" % (label, warn_hr, crit_hr)
-
-    inodes_levels = params.get("inodes_levels")
-    if inodes_levels:
-        if isinstance(levels["inodes_levels"], tuple):
-            warn, crit = levels["inodes_levels"]
-        else:
-            # A list of inode levels. Choose the correct one depending on the
-            # size of the current filesystem. We do not make the first
-            # rule match, but that with the largest size_gb. That way
-            # the order of the entries is not important.
-            found = False
-            found_size = 0
-            for to_size, this_levels in levels["inodes_levels"]:
-                if size_gb * giga > to_size and to_size >= found_size:
-                    warn, crit = this_levels
-                    found_size = to_size
-                    found = True
-            if not found:
-                warn, crit = 100.0, 100.0  # entry not found in list
-        levels["inodes_levels"] = warn, crit
-    else:
-        levels["inodes_levels"] = (None, None)
-
-    return levels
+    return _get_filesystem_levels(size_gb, update_params)
 
 
 # ==================================================================================================
@@ -333,61 +230,6 @@ def df_check_filesystem_list_coroutine(
 # IF YOU CANNOT FIND THE MIGRATED COUNTERPART OF A FUNCTION, PLEASE TALK TO TIMI BEFORE DOING
 # ANYTHING ELSE.
 # ==================================================================================================
-def _check_inodes(levels, inodes_total, inodes_avail):
-    if not inodes_total:
-        return
-
-    inodes_warn_variant, inodes_crit_variant = levels["inodes_levels"]
-    inodes_warn_abs, inodes_crit_abs, human_readable_func = (
-        # Levels in absolute numbers
-        (
-            inodes_total - inodes_warn_variant,
-            inodes_total - inodes_crit_variant,
-            get_number_with_precision,
-        ) if isinstance(inodes_warn_variant, int) else
-        # Levels in percent
-        (
-            (100 - inodes_warn_variant) / 100.0 * inodes_total,
-            (100 - inodes_crit_variant) / 100.0 * inodes_total,
-            lambda x: get_percent_human_readable(100.0 * x / inodes_total),
-        ) if isinstance(inodes_warn_variant, float) else  #
-        (None, None, get_number_with_precision))
-
-    inode_status, inode_text, inode_perf = check_levels(
-        inodes_total - inodes_avail,
-        'inodes_used',
-        (inodes_warn_abs, inodes_crit_abs),
-        boundaries=(0, inodes_total),
-        human_readable_func=human_readable_func,
-        infoname="Inodes Used",
-    )
-
-    # Only show inodes if they are at less then 50%
-    show_inodes = levels["show_inodes"]
-    inodes_avail_perc = 100.0 * inodes_avail / inodes_total
-    infotext = (
-        "%s, inodes available: %s/%s" % (
-            inode_text,
-            get_number_with_precision(inodes_avail),
-            get_percent_human_readable(inodes_avail_perc),
-        )  #
-        if any((
-            show_inodes == "always",
-            show_inodes == "onlow" and (inode_status or inodes_avail_perc < 50),
-            show_inodes == "onproblem" and inode_status,
-        )) else "")
-
-    yield inode_status, infotext, inode_perf
-
-
-# ==================================================================================================
-# THIS FUNCTION DEFINED HERE IS IN THE PROCESS OF OR HAS ALREADY BEEN MIGRATED TO
-# THE NEW CHECK API. PLEASE DO NOT MODIFY THIS FUNCTION ANYMORE. INSTEAD, MODIFY THE MIGRATED CODE
-# RESIDING IN
-# cmk/base/plugins/agent_based/utils/df.py
-# IF YOU CANNOT FIND THE MIGRATED COUNTERPART OF A FUNCTION, PLEASE TALK TO TIMI BEFORE DOING
-# ANYTHING ELSE.
-# ==================================================================================================
 def df_check_filesystem_single_coroutine(
     mountpoint,
     size_mb,
@@ -459,7 +301,7 @@ def df_check_filesystem_single_coroutine(
     if subtract_reserved or show_reserved:
         perfdata.append(("reserved", reserved_mb))
 
-    yield status, ", ".join(infotext), perfdata
+    yield status, ", ".join(infotext).replace("), (", ", "), perfdata
 
     if levels.get("trend_range"):
         trend_state, trend_text, trend_perf = size_trend(
@@ -476,7 +318,13 @@ def df_check_filesystem_single_coroutine(
         if trend_state or trend_text or trend_perf:
             yield trend_state, trend_text.strip(" ,"), trend_perf or []
 
-    yield from _check_inodes(levels, inodes_total, inodes_avail)
+    if not inodes_total or not inodes_avail:
+        return
+
+    metric, result = _check_inodes(levels, inodes_total, inodes_avail)
+    yield int(result.state), result.summary, [
+        (metric.name, metric.value) + metric.levels + metric.boundaries
+    ]
 
 
 def _aggregate(generator):
