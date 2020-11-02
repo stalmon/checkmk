@@ -6,8 +6,8 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-16 06:21+0000\n"
-"Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
+"PO-Revision-Date: 2020-11-02 17:00+0000\n"
+"Last-Translator: Axel Copur <copur.axel@protonmail.com>\n"
 "Language-Team: French <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/fr/>\n"
 "Language: fr\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/views/sla.py:250
 #, python-format
 msgid " %s, outage duration %s"
-msgstr " oui ouis"
+msgstr ""
 
 #: ../cmk/gui/wato/pages/host_rename.py:793
 #, python-format
 msgid " (%d times)"
-msgstr "suggestion"
+msgstr ""
 
 #: ../cmk/gui/visuals.py:808
 msgid " (Copy)"
@@ -34,25 +34,25 @@ msgstr ""
 #: ../cmk/gui/backup.py:921
 #, python-format
 msgid " (Duration: %s)"
-msgstr " oh lala"
+msgstr " (Durée : %s)"
 
 #: ../cmk/gui/backup.py:489
 #, python-format
 msgid " (Duration: %s, %sIO: %s/s)"
-msgstr ""
+msgstr " (Durée : %s, %sIO: %s/s)"
 
 #: ../cmk/gui/wato/pages/roles.py:182
 msgid " (copy)"
-msgstr ""
+msgstr " (copie)"
 
 #: ../cmk/gui/wato/pages/timeperiods.py:564
 #, python-format
 msgid " (day %d)"
-msgstr ""
+msgstr " (jour  %d)"
 
 #: ../cmk/gui/wato/pages/users.py:455
 msgid " (invalid)"
-msgstr ""
+msgstr " (invalide)"
 
 #: ../cmk/gui/pagetypes.py:1003
 #, python-format
@@ -65,7 +65,7 @@ msgstr ""
 
 #: ../cmk/gui/valuespec.py:4261
 msgid " Activate this option"
-msgstr ""
+msgstr " Activer cette option"
 
 #: ../cmk/gui/plugins/wato/datasource_programs.py:1583
 msgid ""
