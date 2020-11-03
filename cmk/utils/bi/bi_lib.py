@@ -52,6 +52,18 @@ from cmk.utils.type_defs import (
     ServiceDetails,
 )
 
+
+class BIStates:
+    OK = 0
+    WARN = 1
+    CRIT = 2
+    UNKNOWN = 3
+    PENDING = -1
+    HOST_UP = 0
+    HOST_DOWN = 1
+    HOST_UNREACHABLE = 2
+
+
 NodeComputeResult = NamedTuple("NodeComputeResult", [
     ("state", int),
     ("downtime_state", int),
@@ -111,6 +123,7 @@ BIServiceWithFullState = NamedTuple("BIServiceFullState", [
 ])
 BIHostStatusInfoRow = NamedTuple("BIStatusInfoRow", [
     ("state", Optional[HostState]),
+    ("has_been_checked", bool),
     ("hard_state", Optional[HostState]),
     ("plugin_output", str),
     ("scheduled_downtime_depth", int),
@@ -476,7 +489,7 @@ class ABCBIAggregationFunction(metaclass=abc.ABCMeta):
         raise NotImplementedError()
 
     @abc.abstractmethod
-    def aggregate(self, states: List[float]) -> Union[int, float]:
+    def aggregate(self, states: List[int]) -> int:
         raise NotImplementedError()
 
     @classmethod

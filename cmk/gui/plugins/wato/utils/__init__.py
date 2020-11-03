@@ -29,7 +29,8 @@ from cmk.gui.pages import page_registry
 from cmk.gui.i18n import _u, _
 from cmk.gui.globals import html, g
 from cmk.gui.htmllib import Choices, HTML
-from cmk.gui.exceptions import MKUserError, MKGeneralException
+from cmk.gui.exceptions import MKUserError, MKGeneralException, FinalizeRequest
+from cmk.gui.utils.flashed_messages import flash  # noqa: F401 # pylint: disable=unused-import
 from cmk.gui.valuespec import (  # noqa: F401 # pylint: disable=unused-import
     ABCPageListOfMultipleGetChoice, Alternative, CascadingDropdown, Checkbox, Dictionary,
     DocumentationURL, DropdownChoice, DualListChoice, ElementSelection, FixedValue, Float, Integer,
@@ -39,7 +40,7 @@ from cmk.gui.valuespec import (  # noqa: F401 # pylint: disable=unused-import
     rule_option_elements, SingleLabel,
 )
 from cmk.gui.plugins.wato.utils.base_modes import (  # noqa: F401 # pylint: disable=unused-import
-    ActionResult, WatoMode,
+    ActionResult, WatoMode, mode_registry, mode_url, redirect,
 )
 from cmk.gui.plugins.wato.utils.simple_modes import (  # noqa: F401 # pylint: disable=unused-import
     SimpleEditMode, SimpleListMode, SimpleModeType,
@@ -1362,7 +1363,7 @@ class ABCEventsMode(WatoMode, metaclass=abc.ABCMeta):
                 del rules[nr]
                 save_rules(rules)
             elif c is False:
-                return ""
+                return FinalizeRequest(code=200)
             else:
                 return None
 
@@ -1384,14 +1385,6 @@ def sort_sites(sites: SiteConfigurations) -> List[_Tuple[SiteId, SiteConfigurati
     return sorted(sites.items(),
                   key=lambda sid_s:
                   (sid_s[1].get("replication") or "", sid_s[1].get("alias", ""), sid_s[0]))
-
-
-class ModeRegistry(cmk.utils.plugin_registry.Registry[Type[WatoMode]]):
-    def plugin_name(self, instance):
-        return instance.name()
-
-
-mode_registry = ModeRegistry()
 
 
 # Show HTML form for editing attributes.

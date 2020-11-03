@@ -11,7 +11,7 @@ import pprint
 import re
 import json
 from enum import Enum, auto
-from typing import Dict, Generator, List, Optional, Union, Any, Iterable, Type
+from typing import Dict, Generator, List, Optional, Union, Any, Iterable, Type, overload
 
 from six import ensure_str
 
@@ -32,7 +32,7 @@ import cmk.gui.view_utils
 from cmk.gui.table import table_element
 import cmk.gui.forms as forms
 from cmk.gui.htmllib import HTML
-from cmk.gui.exceptions import MKUserError, MKAuthException
+from cmk.gui.exceptions import MKUserError, MKAuthException, FinalizeRequest
 from cmk.gui.i18n import _
 from cmk.gui.globals import html, request
 from cmk.gui.valuespec import (
@@ -53,7 +53,6 @@ from cmk.gui.page_menu import (
     PageMenuTopic,
     PageMenuEntry,
     PageMenuSearch,
-    make_display_options_dropdown,
     make_simple_link,
     make_form_submit_link,
     make_simple_form_page_menu,
@@ -79,6 +78,9 @@ from cmk.gui.plugins.wato import (
     ConfigHostname,
     HostTagCondition,
     DictHostTagCondition,
+    mode_url,
+    flash,
+    redirect,
 )
 
 from cmk.gui.plugins.wato.utils import LabelCondition
@@ -394,6 +396,21 @@ class ModeRulesetGroup(ABCRulesetMode):
     def name(cls):
         return "rulesets"
 
+    # pylint does not understand this overloading
+    @overload
+    @classmethod
+    def mode_url(cls, *, group: str) -> str:  # pylint: disable=arguments-differ
+        ...
+
+    @overload
+    @classmethod
+    def mode_url(cls, **kwargs: str) -> str:
+        ...
+
+    @classmethod
+    def mode_url(cls, **kwargs: str) -> str:
+        return super().mode_url(**kwargs)
+
     def _from_vars(self):
         super()._from_vars()
         if not self._group_name:
@@ -415,11 +432,8 @@ class ModeRulesetGroup(ABCRulesetMode):
         )
 
     def _breadcrumb_url(self) -> str:
-        return makeuri_contextless(
-            request,
-            [("mode", self.name()), ("group", self._group_name)],
-            filename="wato.py",
-        )
+        assert self._group_name is not None
+        return self.mode_url(group=self._group_name)
 
     def _get_page_type(self, search_options: Dict[str, str]) -> PageType:
         return PageType.RulesetGroup
@@ -451,8 +465,9 @@ class ModeRulesetGroup(ABCRulesetMode):
                 ),
             ],
             breadcrumb=breadcrumb,
+            inpage_search=PageMenuSearch(default_value=self._search_options.get("fulltext", ""),
+                                         placeholder=_("Filter")),
         )
-        self._extend_display_dropdown(menu)
         return menu
 
     def _page_menu_entries_related(self) -> Iterable[PageMenuEntry]:
@@ -486,21 +501,6 @@ class ModeRulesetGroup(ABCRulesetMode):
         yield _page_menu_entry_rule_search()
 
         yield from _page_menu_entries_predefined_searches()
-
-    def _extend_display_dropdown(self, menu: PageMenu) -> None:
-        display_dropdown = menu.get_dropdown_by_name("display", make_display_options_dropdown())
-        display_dropdown.topics.insert(
-            0,
-            PageMenuTopic(
-                title=_("Filter"),
-                entries=[
-                    PageMenuEntry(
-                        title="",
-                        icon_name="trans",
-                        item=PageMenuSearch(default_value=self._search_options.get("fulltext", "")),
-                    )
-                ],
-            ))
 
 
 def _page_menu_entry_predefined_conditions() -> PageMenuEntry:
@@ -585,6 +585,21 @@ class ModeEditRuleset(WatoMode):
     @classmethod
     def parent_mode(cls) -> Optional[Type[WatoMode]]:
         return ModeRulesetGroup
+
+    # pylint does not understand this overloading
+    @overload
+    @classmethod
+    def mode_url(cls, *, varname: str) -> str:  # pylint: disable=arguments-differ
+        ...
+
+    @overload
+    @classmethod
+    def mode_url(cls, **kwargs: str) -> str:
+        ...
+
+    @classmethod
+    def mode_url(cls, **kwargs: str) -> str:
+        return super().mode_url(**kwargs)
 
     def breadcrumb(self) -> Breadcrumb:
         # To be able to calculate the breadcrumb with the ModeRulesetGroup as parent, we need to
@@ -695,11 +710,7 @@ class ModeEditRuleset(WatoMode):
             pass
 
     def _breadcrumb_url(self) -> str:
-        return makeuri_contextless(
-            request,
-            [("mode", self.name()), ("varname", self._name)],
-            filename="wato.py",
-        )
+        return self.mode_url(varname=self._name)
 
     def title(self) -> str:
         assert self._rulespec.title is not None
@@ -796,7 +807,7 @@ class ModeEditRuleset(WatoMode):
                 rulesets.save()
                 return None
             if c is False:  # not yet confirmed
-                return ""
+                return FinalizeRequest(code=200)
             return None  # browser reload
 
         if not html.check_transaction():
@@ -1417,7 +1428,7 @@ class ABCEditRuleMode(WatoMode):
 
     def action(self) -> ActionResult:
         if not html.check_transaction():
-            return self._back_mode
+            return redirect(mode_url(self._back_mode, folder=watolib.Folder.current().path()))
 
         self._update_rule_from_vars()
 
@@ -1428,7 +1439,8 @@ class ABCEditRuleMode(WatoMode):
         new_rule_folder.need_permission("write")
 
         if html.request.has_var("_export_rule"):
-            return "edit_rule"
+            return redirect(
+                mode_url("edit_rule", varname=self._name, folder=watolib.Folder.current().path()))
 
         if new_rule_folder == self._folder:
             self._rule.folder = new_rule_folder
@@ -1455,7 +1467,8 @@ class ABCEditRuleMode(WatoMode):
                 (self._ruleset.title(), self._folder.alias_path(), new_rule_folder.alias_path()),
                 sites=affected_sites)
 
-        return (self._back_mode, self._success_message())
+        flash(self._success_message())
+        return redirect(mode_url(self._back_mode, folder=watolib.Folder.current().path()))
 
     def _update_rule_from_vars(self):
         # Additional options

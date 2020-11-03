@@ -55,22 +55,27 @@ def authenticate(request: Request) -> Iterator[bool]:
     automation secret authentication."""
 
     user_id = _check_auth(request)
+    if not user_id:
+        yield False
+        return
 
+    with UserContext(user_id):
+        yield True
+
+
+@contextlib.contextmanager
+def UserContext(user_id: UserId) -> Iterator[None]:
+    """Managing authenticated user context
+
+    After the user has been authenticated, initialize the global user object.
+    Also cleanup when leaving"""
     try:
-        if user_id:
-            login(user_id)
-            yield True
-        else:
-            yield False
+        config.set_user_by_id(user_id)
+        yield
     finally:
         html.transaction_manager.store_new()
+        userdb.on_end_of_request(user_id)
         config.clear_user_login()
-
-
-def login(user_id: UserId) -> None:
-    """After the user has been authenticated, tell the different components
-    of the GUI which user is authenticated."""
-    config.set_user_by_id(user_id)
 
 
 def auth_cookie_name() -> str:
@@ -170,18 +175,25 @@ def _create_auth_session(username: UserId, session_id: str) -> None:
 
 
 def update_auth_cookie(username: UserId) -> None:
-    _set_auth_cookie(username, _get_session_id_from_cookie(username))
+    """Is called during password change to set a new cookie
+
+    We are not able to validate the old cookie value here since the password was already changed
+    on the server side. Skip validation in this case, this is fine. The cookie was valdiated
+    before accessing this page.
+    """
+    _set_auth_cookie(username, _get_session_id_from_cookie(username, revalidate_cookie=False))
 
 
 def _set_auth_cookie(username: UserId, session_id: str) -> None:
     html.response.set_http_cookie(auth_cookie_name(), _auth_cookie_value(username, session_id))
 
 
-def _get_session_id_from_cookie(username: UserId) -> str:
+def _get_session_id_from_cookie(username: UserId, revalidate_cookie: bool) -> str:
     cookie_username, session_id, cookie_hash = _parse_auth_cookie(auth_cookie_name())
 
     # Has been checked before, but validate before using that information, just to be sure
-    _check_parsed_auth_cookie(username, session_id, cookie_hash)
+    if revalidate_cookie:
+        _check_parsed_auth_cookie(username, session_id, cookie_hash)
 
     if cookie_username != username:
         auth_logger.error("Invalid session: (User: %s, Session: %s)", username, session_id)
@@ -547,7 +559,7 @@ class LogoutPage(Page):
 
         _invalidate_auth_session()
 
-        session_id = _get_session_id_from_cookie(config.user.id)
+        session_id = _get_session_id_from_cookie(config.user.id, revalidate_cookie=True)
         userdb.on_logout(config.user.id, session_id)
 
         if auth_type == 'cookie':

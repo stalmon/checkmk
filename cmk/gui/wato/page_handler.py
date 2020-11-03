@@ -5,7 +5,7 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 
 import inspect
-from typing import List, Tuple, Type, Union
+from typing import List, Tuple, Type
 
 import cmk.utils.version as cmk_version
 import cmk.utils.store as store
@@ -16,8 +16,8 @@ from cmk.gui.type_defs import PermissionName
 from cmk.gui.display_options import display_options
 from cmk.gui.i18n import _
 from cmk.gui.globals import html
-from cmk.gui.exceptions import MKGeneralException, MKAuthException, MKUserError, FinalizeRequest
-from cmk.gui.utils.html import HTML
+from cmk.gui.exceptions import (MKGeneralException, MKAuthException, MKUserError, FinalizeRequest)
+from cmk.gui.utils.flashed_messages import get_flashed_messages
 from cmk.gui.plugins.wato.utils.html_elements import (
     wato_html_head,
     wato_html_footer,
@@ -112,7 +112,6 @@ def _wato_page_handler(current_mode: str, mode_permissions: List[PermissionName]
     mode = mode_class()
 
     # Do actions (might switch mode)
-    action_message: Union[None, str, HTML] = None
     if html.is_transaction():
         try:
             config.user.need_permission("wato.edit")
@@ -127,60 +126,26 @@ def _wato_page_handler(current_mode: str, mode_permissions: List[PermissionName]
             ) and not cmk.gui.watolib.read_only.may_override():
                 raise MKUserError(None, cmk.gui.watolib.read_only.message())
 
-            # TODO: Cleanup this special API. We could make things a lot clearer if we'd replace
-            # the type dispatching with something more meaningful.
-            #
-            # * result='newmode' could be replaced with raising a HTTPRedirect() exception.
-            # * result=('newmode', 'msg') could be replaced with raising a HTTPRedirect()
-            #   exception. But we also need to transport the result message to the destination
-            #   page somehow. Flask uses signed session cookies for that, check whether or not
-            #   this could be an approach for us.
-            #
-            # Using exceptions here is still not ideal, but better than before, because it
-            # clarifies the intend using a generic mechanism. Better would be to use a result type
-            # and return it, like flask is doing it. But that would need a larger refactoring of
-            # the GUI page processing logic.
             result = mode.action()
-            if isinstance(result, tuple):
-                newmode, action_message = result
-            else:
-                newmode = result
+            if isinstance(result, (tuple, str, bool)):
+                raise MKGeneralException("WatoMode %s returns unsupported return value: %s" %
+                                         result)
 
             # We assume something has been modified and increase the config generation ID by one.
             update_config_generation()
 
-            # Immediately abort.  This is e.g. the case, if the page outputted non-HTML data, such
-            # as a tarball (in the export function). We must be sure not to output *any* further
-            # data in that case.
-            if isinstance(newmode, FinalizeRequest):
-                raise newmode
-
-            # if newmode is not None, then the mode has been changed
-            if newmode is not None:
-                if newmode == "":  # no further information: configuration dialog, etc.
-                    if action_message:
-                        html.show_message(action_message)
-                        wato_html_footer()
-                    return
-                mode_permissions, mode_class = _get_mode_permission_and_class(newmode)
-                current_mode = newmode
-                mode = mode_class()
-                html.request.set_var("mode", newmode)  # will be used by makeuri
-
-                # Check general permissions for the new mode
-                if mode_permissions is not None and not config.user.may("wato.seeall"):
-                    for pname in mode_permissions:
-                        if '.' not in pname:
-                            pname = "wato." + pname
-                        config.user.need_permission(pname)
+            # Handle two cases:
+            # a) Don't render the page content after action
+            #    (a confirm dialog is displayed by the action, or a non-HTML content was sent)
+            # b) Redirect to another page
+            if isinstance(result, FinalizeRequest):
+                raise result
 
         except MKUserError as e:
-            action_message = "%s" % e
-            html.add_user_error(e.varname, action_message)
+            html.add_user_error(e.varname, str(e))
 
         except MKAuthException as e:
             reason = e.args[0]
-            action_message = reason
             html.add_user_error(None, reason)
 
     breadcrumb = make_main_menu_breadcrumb(mode.main_menu()) + mode.breadcrumb()
@@ -195,11 +160,13 @@ def _wato_page_handler(current_mode: str, mode_permissions: List[PermissionName]
                                      cmk.gui.watolib.read_only.may_override()):
         _show_read_only_warning()
 
-    # Show outcome of action
+    # Show outcome of failed action on this page
     if html.has_user_errors():
         html.show_user_errors()
-    elif action_message:
-        html.show_message(action_message)
+
+    # Show outcome of previous page (that redirected to this one)
+    for message in get_flashed_messages():
+        html.show_message(message)
 
     # Show content
     mode.handle_page()

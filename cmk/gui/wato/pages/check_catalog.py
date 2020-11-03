@@ -11,7 +11,7 @@ the global settings.
 """
 
 import re
-from typing import Set, List, Dict, Any, Tuple, Optional, Type
+from typing import Set, List, Dict, Any, Tuple, Optional, Type, overload
 
 from six import ensure_str
 
@@ -34,7 +34,6 @@ from cmk.gui.page_menu import (
     PageMenuEntry,
     PageMenuSearch,
     make_simple_link,
-    make_display_options_dropdown,
 )
 
 from cmk.gui.valuespec import (
@@ -74,23 +73,9 @@ class ModeCheckPlugins(WatoMode):
 
     def page_menu(self, breadcrumb: Breadcrumb) -> PageMenu:
         menu = super().page_menu(breadcrumb)
-        self._extend_display_dropdown(menu)
+        menu.inpage_search = PageMenuSearch(target_mode="check_plugin_search",
+                                            placeholder=_("Search"))
         return menu
-
-    def _extend_display_dropdown(self, menu: PageMenu) -> None:
-        display_dropdown = menu.get_dropdown_by_name("display", make_display_options_dropdown())
-        display_dropdown.topics.insert(
-            0,
-            PageMenuTopic(
-                title=_("Search for check plugins"),
-                entries=[
-                    PageMenuEntry(
-                        title="",
-                        icon_name="trans",
-                        item=PageMenuSearch(target_mode="check_plugin_search"),
-                    ),
-                ],
-            ))
 
     def page(self):
         html.help(
@@ -200,6 +185,21 @@ class ModeCheckPluginTopic(WatoMode):
     def parent_mode(cls) -> Optional[Type[WatoMode]]:
         return ModeCheckPlugins
 
+    # pylint does not understand this overloading
+    @overload
+    @classmethod
+    def mode_url(cls, *, topic: str) -> str:  # pylint: disable=arguments-differ
+        ...
+
+    @overload
+    @classmethod
+    def mode_url(cls, **kwargs: str) -> str:
+        ...
+
+    @classmethod
+    def mode_url(cls, **kwargs: str) -> str:
+        return super().mode_url(**kwargs)
+
     def breadcrumb(self) -> Breadcrumb:
         """Add each individual level of the catalog topics as single breadcrumb item"""
         parent_cls = self.parent_mode()
@@ -211,11 +211,7 @@ class ModeCheckPluginTopic(WatoMode):
 
     def _breadcrumb_url(self) -> str:
         """Ensure the URL is computed correctly when linking from man pages to the topic"""
-        return makeuri_contextless(
-            request,
-            [("mode", self.name()), ("topic", self._topic)],
-            filename="wato.py",
-        )
+        return self.mode_url(topic=self._topic)
 
     def _from_vars(self):
         self._topic = html.request.get_ascii_input_mandatory("topic", "")
