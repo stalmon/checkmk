@@ -28,7 +28,7 @@ msgstr " %s testenabc %sx"
 msgid " (%d times)"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:808
+#: ../cmk/gui/visuals.py:818
 msgid " (Copy)"
 msgstr " (Copiază)"
 
@@ -828,7 +828,7 @@ msgstr "%s regulă %s"
 msgid "%s: %s"
 msgstr ""
 
-#: ../cmk/utils/man_pages.py:455
+#: ../cmk/utils/man_pages.py:456
 #, python-format
 msgid "%s: Cannot parse man page: %s"
 msgstr ""
@@ -2686,7 +2686,7 @@ msgstr ""
 msgid "AWS/WAFV2 Web ACL Requests"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1437 ../cmk/gui/wato/pages/sites.py:669
+#: ../cmk/gui/pagetypes.py:1439 ../cmk/gui/wato/pages/sites.py:669
 #: ../cmk/gui/page_menu.py:439
 msgid "Abort"
 msgstr "Renunț"
@@ -3850,7 +3850,7 @@ msgstr "Adaugă informații despre contact"
 msgid "Add content"
 msgstr "Adaugă Conținut"
 
-#: ../cmk/gui/visuals.py:907
+#: ../cmk/gui/visuals.py:917
 #, fuzzy
 #| msgid "Add contact information"
 msgid "Add context information to title"
@@ -3906,7 +3906,7 @@ msgstr "Adaugă Excepție"
 msgid "Add files to be monitored"
 msgstr "Adaugă instanțe pentru monitorizare"
 
-#: ../cmk/gui/visuals.py:1429
+#: ../cmk/gui/visuals.py:1439
 msgid "Add filter"
 msgstr "Adaugă filtre"
 
@@ -4387,12 +4387,12 @@ msgstr "Perioada de timp Noua"
 msgid "Add time range"
 msgstr "Adaugă model/tipar"
 
-#: ../cmk/gui/visuals.py:1944
+#: ../cmk/gui/visuals.py:1954
 #, fuzzy
 msgid "Add to"
 msgstr "Adaugă Condiție"
 
-#: ../cmk/gui/visuals.py:1919
+#: ../cmk/gui/visuals.py:1929
 #, fuzzy, python-format
 msgid "Add to %s"
 msgstr "Adaugă Condiție"
@@ -4538,7 +4538,7 @@ msgstr "Informații Adiționale"
 msgid "Additional Plugin Output"
 msgstr "Output adițional de la Plugin"
 
-#: ../cmk/gui/visuals.py:1544
+#: ../cmk/gui/visuals.py:1554
 #, fuzzy
 #| msgid "Additional options"
 msgid "Additional context"
@@ -6346,7 +6346,7 @@ msgstr ""
 msgid "Analyse predictive monitoring for this service"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1756 ../cmk/gui/wato/pages/tags.py:152
+#: ../cmk/gui/pagetypes.py:1758 ../cmk/gui/wato/pages/tags.py:152
 #, fuzzy
 #| msgid "Analyse"
 msgid "Analyze"
@@ -6585,7 +6585,7 @@ msgstr "Numele Aplicatiei"
 msgid "Application pending requests"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1775 ../cmk/gui/wato/pages/check_catalog.py:342
+#: ../cmk/gui/pagetypes.py:1777 ../cmk/gui/wato/pages/check_catalog.py:342
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:438
 #: ../cmk/gui/plugins/wato/datasource_programs.py:110
 #, fuzzy
@@ -6627,7 +6627,7 @@ msgstr ""
 msgid "Apply Lag Minimum Time"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1588
+#: ../cmk/gui/visuals.py:1598
 #, fuzzy
 #| msgid "Add filter"
 msgid "Apply filters"
@@ -7986,8 +7986,8 @@ msgstr ""
 msgid "BOUND"
 msgstr ""
 
-#: ../cmk/gui/plugins/wato/background_job.py:143 ../cmk/utils/man_pages.py:398
-#: ../cmk/utils/man_pages.py:417
+#: ../cmk/gui/plugins/wato/background_job.py:143 ../cmk/utils/man_pages.py:399
+#: ../cmk/utils/man_pages.py:418
 msgid "Back"
 msgstr ""
 
@@ -8832,12 +8832,12 @@ msgstr ""
 msgid "Bus Speed"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1768 ../cmk/gui/plugins/wato/bi_config.py:111
+#: ../cmk/gui/pagetypes.py:1770 ../cmk/gui/plugins/wato/bi_config.py:111
 #: ../cmk/gui/plugins/wato/bi_config.py:174
 msgid "Business Intelligence"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1914
+#: ../cmk/gui/pagetypes.py:1916
 msgid "Business reporting"
 msgstr ""
 
@@ -8886,11 +8886,11 @@ msgstr ""
 msgid "But you are not a member of any contact group."
 msgstr ""
 
-#: ../cmk/gui/visuals.py:943
+#: ../cmk/gui/visuals.py:953
 msgid "Button Icon"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:938
+#: ../cmk/gui/visuals.py:948
 msgid "Button Text"
 msgstr ""
 
@@ -11676,7 +11676,7 @@ msgstr ""
 msgid "Clone"
 msgstr ""
 
-#: ../cmk/gui/cee/reporting.py:1128 ../cmk/gui/visuals.py:838
+#: ../cmk/gui/cee/reporting.py:1128 ../cmk/gui/visuals.py:848
 #, python-format
 msgid "Clone %s"
 msgstr ""
@@ -11752,7 +11752,7 @@ msgstr "Adaungă un nou element"
 msgid "Clone this schedule entry"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1690
+#: ../cmk/gui/pagetypes.py:1692
 msgid "Clone topic"
 msgstr ""
 
@@ -13401,7 +13401,7 @@ msgid "Context"
 msgstr ""
 
 #: ../cmk/gui/cee/reporting.py:1215 ../cmk/gui/cee/reporting.py:1689
-#: ../cmk/gui/visuals.py:752
+#: ../cmk/gui/visuals.py:762
 msgid "Context / Search Filters"
 msgstr ""
 
@@ -13919,7 +13919,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:633 ../cmk/gui/visuals.py:840
+#: ../cmk/gui/visuals.py:633 ../cmk/gui/visuals.py:850
 #, python-format
 msgid "Create %s"
 msgstr ""
@@ -14199,7 +14199,7 @@ msgstr ""
 msgid "Create the following interface groups"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1691
+#: ../cmk/gui/pagetypes.py:1693
 msgid "Create topic"
 msgstr ""
 
@@ -16106,7 +16106,7 @@ msgid ""
 "layout specified here as its layout for this customer."
 msgstr ""
 
-#: ../cmk/gui/cme/plugins/wato/managed.py:725 ../cmk/gui/pagetypes.py:1322
+#: ../cmk/gui/cme/plugins/wato/managed.py:725 ../cmk/gui/pagetypes.py:1324
 #, fuzzy
 msgid "Customize"
 msgstr "Atribute personalizate"
@@ -16531,8 +16531,8 @@ msgstr ""
 msgid "Dashboard Properties"
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:238 ../cmk/gui/pagetypes.py:1342
-#: ../cmk/gui/pagetypes.py:1857 ../cmk/gui/plugins/sidebar/dashboards.py:30
+#: ../cmk/gui/dashboard.py:238 ../cmk/gui/pagetypes.py:1344
+#: ../cmk/gui/pagetypes.py:1859 ../cmk/gui/plugins/sidebar/dashboards.py:30
 msgid "Dashboards"
 msgstr ""
 
@@ -18084,7 +18084,7 @@ msgstr ""
 #: ../cmk/gui/wato/pages/check_catalog.py:492
 #: ../cmk/gui/wato/pages/rulesets.py:1030
 #: ../cmk/gui/wato/pages/rulesets.py:1236 ../cmk/gui/wato/pages/ldap.py:191
-#: ../cmk/gui/crash_reporting.py:544 ../cmk/gui/visuals.py:934
+#: ../cmk/gui/crash_reporting.py:544 ../cmk/gui/visuals.py:944
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:137
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:159
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:181
@@ -19736,7 +19736,7 @@ msgstr ""
 msgid "Do not send to remote host"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:872
+#: ../cmk/gui/visuals.py:882
 #, python-format
 msgid "Do not show a context button to this %s"
 msgstr ""
@@ -20808,7 +20808,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: ../cmk/gui/cee/reporting.py:1118 ../cmk/gui/visuals.py:842
+#: ../cmk/gui/cee/reporting.py:1118 ../cmk/gui/visuals.py:852
 #, python-format
 msgid "Edit %s"
 msgstr ""
@@ -21193,7 +21193,7 @@ msgstr ""
 msgid "Edit time period"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1692
+#: ../cmk/gui/pagetypes.py:1694
 msgid "Edit topic"
 msgstr ""
 
@@ -21989,7 +21989,7 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: ../cmk/utils/man_pages.py:398
+#: ../cmk/utils/man_pages.py:399
 msgid "Enter"
 msgstr ""
 
@@ -22291,7 +22291,7 @@ msgstr "randuri"
 msgid "Event"
 msgstr ""
 
-#: ../cmk/gui/views.py:1270 ../cmk/gui/pagetypes.py:1762
+#: ../cmk/gui/views.py:1270 ../cmk/gui/pagetypes.py:1764
 #: ../cmk/gui/wato/mkeventd.py:1202 ../cmk/gui/wato/mkeventd.py:3039
 #: ../cmk/gui/wato/mkeventd.py:4043 ../cmk/gui/mkeventd.py:130
 #: ../cmk/gui/plugins/wato/omd_configuration.py:167
@@ -23182,7 +23182,7 @@ msgstr ""
 
 #: ../cmk/gui/cee/plugins/metrics/graphs.py:878 ../cmk/gui/views.py:738
 #: ../cmk/gui/wato/pages/audit_log.py:75 ../cmk/gui/wato/pages/audit_log.py:78
-#: ../cmk/gui/visuals.py:1926 ../cmk/gui/plugins/sidebar/views.py:47
+#: ../cmk/gui/visuals.py:1936 ../cmk/gui/plugins/sidebar/views.py:47
 #: ../cmk/gui/plugins/sidebar/dashboards.py:42
 #: ../cmk/gui/plugins/views/availability.py:393
 #, fuzzy
@@ -23203,11 +23203,11 @@ msgstr ""
 msgid "Export List of Software packages as CSV file"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1929
+#: ../cmk/gui/visuals.py:1939
 msgid "Export as JSON"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1934
+#: ../cmk/gui/visuals.py:1944
 msgid "Export as PNG"
 msgstr ""
 
@@ -24282,7 +24282,7 @@ msgid "Filtering and computation options"
 msgstr ""
 
 #: ../cmk/gui/cee/plugins/metrics/customgraphs.py:544
-#: ../cmk/gui/visuals.py:1428 ../cmk/gui/plugins/sidebar/host_matrix.py:40
+#: ../cmk/gui/visuals.py:1438 ../cmk/gui/plugins/sidebar/host_matrix.py:40
 msgid "Filters"
 msgstr ""
 
@@ -24813,7 +24813,7 @@ msgstr ""
 msgid "For these states:"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1409
+#: ../cmk/gui/pagetypes.py:1411
 #, fuzzy, python-format
 #| msgid "%s this site"
 msgid "For this %s"
@@ -25459,7 +25459,7 @@ msgstr ""
 msgid "Gbit/s"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1896 ../cmk/base/diagnostics.py:336
+#: ../cmk/gui/pagetypes.py:1898 ../cmk/base/diagnostics.py:336
 msgid "General"
 msgstr ""
 
@@ -25474,7 +25474,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/alert_handling.py:363
 #: ../cmk/gui/cee/plugins/wato/alert_handling.py:368
 #: ../cmk/gui/pagetypes.py:138 ../cmk/gui/pagetypes.py:489
-#: ../cmk/gui/pagetypes.py:1251 ../cmk/gui/visuals.py:885
+#: ../cmk/gui/pagetypes.py:1251 ../cmk/gui/visuals.py:895
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1396
 #: ../cmk/gui/plugins/wato/utils/simple_modes.py:337
 msgid "General Properties"
@@ -25828,7 +25828,7 @@ msgid "Graphic Cards"
 msgstr ""
 
 #: ../cmk/gui/dashboard.py:781 ../cmk/gui/cee/plugins/metrics/graphs.py:818
-#: ../cmk/gui/pagetypes.py:1908 ../cmk/gui/plugins/views/graphs.py:59
+#: ../cmk/gui/pagetypes.py:1910 ../cmk/gui/plugins/views/graphs.py:59
 #: ../cmk/gui/plugins/views/graphs.py:87
 msgid "Graphs"
 msgstr ""
@@ -27268,7 +27268,7 @@ msgstr ""
 msgid "Hide the Checkmk version from the login box"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:866
+#: ../cmk/gui/visuals.py:876
 #, python-format
 msgid "Hide this %s from the sidebar"
 msgstr ""
@@ -27322,7 +27322,7 @@ msgstr ""
 msgid "Historic messages"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1750 ../cmk/gui/plugins/views/mobile.py:564
+#: ../cmk/gui/pagetypes.py:1752 ../cmk/gui/plugins/views/mobile.py:564
 #: ../cmk/gui/plugins/views/builtin.py:2410
 #: ../cmk/gui/plugins/views/availability.py:442
 msgid "History"
@@ -29186,7 +29186,7 @@ msgstr ""
 msgid "ISC DHCP-Daemon (Linux)"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1707 ../cmk/gui/pagetypes.py:1725
+#: ../cmk/gui/pagetypes.py:1709 ../cmk/gui/pagetypes.py:1727
 #: ../cmk/gui/wato/pages/icons.py:66 ../cmk/gui/wato/pages/icons.py:72
 #: ../cmk/gui/wato/pages/icons.py:163
 #: ../cmk/gui/plugins/sidebar/bookmarks.py:109
@@ -29805,7 +29805,7 @@ msgid ""
 "total number of failures and the number of failures in this given timeframe."
 msgstr ""
 
-#: ../cmk/gui/visuals.py:939
+#: ../cmk/gui/visuals.py:949
 #, python-format
 msgid ""
 "If you define a text here, then it will be used in context buttons linking "
@@ -31817,7 +31817,7 @@ msgstr " Parametrul este: %r"
 msgid "Invalid login credentials."
 msgstr ""
 
-#: ../cmk/utils/man_pages.py:320
+#: ../cmk/utils/man_pages.py:321
 msgid "Invalid man page: Failed to get the title"
 msgstr ""
 
@@ -32045,7 +32045,7 @@ msgstr "Activare schimbări"
 msgid "Inventorized check"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1781 ../cmk/gui/plugins/views/inventory.py:163
+#: ../cmk/gui/pagetypes.py:1783 ../cmk/gui/plugins/views/inventory.py:163
 #: ../cmk/gui/plugins/views/inventory.py:193
 #: ../cmk/gui/plugins/views/inventory.py:797
 #: ../cmk/gui/plugins/views/inventory.py:852
@@ -34400,7 +34400,7 @@ msgstr ""
 msgid "Linux-User:"
 msgstr "Utilizator nou"
 
-#: ../cmk/gui/pagetypes.py:1425
+#: ../cmk/gui/pagetypes.py:1427
 msgid "List"
 msgstr ""
 
@@ -36121,7 +36121,7 @@ msgid ""
 "Messages not having a facility are classified as <tt>user</tt>."
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:493 ../cmk/gui/pagetypes.py:1375
+#: ../cmk/gui/pagetypes.py:493 ../cmk/gui/pagetypes.py:1377
 #, python-format
 msgid "Make this %s available for other users"
 msgstr ""
@@ -36149,7 +36149,7 @@ msgstr ""
 msgid "Makes the icon appear in the column instead of the dropdown menu."
 msgstr ""
 
-#: ../cmk/utils/man_pages.py:397 ../cmk/utils/man_pages.py:416
+#: ../cmk/utils/man_pages.py:398 ../cmk/utils/man_pages.py:417
 msgid "Man Page Browser"
 msgstr ""
 
@@ -36224,7 +36224,7 @@ msgstr "Statusul Serverului"
 msgid "Managers"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1536
+#: ../cmk/gui/visuals.py:1546
 #, fuzzy
 #| msgid "without context"
 msgid "Mandatory context"
@@ -38077,7 +38077,7 @@ msgstr ""
 msgid "Missing Prerequisite"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1733
+#: ../cmk/gui/visuals.py:1743
 #, python-format
 msgid ""
 "Missing context information: %s. You can either add this as a fixed setting, "
@@ -38542,7 +38542,7 @@ msgstr "Afectat de serviciu"
 
 #: ../cmk/gui/logwatch.py:218 ../cmk/gui/logwatch.py:382
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:1026
-#: ../cmk/gui/pagetypes.py:1738 ../cmk/gui/wato/pages/check_catalog.py:459
+#: ../cmk/gui/pagetypes.py:1740 ../cmk/gui/wato/pages/check_catalog.py:459
 #: ../cmk/gui/wato/pages/pattern_editor.py:99 ../cmk/gui/crash_reporting.py:256
 #: ../cmk/gui/plugins/views/availability.py:380
 #, fuzzy
@@ -39942,7 +39942,7 @@ msgstr "Nume nou"
 msgid "New stored report"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1693
+#: ../cmk/gui/pagetypes.py:1695
 #, fuzzy
 msgid "New topic"
 msgstr "Grup nou"
@@ -40875,7 +40875,7 @@ msgstr ""
 msgid "Not responding devices"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1704
+#: ../cmk/gui/visuals.py:1714
 msgid "Not restricted to showing a specific object."
 msgstr ""
 
@@ -42822,7 +42822,7 @@ msgid "Only show services in this states"
 msgstr ""
 "Arata doar elementele si serviciile pentru care utilizatorul este contact"
 
-#: ../cmk/gui/pagetypes.py:383 ../cmk/gui/visuals.py:927
+#: ../cmk/gui/pagetypes.py:383 ../cmk/gui/visuals.py:937
 #, fuzzy, python-format
 #| msgid "Only show hosts and services the user is a contact for"
 msgid "Only show the %s if show more is active"
@@ -43307,7 +43307,7 @@ msgid "Original host name when host name has been rewritten, empty otherwise"
 msgstr ""
 
 #: ../cmk/gui/dashboard.py:797 ../cmk/gui/valuespec.py:3349
-#: ../cmk/gui/cme/plugins/views/managed.py:497 ../cmk/gui/pagetypes.py:1788
+#: ../cmk/gui/cme/plugins/views/managed.py:497 ../cmk/gui/pagetypes.py:1790
 #: ../cmk/gui/plugins/metrics/checkmk.py:281
 #: ../cmk/gui/plugins/views/mobile.py:618
 #: ../cmk/gui/plugins/views/mobile.py:659
@@ -43663,7 +43663,7 @@ msgstr ""
 msgid "Oversubscribed"
 msgstr ""
 
-#: ../cmk/gui/cme/plugins/dashboard/managed.py:214 ../cmk/gui/pagetypes.py:1732
+#: ../cmk/gui/cme/plugins/dashboard/managed.py:214 ../cmk/gui/pagetypes.py:1734
 #: ../cmk/gui/wato/pages/roles.py:119 ../cmk/gui/plugins/dashboard/utils.py:670
 msgid "Overview"
 msgstr ""
@@ -46649,7 +46649,7 @@ msgid ""
 "log/web.log</tt> for further information."
 msgstr ""
 
-#: ../cmk/gui/sidebar.py:626 ../cmk/gui/pagetypes.py:1744
+#: ../cmk/gui/sidebar.py:626 ../cmk/gui/pagetypes.py:1746
 #: ../cmk/gui/plugins/sidebar/tactical_overview.py:161
 msgid "Problems"
 msgstr "Probleme"
@@ -47074,11 +47074,11 @@ msgstr ""
 msgid "Publish %s to foreign contact groups"
 msgstr "<i>%d mai multe grupuri de contact</i><br>"
 
-#: ../cmk/gui/pagetypes.py:1378
+#: ../cmk/gui/pagetypes.py:1380
 msgid "Publish to all users"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1379 ../cmk/gui/pagetypes.py:1382
+#: ../cmk/gui/pagetypes.py:1381 ../cmk/gui/pagetypes.py:1384
 msgid "Publish to members of contact groups"
 msgstr ""
 
@@ -47346,7 +47346,7 @@ msgstr ""
 msgid "Quiet cache"
 msgstr ""
 
-#: ../cmk/utils/man_pages.py:398
+#: ../cmk/utils/man_pages.py:399
 msgid "Quit"
 msgstr ""
 
@@ -48328,7 +48328,7 @@ msgstr "sesiuni"
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:1019
 #: ../cmk/gui/cee/reporting.py:1069 ../cmk/gui/cee/reporting.py:1509
 #: ../cmk/gui/cee/reporting.py:2473 ../cmk/gui/sidebar.py:914
-#: ../cmk/gui/pagetypes.py:1319 ../cmk/gui/wato/mkeventd.py:1634
+#: ../cmk/gui/pagetypes.py:1321 ../cmk/gui/wato/mkeventd.py:1634
 #: ../cmk/gui/wato/mkeventd.py:2001 ../cmk/gui/wato/mkeventd.py:2132
 #: ../cmk/gui/wato/mkeventd.py:2268 ../cmk/gui/wato/mkeventd.py:2391
 #: ../cmk/gui/wato/mkeventd.py:2561 ../cmk/gui/wato/mkeventd.py:2740
@@ -48592,7 +48592,7 @@ msgstr ""
 msgid "Remove files and subdirectories managed by the Checkmk agent"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1430
+#: ../cmk/gui/visuals.py:1440
 #, fuzzy
 msgid "Remove filter"
 msgstr "Adaugă filtre"
@@ -49100,8 +49100,8 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/metrics/graphs.py:881
 #: ../cmk/gui/cee/plugins/reporting/utils.py:56 ../cmk/gui/cee/reporting.py:663
 #: ../cmk/gui/cee/reporting.py:995 ../cmk/gui/cee/reporting.py:2489
-#: ../cmk/gui/views.py:745 ../cmk/gui/pagetypes.py:1357
-#: ../cmk/gui/pagetypes.py:1867 ../cmk/gui/plugins/views/availability.py:400
+#: ../cmk/gui/views.py:745 ../cmk/gui/pagetypes.py:1359
+#: ../cmk/gui/pagetypes.py:1869 ../cmk/gui/plugins/views/availability.py:400
 msgid "Reports"
 msgstr ""
 
@@ -49250,7 +49250,7 @@ msgid "Reserved space"
 msgstr "spatiu utilizat"
 
 #: ../cmk/gui/werks.py:197 ../cmk/gui/wato/pages/rulesets.py:1130
-#: ../cmk/gui/visuals.py:1583 ../cmk/gui/page_menu.py:722
+#: ../cmk/gui/visuals.py:1593 ../cmk/gui/page_menu.py:722
 #: ../cmk/gui/plugins/views/utils.py:266
 #: ../cmk/gui/plugins/views/availability.py:175
 #, fuzzy
@@ -50755,7 +50755,7 @@ msgstr "Salveaza configuratia manuala a verificarilor"
 msgid "Save & test"
 msgstr "Salveaza si Testeaza"
 
-#: ../cmk/gui/pagetypes.py:1431
+#: ../cmk/gui/pagetypes.py:1433
 #, fuzzy
 #| msgid "Save and go to "
 msgid "Save and go to list"
@@ -50765,7 +50765,7 @@ msgstr "Salveaza si mergi la"
 msgid "Save filters & go to designer"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1401
+#: ../cmk/gui/pagetypes.py:1403
 #, fuzzy, python-format
 #| msgid "Save and go to "
 msgid "Save this %s and go to"
@@ -53208,7 +53208,7 @@ msgstr ""
 msgid "Show MK Livestatus error messages"
 msgstr ""
 
-#: ../cmk/utils/man_pages.py:417
+#: ../cmk/utils/man_pages.py:418
 msgid "Show Manpage"
 msgstr ""
 
@@ -53397,12 +53397,12 @@ msgstr ""
 msgid "Show in user table"
 msgstr "Arata regulile de utilizator"
 
-#: ../cmk/gui/visuals.py:1636
+#: ../cmk/gui/visuals.py:1646
 #, python-format
 msgid "Show information of a single %s"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1702
+#: ../cmk/gui/visuals.py:1712
 msgid "Show information of single"
 msgstr ""
 
@@ -53441,7 +53441,7 @@ msgstr ""
 msgid "Show metric"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:382 ../cmk/gui/visuals.py:926
+#: ../cmk/gui/pagetypes.py:382 ../cmk/gui/visuals.py:936
 #, fuzzy
 #| msgid "show errors"
 msgid "Show more"
@@ -54680,8 +54680,8 @@ msgstr ""
 msgid "Sort by value"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:373 ../cmk/gui/pagetypes.py:1713
-#: ../cmk/gui/pagetypes.py:1726 ../cmk/gui/visuals.py:917
+#: ../cmk/gui/pagetypes.py:373 ../cmk/gui/pagetypes.py:1715
+#: ../cmk/gui/pagetypes.py:1728 ../cmk/gui/visuals.py:927
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:1109
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:1370
 msgid "Sort index"
@@ -54770,7 +54770,7 @@ msgstr ""
 msgid "Specific list of instances"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1640
+#: ../cmk/gui/visuals.py:1650
 msgid "Specific objects"
 msgstr ""
 
@@ -58110,7 +58110,7 @@ msgid ""
 "the LDAP server for user %s."
 msgstr ""
 
-#: ../cmk/gui/visuals.py:791
+#: ../cmk/gui/visuals.py:801
 #, python-format
 msgid "The %s does not exist."
 msgstr ""
@@ -58430,7 +58430,7 @@ msgstr ""
 msgid "The ID will be used do identify this schedule in URLs"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:893
+#: ../cmk/gui/visuals.py:903
 msgid ""
 "The ID will be used in URLs that point to a view, e.g. <tt>view.py?"
 "view_name=<b>myview</b></tt>. It will also be used internally for "
@@ -59934,7 +59934,7 @@ msgstr ""
 msgid "The identifier of the thermal sensor."
 msgstr ""
 
-#: ../cmk/gui/dashboard.py:1526 ../cmk/gui/visuals.py:834
+#: ../cmk/gui/dashboard.py:1526 ../cmk/gui/visuals.py:844
 #, python-format
 msgid "The info %s does not exist."
 msgstr ""
@@ -60453,7 +60453,7 @@ msgid ""
 "The name of the system must begin with <tt>VM</tt> or <tt>HostSystem</tt>."
 msgstr ""
 
-#: ../cmk/gui/visuals.py:901
+#: ../cmk/gui/visuals.py:911
 msgid "The name of the view may only contain letters, digits and underscores."
 msgstr ""
 
@@ -60473,7 +60473,7 @@ msgstr ""
 msgid "The name will be used in the service description"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:385 ../cmk/gui/visuals.py:929
+#: ../cmk/gui/pagetypes.py:385 ../cmk/gui/visuals.py:939
 #, python-format
 msgid ""
 "The navigation allows to hide items based on a show less / show more toggle. "
@@ -60970,7 +60970,7 @@ msgstr ""
 msgid "The requested %s does not exist"
 msgstr "Un utilizator cu id-ul \"%s\" nu există."
 
-#: ../cmk/gui/visuals.py:818
+#: ../cmk/gui/visuals.py:828
 #, fuzzy, python-format
 msgid "The requested %s does not exist."
 msgstr "Un utilizator cu id-ul \"%s\" nu există."
@@ -61783,7 +61783,7 @@ msgstr ""
 msgid "The value for %s must be between %d and %d"
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1628
+#: ../cmk/gui/visuals.py:1638
 #, python-format
 msgid "The value must be of type dict, but it has type %s"
 msgstr ""
@@ -62781,7 +62781,7 @@ msgid ""
 "consideration of data from June 1st till June 10th."
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1091 ../cmk/gui/visuals.py:1092
+#: ../cmk/gui/visuals.py:1101 ../cmk/gui/visuals.py:1102
 msgid "This filter cannot be displayed"
 msgstr ""
 
@@ -65765,7 +65765,7 @@ msgstr ""
 #: ../cmk/gui/wato/pages/tags.py:443 ../cmk/gui/wato/pages/tags.py:789
 #: ../cmk/gui/wato/pages/folders.py:1139
 #: ../cmk/gui/wato/pages/predefined_conditions.py:135 ../cmk/gui/visuals.py:574
-#: ../cmk/gui/visuals.py:904 ../cmk/gui/plugins/metrics/valuespecs.py:88
+#: ../cmk/gui/visuals.py:914 ../cmk/gui/plugins/metrics/valuespecs.py:88
 #: ../cmk/gui/plugins/sidebar/bookmarks.py:99
 #: ../cmk/gui/plugins/sidebar/tactical_overview.py:67
 #: ../cmk/gui/plugins/wato/graphs.py:41
@@ -65937,10 +65937,10 @@ msgstr ""
 msgid "Top of page handling"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:368 ../cmk/gui/pagetypes.py:1688
-#: ../cmk/gui/pagetypes.py:1702 ../cmk/gui/wato/pages/custom_attributes.py:241
+#: ../cmk/gui/pagetypes.py:368 ../cmk/gui/pagetypes.py:1690
+#: ../cmk/gui/pagetypes.py:1704 ../cmk/gui/wato/pages/custom_attributes.py:241
 #: ../cmk/gui/wato/pages/tags.py:345 ../cmk/gui/wato/pages/tags.py:391
-#: ../cmk/gui/wato/pages/tags.py:456 ../cmk/gui/visuals.py:912
+#: ../cmk/gui/wato/pages/tags.py:456 ../cmk/gui/visuals.py:922
 #: ../cmk/gui/plugins/sidebar/bookmarks.py:144
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:726
 msgid "Topic"
@@ -65950,7 +65950,7 @@ msgstr ""
 msgid "Topic:"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1689
+#: ../cmk/gui/pagetypes.py:1691
 msgid "Topics"
 msgstr ""
 
@@ -67577,7 +67577,7 @@ msgstr ""
 #: ../cmk/gui/backup.py:1217
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_oracle.py:253
 #: ../cmk/gui/cee/reporting.py:1614 ../cmk/gui/pagetypes.py:141
-#: ../cmk/gui/visuals.py:892 ../cmk/gui/plugins/wato/utils/simple_modes.py:348
+#: ../cmk/gui/visuals.py:902 ../cmk/gui/plugins/wato/utils/simple_modes.py:348
 #: ../cmk/gui/plugins/wato/utils/simple_modes.py:359
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2566
 msgid "Unique ID"
@@ -70563,7 +70563,7 @@ msgid "View:"
 msgstr ""
 
 #: ../cmk/gui/dashboard.py:777 ../cmk/gui/views.py:307
-#: ../cmk/gui/pagetypes.py:1335 ../cmk/gui/pagetypes.py:1849
+#: ../cmk/gui/pagetypes.py:1337 ../cmk/gui/pagetypes.py:1851
 #: ../cmk/gui/plugins/sidebar/views.py:35
 msgid "Views"
 msgstr ""
@@ -70655,7 +70655,7 @@ msgstr ""
 msgid "Virtualization"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:492 ../cmk/gui/visuals.py:945
+#: ../cmk/gui/pagetypes.py:492 ../cmk/gui/visuals.py:955
 msgid "Visibility"
 msgstr ""
 
@@ -70676,7 +70676,7 @@ msgstr ""
 msgid "Visual levels for the availability (OK percentage)"
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1902
+#: ../cmk/gui/pagetypes.py:1904
 #, fuzzy
 msgid "Visualization"
 msgstr "Dezactiveaza Notificarile"
@@ -73215,7 +73215,7 @@ msgid ""
 "configuration change."
 msgstr ""
 
-#: ../cmk/gui/visuals.py:908
+#: ../cmk/gui/visuals.py:918
 msgid ""
 "Whether or not additional information from the page context (filters) should "
 "be added to the title given above."
@@ -73999,7 +73999,7 @@ msgstr ""
 msgid "You are not allowed to delete this %s."
 msgstr ""
 
-#: ../cmk/gui/visuals.py:775
+#: ../cmk/gui/visuals.py:785
 #, python-format
 msgid "You are not allowed to edit %s."
 msgstr ""
@@ -74233,7 +74233,7 @@ msgid ""
 "then be shown under this category in the icon selector."
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:375 ../cmk/gui/visuals.py:919
+#: ../cmk/gui/pagetypes.py:375 ../cmk/gui/visuals.py:929
 #, python-format
 msgid ""
 "You can customize the order of the %s by changing this number. Lower numbers "
@@ -74241,7 +74241,7 @@ msgid ""
 "alphabetically."
 msgstr ""
 
-#: ../cmk/gui/pagetypes.py:1714
+#: ../cmk/gui/pagetypes.py:1716
 msgid ""
 "You can customize the order of the topics by changing this number. Lower "
 "numbers will be sorted first. Topics with the same number will be sorted "
@@ -75281,7 +75281,7 @@ msgstr ""
 msgid "Your %s element has been saved."
 msgstr ""
 
-#: ../cmk/gui/visuals.py:1024
+#: ../cmk/gui/visuals.py:1034
 #, python-format
 msgid "Your %s has been saved."
 msgstr ""
