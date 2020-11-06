@@ -6,6 +6,7 @@ import * as utils from "utils";
 import "element-closest-polyfill";
 import * as foldable_container from "foldable_container";
 import * as popup_menu from "popup_menu";
+import * as forms from "forms";
 
 // Closes the active page menu dropdown
 export function close_active_dropdown() {
@@ -156,13 +157,29 @@ export function toggle_suggestions() {
 }
 
 export function form_submit(form_name, button_name) {
-    var oForm = document.getElementById("form_" + form_name);
+    var form = document.getElementById("form_" + form_name);
     var field = document.createElement("input");
     field.type = "hidden";
     field.name = button_name;
     field.value = "SET";
-    oForm.appendChild(field);
-    oForm.submit();
+    form.appendChild(field);
+
+    // Submit and also trigger the onsubmit events (to e.g. trigger confirm dialogs).
+    // form.submit() alone does not do that.
+    //form.submit();
+    form.dispatchEvent(new Event("submit", {cancelable: true}));
+}
+
+// Helper for building form submit links after confirming a dialog
+export function confirmed_form_submit(form_name, button_name, message) {
+    forms.confirm_dialog(
+        {
+            html: message,
+        },
+        () => {
+            form_submit(form_name, button_name);
+        }
+    );
 }
 
 // Show / hide all entries of this group

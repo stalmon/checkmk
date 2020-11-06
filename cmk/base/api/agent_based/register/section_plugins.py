@@ -19,6 +19,7 @@ from cmk.snmplib.type_defs import OIDBytes, OIDSpec, SNMPTree  # pylint: disable
 from cmk.base.api.agent_based.type_defs import (
     AgentParseFunction,
     AgentSectionPlugin,
+    HostLabel,
     HostLabelFunction,
     SimpleSNMPParseFunction,
     SNMPParseFunction,
@@ -27,8 +28,6 @@ from cmk.base.api.agent_based.type_defs import (
     StringTable,
 )
 from cmk.base.api.agent_based.register.utils import validate_function_arguments
-
-from cmk.base.discovered_labels import HostLabel  # pylint: disable=cmk-module-layer-violation
 
 
 def _create_parse_annotation(
@@ -132,20 +131,20 @@ def _validate_detect_spec(detect_spec: SNMPDetectBaseType) -> None:
                       (expected_match,))
 
 
-def _validate_snmp_trees(trees: List[SNMPTree]) -> None:
-    type_error = TypeError(
-        "value of 'fetch' keyword must be SNMPTree or non-empty list of SNMPTrees")
-    if not isinstance(trees, list):
-        raise type_error
-    if not trees:
-        raise type_error
-    if any(not isinstance(element, SNMPTree) for element in trees):
-        raise type_error
+def _validate_type_list_snmp_trees(trees: List[SNMPTree]) -> None:
+    """Validate that we have a list of SNMPTree instances """
+    if isinstance(trees, list) and trees and all(isinstance(t, SNMPTree) for t in trees):
+        return
+    raise TypeError("value of 'fetch' keyword must be SNMPTree or non-empty list of SNMPTrees")
 
 
-def _noop_host_label_function(section: Any) -> Generator[HostLabel, None, None]:  # pylint: disable=unused-argument
-    return
-    yield  # pylint: disable=unreachable
+def _validate_fetch_spec(trees: List[SNMPTree]) -> None:
+    _validate_type_list_snmp_trees(trees)
+    # TODO: move validation of the elements of every tree here.
+
+
+def _noop_host_label_function(section: Any) -> Generator[HostLabel, None, None]:
+    yield from ()
 
 
 def _create_host_label_function(
@@ -254,7 +253,7 @@ def create_snmp_section_plugin(
 
     if validate_creation_kwargs:
         _validate_detect_spec(detect_spec)
-        _validate_snmp_trees(tree_list)
+        _validate_fetch_spec(tree_list)
 
         if parse_function is not None:
             needs_bytes = any(isinstance(oid, OIDBytes) for tree in tree_list for oid in tree.oids)

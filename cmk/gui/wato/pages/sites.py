@@ -54,7 +54,7 @@ from cmk.gui.pages import page_registry, AjaxPage
 from cmk.gui.plugins.wato.utils import mode_registry, sort_sites
 from cmk.gui.plugins.watolib.utils import config_variable_registry
 from cmk.gui.plugins.wato.utils.base_modes import WatoMode, ActionResult, redirect, mode_url
-from cmk.gui.plugins.wato.utils.html_elements import wato_html_head, wato_confirm
+from cmk.gui.plugins.wato.utils.html_elements import wato_html_head
 from cmk.gui.utils.flashed_messages import flash
 from cmk.gui.i18n import _
 from cmk.gui.globals import html, request
@@ -72,11 +72,7 @@ from cmk.gui.page_menu import (
 
 from cmk.gui.watolib.sites import is_livestatus_encrypted
 from cmk.gui.watolib.activate_changes import clear_site_replication_status
-from cmk.gui.wato.pages.global_settings import (
-    ABCGlobalSettingsMode,
-    ABCEditGlobalSettingMode,
-    is_a_checkbox,
-)
+from cmk.gui.wato.pages.global_settings import ABCGlobalSettingsMode, ABCEditGlobalSettingMode
 
 from cmk.gui.utils.urls import makeuri_contextless
 
@@ -516,7 +512,7 @@ class ModeDistributedMonitoring(WatoMode):
 
     def action(self) -> ActionResult:
         delete_id = html.request.get_ascii_input("_delete")
-        if delete_id and html.transaction_valid():
+        if delete_id and html.check_transaction():
             self._action_delete(delete_id)
 
         logout_id = html.request.get_ascii_input("_logout")
@@ -528,7 +524,8 @@ class ModeDistributedMonitoring(WatoMode):
             return self._action_login(login_id)
         return None
 
-    def _action_delete(self, delete_id):
+    # Mypy wants the explicit return, pylint does not like it.
+    def _action_delete(self, delete_id) -> ActionResult:  # pylint: disable=useless-return
         # TODO: Can we delete this ancient code? The site attribute is always available
         # these days and the following code does not seem to have any effect.
         configured_sites = self._site_mgmt.load_sites()
@@ -559,40 +556,21 @@ class ModeDistributedMonitoring(WatoMode):
                   "assigned to it. You can use the <a href=\"%s\">host "
                   "search</a> to get a list of the hosts.") % search_url)
 
-        c = wato_confirm(
-            _("Confirm deletion of site %s") % html.render_tt(delete_id),
-            _("Do you really want to delete the connection to the site %s?") %
-            html.render_tt(delete_id))
-        if c:
-            self._site_mgmt.delete_site(delete_id)
-            return None
-
-        if c is False:
-            return ""
-
-        return None
+        self._site_mgmt.delete_site(delete_id)
+        return redirect(mode_url("sites"))
 
     def _action_logout(self, logout_id: str) -> ActionResult:
         configured_sites = self._site_mgmt.load_sites()
         site = configured_sites[logout_id]
-        c = wato_confirm(
-            _("Confirm logout"),
-            _("Do you really want to log out of '%s'?") % html.render_tt(site["alias"]))
-        if c:
-            if "secret" in site:
-                del site["secret"]
-            self._site_mgmt.save_sites(configured_sites)
-            watolib.add_change("edit-site",
-                               _("Logged out of remote site %s") % html.render_tt(site["alias"]),
-                               domains=[watolib.ConfigDomainGUI],
-                               sites=[watolib.default_site()])
-            flash(_("Logged out."))
-            return None
-
-        if c is False:
-            return FinalizeRequest(code=200)
-
-        return None
+        if "secret" in site:
+            del site["secret"]
+        self._site_mgmt.save_sites(configured_sites)
+        watolib.add_change("edit-site",
+                           _("Logged out of remote site %s") % html.render_tt(site["alias"]),
+                           domains=[watolib.ConfigDomainGUI],
+                           sites=[watolib.default_site()])
+        flash(_("Logged out."))
+        return redirect(mode_url("sites"))
 
     def _action_login(self, login_id: str) -> ActionResult:
         configured_sites = self._site_mgmt.load_sites()
@@ -715,7 +693,10 @@ class ModeDistributedMonitoring(WatoMode):
         if site_id == config.omd_site():
             html.empty_icon_button()
         else:
-            delete_url = html.makeactionuri([("_delete", site_id)])
+            delete_url = html.confirm_link(
+                url=html.makeactionuri([("_delete", site_id)]),
+                msg=_("Do you really want to delete the connection to the site %s?") %
+                html.render_tt(site_id))
             html.icon_button(delete_url, _("Delete"), "delete")
 
         if _site_globals_editable(site_id, site):
@@ -775,7 +756,10 @@ class ModeDistributedMonitoring(WatoMode):
 
         if site["replication"]:
             if site.get("secret"):
-                logout_url = watolib.make_action_link([("mode", "sites"), ("_logout", site_id)])
+                logout_url = html.confirm_link(url=watolib.make_action_link([("mode", "sites"),
+                                                                             ("_logout", site_id)]),
+                                               msg=_("Do you really want to log out of '%s'?") %
+                                               html.render_tt(site["alias"]))
                 html.icon_button(logout_url, _("Logout"), "autherr")
             else:
                 login_url = watolib.make_action_link([("mode", "sites"), ("_login", site_id)])
@@ -1015,47 +999,30 @@ class ModeEditSiteGlobals(ABCGlobalSettingsMode):
         config_variable = config_variable_registry[varname]()
         def_value = self._global_settings.get(varname, self._default_values[varname])
 
-        if action == "reset" and not is_a_checkbox(config_variable.valuespec()):
-            c = wato_confirm(
-                _("Removing site specific configuration variable"),
-                _("Do you really want to remove the configuration variable <b>%s</b> "
-                  "of the specific configuration of this site and that way use the global value "
-                  "of <b><tt>%s</tt></b>?") %
-                (varname, config_variable.valuespec().value_to_text(def_value)))
+        if not html.check_transaction():
+            return None
 
+        if varname in self._current_settings:
+            self._current_settings[varname] = not self._current_settings[varname]
         else:
-            if not html.check_transaction():
-                return None
-            # No confirmation for direct toggle
-            c = True
+            self._current_settings[varname] = not def_value
 
-        if c:
-            if varname in self._current_settings:
-                self._current_settings[varname] = not self._current_settings[varname]
-            else:
-                self._current_settings[varname] = not def_value
+        msg = _("Changed site specific configuration variable %s to %s.") % \
+              (varname, _("on") if self._current_settings[varname] else _("off"))
 
-            msg = _("Changed site specific configuration variable %s to %s.") % \
-                  (varname, _("on") if self._current_settings[varname] else _("off"))
+        self._site.setdefault("globals", {})[varname] = self._current_settings[varname]
+        self._site_mgmt.save_sites(self._configured_sites, activate=False)
 
-            self._site.setdefault("globals", {})[varname] = self._current_settings[varname]
-            self._site_mgmt.save_sites(self._configured_sites, activate=False)
+        watolib.add_change(
+            "edit-configvar",
+            msg,
+            sites=[self._site_id],
+            need_restart=config_variable.need_restart(),
+        )
 
-            watolib.add_change(
-                "edit-configvar",
-                msg,
-                sites=[self._site_id],
-                need_restart=config_variable.need_restart(),
-            )
-
-            if action == "_reset":
-                flash(msg)
-            return redirect(mode_url("edit_site_globals"))
-
-        if c is False:
-            return FinalizeRequest(code=200)
-
-        return None
+        if action == "_reset":
+            flash(msg)
+        return redirect(mode_url("edit_site_globals"))
 
     def _edit_mode(self):
         return "edit_site_configvar"

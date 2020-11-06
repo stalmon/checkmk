@@ -4,7 +4,13 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
-from cmk.special_agents.agent_prism import main
+from cmk.snmplib.type_defs import SpecialColumn
+from cmk.base.api.agent_based.type_defs import OIDEnd
 
-if __name__ == '__main__':
-    main()
+
+def test_oid_end_repr():
+    assert repr(OIDEnd()) == "OIDEnd()"
+
+
+def test_oid_end_compat_with_backend():
+    assert SpecialColumn(OIDEnd()) == SpecialColumn.END

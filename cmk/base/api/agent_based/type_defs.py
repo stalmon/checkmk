@@ -28,7 +28,48 @@ from cmk.utils.type_defs import (
 )
 from cmk.snmplib.type_defs import SNMPTree  # pylint: disable=cmk-module-layer-violation
 
-from cmk.base.discovered_labels import HostLabel  # pylint: disable=cmk-module-layer-violation
+
+class PluginSuppliedLabel(NamedTuple("_LabelTuple", [("name", str), ("value", str)])):
+    """A user friendly variant of our internally used labels
+
+    This is a tiny bit redundant, but it helps decoupling API
+    code from internal representations.
+    """
+    def __init__(self, name, value):
+        super().__init__()
+        if not isinstance(name, str):
+            raise TypeError(f"Invalid label name given: Expected string (got {name!r})")
+        if not isinstance(value, str):
+            raise TypeError(f"Invalid label value given: Expected string (got {value!r})")
+
+    def __repr__(self):
+        return "%s(%r, %r)" % (self.__class__.__name__, self.name, self.value)
+
+
+class HostLabel(PluginSuppliedLabel):
+    """Representing a host label in Checkmk
+
+    This class creates a host label that can be yielded by a host_label_function as regisitered
+    with the section.
+
+        >>> my_label = HostLabel("my_key", "my_value")
+
+    """
+
+
+# We must make sure that `SpecialColumn(OIDEnd()) == SpecialColumn.END`
+class OIDEnd(int):
+    """OID specification to get the end of the OID string
+
+    When specifying an OID in an SNMPTree object, the parse function
+    will be handed the corresponding value of that OID. If you use OIDEnd()
+    instead, the parse function will be given the tailing portion of the
+    OID (the part that you not already know).
+    """
+
+    # NOTE: The default constructor already does the right thing for our "glorified 0".
+    def __repr__(self):
+        return "OIDEnd()"
 
 
 class Parameters(Mapping):

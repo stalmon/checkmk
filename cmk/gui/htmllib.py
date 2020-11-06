@@ -1515,6 +1515,10 @@ class html(ABCHTMLGenerator):
             filename=filename,
         )
 
+    def confirm_link(self, *, url: str, msg: str) -> str:
+        return "javascript:cmk.forms.confirm_link(%s, %s)" % (json.dumps(url),
+                                                              json.dumps(escaping.escape_text(msg)))
+
     #
     # HTML heading and footer rendering
     #
@@ -1811,6 +1815,11 @@ class html(ABCHTMLGenerator):
     def end_form(self) -> None:
         self.close_form()
         self.form_name = None
+
+    def add_confirm_on_submit(self, form_name: str, msg: str) -> None:
+        """Adds a confirm dialog to a form that is shown before executing a form submission"""
+        self.javascript("cmk.forms.add_confirm_on_submit(%s, %s)" %
+                        (json.dumps("form_%s" % form_name), json.dumps(escaping.escape_text(msg))))
 
     def in_form(self) -> bool:
         return self.form_name is not None
