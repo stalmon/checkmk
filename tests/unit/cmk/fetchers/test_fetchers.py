@@ -20,11 +20,12 @@ from cmk.utils.type_defs import AgentRawData, result, SectionName
 
 from cmk.snmplib import snmp_table
 from cmk.snmplib.type_defs import (
+    BackendSNMPTree,
+    OIDSpec,
     SNMPDetectSpec,
     SNMPHostConfig,
     SNMPRawData,
     SNMPTable,
-    SNMPTree,
     SNMPBackend,
     SNMPEnumEncoder,
     read_as_enum,
@@ -59,13 +60,28 @@ def clone_file_cache(file_cache):
 
 
 class TestFileCache:
+    @pytest.fixture(params=[DefaultAgentFileCache, NoCache, SNMPFileCache])
+    def file_cache(self, request):
+        return request.param(
+            path=Path(os.devnull),
+            max_age=0,
+            disabled=True,
+            use_outdated=False,
+            simulation=True,
+        )
+
+    def test_deserialization(self, file_cache):
+        assert file_cache == type(file_cache).from_json(json_identity(file_cache.to_json()))
+
+
+class TestNoCache:
     @pytest.fixture
     def path(self, tmp_path):
         return tmp_path / "database"
 
     @pytest.fixture
     def file_cache(self, path):
-        return SNMPFileCache(
+        return NoCache(
             path=path,
             max_age=999,
             disabled=False,
@@ -75,6 +91,48 @@ class TestFileCache:
 
     @pytest.fixture
     def raw_data(self):
+        return b"<<<check_mk>>>\nagent raw data"
+
+    def test_write_and_read_is_noop(self, file_cache, raw_data):
+        assert not file_cache.disabled
+        assert not file_cache.path.exists()
+
+        file_cache.write(raw_data)
+
+        assert not file_cache.path.exists()
+        assert file_cache.read() is None
+
+    def test_disabled_write_and_read(self, file_cache, raw_data):
+        file_cache.disabled = True
+        assert file_cache.disabled is True
+        assert not file_cache.path.exists()
+
+        file_cache.write(raw_data)
+
+        assert not file_cache.path.exists()
+        assert file_cache.read() is None
+
+
+class TestDefaultFileCache_and_SNMPFileCache:
+    @pytest.fixture
+    def path(self, tmp_path):
+        return tmp_path / "database"
+
+    @pytest.fixture(params=[DefaultAgentFileCache, SNMPFileCache])
+    def file_cache(self, path, request):
+        return request.param(
+            path=path,
+            max_age=999,
+            disabled=False,
+            use_outdated=False,
+            simulation=False,
+        )
+
+    @pytest.fixture
+    def raw_data(self, file_cache):
+        if isinstance(file_cache, DefaultAgentFileCache):
+            return b"<<<check_mk>>>\nagent raw data"
+        assert isinstance(file_cache, SNMPFileCache)
         table: SNMPTable = []
         raw_data: SNMPRawData = {SectionName("X"): table}
         return raw_data
@@ -133,9 +191,6 @@ class TestIPMIFetcher:
             password="secret",
         )
 
-    def test_file_cache_deserialization(self, file_cache):
-        assert file_cache == type(file_cache).from_json(json_identity(file_cache.to_json()))
-
     def test_fetcher_deserialization(self, fetcher):
         other = type(fetcher).from_json(json_identity(fetcher.to_json()))
         assert isinstance(other, type(fetcher))
@@ -192,9 +247,6 @@ class TestPiggybackFetcher:
             time_settings=[],
         )
 
-    def test_file_cache_deserialization(self, file_cache):
-        assert file_cache == type(file_cache).from_json(json_identity(file_cache.to_json()))
-
     def test_fetcher_deserialization(self, fetcher):
         other = type(fetcher).from_json(json_identity(fetcher.to_json()))
         assert isinstance(other, type(fetcher))
@@ -223,9 +275,6 @@ class TestProgramFetcher:
             is_cmc=False,
         )
 
-    def test_file_cache_deserialization(self, file_cache):
-        assert file_cache == type(file_cache).from_json(json_identity(file_cache.to_json()))
-
     def test_fetcher_deserialization(self, fetcher):
         other = type(fetcher).from_json(json_identity(fetcher.to_json()))
         assert isinstance(other, ProgramFetcher)
@@ -240,8 +289,10 @@ class TestSNMPPluginStore:
         return SNMPPluginStore({
             SectionName("section0"): SNMPPluginStoreItem(
                 [
-                    SNMPTree(base=".1.2.3", oids=["4.5", "9.7"]),
-                    SNMPTree(base=".8.9.0", oids=["1.2", "3.4"]),
+                    BackendSNMPTree(base=".1.2.3", oids=[OIDSpec("4.5"),
+                                                         OIDSpec("9.7")]),
+                    BackendSNMPTree(base=".8.9.0", oids=[OIDSpec("1.2"),
+                                                         OIDSpec("3.4")]),
                 ],
                 SNMPDetectSpec([[
                     ("oid0", "regex0", True),
@@ -250,7 +301,8 @@ class TestSNMPPluginStore:
                 ]]),
             ),
             SectionName("section1"): SNMPPluginStoreItem(
-                [SNMPTree(base=".1.2.3", oids=["4.5", "6.7.8"])],
+                [BackendSNMPTree(base=".1.2.3", oids=[OIDSpec("4.5"),
+                                                      OIDSpec("6.7.8")])],
                 SNMPDetectSpec([[
                     ("oid3", "regex3", True),
                     ("oid4", "regex4", False),
@@ -274,17 +326,24 @@ class ABCTestSNMPFetcher(ABC):
             file_cache,
             snmp_plugin_store=SNMPPluginStore({
                 SectionName("pim"): SNMPPluginStoreItem(
-                    trees=[SNMPTree(base=".1.1.1", oids=["1.2", "3.4"])],
+                    trees=[BackendSNMPTree(base=".1.1.1", oids=[OIDSpec("1.2"),
+                                                                OIDSpec("3.4")])],
                     detect_spec=SNMPDetectSpec([[("1.2.3.4", "pim device", True)]]),
                 ),
                 SectionName("pam"): SNMPPluginStoreItem(
-                    trees=[SNMPTree(base=".1.2.3", oids=["4.5", "6.7", "8.9"])],
+                    trees=[
+                        BackendSNMPTree(
+                            base=".1.2.3",
+                            oids=[OIDSpec("4.5"), OIDSpec("6.7"),
+                                  OIDSpec("8.9")],
+                        ),
+                    ],
                     detect_spec=SNMPDetectSpec([[("1.2.3.4", "pam device", True)]]),
                 ),
                 SectionName("pum"): SNMPPluginStoreItem(
                     trees=[
-                        SNMPTree(base=".2.2.2", oids=["2.2"]),
-                        SNMPTree(base=".3.3.3", oids=["2.2"]),
+                        BackendSNMPTree(base=".2.2.2", oids=[OIDSpec("2.2")]),
+                        BackendSNMPTree(base=".3.3.3", oids=[OIDSpec("2.2")]),
                     ],
                     detect_spec=SNMPDetectSpec([[]]),
                 ),
@@ -326,9 +385,6 @@ class TestSNMPFetcherDeserialization(ABCTestSNMPFetcher):
             simulation=True,
         )
 
-    def test_file_cache_deserialization(self, file_cache):
-        assert file_cache == type(file_cache).from_json(json_identity(file_cache.to_json()))
-
     def test_fetcher_deserialization(self, fetcher):
         other = type(fetcher).from_json(json_identity(fetcher.to_json()))
         assert isinstance(other, SNMPFetcher)
@@ -369,7 +425,6 @@ class TestSNMPFetcherFetch(ABCTestSNMPFetcher):
         assert fetcher.fetch(Mode.INVENTORY) == result.OK({})  # 'pim' is not an inventory section
         assert fetcher.fetch(Mode.CHECKING) == result.OK({section_name: [table]})
 
-    @pytest.mark.skip
     def test_fetch_from_io_partially_empty(self, monkeypatch, fetcher):
         section_name = SectionName('pum')
         table = [['1']]
@@ -446,9 +501,6 @@ class TestTCPFetcher:
             encryption_settings={"encryption": "settings"},
             use_only_cache=False,
         )
-
-    def test_file_cache_deserialization(self, file_cache):
-        assert file_cache == type(file_cache).from_json(json_identity(file_cache.to_json()))
 
     def test_fetcher_deserialization(self, fetcher):
         other = type(fetcher).from_json(json_identity(fetcher.to_json()))

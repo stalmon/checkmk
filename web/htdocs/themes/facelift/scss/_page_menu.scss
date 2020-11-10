@@ -487,7 +487,16 @@ div#page_menu_popups {
       padding: 0;
     }
 
+    div.group {
+      padding-top: $spacing;
+
+      &:first-of-type {
+        padding-top: 0;
+      }
+    }
+
     form span.checkbox {
+      padding-right: $spacing;
       white-space: initial;
     }
 
@@ -499,9 +508,10 @@ div#page_menu_popups {
       background-color: $bg-color;
     }
 
-    input.submit {
-      color: $black;
-      background-color: $success;
+    input.button {
+      padding: 8px 16px;
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
 }
@@ -652,13 +662,8 @@ div#page_menu_popups div.side_popup {
       div.update_buttons {
         margin-left: auto;
 
-        input {
-          padding: 8px 16px;
-          margin: 0;
-        }
-
-        input.reset {
-          margin-right: $spacing;
+        input.apply {
+          margin-right: 0;
 
           &:disabled {
             opacity: 0.5;

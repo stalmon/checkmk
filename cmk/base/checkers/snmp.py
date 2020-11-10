@@ -13,6 +13,7 @@ from typing import Final, Optional, Set
 from cmk.utils.type_defs import HostAddress, HostName, SectionName, ServiceCheckResult, SourceType
 
 from cmk.snmplib.type_defs import (
+    BackendSNMPTree,
     SNMPDetectSpec,
     SNMPPersistedSections,
     SNMPRawData,
@@ -138,11 +139,8 @@ class SNMPSource(Source[SNMPRawData, SNMPHostSections]):
     def _make_fetcher(self) -> SNMPFetcher:
         return SNMPFetcher(
             self._make_file_cache(),
-            snmp_plugin_store=SNMPPluginStore({
-                s.name: SNMPPluginStoreItem(s.trees, SNMPDetectSpec(s.detect_spec))
-                for s in agent_based_register.iter_all_snmp_sections()
-            }),
-            disabled_sections=self.host_config.disabled_snmp_sections(),
+            snmp_plugin_store=self._make_snmp_plugin_store(),
+            disabled_sections=self._make_disabled_sections(),
             configured_snmp_sections=self._make_configured_snmp_sections(),
             inventory_snmp_sections=self._make_inventory_snmp_sections(),
             on_error=self.on_snmp_scan_error,
@@ -165,6 +163,18 @@ class SNMPSource(Source[SNMPRawData, SNMPHostSections]):
 
     def _make_summarizer(self) -> "SNMPSummarizer":
         return SNMPSummarizer(self.exit_spec)
+
+    @staticmethod
+    def _make_snmp_plugin_store() -> SNMPPluginStore:
+        return SNMPPluginStore({
+            s.name: SNMPPluginStoreItem(
+                [BackendSNMPTree.from_frontend(base=t.base, oids=t.oids) for t in s.trees],
+                SNMPDetectSpec(s.detect_spec))
+            for s in agent_based_register.iter_all_snmp_sections()
+        })
+
+    def _make_disabled_sections(self) -> Set[SectionName]:
+        return self.host_config.disabled_snmp_sections()
 
     def _make_configured_snmp_sections(self) -> Set[SectionName]:
         return self._enabled_snmp_sections.intersection(
