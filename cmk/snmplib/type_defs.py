@@ -17,6 +17,7 @@ from typing import (
     Dict,
     Iterable,
     List,
+    Literal,
     NamedTuple,
     Optional,
     Sequence,
@@ -38,7 +39,7 @@ SNMPContextName = str
 SNMPDecodedString = str
 SNMPDecodedBinary = List[int]
 SNMPDecodedValues = Union[SNMPDecodedString, SNMPDecodedBinary]
-SNMPValueEncoding = str
+SNMPValueEncoding = Literal["string", "binary"]
 SNMPTable = List[List[SNMPDecodedValues]]
 SNMPContext = Optional[str]
 SNMPSectionContent = Union[SNMPTable, List[SNMPTable]]
@@ -261,6 +262,27 @@ class OIDBytes(OIDSpec):
     pass
 
 
+class BackendOIDSpec(NamedTuple):
+    column: Union[str, SpecialColumn]
+    encoding: SNMPValueEncoding
+    save_to_cache: bool
+
+    def _serialize(self) -> Union[Tuple[str, str, bool], Tuple[int, str, bool]]:
+        if isinstance(self.column, SpecialColumn):
+            return (int(self.column), self.encoding, self.save_to_cache)
+        return (self.column, self.encoding, self.save_to_cache)
+
+    @classmethod
+    def deserialize(
+        cls,
+        column: Union[str, int],
+        encoding: SNMPValueEncoding,
+        save_to_cache: bool,
+    ) -> 'BackendOIDSpec':
+        return cls(
+            SpecialColumn(column) if isinstance(column, int) else column, encoding, save_to_cache)
+
+
 class BackendSNMPTree(NamedTuple):
     """The 'working class' pentant to the check APIs 'SNMPTree'
 
@@ -268,48 +290,29 @@ class BackendSNMPTree(NamedTuple):
     section registration, so we can assume sane values here.
     """
     base: str
-    oids: Sequence[Union[OIDSpec, SpecialColumn]]
+    oids: Sequence[BackendOIDSpec]
 
     @classmethod
-    def from_frontend(cls, *, base: str, oids: Iterable[Union[str, OIDSpec,
-                                                              int]]) -> 'BackendSNMPTree':
+    def from_frontend(
+        cls,
+        *,
+        base: str,
+        oids: Iterable[Tuple[Union[str, int], SNMPValueEncoding, bool]],
+    ) -> 'BackendSNMPTree':
         return cls(
             base=base,
-            oids=[
-                oid if isinstance(oid, OIDSpec) else
-                (SpecialColumn(oid) if isinstance(oid, int) else OIDSpec(oid)) for oid in oids
-            ],
+            oids=[BackendOIDSpec.deserialize(*oid) for oid in oids],
         )
 
     def to_json(self) -> Dict[str, Any]:
         return {
             "base": self.base,
-            "oids": [BackendSNMPTree._serialize_oid(oid) for oid in self.oids],
+            "oids": [oid._serialize() for oid in self.oids],
         }
 
     @classmethod
     def from_json(cls, serialized: Dict[str, Any]) -> "BackendSNMPTree":
         return cls(
             base=serialized["base"],
-            oids=[BackendSNMPTree._deserialize_oid(*oid) for oid in serialized["oids"]],
+            oids=[BackendOIDSpec.deserialize(*oid) for oid in serialized["oids"]],
         )
-
-    @staticmethod
-    def _serialize_oid(oid: Union[OIDSpec, SpecialColumn]) -> Tuple[str, Union[str, int]]:
-        if isinstance(oid, OIDSpec):
-            return type(oid).__name__, str(oid)
-        if isinstance(oid, SpecialColumn):
-            return "SpecialColumn", oid.value
-        raise TypeError(oid)
-
-    @staticmethod
-    def _deserialize_oid(type_: str, value: Union[str, int]) -> Union[OIDSpec, SpecialColumn]:
-        try:
-            return {
-                "OIDSpec": OIDSpec,
-                "OIDBytes": OIDBytes,
-                "OIDCached": OIDCached,
-                "SpecialColumn": SpecialColumn,
-            }[type_](value)
-        except LookupError as exc:
-            raise TypeError(type_) from exc

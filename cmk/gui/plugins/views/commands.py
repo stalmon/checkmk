@@ -825,7 +825,7 @@ class CommandScheduleDowntimes(Command):
         html.close_div()
 
         html.open_div(class_="group")
-        html.button("_down_from_now", _("From now for"))
+        html.button("_down_from_now", _("From now for"), cssclass="hot")
         html.nbsp()
         html.text_input("_down_minutes",
                         default_value="60",
@@ -885,7 +885,6 @@ class CommandScheduleDowntimes(Command):
             html.checkbox("_down_do_recur",
                           False,
                           label=_("Repeat this downtime on a regular basis every"))
-            html.write_text(" ")
 
             from cmk.gui.cee.plugins.wato.cmc import recurring_downtimes_types  # pylint: disable=no-name-in-module,import-outside-toplevel
 
@@ -893,7 +892,7 @@ class CommandScheduleDowntimes(Command):
                 (str(k), v) for (k, v) in sorted(recurring_downtimes_types().items())
             ]
             html.dropdown("_down_recurring", recurring_selections, deflt="3")
-            html.write_text(_("(This only works when using CMC)"))
+            html.write_text(" " + _("(only works with the microcore)"))
             html.close_div()
 
     def action(self, cmdtag: Any, spec: Any, row: Any, row_index: Any, num_rows: Any) -> Any:
@@ -1178,6 +1177,8 @@ def time_interval_to_human_readable(next_time_interval, prefix):
     Examples:
         >>> time_interval_to_human_readable("next_day", "schedule an immediate downtime")
         '<b>schedule an immediate downtime until 24:00:00</b> on'
+        >>> time_interval_to_human_readable("next_year", "schedule an immediate downtime")
+        '<b>schedule an immediate downtime until end of year</b> on'
 
     Returns:
         string representing the schedule downtime title
@@ -1186,6 +1187,7 @@ def time_interval_to_human_readable(next_time_interval, prefix):
         "next_day": _("<b>%s until 24:00:00</b> on"),
         "next_week": _("<b>%s until sunday night</b> on"),
         "next_month": _("<b>%s until end of month</b> on"),
+        "next_year": _("<b>%s until end of year</b> on"),
     }
     try:
         title = downtime_titles[next_time_interval]

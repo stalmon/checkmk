@@ -143,7 +143,7 @@ function set_control_size(dash_controls, width, height) {
 }
 
 function is_dynamic(x) {
-    return x == dashboard_properties.MAX || x == dashboard_properties.GROW;
+    return x == dashboard_properties.GROW;
 }
 
 function align_to_grid(px) {
@@ -168,21 +168,11 @@ vec.prototype = {
             this.y < 0 ? this.y + size_v.y + 1 : this.y - 1
         );
     },
-    // Compute the initial size of the dashlet. If dashboard_properties.MAX is used,
-    // then the dashlet consumes all space in its growing direction,
-    // regardless of any other dashlets.
+    // Compute the initial size of the dashlet.
     initial_size: function (pos_v, grid_v) {
         return new vec(
-            this.x == dashboard_properties.MAX
-                ? grid_v.x - Math.abs(pos_v.x) + 1
-                : this.x == dashboard_properties.GROW
-                ? dashboard_properties.dashlet_min_size[0]
-                : this.x,
-            this.y == dashboard_properties.MAX
-                ? grid_v.y - Math.abs(pos_v.y) + 1
-                : this.y == dashboard_properties.GROW
-                ? dashboard_properties.dashlet_min_size[1]
-                : this.y
+            this.x <= dashboard_properties.GROW ? dashboard_properties.dashlet_min_size[0] : this.x,
+            this.y <= dashboard_properties.GROW ? dashboard_properties.dashlet_min_size[1] : this.y
         );
     },
     // return codes:
@@ -191,8 +181,8 @@ vec.prototype = {
     // -1: grow direction left, up
     compute_grow_by: function (size_v) {
         return new vec(
-            size_v.x != dashboard_properties.GROW ? 0 : this.x < 0 ? -1 : 1,
-            size_v.y != dashboard_properties.GROW ? 0 : this.y < 0 ? -1 : 1
+            size_v.x > dashboard_properties.GROW ? 0 : this.x < 0 ? -1 : 1,
+            size_v.y > dashboard_properties.GROW ? 0 : this.y < 0 ? -1 : 1
         );
     },
     toString: function () {
@@ -461,38 +451,24 @@ function render_resize_controls(controls, i) {
 
 function render_sizer(controls, nr, i, anchor_id, size) {
     // 0 ~ X, 1 ~ Y
+    let orientation = i ? "height" : "width";
     var sizer = document.createElement("div");
     sizer.className = "sizer sizer" + i + " anchor" + anchor_id;
 
-    // create the sizer label
-    var sizer_lbl = document.createElement("div");
-    sizer_lbl.className = "sizer_lbl sizer_lbl" + i + " anchor" + anchor_id;
-
-    if (size == dashboard_properties.MAX) {
-        sizer.className += " max";
-        //sizer_lbl.innerHTML = "MAX";
-        sizer.title = "Use maximum available space in this direction";
-    } else if (size == dashboard_properties.GROW) {
+    if (size <= dashboard_properties.GROW) {
         sizer.className += " grow";
-        //sizer_lbl.innerHTML = "GROW";
+        sizer.innerHTML = "auto " + orientation;
         sizer.title = "Grow in this direction";
     } else {
         sizer.className += " abs";
         sizer.title = "Fixed size (drag border for resize)";
+        sizer.innerHTML = "manual " + orientation;
         render_resize_controls(controls, i);
     }
 
-    // js magic stuff - closures!
-    sizer.onclick = (function (dashlet_id, sizer_id) {
-        return function () {
-            toggle_sizer(dashlet_id, sizer_id);
-        };
-    })(nr, i);
-    sizer_lbl.onclick = sizer.onclick;
-    sizer_lbl.title = sizer.title;
+    sizer.onclick = () => toggle_sizer(nr, i);
 
     controls.appendChild(sizer);
-    if (is_dynamic(size)) controls.appendChild(sizer_lbl);
 }
 
 function render_corner_resizers(controls) {
@@ -530,97 +506,72 @@ function dashlet_toggle_edit(dashlet_obj, edit) {
         var anchor_id = get_anchor_id(dashlet);
 
         // Create the size / grow indicators and resizer control elements
-        var i;
         if (utils.has_class(dashlet_obj, "resizable")) {
-            for (i = 0; i < 2; i++) {
-                if (i == 0) render_sizer(controls, nr, i, anchor_id, dashlet.w);
-                else render_sizer(controls, nr, i, anchor_id, dashlet.h);
-            }
+            render_sizer(controls, nr, 0, anchor_id, dashlet.w);
+            render_sizer(controls, nr, 1, anchor_id, dashlet.h);
 
             if (!is_dynamic(dashlet.w) && !is_dynamic(dashlet.h)) render_corner_resizers(controls);
         }
 
+        let create_a_button = function (className, title, onclick) {
+            let element = document.createElement("a");
+            element.className = className;
+            element.title = title;
+            element.onclick = onclick;
+            return element;
+        };
+
         // Create the anchors
-        for (i = 0; i < 4; i++) {
-            var anchor = document.createElement("a");
-            anchor.className = "anchor anchor" + i;
-            anchor.title = "Currently growing from here";
+        for (let i = 0; i < 4; i++) {
+            let anchor = create_a_button("anchor anchor" + i, "Currently growing from here", () =>
+                toggle_anchor(nr, i)
+            );
             if (anchor_id != i) {
                 anchor.className += " off";
                 anchor.title = "Click to start growing from here";
             }
-
-            // js magic stuff - closures!
-            anchor.onclick = (function (dashlet_id, anchor_id) {
-                return function () {
-                    toggle_anchor(dashlet_id, anchor_id);
-                };
-            })(nr, i);
-
             controls.appendChild(anchor);
         }
-
-        // Add edit dashlet button
-        var edit_button = document.createElement("a");
-        edit_button.className = "edit";
-        edit_button.title = "Edit properties of this dashlet";
-        edit_button.onclick = (function (dashlet_id, board_name) {
+        var click_actions = function (target) {
             return function () {
                 var back_url = utils.makeuri({}, window.location.href, "dashboard.py");
                 location.href = utils.makeuri_contextless(
                     {
-                        name: board_name,
-                        id: dashlet_id,
+                        name: dashboard_properties.dashboard_name,
+                        id: nr,
                         back: back_url,
                     },
-                    "edit_dashlet.py"
+                    target
                 );
             };
-        })(nr, dashboard_properties.dashboard_name);
-        controls.appendChild(edit_button);
+        };
+
+        let edits = document.createElement("div");
+        edits.className = "editor";
+        // Add edit dashlet button
+        edits.appendChild(
+            create_a_button(
+                "edit",
+                "Edit properties of this dashlet",
+                click_actions("edit_dashlet.py")
+            )
+        );
 
         // Add clone dashlet button
-        var clone = document.createElement("a");
-        clone.className = "clone";
-        clone.title = "Clone this dashlet";
-        clone.onclick = (function (dashlet_id, board_name) {
-            return function () {
-                var back_url = utils.makeuri({}, window.location.href, "dashboard.py");
-                location.href = utils.makeuri_contextless(
-                    {
-                        id: dashlet_id,
-                        name: board_name,
-                        back: back_url,
-                    },
-                    "clone_dashlet.py"
-                );
-            };
-        })(nr, dashboard_properties.dashboard_name);
-        controls.appendChild(clone);
+        edits.appendChild(
+            create_a_button("clone", "Clone this dashlet", click_actions("clone_dashlet.py"))
+        );
 
         // Add delete dashlet button
-        var del = document.createElement("a");
-        del.className = "del";
-        del.title = "Delete this dashlet";
-        del.onclick = (function (dashlet_id, board_name) {
-            return function () {
+        edits.appendChild(
+            create_a_button("del", "Delete this dashlet", () =>
                 forms.confirm_dialog(
                     {text: "Do you really want to delete this dashlet?"},
-                    function () {
-                        var back_url = utils.makeuri({}, window.location.href, "dashboard.py");
-                        location.href = utils.makeuri_contextless(
-                            {
-                                name: board_name,
-                                id: dashlet_id,
-                                back: back_url,
-                            },
-                            "delete_dashlet.py"
-                        );
-                    }
-                );
-            };
-        })(nr, dashboard_properties.dashboard_name);
-        controls.appendChild(del);
+                    click_actions("delete_dashlet.py")
+                )
+            )
+        );
+        controls.appendChild(edits);
     } else {
         // make the inner parts visible again
         utils.remove_class(dashlet_obj, "edit");
@@ -643,12 +594,7 @@ function toggle_sizer(nr, sizer_id) {
         if (dashlet.w > 0) {
             g_last_absolute_widths[nr] = dashlet.w;
             dashlet.w = dashboard_properties.GROW;
-        } else if (dashlet.w == dashboard_properties.GROW) {
-            if (!(nr in g_last_absolute_widths))
-                g_last_absolute_widths[nr] =
-                    dashlet_obj.clientWidth / dashboard_properties.grid_size;
-            dashlet.w = dashboard_properties.MAX;
-        } else if (dashlet.w == dashboard_properties.MAX) {
+        } else {
             if (nr in g_last_absolute_widths) dashlet.w = g_last_absolute_widths[nr];
             else dashlet.w = dashlet_obj.clientWidth / dashboard_properties.grid_size;
         }
@@ -656,12 +602,7 @@ function toggle_sizer(nr, sizer_id) {
         if (dashlet.h > 0) {
             g_last_absolute_heights[nr] = dashlet.h;
             dashlet.h = dashboard_properties.GROW;
-        } else if (dashlet.h == dashboard_properties.GROW) {
-            if (!(nr in g_last_absolute_heights))
-                g_last_absolute_heights[nr] =
-                    dashlet_obj.clientHeight / dashboard_properties.grid_size;
-            dashlet.h = dashboard_properties.MAX;
-        } else if (dashlet.h == dashboard_properties.MAX) {
+        } else {
             if (nr in g_last_absolute_heights) dashlet.h = g_last_absolute_heights[nr];
             else dashlet.h = dashlet_obj.clientHeight / dashboard_properties.grid_size;
         }

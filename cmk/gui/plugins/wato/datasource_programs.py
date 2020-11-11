@@ -573,6 +573,20 @@ def _valuespec_generic_metrics_prometheus():
                  choices=[
                      ("ip_address", _("IP Address")),
                      ("host_name", _("Host name")),
+                     ("url_custom", _("Custom URL"),
+                      Dictionary(
+                          elements=[("url_address",
+                                     TextAscii(
+                                         title=_("Custom URL server address"),
+                                         help=_("Specify a custom URL to connect to "
+                                                "your server. Do not include the "
+                                                "protocol. This option overwrites "
+                                                "all available options such as port and "
+                                                "other URL prefixes."),
+                                         allow_empty=False,
+                                     ))],
+                          optional_keys=[],
+                      )),
                  ],
                  title=_("Prometheus connection option"),
              )),
@@ -580,6 +594,24 @@ def _valuespec_generic_metrics_prometheus():
                 title=_('Prometheus web port'),
                 default_value=9090,
             )),
+            ('auth_basic',
+             Dictionary(elements=[
+                 ('username', TextAscii(
+                     title=_('Login username'),
+                     allow_empty=False,
+                 )),
+                 ("password", IndividualOrStoredPassword(
+                     title=_("Password"),
+                     allow_empty=False,
+                 )),
+             ],
+                        optional_keys=[],
+                        title=_("Basic authentication"))),
+            ("protocol",
+             DropdownChoice(title=_("Protocol"), choices=[
+                 ("http", "HTTP"),
+                 ("https", "HTTPS"),
+             ])),
             ("exporter",
              ListOf(
                  CascadingDropdown(choices=[
@@ -2549,6 +2581,20 @@ def _valuespec_special_agents_aws():
                  title=_("The secret access key for your AWS account"),
                  allow_empty=False,
              )),
+            ("proxy_details",
+             Dictionary(
+                 title=_("Proxy server details"),
+                 elements=[
+                     ("proxy_host", TextAscii(title=_("Proxy host"), allow_empty=False)),
+                     ("proxy_port", Integer(title=_("Port"))),
+                     ("proxy_user", TextAscii(
+                         title=_("Username"),
+                         size=32,
+                     )),
+                     ("proxy_password", TextAscii(title=_("Password"))),
+                 ],
+                 optional_keys=["proxy_port", "proxy_user", "proxy_password"],
+             )),
             ("assume_role",
              Dictionary(
                  title=_("Assume a different IAM role"),
@@ -2719,7 +2765,7 @@ def _valuespec_special_agents_aws():
             ("overall_tags",
              _vs_aws_tags(_("Restrict monitoring services by one of these AWS tags"))),
         ],
-        optional_keys=["overall_tags"],
+        optional_keys=["overall_tags", "proxy_details"],
     ),
                      forth=_transform_aws)
 
