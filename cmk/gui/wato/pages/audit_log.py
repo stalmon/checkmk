@@ -7,13 +7,14 @@
 
 import re
 import time
-from typing import List, Tuple, Iterator
+from typing import List, Iterator
 
 import cmk.utils.render as render
 
 import cmk.gui.config as config
 from cmk.gui.table import table_element
 import cmk.gui.watolib as watolib
+from cmk.gui.watolib.changes import AuditLogStore
 from cmk.gui.display_options import display_options
 from cmk.gui.valuespec import (
     Dictionary,
@@ -47,8 +48,6 @@ from cmk.gui.page_menu import (
 
 @mode_registry.register
 class ModeAuditLog(WatoMode):
-    log_path = watolib.changes.audit_log_path
-
     @classmethod
     def name(cls):
         return "auditlog"
@@ -60,6 +59,7 @@ class ModeAuditLog(WatoMode):
     def __init__(self):
         self._options = self._vs_audit_log_options().default_value()
         super(ModeAuditLog, self).__init__()
+        self._store = AuditLogStore(AuditLogStore.make_path())
 
     def title(self):
         return _("Audit log")
@@ -176,7 +176,7 @@ class ModeAuditLog(WatoMode):
             return html.drain()
 
     def _log_exists(self):
-        return self.log_path.exists()
+        return self._store.exists()
 
     def action(self) -> ActionResult:
         if html.request.var("_action") == "clear":
@@ -235,15 +235,15 @@ class ModeAuditLog(WatoMode):
                            limit=None,
                            sortable=False,
                            searchable=False) as table:
-            for t, linkinfo, user, _action, text in log:
+            for entry in log:
                 table.row()
-                table.cell(_("Object"), self._render_logfile_linkinfo(linkinfo))
-                table.cell(_("Time"), html.render_nobr(render.date_and_time(float(t))))
-                user = ('<i>%s</i>' % _('internal')) if user == '-' else user
+                table.cell(_("Object"), self._render_logfile_linkinfo(entry.linkinfo))
+                table.cell(_("Time"), html.render_nobr(render.date_and_time(float(entry.time))))
+                user = ('<i>%s</i>' % _('internal')) if entry.user_id == '-' else entry.user_id
                 table.cell(_("User"), html.render_text(user), css="nobreak")
 
                 # This must not be attrencoded: The entries are encoded when writing to the log.
-                table.cell(_("Change"), text.replace("\\n", "<br>\n"), css="fill")
+                table.cell(_("Change"), entry.text.replace("\\n", "<br>\n"), css="fill")
 
     def _get_next_daily_paged_log(self, log):
         start = self._get_start_date()
@@ -282,11 +282,11 @@ class ModeAuditLog(WatoMode):
         next_log_time = None
         first_log_index = None
         last_log_index = None
-        for index, (t, _linkinfo, _user, _action, _text) in enumerate(log):
-            if t >= end_time:
+        for index, entry in enumerate(log):
+            if entry.time >= end_time:
                 # This log is too new
                 continue
-            if first_log_index is None and start_time <= t < end_time:
+            if first_log_index is None and start_time <= entry.time < end_time:
                 # This is a log for this day. Save the first index
                 if first_log_index is None:
                     first_log_index = index
@@ -295,7 +295,7 @@ class ModeAuditLog(WatoMode):
                     if index > 0:
                         next_log_time = int(log[index - 1][0])
 
-            elif t < start_time and last_log_index is None:
+            elif entry.time < start_time and last_log_index is None:
                 last_log_index = index
                 # This is the next log after this day
                 previous_log_time = int(log[index][0])
@@ -402,21 +402,7 @@ class ModeAuditLog(WatoMode):
         return redirect(self.mode_url())
 
     def _clear_audit_log(self):
-        if not self.log_path.exists():
-            return
-
-        newpath = self.log_path.with_name(self.log_path.name + time.strftime(".%Y-%m-%d"))
-        # The suppressions are needed because of https://github.com/PyCQA/pylint/issues/1660
-        if newpath.exists():
-            n = 1
-            while True:
-                n += 1
-                with_num = newpath.with_name(newpath.name + "-%d" % n)
-                if not with_num.exists():
-                    newpath = with_num
-                    break
-
-        self.log_path.rename(newpath)
+        self._store.clear()
 
     def _render_logfile_linkinfo(self, linkinfo):
         if ':' in linkinfo:  # folder:host
@@ -466,27 +452,13 @@ class ModeAuditLog(WatoMode):
             if linkinfo == '-':
                 linkinfo = ''
 
-            if self._filter_entry(user, action, text):  # TODO: Already filtered?!
-                continue
-
             html.write_text(','.join((render.date(int(t)), render.time_of_day(int(t)), linkinfo,
                                       user, action, '"' + text + '"')) + '\n')
         return FinalizeRequest(code=200)
 
-    def _parse_audit_log(self) -> List[Tuple[int, str, str, str, str]]:
-        if not self.log_path.exists():
-            return []
-
-        entries = []
-        with self.log_path.open(encoding="utf-8") as fp:
-            for line in fp:
-                splitted = line.rstrip().split(None, 4)
-                if len(splitted) == 5 and splitted[0].isdigit():
-                    t, linkinfo, user, action, text = splitted
-                    if not self._filter_entry(user, action, text):
-                        entries.append((int(t), linkinfo, user, action, text))
-        entries.reverse()
-        return entries
+    def _parse_audit_log(self) -> List[AuditLogStore.Entry]:
+        return list(
+            reversed([e for e in self._store.read() if not self._filter_entry(e[2], e[3], e[4])]))
 
     def _filter_entry(self, user, action, text):
         if not self._options["filter_regex"]:

@@ -14,8 +14,9 @@ from cmk.utils.exceptions import MKGeneralException
 from cmk.utils.regex import regex
 from cmk.utils.type_defs import ParsedSectionName, SectionName, SNMPDetectBaseType
 
-from cmk.snmplib.type_defs import OIDSpec  # pylint: disable=cmk-module-layer-violation
-
+from cmk.base.api.agent_based.register.utils import validate_function_arguments
+from cmk.base.api.agent_based.section_classes import (
+    SNMPTree,)
 from cmk.base.api.agent_based.type_defs import (
     AgentParseFunction,
     AgentSectionPlugin,
@@ -24,11 +25,9 @@ from cmk.base.api.agent_based.type_defs import (
     SimpleSNMPParseFunction,
     SNMPParseFunction,
     SNMPSectionPlugin,
-    SNMPTree,
     StringByteTable,
     StringTable,
 )
-from cmk.base.api.agent_based.register.utils import validate_function_arguments
 
 
 def _create_parse_annotation(
@@ -119,7 +118,7 @@ def _validate_detect_spec(detect_spec: SNMPDetectBaseType) -> None:
         if not str(oid_string).startswith('.'):
             raise ValueError("OID in value of 'detect' keyword must start with '.': %r" %
                              (oid_string,))
-        OIDSpec.validate(oid_string.rstrip('.*'))
+        SNMPTree.validate_oid_string(oid_string.rstrip('.*'))
 
         if expression is not None:
             try:

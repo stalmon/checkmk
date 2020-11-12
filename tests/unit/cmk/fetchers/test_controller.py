@@ -11,7 +11,7 @@ import pyghmi.exceptions  # type: ignore[import]
 import pytest  # type: ignore[import]
 
 import cmk.utils.log as log
-from cmk.utils.cpu_tracking import CPUTracker
+from cmk.utils.cpu_tracking import Snapshot
 from cmk.utils.exceptions import (
     MKBailOut,
     MKException,
@@ -42,9 +42,9 @@ from cmk.fetchers.controller import (
     ErrorPayload,
     FetcherHeader,
     FetcherMessage,
+    GlobalConfig,
     L3Stats,
     make_log_answer,
-    make_result_answer,
     make_end_of_reply_answer,
     PayloadType,
     run_fetcher,
@@ -52,6 +52,15 @@ from cmk.fetchers.controller import (
     write_bytes,
 )
 from cmk.fetchers.type_defs import Mode
+
+
+class TestGlobalConfig:
+    @pytest.fixture
+    def global_config(self):
+        return GlobalConfig(log_level=5)
+
+    def test_deserialization(self, global_config):
+        assert GlobalConfig.deserialize(global_config.serialize()) == global_config
 
 
 @pytest.mark.parametrize("status,log_level", [
@@ -68,20 +77,6 @@ def test_status_to_log_level(status, log_level):
 
 
 class TestControllerApi:
-    def test_controller_result(self):
-        payload = AgentPayload(69 * b"\0")
-        stats = L3Stats(CPUTracker())
-        header = FetcherHeader(
-            FetcherType.TCP,
-            PayloadType.AGENT,
-            status=42,
-            payload_length=len(payload),
-            stats_length=len(stats),
-        )
-        message = FetcherMessage(header, payload, stats)
-        assert make_result_answer(message) == (b"fetch:RESULT :        :240     :" + header +
-                                               payload + stats)
-
     def test_controller_log(self):
         assert make_log_answer(
             "payload", log_level=CmcLogLevel.WARNING) == b"fetch:LOG    :warning :7       :payload"
@@ -300,7 +295,7 @@ class TestFetcherHeaderEq:
 
     @pytest.fixture
     def stats_length(self):
-        return len(L3Stats(CPUTracker()))
+        return len(L3Stats(Snapshot.null()))
 
     @pytest.fixture
     def header(self, fetcher_type, payload_type, status, payload_length, stats_length):
@@ -385,12 +380,8 @@ class TestFetcherHeaderEq:
 
 class TestL3Stats:
     @pytest.fixture
-    def tracker(self):
-        return CPUTracker()
-
-    @pytest.fixture
-    def l3stats(self, tracker):
-        return L3Stats(tracker)
+    def l3stats(self):
+        return L3Stats(Snapshot.null())
 
     def test_encode_decode(self, l3stats):
         assert L3Stats.from_bytes(bytes(l3stats)) == l3stats
@@ -399,7 +390,7 @@ class TestL3Stats:
 class TestFetcherMessage:
     @pytest.fixture
     def stats(self):
-        return L3Stats(CPUTracker())
+        return L3Stats(Snapshot.null())
 
     @pytest.fixture
     def header(self, stats):

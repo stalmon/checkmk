@@ -23,7 +23,7 @@ from typing import Any, Dict, Final, Iterator, List, NamedTuple, Optional, Type,
 import cmk.utils.cleanup
 import cmk.utils.log as log
 import cmk.utils.paths as paths
-from cmk.utils.cpu_tracking import CPUTracker
+from cmk.utils.cpu_tracking import CPUTracker, Snapshot
 from cmk.utils.exceptions import MKTimeout
 from cmk.utils.type_defs import ConfigSerial, HostName, Protocol, result, SectionName
 
@@ -41,6 +41,20 @@ class CmcLogLevel(str, enum.Enum):
     WARNING = "warning"
     INFO = "info"
     DEBUG = "debug"
+
+
+class GlobalConfig(NamedTuple):
+    log_level: int
+
+    @classmethod
+    def deserialize(cls, serialized: Dict[str, Any]):
+        try:
+            return cls(serialized["fetcher_config"]["log_level"])
+        except (LookupError, TypeError, ValueError) as exc:
+            raise ValueError(serialized) from exc
+
+    def serialize(self) -> Dict[str, Any]:
+        return {"fetcher_config": {"log_level": self.log_level}}
 
 
 def cmc_log_level_from_python(log_level: int) -> CmcLogLevel:
@@ -81,18 +95,18 @@ class L3Message(Protocol):
 
 
 class L3Stats(Protocol):
-    def __init__(self, cpu_tracker: CPUTracker) -> None:
-        self.cpu_tracker: Final = cpu_tracker
+    def __init__(self, duration: Snapshot) -> None:
+        self.duration: Final = duration
 
     def __repr__(self) -> str:
-        return "%s(%r)" % (type(self).__name__, self.cpu_tracker)
+        return "%s(%r)" % (type(self).__name__, self.duration)
 
     def __bytes__(self) -> bytes:
-        return json.dumps({"cpu_tracker": self.cpu_tracker.serialize()}).encode("ascii")
+        return json.dumps({"duration": self.duration.serialize()}).encode("ascii")
 
     @classmethod
     def from_bytes(cls, data: bytes) -> "L3Stats":
-        return L3Stats(CPUTracker.deserialize(json.loads(data.decode("ascii"))["cpu_tracker"]))
+        return L3Stats(Snapshot.deserialize(json.loads(data.decode("ascii"))["duration"]))
 
 
 class PayloadType(enum.Enum):
@@ -528,7 +542,8 @@ class Command(NamedTuple):
 
 def process_command(command: Command) -> None:
     with _confirm_command_processed():
-        load_global_config(command.serial)
+        global_config = load_global_config(command.serial)
+        log.logger.setLevel(global_config.log_level)
         run_fetchers(**command._asdict())
 
 
@@ -557,15 +572,13 @@ def run_fetchers(serial: ConfigSerial, host_name: HostName, mode: Mode, timeout:
     cmk.utils.cleanup.cleanup_globals()
 
 
-def load_global_config(serial: ConfigSerial) -> None:
-    global_config_path = make_global_config_path(serial)
-    if not global_config_path.exists():
+def load_global_config(serial: ConfigSerial) -> GlobalConfig:
+    try:
+        with make_global_config_path(serial).open() as f:
+            return GlobalConfig.deserialize(json.load(f))
+    except FileNotFoundError:
         log.logger.warning("fetcher global config %s is absent", serial)
-        return
-
-    with global_config_path.open() as f:
-        config = json.load(f)["fetcher_config"]
-        log.logger.setLevel(config["log_level"])
+        return GlobalConfig(log_level=5)
 
 
 def run_fetcher(entry: Dict[str, Any], mode: Mode) -> FetcherMessage:
@@ -581,7 +594,7 @@ def run_fetcher(entry: Dict[str, Any], mode: Mode) -> FetcherMessage:
     try:
         fetcher_params = entry["fetcher_params"]
     except KeyError as exc:
-        stats = L3Stats(CPUTracker())
+        stats = L3Stats(Snapshot.null())
         payload = ErrorPayload(exc)
         return FetcherMessage(
             FetcherHeader(
@@ -603,7 +616,7 @@ def run_fetcher(entry: Dict[str, Any], mode: Mode) -> FetcherMessage:
 
     return FetcherMessage.from_raw_data(
         raw_data,
-        L3Stats(tracker),
+        L3Stats(tracker.duration),
         fetcher_type,
     )
 
@@ -661,7 +674,7 @@ def _run_fetchers_from_file(file_name: Path, mode: Mode, timeout: int) -> None:
             messages.extend([
                 _make_fetcher_timeout_message(
                     FetcherType[entry["fetcher_type"]],
-                    L3Stats(CPUTracker()),
+                    L3Stats(Snapshot.null()),
                     exc,
                 ) for entry in fetchers[len(messages):]
             ])
