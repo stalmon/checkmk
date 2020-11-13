@@ -19,7 +19,7 @@ from cmk.utils.cpu_tracking import CPUTracker
 from cmk.utils.log import console
 from cmk.utils.type_defs import HostAddress, HostName, result, SourceType
 
-from cmk.fetchers.controller import FetcherMessage, L3Stats
+from cmk.fetchers.protocol import FetcherMessage
 
 import cmk.base.api.agent_based.register as agent_based_register
 import cmk.base.check_table as check_table
@@ -27,7 +27,7 @@ import cmk.base.config as config
 import cmk.base.ip_lookup as ip_lookup
 from cmk.base.config import HostConfig, SelectedRawSections
 
-from ._abstract import Source, Mode, HostSections
+from ._abstract import HostSections, Mode, Source
 from .agent import AgentHostSections
 from .host_sections import HostKey, MultiHostSections
 from .ipmi import IPMISource
@@ -237,7 +237,7 @@ def fetch_all(
                 raw_data = source.fetch()
             yield FetcherMessage.from_raw_data(
                 raw_data,
-                L3Stats(tracker.duration),
+                tracker.duration,
                 source.fetcher_type,
             )
 

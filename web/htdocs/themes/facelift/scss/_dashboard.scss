@@ -66,6 +66,9 @@ div.dashlet {
     /* Dashlets with "background" set to True */
     &.background {
       background-color: $dashlet-inner-bg-color;
+      &:first-child {
+        border-radius: $dashlet-title-border-radius;
+      }
     }
 
     > div {
@@ -108,20 +111,19 @@ div.dashlet {
     color: $font-color;
     text-align: center;
     white-space: nowrap;
-    background: $headline-color;
+    background: $body-dashlet-bg-color;
     border: 1px solid $color-table-border;
     border-bottom: none;
     border-radius: $dashlet-title-border-radius;
     /* IE < 9 */
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#4c000000', endColorstr='#4c000000');
+    &.highlighted {
+      background: $headline-color;
+    }
 
     span {
       padding-left: 8px;
     }
-  }
-
-  &.edit div.title span {
-    padding-left: 27px;
   }
 
   div.title a {
@@ -206,14 +208,6 @@ div.dashlet {
         text-decoration: underline;
       }
     }
-  }
-}
-
-.dashlet .dashlet_inner.background {
-  background-color: $dashlet-bg-color;
-
-  &:first-child {
-    border-radius: $dashlet-title-border-radius;
   }
 }
 
@@ -352,109 +346,127 @@ div.dashlet.edit {
     right: 0;
     left: 0;
     margin: auto;
-    height: 50px;
+    height: 20px;
+    width: 60px;
+    text-align: center;
 
-    /* dashlet edit button */
-    .edit {
+    a {
+      display: inline-block;
       width: 20px;
       height: 20px;
-      cursor: pointer;
-      /* background-color: rgba(0, 0, 0, 0.7); */
-      background-image: url("images/dashlet_edit_lo.png");
+      border-radius: 5px;
       background-size: 20px;
-      border-radius: 5px;
-      display: block;
-      /* IE < 9 */
-      filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#32000000', endColorstr='#32000000');
-
-      &:hover {
-        background-image: url("images/dashlet_edit_hi.png");
-      }
-    }
-
-    /* dashlet clone button */
-    .clone {
-      width: 14px;
-      height: 14px;
       cursor: pointer;
-      /* background-color: rgba(0, 0, 0, 0.7); */
-      background-image: url("images/dashlet_clone_lo.png");
-      border-radius: 5px;
-      display: block;
       /* IE < 9 */
       filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#32000000', endColorstr='#32000000');
 
-      &:hover {
-        background-image: url("images/dashlet_clone_hi.png");
+      /* dashlet edit button */
+      &.edit {
+        background-image: url("images/dashlet_edit_lo.png");
+
+        &:hover {
+          background-image: url("images/dashlet_edit_hi.png");
+        }
       }
-    }
 
-    /* dashlet delete button */
-    .del {
-      width: 14px;
-      height: 14px;
-      cursor: pointer;
-      /* background-color: rgba(0, 0, 0, 0.7); */
-      background-image: url("images/dashlet_del_lo.png");
-      border-radius: 5px;
-      display: block;
-      /* IE < 9 */
-      filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#32000000', endColorstr='#32000000');
+      /* dashlet clone button */
+      &.clone {
+        background-image: url("images/dashlet_clone_lo.png");
 
-      &:hover {
-        background-image: url("images/dashlet_del_hi.png");
+        &:hover {
+          background-image: url("images/dashlet_clone_hi.png");
+        }
+      }
+
+      /* dashlet delete button */
+      &.del {
+        background-image: url("images/dashlet_del_lo.png");
+
+        &:hover {
+          background-image: url("images/dashlet_del_hi.png");
+        }
       }
     }
   }
 
   /* position anchors */
   $corner-size: 26px;
+  $corner-size-on: 40px;
+  $dashlet-editor-free: #4e5d69;
+  $dashlet-editor-active: #13d389;
   .anchor {
     position: absolute;
-    cursor: auto;
+    cursor: pointer;
     /* IE < 9 */
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#32000000', endColorstr='#32000000');
 
     // Edit with this tricks
     // https://css-tricks.com/the-shapes-of-css/#triangle-top-left-shape
 
+    &.on div {
+      position: absolute;
+      border-radius: 12px;
+      padding: 2px 6px;
+      text-align: center;
+      background-color: $dashlet-editor-active;
+      color: #172127;
+    }
+
     &.anchor0 {
-      top: 4px;
-      left: 4px;
-      border-top: $corner-size solid #13d389;
+      top: 0;
+      left: 0;
+      border-top: $corner-size solid $dashlet-editor-free;
       border-right: $corner-size solid transparent;
-      &.off {
-        border-top: $corner-size solid #4e5d69;
+      &.on {
+        border-top: $corner-size-on solid $dashlet-editor-active;
+        border-right: $corner-size-on solid transparent;
+        & div {
+          left: $corner-size;
+          top: -$corner-size;
+        }
       }
     }
 
     &.anchor1 {
-      top: 4px;
-      right: 4px;
-      border-top: $corner-size solid #13d389;
+      top: 0;
+      right: 0;
+      border-top: $corner-size solid $dashlet-editor-free;
       border-left: $corner-size solid transparent;
-      &.off {
-        border-top: $corner-size solid #4e5d69;
+      &.on {
+        border-top: $corner-size-on solid $dashlet-editor-active;
+        border-left: $corner-size-on solid transparent;
+        & div {
+          right: $corner-size;
+          top: -$corner-size;
+        }
       }
     }
 
     &.anchor2 {
-      right: 4px;
-      bottom: 4px;
-      border-bottom: $corner-size solid #13d389;
+      right: 0;
+      bottom: 0;
+      border-bottom: $corner-size solid $dashlet-editor-free;
       border-left: $corner-size solid transparent;
-      &.off {
-        border-bottom: $corner-size solid #4e5d69;
+      &.on {
+        border-bottom: $corner-size-on solid $dashlet-editor-active;
+        border-left: $corner-size-on solid transparent;
+        & div {
+          right: $corner-size;
+        }
       }
     }
 
     &.anchor3 {
-      bottom: 4px;
-      left: 4px;
-      border-bottom: $corner-size solid #13d389;
+      bottom: 0;
+      left: 0;
+      border-bottom: $corner-size solid $dashlet-editor-free;
       border-right: $corner-size solid transparent;
-      &.off {
-        border-bottom: $corner-size solid #4e5d69;
+      &.on {
+        border-bottom: $corner-size-on solid $dashlet-editor-active;
+        border-right: $corner-size-on solid transparent;
+        & div {
+          left: $corner-size;
+        }
       }
     }
   }
@@ -469,40 +481,46 @@ div#dashboard.grid {
   cursor: pointer;
   border-radius: 12px;
   padding: 2px 6px;
-}
-
-.sizer.grow {
-  background-color: #10181d;
-}
-
-.sizer.abs {
-  background-color: #13d389;
+  text-align: center;
+  &.grow {
+    background-color: #10181d;
+  }
+  &.abs {
+    background-color: #13d389;
+    color: #172127;
+  }
 }
 
 .sizer0 {
-  top: 50%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  height: 1.5em;
 
   &.anchor0,
   &.anchor3 {
-    right: 15px;
+    right: 27px;
   }
 
   &.anchor1,
   &.anchor2 {
-    left: 15px;
+    left: 27px;
   }
 }
 .sizer1 {
-  left: 50%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 90px;
 
   &.anchor0,
   &.anchor1 {
-    bottom: 15px;
+    bottom: 27px;
   }
 
   &.anchor2,
   &.anchor3 {
-    top: 15px;
+    top: 27;
   }
 }
 
@@ -517,6 +535,30 @@ div#dashboard.grid {
   border: 1px solid #13d389;
   border-top: 0;
   border-bottom: 0;
+  background-color: #13d389;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+  &.resize0_0 {
+    left: -1px;
+    cursor: w-resize;
+    &.circle_handle {
+      width: 16px;
+      height: 32px;
+      border-radius: 0 32px 32px 0;
+    }
+  }
+
+  &.resize0_1 {
+    right: -1px;
+    cursor: e-resize;
+    &.circle_handle {
+      width: 16px;
+      height: 32px;
+      border-radius: 32px 0 0 32px;
+    }
+  }
 }
 
 .resize1 {
@@ -524,26 +566,30 @@ div#dashboard.grid {
   border: 1px solid #13d389;
   border-right: 0;
   border-left: 0;
-}
-
-.resize0_0 {
+  background-color: #13d389;
   left: 0;
-  cursor: w-resize;
-}
-
-.resize0_1 {
   right: 0;
-  cursor: e-resize;
-}
+  margin: auto;
 
-.resize1_0 {
-  top: 0;
-  cursor: n-resize;
-}
+  &.resize1_0 {
+    top: -1px;
+    cursor: n-resize;
+    &.circle_handle {
+      width: 32px;
+      height: 16px;
+      border-radius: 0 0 32px 32px;
+    }
+  }
 
-.resize1_1 {
-  bottom: 0;
-  cursor: s-resize;
+  &.resize1_1 {
+    bottom: -1px;
+    cursor: s-resize;
+    &.circle_handle {
+      width: 32px;
+      height: 16px;
+      border-radius: 32px 32px 0 0;
+    }
+  }
 }
 
 .resize_corner {

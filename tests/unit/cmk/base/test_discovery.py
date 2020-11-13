@@ -837,7 +837,7 @@ def test__find_candidates():
 
     assert discovery._find_candidates(
         mhs,
-        selected_check_plugins=None,
+        run_only_plugin_names=None,
     ) == {
         CheckPluginName('docker_container_status_uptime'),
         CheckPluginName("kernel"),
@@ -931,9 +931,11 @@ def test_do_discovery(monkeypatch):
     ts.apply(monkeypatch)
 
     with cmk_debug_enabled():
-        discovery.do_discovery(arg_hostnames={"test-host"},
-                               check_plugin_names=None,
-                               arg_only_new=False)
+        discovery.do_discovery(
+            arg_hostnames={"test-host"},
+            run_only_plugin_names=None,
+            arg_only_new=False,
+        )
 
     services = autochecks.parse_autochecks_file("test-host", config.service_description)
     found = {(s.check_plugin_name, s.item): s.service_labels.to_dict() for s in services}
@@ -1170,6 +1172,7 @@ _discovery_test_cases = [
             on_error="raise",
             load_labels=True,
             save_labels=True,
+            only_host_labels=False,
         ),
         expected_services={
             (CheckPluginName('df'), '/boot/test-efi'),
@@ -1255,6 +1258,7 @@ _discovery_test_cases = [
             on_error="raise",
             load_labels=True,
             save_labels=False,
+            only_host_labels=False,
         ),
         expected_services={
             (CheckPluginName('df'), '/boot/test-efi'),
@@ -1314,6 +1318,7 @@ _discovery_test_cases = [
             on_error="raise",
             load_labels=False,
             save_labels=True,
+            only_host_labels=False,
         ),
         expected_services={
             (CheckPluginName('df'), '/boot/test-efi'),
@@ -1368,10 +1373,61 @@ _discovery_test_cases = [
             on_error="raise",
             load_labels=False,
             save_labels=False,
+            only_host_labels=False,
         ),
         expected_services={
             (CheckPluginName('df'), '/boot/test-efi'),
         },
+        on_realhost=ExpectedDiscoveryResultRealHost(
+            expected_per_plugin=Counter({"labels": 1}),
+            expected_return_labels=DiscoveredHostLabels(
+                HostLabel('cmk/check_mk_server', 'yes', plugin_name='labels'),),
+            expected_stored_labels={
+                'another_label': {
+                    'plugin_name': 'labels',
+                    'value': 'true',
+                },
+                'existing_label': {
+                    'plugin_name': 'foo',
+                    'value': 'bar',
+                },
+            },
+        ),
+        on_cluster=ExpectedDiscoveryResultCluster(
+            expected_per_plugin=Counter({"labels": 2}),
+            expected_return_labels=DiscoveredHostLabels(
+                HostLabel('cmk/check_mk_server', 'yes', plugin_name='labels'),
+                HostLabel('node2_live_label', 'true', plugin_name='labels'),
+            ),
+            expected_stored_labels_cluster={
+                'another_label': {
+                    'plugin_name': 'labels',
+                    'value': 'true',
+                },
+                'existing_label': {
+                    'plugin_name': 'foo',
+                    'value': 'bar',
+                },
+            },
+            expected_stored_labels_node1={
+                'node1_existing_label': {
+                    'plugin_name': 'node1_plugin',
+                    'value': 'true',
+                },
+            },
+            expected_stored_labels_node2={},
+        ),
+    ),
+    # discover on host: mode == "only-host-labels"
+    # Only discover host labels
+    DiscoveryTestCase(
+        parameters=discovery.DiscoveryParameters(
+            on_error="raise",
+            load_labels=False,
+            save_labels=False,
+            only_host_labels=True,
+        ),
+        expected_services=set(),
         on_realhost=ExpectedDiscoveryResultRealHost(
             expected_per_plugin=Counter({"labels": 1}),
             expected_return_labels=DiscoveredHostLabels(
@@ -1428,7 +1484,7 @@ def test__discover_host_labels_and_services_on_realhost(realhost_scenario, disco
             scenario.ipaddress,
             scenario.multi_host_sections,
             discovery_parameters,
-            check_plugin_whitelist=None,
+            run_only_plugin_names=None,
         )
 
     services = {(s.check_plugin_name, s.item) for s in discovered_services}
@@ -1449,7 +1505,7 @@ def test__perform_host_label_discovery_on_realhost(realhost_scenario, discovery_
             scenario.ipaddress,
             scenario.multi_host_sections,
             discovery_parameters,
-            check_plugin_whitelist={CheckPluginName('df')},
+            run_only_plugin_names={CheckPluginName('df')},
         )
 
     assert host_label_discovery_result.per_plugin == discovery_test_case.on_realhost.expected_per_plugin
