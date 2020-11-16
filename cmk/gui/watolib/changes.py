@@ -10,13 +10,14 @@ import errno
 import os
 import time
 import abc
-from typing import (Dict, Union, TYPE_CHECKING, Optional, Type, List, Iterable, Any, Iterator,
-                    NamedTuple, TypeVar, Generic)
+from typing import (Dict, Union, TYPE_CHECKING, Optional, Type, List, Iterable, Any, NamedTuple,
+                    TypeVar, Generic)
 from pathlib import Path
 
 import cmk.utils
 import cmk.utils.store as store
 from cmk.utils.type_defs import UserId
+from cmk.utils.object_diff import make_object_diff
 
 import cmk.gui.utils
 from cmk.gui import config, escaping
@@ -51,6 +52,20 @@ class ABCAppendStore(Generic[_VT], metaclass=abc.ABCMeta):
     def make_path(*args: str) -> Path:
         raise NotImplementedError()
 
+    @staticmethod
+    def _serialize(raw: _VT) -> Any:
+        """Prepare _VT objects for serialization
+
+        Override this to execute some logic before repr()"""
+        return raw
+
+    @staticmethod
+    def _deserialize(raw: Any) -> _VT:
+        """Create _VT objects from serialized data
+
+        Override this to execute some logic after literal_eval() to produce _VT objects"""
+        return raw
+
     def __init__(self, path: Path) -> None:
         self._path = path
 
@@ -70,7 +85,7 @@ class ABCAppendStore(Generic[_VT], metaclass=abc.ABCMeta):
             with path.open("rb") as f:
                 for entry in f.read().split(b"\0"):
                     if entry:
-                        entries.append(ast.literal_eval(entry.decode("utf-8")))
+                        entries.append(self._deserialize(ast.literal_eval(entry.decode("utf-8"))))
         except IOError as e:
             if e.errno == errno.ENOENT:
                 pass
@@ -97,7 +112,7 @@ class ABCAppendStore(Generic[_VT], metaclass=abc.ABCMeta):
             store.aquire_lock(path)
 
             with path.open("ab+") as f:
-                f.write(repr(entry).encode("utf-8") + b"\0")
+                f.write(repr(self._serialize(entry)).encode("utf-8") + b"\0")
                 f.flush()
                 os.fsync(f.fileno())
 
@@ -123,31 +138,38 @@ def _wato_var_dir() -> Path:
     return Path(cmk.utils.paths.var_dir, "wato")
 
 
-class AuditLogStore:
+class AuditLogStore(ABCAppendStore["AuditLogStore.Entry"]):
     Entry = NamedTuple("Entry", [
         ("time", int),
         ("linkinfo", str),
         ("user_id", str),
         ("action", str),
-        ("text", str),
+        ("text", LogMessage),
+        ("diff_text", Optional[str]),
     ])
 
     @staticmethod
-    def make_path() -> Path:
-        return _wato_var_dir() / "log" / "audit.log"
+    def make_path(*args: str) -> Path:
+        return _wato_var_dir() / "log" / "wato_audit.log"
 
-    def __init__(self, path: Path):
-        self._path = path
+    @staticmethod
+    def _serialize(entry: "AuditLogStore.Entry") -> Dict:
+        raw = entry._asdict()
+        raw["text"] = (("html", str(entry.text)) if isinstance(entry.text, HTML) else
+                       ("str", entry.text))
+        return raw
 
-    def exists(self) -> bool:
-        return self._path.exists()
+    @staticmethod
+    def _deserialize(raw: Dict) -> "AuditLogStore.Entry":
+        raw["text"] = (HTML(raw["text"][1]) if raw["text"][0] == "html" else raw["text"][1])
+        return AuditLogStore.Entry(**raw)
 
     def clear(self) -> None:
+        """Instead of just removing, like ABCAppendStore, archive the existing file"""
         if not self.exists():
             return
 
         newpath = self._path.with_name(self._path.name + time.strftime(".%Y-%m-%d"))
-        # The suppressions are needed because of https://github.com/PyCQA/pylint/issues/1660
         if newpath.exists():
             n = 1
             while True:
@@ -159,39 +181,24 @@ class AuditLogStore:
 
         self._path.rename(newpath)
 
-    def read(self) -> Iterator["AuditLogStore.Entry"]:
-        if not self._path.exists():
-            return
-
-        with self._path.open(encoding="utf-8") as fp:
-            for line in fp:
-                splitted = line.rstrip().split(None, 4)
-                if len(splitted) == 5 and splitted[0].isdigit():
-                    t, linkinfo, user, action, text = splitted
-                    yield AuditLogStore.Entry(int(t), linkinfo, user, action, text)
-
-    def append(self, entry: "AuditLogStore.Entry") -> None:
-        store.makedirs(self._path.parent)
-        with self._path.open(mode="a", encoding='utf-8') as f:
-            self._path.chmod(0o660)
-            f.write(" ".join((str(entry.time),) + entry[1:]) + "\n")
-
 
 def _log_entry(linkinfo: LinkInfoObject,
                action: str,
-               message: str,
-               user_id: Optional[UserId] = None) -> None:
+               message: Union[HTML, str],
+               user_id: Optional[UserId] = None,
+               diff_text: Optional[str] = None) -> None:
     if linkinfo and not isinstance(linkinfo, str):
         link = linkinfo.linkinfo()
     else:
         link = linkinfo
 
     entry = AuditLogStore.Entry(
-        int(time.time()),
-        link or "-",
-        str(user_id or config.user.id or "-"),
-        action,
-        message.replace("\n", "\\n"),
+        time=int(time.time()),
+        linkinfo=link or "-",
+        user_id=str(user_id or config.user.id or "-"),
+        action=action,
+        text=message,
+        diff_text=diff_text,
     )
 
     AuditLogStore(AuditLogStore.make_path()).append(entry)
@@ -200,29 +207,39 @@ def _log_entry(linkinfo: LinkInfoObject,
 def log_audit(linkinfo: LinkInfoObject,
               action: str,
               message: LogMessage,
-              user_id: Optional[UserId] = None) -> None:
+              user_id: Optional[UserId] = None,
+              old_object: Any = None,
+              new_object: Any = None) -> None:
+
+    diff_text: Optional[str] = None
+    if old_object is not None and new_object is not None:
+        diff_text = make_object_diff(old_object, new_object)
+
     if config.wato_use_git:
         if isinstance(message, HTML):
             message = escaping.strip_tags(message.value)
         cmk.gui.watolib.git.add_message(message)
-    # Using escape_attribute here is against our regular rule to do the escaping
-    # at the last possible time: When rendering. But this here is the last
-    # place where we can distinguish between HTML() encapsulated (already)
-    # escaped / allowed HTML and strings to be escaped.
-    message = escaping.escape_text(message).strip()
-    _log_entry(linkinfo, action, message, user_id)
+
+    _log_entry(linkinfo, action, message, user_id, diff_text)
 
 
 def add_change(action_name: str,
                text: LogMessage,
                obj: LinkInfoObject = None,
+               old_object: Any = None,
+               new_object: Any = None,
                add_user: bool = True,
                need_sync: Optional[bool] = None,
                need_restart: Optional[bool] = None,
                domains: Optional[List[Type[ABCConfigDomain]]] = None,
                sites: Optional[List[SiteId]] = None) -> None:
 
-    log_audit(obj, action_name, text, config.user.id if add_user else UserId(''))
+    log_audit(linkinfo=obj,
+              action=action_name,
+              message=text,
+              user_id=config.user.id if add_user else UserId(''),
+              old_object=old_object,
+              new_object=new_object)
     cmk.gui.watolib.sidebar_reload.need_sidebar_reload()
 
     search.update_and_store_index_background(action_name)

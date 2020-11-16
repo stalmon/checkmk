@@ -14,6 +14,7 @@ import cmk.utils.render as render
 import cmk.gui.config as config
 from cmk.gui.table import table_element
 import cmk.gui.watolib as watolib
+from cmk.gui import escaping
 from cmk.gui.watolib.changes import AuditLogStore
 from cmk.gui.display_options import display_options
 from cmk.gui.valuespec import (
@@ -242,8 +243,11 @@ class ModeAuditLog(WatoMode):
                 user = ('<i>%s</i>' % _('internal')) if entry.user_id == '-' else entry.user_id
                 table.cell(_("User"), html.render_text(user), css="nobreak")
 
-                # This must not be attrencoded: The entries are encoded when writing to the log.
-                table.cell(_("Change"), entry.text.replace("\\n", "<br>\n"), css="fill")
+                text = escaping.escape_text(entry.text).replace("\n", "<br>\n")
+                table.text_cell(_("Summary"), text, css="fill")
+
+                diff_text = entry.diff_text.replace("\n", "<br>\n") if entry.diff_text else ""
+                table.text_cell(_("Changed attributes"), diff_text, css="fill")
 
     def _get_next_daily_paged_log(self, log):
         start = self._get_start_date()
@@ -446,14 +450,21 @@ class ModeAuditLog(WatoMode):
             _('User'),
             _('Action'),
             _('Text'),
+            _('Changed attributes'),
         )
         html.write(','.join(titles) + '\n')
-        for t, linkinfo, user, action, text in self._parse_audit_log():
-            if linkinfo == '-':
-                linkinfo = ''
+        for entry in self._parse_audit_log():
+            linkinfo = '' if entry.linkinfo == '-' else entry.linkinfo
 
-            html.write_text(','.join((render.date(int(t)), render.time_of_day(int(t)), linkinfo,
-                                      user, action, '"' + text + '"')) + '\n')
+            html.write(','.join((
+                render.date(int(entry.time)),
+                render.time_of_day(int(entry.time)),
+                linkinfo,
+                entry.user_id,
+                entry.action,
+                '"' + escaping.strip_tags(entry.text).replace('"', "'") + '"',
+                '"' + escaping.strip_tags(entry.diff_text).replace('"', "'") + '"',
+            )) + '\n')
         return FinalizeRequest(code=200)
 
     def _parse_audit_log(self) -> List[AuditLogStore.Entry]:

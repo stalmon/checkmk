@@ -48,7 +48,7 @@ def WS_ARCHIVE="WS-${JOB_NAME}-${BUILD_NUMBER}.tar.gz".replaceAll("/","-")
 def GPG_KEY_DIR = '/bauwelt/etc/.gnupg'
 def RELEASE_KEY_PATH = '/bauwelt/git/release/release.key'
 def UPLOAD_DEST_OLD = 'bauwelt@mathias-kettner.de:/bauwelt/download/'
-def UPLOAD_DEST = 'deploy@customer.checkmk.com:/var/downloads/checkmk'
+def UPLOAD_DEST = 'deploy@customer.checkmk.com:/var/downloads/checkmk/'
 
 def ARCHIVE_DIR = ''
 def OMD_ENV_VARS = ''
@@ -451,7 +451,7 @@ def upload_package(FILE_PATH, FILE_NAME, NAME, scm, JOB_BASE_NAME, RELEASE_KEY_P
                     ${UPLOAD_DEST_OLD}
             """
             sh """
-                rsync -av \
+                rsync -av --relative \
                     --exclude '*dbgsym*.deb' \
                     -e "ssh -o StrictHostKeyChecking=no -i ${RELEASE_KEY_PATH} -p 52022" \
                     ${ARCHIVE_BASE}/./${CMK_VERS}/${FILE_NAME} \

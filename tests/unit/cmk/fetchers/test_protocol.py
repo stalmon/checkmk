@@ -4,6 +4,7 @@
 # This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
 # conditions defined in the file COPYING, which is part of this source code package.
 
+import logging
 import socket
 
 import pyghmi.exceptions  # type: ignore[import]
@@ -27,6 +28,7 @@ from cmk.fetchers import FetcherType
 from cmk.fetchers.protocol import (
     AgentPayload,
     CMCHeader,
+    CMCLogLevel,
     ErrorPayload,
     FetcherHeader,
     FetcherMessage,
@@ -34,6 +36,11 @@ from cmk.fetchers.protocol import (
     PayloadType,
     SNMPPayload,
 )
+
+
+class TestCMCLogLevel:
+    def test_from_level(self):
+        assert CMCLogLevel.from_level(logging.WARNING) is CMCLogLevel.WARNING
 
 
 class TestCMCHeader:

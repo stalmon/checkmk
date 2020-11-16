@@ -36,28 +36,27 @@ __all__ = [
 ]
 
 
-class CmcLogLevel(str, enum.Enum):
+class CMCLogLevel(str, enum.Enum):
+    """The CMC logging level from `Logger.h::LogLevel`."""
     EMERGENCY = "emergenc"  # truncated!
     ALERT = "alert"
     CRITICAL = "critical"
     ERROR = "error"
     WARNING = "warning"
+    NOTICE = "notice"
     INFO = "info"
     DEBUG = "debug"
 
-
-def cmc_log_level_from_python(log_level: int) -> CmcLogLevel:
-    try:
+    @staticmethod
+    def from_level(level: int) -> "CMCLogLevel":
         return {
-            logging.CRITICAL: CmcLogLevel.CRITICAL,
-            logging.ERROR: CmcLogLevel.ERROR,
-            logging.WARNING: CmcLogLevel.WARNING,
-            logging.INFO: CmcLogLevel.INFO,
-            log.VERBOSE: CmcLogLevel.INFO,
-            logging.DEBUG: CmcLogLevel.DEBUG,
-        }[log_level]
-    except KeyError:
-        return CmcLogLevel.WARNING
+            logging.CRITICAL: CMCLogLevel.CRITICAL,
+            logging.ERROR: CMCLogLevel.ERROR,
+            logging.WARNING: CMCLogLevel.WARNING,
+            logging.INFO: CMCLogLevel.NOTICE,
+            log.VERBOSE: CMCLogLevel.INFO,
+            logging.DEBUG: CMCLogLevel.DEBUG,
+        }[level]
 
 
 class Header(Protocol):
@@ -463,12 +462,18 @@ def make_result_answer(*messages: FetcherMessage) -> bytes:
     ) + payload
 
 
-def make_log_answer(message: str, log_level: CmcLogLevel) -> bytes:
-    """ Logs data using logging facility of the microcore """
+def make_log_answer(message: str, level: int) -> bytes:
+    """Logs data using logging facility of the microcore.
+
+    Args:
+        message: The log message.
+        level: The numeric level of the logging event (one of DEBUG, INFO, etc.)
+
+    """
     return CMCHeader(
         name=CMCHeader.default_protocol_name(),
         state=CMCHeader.State.LOG,
-        log_level=log_level,
+        log_level=CMCLogLevel.from_level(level),
         payload_length=len(message),
     ) + message.encode("utf-8")
 

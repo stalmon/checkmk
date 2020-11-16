@@ -518,11 +518,17 @@ class Site:
     def start(self):
         if not self.is_running():
             assert self.omd("start") == 0
+            print("= BEGIN PROCESSES AFTER START ==============================")
+            self.execute(["ps", "aux"]).wait()
+            print("= END PROCESSES AFTER START ==============================")
             i = 0
             while not self.is_running():
                 i += 1
                 if i > 10:
                     self.execute(["/usr/bin/omd", "status"]).wait()
+                    print("= BEGIN PROCESSES FAIL ==============================")
+                    self.execute(["ps", "aux"]).wait()
+                    print("= END PROCESSES FAIL ==============================")
                     raise Exception("Could not start site %s" % self.id)
                 logger.warning("The site %s is not running yet, sleeping... (round %d)", self.id, i)
                 sys.stdout.flush()
@@ -816,13 +822,14 @@ class SiteFactory:
         site = self._site_obj(name)
 
         site.create()
+        self._sites[site.id] = site
+
         site.open_livestatus_tcp(encrypted=False)
         site.start()
         site.prepare_for_tests()
         # There seem to be still some changes that want to be activated
         CMKWebSession(site).activate_changes()
         logger.debug("Created site %s", site.id)
-        self._sites[site.id] = site
         return site
 
     def save_results(self):
