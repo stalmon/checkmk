@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: checkmk-en@lists.mathias-kettner.de\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-10-16 06:21+0000\n"
+"PO-Revision-Date: 2020-11-17 12:22+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk2/"
 "test_weblate2/de/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.2.2\n"
+"X-Generator: Weblate 4.3.2\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Bookmarks: -1,-1,1412,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: /home/mk/git/check_mk/web/htdocs\n"
@@ -509,11 +509,10 @@ msgstr ""
 msgid "%d rows"
 msgstr "%d Zeilen"
 
-#: ../cmk/gui/htmllib.py:1720
-#, fuzzy, python-format
-#| msgid "Pending security updates"
+#: ../cmk/gui/htmllib.py:1724
+#, python-format
 msgid "%d sec. update"
-msgstr "Anstehende Sicherheitsupdates"
+msgstr "%d Sicherheitsupdates"
 
 #: ../cmk/gui/plugins/sidebar/tactical_overview.py:440
 #, python-format
@@ -1065,7 +1064,7 @@ msgstr "(kein Titel)"
 msgid "(none)"
 msgstr "(keine)"
 
-#: ../cmk/gui/plugins/views/painters.py:3981
+#: ../cmk/gui/plugins/views/painters.py:3975
 msgid "(not supported)"
 msgstr "(nicht unterstützt)"
 
@@ -1099,7 +1098,7 @@ msgstr "(durch syslog gesetzt)"
 msgid "(syslog)"
 msgstr "(syslog)"
 
-#: ../cmk/gui/plugins/views/painters.py:3986
+#: ../cmk/gui/plugins/views/painters.py:3980
 #, python-format
 msgid "(unknown: %d)"
 msgstr "(unbekannt: %d)"
@@ -1519,7 +1518,7 @@ msgstr ""
 "aktualisieren Sie  Ihren DNS-Server oder tragen Sie eine explizite IP-"
 "Adresse ein."
 
-#: ../cmk/gui/werks.py:427
+#: ../cmk/gui/werks.py:429
 #, python-format
 msgid "<b>Warning:</b> There are %d unacknowledged incompatible werks:"
 msgstr "<b>Warnung:</b> Es gibt %d unquittierte Werks:"
@@ -2850,7 +2849,7 @@ msgstr "ACME Session Border Controller überwachen"
 msgid "ACME certificates"
 msgstr "ACME-Zertifikate"
 
-#: ../cmk/gui/plugins/views/painters.py:1152
+#: ../cmk/gui/plugins/views/painters.py:1146
 #: ../cmk/gui/plugins/wato/check_parameters/sles_license.py:38
 msgid "ACTIVE"
 msgstr "AKTIV"
@@ -3176,7 +3175,7 @@ msgstr "Absolutschwellwerte für ungenutzte Lizenzen"
 msgid "Absolut level for total number of used sockets"
 msgstr "Schwellwerte für die Anzahl Druckerjobs"
 
-#: ../cmk/gui/plugins/views/painters.py:123
+#: ../cmk/gui/plugins/views/painters.py:122
 msgid "Absolute"
 msgstr "Absolut"
 
@@ -3469,8 +3468,8 @@ msgstr "Zugriff über TCP"
 msgid "Access via UNIX socket"
 msgstr "Zugriff über UNIX socket"
 
-#: ../cmk/gui/plugins/views/painters.py:1435
-#: ../cmk/gui/plugins/views/painters.py:3020
+#: ../cmk/gui/plugins/views/painters.py:1429
+#: ../cmk/gui/plugins/views/painters.py:3014
 msgid "Ack"
 msgstr "Ack"
 
@@ -3502,7 +3501,7 @@ msgid "Acknowledge this test result for site %s"
 msgstr "Quittiere dieses Testresultat für die Instanz %s"
 
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1467
-#: ../cmk/gui/plugins/views/painters.py:4429 ../cmk/gui/plugins/views/bi.py:247
+#: ../cmk/gui/plugins/views/painters.py:4423 ../cmk/gui/plugins/views/bi.py:247
 msgid "Acknowledged"
 msgstr "Quittiert"
 
@@ -3520,12 +3519,12 @@ msgstr "Alle Nachrichten in %s quittiert."
 msgid "Acknowledged by"
 msgstr "Quittiert bei"
 
-#: ../cmk/gui/werks.py:373
+#: ../cmk/gui/werks.py:375
 msgid "Acknowledged incompatible Werks"
 msgstr "Quittierte inkompatible Werks"
 
 #: ../cmk/gui/wato/pages/notifications.py:702
-#: ../cmk/gui/plugins/views/painters.py:3844
+#: ../cmk/gui/plugins/views/painters.py:3838
 msgid "Acknowledgement"
 msgstr "Quittierung"
 
@@ -3559,7 +3558,7 @@ msgstr ""
 
 #: ../cmk/gui/cee/reporting.py:1439 ../cmk/gui/cee/reporting.py:1750
 #: ../cmk/gui/wato/mkeventd.py:3331 ../cmk/gui/wato/mkeventd.py:3488
-#: ../cmk/gui/wato/pages/audit_log.py:447
+#: ../cmk/gui/wato/pages/audit_log.py:451
 #: ../cmk/gui/plugins/views/mkeventd.py:906
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:1065
 msgid "Action"
@@ -3597,7 +3596,7 @@ msgstr "Anmeldungsfehler"
 #: ../cmk/gui/wato/pages/bulk_import.py:104
 #: ../cmk/gui/wato/pages/bulk_import.py:107
 #: ../cmk/gui/wato/pages/analyze_configuration.py:162
-#: ../cmk/gui/wato/pages/audit_log.py:72 ../cmk/gui/wato/pages/audit_log.py:75
+#: ../cmk/gui/wato/pages/audit_log.py:73 ../cmk/gui/wato/pages/audit_log.py:76
 #: ../cmk/gui/wato/pages/custom_attributes.py:489
 #: ../cmk/gui/wato/pages/tags.py:330 ../cmk/gui/wato/pages/tags.py:377
 #: ../cmk/gui/wato/pages/tags.py:491 ../cmk/gui/wato/pages/tags.py:539
@@ -3829,8 +3828,8 @@ msgstr "Aktivierungszustand"
 #: ../cmk/gui/cee/plugins/reporting/utils.py:298
 #: ../cmk/gui/cee/ntop/pages.py:393 ../cmk/gui/plugins/metrics/storage.py:498
 #: ../cmk/gui/plugins/metrics/docker.py:66
-#: ../cmk/gui/plugins/views/painters.py:1285
-#: ../cmk/gui/plugins/views/painters.py:2220
+#: ../cmk/gui/plugins/views/painters.py:1279
+#: ../cmk/gui/plugins/views/painters.py:2214
 #: ../cmk/gui/plugins/wato/check_parameters/websphere_mq_instance.py:32
 #: ../cmk/gui/plugins/wato/check_parameters/docker_node_disk_usage.py:63
 msgid "Active"
@@ -4791,7 +4790,7 @@ msgstr "Attribut hinzufügen"
 msgid "Add warning"
 msgstr "Warnung hinzufügen"
 
-#: ../cmk/gui/plugins/views/painters.py:2528
+#: ../cmk/gui/plugins/views/painters.py:2522
 msgid "Add. addresses"
 msgstr "Zusätzliche Adressen"
 
@@ -4931,11 +4930,11 @@ msgstr "Adress-ID-Fehler"
 msgid "Address Type"
 msgstr "Adresstyp"
 
-#: ../cmk/gui/plugins/views/painters.py:2580
+#: ../cmk/gui/plugins/views/painters.py:2574
 msgid "Address families"
 msgstr "Adressfamilien"
 
-#: ../cmk/gui/plugins/views/painters.py:2560
+#: ../cmk/gui/plugins/views/painters.py:2554
 msgid "Address family"
 msgstr "Adressfamilie"
 
@@ -5222,8 +5221,8 @@ msgstr ""
 "betrachtet."
 
 #: ../cmk/gui/plugins/metrics/storage.py:32
-#: ../cmk/gui/plugins/views/painters.py:780
-#: ../cmk/gui/plugins/views/painters.py:1864
+#: ../cmk/gui/plugins/views/painters.py:774
+#: ../cmk/gui/plugins/views/painters.py:1858
 #: ../cmk/gui/plugins/wato/active_checks.py:1224
 msgid "Age"
 msgstr "Alter"
@@ -5665,7 +5664,7 @@ msgstr "Alerthandler"
 msgid "Alert Handler Rules"
 msgstr "Alerthandlerregeln"
 
-#: ../cmk/gui/plugins/views/painters.py:4368
+#: ../cmk/gui/plugins/views/painters.py:4362
 msgid "Alert Handler Started"
 msgstr "Alerthandler gestartet"
 
@@ -5679,27 +5678,27 @@ msgstr "Alerthandler"
 msgid "Alert Statistics"
 msgstr "Alarmstatistik"
 
-#: ../cmk/gui/plugins/views/painters.py:4632
+#: ../cmk/gui/plugins/views/painters.py:4626
 msgid "Alert Statistics: Number of critical alerts"
 msgstr "Alarmstatistik: Anzahl von kritischen Alarmen"
 
-#: ../cmk/gui/plugins/views/painters.py:4672
+#: ../cmk/gui/plugins/views/painters.py:4666
 msgid "Alert Statistics: Number of problem alerts"
 msgstr "Alarmstatistik: Anzahl von Problemalarmen"
 
-#: ../cmk/gui/plugins/views/painters.py:4592
+#: ../cmk/gui/plugins/views/painters.py:4586
 msgid "Alert Statistics: Number of recoveries"
 msgstr "Alarmstatistik: Anzahl von Erholungen"
 
-#: ../cmk/gui/plugins/views/painters.py:4652
+#: ../cmk/gui/plugins/views/painters.py:4646
 msgid "Alert Statistics: Number of unknown alerts"
 msgstr "Alarmstatistik: Anzahl von unbekannten Alarmen"
 
-#: ../cmk/gui/plugins/views/painters.py:4612
+#: ../cmk/gui/plugins/views/painters.py:4606
 msgid "Alert Statistics: Number of warnings"
 msgstr "Alarmstatistik: Anzahl von WARN"
 
-#: ../cmk/gui/plugins/views/painters.py:4373
+#: ../cmk/gui/plugins/views/painters.py:4367
 msgid "Alert handler Stopped"
 msgstr "Alerthandler gestoppt"
 
@@ -5721,7 +5720,7 @@ msgstr "Alerthandlerausführung, erfolgreich"
 msgid "Alert handler executions"
 msgstr "Alerthandlerausführungen"
 
-#: ../cmk/gui/plugins/views/painters.py:4376
+#: ../cmk/gui/plugins/views/painters.py:4370
 msgid "Alert handler failed"
 msgstr "Alerthandler gescheitert"
 
@@ -5822,9 +5821,9 @@ msgstr "Algorithmus"
 #: ../cmk/gui/wato/pages/bulk_import.py:449 ../cmk/gui/wato/pages/sites.py:293
 #: ../cmk/gui/wato/pages/sites.py:718
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:921
-#: ../cmk/gui/plugins/views/painters.py:2416
-#: ../cmk/gui/plugins/views/painters.py:3475
-#: ../cmk/gui/plugins/views/painters.py:3663
+#: ../cmk/gui/plugins/views/painters.py:2410
+#: ../cmk/gui/plugins/views/painters.py:3469
+#: ../cmk/gui/plugins/views/painters.py:3657
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:2198
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:83
 msgid "Alias"
@@ -5939,7 +5938,7 @@ msgstr ""
 msgid "All collections"
 msgstr "Verbindungen"
 
-#: ../cmk/gui/werks.py:379
+#: ../cmk/gui/werks.py:381
 msgid "All components"
 msgstr "Alle Komponenten"
 
@@ -5966,7 +5965,7 @@ msgstr "Alle Kunden mit Host- und Service-Statistik"
 msgid "All directions"
 msgstr "Alle Editionen"
 
-#: ../cmk/gui/werks.py:386
+#: ../cmk/gui/werks.py:388
 msgid "All editions"
 msgstr "Alle Editionen"
 
@@ -6145,7 +6144,7 @@ msgstr "Alle Pakettypen sind signiert mit dem Schlüssel '%s'"
 msgid "All pages"
 msgstr "Alle Seiten"
 
-#: ../cmk/gui/plugins/views/painters.py:937
+#: ../cmk/gui/plugins/views/painters.py:931
 msgid "All parents are down"
 msgstr "Alle Parents sind down"
 
@@ -6593,7 +6592,7 @@ msgid "Always send <b>all</b> messages, even old ones (just for testing!)"
 msgstr ""
 "Immer <b>alle</b> Nachrichten senden, selbst alte (nur zu Testzwecken!)"
 
-#: ../cmk/gui/plugins/views/painters.py:152
+#: ../cmk/gui/plugins/views/painters.py:151
 msgid "Always show all rows"
 msgstr "Immer alle Zeilen anzeigen"
 
@@ -6933,7 +6932,7 @@ msgstr "Apache-Server"
 msgid "Apache Status"
 msgstr "Apache-Status"
 
-#: ../cmk/gui/wato/pages/diagnostics.py:179 ../cmk/base/diagnostics.py:378
+#: ../cmk/gui/wato/pages/diagnostics.py:179 ../cmk/base/diagnostics.py:384
 msgid ""
 "Apache mode and TCP address and port, Core, Liveproxy daemon and livestatus "
 "TCP mode, Event daemon config, Multiste authorisation, NSCA mode, TMP "
@@ -7067,7 +7066,7 @@ msgstr "Filter hinzufügen"
 
 #: ../cmk/gui/cee/plugins/metrics/forecasts.py:315
 #: ../cmk/gui/cee/plugins/metrics/customgraphs.py:875 ../cmk/gui/werks.py:201
-#: ../cmk/gui/wato/pages/audit_log.py:358
+#: ../cmk/gui/wato/pages/audit_log.py:362
 #: ../cmk/gui/plugins/views/availability.py:168
 msgid "Apply"
 msgstr "Anwenden"
@@ -7527,9 +7526,9 @@ msgstr ""
 "Eventuell ist der Report unvollständig, da Daten von diesen Instanzen fehlen "
 "können. Folgende Instanzen hatten Probleme: "
 
-#: ../cmk/gui/plugins/views/painters.py:1061
-#: ../cmk/gui/plugins/views/painters.py:2036
-#: ../cmk/gui/plugins/views/painters.py:4221
+#: ../cmk/gui/plugins/views/painters.py:1055
+#: ../cmk/gui/plugins/views/painters.py:2030
+#: ../cmk/gui/plugins/views/painters.py:4215
 msgid "Att."
 msgstr "Att."
 
@@ -7582,6 +7581,16 @@ msgstr "Zu suchende Attribute"
 msgid "Attribute to set"
 msgstr "Zu setzende Attribute"
 
+#: ../cmk/utils/object_diff.py:41 ../cmk/utils/object_diff.py:45
+#, python-brace-format
+msgid "Attribute {diff_path} with value {val_t1} removed."
+msgstr ""
+
+#: ../cmk/utils/object_diff.py:40 ../cmk/utils/object_diff.py:44
+#, python-brace-format
+msgid "Attribute {diff_path} with value {val_t2} added."
+msgstr ""
+
 #: ../cmk/gui/wato/pages/groups.py:516
 #: ../cmk/gui/wato/pages/custom_attributes.py:427
 msgid "Attributes"
@@ -7592,17 +7601,17 @@ msgid "Attributes to remove from hosts"
 msgstr "Von Hosts zu entfernende Attribute"
 
 #: ../cmk/gui/wato/pages/activate_changes.py:111
-#: ../cmk/gui/wato/pages/audit_log.py:65
+#: ../cmk/gui/wato/pages/audit_log.py:66
 #: ../cmk/gui/plugins/wato/builtin_modules.py:888
 msgid "Audit log"
 msgstr "Auditlog"
 
-#: ../cmk/gui/wato/pages/audit_log.py:217
+#: ../cmk/gui/wato/pages/audit_log.py:218
 #, python-format
 msgid "Audit log for %s"
 msgstr "Auditlogdatei für %s"
 
-#: ../cmk/gui/wato/pages/audit_log.py:228
+#: ../cmk/gui/wato/pages/audit_log.py:229
 #, python-format
 msgid "Audit log for %s and %d days ago"
 msgstr "Auditlogdatei für %s und %d Tage zuvor"
@@ -7685,8 +7694,8 @@ msgstr "Authentifizierungsmethode"
 #: ../cmk/gui/cee/plugins/reporting/availability.py:51
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:280
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:564
-#: ../cmk/gui/plugins/views/painters.py:3711
-#: ../cmk/gui/plugins/views/painters.py:3891
+#: ../cmk/gui/plugins/views/painters.py:3705
+#: ../cmk/gui/plugins/views/painters.py:3885
 #: ../cmk/gui/plugins/views/availability.py:1063
 msgid "Author"
 msgstr "Autor"
@@ -9082,7 +9091,7 @@ msgstr "Bootloader"
 msgid "Border width"
 msgstr "Rahmenbreite"
 
-#: ../cmk/gui/plugins/views/painters.py:125
+#: ../cmk/gui/plugins/views/painters.py:124
 #: ../cmk/gui/plugins/visuals/filters.py:346
 msgid "Both"
 msgstr "Beide"
@@ -10086,8 +10095,8 @@ msgstr "Bits pro Sekunde"
 msgid "Bytes sent"
 msgstr "Gesendete Bytes"
 
-#: ../cmk/gui/plugins/views/painters.py:3315
-#: ../cmk/gui/plugins/views/painters.py:3583
+#: ../cmk/gui/plugins/views/painters.py:3309
+#: ../cmk/gui/plugins/views/painters.py:3577
 msgid "C"
 msgstr "C"
 
@@ -10247,7 +10256,7 @@ msgstr "CPU in Prozent"
 msgid "CPU load (not utilization!)"
 msgstr "CPU-Auslastung (nicht Nutzung!)"
 
-#: ../cmk/gui/wato/pages/diagnostics.py:211 ../cmk/base/diagnostics.py:488
+#: ../cmk/gui/wato/pages/diagnostics.py:211 ../cmk/base/diagnostics.py:523
 msgid ""
 "CPU load and utilization, Number of threads, Kernel Performance, OMD, "
 "Filesystem, Apache Status, TCP Connections of the time ranges 25 hours and "
@@ -10450,8 +10459,8 @@ msgstr "CRC Fehlerrate"
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/win_eventlog.py:43
 #: ../cmk/gui/cee/ntop/pages.py:295 ../cmk/gui/cee/ntop/pages.py:318
 #: ../cmk/gui/wato/mkeventd.py:224 ../cmk/gui/wato/mkeventd.py:1877
-#: ../cmk/gui/plugins/views/painters.py:2807
-#: ../cmk/gui/plugins/views/painters.py:4635
+#: ../cmk/gui/plugins/views/painters.py:2801
+#: ../cmk/gui/plugins/views/painters.py:4629
 #: ../cmk/gui/plugins/views/availability.py:504
 #: ../cmk/gui/plugins/views/availability.py:601
 #: ../cmk/gui/plugins/visuals/filters.py:773
@@ -10584,11 +10593,11 @@ msgstr "Seiten pro Sekunde"
 msgid "Cache several non-status queries"
 msgstr "Etliche statuslose Anfragen cachen "
 
-#: ../cmk/gui/plugins/views/painters.py:846
+#: ../cmk/gui/plugins/views/painters.py:840
 msgid "Cached"
 msgstr "Cached"
 
-#: ../cmk/gui/plugins/views/painters.py:843
+#: ../cmk/gui/plugins/views/painters.py:837
 msgid "Cached agent data"
 msgstr "Gecachte Agentendaten"
 
@@ -10976,7 +10985,7 @@ msgstr "Kann Zeitperiode %s nicht aktualisieren: %s"
 msgid "Cannot write configuration file \"%s\": %s"
 msgstr "Kann Konfigurationsdatei \"%s\" nicht schreiben: %s"
 
-#: ../cmk/gui/watolib/changes.py:107
+#: ../cmk/gui/watolib/changes.py:122
 #, python-format
 msgid "Cannot write file \"%s\": %s"
 msgstr "Kann Datei \"%s\" nicht schreiben: %s"
@@ -11096,7 +11105,6 @@ msgid "Certificates for HTTPS verification"
 msgstr "SSL Zertifikats Überprüfung"
 
 #: ../cmk/gui/wato/pages/activate_changes.py:340
-#: ../cmk/gui/wato/pages/audit_log.py:246
 msgid "Change"
 msgstr "Änderung"
 
@@ -11173,8 +11181,8 @@ msgstr "Graphzeitbereich ändern auf: %s"
 msgid "Change infotext in check output"
 msgstr "Infotext in der Ausgabe des Checks ändern"
 
-#: ../cmk/gui/wato/user_profile.py:94 ../cmk/gui/wato/user_profile.py:312
-#: ../cmk/gui/wato/user_profile.py:598
+#: ../cmk/gui/wato/user_profile.py:93 ../cmk/gui/wato/user_profile.py:314
+#: ../cmk/gui/wato/user_profile.py:599
 #, fuzzy
 #| msgid "Change Password"
 msgid "Change password"
@@ -11208,6 +11216,13 @@ msgstr "LDAP-Verbindung %s geändert"
 #, python-format
 msgid "Changed alert handler rule %d"
 msgstr "Alerthandlerregel %d geändert"
+
+#: ../cmk/gui/wato/pages/audit_log.py:250
+#: ../cmk/gui/wato/pages/audit_log.py:453
+#, fuzzy
+#| msgid "Locked attributes"
+msgid "Changed attributes"
+msgstr "Gesperrte Attribute"
 
 #: ../cmk/gui/wato/pages/global_settings.py:257
 #, python-format
@@ -11470,13 +11485,13 @@ msgstr "Prüfen und WARN"
 msgid "Check and display only"
 msgstr "Prüfen und nur anzeigen"
 
-#: ../cmk/gui/plugins/views/painters.py:652
-#: ../cmk/gui/plugins/views/painters.py:1824
+#: ../cmk/gui/plugins/views/painters.py:646
+#: ../cmk/gui/plugins/views/painters.py:1818
 msgid "Check command"
 msgstr "Checkbefehl"
 
-#: ../cmk/gui/plugins/views/painters.py:672
-#: ../cmk/gui/plugins/views/painters.py:1844
+#: ../cmk/gui/plugins/views/painters.py:666
+#: ../cmk/gui/plugins/views/painters.py:1838
 msgid "Check command expanded"
 msgstr "Checkbefehl erweiterte"
 
@@ -11545,8 +11560,8 @@ msgstr "Belegung Check-Hilfsprozesse"
 msgid "Check hosts with PING (ICMP Echo Request)"
 msgstr "Hosts mit PING überwachen (ICMP Echo Request)"
 
-#: ../cmk/gui/plugins/views/painters.py:1081
-#: ../cmk/gui/plugins/views/painters.py:2056
+#: ../cmk/gui/plugins/views/painters.py:1075
+#: ../cmk/gui/plugins/views/painters.py:2050
 msgid "Check int."
 msgstr "Checkint."
 
@@ -11562,7 +11577,7 @@ msgstr "Überprüfe Logfile-Gruppen"
 msgid "Check logfiles for relevant new messages"
 msgstr "Logdateien auf relevante Meldungen hin überwachen"
 
-#: ../cmk/gui/plugins/views/painters.py:1361
+#: ../cmk/gui/plugins/views/painters.py:1355
 #, fuzzy
 #| msgid "Check manual (for Check_MK based checks)"
 msgid "Check manual (for Checkmk based checks)"
@@ -11712,7 +11727,7 @@ msgid "Check timeout for services (Microcore)"
 msgstr "Checktimeout für Services (Microcore)"
 
 #: ../cmk/gui/wato/pages/notifications.py:334
-#: ../cmk/gui/plugins/views/painters.py:3179
+#: ../cmk/gui/plugins/views/painters.py:3173
 msgid "Check type"
 msgstr "Checktyp"
 
@@ -11797,8 +11812,8 @@ msgstr ""
 msgid "Checkbox Selection Livetime"
 msgstr "Checkboxauswahl (Lebenszeit)"
 
-#: ../cmk/gui/plugins/views/painters.py:822
-#: ../cmk/gui/plugins/views/painters.py:1888
+#: ../cmk/gui/plugins/views/painters.py:816
+#: ../cmk/gui/plugins/views/painters.py:1882
 msgid "Checked"
 msgstr "Geprüft"
 
@@ -11861,7 +11876,7 @@ msgstr "Port des Check_MK Agenten (<a href=\"%s\">Regeln</a>)"
 msgid "Checkmk Agent Version"
 msgstr "Agentenversion"
 
-#: ../cmk/gui/wato/pages/diagnostics.py:189 ../cmk/base/diagnostics.py:398
+#: ../cmk/gui/wato/pages/diagnostics.py:189 ../cmk/base/diagnostics.py:404
 msgid ""
 "Checkmk Agent, Number, version and edition of sites, Cluster host; Number of "
 "hosts, services, CMK Helper, Live Helper, Helper usage; State of daemons: "
@@ -11869,11 +11884,17 @@ msgid ""
 "(Agent plugin mk_inventory needs to be installed)"
 msgstr ""
 
-#: ../cmk/gui/wato/pages/diagnostics.py:197 ../cmk/base/diagnostics.py:436
+#: ../cmk/gui/wato/pages/diagnostics.py:197 ../cmk/base/diagnostics.py:477
 #, fuzzy
 #| msgid "Configuration variable:"
 msgid "Checkmk Configuration Files"
 msgstr "Konfigurationsvariable:"
+
+#: ../cmk/base/diagnostics.py:497
+#, fuzzy
+#| msgid "Check_MK Mobile"
+msgid "Checkmk Log Files"
+msgstr "Check_MK Mobil"
 
 #: ../cmk/gui/plugins/dashboard/logo.py:25
 #, fuzzy
@@ -11898,7 +11919,7 @@ msgstr "Check_MK Mobil"
 msgid "Checkmk Overview"
 msgstr "Check_MK-Version"
 
-#: ../cmk/base/diagnostics.py:394
+#: ../cmk/base/diagnostics.py:400
 msgid "Checkmk Overview of Checkmk Server"
 msgstr ""
 
@@ -11908,7 +11929,7 @@ msgstr ""
 msgid "Checkmk Sidebar"
 msgstr "Check_MK Seitenleiste"
 
-#: ../cmk/gui/werks.py:237 ../cmk/gui/werks.py:397 ../cmk/gui/werks.py:407
+#: ../cmk/gui/werks.py:237 ../cmk/gui/werks.py:399 ../cmk/gui/werks.py:409
 #: ../cmk/gui/crash_reporting.py:410
 #, fuzzy
 msgid "Checkmk Version"
@@ -12541,7 +12562,7 @@ msgstr "Citrix-Lizenzen"
 msgid "City name"
 msgstr "Stadtname"
 
-#: ../cmk/gui/werks.py:241 ../cmk/gui/werks.py:483
+#: ../cmk/gui/werks.py:241 ../cmk/gui/werks.py:485
 msgid "Class"
 msgstr "Klasse"
 
@@ -12549,7 +12570,7 @@ msgstr "Klasse"
 msgid "Class of hosts"
 msgstr "Klasse von Hosts"
 
-#: ../cmk/gui/werks.py:351
+#: ../cmk/gui/werks.py:353
 msgid "Classes"
 msgstr "Klassen"
 
@@ -12589,7 +12610,7 @@ msgstr "Aufräumen, wenn der freie Speicherplatz geringer ist als"
 msgid "Clear failed notifications"
 msgstr "%d fehlgeschlagene Alarmierungen"
 
-#: ../cmk/gui/logwatch.py:450 ../cmk/gui/wato/pages/audit_log.py:127
+#: ../cmk/gui/logwatch.py:450 ../cmk/gui/wato/pages/audit_log.py:128
 #, fuzzy
 #| msgid "Clear Log"
 msgid "Clear log"
@@ -12605,7 +12626,7 @@ msgstr "Leere Logdateien"
 msgid "Clear modified attributes"
 msgstr "Lösche modifizierte Attribute"
 
-#: ../cmk/gui/wato/pages/audit_log.py:401
+#: ../cmk/gui/wato/pages/audit_log.py:405
 msgid "Cleared audit log."
 msgstr "Audit-Logdatei geleert."
 
@@ -12993,27 +13014,27 @@ msgstr "Farbverlauf"
 msgid "Colored Background"
 msgstr "Farbiger Hintergrund"
 
-#: ../cmk/gui/plugins/views/painters.py:2370
+#: ../cmk/gui/plugins/views/painters.py:2364
 msgid "Coloring"
 msgstr "Einfärbung"
 
-#: ../cmk/gui/plugins/views/painters.py:2365
+#: ../cmk/gui/plugins/views/painters.py:2359
 msgid "Colorize background if host is down"
 msgstr "Hintergrund einfärben, wenn der Host down ist"
 
-#: ../cmk/gui/plugins/views/painters.py:2368
+#: ../cmk/gui/plugins/views/painters.py:2362
 msgid "Colorize background if host is downtime"
 msgstr "Hintergrund einfärben, wenn der Host eine Ausfallzeit hat."
 
-#: ../cmk/gui/plugins/views/painters.py:2367
+#: ../cmk/gui/plugins/views/painters.py:2361
 msgid "Colorize background if host is pending"
 msgstr "Hintergrund einfärben, wenn der Host noch nicht geprüft wurde."
 
-#: ../cmk/gui/plugins/views/painters.py:2364
+#: ../cmk/gui/plugins/views/painters.py:2358
 msgid "Colorize background if host is up"
 msgstr "Hintergrund einfärben, wenn der Host up ist"
 
-#: ../cmk/gui/plugins/views/painters.py:2366
+#: ../cmk/gui/plugins/views/painters.py:2360
 msgid "Colorize background if host unreachable"
 msgstr "Hintergrund einfärben, wenn der Host nicht erreichbar ist."
 
@@ -13072,7 +13093,7 @@ msgid ""
 "not allowed."
 msgstr ""
 
-#: ../cmk/gui/plugins/views/painters.py:4327
+#: ../cmk/gui/plugins/views/painters.py:4321
 #: ../cmk/gui/plugins/visuals/infos.py:219
 #: ../cmk/gui/plugins/wato/active_checks.py:2317
 msgid "Command"
@@ -13120,12 +13141,12 @@ msgstr "Befehle für Hosts/Services"
 
 #: ../cmk/gui/valuespec.py:6116 ../cmk/gui/wato/pages/activate_changes.py:495
 #: ../cmk/gui/wato/pages/rulesets.py:1238
-#: ../cmk/gui/wato/pages/pattern_editor.py:259
+#: ../cmk/gui/wato/pages/pattern_editor.py:260
 #: ../cmk/gui/watolib/activate_changes.py:802
 #: ../cmk/gui/plugins/views/mkeventd.py:390
-#: ../cmk/gui/plugins/views/painters.py:3830
-#: ../cmk/gui/plugins/views/painters.py:3911
-#: ../cmk/gui/plugins/views/painters.py:4469
+#: ../cmk/gui/plugins/views/painters.py:3824
+#: ../cmk/gui/plugins/views/painters.py:3905
+#: ../cmk/gui/plugins/views/painters.py:4463
 #: ../cmk/gui/plugins/views/commands.py:504
 #: ../cmk/gui/plugins/views/commands.py:598
 #: ../cmk/gui/plugins/views/commands.py:730
@@ -13145,19 +13166,19 @@ msgstr "Kommentar (optional)"
 msgid "Comment ID"
 msgstr "Kommentar-ID"
 
-#: ../cmk/gui/plugins/views/painters.py:3708
+#: ../cmk/gui/plugins/views/painters.py:3702
 msgid "Comment author"
 msgstr "Kommentarautor"
 
-#: ../cmk/gui/plugins/views/painters.py:3765
+#: ../cmk/gui/plugins/views/painters.py:3759
 msgid "Comment entry time"
 msgstr "Kommentareintragszeit"
 
-#: ../cmk/gui/plugins/views/painters.py:3816
+#: ../cmk/gui/plugins/views/painters.py:3810
 msgid "Comment entry type (user/downtime/flapping/ack)"
 msgstr "Typ des Kommentars (Benutzer/Wartung/unstetig/Quittung)"
 
-#: ../cmk/gui/plugins/views/painters.py:3789
+#: ../cmk/gui/plugins/views/painters.py:3783
 msgid "Comment expiry time"
 msgstr "Kommentarablaufzeit"
 
@@ -13171,11 +13192,11 @@ msgstr "Simultane Aktivierung von Änderungen"
 msgid "Comment for the downtime"
 msgstr "Kommentar für die Wartungszeit"
 
-#: ../cmk/gui/plugins/views/painters.py:3688
+#: ../cmk/gui/plugins/views/painters.py:3682
 msgid "Comment id"
 msgstr "Kommentar ID"
 
-#: ../cmk/gui/plugins/views/painters.py:3728
+#: ../cmk/gui/plugins/views/painters.py:3722
 msgid "Comment text"
 msgstr "Kommentartext"
 
@@ -13187,7 +13208,7 @@ msgstr "Kommentar zum Ereignis"
 msgid "Comment type"
 msgstr "Kommentartyp"
 
-#: ../cmk/gui/plugins/views/painters.py:3745
+#: ../cmk/gui/plugins/views/painters.py:3739
 msgid "Comment type (host/service)"
 msgstr "Kommentartyp (Host/Service)"
 
@@ -13196,8 +13217,8 @@ msgstr "Kommentartyp (Host/Service)"
 msgid "Comment: %s"
 msgstr "Kommentar: %s"
 
-#: ../cmk/gui/plugins/views/painters.py:1415
-#: ../cmk/gui/plugins/views/painters.py:2980
+#: ../cmk/gui/plugins/views/painters.py:1409
+#: ../cmk/gui/plugins/views/painters.py:2974
 #: ../cmk/gui/plugins/views/builtin.py:333
 #: ../cmk/gui/plugins/visuals/infos.py:160
 msgid "Comments"
@@ -13310,7 +13331,7 @@ msgstr ""
 "Regel setzt den Check auf WARN/CRIT, wenn diese Zeit gleich oder über den "
 "eingestellten Schwellen liegt."
 
-#: ../cmk/gui/werks.py:244 ../cmk/gui/werks.py:366 ../cmk/gui/werks.py:485
+#: ../cmk/gui/werks.py:244 ../cmk/gui/werks.py:368 ../cmk/gui/werks.py:487
 msgid "Compatibility"
 msgstr "Kompatibilität"
 
@@ -13318,11 +13339,11 @@ msgstr "Kompatibilität"
 msgid "Compatible"
 msgstr "Kompatibel"
 
-#: ../cmk/gui/werks.py:370
+#: ../cmk/gui/werks.py:372
 msgid "Compatible Werks"
 msgstr "Kompatible Werke"
 
-#: ../cmk/gui/werks.py:369
+#: ../cmk/gui/werks.py:371
 msgid "Compatible and incompatible Werks"
 msgstr "Kompatible und inkompatible Werks"
 
@@ -13347,7 +13368,7 @@ msgstr "Fertigstellung"
 msgid "Completion time over treshold occured"
 msgstr "Ausführungszeit über dem Schwellenwert ist aufgetreten"
 
-#: ../cmk/gui/werks.py:235 ../cmk/gui/werks.py:377 ../cmk/gui/werks.py:488
+#: ../cmk/gui/werks.py:235 ../cmk/gui/werks.py:379 ../cmk/gui/werks.py:490
 #: ../cmk/gui/plugins/wato/check_parameters/overall_utilization_multiitem.py:47
 #: ../cmk/gui/plugins/wato/check_parameters/power_multiitem.py:23
 #: ../cmk/gui/plugins/wato/check_parameters/pci_io_utilization_multiitem.py:46
@@ -13473,9 +13494,9 @@ msgstr ""
 msgid "Configuration files '*.mk' or '*.conf' from etc/check_mk"
 msgstr ""
 
-#: ../cmk/base/diagnostics.py:440
+#: ../cmk/base/diagnostics.py:481
 #, python-format
-msgid "Configuration files '*.mk' or '*.conf' from etc/checkmk: %s"
+msgid "Configuration files ('*.mk' or '*.conf') from etc/checkmk: %s"
 msgstr ""
 
 #: ../cmk/utils/werks.py:50
@@ -14148,7 +14169,7 @@ msgstr "Kunden"
 #: ../cmk/gui/notifications.py:147 ../cmk/gui/wato/pages/notifications.py:623
 #: ../cmk/gui/plugins/views/mkeventd.py:513
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:414
-#: ../cmk/gui/plugins/views/painters.py:4307
+#: ../cmk/gui/plugins/views/painters.py:4301
 #: ../cmk/gui/plugins/visuals/infos.py:198
 msgid "Contact"
 msgstr "Kontakt"
@@ -14176,8 +14197,8 @@ msgstr "Kontakgruppe (effektiv)"
 
 #: ../cmk/gui/wato/mkeventd.py:394 ../cmk/gui/wato/pages/groups.py:361
 #: ../cmk/gui/wato/pages/users.py:435 ../cmk/gui/plugins/views/mkeventd.py:826
-#: ../cmk/gui/plugins/views/painters.py:712
-#: ../cmk/gui/plugins/views/painters.py:2940
+#: ../cmk/gui/plugins/views/painters.py:706
+#: ../cmk/gui/plugins/views/painters.py:2934
 #: ../cmk/gui/plugins/wato/bi_config.py:503
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:2062
 msgid "Contact groups"
@@ -14231,8 +14252,8 @@ msgid "Contactgroups that have permission on this folder"
 msgstr "Kontaktgruppen, die für diesen Ordner berechtigt sind"
 
 #: ../cmk/gui/wato/pages/notifications.py:297
-#: ../cmk/gui/plugins/views/painters.py:692
-#: ../cmk/gui/plugins/views/painters.py:2920
+#: ../cmk/gui/plugins/views/painters.py:686
+#: ../cmk/gui/plugins/views/painters.py:2914
 #: ../cmk/gui/plugins/visuals/infos.py:202
 msgid "Contacts"
 msgstr "Kontakte"
@@ -14475,23 +14496,23 @@ msgstr "Kern"
 msgid "Core & setup"
 msgstr "Core & Setup"
 
-#: ../cmk/gui/plugins/views/painters.py:4412
+#: ../cmk/gui/plugins/views/painters.py:4406
 msgid "Core configuration reloaded"
 msgstr "Konfiguration des Kerns neu geladen"
 
-#: ../cmk/gui/plugins/views/painters.py:4389
+#: ../cmk/gui/plugins/views/painters.py:4383
 msgid "Core produced a notification"
 msgstr "Der Kern hat einen Alarm produziert"
 
-#: ../cmk/gui/plugins/views/painters.py:4408
+#: ../cmk/gui/plugins/views/painters.py:4402
 msgid "Core restarted"
 msgstr "Kern neu gestartet"
 
-#: ../cmk/gui/plugins/views/painters.py:4416
+#: ../cmk/gui/plugins/views/painters.py:4410
 msgid "Core started"
 msgstr "Kern gestartet"
 
-#: ../cmk/gui/plugins/views/painters.py:4420
+#: ../cmk/gui/plugins/views/painters.py:4414
 msgid "Core stopped"
 msgstr "Kern angehalten"
 
@@ -14609,7 +14630,7 @@ msgstr ""
 msgid "Could not create package: %s"
 msgstr "Fehler beim Erzeugen des Paketes: %s"
 
-#: ../cmk/gui/wato/user_profile.py:162
+#: ../cmk/gui/wato/user_profile.py:161
 msgid "Could not determine current theme."
 msgstr ""
 
@@ -14762,7 +14783,7 @@ msgstr "Zählen & Timing"
 msgid "Country"
 msgstr "Staat"
 
-#: ../cmk/gui/plugins/views/painters.py:2709
+#: ../cmk/gui/plugins/views/painters.py:2703
 msgid "Cr"
 msgstr "Cr"
 
@@ -16510,7 +16531,7 @@ msgstr "Strom"
 msgid "Current O2 percentage"
 msgstr "Aktueller O2-Prozentsatz"
 
-#: ../cmk/gui/wato/user_profile.py:404
+#: ../cmk/gui/wato/user_profile.py:406
 msgid "Current Password"
 msgstr "Aktuelles Passwort"
 
@@ -16522,11 +16543,11 @@ msgstr "Aktuelle Benutzer"
 msgid "Current agent update status of all registered hosts."
 msgstr "Aktueller Agentupdatestatus von allen registrierten Hosts."
 
-#: ../cmk/gui/plugins/views/painters.py:1058
+#: ../cmk/gui/plugins/views/painters.py:1052
 msgid "Current check attempt"
 msgstr "Aktueller Check-Versuch"
 
-#: ../cmk/gui/wato/pages/audit_log.py:376
+#: ../cmk/gui/wato/pages/audit_log.py:380
 msgid "Current date"
 msgstr "Heute"
 
@@ -16534,7 +16555,7 @@ msgstr "Heute"
 msgid "Current events"
 msgstr "Aktuelle Ereignisse"
 
-#: ../cmk/gui/plugins/views/painters.py:2033
+#: ../cmk/gui/plugins/views/painters.py:2027
 msgid "Current host check attempt"
 msgstr "Aktueller Host-Check Versuch"
 
@@ -16651,7 +16672,7 @@ msgstr "Deaktiviere diese Aggregation"
 msgid "Currently disable this notification"
 msgstr "Deaktiviere diesen Alarm"
 
-#: ../cmk/gui/plugins/views/painters.py:1162
+#: ../cmk/gui/plugins/views/painters.py:1156
 #: ../cmk/gui/plugins/views/icons/builtin.py:594
 msgid "Currently in downtime"
 msgstr "Zur Zeit in Wartung"
@@ -16827,7 +16848,7 @@ msgstr "Benutzergraphen"
 msgid "Custom host attributes"
 msgstr "Eigene Host-Attribute"
 
-#: ../cmk/gui/plugins/views/painters.py:2957
+#: ../cmk/gui/plugins/views/painters.py:2951
 msgid "Custom host notes"
 msgstr "Spezifische Anmerkungen zu Hosts"
 
@@ -16907,7 +16928,7 @@ msgstr "Benutzerdefinierte Serviceattribute"
 msgid "Custom service name"
 msgstr "Angepasste Serviceanmerkungen"
 
-#: ../cmk/gui/plugins/views/painters.py:1497
+#: ../cmk/gui/plugins/views/painters.py:1491
 msgid "Custom services notes"
 msgstr "Angepasste Serviceanmerkungen"
 
@@ -16937,7 +16958,7 @@ msgstr "Zeitspanne"
 msgid "Custom time span"
 msgstr "Zeitspanne"
 
-#: ../cmk/gui/plugins/views/painters.py:4977
+#: ../cmk/gui/plugins/views/painters.py:4971
 msgid "Custom title"
 msgstr "Angepasster Titel"
 
@@ -17478,7 +17499,7 @@ msgstr "Täglicher Bericht"
 msgid "Daily build"
 msgstr "Tagesversion"
 
-#: ../cmk/gui/wato/pages/audit_log.py:386
+#: ../cmk/gui/wato/pages/audit_log.py:390
 msgid "Daily paged display"
 msgstr "Tägliche Anzeige"
 
@@ -17786,10 +17807,10 @@ msgstr "Datastores"
 msgid "Datatype"
 msgstr "Datentyp"
 
-#: ../cmk/gui/werks.py:236 ../cmk/gui/werks.py:358 ../cmk/gui/werks.py:482
-#: ../cmk/gui/wato/pages/audit_log.py:443
+#: ../cmk/gui/werks.py:236 ../cmk/gui/werks.py:360 ../cmk/gui/werks.py:484
+#: ../cmk/gui/wato/pages/audit_log.py:447
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:391
-#: ../cmk/gui/plugins/views/painters.py:4538
+#: ../cmk/gui/plugins/views/painters.py:4532
 #: ../cmk/gui/plugins/dashboard/notify_users.py:78
 msgid "Date"
 msgstr "Datum"
@@ -17831,7 +17852,7 @@ msgstr "Datenbaustein"
 msgid "Day"
 msgstr "Tag"
 
-#: ../cmk/gui/werks.py:408
+#: ../cmk/gui/werks.py:410
 msgid "Day of creation"
 msgstr "Tag der Erzeugung"
 
@@ -18237,7 +18258,7 @@ msgstr "Verzögere Ereigniserstellung"
 msgid "Delay host notifications"
 msgstr "Verzögerte Host-Alarmierung"
 
-#: ../cmk/gui/plugins/views/painters.py:925
+#: ../cmk/gui/plugins/views/painters.py:919
 msgid "Delay notification"
 msgstr "Verzögerte Alarmierung"
 
@@ -19252,11 +19273,11 @@ msgstr "Detaillierte Timeline von Ereignissen für jedes Objekt"
 #: ../cmk/gui/wato/pages/global_settings.py:394
 #: ../cmk/gui/wato/pages/ldap.py:346 ../cmk/gui/wato/pages/folders.py:160
 #: ../cmk/gui/crash_reporting.py:474 ../cmk/gui/crash_reporting.py:535
-#: ../cmk/gui/crash_reporting.py:573 ../cmk/gui/plugins/views/painters.py:484
+#: ../cmk/gui/crash_reporting.py:573 ../cmk/gui/plugins/views/painters.py:478
 msgid "Details"
 msgstr "Details"
 
-#: ../cmk/gui/plugins/views/painters.py:487
+#: ../cmk/gui/plugins/views/painters.py:481
 msgid "Details (Previously named: long output)"
 msgstr ""
 
@@ -20145,11 +20166,11 @@ msgstr ""
 msgid "Display mode"
 msgstr "Anzeigename"
 
-#: ../cmk/gui/wato/pages/audit_log.py:382
+#: ../cmk/gui/wato/pages/audit_log.py:386
 msgid "Display mode of entries"
 msgstr "Anzeigemodus"
 
-#: ../cmk/gui/plugins/views/painters.py:756
+#: ../cmk/gui/plugins/views/painters.py:750
 #: ../cmk/gui/plugins/wato/notifications.py:89
 #: ../cmk/gui/plugins/wato/notifications.py:114
 msgid "Display name"
@@ -20802,7 +20823,7 @@ msgid "Do not graph completely zero metrics"
 msgstr "Metriken mit reiner Nullinie nicht darstellen"
 
 #: ../cmk/gui/availability.py:195 ../cmk/gui/availability.py:200
-#: ../cmk/gui/werks.py:410
+#: ../cmk/gui/werks.py:412
 msgid "Do not group"
 msgstr "Nicht gruppieren"
 
@@ -20961,7 +20982,7 @@ msgid "Do you really want to acknowledge all failed notifications up to %s?"
 msgstr ""
 "Wollen Sie wirklich alle fehlgeschlagenen Alarmierungen bis %s bestätigen?"
 
-#: ../cmk/gui/wato/pages/audit_log.py:132
+#: ../cmk/gui/wato/pages/audit_log.py:133
 msgid "Do you really want to clear the audit log?"
 msgstr "Wollen Sie wirklich die Audit-Logdatei leeren?"
 
@@ -21239,7 +21260,7 @@ msgstr "Docker Container"
 msgid "Docker images"
 msgstr "Docker Images"
 
-#: ../cmk/gui/plugins/views/painters.py:4882
+#: ../cmk/gui/plugins/views/painters.py:4876
 msgid "Docker node"
 msgstr "Docker-Node"
 
@@ -21529,9 +21550,9 @@ msgstr "Downstream-Leistung"
 #: ../cmk/gui/cee/plugins/reporting/availability.py:411
 #: ../cmk/gui/cee/plugins/wato/cmc.py:583
 #: ../cmk/gui/wato/pages/notifications.py:699
-#: ../cmk/gui/plugins/views/painters.py:3000
-#: ../cmk/gui/plugins/views/painters.py:3833
-#: ../cmk/gui/plugins/views/painters.py:4384
+#: ../cmk/gui/plugins/views/painters.py:2994
+#: ../cmk/gui/plugins/views/painters.py:3827
+#: ../cmk/gui/plugins/views/painters.py:4378
 #: ../cmk/gui/plugins/views/availability.py:608
 #: ../cmk/gui/plugins/visuals/infos.py:177
 msgid "Downtime"
@@ -21541,19 +21562,19 @@ msgstr "Wartungszeit"
 msgid "Downtime ID"
 msgstr "Wartungszeit-ID"
 
-#: ../cmk/gui/plugins/views/painters.py:4016
+#: ../cmk/gui/plugins/views/painters.py:4010
 msgid "Downtime active or pending"
 msgstr "Wartungszeit ist aktiv/anstehend"
 
-#: ../cmk/gui/plugins/views/painters.py:3888
+#: ../cmk/gui/plugins/views/painters.py:3882
 msgid "Downtime author"
 msgstr "Wartungszeit (Autor)"
 
-#: ../cmk/gui/plugins/views/painters.py:3908
+#: ../cmk/gui/plugins/views/painters.py:3902
 msgid "Downtime comment"
 msgstr "Wartungszeit (Kommentar)"
 
-#: ../cmk/gui/plugins/views/painters.py:4108
+#: ../cmk/gui/plugins/views/painters.py:4102
 msgid "Downtime duration (if flexible)"
 msgstr "Wartungszeitdauer (wenn flexibel)"
 
@@ -21561,16 +21582,16 @@ msgstr "Wartungszeitdauer (wenn flexibel)"
 msgid "Downtime end"
 msgstr "Wartungszeit Ende"
 
-#: ../cmk/gui/plugins/views/painters.py:4084
+#: ../cmk/gui/plugins/views/painters.py:4078
 msgid "Downtime end time"
 msgstr "Wartungszeit (Ende)"
 
-#: ../cmk/gui/plugins/views/painters.py:4036
+#: ../cmk/gui/plugins/views/painters.py:4030
 #: ../cmk/gui/plugins/views/sorters.py:510
 msgid "Downtime entry time"
 msgstr "Wartungszeit jede"
 
-#: ../cmk/gui/plugins/views/painters.py:3996
+#: ../cmk/gui/plugins/views/painters.py:3990
 #: ../cmk/gui/plugins/views/sorters.py:504
 msgid "Downtime for host/service"
 msgstr "Wartungszeit für Host/Service"
@@ -21581,15 +21602,15 @@ msgstr "Wartungszeit für Host/Service"
 msgid "Downtime history"
 msgstr "Wartungszeiten"
 
-#: ../cmk/gui/plugins/views/painters.py:3868
+#: ../cmk/gui/plugins/views/painters.py:3862
 msgid "Downtime id"
 msgstr "Wartungszeit ID"
 
-#: ../cmk/gui/plugins/views/painters.py:3948
+#: ../cmk/gui/plugins/views/painters.py:3942
 msgid "Downtime origin"
 msgstr "Ursprung der Wartungszeit"
 
-#: ../cmk/gui/plugins/views/painters.py:3968
+#: ../cmk/gui/plugins/views/painters.py:3962
 msgid "Downtime recurring interval"
 msgstr "Wiederholintervall der Wartungszeit"
 
@@ -21597,15 +21618,15 @@ msgstr "Wiederholintervall der Wartungszeit"
 msgid "Downtime start"
 msgstr "Wartungszeit Start"
 
-#: ../cmk/gui/plugins/views/painters.py:3928
+#: ../cmk/gui/plugins/views/painters.py:3922
 msgid "Downtime start mode"
 msgstr "Startart der Wartungszeit"
 
-#: ../cmk/gui/plugins/views/painters.py:4060
+#: ../cmk/gui/plugins/views/painters.py:4054
 msgid "Downtime start time"
 msgstr "Wartungszeit (Beginn)"
 
-#: ../cmk/gui/plugins/views/painters.py:4381
+#: ../cmk/gui/plugins/views/painters.py:4375
 msgid "Downtime stopped"
 msgstr "Wartungszeit angehalten"
 
@@ -21660,7 +21681,7 @@ msgid "Dropped work requests"
 msgstr "Ignorierte Arbeitsanfragen"
 
 #: ../cmk/gui/plugins/views/mkeventd.py:473
-#: ../cmk/gui/plugins/views/painters.py:1165
+#: ../cmk/gui/plugins/views/painters.py:1159
 msgid "Dt."
 msgstr "Dt."
 
@@ -21696,8 +21717,8 @@ msgstr "Doppelte Tag-ID \"%s\" in den Hilfsmerkmalen"
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1744
 #: ../cmk/gui/cee/plugins/wato/dcd.py:427 ../cmk/gui/cee/ntop/pages.py:838
 #: ../cmk/gui/cee/ntop/pages.py:858 ../cmk/gui/cee/sla.py:1940
-#: ../cmk/gui/cee/sla.py:1957 ../cmk/gui/plugins/views/painters.py:1041
-#: ../cmk/gui/plugins/views/painters.py:2016
+#: ../cmk/gui/cee/sla.py:1957 ../cmk/gui/plugins/views/painters.py:1035
+#: ../cmk/gui/plugins/views/painters.py:2010
 #: ../cmk/gui/plugins/views/commands.py:1097
 #: ../cmk/gui/plugins/views/availability.py:576
 #: ../cmk/gui/plugins/wato/check_parameters/siemens_plc_duration.py:36
@@ -21748,7 +21769,7 @@ msgstr ""
 msgid "During this time period no monitoring data is available"
 msgstr "Während dieser Zeit sind keine Monitoringdaten verfügbar"
 
-#: ../cmk/gui/plugins/views/painters.py:3395
+#: ../cmk/gui/plugins/views/painters.py:3389
 msgid "Dw"
 msgstr "Dw"
 
@@ -21794,7 +21815,7 @@ msgstr ""
 msgid "E-Mails"
 msgstr "E-Mails"
 
-#: ../cmk/gui/plugins/views/painters.py:3819
+#: ../cmk/gui/plugins/views/painters.py:3813
 msgid "E.Type"
 msgstr "B.Typ"
 
@@ -21850,7 +21871,7 @@ msgstr "EMC VNX Speicherpoolstaffelung"
 msgid "EMC VNX storage systems"
 msgstr "EMC VNX Speicherpools"
 
-#: ../cmk/gui/htmllib.py:1410
+#: ../cmk/gui/htmllib.py:1414
 msgid "ERROR"
 msgstr "FEHLER"
 
@@ -22216,8 +22237,8 @@ msgstr "Benachrichtigungsregel %d des Benutzers %s bearbeiten"
 msgid "Edit parameter rule set for this check type"
 msgstr "Parameter-Regelsatz für diesen Checktyp editieren"
 
-#: ../cmk/gui/wato/user_profile.py:101 ../cmk/gui/wato/user_profile.py:423
-#: ../cmk/gui/wato/user_profile.py:605
+#: ../cmk/gui/wato/user_profile.py:100 ../cmk/gui/wato/user_profile.py:425
+#: ../cmk/gui/wato/user_profile.py:606
 #, fuzzy
 #| msgid "Edit User Profile"
 msgid "Edit profile"
@@ -22380,7 +22401,7 @@ msgid "Edit this report"
 msgstr "Bearbeite Regel"
 
 #: ../cmk/gui/wato/mkeventd.py:1813 ../cmk/gui/wato/pages/rulesets.py:924
-#: ../cmk/gui/wato/pages/pattern_editor.py:272
+#: ../cmk/gui/wato/pages/pattern_editor.py:273
 #: ../cmk/gui/plugins/wato/bi_config.py:819
 msgid "Edit this rule"
 msgstr "Bearbeite Regel"
@@ -22454,7 +22475,7 @@ msgstr "Regel in Regelsatz \"%s\" in Ordner \"%s\" editiert"
 msgid "Edited the %s '%s'"
 msgstr "%s '%s' editiert"
 
-#: ../cmk/gui/cee/plugins/wato/license_usage.py:219 ../cmk/gui/werks.py:384
+#: ../cmk/gui/cee/plugins/wato/license_usage.py:219 ../cmk/gui/werks.py:386
 #: ../cmk/gui/crash_reporting.py:411
 msgid "Edition"
 msgstr "Edition"
@@ -23144,7 +23165,7 @@ msgstr "Beschreibung"
 msgid "Encryption secret"
 msgstr "Verschlüsselungsgeheimnis"
 
-#: ../cmk/gui/plugins/views/painters.py:4087
+#: ../cmk/gui/plugins/views/painters.py:4081
 msgid "End"
 msgstr "Ende"
 
@@ -23378,7 +23399,7 @@ msgid "Entries"
 msgstr "Einträge"
 
 #: ../cmk/gui/cee/plugins/reporting/availability.py:51
-#: ../cmk/gui/plugins/views/painters.py:4039
+#: ../cmk/gui/plugins/views/painters.py:4033
 #: ../cmk/gui/plugins/views/availability.py:1064
 msgid "Entry"
 msgstr "Eintrag"
@@ -23551,7 +23572,7 @@ msgstr "Bewertung der VDrive-Zustände"
 msgid "Even rows"
 msgstr "Gerade Zeilen"
 
-#: ../cmk/gui/plugins/views/painters.py:4287
+#: ../cmk/gui/plugins/views/painters.py:4281
 msgid "Event"
 msgstr "Ereignis"
 
@@ -24347,7 +24368,7 @@ msgstr "Ablaufzeit"
 msgid "Expired objects"
 msgstr "Ausgelaufene Objekte"
 
-#: ../cmk/gui/plugins/views/painters.py:3792
+#: ../cmk/gui/plugins/views/painters.py:3786
 msgid "Expires"
 msgstr "Läuft ab"
 
@@ -24450,14 +24471,14 @@ msgid "Explicitly specify resources"
 msgstr "Ressourcen explizit auflisten"
 
 #: ../cmk/gui/cee/plugins/metrics/graphs.py:674 ../cmk/gui/views.py:739
-#: ../cmk/gui/wato/pages/audit_log.py:82 ../cmk/gui/wato/pages/audit_log.py:85
+#: ../cmk/gui/wato/pages/audit_log.py:83 ../cmk/gui/wato/pages/audit_log.py:86
 #: ../cmk/gui/visuals.py:1942 ../cmk/gui/plugins/sidebar/views.py:47
 #: ../cmk/gui/plugins/sidebar/dashboards.py:42
 #: ../cmk/gui/plugins/views/availability.py:393
 msgid "Export"
 msgstr "Exportieren"
 
-#: ../cmk/gui/views.py:809 ../cmk/gui/wato/pages/audit_log.py:150
+#: ../cmk/gui/views.py:809 ../cmk/gui/wato/pages/audit_log.py:151
 #: ../cmk/gui/plugins/views/availability.py:453
 #, fuzzy
 #| msgid "Export as CSV"
@@ -24533,7 +24554,7 @@ msgstr "Ereignisse"
 msgid "External ID (optional)"
 msgstr "Kommentar (optional)"
 
-#: ../cmk/gui/plugins/views/painters.py:4404
+#: ../cmk/gui/plugins/views/painters.py:4398
 msgid "External command"
 msgstr "Externes Kommando"
 
@@ -24885,7 +24906,7 @@ msgstr "Die Datei kann nicht eingelesen werden: %s"
 msgid "Failed to parse labels: %s"
 msgstr "Die Datei kann nicht eingelesen werden: %s"
 
-#: ../cmk/gui/plugins/views/painters.py:564
+#: ../cmk/gui/plugins/views/painters.py:558
 #, python-format
 msgid "Failed to parse performance data string: %s"
 msgstr "Fehler beim Parsen der Performancedaten: %s"
@@ -25482,7 +25503,7 @@ msgstr "Dateisystembenutzung"
 #: ../cmk/gui/mobile.py:330 ../cmk/gui/node_visualization.py:200
 #: ../cmk/gui/node_visualization.py:203 ../cmk/gui/dashboard.py:863
 #: ../cmk/gui/dashboard.py:866 ../cmk/gui/werks.py:166 ../cmk/gui/views.py:858
-#: ../cmk/gui/wato/pages/rulesets.py:469 ../cmk/gui/wato/pages/audit_log.py:161
+#: ../cmk/gui/wato/pages/rulesets.py:469 ../cmk/gui/wato/pages/audit_log.py:162
 #: ../cmk/gui/plugins/wato/bi_config.py:646
 msgid "Filter"
 msgstr "Filter"
@@ -25557,7 +25578,7 @@ msgstr ""
 msgid "Filter hosts"
 msgstr "Fehlerhafte Hosts"
 
-#: ../cmk/gui/wato/pages/audit_log.py:367
+#: ../cmk/gui/wato/pages/audit_log.py:371
 msgid "Filter pattern (RegExp)"
 msgstr "Filter-Ausdruck (Regex)"
 
@@ -25587,7 +25608,7 @@ msgid "Filter settings"
 msgstr "%d Filtereinstellungen"
 
 #: ../cmk/gui/werks.py:169 ../cmk/gui/views.py:866
-#: ../cmk/gui/wato/pages/audit_log.py:164
+#: ../cmk/gui/wato/pages/audit_log.py:165
 #, fuzzy
 #| msgid "Filter"
 msgid "Filter view"
@@ -25602,7 +25623,7 @@ msgstr "Filter- und Berechnungsoptionen"
 msgid "Filters"
 msgstr "Filter"
 
-#: ../cmk/gui/plugins/views/painters.py:4396
+#: ../cmk/gui/plugins/views/painters.py:4390
 msgid "Final notification result"
 msgstr "Endgültiges Alarm-Ergebnis"
 
@@ -25618,7 +25639,7 @@ msgstr "Abschluss"
 msgid "Finalizing synchronization"
 msgstr "Finalisiere Synchronisation"
 
-#: ../cmk/gui/plugins/views/painters.py:150
+#: ../cmk/gui/plugins/views/painters.py:149
 msgid "Find differences..."
 msgstr "Unterschiede finden..."
 
@@ -25769,8 +25790,8 @@ msgstr "Feste Größe"
 msgid "Fixed string to expect in the content"
 msgstr "Im Inhalt erwartete Zeichenkette"
 
-#: ../cmk/gui/plugins/views/painters.py:1245
-#: ../cmk/gui/plugins/views/painters.py:2200
+#: ../cmk/gui/plugins/views/painters.py:1239
+#: ../cmk/gui/plugins/views/painters.py:2194
 msgid "Flap"
 msgstr "Unstetig"
 
@@ -25791,8 +25812,8 @@ msgstr "Unstetigkeitserkennnung für Services"
 #: ../cmk/gui/cee/plugins/reporting/availability.py:400
 #: ../cmk/gui/cee/plugins/reporting/availability.py:408
 #: ../cmk/gui/wato/pages/notifications.py:705
-#: ../cmk/gui/plugins/views/painters.py:3841
-#: ../cmk/gui/plugins/views/painters.py:4424
+#: ../cmk/gui/plugins/views/painters.py:3835
+#: ../cmk/gui/plugins/views/painters.py:4418
 #: ../cmk/gui/plugins/views/availability.py:603
 msgid "Flapping"
 msgstr "Unstetig"
@@ -25805,7 +25826,7 @@ msgstr "Belegung von Flash-Speicher"
 msgid "Flashback"
 msgstr "Flashback"
 
-#: ../cmk/gui/plugins/views/painters.py:4111
+#: ../cmk/gui/plugins/views/painters.py:4105
 msgid "Flex. Duration"
 msgstr "Flexible Dauer"
 
@@ -26857,7 +26878,7 @@ msgstr ""
 msgid "GC runs rate"
 msgstr "CRC Fehlerrate"
 
-#: ../cmk/gui/htmllib.py:2753
+#: ../cmk/gui/htmllib.py:2757
 msgid "GET/POST variables of this page"
 msgstr "GET/POST-Variablen auf dieser Seite"
 
@@ -26928,7 +26949,7 @@ msgstr ""
 msgid "Gbit/s"
 msgstr "Gbit/s"
 
-#: ../cmk/gui/pagetypes.py:1914 ../cmk/base/diagnostics.py:336
+#: ../cmk/gui/pagetypes.py:1914 ../cmk/base/diagnostics.py:342
 #, fuzzy
 #| msgid "Generate"
 msgid "General"
@@ -27188,7 +27209,7 @@ msgid "Granule size"
 msgstr "Detaillierte Größe"
 
 #: ../cmk/gui/cee/plugins/metrics/graphs.py:1342
-#: ../cmk/gui/plugins/views/painters.py:2260
+#: ../cmk/gui/plugins/views/painters.py:2254
 msgid "Graph"
 msgstr "Graph"
 
@@ -27264,7 +27285,7 @@ msgid "Graph them anyway"
 msgstr "Trotzdem darstellen"
 
 #: ../cmk/gui/cee/plugins/reporting/pnp_graphs.py:761
-#: ../cmk/gui/plugins/views/painters.py:103
+#: ../cmk/gui/plugins/views/painters.py:102
 msgid "Graph time range"
 msgstr "Graphzeitbereich"
 
@@ -27437,7 +27458,7 @@ msgstr "Gruppen Base DN"
 msgid "Group Base-DN"
 msgstr "Gruppen Basis-DN"
 
-#: ../cmk/gui/werks.py:405
+#: ../cmk/gui/werks.py:407
 msgid "Group Werks by"
 msgstr "Werks gruppieren nach"
 
@@ -27495,8 +27516,8 @@ msgstr ""
 msgid "Grouping pattern applies to volume name and mount point"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/painters.py:1305
-#: ../cmk/gui/plugins/views/painters.py:2890
+#: ../cmk/gui/plugins/views/painters.py:1299
+#: ../cmk/gui/plugins/views/painters.py:2884
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1399
 #: ../cmk/gui/plugins/wato/builtin_modules.py:432
 #: ../cmk/gui/plugins/wato/builtin_modules.py:502
@@ -28174,7 +28195,7 @@ msgstr ""
 "gelten sollten. <b>Hinweis</b>: Das ist nur sinnvoll, wenn es sich um einen "
 "Konfigurations-Slave handelt."
 
-#: ../cmk/gui/wato/user_profile.py:507
+#: ../cmk/gui/wato/user_profile.py:508
 msgid ""
 "Here you can configure how you want to be notified about host and service "
 "problems and other monitoring events."
@@ -28196,7 +28217,7 @@ msgstr ""
 "Hier können Sie die Schwellwerte für die 3.3 V und 12 V Versorgungsspannung "
 "für jedes Netzteil konfigurieren."
 
-#: ../cmk/gui/plugins/views/painters.py:2371
+#: ../cmk/gui/plugins/views/painters.py:2365
 msgid ""
 "Here you can configure the background color for specific states. The "
 "coloring for host in dowtime overrules all other coloring."
@@ -28295,7 +28316,7 @@ msgstr ""
 "Indikatoren. Um die Inikatoren dann auswerten zu können, benötigen Sie auf "
 "dem Check_MK-Server ein passendes Plugin."
 
-#: ../cmk/gui/plugins/views/painters.py:2817
+#: ../cmk/gui/plugins/views/painters.py:2811
 msgid ""
 "Here you can configure which services are displayed depending on their "
 "state. This is a filter at display level not query level."
@@ -28861,6 +28882,10 @@ msgstr ""
 "Update auf eine Liste von fünf Hosts begrenzen wollen, dann sollten diese "
 "fünf Hosts spätestens nach einem konfgurierten Updateintervall erscheinen."
 
+#: ../cmk/gui/wato/pages/pattern_editor.py:147
+msgid "Here you need to insert the original file or pathname"
+msgstr ""
+
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/misc.py:1361
 msgid ""
 "Here you see hosts that have registered for updates but have no available "
@@ -29143,12 +29168,12 @@ msgstr "Waagerechter Abstand"
 #: ../cmk/gui/wato/pages/services.py:1111
 #: ../cmk/gui/wato/pages/host_rename.py:409 ../cmk/gui/crash_reporting.py:538
 #: ../cmk/gui/plugins/views/mkeventd.py:431
-#: ../cmk/gui/plugins/views/painters.py:2292
-#: ../cmk/gui/plugins/views/painters.py:2319
-#: ../cmk/gui/plugins/views/painters.py:2349
-#: ../cmk/gui/plugins/views/painters.py:3755
-#: ../cmk/gui/plugins/views/painters.py:4006
-#: ../cmk/gui/plugins/views/painters.py:4205
+#: ../cmk/gui/plugins/views/painters.py:2286
+#: ../cmk/gui/plugins/views/painters.py:2313
+#: ../cmk/gui/plugins/views/painters.py:2343
+#: ../cmk/gui/plugins/views/painters.py:3749
+#: ../cmk/gui/plugins/views/painters.py:4000
+#: ../cmk/gui/plugins/views/painters.py:4199
 #: ../cmk/gui/plugins/views/icons/builtin.py:909
 #: ../cmk/gui/plugins/views/availability.py:1025
 #: ../cmk/gui/plugins/visuals/infos.py:27
@@ -29207,7 +29232,7 @@ msgstr "Host-/Service-Ereignisse"
 msgid "Host & service problems"
 msgstr "Host- & Service-Probleme"
 
-#: ../cmk/gui/plugins/views/painters.py:4364
+#: ../cmk/gui/plugins/views/painters.py:4358
 msgid "Host Alert"
 msgstr "Hostalarm"
 
@@ -29337,33 +29362,33 @@ msgstr "Host Systeme"
 msgid "Host Tags"
 msgstr "Hostmerkmale"
 
-#: ../cmk/gui/plugins/views/painters.py:2453
+#: ../cmk/gui/plugins/views/painters.py:2447
 msgid "Host address (IPv4)"
 msgstr "Host-Adresse (IPv4)"
 
-#: ../cmk/gui/plugins/views/painters.py:2473
+#: ../cmk/gui/plugins/views/painters.py:2467
 msgid "Host address (IPv6)"
 msgstr "Host-Adresse (IPv6)"
 
-#: ../cmk/gui/plugins/views/painters.py:2433
+#: ../cmk/gui/plugins/views/painters.py:2427
 msgid "Host address (Primary)"
 msgstr "Host-Adresse (primär)"
 
-#: ../cmk/gui/plugins/views/painters.py:2577
+#: ../cmk/gui/plugins/views/painters.py:2571
 #: ../cmk/gui/plugins/visuals/filters.py:360
 msgid "Host address families"
 msgstr "Host-Adress-Familien"
 
-#: ../cmk/gui/plugins/views/painters.py:2557
+#: ../cmk/gui/plugins/views/painters.py:2551
 #: ../cmk/gui/plugins/visuals/filters.py:335
 msgid "Host address family (Primary)"
 msgstr "Adressfamilie des Hosts (primär)"
 
-#: ../cmk/gui/plugins/views/painters.py:2493
+#: ../cmk/gui/plugins/views/painters.py:2487
 msgid "Host addresses (IPv4/IPv6)"
 msgstr "Host-Adressen (IPv4/IPv6)"
 
-#: ../cmk/gui/plugins/views/painters.py:2525
+#: ../cmk/gui/plugins/views/painters.py:2519
 msgid "Host addresses (additional)"
 msgstr "Hostadressen (zusätzlich)"
 
@@ -29374,7 +29399,7 @@ msgid "Host administration"
 msgstr "Host-Informationen"
 
 #: ../cmk/gui/plugins/metrics/valuespecs.py:66
-#: ../cmk/gui/plugins/views/painters.py:2413
+#: ../cmk/gui/plugins/views/painters.py:2407
 msgid "Host alias"
 msgstr "Hostalias"
 
@@ -29406,19 +29431,19 @@ msgstr "Host gesperrt (keine Veränderung möglich)"
 msgid "Host attributes to set"
 msgstr "Zu setzende Host-Attribute"
 
-#: ../cmk/gui/plugins/views/painters.py:1821
+#: ../cmk/gui/plugins/views/painters.py:1815
 msgid "Host check command"
 msgstr "Hostcheckbefehl"
 
-#: ../cmk/gui/plugins/views/painters.py:1841
+#: ../cmk/gui/plugins/views/painters.py:1835
 msgid "Host check command expanded"
 msgstr "Hostcheckbefehl erweitert"
 
-#: ../cmk/gui/plugins/views/painters.py:2013
+#: ../cmk/gui/plugins/views/painters.py:2007
 msgid "Host check duration"
 msgstr "Hostausführungscheck"
 
-#: ../cmk/gui/plugins/views/painters.py:1993
+#: ../cmk/gui/plugins/views/painters.py:1987
 msgid "Host check latency"
 msgstr "Hostlatenzzeitcheck"
 
@@ -29426,7 +29451,7 @@ msgstr "Hostlatenzzeitcheck"
 msgid "Host check rate"
 msgstr "Hostcheckrate"
 
-#: ../cmk/gui/plugins/views/painters.py:2117
+#: ../cmk/gui/plugins/views/painters.py:2111
 msgid "Host check type"
 msgstr "Host-Checktyp"
 
@@ -29439,7 +29464,7 @@ msgstr "Hostchecks"
 msgid "Host checks and smart pings"
 msgstr "Hostchecks und SMART-Pings"
 
-#: ../cmk/gui/plugins/views/painters.py:2977
+#: ../cmk/gui/plugins/views/painters.py:2971
 msgid "Host comments"
 msgstr "Hostkommentare"
 
@@ -29449,7 +29474,7 @@ msgstr "Hostkommentare"
 msgid "Host configuration"
 msgstr "Konfiguration"
 
-#: ../cmk/gui/plugins/views/painters.py:2937
+#: ../cmk/gui/plugins/views/painters.py:2931
 msgid "Host contact groups"
 msgstr "Hostkontaktgruppen"
 
@@ -29457,15 +29482,15 @@ msgstr "Hostkontaktgruppen"
 msgid "Host contact information"
 msgstr "Hostkontakt"
 
-#: ../cmk/gui/plugins/views/painters.py:2917
+#: ../cmk/gui/plugins/views/painters.py:2911
 msgid "Host contacts"
 msgstr "Hostkontakte"
 
-#: ../cmk/gui/plugins/views/painters.py:1700
+#: ../cmk/gui/plugins/views/painters.py:1694
 msgid "Host custom attribute"
 msgstr "Host-Benutzerattribut"
 
-#: ../cmk/gui/plugins/views/painters.py:3105
+#: ../cmk/gui/plugins/views/painters.py:3099
 msgid "Host custom attributes"
 msgstr "Eigene Host-Attribute"
 
@@ -29510,7 +29535,7 @@ msgstr "Host fährt runter"
 msgid "Host goes up again"
 msgstr "Host startet wieder "
 
-#: ../cmk/gui/plugins/views/painters.py:2257
+#: ../cmk/gui/plugins/views/painters.py:2251
 msgid "Host graph"
 msgstr "Hostgraph"
 
@@ -29519,7 +29544,7 @@ msgstr "Hostgraph"
 msgid "Host groups"
 msgstr "Hostgruppen"
 
-#: ../cmk/gui/plugins/views/painters.py:2887
+#: ../cmk/gui/plugins/views/painters.py:2881
 msgid "Host groups the host is member of"
 msgstr "Hostgruppen zu denen der Host gehört"
 
@@ -29540,11 +29565,11 @@ msgstr "Host Hover-Menü sichtbar in BI Visualisierung"
 msgid "Host hover menu shown in topolgoy visualization"
 msgstr "Host Hover-Menü sichtbar in Topologie Visualisierung"
 
-#: ../cmk/gui/plugins/views/painters.py:283
+#: ../cmk/gui/plugins/views/painters.py:277
 msgid "Host icons"
 msgstr "Hostsymbole"
 
-#: ../cmk/gui/plugins/views/painters.py:2997
+#: ../cmk/gui/plugins/views/painters.py:2991
 msgid "Host in downtime"
 msgstr "Host in Wartungszeit"
 
@@ -29553,7 +29578,7 @@ msgstr "Host in Wartungszeit"
 msgid "Host in downtime during event creation"
 msgstr "Host in Wartungszeit während Ereigniserstellung"
 
-#: ../cmk/gui/plugins/views/painters.py:2137
+#: ../cmk/gui/plugins/views/painters.py:2131
 msgid "Host in notif. period"
 msgstr "Host in Alarmierungsperiode"
 
@@ -29561,19 +29586,19 @@ msgstr "Host in Alarmierungsperiode"
 msgid "Host information"
 msgstr "Host-Informationen"
 
-#: ../cmk/gui/plugins/views/painters.py:2217
+#: ../cmk/gui/plugins/views/painters.py:2211
 msgid "Host is active"
 msgstr "Host ist aktiv"
 
-#: ../cmk/gui/plugins/views/painters.py:934
+#: ../cmk/gui/plugins/views/painters.py:928
 msgid "Host is down"
 msgstr "Host ist down"
 
-#: ../cmk/gui/plugins/views/painters.py:2197
+#: ../cmk/gui/plugins/views/painters.py:2191
 msgid "Host is flapping"
 msgstr "Host ist unstetig"
 
-#: ../cmk/gui/plugins/views/painters.py:928
+#: ../cmk/gui/plugins/views/painters.py:922
 msgid "Host is in downtime"
 msgstr "Host ist in Wartungszeit"
 
@@ -29588,7 +29613,7 @@ msgstr ""
 "Dieser Host wird nicht durch WATO verwaltet. Klicken Sie <a href=\"%s"
 "\">hier</a> um zur vorherigen Seite zu gelangen."
 
-#: ../cmk/gui/plugins/views/painters.py:3057
+#: ../cmk/gui/plugins/views/painters.py:3051
 msgid "Host is stale"
 msgstr "Hostzustand ist veraltet"
 
@@ -29658,15 +29683,15 @@ msgstr "Für Container verwendeter Hostname"
 msgid "Host network"
 msgstr "Host-Netzwerk"
 
-#: ../cmk/gui/plugins/views/painters.py:2177
+#: ../cmk/gui/plugins/views/painters.py:2171
 msgid "Host notification number"
 msgstr "Host Notifikationsnummer"
 
-#: ../cmk/gui/plugins/views/painters.py:2157
+#: ../cmk/gui/plugins/views/painters.py:2151
 msgid "Host notification period"
 msgstr "Host-Alarmierungsperiode"
 
-#: ../cmk/gui/plugins/views/painters.py:2237
+#: ../cmk/gui/plugins/views/painters.py:2231
 msgid "Host notifications enabled"
 msgstr "Hostalarme aktiviert"
 
@@ -29692,11 +29717,11 @@ msgid ""
 msgstr ""
 "Host/Service muss den folgenden Servicelevel haben, damit alarmiert wird"
 
-#: ../cmk/gui/plugins/views/painters.py:1801
+#: ../cmk/gui/plugins/views/painters.py:1795
 msgid "Host performance data"
 msgstr "Leistungsdaten von Host"
 
-#: ../cmk/gui/plugins/views/painters.py:3017
+#: ../cmk/gui/plugins/views/painters.py:3011
 msgid "Host problem acknowledged"
 msgstr "Hostproblem quittiert"
 
@@ -29741,7 +29766,7 @@ msgstr "Host auf dem Event Console läuft"
 msgid "Host search"
 msgstr "Host-Suche"
 
-#: ../cmk/gui/plugins/views/painters.py:3081
+#: ../cmk/gui/plugins/views/painters.py:3075
 msgid "Host service level"
 msgstr "Host Service-Level"
 
@@ -29758,17 +29783,17 @@ msgstr "Hostname und Site"
 msgid "Host specification"
 msgstr "Hostspezifikation"
 
-#: ../cmk/gui/plugins/views/painters.py:3037
+#: ../cmk/gui/plugins/views/painters.py:3031
 msgid "Host staleness value"
 msgstr "Host Veraltungswert"
 
-#: ../cmk/gui/plugins/views/painters.py:1733
+#: ../cmk/gui/plugins/views/painters.py:1727
 #: ../cmk/gui/plugins/views/sorters.py:77
 #: ../cmk/gui/plugins/views/availability.py:1172
 msgid "Host state"
 msgstr "Hoststatus"
 
-#: ../cmk/gui/plugins/views/painters.py:1757
+#: ../cmk/gui/plugins/views/painters.py:1751
 msgid "Host state (first character)"
 msgstr "Hoststatus (1. Zeichen)"
 
@@ -29788,11 +29813,11 @@ msgstr "Hostmerkmal:"
 #: ../cmk/gui/wato/pages/rulesets.py:1678
 #: ../cmk/gui/wato/pages/rulesets.py:1828
 #: ../cmk/gui/watolib/host_attributes.py:114
-#: ../cmk/gui/plugins/views/painters.py:4697
+#: ../cmk/gui/plugins/views/painters.py:4691
 msgid "Host tags"
 msgstr "Hostmerkmale"
 
-#: ../cmk/gui/plugins/views/painters.py:4752
+#: ../cmk/gui/plugins/views/painters.py:4746
 msgid "Host tags (with titles)"
 msgstr "Hostmerkmake (mit Titeln)"
 
@@ -29800,7 +29825,7 @@ msgstr "Hostmerkmake (mit Titeln)"
 msgid "Host&nbsp;status"
 msgstr "Host-Status"
 
-#: ../cmk/gui/plugins/views/painters.py:2867
+#: ../cmk/gui/plugins/views/painters.py:2861
 msgid "Host's children"
 msgstr "Kindknoten des Hosts"
 
@@ -29808,7 +29833,7 @@ msgstr "Kindknoten des Hosts"
 msgid "Host's contact groups have precedence"
 msgstr "Hostkontaktgruppen haben Priorität"
 
-#: ../cmk/gui/plugins/views/painters.py:2847
+#: ../cmk/gui/plugins/views/painters.py:2841
 msgid "Host's parents"
 msgstr "Parents von Host"
 
@@ -29828,7 +29853,7 @@ msgstr "Host-/Servicegruppen"
 msgid "Host/Device temperature"
 msgstr "Host/Gerätetemperatur"
 
-#: ../cmk/gui/plugins/views/painters.py:4196
+#: ../cmk/gui/plugins/views/painters.py:4190
 msgid "Host/Service"
 msgstr "Host/Service"
 
@@ -29872,11 +29897,11 @@ msgstr "Host-Aliassfdasdfsdaf"
 msgid "Hostgroup"
 msgstr "Hostgruppe"
 
-#: ../cmk/gui/plugins/views/painters.py:3472
+#: ../cmk/gui/plugins/views/painters.py:3466
 msgid "Hostgroup alias"
 msgstr "Hostgruppen Alias"
 
-#: ../cmk/gui/plugins/views/painters.py:3452
+#: ../cmk/gui/plugins/views/painters.py:3446
 msgid "Hostgroup name"
 msgstr "Hostgruppen-Name"
 
@@ -29904,7 +29929,7 @@ msgstr "Hostgruppen (zusammengeführt)"
 #: ../cmk/gui/wato/pages/folders.py:795
 #: ../cmk/gui/plugins/sidebar/search.py:960
 #: ../cmk/gui/plugins/views/mkeventd.py:428
-#: ../cmk/gui/plugins/views/painters.py:2346
+#: ../cmk/gui/plugins/views/painters.py:2340
 #: ../cmk/gui/plugins/views/availability.py:1167
 #: ../cmk/gui/plugins/visuals/infos.py:35
 #: ../cmk/gui/plugins/wato/active_checks.py:421
@@ -29943,11 +29968,11 @@ msgstr "Übersetzung von Hostnamen für eingehende Meldungen"
 msgid "Hostname translation for piggybacked hosts"
 msgstr "Übersetzung von Hostnamen für Huckepack-Hosts"
 
-#: ../cmk/gui/plugins/views/painters.py:2316
+#: ../cmk/gui/plugins/views/painters.py:2310
 msgid "Hostname, marked red if down (Deprecated)"
 msgstr "Hostname, rot markiert, wenn down (veraltet)"
 
-#: ../cmk/gui/plugins/views/painters.py:2289
+#: ../cmk/gui/plugins/views/painters.py:2283
 msgid "Hostname, red background if down or unreachable (Deprecated)"
 msgstr ""
 "Hostname, roter Hintergrund bei Ausfall oder Unerreichbarkeit (Veraltet)"
@@ -29992,7 +30017,7 @@ msgstr "Zu übersetzende Hostnamen"
 #: ../cmk/gui/plugins/sidebar/tactical_overview.py:76
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:440
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:466
-#: ../cmk/gui/plugins/views/painters.py:3226
+#: ../cmk/gui/plugins/views/painters.py:3220
 #: ../cmk/gui/plugins/views/mobile.py:359
 #: ../cmk/gui/plugins/views/mobile.py:398
 #: ../cmk/gui/plugins/views/mobile.py:436 ../cmk/gui/plugins/views/bi.py:426
@@ -30021,7 +30046,7 @@ msgstr ""
 "Hosts können zu Gruppen zusammengefasst werden. Der häufigste Grund dafür "
 "ist eine optische Zusammenfassung in der Status-Oberfläche."
 
-#: ../cmk/gui/plugins/views/painters.py:3223
+#: ../cmk/gui/plugins/views/painters.py:3217
 msgid "Hosts colored according to state (Host Group)"
 msgstr "Hosts nach Status eingefärbt (Hostgruppe)"
 
@@ -30501,7 +30526,7 @@ msgstr "ICMP-Pakete"
 #: ../cmk/gui/cme/plugins/wato/managed.py:326
 #: ../cmk/gui/cme/plugins/wato/managed.py:335
 #: ../cmk/gui/cee/plugins/wato/dcd.py:345 ../cmk/gui/cee/reporting.py:1423
-#: ../cmk/gui/werks.py:233 ../cmk/gui/werks.py:480
+#: ../cmk/gui/werks.py:233 ../cmk/gui/werks.py:482
 #: ../cmk/gui/gui_background_job.py:362 ../cmk/gui/pagetypes.py:1109
 #: ../cmk/gui/wato/mkeventd.py:1543 ../cmk/gui/wato/mkeventd.py:1852
 #: ../cmk/gui/wato/pages/users.py:355 ../cmk/gui/wato/pages/tags.py:333
@@ -30512,9 +30537,9 @@ msgstr "ICMP-Pakete"
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:541
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:562
 #: ../cmk/gui/plugins/views/crash_reporting.py:163
-#: ../cmk/gui/plugins/views/painters.py:1651
-#: ../cmk/gui/plugins/views/painters.py:3691
-#: ../cmk/gui/plugins/views/painters.py:3871
+#: ../cmk/gui/plugins/views/painters.py:1645
+#: ../cmk/gui/plugins/views/painters.py:3685
+#: ../cmk/gui/plugins/views/painters.py:3865
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1436
 #: ../cmk/gui/plugins/userdb/ldap_connector.py:1447
 #: ../cmk/gui/plugins/wato/bi_config.py:497
@@ -30645,7 +30670,7 @@ msgstr "IP-Präfix"
 #: ../cmk/gui/cee/ntop/pages.py:265 ../cmk/gui/wato/mkeventd.py:4069
 #: ../cmk/gui/wato/pages/host_diagnose.py:157
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:555
-#: ../cmk/gui/plugins/views/painters.py:2436
+#: ../cmk/gui/plugins/views/painters.py:2430
 msgid "IP address"
 msgstr "IP Adresse"
 
@@ -30653,7 +30678,7 @@ msgstr "IP Adresse"
 msgid "IP address or FQDN of JVM webserver"
 msgstr "IP-Adresse oder FQDN des JVM-Webservers"
 
-#: ../cmk/gui/plugins/views/painters.py:2496
+#: ../cmk/gui/plugins/views/painters.py:2490
 msgid "IP addresses"
 msgstr "IP-Adressen"
 
@@ -30780,7 +30805,7 @@ msgstr "IPv4-Subnetz"
 
 #: ../cmk/gui/valuespec.py:1278
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:564
-#: ../cmk/gui/plugins/views/painters.py:2456
+#: ../cmk/gui/plugins/views/painters.py:2450
 msgid "IPv4 address"
 msgstr "IPv4-Adresse"
 
@@ -30824,7 +30849,7 @@ msgstr "IPv6-Subnetz"
 
 #: ../cmk/gui/valuespec.py:1281
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:567
-#: ../cmk/gui/plugins/views/painters.py:2476
+#: ../cmk/gui/plugins/views/painters.py:2470
 msgid "IPv6 address"
 msgstr "IPv6-Adresse"
 
@@ -30860,8 +30885,8 @@ msgstr "Symbolbild für Services in Status GUI"
 
 #: ../cmk/gui/plugins/views/mkeventd.py:753
 #: ../cmk/gui/plugins/views/mkeventd.py:777
-#: ../cmk/gui/plugins/views/painters.py:259
-#: ../cmk/gui/plugins/views/painters.py:286
+#: ../cmk/gui/plugins/views/painters.py:253
+#: ../cmk/gui/plugins/views/painters.py:280
 #: ../cmk/gui/plugins/views/icons/utils.py:31
 msgid "Icons"
 msgstr "Symbole"
@@ -31046,7 +31071,7 @@ msgstr ""
 msgid "If agent_hash is omitted, hostname needs to be given."
 msgstr ""
 
-#: ../cmk/gui/plugins/views/painters.py:4976
+#: ../cmk/gui/plugins/views/painters.py:4970
 msgid "If available, the following metric will be shown"
 msgstr "Wenn aktiviert, wird die folgende Metrik angezeigt"
 
@@ -32786,7 +32811,7 @@ msgstr ""
 "Wenn Sie den Zustand eines Checks auf einen anderen Zustand umschreiben "
 "wollen, können Sie diese Regel dazu nutzen."
 
-#: ../cmk/gui/plugins/views/painters.py:927
+#: ../cmk/gui/plugins/views/painters.py:921
 msgid "In downtime"
 msgstr "In Wartungszeit"
 
@@ -32824,7 +32849,7 @@ msgstr ""
 "dringend empfohlen, in den meisten Fällen zu <a href=\"wato.py?"
 "mode=edit_configvar&varname=alert_handler_event_type\">deaktivieren</a>."
 
-#: ../cmk/gui/plugins/views/painters.py:1182
+#: ../cmk/gui/plugins/views/painters.py:1176
 msgid "In notification period"
 msgstr "In Alarmierungsperiode"
 
@@ -32840,7 +32865,7 @@ msgstr ""
 "<tt>cmk-update-agent -v</tt> auf. Auf Linux müssen Sie dafür <tt>root</tt> "
 "sein. Auf Windows finden Sie das Skript im Unterverzeichnis <tt>plugins</tt>."
 
-#: ../cmk/gui/wato/user_profile.py:199
+#: ../cmk/gui/wato/user_profile.py:198
 msgid ""
 "In order to activate your changes available on all remote sites, your user "
 "profile needs to be replicated to the remote sites. This is done on this "
@@ -33223,7 +33248,7 @@ msgstr "Inkompatibel"
 msgid "Incompatible - TODO"
 msgstr "Inkompatibel - zu tun"
 
-#: ../cmk/gui/werks.py:371
+#: ../cmk/gui/werks.py:373
 msgid "Incompatible Werks"
 msgstr "Inkompatible Werke"
 
@@ -33357,7 +33382,7 @@ msgid "Infections"
 msgstr "Infizierungen"
 
 #: ../cmk/gui/plugins/views/mkeventd.py:964
-#: ../cmk/gui/plugins/views/painters.py:4449
+#: ../cmk/gui/plugins/views/painters.py:4443
 msgid "Info"
 msgstr "Info"
 
@@ -33807,13 +33832,13 @@ msgstr "Schnittstellen"
 msgid "Interface id"
 msgstr "Schnittstellenbezeichner"
 
-#: ../cmk/gui/wato/user_profile.py:515 ../cmk/gui/wato/pages/users.py:1064
+#: ../cmk/gui/wato/pages/users.py:1064
 #, fuzzy
 #| msgid "Instances settings"
 msgid "Interface settings"
 msgstr "Einstellungen von Instanzen"
 
-#: ../cmk/gui/wato/user_profile.py:73
+#: ../cmk/gui/wato/user_profile.py:72
 #, fuzzy
 #| msgid "User interface theme"
 msgid "Interface theme"
@@ -33895,8 +33920,8 @@ msgid "Interrupt"
 msgstr "Interrupt"
 
 #: ../cmk/gui/wato/mkeventd.py:529 ../cmk/gui/wato/mkeventd.py:597
-#: ../cmk/gui/plugins/views/painters.py:1121
-#: ../cmk/gui/plugins/views/painters.py:2096
+#: ../cmk/gui/plugins/views/painters.py:1115
+#: ../cmk/gui/plugins/views/painters.py:2090
 msgid "Interval"
 msgstr "Intervall"
 
@@ -34522,7 +34547,7 @@ msgstr "Wird benötigt, um %s zu sehen, die andere Benutzer erstellt haben."
 msgid "Is not available"
 msgstr "Ist nicht verfügbar"
 
-#: ../cmk/gui/plugins/views/painters.py:933
+#: ../cmk/gui/plugins/views/painters.py:927
 msgid "Is not in notification period"
 msgstr "Ist nicht in Benachrichtigungsperiode"
 
@@ -34711,6 +34736,26 @@ msgstr "Itemname"
 #: ../cmk/gui/plugins/wato/active_checks.py:2396
 msgid "Item suffix"
 msgstr "Item suffix"
+
+#: ../cmk/utils/object_diff.py:43
+#, python-brace-format
+msgid "Item {diff_path} with value {val_t1} removed."
+msgstr ""
+
+#: ../cmk/utils/object_diff.py:42
+#, python-brace-format
+msgid "Item {diff_path} with value {val_t2} added."
+msgstr ""
+
+#: ../cmk/utils/object_diff.py:47
+#, python-brace-format
+msgid "Item {val_t1} with value {val_t1} removed."
+msgstr ""
+
+#: ../cmk/utils/object_diff.py:46
+#, python-brace-format
+msgid "Item {val_t2} with value {val_t2} added."
+msgstr ""
 
 #: ../cmk/gui/plugins/metrics/application.py:339
 #, fuzzy
@@ -35323,10 +35368,10 @@ msgstr "Label"
 msgid "Labelling Options"
 msgstr "Beschriftungsoptionen"
 
-#: ../cmk/gui/plugins/views/painters.py:4822
-#: ../cmk/gui/plugins/views/painters.py:4825
-#: ../cmk/gui/plugins/views/painters.py:4852
-#: ../cmk/gui/plugins/views/painters.py:4855
+#: ../cmk/gui/plugins/views/painters.py:4816
+#: ../cmk/gui/plugins/views/painters.py:4819
+#: ../cmk/gui/plugins/views/painters.py:4846
+#: ../cmk/gui/plugins/views/painters.py:4849
 #: ../cmk/gui/plugins/views/sorters.py:216
 #: ../cmk/gui/plugins/views/sorters.py:235
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:984
@@ -35449,7 +35494,7 @@ msgstr "Letzter Fehler"
 msgid "Last Known Plugin Output"
 msgstr "Letzte bekannte Pluginausgabe"
 
-#: ../cmk/gui/plugins/views/painters.py:892
+#: ../cmk/gui/plugins/views/painters.py:886
 msgid "Last OK"
 msgstr "Zuletzt OK"
 
@@ -35490,7 +35535,7 @@ msgstr "Zeitpunkt des letzten Flush"
 msgid "Last get age"
 msgstr "Letzte Änderung"
 
-#: ../cmk/gui/plugins/views/painters.py:935
+#: ../cmk/gui/plugins/views/painters.py:929
 msgid "Last host check is not recent enough"
 msgstr "Letzter Host-Check ist nicht aktuell genug"
 
@@ -35535,8 +35580,8 @@ msgstr "Letztes Ergebnis"
 msgid "Last seen"
 msgstr "Zuletzt gesehen"
 
-#: ../cmk/gui/plugins/views/painters.py:936
-#: ../cmk/gui/plugins/views/painters.py:939
+#: ../cmk/gui/plugins/views/painters.py:930
+#: ../cmk/gui/plugins/views/painters.py:933
 msgid "Last service check is not recent enough"
 msgstr "Letzter Service-Check ist nicht aktuell genug"
 
@@ -35569,8 +35614,8 @@ msgstr "Letzte Woche"
 msgid "Last year"
 msgstr "Letztes Jahr"
 
-#: ../cmk/gui/plugins/views/painters.py:1021
-#: ../cmk/gui/plugins/views/painters.py:1996
+#: ../cmk/gui/plugins/views/painters.py:1015
+#: ../cmk/gui/plugins/views/painters.py:1990
 msgid "Latency"
 msgstr "Latenzzeit"
 
@@ -35735,7 +35780,7 @@ msgid "Letter"
 msgstr "Letter"
 
 #: ../cmk/gui/logwatch.py:264 ../cmk/gui/logwatch.py:272
-#: ../cmk/gui/werks.py:238 ../cmk/gui/werks.py:484
+#: ../cmk/gui/werks.py:238 ../cmk/gui/werks.py:486
 #: ../cmk/gui/plugins/views/mkeventd.py:410
 #: ../cmk/gui/plugins/wato/bi_config.py:854
 msgid "Level"
@@ -35749,7 +35794,7 @@ msgstr "Ebene (0...9)"
 msgid "Level conjunctions"
 msgstr "Verbindung von Ebenen"
 
-#: ../cmk/gui/werks.py:355
+#: ../cmk/gui/werks.py:357
 #: ../cmk/gui/plugins/wato/check_parameters/memory_percentage_used_multiitem.py:27
 #: ../cmk/gui/plugins/wato/check_parameters/memory_percentage_used.py:26
 #: ../cmk/gui/plugins/wato/check_parameters/proxmox_disk_usage_params.py:26
@@ -36624,7 +36669,7 @@ msgstr "Schwellen für die Anzahl der benutzten Zustände"
 
 #: ../cmk/gui/cee/plugins/metrics/customgraphs.py:1120
 #: ../cmk/gui/plugins/views/mkeventd.py:862
-#: ../cmk/gui/plugins/views/painters.py:4518
+#: ../cmk/gui/plugins/views/painters.py:4512
 msgid "Line"
 msgstr "Zeile"
 
@@ -36764,7 +36809,7 @@ msgid "Linkable view showing all comments of a specific service"
 msgstr ""
 "Verknüpfbare Ansicht, die alle Kommentare eines bestimmten Services anzeigt"
 
-#: ../cmk/gui/wato/pages/audit_log.py:445
+#: ../cmk/gui/wato/pages/audit_log.py:449
 msgid "Linkinfo"
 msgstr "Linkinfo"
 
@@ -36887,7 +36932,7 @@ msgstr "Tabelle der verfügbaren NagVis-Karten"
 msgid "List of expected logfiles"
 msgstr "Liste der erwarteten Logdateien"
 
-#: ../cmk/base/diagnostics.py:360
+#: ../cmk/base/diagnostics.py:366
 msgid ""
 "List of installed, unpacked, optional files below $OMD_ROOT/local. This also "
 "includes information about installed MKPs."
@@ -37183,7 +37228,7 @@ msgstr "Lokale DNS-Auflösung (Linux, Unix)"
 msgid "Local Event Console"
 msgstr "Event Console"
 
-#: ../cmk/gui/wato/pages/diagnostics.py:170 ../cmk/base/diagnostics.py:356
+#: ../cmk/gui/wato/pages/diagnostics.py:170 ../cmk/base/diagnostics.py:362
 #, fuzzy
 #| msgid "Local file"
 msgid "Local Files"
@@ -37402,6 +37447,11 @@ msgstr "Alle Meldungen im Syslogformat in Dateien schreiben"
 msgid "Log files"
 msgstr "Logdateien"
 
+#: ../cmk/base/diagnostics.py:501
+#, python-format
+msgid "Log files ('*.log' or '*.state') from var/log: %s"
+msgstr ""
+
 #: ../cmk/gui/logwatch.py:338 ../cmk/gui/logwatch.py:363
 #, fuzzy, python-format
 #| msgid "Logfiles of host %s"
@@ -37476,70 +37526,70 @@ msgstr "Zugriff auf Regeln loggen"
 msgid "Log switches in the last 60 minutes"
 msgstr "Logswitche in den letzten 60 Sekunden"
 
-#: ../cmk/gui/plugins/views/painters.py:4258
+#: ../cmk/gui/plugins/views/painters.py:4252
 #, fuzzy
 msgid "Log: State information"
 msgstr "Kontaktinformation"
 
-#: ../cmk/gui/plugins/views/painters.py:4158
+#: ../cmk/gui/plugins/views/painters.py:4152
 #, fuzzy
 #| msgid "Summary"
 msgid "Log: Summary"
 msgstr "Zusammenfassung"
 
-#: ../cmk/gui/plugins/views/painters.py:4324
+#: ../cmk/gui/plugins/views/painters.py:4318
 msgid "Log: command/plugin"
 msgstr "Logdatei: Kommando/Plugin"
 
-#: ../cmk/gui/plugins/views/painters.py:4466
+#: ../cmk/gui/plugins/views/painters.py:4460
 msgid "Log: comment"
 msgstr "Logdatei: Kommentar"
 
-#: ../cmk/gui/plugins/views/painters.py:4138
+#: ../cmk/gui/plugins/views/painters.py:4132
 msgid "Log: complete message"
 msgstr "Logdatei: vollständige Nachricht"
 
-#: ../cmk/gui/plugins/views/painters.py:4304
+#: ../cmk/gui/plugins/views/painters.py:4298
 msgid "Log: contact name"
 msgstr "Logdatei: Kontaktname"
 
-#: ../cmk/gui/plugins/views/painters.py:4535
+#: ../cmk/gui/plugins/views/painters.py:4529
 msgid "Log: day of entry"
 msgstr "Logdatei: Tag des Eintrags"
 
-#: ../cmk/gui/plugins/views/painters.py:4491
+#: ../cmk/gui/plugins/views/painters.py:4485
 msgid "Log: entry time"
 msgstr "Logdatei: Zeit des Eintrags"
 
-#: ../cmk/gui/plugins/views/painters.py:4284
+#: ../cmk/gui/plugins/views/painters.py:4278
 msgid "Log: event"
 msgstr "Logdatei: Ereignis"
 
-#: ../cmk/gui/plugins/views/painters.py:4344
+#: ../cmk/gui/plugins/views/painters.py:4338
 msgid "Log: event icon"
 msgstr "Logdatei: Ereignis-Symbol"
 
-#: ../cmk/gui/plugins/views/painters.py:4193
+#: ../cmk/gui/plugins/views/painters.py:4187
 msgid "Log: host or service"
 msgstr "Log: Host oder Service"
 
-#: ../cmk/gui/plugins/views/painters.py:4446
+#: ../cmk/gui/plugins/views/painters.py:4440
 msgid "Log: informational part of message"
 msgstr "Logdatei: Informationsteil der Nachricht"
 
-#: ../cmk/gui/plugins/views/painters.py:4515
+#: ../cmk/gui/plugins/views/painters.py:4509
 msgid "Log: line number in log file"
 msgstr "Logdatei: Zeilennummer in der Logdatei"
 
-#: ../cmk/gui/plugins/views/painters.py:4218
+#: ../cmk/gui/plugins/views/painters.py:4212
 msgid "Log: number of check attempt"
 msgstr "Logdatei: Anzahl von Checkversuchen"
 
-#: ../cmk/gui/plugins/views/painters.py:4558
+#: ../cmk/gui/plugins/views/painters.py:4552
 msgid "Log: state of host/service at log time"
 msgstr "Logdatei: Status von Host/Service beim Loggen"
 
-#: ../cmk/gui/plugins/views/painters.py:4238
+#: ../cmk/gui/plugins/views/painters.py:4232
 msgid "Log: state type (DEPRECATED: Use \"state information\")"
 msgstr ""
 
@@ -37575,7 +37625,7 @@ msgstr "Schwellwerte für Logdateien"
 msgid "Logfile pattern analyzer"
 msgstr "Logdatei-Muster Analyse"
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:169
+#: ../cmk/gui/wato/pages/pattern_editor.py:170
 #: ../cmk/gui/plugins/wato/check_parameters/logwatch_ec.py:46
 #, fuzzy
 #| msgid "Logfile Patterns"
@@ -37731,7 +37781,7 @@ msgstr "Logins"
 msgid "Logo"
 msgstr "Logo"
 
-#: ../cmk/gui/mobile.py:268 ../cmk/gui/wato/user_profile.py:108
+#: ../cmk/gui/mobile.py:268 ../cmk/gui/wato/user_profile.py:107
 #: ../cmk/gui/wato/pages/sites.py:763
 msgid "Logout"
 msgstr "Abmelden"
@@ -38153,7 +38203,7 @@ msgstr "MDisks"
 msgid "MDisksGrps"
 msgstr "MDisksGrps"
 
-#: ../cmk/gui/htmllib.py:1404
+#: ../cmk/gui/htmllib.py:1408
 msgid "MESSAGE"
 msgstr "HINWEIS"
 
@@ -38674,7 +38724,7 @@ msgstr ""
 msgid "Man Page Browser"
 msgstr "Manpage Browser"
 
-#: ../cmk/gui/plugins/views/painters.py:1388
+#: ../cmk/gui/plugins/views/painters.py:1382
 #, python-format
 msgid "Man page %s not found."
 msgstr "Manpage %s nicht gefunden."
@@ -38763,7 +38813,7 @@ msgid "Mandatory context"
 msgstr "ohne Kontext"
 
 #: ../cmk/gui/main_menu.py:108 ../cmk/gui/sidebar.py:654
-#: ../cmk/gui/plugins/views/painters.py:1364
+#: ../cmk/gui/plugins/views/painters.py:1358
 #: ../cmk/gui/plugins/wato/check_parameters/services.py:57
 msgid "Manual"
 msgstr "Manuell"
@@ -38985,7 +39035,7 @@ msgstr "Master-Wahl oder Diskrepanzcheck läuft"
 msgid "Master switch"
 msgstr "Hauptschalter"
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:251
+#: ../cmk/gui/wato/pages/pattern_editor.py:252
 #: ../cmk/gui/plugins/views/mkeventd.py:316
 msgid "Match"
 msgstr "Passend"
@@ -39216,7 +39266,7 @@ msgstr ""
 msgid "Match type"
 msgstr "Art der Prüfung"
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:260
+#: ../cmk/gui/wato/pages/pattern_editor.py:261
 msgid "Matched line"
 msgstr "Passende Zeile"
 
@@ -39664,7 +39714,7 @@ msgstr "Maximale Anazhl von Bytes (Empfang)"
 msgid "Maximum number of cached log messages"
 msgstr "Maximale Anzahl von gecachten Logmeldungen"
 
-#: ../cmk/gui/plugins/views/painters.py:498
+#: ../cmk/gui/plugins/views/painters.py:492
 #, fuzzy
 msgid "Maximum number of characters in to show"
 msgstr "Maximale Anzahl von gecachten Logmeldungen"
@@ -40176,7 +40226,7 @@ msgstr "Merker"
 #: ../cmk/gui/cee/plugins/wato/dcd.py:422
 #: ../cmk/gui/wato/pages/read_only.py:133
 #: ../cmk/gui/plugins/views/mkeventd.py:296
-#: ../cmk/gui/plugins/views/painters.py:4141
+#: ../cmk/gui/plugins/views/painters.py:4135
 #: ../cmk/gui/plugins/dashboard/notify_users.py:77
 msgid "Message"
 msgstr "Nachricht"
@@ -40315,7 +40365,7 @@ msgstr "Metrikname"
 msgid "Metric levels"
 msgstr "Metrikname"
 
-#: ../cmk/gui/plugins/views/painters.py:4955
+#: ../cmk/gui/plugins/views/painters.py:4949
 msgid "Metric not found"
 msgstr "Metrik nicht gefunden"
 
@@ -40328,7 +40378,7 @@ msgstr ""
 
 #: ../cmk/gui/dashboard.py:784
 #: ../cmk/gui/cee/plugins/metrics/customgraphs.py:212
-#: ../cmk/gui/plugins/views/painters.py:549
+#: ../cmk/gui/plugins/views/painters.py:543
 msgid "Metrics"
 msgstr "Metriken"
 
@@ -40655,7 +40705,7 @@ msgstr "Variable siteid fehlt"
 msgid "Missing variable user_id"
 msgstr "Variable user_id fehlt"
 
-#: ../cmk/gui/plugins/views/painters.py:122
+#: ../cmk/gui/plugins/views/painters.py:121
 msgid "Mixed"
 msgstr "Gemischt"
 
@@ -40681,7 +40731,7 @@ msgstr "Mobil: Tabelle"
 
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/firewall.py:26
 #: ../cmk/gui/watolib/bulk_discovery.py:78
-#: ../cmk/gui/plugins/views/painters.py:3931
+#: ../cmk/gui/plugins/views/painters.py:3925
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:3615
 msgid "Mode"
 msgstr "Modus"
@@ -41228,7 +41278,7 @@ msgstr ""
 "der von der original-Ansicht übernommen wird. Wenn Sie einen anderen Titel "
 "wünschen, können Sie diesen hier angeben."
 
-#: ../cmk/gui/wato/pages/audit_log.py:325
+#: ../cmk/gui/wato/pages/audit_log.py:329
 msgid "Most recent events"
 msgstr "Jüngste Ereignisse"
 
@@ -41281,7 +41331,7 @@ msgstr "Bewegt worden"
 msgid "Move this %s to another folder"
 msgstr "Diese(n) %s in einen anderen Ordner verschieben"
 
-#: ../cmk/gui/htmllib.py:2741
+#: ../cmk/gui/htmllib.py:2745
 msgid "Move this entry"
 msgstr "Diesen Eintrag verschieben"
 
@@ -41527,8 +41577,8 @@ msgstr "MySQL Datenbanken"
 msgid "N * 100% as each core contributes with 100% at full load"
 msgstr "N * 100%, da jeder Kern mit 100% bei Volllast beiträgt"
 
-#: ../cmk/gui/plugins/views/painters.py:1001
-#: ../cmk/gui/plugins/views/painters.py:2180
+#: ../cmk/gui/plugins/views/painters.py:995
+#: ../cmk/gui/plugins/views/painters.py:2174
 msgid "N#"
 msgstr "Nr."
 
@@ -41668,7 +41718,7 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:339
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:360
 #: ../cmk/gui/cee/ntop/pages.py:284 ../cmk/gui/cee/ntop/pages.py:435
-#: ../cmk/gui/wato/user_profile.py:496 ../cmk/gui/wato/pages/timeperiods.py:309
+#: ../cmk/gui/wato/user_profile.py:497 ../cmk/gui/wato/pages/timeperiods.py:309
 #: ../cmk/gui/wato/pages/rulesets.py:1200 ../cmk/gui/wato/pages/groups.py:171
 #: ../cmk/gui/wato/pages/groups.py:256 ../cmk/gui/wato/pages/icons.py:161
 #: ../cmk/gui/wato/pages/roles.py:215
@@ -41701,8 +41751,8 @@ msgstr ""
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:873
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:882
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:960
-#: ../cmk/gui/plugins/views/painters.py:3455
-#: ../cmk/gui/plugins/views/painters.py:3643
+#: ../cmk/gui/plugins/views/painters.py:3449
+#: ../cmk/gui/plugins/views/painters.py:3637
 #: ../cmk/gui/plugins/wato/active_checks.py:1277
 #: ../cmk/gui/plugins/wato/active_checks.py:1394
 #: ../cmk/gui/plugins/wato/active_checks.py:1812
@@ -42392,11 +42442,11 @@ msgstr "Neue Vorhersage"
 msgid "New Graph"
 msgstr "Neuer Graph"
 
-#: ../cmk/gui/wato/user_profile.py:407
+#: ../cmk/gui/wato/user_profile.py:409
 msgid "New Password"
 msgstr "Neues Passwort"
 
-#: ../cmk/gui/wato/user_profile.py:410
+#: ../cmk/gui/wato/user_profile.py:412
 msgid "New Password Confirmation"
 msgstr "Neues Passwort bestätigen"
 
@@ -42473,7 +42523,7 @@ msgstr "Neues Thema hinzufügen"
 msgid "New tuning"
 msgstr "Neue Anpassung"
 
-#: ../cmk/gui/wato/pages/audit_log.py:328
+#: ../cmk/gui/wato/pages/audit_log.py:332
 msgid "Newer events"
 msgstr "Neuere Ereignisse"
 
@@ -42497,13 +42547,13 @@ msgstr "Neuste zuerst"
 msgid "Next Run"
 msgstr "Nächster Lauf"
 
-#: ../cmk/gui/plugins/views/painters.py:872
-#: ../cmk/gui/plugins/views/painters.py:1912
+#: ../cmk/gui/plugins/views/painters.py:866
+#: ../cmk/gui/plugins/views/painters.py:1906
 msgid "Next check"
 msgstr "Nächster Check"
 
-#: ../cmk/gui/plugins/views/painters.py:912
-#: ../cmk/gui/plugins/views/painters.py:1932
+#: ../cmk/gui/plugins/views/painters.py:906
+#: ../cmk/gui/plugins/views/painters.py:1926
 msgid "Next notification"
 msgstr "Nächster Alarm"
 
@@ -42531,7 +42581,7 @@ msgstr "O2-Schwellen"
 
 #: ../cmk/gui/logwatch.py:79 ../cmk/gui/logwatch.py:168
 #: ../cmk/gui/logwatch.py:285 ../cmk/gui/backup.py:1023
-#: ../cmk/gui/cee/plugins/wato/license_usage.py:221 ../cmk/gui/htmllib.py:1886
+#: ../cmk/gui/cee/plugins/wato/license_usage.py:221 ../cmk/gui/htmllib.py:1890
 #: ../cmk/gui/wato/pages/sites.py:1254
 #: ../cmk/gui/utils/confirm_with_preview.py:27
 #: ../cmk/gui/utils/confirm_with_preview.py:40
@@ -42821,7 +42871,7 @@ msgstr "Kein Management-Board"
 msgid "No matches"
 msgstr "Host-Bedingungen"
 
-#: ../cmk/gui/werks.py:475
+#: ../cmk/gui/werks.py:477
 msgid "No matching Werks found."
 msgstr "Keine passenden Werks gefunden."
 
@@ -43000,7 +43050,7 @@ msgid "No-TxCredits errors"
 msgstr "No-TXCredits Fehler"
 
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:620
-#: ../cmk/gui/plugins/views/painters.py:4885
+#: ../cmk/gui/plugins/views/painters.py:4879
 #: ../cmk/gui/plugins/wato/check_parameters/viprinet_router.py:27
 msgid "Node"
 msgstr "Node"
@@ -43215,7 +43265,7 @@ msgstr "Normaler Checkmk-Agent, alle konfigurierten Spezialagenten"
 msgid "Normal Checkmk agent, or special agent if configured"
 msgstr "Normaler Checkmk-Agent oder Spezialagent, falls konfiguriert"
 
-#: ../cmk/gui/plugins/views/painters.py:2053
+#: ../cmk/gui/plugins/views/painters.py:2047
 msgid "Normal check interval"
 msgstr "Normales Checkintervall"
 
@@ -43248,7 +43298,7 @@ msgstr "Normal operation - Nachrichten gemäß Aktions-Einstellungen verarbeiten
 msgid "Normal user login with password"
 msgstr "Normale Benutzeranmeldung mit Passwort"
 
-#: ../cmk/gui/plugins/views/painters.py:2093
+#: ../cmk/gui/plugins/views/painters.py:2087
 msgid "Normal/retry check interval"
 msgstr "Normal-/Wiederholungs-Intervall "
 
@@ -43451,7 +43501,7 @@ msgstr "Nicht in Instanz ausgeführt!"
 msgid "Not locked"
 msgstr "Nicht gesperrt"
 
-#: ../cmk/gui/wato/user_profile.py:210 ../cmk/gui/wato/user_profile.py:269
+#: ../cmk/gui/wato/user_profile.py:209 ../cmk/gui/wato/user_profile.py:268
 msgid "Not logged in."
 msgstr "Nicht angemeldet."
 
@@ -43576,8 +43626,8 @@ msgstr ""
 "danach Benutzer Gruppen zuweisen und diese Benutzer zu Monitoring-Kontakten "
 "machen. Nur Monitoring-Kontakte können Alarme erhalten."
 
-#: ../cmk/gui/plugins/views/painters.py:1500
-#: ../cmk/gui/plugins/views/painters.py:2960
+#: ../cmk/gui/plugins/views/painters.py:1494
+#: ../cmk/gui/plugins/views/painters.py:2954
 msgid "Notes"
 msgstr "Anmerkungen"
 
@@ -43597,17 +43647,23 @@ msgstr "Es hat sich nichts geändert"
 msgid "Nothing logged"
 msgstr "Es wurde nichts protokolliert"
 
+#: ../cmk/utils/object_diff.py:22
+#, fuzzy
+#| msgid "Nothing changed"
+msgid "Nothing was changed."
+msgstr "Es hat sich nichts geändert"
+
 #: ../cmk/gui/cee/plugins/wato/cmc.py:608
 msgid "Notice"
 msgstr "Hinweise"
 
-#: ../cmk/gui/plugins/views/painters.py:1265
-#: ../cmk/gui/plugins/views/painters.py:2240
+#: ../cmk/gui/plugins/views/painters.py:1259
+#: ../cmk/gui/plugins/views/painters.py:2234
 msgid "Notif."
 msgstr "Alarm"
 
-#: ../cmk/gui/plugins/views/painters.py:957
-#: ../cmk/gui/plugins/views/painters.py:1952
+#: ../cmk/gui/plugins/views/painters.py:951
+#: ../cmk/gui/plugins/views/painters.py:1946
 msgid "Notif. postponed"
 msgstr "Benachrichtigung verzögert"
 
@@ -43694,8 +43750,8 @@ msgstr "Timeout für Alarmierungsplugins"
 msgid "Notification plugins"
 msgstr "Alarmierungs-Plugins"
 
-#: ../cmk/gui/plugins/views/painters.py:954
-#: ../cmk/gui/plugins/views/painters.py:1949
+#: ../cmk/gui/plugins/views/painters.py:948
+#: ../cmk/gui/plugins/views/painters.py:1943
 msgid "Notification postponement reason"
 msgstr "Grund für Verzögerung"
 
@@ -43708,7 +43764,7 @@ msgstr "Alarmierungsregel"
 msgid "Notification rule of user '%s'"
 msgstr "Benachrichtigungsregel des Benutzers'%s'"
 
-#: ../cmk/gui/wato/user_profile.py:120 ../cmk/gui/wato/user_profile.py:613
+#: ../cmk/gui/wato/user_profile.py:119 ../cmk/gui/wato/user_profile.py:614
 #: ../cmk/gui/wato/pages/notifications.py:346
 #: ../cmk/gui/wato/pages/notifications.py:457
 #: ../cmk/gui/wato/pages/notifications.py:892
@@ -43744,7 +43800,7 @@ msgstr "Zeitperiode für Alarme"
 msgid "Notification timeline"
 msgstr "Zeitperiode für Alarme"
 
-#: ../cmk/gui/wato/user_profile.py:505
+#: ../cmk/gui/wato/user_profile.py:506
 #: ../cmk/gui/wato/pages/notifications.py:1167
 #: ../cmk/gui/wato/pages/users.py:458 ../cmk/gui/wato/pages/users.py:598
 #: ../cmk/gui/wato/pages/users.py:978
@@ -43770,7 +43826,7 @@ msgstr "Alarme sind deaktiviert"
 msgid "Notifications are disabled for this %s"
 msgstr "Alarme für %s abgeschaltet"
 
-#: ../cmk/gui/plugins/views/painters.py:932
+#: ../cmk/gui/plugins/views/painters.py:926
 msgid "Notifications are disabled, but is configured to be periodic"
 msgstr "Alarme sind deaktiviert, sind periodisch konfiguriert"
 
@@ -44135,7 +44191,7 @@ msgstr "Anzahl der aktuell laufenden Sitzungen"
 msgid "Number of data points"
 msgstr "Anzahl der Datenpunkte"
 
-#: ../cmk/gui/wato/pages/audit_log.py:387
+#: ../cmk/gui/wato/pages/audit_log.py:391
 msgid "Number of days from now (single page)"
 msgstr "Mehrere Tage (einzelne Seite)"
 
@@ -44209,19 +44265,19 @@ msgstr "Anzahl der Hops"
 msgid "Number of hosts"
 msgstr "Anzahl der Hosts"
 
-#: ../cmk/gui/plugins/views/painters.py:3392
+#: ../cmk/gui/plugins/views/painters.py:3386
 msgid "Number of hosts in state DOWN (Host Group)"
 msgstr "Anzahl von Hosts im Status DOWN (Hostgruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:3432
+#: ../cmk/gui/plugins/views/painters.py:3426
 msgid "Number of hosts in state PENDING (Host Group)"
 msgstr "Anzahl von Hosts im Status PENDING (Hostgruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:3412
+#: ../cmk/gui/plugins/views/painters.py:3406
 msgid "Number of hosts in state UNREACH (Host Group)"
 msgstr "Anzahl von Hosts im Status UNREACH (Hostgruppe0"
 
-#: ../cmk/gui/plugins/views/painters.py:3372
+#: ../cmk/gui/plugins/views/painters.py:3366
 msgid "Number of hosts in state UP (Host Group)"
 msgstr "Anzahl von Hosts im Zustand UP (Hostgruppe)"
 
@@ -44404,7 +44460,7 @@ msgstr "Anzahl von Tests pro Sprung"
 msgid "Number of problem alerts"
 msgstr "Anzahl von Problemalarmen"
 
-#: ../cmk/gui/plugins/views/painters.py:2664
+#: ../cmk/gui/plugins/views/painters.py:2658
 #: ../cmk/gui/plugins/views/sorters.py:450
 msgid "Number of problems"
 msgstr "Anzahl von Probleme"
@@ -44453,75 +44509,75 @@ msgid "Number of send packets per report"
 msgstr "Anzahl zu sendender Pakete pro Prüfung"
 
 #: ../cmk/gui/cee/plugins/wato/license_usage.py:225
-#: ../cmk/gui/plugins/views/painters.py:2624
+#: ../cmk/gui/plugins/views/painters.py:2618
 msgid "Number of services"
 msgstr "Anzahl von Services"
 
-#: ../cmk/gui/plugins/views/painters.py:3252
+#: ../cmk/gui/plugins/views/painters.py:3246
 msgid "Number of services (Host Group)"
 msgstr "Anzahl von Services (Hostgruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:3520
+#: ../cmk/gui/plugins/views/painters.py:3514
 msgid "Number of services (Service Group)"
 msgstr "Anzahl Services (Servicegruppe)_"
 
-#: ../cmk/gui/plugins/views/painters.py:2706
+#: ../cmk/gui/plugins/views/painters.py:2700
 msgid "Number of services in state CRIT"
 msgstr "Anzahl von Services im Status CRIT"
 
-#: ../cmk/gui/plugins/views/painters.py:3312
+#: ../cmk/gui/plugins/views/painters.py:3306
 msgid "Number of services in state CRIT (Host Group)"
 msgstr "Anzahl von Services im Status CRIT (Hostgruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:3580
+#: ../cmk/gui/plugins/views/painters.py:3574
 msgid "Number of services in state CRIT (Service Group)"
 msgstr "Anzahl von Services im Status CRIT (Servicegruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:2644
+#: ../cmk/gui/plugins/views/painters.py:2638
 msgid "Number of services in state OK"
 msgstr "Anzahl von Services im Status OK"
 
-#: ../cmk/gui/plugins/views/painters.py:3272
+#: ../cmk/gui/plugins/views/painters.py:3266
 msgid "Number of services in state OK (Host Group)"
 msgstr "Anzahl von Services im Status OK (Hostgruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:3540
+#: ../cmk/gui/plugins/views/painters.py:3534
 msgid "Number of services in state OK (Service Group)"
 msgstr "Anzahl von Services im Status OK (Servicegruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:2746
+#: ../cmk/gui/plugins/views/painters.py:2740
 msgid "Number of services in state PENDING"
 msgstr "Anzahl von Services im Status PENDING"
 
-#: ../cmk/gui/plugins/views/painters.py:3352
+#: ../cmk/gui/plugins/views/painters.py:3346
 msgid "Number of services in state PENDING (Host Group)"
 msgstr "Anzahl von Services im Status PENDING (Hostgruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:3620
+#: ../cmk/gui/plugins/views/painters.py:3614
 msgid "Number of services in state PENDING (Service Group)"
 msgstr "Anzahl von Services im Status PENDING (Servicegruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:2726
+#: ../cmk/gui/plugins/views/painters.py:2720
 msgid "Number of services in state UNKNOWN"
 msgstr "Anzahl von Services mit Status UNKNOWN"
 
-#: ../cmk/gui/plugins/views/painters.py:3332
+#: ../cmk/gui/plugins/views/painters.py:3326
 msgid "Number of services in state UNKNOWN (Host Group)"
 msgstr "Anzahl von Services mit Status UNKNOWN (Hostgruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:3600
+#: ../cmk/gui/plugins/views/painters.py:3594
 msgid "Number of services in state UNKNOWN (Service Group)"
 msgstr "Anzahl von Services mit Status UNKNOWN (Servicegruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:2686
+#: ../cmk/gui/plugins/views/painters.py:2680
 msgid "Number of services in state WARN"
 msgstr "Anzahl von Services mit Status WARN"
 
-#: ../cmk/gui/plugins/views/painters.py:3292
+#: ../cmk/gui/plugins/views/painters.py:3286
 msgid "Number of services in state WARN (Host Group)"
 msgstr "Anzahl von Services mit Status WARN (Hostgruppe)"
 
-#: ../cmk/gui/plugins/views/painters.py:3560
+#: ../cmk/gui/plugins/views/painters.py:3554
 msgid "Number of services in state WARN (Service Group)"
 msgstr "Anzahl von Services mit Status WARN (Servicegruppe)"
 
@@ -44669,8 +44725,8 @@ msgstr "Nutanix Prism"
 msgid "Nvidia"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/painters.py:3275
-#: ../cmk/gui/plugins/views/painters.py:3543
+#: ../cmk/gui/plugins/views/painters.py:3269
+#: ../cmk/gui/plugins/views/painters.py:3537
 msgid "O"
 msgstr "O"
 
@@ -44697,9 +44753,9 @@ msgstr "OFFLINE"
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/win_logwatch.py:97
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_logwatch.py:209
 #: ../cmk/gui/bi.py:469 ../cmk/gui/wato/mkeventd.py:222
-#: ../cmk/gui/wato/mkeventd.py:1875 ../cmk/gui/plugins/views/painters.py:2647
-#: ../cmk/gui/plugins/views/painters.py:2805
-#: ../cmk/gui/plugins/views/painters.py:4595
+#: ../cmk/gui/wato/mkeventd.py:1875 ../cmk/gui/plugins/views/painters.py:2641
+#: ../cmk/gui/plugins/views/painters.py:2799
+#: ../cmk/gui/plugins/views/painters.py:4589
 #: ../cmk/gui/plugins/views/commands.py:429
 #: ../cmk/gui/plugins/views/availability.py:500
 #: ../cmk/gui/plugins/views/availability.py:596
@@ -44770,7 +44826,7 @@ msgstr "OK wenn keine Anzahl Standby-Pfade 0 oder gleich der aktiven Pfade"
 msgid "OK/Up"
 msgstr "OK/Up"
 
-#: ../cmk/gui/wato/pages/diagnostics.py:178 ../cmk/base/diagnostics.py:374
+#: ../cmk/gui/wato/pages/diagnostics.py:178 ../cmk/base/diagnostics.py:380
 #, fuzzy
 #| msgid "User Config"
 msgid "OMD Config"
@@ -44964,7 +45020,7 @@ msgstr ""
 msgid "OS version mismatch"
 msgstr "Diskrepanz der Betriebssystemversion"
 
-#: ../cmk/base/diagnostics.py:340
+#: ../cmk/base/diagnostics.py:346
 msgid ""
 "OS, Checkmk version and edition, Time, Core, Python version and paths, "
 "Architecture"
@@ -44979,7 +45035,7 @@ msgid "OSN Laser attenuation"
 msgstr "OSN Laser Dämpfung"
 
 #: ../cmk/gui/wato/pages/activate_changes.py:329
-#: ../cmk/gui/wato/pages/audit_log.py:240
+#: ../cmk/gui/wato/pages/audit_log.py:241
 msgid "Object"
 msgstr "Objekt"
 
@@ -45046,7 +45102,7 @@ msgstr "O"
 msgid "Old Nagios GUI"
 msgstr "Alte Nagios GUI"
 
-#: ../cmk/gui/wato/pages/audit_log.py:335
+#: ../cmk/gui/wato/pages/audit_log.py:339
 msgid "Older events"
 msgstr "Ältere Ereignisse"
 
@@ -45090,7 +45146,7 @@ msgstr "ICMP-Payload weglassen"
 msgid "Omit payload in ICMP packets"
 msgstr "ICMP-Pakete ohne Payload erzeugen"
 
-#: ../cmk/gui/plugins/views/painters.py:153
+#: ../cmk/gui/plugins/views/painters.py:152
 msgid "Omit rows where all columns are identical"
 msgstr "Zeilen mit nur identischen Spalten auslassen"
 
@@ -45501,7 +45557,7 @@ msgstr "Nur Hosts/Services zeigen, für die Benutzer Kontakt ist"
 msgid "Only show objects with outages"
 msgstr "Nur Objekte mit Ausfällen zeigen"
 
-#: ../cmk/gui/plugins/views/painters.py:2816
+#: ../cmk/gui/plugins/views/painters.py:2810
 #, fuzzy
 msgid "Only show services in this states"
 msgstr "Nur Objekte mit Ausfällen zeigen"
@@ -45806,10 +45862,10 @@ msgstr ""
 #: ../cmk/gui/cee/plugins/metrics/forecasts.py:629 ../cmk/gui/views.py:1317
 #: ../cmk/gui/wato/pages/host_diagnose.py:110
 #: ../cmk/gui/wato/pages/host_diagnose.py:218
-#: ../cmk/gui/wato/pages/audit_log.py:364
-#: ../cmk/gui/plugins/views/painters.py:1654
-#: ../cmk/gui/plugins/views/painters.py:2375
-#: ../cmk/gui/plugins/views/painters.py:2821
+#: ../cmk/gui/wato/pages/audit_log.py:368
+#: ../cmk/gui/plugins/views/painters.py:1648
+#: ../cmk/gui/plugins/views/painters.py:2369
+#: ../cmk/gui/plugins/views/painters.py:2815
 #: ../cmk/gui/plugins/views/availability.py:345
 #: ../cmk/gui/plugins/wato/bi_config.py:1911
 msgid "Options"
@@ -45984,7 +46040,7 @@ msgstr "Services einer Servicegruppe"
 msgid "Orig. IP"
 msgstr "Ursp. IP"
 
-#: ../cmk/gui/plugins/views/painters.py:3951
+#: ../cmk/gui/plugins/views/painters.py:3945
 msgid "Origin"
 msgstr "Ursprung"
 
@@ -46421,8 +46477,8 @@ msgstr "Eigentümer von Ereignis"
 msgid "Owner of the event"
 msgstr "Eigentümer von Ereignis"
 
-#: ../cmk/gui/plugins/views/painters.py:3355
-#: ../cmk/gui/plugins/views/painters.py:3623
+#: ../cmk/gui/plugins/views/painters.py:3349
+#: ../cmk/gui/plugins/views/painters.py:3617
 msgid "P"
 msgstr "P"
 
@@ -46450,7 +46506,7 @@ msgstr "P5 - Inforationell"
 msgid "PARTIAL"
 msgstr "PARTIAL"
 
-#: ../cmk/gui/plugins/views/painters.py:1152
+#: ../cmk/gui/plugins/views/painters.py:1146
 msgid "PASSIVE"
 msgstr "PASSIV"
 
@@ -46478,8 +46534,8 @@ msgstr "PDisk EID:Slot-Device"
 
 #: ../cmk/gui/cme/plugins/views/managed.py:309
 #: ../cmk/gui/cme/plugins/views/managed.py:409
-#: ../cmk/gui/plugins/views/painters.py:418
-#: ../cmk/gui/plugins/views/painters.py:2809
+#: ../cmk/gui/plugins/views/painters.py:412
+#: ../cmk/gui/plugins/views/painters.py:2803
 #: ../cmk/gui/plugins/visuals/filters.py:774
 #: ../cmk/gui/plugins/visuals/filters.py:787
 #: ../cmk/gui/plugins/visuals/filters.py:926
@@ -46569,11 +46625,11 @@ msgstr "POP3"
 msgid "POP3 Server"
 msgstr "POP3-Server"
 
-#: ../cmk/gui/htmllib.py:2764
+#: ../cmk/gui/htmllib.py:2768
 msgid "POST / GET Variables"
 msgstr "POST- / GET-Variablen"
 
-#: ../cmk/gui/plugins/views/painters.py:4675
+#: ../cmk/gui/plugins/views/painters.py:4669
 msgid "PROB"
 msgstr "PROB"
 
@@ -46988,7 +47044,7 @@ msgid "Parent scan finished"
 msgstr "Eltern-Scan abgeschlossen"
 
 #: ../cmk/gui/wato/pages/parentscan.py:220
-#: ../cmk/gui/plugins/views/painters.py:2850
+#: ../cmk/gui/plugins/views/painters.py:2844
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:297
 msgid "Parents"
 msgstr "Parents"
@@ -47189,7 +47245,7 @@ msgstr "Pfad:"
 msgid "Paths"
 msgstr "Pfad"
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:258
+#: ../cmk/gui/wato/pages/pattern_editor.py:259
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:183
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:184
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2442
@@ -47243,8 +47299,8 @@ msgstr "Untere Schwellwerte für Container im Zustand paused"
 msgid "Paused containers upper levels"
 msgstr "Obere Schwellwerte für pausierte Container"
 
-#: ../cmk/gui/plugins/views/painters.py:2749
-#: ../cmk/gui/plugins/views/painters.py:3435
+#: ../cmk/gui/plugins/views/painters.py:2743
+#: ../cmk/gui/plugins/views/painters.py:3429
 msgid "Pd"
 msgstr "Pd"
 
@@ -47739,7 +47795,7 @@ msgid "Perf-O-Meter of type 'dual' must only contain plain Perf-O-Meters"
 msgstr ""
 "Ein Perf-O-Meter vom Typ 'dual darf nur einfache Perf-O-Meter enthalten"
 
-#: ../cmk/gui/plugins/views/painters.py:529
+#: ../cmk/gui/plugins/views/painters.py:523
 msgid "Perfdata"
 msgstr "Leistungsdaten"
 
@@ -47821,14 +47877,14 @@ msgstr "Messdatengraph"
 msgid "Performance Graphs"
 msgstr "Messdatengraphen"
 
-#: ../cmk/gui/wato/pages/diagnostics.py:210 ../cmk/base/diagnostics.py:484
+#: ../cmk/gui/wato/pages/diagnostics.py:210 ../cmk/base/diagnostics.py:519
 #, fuzzy
 #| msgid "Performance Graphs"
 msgid "Performance Graphs of Checkmk Server"
 msgstr "Messdatengraphen"
 
 #: ../cmk/gui/plugins/sidebar/master_control.py:74
-#: ../cmk/gui/plugins/views/painters.py:1804
+#: ../cmk/gui/plugins/views/painters.py:1798
 #: ../cmk/gui/plugins/views/commands.py:413
 #: ../cmk/gui/plugins/wato/active_checks.py:1623
 #: ../cmk/gui/plugins/wato/check_parameters/hw_fans.py:50
@@ -47860,7 +47916,7 @@ msgstr "Periode"
 msgid "Period for outdated piggybacked host data"
 msgstr "Ausnahmen für Huckepack-Hosts"
 
-#: ../cmk/gui/plugins/views/painters.py:926
+#: ../cmk/gui/plugins/views/painters.py:920
 msgid "Periodic notification"
 msgstr "Periodische Alarmierung"
 
@@ -47991,7 +48047,7 @@ msgstr "Persönliche Einstellungen"
 msgid "Personal rules"
 msgstr "Waagerechte Linien"
 
-#: ../cmk/gui/wato/user_profile.py:494 ../cmk/gui/wato/pages/users.py:1061
+#: ../cmk/gui/wato/user_profile.py:495 ../cmk/gui/wato/pages/users.py:1061
 #, fuzzy
 #| msgid "Personal Settings"
 msgid "Personal settings"
@@ -49560,7 +49616,7 @@ msgstr "Privilege Level"
 msgid "Privileged"
 msgstr "Privilegiert"
 
-#: ../cmk/gui/plugins/views/painters.py:2667
+#: ../cmk/gui/plugins/views/painters.py:2661
 msgid "Prob."
 msgstr "Probleme"
 
@@ -49578,7 +49634,7 @@ msgstr "Problem Aggregationen"
 msgid "Problem details"
 msgstr "Problem Details"
 
-#: ../cmk/gui/plugins/views/painters.py:930
+#: ../cmk/gui/plugins/views/painters.py:924
 msgid "Problem is acknowledged, but is configured to be periodic"
 msgstr "Das Problem ist bestätigt, periodische Benachrichtigungen sind aktiv"
 
@@ -49770,11 +49826,11 @@ msgstr "Maximalkapazität"
 msgid "Product"
 msgstr "Produkt"
 
-#: ../cmk/gui/wato/user_profile.py:136
+#: ../cmk/gui/wato/user_profile.py:135
 msgid "Profile"
 msgstr "Profil"
 
-#: ../cmk/gui/wato/user_profile.py:244
+#: ../cmk/gui/wato/user_profile.py:243
 #, python-format
 msgid "Profile changed (sync failed: %s)"
 msgstr "Profile geändert (Sync gescheitert: %s)"
@@ -49783,7 +49839,7 @@ msgstr "Profile geändert (Sync gescheitert: %s)"
 msgid "Profile requests"
 msgstr "Profilzugriffe"
 
-#: ../cmk/gui/plugins/views/painters.py:4208
+#: ../cmk/gui/plugins/views/painters.py:4202
 #: ../cmk/gui/plugins/visuals/filters.py:1587
 #: ../cmk/gui/plugins/wato/builtin_attributes.py:847
 msgid "Program"
@@ -50320,7 +50376,7 @@ msgstr "Schnellsuche"
 msgid "Quick setup"
 msgstr "Schnellsuche"
 
-#: ../cmk/gui/wato/user_profile.py:129
+#: ../cmk/gui/wato/user_profile.py:128
 #, fuzzy
 #| msgid "Quicksearch"
 msgid "Quick toggle"
@@ -51053,7 +51109,7 @@ msgstr "Recovery Status"
 msgid "Recovery area"
 msgstr "Recovery-Bereich"
 
-#: ../cmk/gui/plugins/views/painters.py:3971
+#: ../cmk/gui/plugins/views/painters.py:3965
 msgid "Recurring"
 msgstr "Wiederkehren"
 
@@ -51345,7 +51401,7 @@ msgstr "Zurückgewiesene Sitzungen"
 #: ../cmk/gui/wato/mkeventd.py:1989 ../cmk/gui/wato/mkeventd.py:2120
 #: ../cmk/gui/wato/mkeventd.py:2256 ../cmk/gui/wato/mkeventd.py:2375
 #: ../cmk/gui/wato/mkeventd.py:2551 ../cmk/gui/wato/mkeventd.py:2715
-#: ../cmk/gui/wato/user_profile.py:585
+#: ../cmk/gui/wato/user_profile.py:586
 #: ../cmk/gui/wato/pages/notifications.py:914
 #: ../cmk/gui/wato/pages/activate_changes.py:86
 #: ../cmk/gui/wato/pages/check_catalog.py:465
@@ -51358,7 +51414,7 @@ msgstr "Zurückgewiesene Sitzungen"
 #: ../cmk/gui/wato/pages/diagnostics.py:99
 #: ../cmk/gui/wato/pages/global_settings.py:365
 #: ../cmk/gui/wato/pages/analyze_configuration.py:84
-#: ../cmk/gui/wato/pages/audit_log.py:92
+#: ../cmk/gui/wato/pages/audit_log.py:93
 #: ../cmk/gui/wato/pages/custom_attributes.py:448
 #: ../cmk/gui/wato/pages/ldap.py:103 ../cmk/gui/wato/pages/folders.py:138
 #: ../cmk/gui/crash_reporting.py:253 ../cmk/gui/notify.py:162
@@ -51377,7 +51433,7 @@ msgstr "Zusammenhängende Ansichten"
 msgid "Relational Database Service (RDS)"
 msgstr "Relational Database Service (RDS)"
 
-#: ../cmk/gui/plugins/views/painters.py:124
+#: ../cmk/gui/plugins/views/painters.py:123
 msgid "Relative"
 msgstr "Relative"
 
@@ -51431,13 +51487,13 @@ msgstr "Zuverlässigkeit"
 msgid "Reload"
 msgstr "Neu laden"
 
-#: ../cmk/gui/htmllib.py:1721
+#: ../cmk/gui/htmllib.py:1725
 #, fuzzy
 #| msgid "Reload"
 msgid "Reload now"
 msgstr "Neu laden"
 
-#: ../cmk/gui/htmllib.py:1685 ../cmk/gui/htmllib.py:1724
+#: ../cmk/gui/htmllib.py:1689 ../cmk/gui/htmllib.py:1728
 msgid "Reloading..."
 msgstr "Neu laden ..."
 
@@ -51896,6 +51952,11 @@ msgstr "Diese Wartungszeit wiederholen"
 msgid "Repeat this downtime on a regular basis every"
 msgstr "Wiederhole diese Wartungszeit regelmäßig jede"
 
+#: ../cmk/utils/object_diff.py:48
+#, python-brace-format
+msgid "Repetition change for item {diff_path}."
+msgstr ""
+
 #: ../cmk/gui/cee/plugins/reporting/simple_elements.py:166
 msgid "Replace macros in fetched text body"
 msgstr "Makros im geholten Textkörper ersetzen"
@@ -51983,7 +52044,7 @@ msgstr "Erweiterungen replizieren"
 msgid "Replicate extensions (MKPs and files in <tt>~/local/</tt>)"
 msgstr "Erweiterungen replizieren (MKPs und Dateien in <tt>~/local/</tt>)"
 
-#: ../cmk/gui/wato/user_profile.py:293
+#: ../cmk/gui/wato/user_profile.py:292
 #, fuzzy
 #| msgid "Replicate new User Profile"
 msgid "Replicate new user profile"
@@ -51997,15 +52058,15 @@ msgstr "Replikations Partner"
 msgid "Replication Slot Disk Usage"
 msgstr "Verwendung des Replikations-Slots für die Festplatte"
 
-#: ../cmk/gui/wato/user_profile.py:204
+#: ../cmk/gui/wato/user_profile.py:203
 msgid "Replication States"
 msgstr "Zustand der Replikation"
 
-#: ../cmk/gui/wato/user_profile.py:565
+#: ../cmk/gui/wato/user_profile.py:566
 msgid "Replication completed successfully."
 msgstr "Replikation erfolgreich abgeschlossen."
 
-#: ../cmk/gui/wato/user_profile.py:228
+#: ../cmk/gui/wato/user_profile.py:227
 msgid "Replication in progress"
 msgstr "Replikation läuft gerade"
 
@@ -52587,8 +52648,8 @@ msgstr ""
 "Beziehe Informationen über Prozesse mit WMI (Windows Management "
 "Instrumentation)"
 
-#: ../cmk/gui/plugins/views/painters.py:1101
-#: ../cmk/gui/plugins/views/painters.py:2076
+#: ../cmk/gui/plugins/views/painters.py:1095
+#: ../cmk/gui/plugins/views/painters.py:2070
 msgid "Retry"
 msgstr "Wiederhole"
 
@@ -52596,7 +52657,7 @@ msgstr "Wiederhole"
 msgid "Retry Count"
 msgstr "Wiederholversuche"
 
-#: ../cmk/gui/plugins/views/painters.py:2073
+#: ../cmk/gui/plugins/views/painters.py:2067
 msgid "Retry check interval"
 msgstr "Checkintervall bei Problemen"
 
@@ -53136,7 +53197,7 @@ msgstr "Rx"
 msgid "Rx power level"
 msgstr "Rx-Leistungspegel"
 
-#: ../cmk/gui/plugins/views/painters.py:1760
+#: ../cmk/gui/plugins/views/painters.py:1754
 msgid "S."
 msgstr "s."
 
@@ -54801,10 +54862,10 @@ msgstr "Serverperformance"
 #: ../cmk/gui/wato/pages/rulesets.py:1977 ../cmk/gui/wato/pages/services.py:638
 #: ../cmk/gui/watolib/rulespecs.py:473 ../cmk/gui/watolib/rulespecs.py:1009
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:627
-#: ../cmk/gui/plugins/views/painters.py:732
-#: ../cmk/gui/plugins/views/painters.py:3755
-#: ../cmk/gui/plugins/views/painters.py:4006
-#: ../cmk/gui/plugins/views/painters.py:4207
+#: ../cmk/gui/plugins/views/painters.py:726
+#: ../cmk/gui/plugins/views/painters.py:3749
+#: ../cmk/gui/plugins/views/painters.py:4000
+#: ../cmk/gui/plugins/views/painters.py:4201
 #: ../cmk/gui/plugins/views/mobile.py:250
 #: ../cmk/gui/plugins/views/icons/builtin.py:909
 #: ../cmk/gui/plugins/views/builtin.py:1825
@@ -54819,7 +54880,7 @@ msgstr "Serverperformance"
 msgid "Service"
 msgstr "Service"
 
-#: ../cmk/gui/plugins/views/painters.py:4360
+#: ../cmk/gui/plugins/views/painters.py:4354
 msgid "Service Alert"
 msgstr "Servicealert"
 
@@ -54831,7 +54892,7 @@ msgstr "Serviceverfügbarkeit"
 msgid "Service Checks"
 msgstr "Servicechecks"
 
-#: ../cmk/gui/plugins/views/painters.py:1412
+#: ../cmk/gui/plugins/views/painters.py:1406
 msgid "Service Comments"
 msgstr "Servicekommentare"
 
@@ -54862,7 +54923,7 @@ msgstr "Serviceereignisse"
 msgid "Service Filters"
 msgstr "Servicealert"
 
-#: ../cmk/gui/plugins/views/painters.py:1326
+#: ../cmk/gui/plugins/views/painters.py:1320
 #: ../cmk/gui/plugins/views/graphs.py:60
 msgid "Service Graphs"
 msgstr "Servicegraphen"
@@ -54893,8 +54954,8 @@ msgstr "Service-Labels"
 
 #: ../cmk/gui/wato/mkeventd.py:172 ../cmk/gui/wato/mkeventd.py:365
 #: ../cmk/gui/wato/mkeventd.py:1172 ../cmk/gui/wato/mkeventd.py:1902
-#: ../cmk/gui/plugins/views/painters.py:1570
-#: ../cmk/gui/plugins/views/painters.py:3084
+#: ../cmk/gui/plugins/views/painters.py:1564
+#: ../cmk/gui/plugins/views/painters.py:3078
 msgid "Service Level"
 msgstr "Servicelevel"
 
@@ -54918,7 +54979,7 @@ msgstr "Servicelevel der Services"
 msgid "Service Levels"
 msgstr "Servicelevel"
 
-#: ../cmk/gui/plugins/views/painters.py:546
+#: ../cmk/gui/plugins/views/painters.py:540
 msgid "Service Metrics"
 msgstr "Servicemetriken"
 
@@ -54979,16 +55040,16 @@ msgstr "Servicezeit"
 msgid "Service Type"
 msgstr "Servicetyp"
 
-#: ../cmk/gui/plugins/views/painters.py:753
+#: ../cmk/gui/plugins/views/painters.py:747
 #: ../cmk/gui/plugins/views/sorters.py:268
 msgid "Service alternative display name"
 msgstr "Service: Alternativer Anzeigename"
 
-#: ../cmk/gui/plugins/views/painters.py:649
+#: ../cmk/gui/plugins/views/painters.py:643
 msgid "Service check command"
 msgstr "Servicecheck Befehl"
 
-#: ../cmk/gui/plugins/views/painters.py:669
+#: ../cmk/gui/plugins/views/painters.py:663
 msgid "Service check command expanded"
 msgstr "Servicecheck Befehl erweitert"
 
@@ -54997,7 +55058,7 @@ msgstr "Servicecheck Befehl erweitert"
 msgid "Service check commands"
 msgstr "Servicecheck-Befehle"
 
-#: ../cmk/gui/plugins/views/painters.py:1038
+#: ../cmk/gui/plugins/views/painters.py:1032
 msgid "Service check duration"
 msgstr "Servicecheck Dauer"
 
@@ -55005,11 +55066,11 @@ msgstr "Servicecheck Dauer"
 msgid "Service check durations"
 msgstr "Servicecheck Dauern"
 
-#: ../cmk/gui/plugins/views/painters.py:1018
+#: ../cmk/gui/plugins/views/painters.py:1012
 msgid "Service check latency"
 msgstr "Servicecheck Latenz"
 
-#: ../cmk/gui/plugins/views/painters.py:1222
+#: ../cmk/gui/plugins/views/painters.py:1216
 msgid "Service check period"
 msgstr "Servicecheck Periode"
 
@@ -55021,7 +55082,7 @@ msgstr "Servicecheckrate"
 msgid "Service check timeout (Microcore)"
 msgstr "Servicecheck Timeout (Microcore)"
 
-#: ../cmk/gui/plugins/views/painters.py:1142
+#: ../cmk/gui/plugins/views/painters.py:1136
 msgid "Service check type"
 msgstr "Servicecheck Typ"
 
@@ -55037,7 +55098,7 @@ msgstr "Servicechecks"
 msgid "Service configuration"
 msgstr "Verteiltes Monitoring"
 
-#: ../cmk/gui/plugins/views/painters.py:709
+#: ../cmk/gui/plugins/views/painters.py:703
 msgid "Service contact groups"
 msgstr "Service-Kontaktgruppen"
 
@@ -55045,7 +55106,7 @@ msgstr "Service-Kontaktgruppen"
 msgid "Service contact information"
 msgstr "Service-Kontaktinformation"
 
-#: ../cmk/gui/plugins/views/painters.py:689
+#: ../cmk/gui/plugins/views/painters.py:683
 msgid "Service contacts"
 msgstr "Service-Kontakte"
 
@@ -55053,11 +55114,11 @@ msgstr "Service-Kontakte"
 msgid "Service creation using PromQL queries"
 msgstr ""
 
-#: ../cmk/gui/plugins/views/painters.py:1675
+#: ../cmk/gui/plugins/views/painters.py:1669
 msgid "Service custom attribute"
 msgstr "Eigenes Service-Attribut"
 
-#: ../cmk/gui/plugins/views/painters.py:1603
+#: ../cmk/gui/plugins/views/painters.py:1597
 msgid "Service custom attributes"
 msgstr "Eigene Service-Attribute"
 
@@ -55069,8 +55130,8 @@ msgstr "ID des benutzerdefinierten Service Feldes"
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mrpe.py:58
 #: ../cmk/gui/wato/pages/notifications.py:332
 #: ../cmk/gui/plugins/metrics/valuespecs.py:67
-#: ../cmk/gui/plugins/views/painters.py:729
-#: ../cmk/gui/plugins/views/painters.py:3199
+#: ../cmk/gui/plugins/views/painters.py:723
+#: ../cmk/gui/plugins/views/painters.py:3193
 #: ../cmk/gui/plugins/views/sorters.py:267
 #: ../cmk/gui/plugins/views/availability.py:1179
 #: ../cmk/gui/plugins/wato/active_checks.py:715
@@ -55131,15 +55192,15 @@ msgstr "Serviceerkennungscheck nach Serviceerkennung durchführen"
 msgid "Service discovery: "
 msgstr "Serviceerkennung"
 
-#: ../cmk/gui/plugins/views/painters.py:3176
+#: ../cmk/gui/plugins/views/painters.py:3170
 msgid "Service discovery: Check type"
 msgstr "Serviceerkennung: Checktyp"
 
-#: ../cmk/gui/plugins/views/painters.py:3196
+#: ../cmk/gui/plugins/views/painters.py:3190
 msgid "Service discovery: Service description"
 msgstr "Service discovery: Service description"
 
-#: ../cmk/gui/plugins/views/painters.py:3156
+#: ../cmk/gui/plugins/views/painters.py:3150
 msgid "Service discovery: State"
 msgstr "Serviceerkennung: Zustand"
 
@@ -55171,7 +55232,7 @@ msgstr "Servicesgraphen von Host"
 msgid "Service groups"
 msgstr "Servicegruppen"
 
-#: ../cmk/gui/plugins/views/painters.py:1302
+#: ../cmk/gui/plugins/views/painters.py:1296
 msgid "Service groups the service is member of"
 msgstr "Servicegruppen zu denen Service gehört"
 
@@ -55179,19 +55240,19 @@ msgstr "Servicegruppen zu denen Service gehört"
 msgid "Service hover menu shown in BI visualization"
 msgstr "Service Hover-Menü in der BI-Visualisierung angezeigt"
 
-#: ../cmk/gui/plugins/views/painters.py:256
+#: ../cmk/gui/plugins/views/painters.py:250
 msgid "Service icons"
 msgstr "Service Symbole"
 
-#: ../cmk/gui/plugins/views/painters.py:1282
+#: ../cmk/gui/plugins/views/painters.py:1276
 msgid "Service is active"
 msgstr "Service ist aktiv"
 
-#: ../cmk/gui/plugins/views/painters.py:1242
+#: ../cmk/gui/plugins/views/painters.py:1236
 msgid "Service is flapping"
 msgstr "Service ist unstetig"
 
-#: ../cmk/gui/plugins/views/painters.py:1543
+#: ../cmk/gui/plugins/views/painters.py:1537
 msgid "Service is stale"
 msgstr "Service ist veraltet"
 
@@ -55223,23 +55284,23 @@ msgstr "Kein Monitoring-Kern"
 msgid "Service name"
 msgstr "Servicename"
 
-#: ../cmk/gui/plugins/views/painters.py:1078
+#: ../cmk/gui/plugins/views/painters.py:1072
 msgid "Service normal check interval"
 msgstr "normales Checkintervall für Services"
 
-#: ../cmk/gui/plugins/views/painters.py:1118
+#: ../cmk/gui/plugins/views/painters.py:1112
 msgid "Service normal/retry check interval"
 msgstr "Checkintervall für normale/wiederholte Checks von Services"
 
-#: ../cmk/gui/plugins/views/painters.py:998
+#: ../cmk/gui/plugins/views/painters.py:992
 msgid "Service notification number"
 msgstr "Service-Alarmnummer"
 
-#: ../cmk/gui/plugins/views/painters.py:1202
+#: ../cmk/gui/plugins/views/painters.py:1196
 msgid "Service notification period"
 msgstr "Zeitperiode für Servicealarme"
 
-#: ../cmk/gui/plugins/views/painters.py:1262
+#: ../cmk/gui/plugins/views/painters.py:1256
 msgid "Service notifications enabled"
 msgstr "Servicealarme eingeschaltet"
 
@@ -55253,7 +55314,7 @@ msgstr "Anzeigeoptionen für Anzahl von Serviceausfällen"
 msgid "Service output text"
 msgstr "Name der Servicegruppe"
 
-#: ../cmk/gui/plugins/views/painters.py:526
+#: ../cmk/gui/plugins/views/painters.py:520
 msgid "Service performance data (source code)"
 msgstr "Service-Performancedaten (Quellcode)"
 
@@ -55262,7 +55323,7 @@ msgstr "Service-Performancedaten (Quellcode)"
 msgid "Service performance data - value number %02d"
 msgstr "Service: Leistungsdaten - Wert Nr. %02d"
 
-#: ../cmk/gui/plugins/views/painters.py:579
+#: ../cmk/gui/plugins/views/painters.py:573
 #, python-format
 msgid "Service performance data - value number %2d"
 msgstr "Leistungsdaten - Wertnummer %2d"
@@ -55279,7 +55340,7 @@ msgstr "Serviceperiode für Services"
 msgid "Service plugin output"
 msgstr "Ausgabe des Service-Plugins"
 
-#: ../cmk/gui/plugins/views/painters.py:1432
+#: ../cmk/gui/plugins/views/painters.py:1426
 msgid "Service problem acknowledged"
 msgstr "Service Problem quittiert"
 
@@ -55300,7 +55361,7 @@ msgstr "Service wiederhergestellt zu OK"
 msgid "Service report for multiple services"
 msgstr "Servicebericht für mehrere Dienste"
 
-#: ../cmk/gui/plugins/views/painters.py:1098
+#: ../cmk/gui/plugins/views/painters.py:1092
 msgid "Service retry check interval"
 msgstr "Wiederholungsintervall für Service-Checks"
 
@@ -55308,11 +55369,11 @@ msgstr "Wiederholungsintervall für Service-Checks"
 msgid "Service search"
 msgstr "Service-Suche"
 
-#: ../cmk/gui/plugins/views/painters.py:1567
+#: ../cmk/gui/plugins/views/painters.py:1561
 msgid "Service service level"
 msgstr "Service-Servicelevel"
 
-#: ../cmk/gui/plugins/views/painters.py:1517
+#: ../cmk/gui/plugins/views/painters.py:1511
 msgid "Service staleness value"
 msgstr "Service Veraltungswert"
 
@@ -55321,7 +55382,7 @@ msgstr "Service Veraltungswert"
 msgid "Service start type"
 msgstr "Service Zustandstyp"
 
-#: ../cmk/gui/plugins/views/painters.py:436
+#: ../cmk/gui/plugins/views/painters.py:430
 #: ../cmk/gui/plugins/views/sorters.py:58
 #: ../cmk/gui/plugins/views/availability.py:1184
 msgid "Service state"
@@ -55375,11 +55436,11 @@ msgstr "Servicenow URL"
 msgid "Servicegroup"
 msgstr "Servicegruppe"
 
-#: ../cmk/gui/plugins/views/painters.py:3660
+#: ../cmk/gui/plugins/views/painters.py:3654
 msgid "Servicegroup alias"
 msgstr "Alias der Servicegruppe"
 
-#: ../cmk/gui/plugins/views/painters.py:3640
+#: ../cmk/gui/plugins/views/painters.py:3634
 msgid "Servicegroup name"
 msgstr "Name der Servicegruppe"
 
@@ -55402,8 +55463,8 @@ msgstr "Servicelevel"
 #: ../cmk/gui/plugins/sidebar/tactical_overview.py:78
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:441
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:467
-#: ../cmk/gui/plugins/views/painters.py:2796
-#: ../cmk/gui/plugins/views/painters.py:3503
+#: ../cmk/gui/plugins/views/painters.py:2790
+#: ../cmk/gui/plugins/views/painters.py:3497
 #: ../cmk/gui/plugins/views/mobile.py:113
 #: ../cmk/gui/plugins/views/mobile.py:157
 #: ../cmk/gui/plugins/views/mobile.py:207
@@ -55420,11 +55481,11 @@ msgstr "Services"
 msgid "Services (Regular Expressions)"
 msgstr "Services (Reguläre Ausdrücke)"
 
-#: ../cmk/gui/plugins/views/painters.py:2793
+#: ../cmk/gui/plugins/views/painters.py:2787
 msgid "Services colored according to state"
 msgstr "Services nach Status eingefärbt"
 
-#: ../cmk/gui/plugins/views/painters.py:3500
+#: ../cmk/gui/plugins/views/painters.py:3494
 msgid "Services colored according to state (Service Group)"
 msgstr "Services nach Status eingefärbt (Servicegruppe)"
 
@@ -56092,7 +56153,7 @@ msgstr ""
 #: ../cmk/gui/wato/pages/download_agents.py:50
 #: ../cmk/gui/wato/pages/diagnostics.py:102
 #: ../cmk/gui/wato/pages/global_settings.py:368
-#: ../cmk/gui/wato/pages/audit_log.py:95
+#: ../cmk/gui/wato/pages/audit_log.py:96
 #: ../cmk/gui/wato/pages/custom_attributes.py:451
 #: ../cmk/gui/wato/pages/ldap.py:106 ../cmk/gui/wato/pages/folders.py:141
 #: ../cmk/gui/notify.py:165 ../cmk/gui/plugins/sidebar/wato.py:115
@@ -56499,7 +56560,7 @@ msgstr "Informationen von einem einzigen %s zeigen"
 msgid "Show margin round the graph"
 msgstr "Zeige Rand um den Graphen"
 
-#: ../cmk/gui/plugins/views/painters.py:4974
+#: ../cmk/gui/plugins/views/painters.py:4968
 msgid "Show metric"
 msgstr "Metrik anzeigen"
 
@@ -56527,7 +56588,7 @@ msgstr "Kommentar/Beschreibung für Host"
 msgid "Show ntopng interface integration of this host"
 msgstr "Kommentar/Beschreibung für Host"
 
-#: ../cmk/gui/werks.py:415
+#: ../cmk/gui/werks.py:417
 msgid "Show number of groups"
 msgstr "Anzahl der Gruppen anzeigen"
 
@@ -56611,7 +56672,7 @@ msgstr "Services von Host %s"
 msgid "Show services using this check"
 msgstr "Regeln mit diesem %s anzeigen"
 
-#: ../cmk/gui/plugins/views/painters.py:4952
+#: ../cmk/gui/plugins/views/painters.py:4946
 #, fuzzy
 #| msgid "Show metric"
 msgid "Show single metric"
@@ -56721,7 +56782,7 @@ msgstr "Zeige den Pin"
 msgid "Show title without any background"
 msgstr "Hosts ohne gebackenen Agenten"
 
-#: ../cmk/gui/werks.py:430
+#: ../cmk/gui/werks.py:432
 msgid "Show unacknowledged incompatible werks"
 msgstr "Zeige nicht quitierte inkompatible Werks"
 
@@ -56809,7 +56870,7 @@ msgstr "Seitenleistenelement"
 msgid "Sidebar integration"
 msgstr "Integration in die Seitenleiste"
 
-#: ../cmk/gui/wato/user_profile.py:82
+#: ../cmk/gui/wato/user_profile.py:81
 #: ../cmk/gui/plugins/userdb/user_attributes.py:179
 #, fuzzy
 #| msgid "Sidebar integration"
@@ -57067,7 +57128,7 @@ msgstr "Sirene"
 #: ../cmk/gui/views.py:2703 ../cmk/gui/views.py:2716
 #: ../cmk/gui/wato/pages/activate_changes.py:435
 #: ../cmk/gui/wato/pages/diagnostics.py:146
-#: ../cmk/gui/plugins/views/painters.py:352
+#: ../cmk/gui/plugins/views/painters.py:346
 #: ../cmk/gui/plugins/views/sorters.py:274
 #: ../cmk/gui/plugins/views/availability.py:1166
 msgid "Site"
@@ -57088,7 +57149,7 @@ msgid "Site Alias"
 msgstr "Instanz Alias"
 
 #: ../cmk/gui/wato/pages/sites.py:276 ../cmk/gui/wato/pages/sites.py:286
-#: ../cmk/gui/plugins/views/painters.py:349
+#: ../cmk/gui/plugins/views/painters.py:343
 msgid "Site ID"
 msgstr "Instanz ID"
 
@@ -57108,7 +57169,7 @@ msgstr "Instanzverwaltung"
 msgid "Site Status"
 msgstr "Instanzstatus"
 
-#: ../cmk/gui/plugins/views/painters.py:373
+#: ../cmk/gui/plugins/views/painters.py:367
 msgid "Site alias"
 msgstr "Instanz Alias"
 
@@ -57152,7 +57213,7 @@ msgstr "Instanzverbindung"
 msgid "Site custom field ID"
 msgstr "ID des benutzerdefinierten Service Feldes"
 
-#: ../cmk/gui/plugins/views/painters.py:323
+#: ../cmk/gui/plugins/views/painters.py:317
 msgid "Site icon"
 msgstr "Instanz-Symbol"
 
@@ -57823,7 +57884,7 @@ msgstr ""
 msgid "Sorry, you lack the permission. Operation: %s, table: %s"
 msgstr "Sie haben leider keine Berechtigung. Operation: %s, Tabelle: %s"
 
-#: ../cmk/gui/wato/user_profile.py:388 ../cmk/gui/wato/user_profile.py:487
+#: ../cmk/gui/wato/user_profile.py:390 ../cmk/gui/wato/user_profile.py:488
 msgid "Sorry, your user account does not exist."
 msgstr "Ihr Benutzerkonto ist nicht vorhanden."
 
@@ -57933,7 +57994,7 @@ msgstr "Freie Platten"
 msgid "Special Agent"
 msgstr "Alle Agenten signieren"
 
-#: ../cmk/gui/wato/pages/audit_log.py:377
+#: ../cmk/gui/wato/pages/audit_log.py:381
 msgid "Specific date"
 msgstr "Bestimmten Datum"
 
@@ -58588,8 +58649,8 @@ msgid "Stacks"
 msgstr "Stapel"
 
 #: ../cmk/gui/plugins/sidebar/tactical_overview.py:164
-#: ../cmk/gui/plugins/views/painters.py:1546
-#: ../cmk/gui/plugins/views/painters.py:3060
+#: ../cmk/gui/plugins/views/painters.py:1540
+#: ../cmk/gui/plugins/views/painters.py:3054
 msgid "Stale"
 msgstr "Veraltet"
 
@@ -58601,8 +58662,8 @@ msgstr "Veraltete Hosts"
 msgid "Stale services"
 msgstr "Veraltete Services"
 
-#: ../cmk/gui/plugins/views/painters.py:1520
-#: ../cmk/gui/plugins/views/painters.py:3040
+#: ../cmk/gui/plugins/views/painters.py:1514
+#: ../cmk/gui/plugins/views/painters.py:3034
 msgid "Staleness"
 msgstr "Veraltung"
 
@@ -58645,7 +58706,7 @@ msgstr "Standby Einheit"
 #: ../cmk/gui/wato/pages/parentscan.py:485
 #: ../cmk/gui/wato/pages/bulk_discovery.py:88
 #: ../cmk/gui/wato/pages/read_only.py:113
-#: ../cmk/gui/plugins/views/painters.py:4063
+#: ../cmk/gui/plugins/views/painters.py:4057
 msgid "Start"
 msgstr "Beginn"
 
@@ -58662,7 +58723,7 @@ msgstr "Start-URL für den Haupt-Frame"
 msgid "Start during system boot"
 msgstr "Mit dem Betriebssystem starten"
 
-#: ../cmk/gui/wato/pages/audit_log.py:372
+#: ../cmk/gui/wato/pages/audit_log.py:376
 msgid "Start log from"
 msgstr "Zeige log seit"
 
@@ -58804,11 +58865,11 @@ msgstr "Anfänglicher Überschuss im gemeinsamen Pool"
 #: ../cmk/gui/wato/pages/notifications.py:707
 #: ../cmk/gui/wato/pages/activate_changes.py:473
 #: ../cmk/gui/wato/pages/users.py:405 ../cmk/gui/wato/pages/services.py:637
-#: ../cmk/gui/wato/pages/pattern_editor.py:257
+#: ../cmk/gui/wato/pages/pattern_editor.py:258
 #: ../cmk/gui/wato/pages/ldap.py:345 ../cmk/gui/plugins/views/mkeventd.py:645
-#: ../cmk/gui/plugins/views/painters.py:439
-#: ../cmk/gui/plugins/views/painters.py:3159
-#: ../cmk/gui/plugins/views/painters.py:4561
+#: ../cmk/gui/plugins/views/painters.py:433
+#: ../cmk/gui/plugins/views/painters.py:3153
+#: ../cmk/gui/plugins/views/painters.py:4555
 #: ../cmk/gui/plugins/views/availability.py:577
 #: ../cmk/gui/plugins/views/bi.py:277 ../cmk/gui/plugins/views/bi.py:298
 #: ../cmk/gui/plugins/wato/check_parameters/tcp_connections.py:46
@@ -59109,7 +59170,7 @@ msgstr "Status des Service, falls der Job keine Log-Informationen hat"
 msgid "State in case of wrong agent version"
 msgstr "Status bei falscher Agentenversion"
 
-#: ../cmk/gui/plugins/views/painters.py:4261
+#: ../cmk/gui/plugins/views/painters.py:4255
 #, fuzzy
 msgid "State info"
 msgstr "Status bei Verstößen"
@@ -59918,7 +59979,7 @@ msgstr "Hintergrund-Prozess stoppen"
 msgid "Stopped"
 msgstr "Angehalten"
 
-#: ../cmk/gui/plugins/views/painters.py:4432
+#: ../cmk/gui/plugins/views/painters.py:4426
 msgid "Stopped acknowledgement"
 msgstr "Quittierung entfernt"
 
@@ -60231,7 +60292,7 @@ msgstr "Gespeicherten Bericht erfolgreich gespeichert"
 msgid "Successfully updated IP addresses of %d hosts."
 msgstr "Die IP-Adressen von %d Hosts wurden erfolgreich aktualisiert."
 
-#: ../cmk/gui/wato/user_profile.py:478
+#: ../cmk/gui/wato/user_profile.py:479
 msgid "Successfully updated user profile."
 msgstr "Benutzerprofil erfolgreich aktualisiert."
 
@@ -60260,9 +60321,10 @@ msgstr "Zusammenfassung über alle Protokolle"
 #: ../cmk/gui/cee/plugins/views/sla.py:464
 #: ../cmk/gui/cee/plugins/reporting/availability.py:229
 #: ../cmk/gui/cee/plugins/wato/license_usage.py:230
-#: ../cmk/gui/plugins/views/painters.py:460
-#: ../cmk/gui/plugins/views/painters.py:1781
-#: ../cmk/gui/plugins/views/painters.py:4161
+#: ../cmk/gui/wato/pages/audit_log.py:247
+#: ../cmk/gui/plugins/views/painters.py:454
+#: ../cmk/gui/plugins/views/painters.py:1775
+#: ../cmk/gui/plugins/views/painters.py:4155
 #: ../cmk/gui/plugins/views/availability.py:662
 #: ../cmk/gui/plugins/views/availability.py:1358
 #: ../cmk/gui/plugins/wato/check_parameters/netapp_api_fan.py:32
@@ -60271,8 +60333,8 @@ msgstr "Zusammenfassung über alle Protokolle"
 msgid "Summary"
 msgstr "Zusammenfassung"
 
-#: ../cmk/gui/plugins/views/painters.py:463
-#: ../cmk/gui/plugins/views/painters.py:1784
+#: ../cmk/gui/plugins/views/painters.py:457
+#: ../cmk/gui/plugins/views/painters.py:1778
 msgid "Summary (Previously named: Status details or plugin output)"
 msgstr ""
 
@@ -61066,11 +61128,11 @@ msgstr "Merkmal: %s"
 #: ../cmk/gui/wato/pages/tags.py:128 ../cmk/gui/wato/pages/tags.py:335
 #: ../cmk/gui/wato/pages/tags.py:383 ../cmk/gui/wato/pages/tags.py:482
 #: ../cmk/gui/wato/pages/folders.py:403 ../cmk/gui/wato/pages/folders.py:848
-#: ../cmk/gui/plugins/views/painters.py:4700
-#: ../cmk/gui/plugins/views/painters.py:4755
-#: ../cmk/gui/plugins/views/painters.py:4773
-#: ../cmk/gui/plugins/views/painters.py:4776
-#: ../cmk/gui/plugins/views/painters.py:4804
+#: ../cmk/gui/plugins/views/painters.py:4694
+#: ../cmk/gui/plugins/views/painters.py:4749
+#: ../cmk/gui/plugins/views/painters.py:4767
+#: ../cmk/gui/plugins/views/painters.py:4770
+#: ../cmk/gui/plugins/views/painters.py:4798
 #: ../cmk/gui/plugins/views/sorters.py:186
 #: ../cmk/gui/plugins/wato/builtin_modules.py:78
 #: ../cmk/gui/plugins/wato/notifications.py:996
@@ -61080,7 +61142,7 @@ msgstr "Merkmal: %s"
 msgid "Tags"
 msgstr "Merkmale"
 
-#: ../cmk/gui/plugins/views/painters.py:4801
+#: ../cmk/gui/plugins/views/painters.py:4795
 msgid "Tags (with titles)"
 msgstr "Merkmake (mit Titeln)"
 
@@ -61397,7 +61459,7 @@ msgid "Testing"
 msgstr "Test läuft"
 
 #: ../cmk/gui/cee/plugins/reporting/simple_elements.py:106
-#: ../cmk/gui/wato/pages/audit_log.py:448 ../cmk/gui/notify.py:197
+#: ../cmk/gui/wato/pages/audit_log.py:452 ../cmk/gui/notify.py:197
 #: ../cmk/gui/plugins/dashboard/static_text.py:41
 #: ../cmk/gui/plugins/wato/datasource_programs.py:1751
 msgid "Text"
@@ -61473,7 +61535,7 @@ msgid "Text to cancel event(s)"
 msgstr "Text um Ereignis(se) abzubrechen"
 
 #: ../cmk/gui/wato/mkeventd.py:703 ../cmk/gui/wato/mkeventd.py:1909
-#: ../cmk/gui/wato/pages/pattern_editor.py:148
+#: ../cmk/gui/wato/pages/pattern_editor.py:149
 msgid "Text to match"
 msgstr "Text für Überprüfung"
 
@@ -61516,12 +61578,12 @@ msgstr "%s existiert nicht."
 msgid "The %s has been deleted."
 msgstr "%s wurde gelöscht."
 
-#: ../cmk/gui/plugins/views/painters.py:4180
+#: ../cmk/gui/plugins/views/painters.py:4174
 #, python-format
 msgid "The %s started flapping"
 msgstr "%s startet Status <tt>flapping</tt>"
 
-#: ../cmk/gui/plugins/views/painters.py:4179
+#: ../cmk/gui/plugins/views/painters.py:4173
 #, python-format
 msgid "The %s stopped flapping"
 msgstr "%s beendete den Status <tt>flapping</tt>"
@@ -62339,11 +62401,11 @@ msgstr ""
 msgid "The active check services have an average check latency of %.3fs."
 msgstr "Die aktiven Checks haben eine durchschnittliche Latenz von %.3fs."
 
-#: ../cmk/gui/plugins/views/painters.py:1861
+#: ../cmk/gui/plugins/views/painters.py:1855
 msgid "The age of the current host state"
 msgstr "Alter des aktuellen Host-Status"
 
-#: ../cmk/gui/plugins/views/painters.py:777
+#: ../cmk/gui/plugins/views/painters.py:771
 msgid "The age of the current service state"
 msgstr "Alter des aktuellen Service-Status"
 
@@ -62543,7 +62605,7 @@ msgstr ""
 msgid "The attribute used to identify users group memberships."
 msgstr "Merkmal um Gruppenmitgliedschaften festzustellen."
 
-#: ../cmk/gui/wato/pages/audit_log.py:203
+#: ../cmk/gui/wato/pages/audit_log.py:204
 msgid "The audit log is empty."
 msgstr "Die Audit-Logdatei ist leer."
 
@@ -62641,7 +62703,7 @@ msgstr ""
 "Batterie-Kapazität in Prozent ab und unterhalb derer eine Warnung ausgelöst "
 "werden soll"
 
-#: ../cmk/gui/wato/user_profile.py:341
+#: ../cmk/gui/wato/user_profile.py:343
 msgid "The both new passwords do not match."
 msgstr "Die beiden neuen Passworte stimmen nicht überein."
 
@@ -64050,7 +64112,7 @@ msgstr "Die letzten 8 Tage"
 msgid "The last one was: <pre>%s</pre>"
 msgstr "Letzter Wert war <pre>%s</pre>"
 
-#: ../cmk/gui/plugins/views/painters.py:889
+#: ../cmk/gui/plugins/views/painters.py:883
 msgid "The last time the service was OK"
 msgstr "Letzter Zeitpunkt, zu dem der Service OK war"
 
@@ -64609,7 +64671,7 @@ msgstr ""
 "Standardwert ist 60 Sekunden. Beachten Sie, dass dies kein Gesamttimeout "
 "ist, sondern auf jede einzelne interne Abfrage angewendet wird."
 
-#: ../cmk/gui/wato/user_profile.py:335
+#: ../cmk/gui/wato/user_profile.py:337
 msgid "The new password must differ from your current one."
 msgstr "Das neue Passwort muss sich vom aktuellen unterscheiden."
 
@@ -64640,7 +64702,7 @@ msgstr ""
 msgid "The notification has been sent via<br>"
 msgstr "Der Alarm wurde versandt über<br>"
 
-#: ../cmk/gui/plugins/views/painters.py:4400
+#: ../cmk/gui/plugins/views/painters.py:4394
 msgid "The notification is being processed"
 msgstr "Der Alarm wird verarbeitet"
 
@@ -65228,12 +65290,12 @@ msgstr "Das angeforderte Regelpaket existiert nicht."
 msgid "The requested schedule does not exist."
 msgstr "Dieser Berichtsplan existiert nicht."
 
-#: ../cmk/gui/wato/user_profile.py:549 ../cmk/gui/wato/pages/sites.py:148
+#: ../cmk/gui/wato/user_profile.py:550 ../cmk/gui/wato/pages/sites.py:148
 #: ../cmk/gui/wato/pages/sites.py:177
 msgid "The requested site does not exist"
 msgstr "Die angeforderte Instanz existiert nicht"
 
-#: ../cmk/gui/wato/user_profile.py:571
+#: ../cmk/gui/wato/user_profile.py:572
 #: ../cmk/gui/wato/pages/notifications.py:796
 msgid "The requested user does not exist"
 msgstr "Der angefragte Benutzer existiert nicht"
@@ -65294,7 +65356,7 @@ msgstr ""
 "Schreibvorgänge zeitlich etwas zu verteilen. Die hier konfigurierte Zahl "
 "sollte nicht höher als das \"Metrik-Schreibintervall\" sein."
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:248
+#: ../cmk/gui/wato/pages/pattern_editor.py:249
 msgid "The rule conditions do not match."
 msgstr "Diese Regelbedingung trifft nicht zu."
 
@@ -65605,7 +65667,7 @@ msgstr ""
 "Die Instanz ist aktuell durch einen anderen Aktivierungsvorgang gesperrt. "
 "Bitte versuchen Sie es später erneut."
 
-#: ../cmk/gui/wato/user_profile.py:554
+#: ../cmk/gui/wato/user_profile.py:555
 msgid "The site is marked as dead. Not trying to replicate."
 msgstr ""
 "Die Instanz ist aktuell als tot markiert. Ich versuche daher keine "
@@ -65823,35 +65885,35 @@ msgstr "Das Zeitinterval mit dem die statistischen Daten abgespeichert werden"
 msgid "The time must not be greater than %02d:%02d."
 msgstr "Die Zeit darf nicht größer als %02d:%02d sein."
 
-#: ../cmk/gui/plugins/views/painters.py:1969
+#: ../cmk/gui/plugins/views/painters.py:1963
 msgid "The time of the last host notification"
 msgstr "Uhrzeit des letzten Hostalarms"
 
-#: ../cmk/gui/plugins/views/painters.py:974
+#: ../cmk/gui/plugins/views/painters.py:968
 msgid "The time of the last service notification"
 msgstr "Uhrzeit des letzten Servicealarms"
 
-#: ../cmk/gui/plugins/views/painters.py:1929
+#: ../cmk/gui/plugins/views/painters.py:1923
 msgid "The time of the next host notification"
 msgstr "Uhrzeit des nächsten Hostalarms"
 
-#: ../cmk/gui/plugins/views/painters.py:1909
+#: ../cmk/gui/plugins/views/painters.py:1903
 msgid "The time of the next scheduled host check"
 msgstr "Uhrzeit des geplanten nächsten Host-Checks"
 
-#: ../cmk/gui/plugins/views/painters.py:869
+#: ../cmk/gui/plugins/views/painters.py:863
 msgid "The time of the next scheduled service check"
 msgstr "Uhrzeit des geplanten nächsten Service-Checks"
 
-#: ../cmk/gui/plugins/views/painters.py:909
+#: ../cmk/gui/plugins/views/painters.py:903
 msgid "The time of the next service notification"
 msgstr "Uhrzeit des nächsten Servicealarms"
 
-#: ../cmk/gui/plugins/views/painters.py:1885
+#: ../cmk/gui/plugins/views/painters.py:1879
 msgid "The time since the last check of the host"
 msgstr "Zeit seit letztem Check dieses Hosts"
 
-#: ../cmk/gui/plugins/views/painters.py:819
+#: ../cmk/gui/plugins/views/painters.py:813
 msgid "The time since the last check of the service"
 msgstr "Zeit seit letztem Check dieses Service"
 
@@ -66692,7 +66754,7 @@ msgstr ""
 "href=\"wato.py?mode=edit_ruleset&varname=cmc_service_flap_settings\">Service-"
 "Regel</a> konfiguriert werden."
 
-#: ../cmk/gui/htmllib.py:1426
+#: ../cmk/gui/htmllib.py:1430
 #, python-format
 msgid ""
 "These texts may be localized depending on the users' language. You can "
@@ -67737,17 +67799,17 @@ msgstr "Die Logdatei"
 msgid "This logfile contains no unacknowledged messages."
 msgstr "Diese Logdatei enthält keine nicht-quittierten Meldungen."
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:243
+#: ../cmk/gui/wato/pages/pattern_editor.py:244
 msgid "This logfile pattern does not match the given string."
 msgstr "Dieses Logdatei Suchmuster hat keine Übereinstimmung."
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:240
+#: ../cmk/gui/wato/pages/pattern_editor.py:241
 msgid "This logfile pattern matches but another matched first."
 msgstr ""
 "Dieses Logdatei Suchmuster trifft zu - allerdings gibt es ein anderes, da "
 "vorher zutrifft."
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:232
+#: ../cmk/gui/wato/pages/pattern_editor.py:233
 msgid ""
 "This logfile pattern matches first and will be used for defining the state "
 "of the given line."
@@ -70779,12 +70841,12 @@ msgstr "Kacheln"
 
 #: ../cmk/gui/notifications.py:145 ../cmk/gui/cee/reporting.py:1451
 #: ../cmk/gui/wato/pages/activate_changes.py:334
-#: ../cmk/gui/wato/pages/audit_log.py:241
-#: ../cmk/gui/wato/pages/audit_log.py:444 ../cmk/gui/crash_reporting.py:406
+#: ../cmk/gui/wato/pages/audit_log.py:242
+#: ../cmk/gui/wato/pages/audit_log.py:448 ../cmk/gui/crash_reporting.py:406
 #: ../cmk/gui/plugins/views/mkeventd.py:882
 #: ../cmk/gui/plugins/views/crash_reporting.py:211
-#: ../cmk/gui/plugins/views/painters.py:3768
-#: ../cmk/gui/plugins/views/painters.py:4494
+#: ../cmk/gui/plugins/views/painters.py:3762
+#: ../cmk/gui/plugins/views/painters.py:4488
 msgid "Time"
 msgstr "Zeit"
 
@@ -71070,7 +71132,7 @@ msgstr "Wartezeit auf Antwort von SNMP-Agent"
 msgid "Time spent waiting for special agent"
 msgstr "Wartezeit auf Antwort von Spezialgent"
 
-#: ../cmk/gui/plugins/views/painters.py:118
+#: ../cmk/gui/plugins/views/painters.py:117
 msgid "Time stamp format"
 msgstr "Format des Zeitstempels"
 
@@ -71311,7 +71373,7 @@ msgstr "Tinkerforge"
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:559
 #: ../cmk/gui/cee/plugins/wato/dcd.py:344 ../cmk/gui/cee/sla.py:366
 #: ../cmk/gui/cee/reporting.py:1426 ../cmk/gui/cee/reporting.py:2436
-#: ../cmk/gui/werks.py:234 ../cmk/gui/werks.py:489 ../cmk/gui/views.py:1391
+#: ../cmk/gui/werks.py:234 ../cmk/gui/werks.py:491 ../cmk/gui/views.py:1391
 #: ../cmk/gui/gui_background_job.py:363 ../cmk/gui/pagetypes.py:150
 #: ../cmk/gui/pagetypes.py:1112 ../cmk/gui/wato/mkeventd.py:286
 #: ../cmk/gui/wato/mkeventd.py:293 ../cmk/gui/wato/mkeventd.py:1544
@@ -72310,7 +72372,7 @@ msgstr "Es wurde versucht, inkompatible Regeln zu registrieren: %r"
 msgid "Trivial change"
 msgstr "Triviale Änderung"
 
-#: ../cmk/gui/plugins/views/painters.py:499
+#: ../cmk/gui/plugins/views/painters.py:493
 msgid ""
 "Truncate content at this amount of characters.A zero value mean not to "
 "truncate"
@@ -72340,7 +72402,7 @@ msgstr "Teste Suchmuster"
 msgid "Try bringing up TCP connection for"
 msgstr "Versuche TCP Verbindung für"
 
-#: ../cmk/gui/wato/mkeventd.py:1077 ../cmk/gui/wato/pages/pattern_editor.py:155
+#: ../cmk/gui/wato/mkeventd.py:1077 ../cmk/gui/wato/pages/pattern_editor.py:156
 msgid "Try out"
 msgstr "Testen"
 
@@ -72420,10 +72482,10 @@ msgstr "Tx-Leistungspegel"
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:874
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:943
 #: ../cmk/gui/plugins/views/crash_reporting.py:191
-#: ../cmk/gui/plugins/views/painters.py:1145
-#: ../cmk/gui/plugins/views/painters.py:2120
-#: ../cmk/gui/plugins/views/painters.py:3748
-#: ../cmk/gui/plugins/views/painters.py:4241
+#: ../cmk/gui/plugins/views/painters.py:1139
+#: ../cmk/gui/plugins/views/painters.py:2114
+#: ../cmk/gui/plugins/views/painters.py:3742
+#: ../cmk/gui/plugins/views/painters.py:4235
 #: ../cmk/gui/plugins/wato/check_parameters/docker_node_disk_usage.py:25
 msgid "Type"
 msgstr "Typ"
@@ -72498,8 +72560,8 @@ msgstr "Typ der Baum-Ansicht"
 msgid "Types of events that are being processed"
 msgstr "Ereignis-Typen, die verarbeitet werden"
 
-#: ../cmk/gui/plugins/views/painters.py:3335
-#: ../cmk/gui/plugins/views/painters.py:3603
+#: ../cmk/gui/plugins/views/painters.py:3329
+#: ../cmk/gui/plugins/views/painters.py:3597
 msgid "U"
 msgstr "U"
 
@@ -72572,8 +72634,8 @@ msgid "UNIX timestamp"
 msgstr "UNIX-Zeitstempel"
 
 #: ../cmk/gui/cme/plugins/views/managed.py:289
-#: ../cmk/gui/plugins/views/painters.py:2808
-#: ../cmk/gui/plugins/views/painters.py:4655
+#: ../cmk/gui/plugins/views/painters.py:2802
+#: ../cmk/gui/plugins/views/painters.py:4649
 #: ../cmk/gui/plugins/visuals/filters.py:925
 #: ../cmk/gui/plugins/visuals/filters.py:2647 ../cmk/utils/defines.py:39
 msgid "UNKN"
@@ -72884,8 +72946,8 @@ msgstr "UTC -9 Stunden"
 msgid "UTF-8"
 msgstr "UTF-8"
 
-#: ../cmk/gui/plugins/views/painters.py:2729
-#: ../cmk/gui/plugins/views/painters.py:3415
+#: ../cmk/gui/plugins/views/painters.py:2723
+#: ../cmk/gui/plugins/views/painters.py:3409
 msgid "Un"
 msgstr "Un"
 
@@ -73088,7 +73150,7 @@ msgstr "Nicht zugeordete Turbozyklen"
 msgid "Unacknowledge this test result for site %s"
 msgstr "Entferne Quittierung dieses Testresultats für die Instanz %s"
 
-#: ../cmk/gui/werks.py:372
+#: ../cmk/gui/werks.py:374
 msgid "Unacknowledged incompatible Werks"
 msgstr "Unquittierte inkompatible Werks"
 
@@ -73238,7 +73300,7 @@ msgstr "Unitrends Backup/Replikation (Linux)"
 msgid "Unity of measurement"
 msgstr "Maßeinheit"
 
-#: ../cmk/gui/availability.py:331 ../cmk/gui/plugins/views/painters.py:126
+#: ../cmk/gui/availability.py:331 ../cmk/gui/plugins/views/painters.py:125
 msgid "Unix Timestamp (Epoch)"
 msgstr "Unix-Zeitstempel (Epoche)"
 
@@ -73450,7 +73512,7 @@ msgid "Unused space"
 msgstr "Ungenutzter Platz"
 
 #: ../cmk/gui/cee/plugins/reporting/availability.py:397
-#: ../cmk/gui/plugins/views/painters.py:3375
+#: ../cmk/gui/plugins/views/painters.py:3369
 #: ../cmk/gui/plugins/views/commands.py:426
 #: ../cmk/gui/plugins/visuals/filters.py:1730
 #: ../cmk/gui/plugins/dashboard/stats.py:231
@@ -75438,11 +75500,11 @@ msgstr "Speicherbelegung"
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_sap_hana.py:64
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_oracle.py:97
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/cmk_update_agent.py:79
-#: ../cmk/gui/wato/user_profile.py:588
+#: ../cmk/gui/wato/user_profile.py:589
 #: ../cmk/gui/wato/pages/activate_changes.py:335
 #: ../cmk/gui/wato/pages/timeperiods.py:190
-#: ../cmk/gui/wato/pages/audit_log.py:243
-#: ../cmk/gui/wato/pages/audit_log.py:446 ../cmk/gui/watolib/groups.py:263
+#: ../cmk/gui/wato/pages/audit_log.py:244
+#: ../cmk/gui/wato/pages/audit_log.py:450 ../cmk/gui/watolib/groups.py:263
 #: ../cmk/gui/plugins/metrics/cpu.py:141
 #: ../cmk/gui/plugins/metrics/application.py:387
 msgid "User"
@@ -75507,6 +75569,12 @@ msgstr "Benutzer für Login"
 msgid "User interface"
 msgstr "Benutzerschnittstelle"
 
+#: ../cmk/gui/wato/user_profile.py:516
+#, fuzzy
+#| msgid "Instances settings"
+msgid "User interface settings"
+msgstr "Einstellungen von Instanzen"
+
 #: ../cmk/gui/plugins/userdb/user_attributes.py:149
 #: ../cmk/gui/plugins/wato/check_mk_configuration.py:134
 msgid "User interface theme"
@@ -75521,7 +75589,7 @@ msgstr "Benutzer"
 msgid "User name on the storage system. Read only permissions are sufficient."
 msgstr "Benutzerkennung auf dem Speichersystem. Leserechte sind ausreichend."
 
-#: ../cmk/gui/plugins/views/painters.py:4392
+#: ../cmk/gui/plugins/views/painters.py:4386
 msgid "User notification"
 msgstr "Benutzeralarm"
 
@@ -75534,7 +75602,7 @@ msgstr "Nutzer Benachrichtigungen"
 msgid "User password"
 msgstr "Username und Passwort"
 
-#: ../cmk/gui/wato/user_profile.py:275
+#: ../cmk/gui/wato/user_profile.py:274
 msgid "User profiles can not be edited (WATO is disabled)."
 msgstr ""
 "Benuterprofile können mit WATO nicht geändert werden (WATO ist abgeschaltet)."
@@ -75979,7 +76047,7 @@ msgstr ""
 msgid "VServer name"
 msgstr "VServer Name"
 
-#: ../cmk/gui/plugins/views/painters.py:582
+#: ../cmk/gui/plugins/views/painters.py:576
 #, python-format
 msgid "Val. %d"
 msgstr "Wert %d"
@@ -76034,6 +76102,11 @@ msgstr "Werttyp"
 #| msgid "Value must be a %s with two elements."
 msgid "Value must be a tuple with two elements."
 msgstr "Der Wert muss vom Typ %s sein und zwei 2 Elemente haben."
+
+#: ../cmk/utils/object_diff.py:38 ../cmk/utils/object_diff.py:39
+#, python-brace-format
+msgid "Value of {diff_path} changed from {val_t1} to {val_t2}."
+msgstr ""
 
 #: ../cmk/gui/plugins/wato/bi_valuespecs.py:310
 #: ../cmk/gui/plugins/wato/datasource_programs.py:2520
@@ -76216,7 +76289,7 @@ msgstr "Veritas Cluster Server"
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:278
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:340
 #: ../cmk/gui/cee/plugins/wato/mkpmanager.py:361
-#: ../cmk/gui/cee/plugins/wato/license_usage.py:218 ../cmk/gui/werks.py:481
+#: ../cmk/gui/cee/plugins/wato/license_usage.py:218 ../cmk/gui/werks.py:483
 #: ../cmk/gui/wato/pages/activate_changes.py:444
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:340
 #: ../cmk/gui/plugins/views/builtin_inventory_plugins.py:390
@@ -76358,7 +76431,7 @@ msgstr "Parameter für diesen Service ansehen und bearbeiten"
 msgid "View and edit the rules and aggregations in this BI pack"
 msgstr "Regeln und Aggregationen in diesem BI-Paket anzeigen und bearbeiten"
 
-#: ../cmk/gui/wato/pages/audit_log.py:110
+#: ../cmk/gui/wato/pages/audit_log.py:111
 #: ../cmk/gui/plugins/wato/utils/html_elements.py:59
 #, fuzzy
 #| msgid "Save changes"
@@ -76608,8 +76681,8 @@ msgstr "Text-Logdateien (Linux)"
 
 #: ../cmk/gui/plugins/metrics/unit.py:181
 #: ../cmk/gui/plugins/metrics/unit.py:182
-#: ../cmk/gui/plugins/views/painters.py:3295
-#: ../cmk/gui/plugins/views/painters.py:3563
+#: ../cmk/gui/plugins/views/painters.py:3289
+#: ../cmk/gui/plugins/views/painters.py:3557
 #: ../cmk/gui/plugins/wato/check_parameters/apc_power.py:33
 #: ../cmk/gui/plugins/wato/check_parameters/apc_power.py:38
 #: ../cmk/gui/plugins/wato/check_parameters/power_multiitem.py:34
@@ -76629,8 +76702,8 @@ msgstr "WA"
 #: ../cmk/gui/cme/plugins/views/managed.py:249
 #: ../cmk/gui/cee/plugins/sla/sla_computation.py:146
 #: ../cmk/gui/wato/mkeventd.py:223 ../cmk/gui/wato/mkeventd.py:1876
-#: ../cmk/gui/plugins/views/painters.py:2806
-#: ../cmk/gui/plugins/views/painters.py:4615
+#: ../cmk/gui/plugins/views/painters.py:2800
+#: ../cmk/gui/plugins/views/painters.py:4609
 #: ../cmk/gui/plugins/views/availability.py:502
 #: ../cmk/gui/plugins/views/availability.py:599
 #: ../cmk/gui/plugins/visuals/filters.py:772
@@ -76686,7 +76759,7 @@ msgstr "WARN/CRIT"
 
 #: ../cmk/gui/cee/plugins/wato/cmc.py:1168
 #: ../cmk/gui/cee/plugins/wato/agent_bakery/rulespecs/mk_logwatch.py:208
-#: ../cmk/gui/cee/reporting.py:2988 ../cmk/gui/htmllib.py:1407
+#: ../cmk/gui/cee/reporting.py:2988 ../cmk/gui/htmllib.py:1411
 #: ../cmk/gui/plugins/wato/active_checks.py:372
 #: ../cmk/gui/plugins/wato/active_checks.py:743
 #: ../cmk/gui/plugins/wato/active_checks.py:775
@@ -76846,7 +76919,7 @@ msgstr "WSUS (Windows Updates)"
 msgid "WWID of the LUN"
 msgstr "LUN WWID"
 
-#: ../cmk/gui/plugins/views/painters.py:2689
+#: ../cmk/gui/plugins/views/painters.py:2683
 msgid "Wa"
 msgstr "Wa"
 
@@ -76879,7 +76952,7 @@ msgstr "Warte auf initialisierung des neuen Masters"
 msgid "Waiting for other switches to come online"
 msgstr "Warte auf andere Switche online zu gehen"
 
-#: ../cmk/gui/wato/user_profile.py:214
+#: ../cmk/gui/wato/user_profile.py:213
 msgid "Waiting for replication to start"
 msgstr "Warte auf den Beginn der Replikation"
 
@@ -78228,11 +78301,11 @@ msgstr "Websphere MQ Manger"
 msgid "Wednesday"
 msgstr "Mittwoch"
 
-#: ../cmk/gui/werks.py:447
+#: ../cmk/gui/werks.py:449
 msgid "Week"
 msgstr "Woche"
 
-#: ../cmk/gui/werks.py:409
+#: ../cmk/gui/werks.py:411
 msgid "Week of creation"
 msgstr "EWoche der Erstellung"
 
@@ -78274,11 +78347,11 @@ msgstr "Werk"
 msgid "Werk %s - %s has been acknowledged."
 msgstr "Werk %s - %s wurde quittiert."
 
-#: ../cmk/gui/werks.py:360
+#: ../cmk/gui/werks.py:362
 msgid "Werk ID"
 msgstr "Werk ID"
 
-#: ../cmk/gui/werks.py:393
+#: ../cmk/gui/werks.py:395
 msgid "Werk title or content"
 msgstr "Werktitel oder -inhalt"
 
@@ -78288,15 +78361,15 @@ msgstr "Werktitel oder -inhalt"
 msgid "Werks"
 msgstr "Werk"
 
-#: ../cmk/gui/werks.py:389
+#: ../cmk/gui/werks.py:391
 msgid "Werks also concerning the Raw Edition"
 msgstr "Werks, die auch die Raw Edition betreffen"
 
-#: ../cmk/gui/werks.py:388
+#: ../cmk/gui/werks.py:390
 msgid "Werks only concerning the Enterprise Edition"
 msgstr "Werks, die nur die Enterprise Edition betreffen"
 
-#: ../cmk/gui/werks.py:387
+#: ../cmk/gui/werks.py:389
 msgid "Werks only concerning the Managed Services Edition"
 msgstr "Werks, die nur die Managed Services Edition betreffen"
 
@@ -80392,7 +80465,7 @@ msgstr "Sie dürfen Übersichten nicht bearbeiten."
 msgid "You are not allowed to edit this %s."
 msgstr "Sie dürfen diese %s nicht bearbeiten."
 
-#: ../cmk/gui/wato/user_profile.py:272
+#: ../cmk/gui/wato/user_profile.py:271
 msgid "You are not allowed to edit your user profile."
 msgstr "Sie dürfen Ihre Benutzer-Profil nicht bearbeiten."
 
@@ -80456,7 +80529,7 @@ msgstr "Sie sind nicht berechtigt, diese globale Einstellung zu editieren."
 msgid "You are not permitted to perform this action."
 msgstr "Sie sind für diese Aktion nicht berechtigt."
 
-#: ../cmk/gui/wato/user_profile.py:376
+#: ../cmk/gui/wato/user_profile.py:378
 msgid "You are required to change your password before proceeding."
 msgstr "Bevor Sie weitermachen können, müssen Sie Ihr Passwort ändern."
 
@@ -80755,7 +80828,7 @@ msgstr ""
 "Diese Merkmale können automatisch ergänzt werden, wenn bestimmte primäre "
 "Merkmale festgelegt wurden."
 
-#: ../cmk/gui/wato/pages/pattern_editor.py:150
+#: ../cmk/gui/wato/pages/pattern_editor.py:151
 msgid ""
 "You can insert some text (e.g. a line of the logfile) to test the patterns "
 "defined for this logfile. All patterns for this logfile are listed below. "
@@ -80843,7 +80916,7 @@ msgstr ""
 "anderen Konfiguration benutzt, wie z.B. für <i>das Login für ausgewählte "
 "Datenbanken</i> oder <i>Sektionen, die ausgeschlossen werden sollen</i>. "
 
-#: ../cmk/gui/wato/user_profile.py:396
+#: ../cmk/gui/wato/user_profile.py:398
 msgid ""
 "You can not change your password, because it is managed by another system."
 msgstr ""
@@ -81876,7 +81949,7 @@ msgstr ""
 "Sie müssen Mitglied in mindestens einer Kontaktgruppe sein, um eine "
 "vordefinierte Bedingung anlegen zu können."
 
-#: ../cmk/gui/wato/user_profile.py:332
+#: ../cmk/gui/wato/user_profile.py:334
 msgid "You need to change your password."
 msgstr "Sie müssen Ihr Kenntwort ändern."
 
@@ -81982,7 +82055,7 @@ msgstr "Geben Sie bitte mindestens %d Zeichen an."
 msgid "You need to provide timeperiod exceptions in YYYY-MM-DD format"
 msgstr "Sie müssen Zeitperiodenausnahmen im Format JJJJJ-MM-TT angeben"
 
-#: ../cmk/gui/wato/user_profile.py:329
+#: ../cmk/gui/wato/user_profile.py:331
 msgid "You need to provide your current password."
 msgstr "Geben Sie bitte Ihr aktuelles Passwort an."
 
@@ -82123,15 +82196,15 @@ msgstr "Ihre Eingabe entspricht nicht dem vorgeschriebenen Format."
 msgid "Your modifications affect some objects"
 msgstr "Ihre Veränderungen betreffen mehrere Objekte"
 
-#: ../cmk/gui/wato/user_profile.py:338
+#: ../cmk/gui/wato/user_profile.py:340
 msgid "Your old password is wrong."
 msgstr "Ihr altes Passwort ist falsch."
 
-#: ../cmk/gui/wato/user_profile.py:379
+#: ../cmk/gui/wato/user_profile.py:381
 msgid "Your password has been changed."
 msgstr "Ihr Passwort wurde geändert."
 
-#: ../cmk/gui/wato/user_profile.py:374
+#: ../cmk/gui/wato/user_profile.py:376
 msgid "Your password is too old, you need to choose a new password."
 msgstr "Ihr Passwort ist zu alt. Bitte wählen Sie ein neues Passwort."
 
@@ -82335,11 +82408,11 @@ msgstr "quittiert"
 msgid "acknowledged events will not be honored"
 msgstr "quittierte Ereignisse werden nicht berücksichtigt"
 
-#: ../cmk/gui/plugins/views/painters.py:4019
+#: ../cmk/gui/plugins/views/painters.py:4013
 msgid "act/pend"
 msgstr "akt/unerledigt"
 
-#: ../cmk/gui/plugins/views/painters.py:4026
+#: ../cmk/gui/plugins/views/painters.py:4020
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_ip_sla.py:72
 msgid "active"
 msgstr "aktiv"
@@ -82604,11 +82677,11 @@ msgstr "veränderte Einträge"
 msgid "check plugins"
 msgstr "Checkplugins"
 
-#: ../cmk/gui/plugins/views/painters.py:1225
+#: ../cmk/gui/plugins/views/painters.py:1219
 msgid "check."
 msgstr "check."
 
-#: ../cmk/gui/plugins/views/painters.py:2870
+#: ../cmk/gui/plugins/views/painters.py:2864
 msgid "children"
 msgstr "Childhosts"
 
@@ -82627,7 +82700,7 @@ msgstr "geschlossen"
 msgid "collapsed"
 msgstr "zugeklappt"
 
-#: ../cmk/gui/plugins/views/painters.py:3958
+#: ../cmk/gui/plugins/views/painters.py:3952
 msgid "command"
 msgstr "Kommando"
 
@@ -82635,7 +82708,7 @@ msgstr "Kommando"
 msgid "complete"
 msgstr "vollständig"
 
-#: ../cmk/gui/plugins/views/painters.py:3958
+#: ../cmk/gui/plugins/views/painters.py:3952
 msgid "configuration"
 msgstr "Konfiguration"
 
@@ -82889,7 +82962,7 @@ msgstr "Tag"
 
 #: ../cmk/gui/valuespec.py:319 ../cmk/gui/valuespec.py:348
 #: ../cmk/gui/cee/plugins/wato/cmc.py:351 ../cmk/gui/wato/mkeventd.py:3637
-#: ../cmk/gui/wato/pages/audit_log.py:390
+#: ../cmk/gui/wato/pages/audit_log.py:394
 #: ../cmk/gui/plugins/views/inventory.py:552
 #: ../cmk/gui/plugins/visuals/utils.py:348
 #: ../cmk/gui/plugins/wato/active_checks.py:391
@@ -83244,7 +83317,7 @@ msgstr "Dateisystem"
 msgid "first level"
 msgstr "erste Ebene"
 
-#: ../cmk/gui/plugins/views/painters.py:3938
+#: ../cmk/gui/plugins/views/painters.py:3932
 msgid "fixed"
 msgstr "fest"
 
@@ -83252,7 +83325,7 @@ msgstr "fest"
 msgid "fixed page element"
 msgstr "Seitenelemente"
 
-#: ../cmk/gui/plugins/views/painters.py:3938
+#: ../cmk/gui/plugins/views/painters.py:3932
 msgid "flexible"
 msgstr "flexibel"
 
@@ -83270,7 +83343,7 @@ msgstr "Ordner"
 msgid "folders"
 msgstr "Ordner"
 
-#: ../cmk/gui/plugins/views/painters.py:3999
+#: ../cmk/gui/plugins/views/painters.py:3993
 msgid "for"
 msgstr "für"
 
@@ -83323,7 +83396,7 @@ msgstr "vom Anfang"
 msgid "from the end"
 msgstr "vom Ende"
 
-#: ../cmk/gui/werks.py:400 ../cmk/gui/wato/mkeventd.py:748
+#: ../cmk/gui/werks.py:402 ../cmk/gui/wato/mkeventd.py:748
 #: ../cmk/gui/wato/mkeventd.py:777 ../cmk/gui/wato/mkeventd.py:822
 #: ../cmk/gui/wato/pages/notifications.py:188 ../cmk/gui/watolib/users.py:288
 #: ../cmk/gui/plugins/visuals/inventory.py:143
@@ -83344,7 +83417,7 @@ msgstr "Graph Nummer %d"
 msgid "group by"
 msgstr "gruppieren nach"
 
-#: ../cmk/gui/werks.py:416
+#: ../cmk/gui/werks.py:418
 msgid "groups"
 msgstr "Gruppen"
 
@@ -83412,7 +83485,7 @@ msgid "hits for pass"
 msgstr ""
 
 #: ../cmk/gui/wato/pages/folders.py:685 ../cmk/gui/wato/pages/folders.py:753
-#: ../cmk/gui/plugins/views/painters.py:4177
+#: ../cmk/gui/plugins/views/painters.py:4171
 #: ../cmk/gui/plugins/views/icons/builtin.py:936
 msgid "host"
 msgstr "Host"
@@ -83461,12 +83534,6 @@ msgstr "iSCSI"
 #: ../cmk/gui/plugins/wato/datasource_programs.py:1316
 msgid "iSCSI HBAs"
 msgstr "iSCSI HBAs"
-
-#: ../cmk/gui/plugins/views/painters.py:225
-#, fuzzy
-#| msgid "Metric not found"
-msgid "icon not found"
-msgstr "Metrik nicht gefunden"
 
 #: ../cmk/gui/plugins/wato/check_parameters/db_connections.py:72
 #: ../cmk/gui/plugins/wato/check_parameters/db_connections.py:73
@@ -83530,8 +83597,8 @@ msgstr "in %d Tagen"
 msgid "in ... days"
 msgstr "in ... Tagen"
 
-#: ../cmk/gui/plugins/views/painters.py:1185
-#: ../cmk/gui/plugins/views/painters.py:2140
+#: ../cmk/gui/plugins/views/painters.py:1179
+#: ../cmk/gui/plugins/views/painters.py:2134
 msgid "in notif. p."
 msgstr "in Alarmierungszeit"
 
@@ -83585,7 +83652,7 @@ msgstr ""
 msgid "inodes"
 msgstr "Inodes"
 
-#: ../cmk/gui/wato/pages/audit_log.py:242
+#: ../cmk/gui/wato/pages/audit_log.py:243
 msgid "internal"
 msgstr "intern"
 
@@ -83676,8 +83743,8 @@ msgstr "l/s"
 msgid "laserFault"
 msgstr "laserFault"
 
-#: ../cmk/gui/plugins/views/painters.py:977
-#: ../cmk/gui/plugins/views/painters.py:1972
+#: ../cmk/gui/plugins/views/painters.py:971
+#: ../cmk/gui/plugins/views/painters.py:1966
 msgid "last notification"
 msgstr "letzter Alarm"
 
@@ -83685,7 +83752,7 @@ msgstr "letzter Alarm"
 msgid "latin1"
 msgstr "latin1"
 
-#: ../cmk/gui/cee/reporting.py:515 ../cmk/gui/wato/user_profile.py:64
+#: ../cmk/gui/cee/reporting.py:515 ../cmk/gui/wato/user_profile.py:63
 msgid "left"
 msgstr "links"
 
@@ -83979,8 +84046,8 @@ msgstr "Neuer Hostname"
 #: ../cmk/gui/pagetypes.py:1128 ../cmk/gui/pagetypes.py:1129
 #: ../cmk/gui/wato/pages/roles.py:417 ../cmk/gui/wato/pages/roles.py:418
 #: ../cmk/gui/wato/pages/object_parameters.py:476 ../cmk/gui/visuals.py:591
-#: ../cmk/gui/visuals.py:592 ../cmk/gui/plugins/views/painters.py:1533
-#: ../cmk/gui/plugins/views/painters.py:3985
+#: ../cmk/gui/visuals.py:592 ../cmk/gui/plugins/views/painters.py:1527
+#: ../cmk/gui/plugins/views/painters.py:3979
 #: ../cmk/gui/plugins/views/utils.py:1199
 #: ../cmk/gui/plugins/visuals/utils.py:316
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_ip_sla.py:87
@@ -84076,8 +84143,8 @@ msgstr "nicht verfügbar"
 msgid "not present"
 msgstr "nicht vorhanden"
 
-#: ../cmk/gui/plugins/views/painters.py:1205
-#: ../cmk/gui/plugins/views/painters.py:2160
+#: ../cmk/gui/plugins/views/painters.py:1199
+#: ../cmk/gui/plugins/views/painters.py:2154
 msgid "notif."
 msgstr "Zustellung."
 
@@ -84110,7 +84177,7 @@ msgstr "von Service %s"
 msgid "of unspecified service"
 msgstr "von nicht spezifiziertem Service"
 
-#: ../cmk/gui/valuespec.py:2361 ../cmk/gui/htmllib.py:2160
+#: ../cmk/gui/valuespec.py:2361 ../cmk/gui/htmllib.py:2164
 #: ../cmk/gui/views.py:1346 ../cmk/gui/wato/mkeventd.py:2412
 #: ../cmk/gui/wato/pages/sites.py:1011
 #: ../cmk/gui/plugins/sidebar/master_control.py:133
@@ -84128,7 +84195,7 @@ msgstr "aus"
 msgid "offline hosts"
 msgstr "Offline-Hosts"
 
-#: ../cmk/gui/valuespec.py:2360 ../cmk/gui/htmllib.py:2160
+#: ../cmk/gui/valuespec.py:2360 ../cmk/gui/htmllib.py:2164
 #: ../cmk/gui/wato/mkeventd.py:2412 ../cmk/gui/wato/pages/sites.py:1011
 #: ../cmk/gui/plugins/sidebar/master_control.py:133
 msgid "on"
@@ -84272,7 +84339,7 @@ msgstr "Pfad Echo"
 msgid "path levels"
 msgstr "Ebenen in der Pfad-Hierarchie"
 
-#: ../cmk/gui/plugins/views/painters.py:4026
+#: ../cmk/gui/plugins/views/painters.py:4020
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_ip_sla.py:77
 msgid "pending"
 msgstr "anstehend"
@@ -84615,7 +84682,7 @@ msgstr "Rückgabewert: CRITICAL wenn gefunden, OK wenn nicht"
 msgid "reuses"
 msgstr ""
 
-#: ../cmk/gui/cee/reporting.py:520 ../cmk/gui/wato/user_profile.py:65
+#: ../cmk/gui/cee/reporting.py:520 ../cmk/gui/wato/user_profile.py:64
 msgid "right"
 msgstr "rechts"
 
@@ -84765,7 +84832,7 @@ msgstr "Alarme an Kontakt-Gruppen senden:"
 msgid "send only every"
 msgstr "Sende nur jede"
 
-#: ../cmk/gui/plugins/views/painters.py:4177
+#: ../cmk/gui/plugins/views/painters.py:4171
 #: ../cmk/gui/plugins/views/icons/builtin.py:939
 msgid "service"
 msgstr "Service"
@@ -84831,13 +84898,13 @@ msgstr "Alle anzeigen"
 msgid "show errors"
 msgstr "Zeige Fehler"
 
-#: ../cmk/gui/htmllib.py:2650
+#: ../cmk/gui/htmllib.py:2654
 #, fuzzy
 #| msgid "show all"
 msgid "show less"
 msgstr "Alle anzeigen"
 
-#: ../cmk/gui/htmllib.py:2646
+#: ../cmk/gui/htmllib.py:2650
 #, fuzzy
 #| msgid "show errors"
 msgid "show more"
@@ -84873,7 +84940,7 @@ msgstr "Anschluss wartet auf weitere Pakete aus dem Netzwerk"
 msgid "specify manually ->"
 msgstr "Manuell festlegen ->"
 
-#: ../cmk/gui/plugins/views/painters.py:1736
+#: ../cmk/gui/plugins/views/painters.py:1730
 msgid "state"
 msgstr "Status"
 
@@ -85018,7 +85085,7 @@ msgstr "bis"
 msgid "to port:"
 msgstr "zu Port:"
 
-#: ../cmk/gui/werks.py:401
+#: ../cmk/gui/werks.py:403
 msgid "to:"
 msgstr "bis:"
 
@@ -85360,7 +85427,7 @@ msgstr "Jahre"
 #: ../cmk/gui/pagetypes.py:1128 ../cmk/gui/pagetypes.py:1129
 #: ../cmk/gui/wato/pages/roles.py:416 ../cmk/gui/wato/pages/roles.py:418
 #: ../cmk/gui/wato/pages/object_parameters.py:476 ../cmk/gui/visuals.py:591
-#: ../cmk/gui/visuals.py:592 ../cmk/gui/plugins/views/painters.py:1532
+#: ../cmk/gui/visuals.py:592 ../cmk/gui/plugins/views/painters.py:1526
 #: ../cmk/gui/plugins/views/utils.py:1199
 #: ../cmk/gui/plugins/visuals/utils.py:316
 #: ../cmk/gui/plugins/wato/check_parameters/cisco_ip_sla.py:86
@@ -85377,6 +85444,11 @@ msgstr "gestern"
 #: ../cmk/gui/wato/pages/download_agents.py:125
 msgid "z/OS"
 msgstr "z/OS"
+
+#, fuzzy
+#~| msgid "Metric not found"
+#~ msgid "icon not found"
+#~ msgstr "Metrik nicht gefunden"
 
 #~ msgid "Check"
 #~ msgstr "Check"
