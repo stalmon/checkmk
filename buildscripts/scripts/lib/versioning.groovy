@@ -2,7 +2,8 @@
 import java.text.SimpleDateFormat
 import groovy.transform.Field
 
-// TODO: Add the rules to exclude mkp-able folder regarding ntop integration under "managed"
+// TODO: Use ntop_rules.json as soon as we want to exclude ntop-mkp-able files from the enterprise build
+// as this logic is shared by the script to create the ntop mkp
 @Field
 def REPO_PATCH_RULES = [\
 "raw": [\
@@ -123,7 +124,8 @@ def patch_demo(DEMO) {
     if (DEMO == 'yes') {
         sh '''sed -ri 's/^(DEMO_SUFFIX[[:space:]]*:?= *).*/\\1'" .demo/" defines.make'''
         sh 'mv omd/packages/nagios/{9999-demo-version.dif,patches/9999-demo-version.dif}'
-        sh '''sed -i 's/#ifdef DEMOVERSION/#if 1/g' enterprise/core/src/{Core,World}.cc'''
+        sh '''sed -i 's/#ifdef DEMOVERSION/#if 1/g' enterprise/core/src/TrialManager.h'''
+        sh '''sed -i 's/#ifdef DEMOVERSION/#if 1/g' enterprise/core/src/test/test_TrialManager.cc'''
     }
 }
 

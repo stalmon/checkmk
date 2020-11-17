@@ -1017,7 +1017,6 @@ class html(ABCHTMLGenerator):
 
         # Browser options
         self.user_errors: Dict[Optional[str], str] = {}
-        self.focus_object: Union[None, Tuple[Optional[str], str], str] = None
         self.final_javascript_code = ""
         self.page_context: 'VisualContext' = {}
 
@@ -1333,10 +1332,11 @@ class html(ABCHTMLGenerator):
         self.link_target = framename
 
     def set_focus(self, varname: str) -> None:
-        self.focus_object = (self.form_name, varname)
+        self.final_javascript("cmk.utils.set_focus_by_name(%s, %s)" %
+                              (json.dumps(self.form_name), json.dumps(varname)))
 
     def set_focus_by_id(self, dom_id: str) -> None:
-        self.focus_object = dom_id
+        self.final_javascript("cmk.utils.set_focus_by_id(%s)" % (json.dumps(dom_id)))
 
     def set_render_headfoot(self, render: bool) -> None:
         self.render_headfoot = render
@@ -1720,12 +1720,16 @@ class html(ABCHTMLGenerator):
         if not self.browser_reload:
             return None
 
+        top_line = self.render_span(_("%d sec. update") % self.browser_reload)
+        bottom_line = self.render_span(
+            self.render_a(
+                _("Reload now"),
+                href="javascript:void(0)",
+                onclick="this.innerHTML=\'%s\'; document.location.reload();" % _("Reloading..."),
+            ))
+
         return PageState(
-            top_line=_("%d sec. update") % self.browser_reload,
-            bottom_line=self.render_a(_("Reload now"),
-                                      href="javascript:void(0)",
-                                      onclick="this.innerHTML=\'%s\'; document.location.reload();" %
-                                      _("Reloading...")),
+            text=self.render_span(top_line + bottom_line),
             icon_name="trans",
             css_classes=["default"],
         )
@@ -1738,36 +1742,12 @@ class html(ABCHTMLGenerator):
     def end_page_content(self):
         self.close_div()
 
-    def footer(self, show_footer: bool = True, show_body_end: bool = True) -> None:
+    def footer(self, show_body_end: bool = True) -> None:
         if self.output_format == "html":
             self.end_page_content()
-            if show_footer:
-                self.bottom_footer()
 
             if show_body_end:
                 self.body_end()
-
-    def bottom_footer(self) -> None:
-        self.bottom_focuscode()
-
-    def bottom_focuscode(self) -> None:
-        if self.focus_object:
-            if isinstance(self.focus_object, tuple):
-                formname, varname = self.focus_object
-                assert formname is not None
-                obj_ident = formname + "." + varname
-            else:
-                obj_ident = "getElementById(\"%s\")" % self.focus_object
-
-            js_code = "<!--\n" \
-                      "var focus_obj = document.%s;\n" \
-                      "if (focus_obj) {\n" \
-                      "    focus_obj.focus();\n" \
-                      "    if (focus_obj.select)\n" \
-                      "        focus_obj.select();\n" \
-                      "}\n" \
-                      "// -->\n" % obj_ident
-            self.javascript(js_code)
 
     def focus_here(self) -> None:
         self.a("", href="#focus_me", id_="focus_me")
@@ -2545,6 +2525,10 @@ class html(ABCHTMLGenerator):
             classes.append(class_)
 
         icon_name = icon["icon"] if isinstance(icon, dict) else icon
+        src = icon_name if "/" in icon_name else self.detect_icon_path(icon_name, prefix="icon")
+        if src.endswith("/icon_missing.svg") and title:
+            title += " (%s)" % _("icon not found")
+
         icon_element = self._render_start_tag(
             'img',
             close_tag=True,
@@ -2552,7 +2536,7 @@ class html(ABCHTMLGenerator):
             id_=id_,
             class_=classes,
             align='absmiddle' if middle else None,
-            src=icon_name if "/" in icon_name else self.detect_icon_path(icon_name, prefix="icon"),
+            src=src,
         )
 
         if isinstance(icon, dict) and icon["emblem"] is not None:
@@ -2574,16 +2558,21 @@ class html(ABCHTMLGenerator):
         7. images/icons/[name].png in site local hierarchy
         8. images/icons/[name].png in standard hierarchy
         """
+        path = "share/check_mk/web/htdocs"
         for theme in self.icon_themes():
-            path = "share/check_mk/web/htdocs/themes/%s/images/%s_%s" % (theme, prefix, icon_name)
+            theme_path = path + "/themes/%s/images/%s_%s" % (theme, prefix, icon_name)
             for file_type in ["svg", "png"]:
-                for base_dir in [cmk.utils.paths.omd_root, cmk.utils.paths.omd_root + "/local"]:
-                    if os.path.exists(base_dir + "/" + path + "." + file_type):
+                for base_dir in [
+                        cmk.utils.paths.omd_root + "/", cmk.utils.paths.omd_root + "/local/"
+                ]:
+                    if os.path.exists(base_dir + theme_path + "." + file_type):
                         return "themes/%s/images/%s_%s.%s" % (self._theme, prefix, icon_name,
                                                               file_type)
+                    if os.path.exists(base_dir + path + "/images/icons/%s.%s" %
+                                      (icon_name, file_type)):
+                        return "images/icons/%s.%s" % (icon_name, file_type)
 
-        # TODO: This fallback is odd. Find use cases and clean this up
-        return "images/icons/%s.png" % icon_name
+        return "themes/facelift/images/icon_missing.svg"
 
     def render_icon_button(self,
                            url: Union[None, str, str],

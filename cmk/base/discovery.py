@@ -37,6 +37,7 @@ import cmk.utils.debug
 import cmk.utils.misc
 import cmk.utils.paths
 import cmk.utils.tty as tty
+from cmk.utils.object_diff import make_object_diff
 from cmk.utils.check_utils import unwrap_parameters, wrap_parameters
 from cmk.utils.exceptions import MKException, MKGeneralException, MKTimeout
 from cmk.utils.labels import DiscoveredHostLabelsStore
@@ -54,6 +55,7 @@ from cmk.utils.type_defs import (
     RulesetName,
     SectionName,
     SourceType,
+    DiscoveryResult,
 )
 
 from cmk.fetchers.protocol import FetcherMessage
@@ -483,7 +485,7 @@ def _do_discovery_for(
 
 
 # determine changed services on host.
-# param mode: can be one of "new", "remove", "fixall", "refresh"
+# param mode: can be one of "new", "remove", "fixall", "refresh", "only-host-labels"
 # param servic_filter: if a filter is set, it controls whether items are touched by the discovery.
 #                       if it returns False for a new item it will not be added, if it returns
 #                       False for a vanished item, that item is kept
@@ -494,23 +496,23 @@ def discover_on_host(
     use_caches: bool,
     service_filters: ServiceFilters,
     on_error: str = "ignore",
-) -> Tuple[Counter[str], Optional[str]]:
+) -> DiscoveryResult:
 
     console.verbose("  Doing discovery with mode '%s'...\n" % mode)
 
     hostname = host_config.hostname
-    counts = _empty_counts()  # TODO: see if this can be replaced by counts = Counter()
+    result = DiscoveryResult()
     discovery_parameters = DiscoveryParameters(
         on_error=on_error,
         load_labels=(mode != "remove"),
         save_labels=(mode != "remove"),
-        only_host_labels=False,
+        only_host_labels=(mode == "only-host-labels"),
     )
 
     if hostname not in config_cache.all_active_hosts():
-        return counts, ""
+        result.error_text = ""
+        return result
 
-    err = None
     host_label_discovery_result = HostLabelDiscoveryResult(
         labels=DiscoveredHostLabels(),
         per_plugin=Counter(),
@@ -521,7 +523,7 @@ def discover_on_host(
         # checks of the host, so that _get_host_services() does show us the
         # new discovered check parameters.
         if mode == "refresh":
-            counts["self_removed"] += host_config.remove_autochecks()  # this is cluster-aware!
+            result.self_removed += host_config.remove_autochecks()  # this is cluster-aware!
 
         if host_config.is_cluster:
             ipaddress = None
@@ -566,10 +568,15 @@ def discover_on_host(
             discovery_parameters,
         )
 
+        old_services = services.get("old", [])
+
         # Create new list of checks
-        new_services = _get_post_discovery_services(hostname, services, service_filters, counts,
+        new_services = _get_post_discovery_services(hostname, services, service_filters, result,
                                                     mode)
         host_config.set_autochecks(new_services)
+
+        result.diff_text = make_object_diff(_make_services_audit_log_object(old_services),
+                                            _make_services_audit_log_object(new_services))
 
     except MKTimeout:
         raise  # let general timeout through
@@ -577,35 +584,26 @@ def discover_on_host(
     except Exception as e:
         if cmk.utils.debug.enabled():
             raise
-        err = str(e)
+        result.error_text = str(e)
 
     if mode != "remove":
-        counts["self_new_host_labels"] = sum(host_label_discovery_result.per_plugin.values())
-        counts["self_total_host_labels"] = len(host_label_discovery_result.labels)
+        result.self_new_host_labels = sum(host_label_discovery_result.per_plugin.values())
+        result.self_total_host_labels = len(host_label_discovery_result.labels)
 
-    counts["self_total"] = counts["self_new"] + counts["self_kept"]
-    return counts, err
+    result.self_total = result.self_new + result.self_kept
+    return result
 
 
-def _empty_counts() -> Counter[str]:
-    return Counter(
-        self_new=0,
-        self_removed=0,
-        self_kept=0,
-        self_total=0,
-        self_new_host_labels=0,
-        self_total_host_labels=0,
-        clustered_new=0,
-        clustered_old=0,
-        clustered_vanished=0,
-    )
+def _make_services_audit_log_object(services: List[Service]) -> Set[str]:
+    """The resulting object is used for building object diffs"""
+    return {s.description for s in services}
 
 
 def _get_post_discovery_services(
     hostname: HostName,
     services: ServicesByTransition,
     service_filters: ServiceFilters,
-    counts: Dict,
+    result: DiscoveryResult,
     mode: str,
 ) -> List[Service]:
     """
@@ -630,14 +628,14 @@ def _get_post_discovery_services(
         if check_source == "new":
             if mode in ("new", "fixall", "refresh"):
                 new = [s for s in discovered_services if service_filters.new(hostname, s)]
-                counts["self_new"] += len(new)
+                result.self_new += len(new)
                 post_discovery_services.extend(new)
             continue
 
         if check_source in ("old", "ignored"):
             # keep currently existing valid services in any case
             post_discovery_services.extend(discovered_services)
-            counts["self_kept"] += len(discovered_services)
+            result.self_kept += len(discovered_services)
             continue
 
         if check_source == "vanished":
@@ -645,16 +643,16 @@ def _get_post_discovery_services(
             # otherwise fix it: remove ignored and non-longer existing services
             for service in discovered_services:
                 if mode in ("fixall", "remove") and service_filters.vanished(hostname, service):
-                    counts["self_removed"] += 1
+                    result.self_removed += 1
                 else:
                     post_discovery_services.append(service)
-                    counts["self_kept"] += 1
+                    result.self_kept += 1
             continue
 
         if check_source.startswith("clustered_"):
             # Silently keep clustered services
             post_discovery_services.extend(discovered_services)
-            counts[check_source] += len(discovered_services)
+            setattr(result, check_source, getattr(result, check_source) + len(discovered_services))
             continue
 
         raise MKGeneralException("Unknown check source '%s'" % check_source)
@@ -1010,35 +1008,34 @@ def _discover_marked_host(config_cache: config.ConfigCache, host_config: config.
 
     why_not = _may_rediscover(params, now_ts, oldest_queued)
     if not why_not:
-        result, error = discover_on_host(
+        result = discover_on_host(
             config_cache,
             host_config,
             _get_rediscovery_mode(params),
             use_caches=True,
             service_filters=service_filters,
         )
-        if error is not None:
-            if error:
-                console.verbose("failed: %s\n" % error)
+        if result.error_text is not None:
+            if result.error_text:
+                console.verbose("failed: %s\n" % result.error_text)
             else:
                 # for offline hosts the error message is empty. This is to remain
                 # compatible with the automation code
                 console.verbose("  failed: host is offline\n")
         else:
-            if result["self_new"] == 0 and\
-               result["self_removed"] == 0 and\
-               result["self_kept"] == result["self_total"] and\
-               result["clustered_new"] == 0 and\
-               result["clustered_vanished"] == 0 and\
-               result["self_new_host_labels"] == 0:
+            if result.self_new == 0 and\
+               result.self_removed == 0 and\
+               result.self_kept == result.self_total and\
+               result.clustered_new == 0 and\
+               result.clustered_vanished == 0 and\
+               result.self_new_host_labels == 0:
                 console.verbose("  nothing changed.\n")
             else:
-                console.verbose(
-                    "  %(self_new)s new, %(self_removed)s removed, "
-                    "%(self_kept)s kept, %(self_total)s total services "
-                    "and %(self_new_host_labels)s new host labels. "
-                    "clustered new %(clustered_new)s, clustered vanished %(clustered_vanished)s" %
-                    result)
+                console.verbose(f"  {result.self_new} new, {result.self_removed} removed, "
+                                f"{result.self_kept} kept, {result.self_total} total services "
+                                f"and {result.self_new_host_labels} new host labels. "
+                                f"clustered new {result.clustered_new}, clustered vanished "
+                                f"{result.clustered_vanished}")
 
                 # Note: Even if the actual mark-for-discovery flag may have been created by a cluster host,
                 #       the activation decision is based on the discovery configuration of the node
@@ -1452,7 +1449,6 @@ def _configure_sources(
     if isinstance(source, checkers.snmp.SNMPSource):
         source.on_snmp_scan_error = discovery_parameters.on_error
         source.use_snmpwalk_cache = False
-        source.ignore_check_interval = True
         checkers.FileCacheFactory.snmp_disabled = disable_snmp_caches
 
 
@@ -1551,13 +1547,19 @@ def _get_host_services(
 ) -> Tuple[ServicesByTransition, HostLabelDiscoveryResult]:
 
     if host_config.is_cluster:
-        services, host_label_discovery_result = _get_cluster_services(host_config, ipaddress,
-                                                                      multi_host_sections,
-                                                                      discovery_parameters)
+        services, host_label_discovery_result = _get_cluster_services(
+            host_config,
+            ipaddress,
+            multi_host_sections,
+            discovery_parameters,
+        )
     else:
-        services, host_label_discovery_result = _get_node_services(host_config, ipaddress,
-                                                                   multi_host_sections,
-                                                                   discovery_parameters)
+        services, host_label_discovery_result = _get_node_services(
+            host_config,
+            ipaddress,
+            multi_host_sections,
+            discovery_parameters,
+        )
 
     # Now add manual and active service and handle ignored services
     return _merge_manual_services(host_config, services,
@@ -1573,9 +1575,12 @@ def _get_node_services(
 ) -> Tuple[ServicesTable, HostLabelDiscoveryResult]:
 
     hostname = host_config.hostname
-    services, host_label_discovery_result = _get_discovered_services(hostname, ipaddress,
-                                                                     multi_host_sections,
-                                                                     discovery_parameters)
+    services, host_label_discovery_result = _get_discovered_services(
+        hostname,
+        ipaddress,
+        multi_host_sections,
+        discovery_parameters,
+    )
 
     config_cache = config.get_config_cache()
     # Identify clustered services

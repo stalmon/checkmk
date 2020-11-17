@@ -44,7 +44,7 @@ from cmk.gui.watolib.utils import (
     ALL_SERVICES,
     try_bake_agents_for_hosts,
 )
-from cmk.gui.watolib.changes import add_change
+from cmk.gui.watolib.changes import add_change, make_diff_text
 from cmk.gui.watolib.automations import check_mk_automation
 from cmk.gui.watolib.sidebar_reload import need_sidebar_reload
 from cmk.gui.watolib.host_attributes import (
@@ -1685,7 +1685,10 @@ class CREFolder(WithPermissions, WithAttributes, WithUniqueIdentifier, BaseFolde
         add_change("new-folder",
                    _("Created new folder %s") % new_subfolder.alias_path(),
                    obj=new_subfolder,
-                   sites=[new_subfolder.site_id()])
+                   sites=[new_subfolder.site_id()],
+                   diff_text=make_diff_text(
+                       make_folder_audit_log_object({}),
+                       make_folder_audit_log_object(new_subfolder.attributes())))
         hooks.call("folder-created", new_subfolder)
         self._clear_id_cache()
         need_sidebar_reload()
@@ -1797,6 +1800,8 @@ class CREFolder(WithPermissions, WithAttributes, WithUniqueIdentifier, BaseFolde
         # to the new mapping.
         affected_sites = self.all_site_ids()
 
+        old_object = make_folder_audit_log_object(self._attributes)
+
         self._title = new_title
         self._attributes = new_attributes
 
@@ -1810,7 +1815,9 @@ class CREFolder(WithPermissions, WithAttributes, WithUniqueIdentifier, BaseFolde
         add_change("edit-folder",
                    _("Edited properties of folder %s") % self.title(),
                    obj=self,
-                   sites=affected_sites)
+                   sites=affected_sites,
+                   diff_text=make_diff_text(old_object,
+                                            make_folder_audit_log_object(self._attributes)))
         self._clear_id_cache()
 
     def _get_cgconf_from_attributes(self, attributes):
@@ -1838,7 +1845,10 @@ class CREFolder(WithPermissions, WithAttributes, WithUniqueIdentifier, BaseFolde
             add_change("create-host",
                        _("Created new host %s.") % host_name,
                        obj=host,
-                       sites=[host.site_id()])
+                       sites=[host.site_id()],
+                       diff_text=make_diff_text({},
+                                                make_host_audit_log_object(
+                                                    host.attributes(), host.cluster_nodes())))
 
         self.persist_instance()  # num_hosts has changed
         self.save_hosts()
@@ -2507,6 +2517,9 @@ class CREHost(WithPermissions, WithAttributes):
         self.need_unlocked()
         must_be_in_contactgroups(attributes.get("contactgroups"))
 
+        old_object = make_host_audit_log_object(self._attributes, self._cluster_nodes)
+        new_object = make_host_audit_log_object(attributes, cluster_nodes)
+
         # 2. Actual modification
         affected_sites = [self.site_id()]
         self._attributes = attributes
@@ -2516,7 +2529,8 @@ class CREHost(WithPermissions, WithAttributes):
         add_change("edit-host",
                    _("Modified host %s.") % self.name(),
                    obj=self,
-                   sites=affected_sites)
+                   sites=affected_sites,
+                   diff_text=make_diff_text(old_object, new_object))
 
     def update_attributes(self, changed_attributes):
         new_attributes = self.attributes().copy()
@@ -2529,6 +2543,8 @@ class CREHost(WithPermissions, WithAttributes):
             self._need_folder_write_permissions()
         self.need_unlocked()
 
+        old = make_host_audit_log_object(self._attributes.copy(), self._cluster_nodes)
+
         # 2. Actual modification
         affected_sites = [self.site_id()]
         for attrname in attrnames_to_clean:
@@ -2539,7 +2555,9 @@ class CREHost(WithPermissions, WithAttributes):
         add_change("edit-host",
                    _("Removed explicit attributes of host %s.") % self.name(),
                    obj=self,
-                   sites=affected_sites)
+                   sites=affected_sites,
+                   diff_text=make_diff_text(
+                       old, make_host_audit_log_object(self._attributes, self._cluster_nodes)))
 
     def _need_folder_write_permissions(self):
         if not self.folder().may("write"):
@@ -2604,6 +2622,22 @@ class CREHost(WithPermissions, WithAttributes):
                    obj=self,
                    sites=[self.site_id()])
         self._name = new_name
+
+
+def make_host_audit_log_object(attributes, cluster_nodes):
+    """The resulting object is used for building object diffs"""
+    obj = attributes.copy()
+    if cluster_nodes:
+        obj["nodes"] = cluster_nodes
+    obj.pop("meta_data", None)
+    return obj
+
+
+def make_folder_audit_log_object(attributes):
+    """The resulting object is used for building object diffs"""
+    obj = attributes.copy()
+    obj.pop("meta_data", None)
+    return obj
 
 
 # Make sure that the user is in all of cgs contact groups.

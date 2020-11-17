@@ -15,6 +15,7 @@ from typing import (
     Iterator,
     Mapping,
     NamedTuple,
+    Optional,
     Sequence,
     Set,
 )
@@ -59,8 +60,11 @@ class SNMPPluginStoreItem(NamedTuple):
 
 
 class SNMPPluginStore(Mapping[SectionName, SNMPPluginStoreItem]):
-    def __init__(self, store: Mapping[SectionName, SNMPPluginStoreItem]) -> None:
-        self._store: Final = store
+    def __init__(
+        self,
+        store: Optional[Mapping[SectionName, SNMPPluginStoreItem]] = None,
+    ) -> None:
+        self._store: Final[Mapping[SectionName, SNMPPluginStoreItem]] = store if store else {}
 
     def __repr__(self):
         return "%s(%r)" % (type(self).__name__, self._store)
@@ -103,12 +107,12 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
         SectionName("brocade_sys"),
         SectionName("bvip_util"),
     }
+    snmp_plugin_store: SNMPPluginStore = SNMPPluginStore()
 
     def __init__(
         self,
         file_cache: SNMPFileCache,
         *,
-        snmp_plugin_store: SNMPPluginStore,
         disabled_sections: Set[SectionName],
         configured_snmp_sections: Set[SectionName],
         inventory_snmp_sections: Set[SectionName],
@@ -119,7 +123,6 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
         snmp_config: SNMPHostConfig,
     ) -> None:
         super().__init__(file_cache, logging.getLogger("cmk.helper.snmp"))
-        self.snmp_plugin_store: Final = snmp_plugin_store
         self.disabled_sections: Final = disabled_sections
         self.configured_snmp_sections: Final = configured_snmp_sections
         self.inventory_snmp_sections: Final = inventory_snmp_sections
@@ -142,7 +145,6 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
 
         return cls(
             file_cache=SNMPFileCache.from_json(serialized.pop("file_cache")),
-            snmp_plugin_store=SNMPPluginStore.deserialize(serialized["snmp_plugin_store"]),
             disabled_sections={SectionName(name) for name in serialized["disabled_sections"]},
             configured_snmp_sections={
                 SectionName(name) for name in serialized["configured_snmp_sections"]
@@ -160,7 +162,6 @@ class SNMPFetcher(ABCFetcher[SNMPRawData]):
     def to_json(self) -> Dict[str, Any]:
         return {
             "file_cache": self.file_cache.to_json(),
-            "snmp_plugin_store": self.snmp_plugin_store.serialize(),
             "disabled_sections": [str(s) for s in self.disabled_sections],
             "configured_snmp_sections": [str(s) for s in self.configured_snmp_sections],
             "inventory_snmp_sections": [str(s) for s in self.inventory_snmp_sections],

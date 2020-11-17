@@ -87,7 +87,7 @@ from cmk.gui.watolib import (  # noqa: F401 # pylint: disable=unused-import
     ConfigDomainOMD, LivestatusViaTCP, ac_test_registry, add_change, add_replication_paths,
     config_domain_registry, folder_preserving_link, get_rulegroup, is_wato_slave_site, log_audit,
     make_action_link, multisite_dir, register_rule, site_neutral_path, user_script_choices,
-    user_script_title, wato_fileheader, wato_root_dir,
+    user_script_title, wato_fileheader, wato_root_dir, make_diff_text,
 )
 from cmk.gui.watolib.config_sync import (  # noqa: F401 # pylint: disable=unused-import
     ReplicationPath,)
@@ -1045,25 +1045,6 @@ def Levels(**kwargs):
         match=match_levels_alternative,
         default_value=default_value,
     )
-
-
-def may_edit_ruleset(varname):
-    if varname == "ignored_services":
-        return config.user.may("wato.services") or config.user.may("wato.rulesets")
-    if varname in [
-            "custom_checks",
-            "datasource_programs",
-            "agent_config:mrpe",
-            "agent_config:agent_paths",
-            "agent_config:runas",
-            "agent_config:only_from",
-    ]:
-        return config.user.may("wato.rulesets") and config.user.may(
-            "wato.add_or_modify_executables")
-    if varname == "agent_config:custom_files":
-        return config.user.may("wato.rulesets") and config.user.may(
-            "wato.agent_deploy_custom_files")
-    return config.user.may("wato.rulesets")
 
 
 class CheckTypeSelection(DualListChoice):

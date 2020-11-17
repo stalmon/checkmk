@@ -132,14 +132,11 @@ def test_automation_discovery_no_host(test_cfg, site):
 def test_automation_discovery_single_host(test_cfg, site):
     data = _execute_automation(site, "inventory", args=["@raiseerrors", "new", "modes-test-host"])
 
-    assert isinstance(data, tuple)
-    assert len(data) == 2
+    assert isinstance(data, dict)
+    assert len(data) == 1
 
-    assert len(data[0]) == 1
-    assert "modes-test-host" in data[0]
-    assert len(data[0]["modes-test-host"]) == 6
-
-    assert data[1] == {}
+    assert data["results"]["modes-test-host"]["diff_text"] == "Nothing was changed."
+    assert data["results"]["modes-test-host"]["error_text"] is None
 
 
 def test_automation_discovery_multiple_hosts(test_cfg, site):
@@ -147,39 +144,46 @@ def test_automation_discovery_multiple_hosts(test_cfg, site):
                                "inventory",
                                args=["@raiseerrors", "new", "modes-test-host", "modes-test-host2"])
 
-    assert isinstance(data, tuple)
-    assert len(data) == 2
+    assert isinstance(data, dict)
+    assert len(data) == 1
 
-    assert len(data[0]) == 2
-    assert "modes-test-host" in data[0]
-    assert "modes-test-host2" in data[0]
-    assert len(data[0]["modes-test-host"]) == 6
-    assert len(data[0]["modes-test-host2"]) == 6
-
-    assert data[1] == {}
+    assert data["results"]["modes-test-host"]["diff_text"] == "Nothing was changed."
+    assert data["results"]["modes-test-host"]["error_text"] is None
+    assert data["results"]["modes-test-host2"]["diff_text"] == "Nothing was changed."
+    assert data["results"]["modes-test-host2"]["error_text"] is None
 
 
 def test_automation_discovery_not_existing_host(test_cfg, site):
     data = _execute_automation(site, "inventory", args=["@raiseerrors", "new", "xxxhost"])
 
-    assert isinstance(data, tuple)
-    assert len(data) == 2
+    assert isinstance(data, dict)
+    assert len(data) == 1
 
-    assert data[0]["xxxhost"] == [0, 0, 0, 0, 0, 0]
-    assert data[1] == {"xxxhost": ''}
+    assert data["results"] == {
+        u'xxxheute': {
+            u'clustered_new': 0,
+            u'clustered_old': 0,
+            u'clustered_vanished': 0,
+            u'diff_text': None,
+            u'error_text': u'',
+            u'self_kept': 0,
+            u'self_new': 0,
+            u'self_new_host_labels': 0,
+            u'self_removed': 0,
+            u'self_total': 0,
+            u'self_total_host_labels': 0,
+        }
+    }
 
 
 def test_automation_discovery_with_cache_option(test_cfg, site):
     data = _execute_automation(site, "inventory", args=["new", "modes-test-host"])
 
-    assert isinstance(data, tuple)
-    assert len(data) == 2
+    assert isinstance(data, dict)
+    assert len(data) == 1
 
-    assert len(data[0]) == 1
-    assert "modes-test-host" in data[0]
-    assert len(data[0]["modes-test-host"]) == 6
-
-    assert data[1] == {}
+    assert data["results"]["modes-test-host"]["diff_text"] == "Nothing was changed."
+    assert data["results"]["modes-test-host"]["error_text"] is None
 
 
 def test_automation_analyse_service_autocheck(test_cfg, site):

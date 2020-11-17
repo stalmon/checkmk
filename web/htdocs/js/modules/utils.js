@@ -219,19 +219,18 @@ export function update_header_timer() {
     date.innerHTML = date_format.replace(/yyyy/, year).replace(/mm/, month).replace(/dd/, day);
 }
 
-export function has_header_info() {
-    return document.getElementById("headinfo") !== null;
+export function has_row_info() {
+    return document.getElementById("row_info") !== null;
 }
 
-export function get_header_info() {
-    // Return the current text (minus the separator prepended by update_header_info())
-    return document.getElementById("headinfo").innerHTML.substr(2);
+export function get_row_info() {
+    return document.getElementById("row_info").innerHTML;
 }
 
-export function update_header_info(text) {
-    var container = document.getElementById("headinfo");
+export function update_row_info(text) {
+    const container = document.getElementById("row_info");
     if (container) {
-        container.innerHTML = ", " + text;
+        container.innerHTML = text;
     }
 }
 
@@ -595,4 +594,21 @@ export function add_simplebar_scrollbar_to_object(obj) {
 export function content_scrollbar(scrollable_id) {
     if (g_content_scrollbar === null) g_content_scrollbar = add_simplebar_scrollbar(scrollable_id);
     return g_content_scrollbar;
+}
+
+export function set_focus_by_name(form_name, field_name) {
+    set_focus(document.getElementById("form_" + form_name).elements[field_name]);
+}
+
+export function set_focus_by_id(dom_id) {
+    set_focus(document.getElementById(dom_id));
+}
+
+function set_focus(focus_obj) {
+    if (focus_obj) {
+        focus_obj.focus();
+        if (focus_obj.select) {
+            focus_obj.select();
+        }
+    }
 }

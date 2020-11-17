@@ -73,7 +73,7 @@ from cmk.gui.plugins.wato import (
     make_action_link,
     make_confirm_link,
     add_change,
-    may_edit_ruleset,
+    make_diff_text,
     search_form,
     ConfigHostname,
     HostTagCondition,
@@ -86,6 +86,8 @@ from cmk.gui.plugins.wato import (
 from cmk.gui.plugins.wato.utils import LabelCondition
 
 from cmk.gui.utils.urls import makeuri, makeuri_contextless, makeuri_contextless_ruleset_group
+
+from cmk.gui.watolib.utils import may_edit_ruleset
 
 if watolib.has_agent_bakery():
     import cmk.gui.cee.plugins.wato.agent_bakery.misc as agent_bakery  # pylint: disable=import-error,no-name-in-module
@@ -860,6 +862,7 @@ class ModeEditRuleset(WatoMode):
             if folder.is_transitive_parent_of(self._folder) or
             self._folder.is_transitive_parent_of(folder))
 
+        html.div("", id_="row_info")
         num_rows = 0
         for folder, folder_rules in groups:
             with table_element("rules_%s_%s" % (self._name, folder.ident()),
@@ -878,8 +881,8 @@ class ModeEditRuleset(WatoMode):
                     self._show_rule_icons(table, match_state, folder, rulenr, rule)
                     self._rule_cells(table, rule)
 
-        headinfo = _("1 row") if num_rows == 1 else _("%d rows") % num_rows
-        html.javascript("cmk.utils.update_header_info(%s);" % json.dumps(headinfo))
+        row_info = _("1 row") if num_rows == 1 else _("%d rows") % num_rows
+        html.javascript("cmk.utils.update_row_info(%s);" % json.dumps(row_info))
 
     @staticmethod
     def _css_for_rule(search_options, rule):
@@ -1355,6 +1358,9 @@ class ABCEditRuleMode(WatoMode):
         else:
             raise NotImplementedError()
 
+        self._orig_rule = self._rule
+        self._rule = self._orig_rule.clone()
+
     def title(self):
         return _("Edit rule: %s") % self._rulespec.title
 
@@ -1461,7 +1467,8 @@ class ABCEditRuleMode(WatoMode):
                 _("Changed properties of rule \"%s\", moved rule from "
                   "folder \"%s\" to \"%s\"") %
                 (self._ruleset.title(), self._folder.alias_path(), new_rule_folder.alias_path()),
-                sites=affected_sites)
+                sites=affected_sites,
+                diff_text=make_diff_text(self._orig_rule.to_web_api(), self._rule.to_web_api()))
 
         flash(self._success_message())
         return redirect(self._back_url())
@@ -1509,7 +1516,7 @@ class ABCEditRuleMode(WatoMode):
         raise NotImplementedError()
 
     def _remove_from_orig_folder(self):
-        self._ruleset.delete_rule(self._rule)
+        self._ruleset.delete_rule(self._orig_rule, create_change=False)
         self._rulesets.save()
 
     def _success_message(self):
@@ -2143,7 +2150,7 @@ class ModeEditRule(ABCEditRuleMode):
 
     def _save_rule(self):
         # Just editing without moving to other folder
-        self._ruleset.edit_rule(self._rule)
+        self._ruleset.edit_rule(self._orig_rule, self._rule)
         self._rulesets.save()
 
 
@@ -2160,18 +2167,8 @@ class ModeCloneRule(ABCEditRuleMode):
     def title(self):
         return _("Copy rule: %s") % self._rulespec.title
 
-    def _set_rule(self):
-        super(ModeCloneRule, self)._set_rule()
-
-        self._orig_rule = self._rule
-        self._rule = self._orig_rule.clone()
-
     def _save_rule(self):
-        if self._rule.folder == self._orig_rule.folder:
-            self._ruleset.insert_rule_after(self._rule, self._orig_rule)
-        else:
-            self._ruleset.append_rule(self._rule.folder(), self._rule)
-
+        self._ruleset.clone_rule(self._orig_rule, self._rule)
         self._rulesets.save()
 
     def _remove_from_orig_folder(self):
@@ -2239,12 +2236,13 @@ class ModeNewRule(ABCEditRuleMode):
             ))
 
     def _save_rule(self):
-        self._ruleset.append_rule(self._folder, self._rule)
+        index = self._ruleset.append_rule(self._folder, self._rule)
         self._rulesets.save()
         add_change("edit-rule",
-                   _("Created new rule in ruleset \"%s\" in folder \"%s\"") %
-                   (self._ruleset.title(), self._folder.alias_path()),
-                   sites=self._folder.all_site_ids())
+                   _("Created new rule #%d in ruleset \"%s\" in folder \"%s\"") %
+                   (index, self._ruleset.title(), self._folder.alias_path()),
+                   sites=self._folder.all_site_ids(),
+                   diff_text=make_diff_text({}, self._rule.to_web_api()))
 
     def _success_message(self):
         return _("Created new rule in ruleset \"%s\" in folder \"%s\"") % \

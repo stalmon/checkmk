@@ -6,7 +6,7 @@
 
 from typing import Optional
 
-from cmk.gui.i18n import _
+from cmk.gui.i18n import _, ungettext
 from cmk.gui.globals import html
 from cmk.gui.breadcrumb import Breadcrumb
 # TODO: Change all call sites to directly import from cmk.gui.page_menu
@@ -44,18 +44,27 @@ def wato_html_head(*,
     html.open_div(class_="wato")
 
 
-def wato_html_footer(show_footer: bool = True, show_body_end: bool = True) -> None:
+def wato_html_footer(show_body_end: bool = True) -> None:
     if not _html_head_open:
         return
 
     html.close_div()
-    html.footer(show_footer, show_body_end)
+    html.footer(show_body_end)
 
 
 def _make_wato_page_state() -> PageState:
     changes_info = get_pending_changes_info()
-    return PageState(
-        top_line=changes_info or _("No pending changes"),
-        bottom_line=html.render_a(_("View changes"), href="wato.py?mode=changelog"),
-        icon_name="wato_changes" if changes_info else "wato_nochanges",
-    )
+    changelog_url = "wato.py?mode=changelog"
+    if changes_info:
+        return PageState(
+            text=changes_info,
+            icon_name="pending_changes",
+            url=changelog_url,
+            tooltip_text=ungettext(singular=_("Currently there is one change to activate"),
+                                   plural=_("Currently there are %s to activate." % changes_info),
+                                   n=int(changes_info.rstrip("+ changes"))) + \
+                         "\n" + _("Click here to go to pending changes."),
+        )
+    return PageState(text=_("No pending changes"),
+                     url=changelog_url,
+                     tooltip_text=_("Click here to see the activation status per site."))
