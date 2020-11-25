@@ -104,6 +104,7 @@ update-pot:
 # 3) Commit and push in Checkmk repo
 # This is executed in a cronjob on the VM webdeploy. See https://wiki.lan.tribe29.com/link/898#bkmrk-backend.
 update-pos:
+	git pull
 	cd ../../$$CHECKMK_LOCALE_DIR; \
 	git pull; \
 	for lang in $(LANGUAGES); do \
