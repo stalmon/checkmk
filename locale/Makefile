@@ -93,6 +93,7 @@ update-pot:
 	cat header scanned.pot > ../../$$CHECKMK_LOCALE_DIR/$(MULTISITE_POT) # Add our header and write to Checkmk localization repo
 	rm scanned.pot
 	cd ../../$$CHECKMK_LOCALE_DIR; \
+	git pull; \
 	if [[ $$(git diff | wc -l) -gt 0 ]]; then \
 	    git commit $(MULTISITE_POT) -m "Updated $(MULTISITE_POT)"; \
 	    git push; \
