@@ -3,18 +3,22 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Checkmk user interface translation 0.1\n"
+"Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: feedback@checkmk.com\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-11-20 16:52+0000\n"
+"PO-Revision-Date: 2020-11-25 18:38+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk/"
-"software/de/>\n"
+"test_weblate3/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: -1,-1,1412,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-SearchPath-0: /home/mk/git/check_mk/web/htdocs\n"
 
 #, python-format
 msgid " %s, outage duration %s"
@@ -222,17 +226,17 @@ msgstr "% Flash"
 msgid "% of RAM"
 msgstr "% RAM"
 
-#, fuzzy, python-format
+#, python-format
 msgid "% of maximum active connections"
-msgstr "% der maximalen Verbindungen"
+msgstr "% der maximal aktiven Verbindungen"
 
 #, python-format
 msgid "% of maximum connections"
 msgstr "% der maximalen Verbindungen"
 
-#, fuzzy, python-format
+#, python-format
 msgid "% of maximum idle connections"
-msgstr "% der maximalen Verbindungen"
+msgstr "% der maximal inaktiven Verbindungen"
 
 #, python-format
 msgid "% of port speed"
@@ -14253,6 +14257,10 @@ msgid "Display options"
 msgstr "Anzeigeoptionen"
 
 #, fuzzy
+msgid "Display range"
+msgstr "Durchschnitt anzeigen"
+
+#, fuzzy
 msgid "Display sidecar details on"
 msgstr "Zeigt ein Seitenleistenelement an"
 
@@ -18357,6 +18365,10 @@ msgstr "Seitenel."
 msgid "Fixed page elements"
 msgstr "Seitenelemente"
 
+#, fuzzy
+msgid "Fixed range"
+msgstr "Feste Rate"
+
 msgid "Fixed rate"
 msgstr "Feste Rate"
 
@@ -20780,15 +20792,15 @@ msgid ""
 "i.e., rules further below in the list are overwritten by rules further up."
 msgstr ""
 
-#, fuzzy
+#, python-format
 msgid ""
 "Here, you can specify how Checkmk will translate the exit code of a task "
 "into a monitoring state. This will overwrite the default mapping used by the "
-"check plugin."
+"check plugin. You can also decide to only partially overwrite the default "
+"mapping by only specifying the new monitoring state. The default text will "
+"be kept as the summary, then.<br><br>The following exit codes/monitoring "
+"states/summaries are specified as default:<br>%s"
 msgstr ""
-"Legen Sie eine direkte Zuordnung der möglichen der Status der VM zu den "
-"Monitoringstatus, sprich dem Ergebnis des Checks, fest. Damit überschreiben "
-"Sie die ursprünglich vom Check verwendete Zuordnung."
 
 msgid "Hidden"
 msgstr "Versteckt"
@@ -24235,6 +24247,10 @@ msgstr "Unwirksame Regeln"
 
 msgid "Infections"
 msgstr "Infizierungen"
+
+#, fuzzy
+msgid "Infer range from available data and check output"
+msgstr "Infotext in der Ausgabe des Checks ändern"
 
 msgid "Info"
 msgstr "Info"
@@ -44287,6 +44303,10 @@ msgstr ""
 msgid "Tasks"
 msgstr ""
 
+#, fuzzy
+msgid "Team Secret"
+msgstr "Secret"
+
 msgid ""
 "Team names which will be responsible for the alert. If the API Key belongs "
 "to a team integration, this field will be overwritten with the owner team."
@@ -48016,6 +48036,11 @@ msgstr "Das Ziel wurde gelöscht."
 #, fuzzy
 msgid "The target rule is no longer available"
 msgstr "Es sind keine Sicherungen vorhanden."
+
+msgid ""
+"The team secret of your SIGNL4 team. That is the last part of your webhook "
+"URL: https://connect.signl4.com/webhook/<team_secret>"
+msgstr ""
 
 msgid "The temporary filesystem is mounted"
 msgstr "Das tempräre Dateisystem ist eingehängt"
@@ -54951,6 +54976,12 @@ msgstr ""
 msgid "Use a custom check plugin..."
 msgstr "Benutzerplugin verwenden..."
 
+msgid ""
+"Use a fixed range for the Data displayed. This value has no scaling. If your "
+"metric is in the range of MB, you'll need to place 9 zeros for display to "
+"make sense."
+msgstr ""
+
 msgid "Use a namespace prefix"
 msgstr ""
 
@@ -55955,6 +55986,10 @@ msgstr "VM Verteilung"
 
 msgid "VM name"
 msgstr "VM-Name"
+
+#, fuzzy
+msgid "VM snapshot summary"
+msgstr "Manuelle Schnappschüsse"
 
 #, fuzzy
 msgid "VM, Cloud, Container"
@@ -62113,8 +62148,22 @@ msgstr "gestern"
 msgid "z/OS"
 msgstr "z/OS"
 
-msgid " 2020 tribe29 GmbH. All Rights Reserved."
+msgid "© 2020 tribe29 GmbH. All Rights Reserved."
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "Define a direct translation of the possible states of the VM to "
+#~| "monitoring states, i.e. to the result of the check. This overwrites the "
+#~| "default mapping used by the check."
+#~ msgid ""
+#~ "Here, you can specify how Checkmk will translate the exit code of a task "
+#~ "into a monitoring state. This will overwrite the default mapping used by "
+#~ "the check plugin."
+#~ msgstr ""
+#~ "Legen Sie eine direkte Zuordnung der möglichen der Status der VM zu den "
+#~ "Monitoringstatus, sprich dem Ergebnis des Checks, fest. Damit "
+#~ "überschreiben Sie die ursprünglich vom Check verwendete Zuordnung."
 
 #, fuzzy
 #~| msgid "Replication completed successfully."
@@ -66875,9 +66924,6 @@ msgstr ""
 
 #~ msgid "Replication method"
 #~ msgstr "Replikations Methode"
-
-#~ msgid "Secret"
-#~ msgstr "Secret"
 
 #~ msgid "Service performance data - value number  1"
 #~ msgstr "Service: Leistungsdaten - Wert Nr.  1"

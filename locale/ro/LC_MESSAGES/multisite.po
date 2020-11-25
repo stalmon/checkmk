@@ -3,7 +3,7 @@
 # conditions defined in the file COPYING, which is part of this source code package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Checkmk user interface translation 0.1\n"
+"Project-Id-Version: Check_MK Multisite traducere 0.1\n"
 "Report-Msgid-Bugs-To: feedback@checkmk.com\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
 "PO-Revision-Date: 2011-05-13 09:42+0200\n"
@@ -13201,6 +13201,10 @@ msgstr ""
 msgid "Display options"
 msgstr "Optiuni tabel"
 
+#, fuzzy
+msgid "Display range"
+msgstr "% / gamă"
+
 msgid "Display sidecar details on"
 msgstr ""
 
@@ -17111,6 +17115,10 @@ msgstr ""
 msgid "Fixed page elements"
 msgstr ""
 
+#, fuzzy
+msgid "Fixed range"
+msgstr "% / gamă"
+
 msgid "Fixed rate"
 msgstr ""
 
@@ -19176,10 +19184,14 @@ msgid ""
 "i.e., rules further below in the list are overwritten by rules further up."
 msgstr ""
 
+#, python-format
 msgid ""
 "Here, you can specify how Checkmk will translate the exit code of a task "
 "into a monitoring state. This will overwrite the default mapping used by the "
-"check plugin."
+"check plugin. You can also decide to only partially overwrite the default "
+"mapping by only specifying the new monitoring state. The default text will "
+"be kept as the summary, then.<br><br>The following exit codes/monitoring "
+"states/summaries are specified as default:<br>%s"
 msgstr ""
 
 msgid "Hidden"
@@ -22034,6 +22046,9 @@ msgstr "Reguli neaplicate"
 #, fuzzy
 msgid "Infections"
 msgstr "Conexiuni Active"
+
+msgid "Infer range from available data and check output"
+msgstr ""
 
 msgid "Info"
 msgstr ""
@@ -41266,6 +41281,9 @@ msgstr ""
 msgid "Tasks"
 msgstr ""
 
+msgid "Team Secret"
+msgstr ""
+
 msgid ""
 "Team names which will be responsible for the alert. If the API Key belongs "
 "to a team integration, this field will be overwritten with the owner team."
@@ -44172,6 +44190,11 @@ msgid "The target has been deleted."
 msgstr ""
 
 msgid "The target rule is no longer available"
+msgstr ""
+
+msgid ""
+"The team secret of your SIGNL4 team. That is the last part of your webhook "
+"URL: https://connect.signl4.com/webhook/<team_secret>"
 msgstr ""
 
 msgid "The temporary filesystem is mounted"
@@ -49816,6 +49839,12 @@ msgstr ""
 msgid "Use a custom check plugin..."
 msgstr ""
 
+msgid ""
+"Use a fixed range for the Data displayed. This value has no scaling. If your "
+"metric is in the range of MB, you'll need to place 9 zeros for display to "
+"make sense."
+msgstr ""
+
 msgid "Use a namespace prefix"
 msgstr ""
 
@@ -50679,6 +50708,10 @@ msgstr "foloseste descrierea"
 #, fuzzy
 msgid "VM name"
 msgstr "Nume AP"
+
+#, fuzzy
+msgid "VM snapshot summary"
+msgstr "urca snapshot-uri nesigure"
 
 msgid "VM, Cloud, Container"
 msgstr ""
@@ -55954,7 +55987,7 @@ msgstr "ieri"
 msgid "z/OS"
 msgstr ""
 
-msgid " 2020 tribe29 GmbH. All Rights Reserved."
+msgid "© 2020 tribe29 GmbH. All Rights Reserved."
 msgstr ""
 
 #, fuzzy
