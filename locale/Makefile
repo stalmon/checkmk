@@ -4,6 +4,7 @@
 
 # Relies on the following environment variables:
 # CHECKMK_DIR -- name of the clone of the Checkmk git repository, e.g. check_mk
+# CHECKMK_LOCALE_DIR -- name of the clone of the Checkmk localization git repository, e.g. checkmk-locale
 # WEBLATE_DIR -- name of the clone of the Weblate git repository, e.g. weblate_git
 # WEBLATE_COMMIT_MSG -- string used to identify commits from Weblate, e.g. "[Weblate] Updated translation files"
 # WEBLATE_API_URL -- URL of Weblate API used to send commit command, e.g. "https://translate.checkmk.com/api/components/checkmk/some_component/repository/"
@@ -79,19 +80,23 @@ test-%:
 	@L=$@ ; L=$${L#*-} ; $(PIPENV) run ./blame $$L
 
 
-# Update multisite.pot by running xgettext on our code, commit and push. This is executed in a cronjob on the VM
-# webdeploy. See https://wiki.lan.tribe29.com/link/898#bkmrk-backend.
+# Update multisite.pot (in Checkmk localization repository) by running xgettext on our code, commit and push. This is
+# executed in a cronjob on the VM webdeploy. See https://wiki.lan.tribe29.com/link/898#bkmrk-backend.
+# Note: we cannot use the option --omit-header here, because:
+# https://www.gnu.org/software/gettext/manual/html_node/xgettext-Invocation.html
+# "Note that using this option will lead to an error if the resulting file would not entirely be in ASCII."
 update-pot:
 	git pull
-	xgettext -w 80 --sort-output --force-po -L python --from-code=utf-8 --omit-header -o scanned.pot \
+	xgettext -w 80 --sort-output --force-po -L python --from-code=utf-8 -o scanned.pot \
 	../web/app/index.wsgi \
 	../livestatus/api/python/livestatus.py \
         $$(find -L ../cmk -type f -name "*.py") 2>&1 | \
 	sed "/format string with unnamed arguments cannot be properly localized/,/and a mapping instead of a tuple for the arguments./d"
-	cat header scanned.pot > new.pot
-	mv new.pot $(MULTISITE_POT)
+	sed -i "0,/^$$/d" scanned.pot # Remove default header, i.e. everything before first empty line
+	cat header scanned.pot > ../../$$CHECKMK_LOCALE_DIR/$(MULTISITE_POT) # Add our header and write to Checkmk localization repo
 	rm scanned.pot
-	if [[ $$(git diff $(MULTISITE_POT) | wc -l) -gt 0 ]]; then \
+	cd ../../$$CHECKMK_LOCALE_DIR; \
+	if [[ $$(git diff | wc -l) -gt 0 ]]; then \
 	    git commit $(MULTISITE_POT) -m "Updated $(MULTISITE_POT)"; \
 	    git push; \
 	fi
