@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: feedback@checkmk.com\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-11-25 18:38+0000\n"
+"PO-Revision-Date: 2020-11-26 11:51+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk/"
 "test_weblate3/de/>\n"
@@ -368,9 +368,8 @@ msgstr "%d Zeitbereiche"
 msgid "%d translations"
 msgstr "%d Übersetzungen"
 
-#, fuzzy
 msgid "%m-%d"
-msgstr "%d.%m.%Y"
+msgstr "asdf"
 
 #, python-format
 msgid "%s"
@@ -4334,6 +4333,11 @@ msgstr "Alle Services einer bestimmten Instanz."
 #, fuzzy
 msgid "All WARN services of a given site."
 msgstr "Alle Services einer bestimmten Instanz."
+
+msgid ""
+"All absolute data shown on this page refer to the timeframe since this host "
+"was booted-up."
+msgstr ""
 
 msgid "All aggregations affected by a certain service"
 msgstr "Alle Aggregate, die einen bestimmten Service betreffen"
@@ -21057,9 +21061,6 @@ msgstr "Unerreichbar"
 msgid "Host Events"
 msgstr "Hostereignisse"
 
-msgid "Host Graphs"
-msgstr "Hostgraphen"
-
 msgid "Host Graphs with Timerange Previews"
 msgstr "Hostgraphen mit Zeitbereichsvorschau"
 
@@ -21259,6 +21260,10 @@ msgid "Host goes up again"
 msgstr "Host startet wieder "
 
 msgid "Host graph"
+msgstr "Hostgraph"
+
+#, fuzzy
+msgid "Host graphs"
 msgstr "Hostgraph"
 
 msgid "Host groups"
@@ -45834,6 +45839,12 @@ msgid "The content element \"%s, %s\" cannot be rendered: %s"
 msgstr ""
 
 msgid ""
+"The corresponding username in ntopng of the current checkmk user. It is "
+"used, in case the user mapping to ntopng is configured to use this custom "
+"attribute"
+msgstr ""
+
+msgid ""
 "The creation of an event will be delayed by this time period. This does only "
 "make sense for events that can be cancelled by a negative rule."
 msgstr ""
@@ -61453,6 +61464,10 @@ msgstr "Alarme innerhalb der letzten"
 msgid "ntop GUI extensions"
 msgstr "Defekte GUI-Erweiterungen"
 
+#, fuzzy
+msgid "ntopng Username"
+msgstr "Automatisierung Benutzername"
+
 msgid "objects"
 msgstr "Objekte"
 
@@ -62150,6 +62165,9 @@ msgstr "z/OS"
 
 msgid "© 2020 tribe29 GmbH. All Rights Reserved."
 msgstr ""
+
+#~ msgid "Host Graphs"
+#~ msgstr "Hostgraphen"
 
 #, fuzzy
 #~| msgid ""

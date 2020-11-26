@@ -6,19 +6,21 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite traducere 0.1\n"
 "Report-Msgid-Bugs-To: feedback@checkmk.com\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2011-05-13 09:42+0200\n"
-"Last-Translator: Marius Pană\n"
-"Language-Team: SpearHead Systems\n"
-"Language: ro \n"
+"PO-Revision-Date: 2020-11-26 11:51+0000\n"
+"Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
+"Language-Team: Romanian <https://translate.checkmk.com/projects/checkmk/"
+"test_weblate3/ro/>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #, python-format
 msgid " %s, outage duration %s"
-msgstr ""
+msgstr " fgh"
 
 #, python-format
 msgid " (%d times)"
@@ -3997,6 +3999,11 @@ msgid "All UNKNOWN services of a given site."
 msgstr ""
 
 msgid "All WARN services of a given site."
+msgstr ""
+
+msgid ""
+"All absolute data shown on this page refer to the timeframe since this host "
+"was booted-up."
 msgstr ""
 
 msgid "All aggregations affected by a certain service"
@@ -19452,10 +19459,6 @@ msgstr ""
 msgid "Host Events"
 msgstr ""
 
-#, fuzzy
-msgid "Host Graphs"
-msgstr "Grup nou"
-
 msgid "Host Graphs with Timerange Previews"
 msgstr ""
 
@@ -19663,6 +19666,10 @@ msgstr ""
 
 #, fuzzy
 msgid "Host graph"
+msgstr "Grup nou"
+
+#, fuzzy
+msgid "Host graphs"
 msgstr "Grup nou"
 
 #, fuzzy
@@ -42416,6 +42423,12 @@ msgid "The content element \"%s, %s\" cannot be rendered: %s"
 msgstr ""
 
 msgid ""
+"The corresponding username in ntopng of the current checkmk user. It is "
+"used, in case the user mapping to ntopng is configured to use this custom "
+"attribute"
+msgstr ""
+
+msgid ""
 "The creation of an event will be delayed by this time period. This does only "
 "make sense for events that can be cancelled by a negative rule."
 msgstr ""
@@ -55288,6 +55301,10 @@ msgstr ""
 msgid "ntop GUI extensions"
 msgstr ""
 
+#, fuzzy
+msgid "ntopng Username"
+msgstr "Adaugă instanță NGINX"
+
 msgid "objects"
 msgstr ""
 
@@ -55989,6 +56006,10 @@ msgstr ""
 
 msgid "© 2020 tribe29 GmbH. All Rights Reserved."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Host Graphs"
+#~ msgstr "Grup nou"
 
 #, fuzzy
 #~| msgid "Additional header lines"
