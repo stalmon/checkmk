@@ -26,7 +26,7 @@ from cmk.utils.plugin_registry import Registry
 from cmk.gui.config import UserContext, user
 from cmk.gui.background_job import BackgroundJobAlreadyRunning, BackgroundProcessInterface
 from cmk.gui.exceptions import MKAuthException
-from cmk.gui.globals import RequestContext
+from cmk.gui.globals import AppContext, RequestContext, current_app
 from cmk.gui.gui_background_job import GUIBackgroundJob, job_registry
 from cmk.gui.htmllib import html
 from cmk.gui.http import Request
@@ -86,7 +86,7 @@ class ABCMatchItemGenerator(ABC):
         return self._name
 
     @abstractmethod
-    def generate_match_items(self) -> Iterable[MatchItem]:
+    def generate_match_items(self) -> MatchItems:
         ...
 
     @abstractmethod
@@ -199,11 +199,12 @@ class URLChecker:
         file_name, query_vars = file_name_and_query_vars_from_url(url)
         self._set_query_vars(query_vars)
         try:
-            with RequestContext(html_obj=html(self._request), req=self._request):
-                with UserContext(self._user_id):
-                    page_handler = get_page_handler(file_name)
-                    if page_handler:
-                        page_handler()
+            with AppContext(current_app), \
+                 RequestContext(html_obj=html(self._request), req=self._request), \
+                 UserContext(self._user_id):
+                page_handler = get_page_handler(file_name)
+                if page_handler:
+                    page_handler()
             return True
         except MKAuthException:
             return False
@@ -218,7 +219,7 @@ class PermissionsHandler:
         _, query_vars = file_name_and_query_vars_from_url(url)
         return may_edit_ruleset(query_vars['varname'][0])
 
-    def _permissions_host(self, url: str) -> bool:
+    def _permissions_url(self, url: str) -> bool:
         return self._url_checker.is_permitted(url)
 
     @staticmethod
@@ -227,12 +228,14 @@ class PermissionsHandler:
             "global_settings": user.may("wato.global"),
             "folders": user.may("wato.hosts"),
             "hosts": user.may("wato.hosts"),
+            "setup": user.may("wato.use"),
         }
 
     def permissions_for_items(self) -> Mapping[str, Callable[[str], bool]]:
         return {
             "rules": self._permissions_rule,
-            "hosts": self._permissions_host,
+            "hosts": self._permissions_url,
+            "setup": self._permissions_url,
         }
 
 
@@ -292,6 +295,7 @@ class IndexSearcher:
         # Note: this could just be a class attribute, however, due to the string concatenation,
         # this would mess up the localization
         return (
+            _("Setup"),
             _("Hosts"),
             _("Services") + " > " + _("Service monitoring rules"),
             _("Services") + " > " + _("Service discovery rules"),
