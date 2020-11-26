@@ -104,13 +104,18 @@ def format_plugin_output(output):
 
 def html_escape_context(context):
     unescaped_variables = {
+        'CONTACTALIAS',
+        'CONTACTNAME',
+        'CONTACTEMAIL',
         'PARAMETER_INSERT_HTML_SECTION',
         'PARAMETER_BULK_SUBJECT',
         'PARAMETER_HOST_SUBJECT',
         'PARAMETER_SERVICE_SUBJECT',
         'PARAMETER_FROM',
+        'PARAMETER_FROM_ADDRESS',
         'PARAMETER_FROM_DISPLAY_NAME',
         'PARAMETER_REPLY_TO',
+        'PARAMETER_REPLY_TO_ADDRESS',
         'PARAMETER_REPLY_TO_DISPLAY_NAME',
     }
     if context.get("SERVICE_ESCAPE_PLUGIN_OUTPUT") == "0":
@@ -284,7 +289,7 @@ def retrieve_from_passwordstore(parameter):
     return value
 
 
-def post_request(message_constructor, url=None):
+def post_request(message_constructor, url=None, headers=None):
     context = collect_context()
 
     if not url:
@@ -293,7 +298,10 @@ def post_request(message_constructor, url=None):
     proxies = {"http": proxy_url, "https": proxy_url} if proxy_url else None
 
     try:
-        response = requests.post(url=url, json=message_constructor(context), proxies=proxies)
+        response = requests.post(url=url,
+                                 json=message_constructor(context),
+                                 proxies=proxies,
+                                 headers=headers)
     except requests.exceptions.ProxyError:
         sys.stderr.write("Cannot connect to proxy: %s\n" % proxy_url)
         sys.exit(2)
