@@ -36,7 +36,7 @@ from cmk.fetchers.agent import DefaultAgentFileCache, NoCache
 from cmk.fetchers.ipmi import IPMIFetcher
 from cmk.fetchers.piggyback import PiggybackFetcher
 from cmk.fetchers.program import ProgramFetcher
-from cmk.fetchers.snmp import SNMPFetcher, SNMPFileCache, SNMPPluginStoreItem, SNMPPluginStore
+from cmk.fetchers.snmp import SNMPFetcher, SNMPFileCache, SNMPPluginStoreItem, SNMPPluginStore, SectionMeta
 from cmk.fetchers.tcp import TCPFetcher
 from cmk.fetchers.type_defs import Mode
 
@@ -367,9 +367,7 @@ class ABCTestSNMPFetcher(ABC):
         })
         return SNMPFetcher(
             file_cache,
-            disabled_sections=set(),
-            selected_sections=set(),
-            inventory_sections=set(),
+            sections={},
             on_error="raise",
             missing_sys_description=False,
             do_status_data_inventory=False,
@@ -407,7 +405,7 @@ class TestSNMPFetcherDeserialization(ABCTestSNMPFetcher):
         other = type(fetcher).from_json(json_identity(fetcher.to_json()))
         assert isinstance(other, SNMPFetcher)
         assert other.plugin_store == fetcher.plugin_store
-        assert other.selected_sections == fetcher.selected_sections
+        assert other.checking_sections == fetcher.checking_sections
         assert other.on_error == fetcher.on_error
         assert other.missing_sys_description == fetcher.missing_sys_description
         assert other.snmp_config == fetcher.snmp_config
@@ -438,12 +436,30 @@ class TestSNMPFetcherFetch(ABCTestSNMPFetcher):
             lambda *_, **__: table,
         )
         section_name = SectionName('pim')
-        fetcher.selected_sections = {section_name}
+        monkeypatch.setattr(
+            fetcher, "sections", {
+                section_name: SectionMeta(
+                    checking=True,
+                    inventory=False,
+                    disabled=False,
+                    fetch_interval=None,
+                ),
+            })
+
         assert fetcher.fetch(Mode.INVENTORY) == result.OK({})  # 'pim' is not an inventory section
         assert fetcher.fetch(Mode.CHECKING) == result.OK({section_name: [table]})
 
     def test_fetch_from_io_partially_empty(self, monkeypatch, fetcher):
         section_name = SectionName('pum')
+        monkeypatch.setattr(
+            fetcher, "sections", {
+                section_name: SectionMeta(
+                    checking=True,
+                    inventory=False,
+                    disabled=False,
+                    fetch_interval=None,
+                ),
+            })
         table = [['1']]
         monkeypatch.setattr(
             snmp_table,
@@ -451,7 +467,6 @@ class TestSNMPFetcherFetch(ABCTestSNMPFetcher):
             lambda _, oid_info, **__: table
             if oid_info.base == fetcher.plugin_store[section_name].trees[0].base else [],
         )
-        fetcher.selected_sections = {section_name}
         assert fetcher.fetch(Mode.CHECKING) == result.OK({section_name: [table, []]})
 
     def test_fetch_from_io_empty(self, monkeypatch, fetcher):
@@ -495,6 +510,15 @@ class TestSNMPFetcherFetchCache(ABCTestSNMPFetcher):
     def test_fetch_reading_cache_in_cached_discovery_mode(self, fetcher):
         assert fetcher.file_cache.cache == b"cached_section"
         assert fetcher.fetch(Mode.CACHED_DISCOVERY) == result.OK(b"cached_section")
+
+
+class TestSNMPSectionMeta:
+    @pytest.mark.parametrize("meta", [
+        SectionMeta(checking=False, inventory=False, disabled=False, fetch_interval=None),
+        SectionMeta(checking=True, inventory=False, disabled=False, fetch_interval=None),
+    ])
+    def test_serialize(self, meta):
+        assert SectionMeta.deserialize(meta.serialize()) == meta
 
 
 class TestTCPFetcher:

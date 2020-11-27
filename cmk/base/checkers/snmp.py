@@ -7,14 +7,14 @@
 import logging
 import time
 from pathlib import Path
-from typing import Final, Optional, Set
+from typing import Dict, Final, Optional, Set
 
 from cmk.utils.type_defs import HostAddress, HostName, SectionName, ServiceCheckResult, SourceType
 
 from cmk.snmplib.type_defs import BackendSNMPTree, SNMPDetectSpec, SNMPRawData, SNMPSectionContent
 
 from cmk.fetchers import FetcherType, SNMPFetcher
-from cmk.fetchers.snmp import SNMPFileCache, SNMPPluginStore, SNMPPluginStoreItem
+from cmk.fetchers.snmp import SectionMeta, SNMPFileCache, SNMPPluginStore, SNMPPluginStoreItem
 
 import cmk.base.api.agent_based.register as agent_based_register
 import cmk.base.check_table as check_table
@@ -143,9 +143,7 @@ class SNMPSource(Source[SNMPRawData, SNMPHostSections]):
         SNMPFetcher.plugin_store = make_plugin_store()
         return SNMPFetcher(
             self._make_file_cache(),
-            disabled_sections=self._make_disabled_sections(),
-            selected_sections=self._make_selected_sections(),
-            inventory_sections=self._make_inventory_sections(),
+            sections=self._make_sections(),
             on_error=self.on_snmp_scan_error,
             missing_sys_description=config.get_config_cache().in_binary_hostlist(
                 self.snmp_config.hostname,
@@ -154,6 +152,19 @@ class SNMPSource(Source[SNMPRawData, SNMPHostSections]):
             do_status_data_inventory=self.host_config.do_status_data_inventory,
             snmp_config=self.snmp_config,
         )
+
+    def _make_sections(self) -> Dict[SectionName, SectionMeta]:
+        checking_sections = self._make_checking_sections()
+        inventory_sections = self._make_inventory_sections()
+        disabled_sections = self._make_disabled_sections()
+        return {
+            name: SectionMeta(
+                checking=name in checking_sections,
+                inventory=name in inventory_sections,
+                disabled=name in disabled_sections,
+                fetch_interval=self.host_config.snmp_fetch_interval(name),
+            ) for name in checking_sections | inventory_sections
+        }
 
     def _make_parser(self) -> "SNMPParser":
         return SNMPParser(
@@ -172,10 +183,11 @@ class SNMPSource(Source[SNMPRawData, SNMPHostSections]):
     def _make_disabled_sections(self) -> Set[SectionName]:
         return self.host_config.disabled_snmp_sections()
 
-    def _make_selected_sections(self) -> Set[SectionName]:
-        selection = self.selected_sections
-        if selection is NO_SELECTION:
-            selection = set(
+    def _make_checking_sections(self) -> Set[SectionName]:
+        if self.selected_sections is not NO_SELECTION:
+            checking_sections = self.selected_sections
+        else:
+            checking_sections = set(
                 agent_based_register.get_relevant_raw_sections(
                     check_plugin_names=check_table.get_needed_check_names(
                         self.hostname,
@@ -183,7 +195,8 @@ class SNMPSource(Source[SNMPRawData, SNMPHostSections]):
                         skip_ignored=True,
                     ),
                     inventory_plugin_names=()))
-        return selection.intersection(s.name for s in agent_based_register.iter_all_snmp_sections())
+        return checking_sections.intersection(
+            s.name for s in agent_based_register.iter_all_snmp_sections())
 
     def _make_inventory_sections(self) -> Set[SectionName]:
         return set(
