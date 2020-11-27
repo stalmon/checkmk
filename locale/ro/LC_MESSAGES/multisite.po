@@ -1857,6 +1857,12 @@ msgstr ""
 msgid "API key"
 msgstr ""
 
+msgid "API key for iLert alert server"
+msgstr ""
+
+msgid "API key from password store"
+msgstr ""
+
 msgid "API key/token"
 msgstr ""
 
@@ -6625,9 +6631,9 @@ msgstr ""
 msgid ""
 "By default Checkmk uses command line calls of Net-SNMP tools like snmpget or "
 "snmpwalk to gather SNMP information. For each request a new command line "
-"program is being executed. It is now possible to use the Inline SNMP or "
-"PySNMP implementation which calls the respective libraries directly via its "
-"python bindings. This should increase the performance of SNMP checks in a "
+"program is being executed. It is now possible to use the Inline SNMP "
+"implementation which calls the respective libraries directly via its python "
+"bindings. This should increase the performance of SNMP checks in a "
 "significant way. Both SNMP modes are featurse which improve the performance "
 "for large installations and are only available via our subscription."
 msgstr ""
@@ -7874,8 +7880,7 @@ msgstr ""
 msgid "Check parameters"
 msgstr "(fără parametri)"
 
-msgid ""
-"Check parameters and other configuration variables on hosts and services"
+msgid "Check parameters and other configuration variables for hosts"
 msgstr ""
 
 #, fuzzy
@@ -8117,12 +8122,13 @@ msgid "Checkmk fetcher usage"
 msgstr ""
 
 msgid ""
-"Checkmk has an efficient SNMP implementations called Inline SNMP and PySNMP "
-"which reduce the load produced by SNMP monitoring on the monitoring host "
+"Checkmk has an efficient SNMP implementation called Inline SNMP which "
+"reduces the load produced by SNMP monitoring on the monitoring host "
 "significantly. Inline SNMP is enabled by default for all SNMP hosts and it "
 "is a good idea to keep this default setting. However, there are SNMP devices "
 "which have problems with some SNMP implementations. You can use this rule to "
-"select the SNMP Backend for these hosts."
+"select the SNMP Backend for these hosts.Inline SNMP uses PySNMP bindings to "
+"make SNMP calls."
 msgstr ""
 
 msgid "Checkmk helper usage"
@@ -10862,6 +10868,14 @@ msgstr ""
 
 msgid "Custom icons or actions for services in status GUI"
 msgstr ""
+
+#, fuzzy
+msgid "Custom incident summary for host alerts"
+msgstr " pentru elementul %s"
+
+#, fuzzy
+msgid "Custom incident summary for service alerts"
+msgstr "Numarul maxim de mesaje"
 
 #, fuzzy
 msgid "Custom integrations"
@@ -19300,6 +19314,9 @@ msgstr "Matrice"
 msgid "High"
 msgstr ""
 
+msgid "High (with escalation)"
+msgstr ""
+
 msgid "High alerts"
 msgstr ""
 
@@ -25261,6 +25278,9 @@ msgstr ""
 msgid "Low"
 msgstr "rand"
 
+msgid "Low (without escalation"
+msgstr ""
+
 msgid "Low watermark"
 msgstr ""
 
@@ -27567,10 +27587,6 @@ msgid "Monitoring of forwarded logfiles"
 msgstr ""
 
 #, fuzzy
-msgid "Monitoring rules"
-msgstr " pe siteul de monitorizare: "
-
-#, fuzzy
 msgid "Monitoring state"
 msgstr " pe siteul de monitorizare: "
 
@@ -27648,9 +27664,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Most dashlets have a hard coded default title. For example the view snapin "
-"has even a dynamic title which defaults to the real title of the view. If "
-"you like to use another title, set it here."
+"Most dashlets have a hard coded static title and some are aware of its "
+"content and set the title dynamically, like the view snapin, which displays "
+"the title of the view. If you like to use any other title, set it here."
 msgstr ""
 
 msgid "Most recent events"
@@ -29337,6 +29353,11 @@ msgstr "Notificari"
 #, fuzzy
 msgid "Notification postponement reason"
 msgstr "Activare Configurare"
+
+msgid ""
+"Notification priority (This will override the priority configured in the "
+"alert source)"
+msgstr ""
 
 #, fuzzy
 msgid "Notification rule"
@@ -41616,7 +41637,7 @@ msgid ""
 "The Checkmk Enterprise Free Edition is expired and you can create a "
 "distributed setup with only two sites: one central and one remote site. In "
 "case you want to test more complex distributed setups, please <a href="
-"\"mailto:info@checkmk.com\">contact us</a>."
+"\"https://checkmk.com/contact.php?\" target=\"_blank\">contact us</a>."
 msgstr ""
 
 msgid "The Checkmk Micro Core"
@@ -49773,10 +49794,13 @@ msgstr ""
 msgid "Use IPMItool"
 msgstr ""
 
+msgid "Use Inline SNMP (PySNMP) Backend"
+msgstr ""
+
 msgid "Use Inline SNMP (deprecated)"
 msgstr ""
 
-msgid "Use Inline SNMP Backend"
+msgid "Use Inline SNMP (legacy) Backend"
 msgstr ""
 
 msgid ""
@@ -49793,9 +49817,6 @@ msgid "Use Livestatus Proxy Daemon"
 msgstr ""
 
 msgid "Use Piggyback"
-msgstr ""
-
-msgid "Use PySNMP Backend"
 msgstr ""
 
 msgid "Use SSL"
@@ -54908,6 +54929,9 @@ msgstr ""
 msgid "iCalendar File"
 msgstr "Curata fisierul de loguri"
 
+msgid "iLert alert source API key"
+msgstr ""
+
 msgid "iSCSI"
 msgstr ""
 
@@ -56006,6 +56030,10 @@ msgstr ""
 
 msgid "© 2020 tribe29 GmbH. All Rights Reserved."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Monitoring rules"
+#~ msgstr " pe siteul de monitorizare: "
 
 #, fuzzy
 #~ msgid "Host Graphs"

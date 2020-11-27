@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Check_MK Multisite translation 0.1\n"
 "Report-Msgid-Bugs-To: feedback@checkmk.com\n"
 "POT-Creation-Date: 2011-05-13 09:42+0200\n"
-"PO-Revision-Date: 2020-11-26 11:51+0000\n"
+"PO-Revision-Date: 2020-11-26 17:22+0000\n"
 "Last-Translator: Weblate Admin <marketing@tribe29.com>\n"
 "Language-Team: German <https://translate.checkmk.com/projects/checkmk/"
 "test_weblate3/de/>\n"
@@ -419,7 +419,7 @@ msgstr "%s Locks"
 
 #, python-format
 msgid "%s Pkts / %s%s"
-msgstr ""
+msgstr "zxdfasdf"
 
 #, python-format
 msgid "%s Preview of report finished"
@@ -429,13 +429,13 @@ msgstr "%s Erstellung der Report Vorschau beendet"
 msgid "%s Properties"
 msgstr "%s Eigenschaften"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%s Requests"
-msgstr "GET-Anfragen"
+msgstr "asdfGET-Anfragen"
 
 #, python-format
 msgid "%s Retrieve created dump file"
-msgstr ""
+msgstr "123"
 
 #, fuzzy, python-format
 msgid "%s alerts"
@@ -2214,6 +2214,13 @@ msgstr ""
 
 msgid "API key"
 msgstr "API-Schlüssel"
+
+msgid "API key for iLert alert server"
+msgstr ""
+
+#, fuzzy
+msgid "API key from password store"
+msgstr "Schlüssel aus dem Passwortspeicher"
 
 #, fuzzy
 msgid "API key/token"
@@ -7200,9 +7207,9 @@ msgstr ""
 msgid ""
 "By default Checkmk uses command line calls of Net-SNMP tools like snmpget or "
 "snmpwalk to gather SNMP information. For each request a new command line "
-"program is being executed. It is now possible to use the Inline SNMP or "
-"PySNMP implementation which calls the respective libraries directly via its "
-"python bindings. This should increase the performance of SNMP checks in a "
+"program is being executed. It is now possible to use the Inline SNMP "
+"implementation which calls the respective libraries directly via its python "
+"bindings. This should increase the performance of SNMP checks in a "
 "significant way. Both SNMP modes are featurse which improve the performance "
 "for large installations and are only available via our subscription."
 msgstr ""
@@ -8598,8 +8605,8 @@ msgstr "Ursprung des Services / Parameter"
 msgid "Check parameters"
 msgstr "Check-Parameter"
 
-msgid ""
-"Check parameters and other configuration variables on hosts and services"
+#, fuzzy
+msgid "Check parameters and other configuration variables for hosts"
 msgstr "Checkparameter und andere Konfigurationsvariablen"
 
 #, fuzzy
@@ -8903,12 +8910,13 @@ msgstr "Belegung Check-Hilfsprozesse"
 
 #, fuzzy
 msgid ""
-"Checkmk has an efficient SNMP implementations called Inline SNMP and PySNMP "
-"which reduce the load produced by SNMP monitoring on the monitoring host "
+"Checkmk has an efficient SNMP implementation called Inline SNMP which "
+"reduces the load produced by SNMP monitoring on the monitoring host "
 "significantly. Inline SNMP is enabled by default for all SNMP hosts and it "
 "is a good idea to keep this default setting. However, there are SNMP devices "
 "which have problems with some SNMP implementations. You can use this rule to "
-"select the SNMP Backend for these hosts."
+"select the SNMP Backend for these hosts.Inline SNMP uses PySNMP bindings to "
+"make SNMP calls."
 msgstr ""
 "Check_MK has an efficient SNMP implementation called Inline SNMP which "
 "reduces the load produced by SNMP monitoring on the monitoring host "
@@ -11841,6 +11849,14 @@ msgstr "Benutzersymbole/Aktionen für Hosts in der Status-GUI"
 
 msgid "Custom icons or actions for services in status GUI"
 msgstr "Benutzersymbole/Aktionen für Services in der Status-GUI"
+
+#, fuzzy
+msgid "Custom incident summary for host alerts"
+msgstr "Nachricht für Hostvorfälle"
+
+#, fuzzy
+msgid "Custom incident summary for service alerts"
+msgstr "Nachricht für Servicevorfälle"
 
 #, fuzzy
 msgid "Custom integrations"
@@ -20900,6 +20916,9 @@ msgstr "Hierarchisches Layout"
 msgid "High"
 msgstr "Hoch"
 
+msgid "High (with escalation)"
+msgstr ""
+
 msgid "High alerts"
 msgstr "Hohe Warnmeldungen"
 
@@ -27571,6 +27590,10 @@ msgstr "Lotus Domino Task Erkennung"
 msgid "Low"
 msgstr "Niedrig"
 
+#, fuzzy
+msgid "Low (without escalation"
+msgstr "Phasen ohne Synchronisation"
+
 msgid "Low watermark"
 msgstr ""
 
@@ -29881,10 +29904,6 @@ msgstr "Monitoring von Containern und Container-Orchestrationssoftware"
 msgid "Monitoring of forwarded logfiles"
 msgstr "Liste der weitergeleiteten Logdateien überwachen"
 
-#, fuzzy
-msgid "Monitoring rules"
-msgstr "Kern"
-
 msgid "Monitoring state"
 msgstr "Monitoring-Zustand"
 
@@ -29969,10 +29988,11 @@ msgstr ""
 "fehlerhaft reagieren. Wenn Sie v2c ohne Bulk Walk benutzen möchten, dann "
 "verwenden Sie <tt>snmpv2c_hosts</tt>."
 
+#, fuzzy
 msgid ""
-"Most dashlets have a hard coded default title. For example the view snapin "
-"has even a dynamic title which defaults to the real title of the view. If "
-"you like to use another title, set it here."
+"Most dashlets have a hard coded static title and some are aware of its "
+"content and set the title dynamically, like the view snapin, which displays "
+"the title of the view. If you like to use any other title, set it here."
 msgstr ""
 "Die meisten Elemente in einer Übersicht haben einen hartkodierten "
 "Standardtitel. So hat z.B. das Element für Monitoring-Ansichten einen Titel "
@@ -31722,6 +31742,11 @@ msgstr "Alarmierungs-Plugins"
 
 msgid "Notification postponement reason"
 msgstr "Grund für Verzögerung"
+
+msgid ""
+"Notification priority (This will override the priority configured in the "
+"alert source)"
+msgstr ""
 
 msgid "Notification rule"
 msgstr "Alarmierungsregel"
@@ -44720,7 +44745,7 @@ msgid ""
 "The Checkmk Enterprise Free Edition is expired and you can create a "
 "distributed setup with only two sites: one central and one remote site. In "
 "case you want to test more complex distributed setups, please <a href="
-"\"mailto:info@checkmk.com\">contact us</a>."
+"\"https://checkmk.com/contact.php?\" target=\"_blank\">contact us</a>."
 msgstr ""
 "Ein Verteiltes Setup ist in der Checkmk Demo nicht verfügbar. Wenn Sie ein "
 "Verteiltes Setup testen wollen, <a href=\"mailto:info@checkmk.com"
@@ -54906,11 +54931,15 @@ msgid "Use IPMItool"
 msgstr "IPMItool verwenden"
 
 #, fuzzy
+msgid "Use Inline SNMP (PySNMP) Backend"
+msgstr "Eingebautes SNMP verwenden"
+
+#, fuzzy
 msgid "Use Inline SNMP (deprecated)"
 msgstr "Eingebautes SNMP verwenden"
 
 #, fuzzy
-msgid "Use Inline SNMP Backend"
+msgid "Use Inline SNMP (legacy) Backend"
 msgstr "Eingebautes SNMP verwenden"
 
 msgid ""
@@ -54928,9 +54957,6 @@ msgstr "Livestatus-Proxy-Daemon verwenden"
 
 msgid "Use Piggyback"
 msgstr "Huckepack-Modus verwenden"
-
-msgid "Use PySNMP Backend"
-msgstr ""
 
 msgid "Use SSL"
 msgstr "SSL verwenden"
@@ -61080,6 +61106,9 @@ msgstr "htpasswd"
 msgid "iCalendar File"
 msgstr "iCalendar-Datei"
 
+msgid "iLert alert source API key"
+msgstr ""
+
 msgid "iSCSI"
 msgstr "iSCSI"
 
@@ -62165,6 +62194,11 @@ msgstr "z/OS"
 
 msgid "© 2020 tribe29 GmbH. All Rights Reserved."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Monitoring Core"
+#~ msgid "Monitoring rules"
+#~ msgstr "Kern"
 
 #~ msgid "Host Graphs"
 #~ msgstr "Hostgraphen"
