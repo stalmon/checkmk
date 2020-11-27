@@ -13,7 +13,8 @@ import re
 import hashlib
 from pathlib import Path
 import traceback
-from typing import Callable, NamedTuple, Hashable, TYPE_CHECKING, Any, Set, Tuple, List, Optional, Union, Dict, Type, cast
+from typing import (Callable, NamedTuple, Hashable, TYPE_CHECKING, Any, Set, Tuple, List, Optional,
+                    Union, Dict, Type, cast)
 
 from six import ensure_str
 
@@ -53,10 +54,13 @@ from cmk.gui.view_utils import CellSpec, CSSClass, CellContent
 from cmk.gui.breadcrumb import make_topic_breadcrumb, Breadcrumb, BreadcrumbItem
 from cmk.gui.main_menu import mega_menu_registry
 from cmk.gui.pagetypes import PagetypeTopics
+from cmk.gui.plugins.visuals.utils import (
+    visual_info_registry,
+    VisualType,
+)
 
 from cmk.gui.type_defs import (
     ColumnName,
-    ViewName,
     LivestatusQuery,
     SorterName,
     HTTPVariables,
@@ -70,6 +74,8 @@ from cmk.gui.type_defs import (
     PermittedViewSpecs,
     VisualContext,
     PainterParameters,
+    Visual,
+    VisualLinkSpec,
 )
 
 from cmk.gui.utils.urls import makeuri, makeuri_contextless
@@ -1056,22 +1062,24 @@ def format_plugin_output(output: CellContent, row: Row) -> str:
                                                    shall_escape=config.escape_plugin_output)
 
 
-def link_to_view(content: CellContent, row: Row, view_name: ViewName) -> CellContent:
+def render_link_to_view(content: CellContent, row: Row, link_spec: VisualLinkSpec) -> CellContent:
     assert not isinstance(content, dict)
     if display_options.disabled(display_options.I):
         return content
 
-    url = url_to_view(row, view_name)
+    url = url_to_visual(row, link_spec)
     if url:
         return html.render_a(content, href=url)
     return content
 
 
 # TODO: There is duplicated logic with visuals.collect_context_links_of()
-def url_to_view(row: Row, view_name: ViewName) -> Optional[str]:
+def url_to_visual(row: Row, link_spec: VisualLinkSpec) -> Optional[str]:
     if display_options.disabled(display_options.I):
         return None
 
+    # TODO: Will be generalized in one of the next commits
+    view_name = link_spec[1]
     view = get_permitted_views().get(view_name)
     if not view:
         return None
@@ -1088,19 +1096,18 @@ def url_to_view(row: Row, view_name: ViewName) -> Optional[str]:
             for filter_name in visuals.info_params(info_key):
                 filter_object = visuals.get_filter(filter_name)
                 # Get the list of URI vars to be set for that filter
-                new_vars = filter_object.variable_settings(row)
-                url_vars += new_vars
+                url_vars += filter_object.request_vars_from_row(row).items()
 
     # See get_link_filter_names() comment for details
-    for src_key, dst_key in visuals.get_link_filter_names(view, datasource.infos,
+    for src_key, dst_key in visuals.get_link_filter_names(view["single_infos"], datasource.infos,
                                                           datasource.link_filters):
         try:
-            url_vars += visuals.get_filter(src_key).variable_settings(row)
+            url_vars += visuals.get_filter(src_key).request_vars_from_row(row).items()
         except KeyError:
             pass
 
         try:
-            url_vars += visuals.get_filter(dst_key).variable_settings(row)
+            url_vars += visuals.get_filter(dst_key).request_vars_from_row(row).items()
         except KeyError:
             pass
 
@@ -1118,6 +1125,45 @@ def url_to_view(row: Row, view_name: ViewName) -> Optional[str]:
     filename = "mobile_view.py" if html.mobile else "view.py"
     url_vars.insert(0, ("view_name", view_name))
     return filename + "?" + html.urlencode_vars(url_vars)
+
+
+def make_linked_visual_url(visual_type: VisualType, visual: Visual,
+                           singlecontext_request_vars: Dict[str, str], mobile: bool) -> str:
+    """Compute URLs to link from a view to other dashboards and views"""
+    name = visual["name"]
+    vars_values = get_linked_visual_request_vars(visual, singlecontext_request_vars)
+
+    filename = visual_type.show_url
+    if mobile and visual_type.show_url == 'view.py':
+        filename = 'mobile_' + visual_type.show_url
+
+    # add context link to this visual. For reports we put in
+    # the *complete* context, even the non-single one.
+    if visual_type.multicontext_links:
+        return makeuri(request, [(visual_type.ident_attr, name)], filename=filename)
+
+    # For views and dashboards currently the current filter settings
+    return makeuri_contextless(
+        request,
+        vars_values + [(visual_type.ident_attr, name)],
+        filename=filename,
+    )
+
+
+def get_linked_visual_request_vars(visual: Visual,
+                                   singlecontext_request_vars: Dict[str, str]) -> HTTPVariables:
+    vars_values: HTTPVariables = []
+    for var in visuals.get_single_info_keys(visual["single_infos"]):
+        vars_values.append((var, singlecontext_request_vars[var]))
+
+    add_site_hint = visuals.may_add_site_hint(visual["name"],
+                                              info_keys=list(visual_info_registry.keys()),
+                                              single_info_keys=visual["single_infos"],
+                                              filter_names=list(dict(vars_values).keys()))
+
+    if add_site_hint and html.request.var('site'):
+        vars_values.append(('site', html.request.get_ascii_input_mandatory('site')))
+    return vars_values
 
 
 def get_tag_groups(row: Row, what: str) -> TagGroups:
@@ -1639,7 +1685,7 @@ class Cell:
         self._view = view
         self._painter_name: Optional[PainterName] = None
         self._painter_params: Optional[PainterParameters] = None
-        self._link_view_name: Optional[ViewName] = None
+        self._link_spec: Optional[VisualLinkSpec] = None
         self._tooltip_painter_name: Optional[PainterName] = None
         self._custom_title: Optional[str] = None
 
@@ -1652,7 +1698,8 @@ class Cell:
             self._painter_params = painter_spec[0][1]
             self._custom_title = self._painter_params.get('column_title', None)
 
-        self._link_view_name = painter_spec.link_view
+        if painter_spec.link_view is not None:
+            self._link_spec = VisualLinkSpec("views", painter_spec.link_view)
 
         tooltip_painter_name = painter_spec.tooltip
         if tooltip_painter_name is not None and tooltip_painter_name in painter_registry:
@@ -1663,16 +1710,14 @@ class Cell:
 
         columns = set(self.painter().columns)
 
-        if self._link_view_name:
-            if self._has_link():
-                link_view = self._link_view()
-                if link_view:
-                    # TODO: Clean this up here
-                    for filt in [
-                            visuals.get_filter(fn)
-                            for fn in visuals.get_single_info_keys(link_view["single_infos"])
-                    ]:
-                        columns.update(filt.link_columns)
+        link_view = self._link_view()
+        if link_view:
+            # TODO: Clean this up here
+            for filt in [
+                    visuals.get_filter(fn)
+                    for fn in visuals.get_single_info_keys(link_view["single_infos"])
+            ]:
+                columns.update(filt.link_columns)
 
         if self.has_tooltip():
             columns.update(self.tooltip_painter().columns)
@@ -1685,15 +1730,12 @@ class Cell:
     def join_service(self) -> Optional[ServiceName]:
         return None
 
-    def _has_link(self) -> bool:
-        return self._link_view_name is not None
-
     def _link_view(self) -> Optional[ViewSpec]:
-        if self._link_view_name is None:
+        if self._link_spec is None:
             return None
 
         try:
-            return get_permitted_views()[self._link_view_name]
+            return get_permitted_views()[self._link_spec.name]
         except KeyError:
             return None
 
@@ -1858,8 +1900,8 @@ class Cell:
             return "", ""
 
         # Add the optional link to another view
-        if content and self._has_link() and self._link_view_name is not None:
-            content = link_to_view(content, row, self._link_view_name)
+        if content and self._link_spec is not None:
+            content = render_link_to_view(content, row, self._link_spec)
 
         # Add the optional mouseover tooltip
         if content and self.has_tooltip():
