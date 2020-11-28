@@ -4107,9 +4107,6 @@ msgstr "Aggregation"
 msgid "Aggregation Function"
 msgstr "Aggregationsfunktion"
 
-msgid "Aggregation Groups"
-msgstr "BI Aggregationsgruppen"
-
 msgid "Aggregation ID"
 msgstr "Aggregations ID"
 
@@ -4135,6 +4132,10 @@ msgstr "Aggregationsgruppe"
 
 msgid "Aggregation group tree"
 msgstr "Aggregationsgruppenbaum"
+
+#, fuzzy
+msgid "Aggregation groups"
+msgstr "Aggregationsgruppe"
 
 msgid "Aggregation name"
 msgstr "Aggregationsname"
@@ -9669,6 +9670,17 @@ msgstr "Farbe A3"
 msgid "Color A4"
 msgstr "Farbe A4"
 
+#, fuzzy
+msgid "Color for the average line"
+msgstr "Schwellwerte für die Tablespace-Grösse"
+
+msgid "Color for the main metric scattered dots"
+msgstr ""
+
+#, fuzzy
+msgid "Color for the median line"
+msgstr "Kommentar für die Wartungszeit"
+
 msgid "Color gradient"
 msgstr "Farbverlauf"
 
@@ -13522,9 +13534,6 @@ msgid ""
 msgstr ""
 "Veraltetes WATO-Modul: Als Funktion implementiert. Dieses muss als "
 "Kindklasse von WatoMode neu implementiert werden."
-
-msgid "Deprecated rulesets"
-msgstr "Veraltete Regelsätze"
 
 msgid "Deprecations"
 msgstr "Überholte Einstellungen"
@@ -24266,9 +24275,6 @@ msgstr "Eigenes Thema"
 msgid "Ineffective"
 msgstr "Unwirksame Regeln"
 
-msgid "Ineffective rules"
-msgstr "Unwirksame Regeln"
-
 msgid "Infections"
 msgstr "Infizierungen"
 
@@ -28651,6 +28657,9 @@ msgstr "Max.&nbsp;Vers.:"
 msgid "Max.&nbsp;Version:"
 msgstr "Max.&nbsp;Version:"
 
+msgid "Maximal age"
+msgstr "Maximales Alter"
+
 #, fuzzy
 msgid "Maximal age of a file"
 msgstr "Maximales Alter der jüngsten Datei"
@@ -29395,6 +29404,9 @@ msgstr "Min.&nbsp;Version:"
 #, fuzzy
 msgid "Min.&nbsp;Version: "
 msgstr "Min.&nbsp;Version:"
+
+msgid "Minimal age"
+msgstr "Minimales Alter"
 
 #, fuzzy
 msgid "Minimal age of a file"
@@ -35015,7 +35027,8 @@ msgstr ""
 "angezeigtem Namen verwechseln. Der angezeigte Name dient nur als "
 "Zusatzinformation."
 
-msgid "Please add at least one child node. Empty rules are useless."
+#, fuzzy
+msgid "Please add at least one child node."
 msgstr "Bitte mindestens eine Spalte zur Ansicht hinzufügen."
 
 msgid "Please add at least one column to your view."
@@ -55679,9 +55692,6 @@ msgstr "Genutzte Metadaten"
 msgid "Used quota: Absolute or relative upper levels"
 msgstr "Verwendete Quota: Absolute oder relative Obergrenzen"
 
-msgid "Used rulesets"
-msgstr "Verwendete Regelsätze"
-
 msgid "Used size"
 msgstr "Benutzte Größe"
 
@@ -62195,6 +62205,21 @@ msgstr "z/OS"
 msgid "© 2020 tribe29 GmbH. All Rights Reserved."
 msgstr ""
 
+#~ msgid "Aggregation Groups"
+#~ msgstr "BI Aggregationsgruppen"
+
+#~ msgid "Deprecated rulesets"
+#~ msgstr "Veraltete Regelsätze"
+
+#~ msgid "Ineffective rules"
+#~ msgstr "Unwirksame Regeln"
+
+#~ msgid "Please add at least one child node. Empty rules are useless."
+#~ msgstr "Bitte mindestens eine Spalte zur Ansicht hinzufügen."
+
+#~ msgid "Used rulesets"
+#~ msgstr "Verwendete Regelsätze"
+
 #, fuzzy
 #~| msgid "Monitoring Core"
 #~ msgid "Monitoring rules"
@@ -64156,9 +64181,6 @@ msgstr ""
 #~ msgid "Match interface description (regex)"
 #~ msgstr "Interfacebeschreibung matchen (regex)"
 
-#~ msgid "Maximal age"
-#~ msgstr "Maximales Alter"
-
 #~ msgid "Maximum number of matched tasks for OK state"
 #~ msgstr "Maximale Anzahl von passenden Tasks für OK"
 
@@ -64174,9 +64196,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Metric Name: "
 #~ msgstr "Metrikname"
-
-#~ msgid "Minimal age"
-#~ msgstr "Minimales Alter"
 
 #~ msgid "Minimum number of matched tasks for OK state"
 #~ msgstr "Minimale Anzahl passender Tasks für OK"

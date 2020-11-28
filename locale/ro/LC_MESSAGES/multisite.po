@@ -3779,9 +3779,6 @@ msgstr ""
 msgid "Aggregation Function"
 msgstr ""
 
-msgid "Aggregation Groups"
-msgstr ""
-
 #, fuzzy
 msgid "Aggregation ID"
 msgstr "Agregare noua"
@@ -3809,6 +3806,10 @@ msgstr ""
 
 msgid "Aggregation group tree"
 msgstr ""
+
+#, fuzzy
+msgid "Aggregation groups"
+msgstr "Agregare noua"
 
 msgid "Aggregation name"
 msgstr ""
@@ -8791,6 +8792,15 @@ msgstr ""
 msgid "Color A4"
 msgstr ""
 
+msgid "Color for the average line"
+msgstr ""
+
+msgid "Color for the main metric scattered dots"
+msgstr ""
+
+msgid "Color for the median line"
+msgstr ""
+
 msgid "Color gradient"
 msgstr ""
 
@@ -12489,10 +12499,6 @@ msgid ""
 "Deprecated WATO module: Implemented as function. This needs to be refactored "
 "as WatoMode child class."
 msgstr ""
-
-#, fuzzy
-msgid "Deprecated rulesets"
-msgstr "Reguli neaplicate"
 
 #, fuzzy
 msgid "Deprecations"
@@ -22064,9 +22070,6 @@ msgstr ""
 msgid "Ineffective"
 msgstr "Reguli neaplicate"
 
-msgid "Ineffective rules"
-msgstr "Reguli neaplicate"
-
 #, fuzzy
 msgid "Infections"
 msgstr "Conexiuni Active"
@@ -26325,6 +26328,9 @@ msgstr "Nr. Max. Versiuni"
 msgid "Max.&nbsp;Version:"
 msgstr ""
 
+msgid "Maximal age"
+msgstr "Vechimea maxima"
+
 #, fuzzy
 msgid "Maximal age of a file"
 msgstr "Vechimea maxima pentru cel mai nou fisier"
@@ -27071,6 +27077,10 @@ msgstr ""
 #, fuzzy
 msgid "Min.&nbsp;Version: "
 msgstr "Nr. Max. Versiuni"
+
+#, fuzzy
+msgid "Minimal age"
+msgstr "Vechimea maxima"
 
 #, fuzzy
 msgid "Minimal age of a file"
@@ -32468,8 +32478,9 @@ msgid ""
 "The latter one is just being displayed as a further information."
 msgstr ""
 
-msgid "Please add at least one child node. Empty rules are useless."
-msgstr ""
+#, fuzzy
+msgid "Please add at least one child node."
+msgstr "%s nu este un număr întreg valid."
 
 msgid "Please add at least one column to your view."
 msgstr ""
@@ -50443,10 +50454,6 @@ msgid "Used quota: Absolute or relative upper levels"
 msgstr ""
 
 #, fuzzy
-msgid "Used rulesets"
-msgstr "Reguli"
-
-#, fuzzy
 msgid "Used size"
 msgstr "licente nefolosite"
 
@@ -56032,6 +56039,19 @@ msgid "© 2020 tribe29 GmbH. All Rights Reserved."
 msgstr ""
 
 #, fuzzy
+#~| msgid "Ineffective rules"
+#~ msgid "Deprecated rulesets"
+#~ msgstr "Reguli neaplicate"
+
+#~ msgid "Ineffective rules"
+#~ msgstr "Reguli neaplicate"
+
+#, fuzzy
+#~| msgid "Rulesets"
+#~ msgid "Used rulesets"
+#~ msgstr "Reguli"
+
+#, fuzzy
 #~ msgid "Monitoring rules"
 #~ msgstr " pe siteul de monitorizare: "
 
@@ -56257,9 +56277,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Log: contact name (exact match)"
 #~ msgstr " (potrivire exactă)"
-
-#~ msgid "Maximal age"
-#~ msgstr "Vechimea maxima"
 
 #~ msgid "Maximum number of matched tasks for OK state"
 #~ msgstr "Numarul maxim de task-uri cu statusul OK"
